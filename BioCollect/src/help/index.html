@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>A Single Page FAQ With Toggling Answers Using JQuery</title>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#faq-list h2').click(function() {
+                $(this).next('.answer').slideToggle(500);
+                $(this).toggleClass('close');
+                
+            });
+        }); // end ready
+    </script>
+</head>
+
+<body>
+
+<div id="wrapper">
+
+
+<header>
+
+</header>
+
+
+<div id="main">
+    <div class="container">
+    <h1 align="center"><img style="vertical-align: middle;" src="img/logo1.png"></h1>
+    <br/>
+            <p>
+            
+                A user guide for the Green Army programme app is available at http://www.environment.gov.au/land/green-army. It is recommended that you familiarise yourself with the user guide before using this app.
+            </p>
+            <p>
+                <b>Important: </b> 
+                    While the app is in use, it is strongly recommended that no changes are made to the project in the online reporting tool, MERIT (i.e. data added or activities changed in MERIT). During the sync process, data in MERIT will be overridden with data captured by the app.
+            </p>
+            <p>
+               <font color="#CD0000"> DO NOT logout of the app if you have not synced your data with MERIT, otherwise data you have captured in the app will be lost.</font>
+            </p>
+            
+            <section id="faq-list">
+                
+                <h2>How do I create a site?</h2>
+                <div class="answer">
+                    <p>
+                        <b>Step 1:</b> Tap the ‘create new site’ button (<img style="vertical-align: middle;" height="20" src="img/3.png">) <br/>
+                        <b>Step 2:</b> The GPS on your tablet will automatically find your location. Allow a few moments for your GPS to find and refine the location of your site.<br/>
+                        <b>Step 3:</b> Enter the site name and a description, then tap ‘create site’. Your site will be added to the list of sites for your project.<br/>
+                    </p>
+                </div>
+                <br/>
+            
+                <h2>How do I sort activities?</h2>
+                <div class="answer">
+                    <p>
+                        Activities can be sorted by type, status, planned start date, sync status and location. Tap the ‘sort’ drop down menu (<img style="vertical-align: middle;"  height="20" src="img/2.png"> ) to sort your activities as needed.
+                    </p>
+                </div>
+                <br/>
+            
+                <h2>How do I sync changes with MERIT?</h2>
+                <div class="answer">
+                    <p>
+                    Once you have finished entering data into the app, you will need to synchronise (upload) your activity data and site details with MERIT. You will only be able to sync data if you have Internet connection on your device. </p>
+                   <p> <b>Step 1:</b> Tap the sync button on the top right hand side of the screen (<img style="vertical-align: middle;" height="20" src="img/4.png"> ). Once you have synced your data, the activity icons on the left of the screen will change from red to green where data has been entered into the activity.
+                   </p>
+                   <p> DO NOT logout of the app if you have not synced your data with MERIT, otherwise data you have captured in the app will be lost.</p>
+                </div>
+                <br/>
+                
+                <h2>How do I cancel or defer activities?</h2>
+                <div class="answer">
+                <p>
+                You cannot defer or cancel activities using the app. This needs to be done from within MERIT by your Service Provider, in consultation with the Department of the Environment.
+                </p>
+                </div>
+                <br/>
+                
+                <h2>How do I delete a site?</h2>
+                <div class="answer">
+                <p>
+                You cannot delete a site using the app. This needs to be done from within MERIT.
+                </p>
+                </div>
+                <br/>
+                
+                <h2>How do I add photos of a site or activity?</h2>
+                <div class="answer">
+                <p>
+                Photos can only be added to a project via MERIT at this stage. While you are conducting your activities, you may wish to take photos and add them to MERIT later.
+                </p>
+                </div>
+                <br/>
+
+                <h2> I forgot my password?</h2>
+                <div class="answer">
+                <p>
+                If you have forgotten your password you will need to reset it via the MERIT website. You cannot request a password reset through the Green Army Programme app.
+                </p>
+                </div>
+                <br/>
+                <h2>Who do I contact for assistance?</h2>
+                <div class="answer">
+                <p>
+                For technical support using the app, contact the MERIT team at mailto:merit@environment.gov.au or 1800 552 008. If you need to speak to someone about your project, contact your Service Provider.
+                </p>
+                </div>
+            </section>
+            
+    </div>
+
+</div>
+
+<footer>
+    <div class="container">
+    </div>
+</footer>
+
+</div>
+
+
+</body>
+</html>
