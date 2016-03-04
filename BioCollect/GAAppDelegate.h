@@ -11,6 +11,7 @@
 #import "GARestCall.h"
 #import "GASqlLiteDatabase.h"
 #import "GALogin.h"
+#import "BioProjectService.h"
 #import "GAEULAViewController.h"
 
 @interface GAAppDelegate : UIResponder <UIApplicationDelegate, UIAlertViewDelegate>
@@ -21,6 +22,7 @@
 
 //All Singleton classes
 @property (nonatomic, retain) GARestCall *restCall;
+@property (nonatomic, retain) BioProjectService *bioProjectService;
 @property (nonatomic, retain) GASqlLiteDatabase *sqlLite;
 @property (nonatomic, retain) GALogin *loginViewController;
 @property (nonatomic, retain) GAEULAViewController * eulaVC;

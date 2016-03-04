@@ -23,6 +23,10 @@
 		B8BFD2C61919C3AC0063DA78 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8BFD2C51919C3AC0063DA78 /* QuartzCore.framework */; };
 		B8BFD2C81919C3BC0063DA78 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8BFD2C71919C3BC0063DA78 /* Accelerate.framework */; };
 		B8D551DE18F952DF00EDD006 /* GARestCall.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D551DD18F952DF00EDD006 /* GARestCall.m */; };
+		E20189891C8922DD0031435D /* BioProjectService.m in Sources */ = {isa = PBXBuildFile; fileRef = E20189881C8922DD0031435D /* BioProjectService.m */; };
+		E201898A1C8922DD0031435D /* BioProjectService.m in Sources */ = {isa = PBXBuildFile; fileRef = E20189881C8922DD0031435D /* BioProjectService.m */; };
+		E20284971C87D59300E8203F /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E20284961C87D59300E8203F /* HomeTableViewController.m */; };
+		E20284981C87D59300E8203F /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E20284961C87D59300E8203F /* HomeTableViewController.m */; };
 		E22045C0192C755A00531116 /* search_bk_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E22045BF192C755A00531116 /* search_bk_red@2x.png */; };
 		E22045C2192D7C8F00531116 /* briefcase_filled-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E22045C1192D7C8F00531116 /* briefcase_filled-25@2x.png */; };
 		E22045C4192D7D0B00531116 /* help_filled-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E22045C3192D7D0B00531116 /* help_filled-25@2x.png */; };
@@ -160,6 +164,10 @@
 		B8BFD2C71919C3BC0063DA78 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		B8D551DC18F952DF00EDD006 /* GARestCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GARestCall.h; path = src/GARestCall.h; sourceTree = "<group>"; };
 		B8D551DD18F952DF00EDD006 /* GARestCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = GARestCall.m; path = src/GARestCall.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		E20189871C8922C90031435D /* BioProjectService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BioProjectService.h; path = src/bioRest/BioProjectService.h; sourceTree = "<group>"; };
+		E20189881C8922DD0031435D /* BioProjectService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BioProjectService.m; path = src/bioRest/BioProjectService.m; sourceTree = "<group>"; };
+		E20284951C87D56400E8203F /* HomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeTableViewController.h; path = src/home/HomeTableViewController.h; sourceTree = "<group>"; };
+		E20284961C87D59300E8203F /* HomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeTableViewController.m; path = src/home/HomeTableViewController.m; sourceTree = "<group>"; };
 		E22045BF192C755A00531116 /* search_bk_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "search_bk_red@2x.png"; path = "src/images/search_bk_red@2x.png"; sourceTree = "<group>"; };
 		E22045C1192D7C8F00531116 /* briefcase_filled-25@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "briefcase_filled-25@2x.png"; path = "src/images/briefcase_filled-25@2x.png"; sourceTree = "<group>"; };
 		E22045C3192D7D0B00531116 /* help_filled-25@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help_filled-25@2x.png"; path = "src/images/help_filled-25@2x.png"; sourceTree = "<group>"; };
@@ -415,6 +423,15 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
+		E20189831C891E390031435D /* bioReST */ = {
+			isa = PBXGroup;
+			children = (
+				E20189871C8922C90031435D /* BioProjectService.h */,
+				E20189881C8922DD0031435D /* BioProjectService.m */,
+			);
+			name = bioReST;
+			sourceTree = "<group>";
+		};
 		E23586D318FBB27900EE6D13 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
@@ -458,6 +475,7 @@
 		E27BDFB718F7895C001EE2F8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E20189831C891E390031435D /* bioReST */,
 				E27BDFB818F7896F001EE2F8 /* ReST */,
 			);
 			name = Services;
@@ -670,6 +688,8 @@
 		E2F471C01C86816D00594DAB /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				E20284951C87D56400E8203F /* HomeTableViewController.h */,
+				E20284961C87D59300E8203F /* HomeTableViewController.m */,
 				E2F471C31C86827B00594DAB /* HomeTableViewController.xib */,
 			);
 			name = Home;
@@ -719,7 +739,7 @@
 		E2E3AA8118F4D2940005BB9E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = BI;
+				CLASSPREFIX = "";
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Sathya Moorthy, Sathish (CSIRO IM&T, Clayton)";
 				TargetAttributes = {
@@ -861,8 +881,10 @@
 				E23586E218FCFED600EE6D13 /* EasyJSDataFunction.m in Sources */,
 				B83825F71A0C666B00690383 /* UIImage+MRImageEffects.m in Sources */,
 				E2A4A4F819665009006CAC22 /* GAEULAViewController.m in Sources */,
+				E20284971C87D59300E8203F /* HomeTableViewController.m in Sources */,
 				E2E3AAE318F515410005BB9E /* GAProject.m in Sources */,
 				B89441FB18FA38F500BB5928 /* GAProjectsUtil.m in Sources */,
+				E20189891C8922DD0031435D /* BioProjectService.m in Sources */,
 				E23586E418FCFED600EE6D13 /* EasyJSWebViewProxyDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -871,6 +893,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E20284981C87D59300E8203F /* HomeTableViewController.m in Sources */,
+				E201898A1C8922DD0031435D /* BioProjectService.m in Sources */,
 				E2E3AAB218F4D2940005BB9E /* GreenArmyTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

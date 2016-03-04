@@ -24,6 +24,7 @@
 #define kLastUpdated    @"lastUpdated"
 #define kDescription    @"description"
 
+
 @synthesize projectJSONArray;
 
 - (id)initWithData:(NSData *)jsonData {
@@ -40,12 +41,26 @@
     return self;
 }
 
+- (id)initWithArray: (NSMutableArray *)projects {
+    
+    // Call the superclass's designated initializer
+    self = [super init];
+    
+    if(self) {
+        self.projectJSONArray = projects;
+        self.projectJSONDictionary = [[NSDictionary alloc] init];
+        self.index = 0;
+    }
+    return self;
+}
+
+
 - (NSDictionary*)gellCurrentProject {
     return self.projectJSONDictionary;
 }
 
 - (NSDictionary*)nextProject {
-    if(self.index <[self.projectJSONArray count]){
+    if(self.index < [self.projectJSONArray count]){
         self.projectJSONDictionary = [[self.projectJSONArray objectAtIndex:self.index] objectForKey:kProject];
         self.index++;
         return self.projectJSONDictionary;

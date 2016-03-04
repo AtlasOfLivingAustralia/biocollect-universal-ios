@@ -11,6 +11,7 @@
 @interface GAProjectJSON : NSObject
 
 - (id) initWithData:(NSData *)jsonData;
+- (id) initWithArray:(NSMutableArray *)projects;
 
 - (NSString *) projectId;
 - (NSString *) projectName;
