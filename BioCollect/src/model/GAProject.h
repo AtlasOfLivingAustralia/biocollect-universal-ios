@@ -14,6 +14,7 @@
     NSString *projectName;
     NSString *lastUpdated;
     NSString *description;
+    NSString *urlImage;
     NSMutableArray *activities;
     NSMutableArray *sites;    
 }
@@ -23,6 +24,7 @@
 @property (nonatomic, strong) NSString * projectName;
 @property (nonatomic, strong) NSString * lastUpdated;
 @property (nonatomic, strong) NSString * description;
+@property (nonatomic, strong) NSString * urlImage;
 @property (nonatomic, strong) NSMutableArray *activities;
 @property (nonatomic, strong) NSMutableArray *sites;
 

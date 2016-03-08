@@ -8,12 +8,14 @@
 #import <UIKit/UIKit.h>
 #import "GAAppDelegate.h"
 #import "BioProjectService.h"
+#import "UIImageView+WebCache.h"
 
 @interface HomeTableViewController :  UITableViewController <UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *homeTableView;
 
 @property (nonatomic, strong) NSMutableArray * bioProjects;
 @property (nonatomic, assign) NSInteger totalProjects;
+@property (nonatomic, assign) NSInteger currentPage;
 
 @property (nonatomic, strong) GAAppDelegate *appDelegate;
 @property (nonatomic, strong) BioProjectService *bioProjectService;

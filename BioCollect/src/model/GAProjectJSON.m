@@ -23,7 +23,7 @@
 #define kProjectName    @"name"
 #define kLastUpdated    @"lastUpdated"
 #define kDescription    @"description"
-
+#define kUrlImage       @"urlImage"
 
 @synthesize projectJSONArray;
 
@@ -47,6 +47,7 @@
     self = [super init];
     
     if(self) {
+        self.projectJSONArray =  [[NSMutableArray alloc] init];
         self.projectJSONArray = projects;
         self.projectJSONDictionary = [[NSDictionary alloc] init];
         self.index = 0;
@@ -61,7 +62,7 @@
 
 - (NSDictionary*)nextProject {
     if(self.index < [self.projectJSONArray count]){
-        self.projectJSONDictionary = [[self.projectJSONArray objectAtIndex:self.index] objectForKey:kProject];
+        self.projectJSONDictionary = [self.projectJSONArray objectAtIndex:self.index];
         self.index++;
         return self.projectJSONDictionary;
     }
@@ -72,7 +73,7 @@
 - (NSDictionary*)firstProject {
     self.index = 0;
     if(self.index < [self.projectJSONArray count]){
-        self.projectJSONDictionary = [[self.projectJSONArray objectAtIndex:self.index] objectForKey:kProject];
+        self.projectJSONDictionary = [self.projectJSONArray objectAtIndex:self.index];
         return self.projectJSONDictionary;
     }
 
@@ -100,6 +101,10 @@
 
 - (NSString *) description {
     return [self.projectJSONDictionary objectForKey:kDescription];
+}
+
+- (NSString *) urlImage {
+    return [self.projectJSONDictionary objectForKey:kUrlImage];
 }
 
 @end

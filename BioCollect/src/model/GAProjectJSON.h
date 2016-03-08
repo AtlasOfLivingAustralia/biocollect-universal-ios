@@ -17,6 +17,7 @@
 - (NSString *) projectName;
 - (NSString *) lastUpdatedDate;
 - (NSString *) description;
+- (NSString *) urlImage;
 - (NSDictionary*) gellCurrentProject;
 - (NSDictionary*)nextProject;
 - (NSDictionary*)firstProject;

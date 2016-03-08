@@ -17,7 +17,7 @@
 #define kProjects @"projects"
 #define kTotal @"total"
 
-// Get BioCollect projects.
+// Get BioCollect projects - Run as a sync task.
 - (NSInteger) getBioProjects : (NSMutableArray*) projects offset: (int) offset max: (int) max  error:(NSError**) error {
     //Request projects.
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
@@ -37,7 +37,6 @@
         NSMutableArray *projectJSONArray = [NSJSONSerialization JSONObjectWithData:GETReply options: 0 error:&jsonParsingError];
  
         if([projectJSONArray count] > 0) {
-
             GAProjectJSON  *projectJSON = [[GAProjectJSON alloc] initWithArray:[projectJSONArray valueForKey: kProjects]];
             totalProjects = [[projectJSONArray valueForKey: kTotal] integerValue];
             
@@ -49,6 +48,7 @@
                 project.projectName = projectJSON.projectName;
                 project.description = projectJSON.description;
                 project.lastUpdated = projectJSON.lastUpdatedDate;
+                project.urlImage = projectJSON.urlImage;
                 [projects addObject:project];
             }
         }

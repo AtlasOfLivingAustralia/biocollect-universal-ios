@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "HomeTableViewController.h"
-
+#import "HomeCustomCell.h"
 
 @implementation HomeTableViewController
-@synthesize  bioProjects, appDelegate, bioProjectService, totalProjects;
+@synthesize  bioProjects, appDelegate, bioProjectService, totalProjects, currentPage;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *) nibBundleOrNil {
     self.appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -29,7 +29,7 @@
     self.bioProjects = [[NSMutableArray alloc]init];
     NSError *error = nil;
     self.totalProjects = [self.bioProjectService getBioProjects: bioProjects offset:0 max:10 error:&error];
-
+    self.currentPage = 0;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -50,7 +50,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection: (NSInteger)section {
-    return 10;
+    return [self.bioProjects count];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -60,14 +60,27 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath: (NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    HomeCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-        
-        cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-        cell.detailTextLabel.numberOfLines = 1;
-        cell.detailTextLabel.textColor = [UIColor grayColor];
+        cell = [[HomeCustomCell alloc] initWithStyle: UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+//        cell.detailTextLabel.numberOfLines = 2;
+//        cell.detailTextLabel.textColor = [UIColor grayColor];
+//        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+//        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    
+    if([self.bioProjects count] > 0) {
+        GAProject *project = [self.bioProjects objectAtIndex:indexPath.row];
+        cell.textLabel.text = project.projectName;
+        cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@", project.description];
+
+        NSString *url = [[NSString alloc] initWithFormat: @"%@", project.urlImage];
+        NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:escapedUrlString]
+                          placeholderImage:[UIImage imageNamed:@"icon-placeholder.png"]];
+
     }
     
     return cell;
@@ -83,5 +96,7 @@
         //Show next level depth.
     }
 }
+
+
 
 @end
