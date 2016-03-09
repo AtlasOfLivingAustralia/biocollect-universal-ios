@@ -9,5 +9,5 @@
 #import "GAProject.h"
 
 @implementation GAProject
-@synthesize _id, projectId,sites,projectName, lastUpdated, activities,description,urlImage;
+@synthesize _id, projectId,sites,projectName, lastUpdated, activities,description,urlImage, isExternal, urlWeb;
 @end

@@ -84,6 +84,8 @@
 		E23586E318FCFED600EE6D13 /* EasyJSWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = E23586DE18FCFED600EE6D13 /* EasyJSWebView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E23586E418FCFED600EE6D13 /* EasyJSWebViewProxyDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E23586E018FCFED600EE6D13 /* EasyJSWebViewProxyDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E23586E718FCFF4900EE6D13 /* GAFormJSInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = E23586E618FCFF4900EE6D13 /* GAFormJSInterface.m */; };
+		E23AF50A1C8F8C48002501F3 /* HomeWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = E23AF5091C8F8C48002501F3 /* HomeWebView.m */; };
+		E23AF50C1C8FAE59002501F3 /* HomeWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E23AF50B1C8FAE59002501F3 /* HomeWebView.xib */; };
 		E241C680196A3061002302D7 /* pad-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E241C67F196A3061002302D7 /* pad-1@2x.png */; };
 		E241C685196A33B6002302D7 /* css in Resources */ = {isa = PBXBuildFile; fileRef = E241C681196A33B6002302D7 /* css */; };
 		E241C686196A33B6002302D7 /* img in Resources */ = {isa = PBXBuildFile; fileRef = E241C682196A33B6002302D7 /* img */; };
@@ -267,6 +269,9 @@
 		E23586E018FCFED600EE6D13 /* EasyJSWebViewProxyDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = EasyJSWebViewProxyDelegate.m; path = src/webView/EasyJSWebView/EasyJSWebViewProxyDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E23586E518FCFF4900EE6D13 /* GAFormJSInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAFormJSInterface.h; path = src/webView/GAFormJSInterface.h; sourceTree = "<group>"; };
 		E23586E618FCFF4900EE6D13 /* GAFormJSInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = GAFormJSInterface.m; path = src/webView/GAFormJSInterface.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		E23AF5081C8F8C35002501F3 /* HomeWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeWebView.h; path = src/home/HomeWebView.h; sourceTree = "<group>"; };
+		E23AF5091C8F8C48002501F3 /* HomeWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeWebView.m; path = src/home/HomeWebView.m; sourceTree = "<group>"; };
+		E23AF50B1C8FAE59002501F3 /* HomeWebView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeWebView.xib; path = src/home/HomeWebView.xib; sourceTree = "<group>"; };
 		E241C67F196A3061002302D7 /* pad-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pad-1@2x.png"; path = "src/images/pad-1@2x.png"; sourceTree = "<group>"; };
 		E241C681196A33B6002302D7 /* css */ = {isa = PBXFileReference; lastKnownFileType = folder; name = css; path = src/help/css; sourceTree = "<group>"; };
 		E241C682196A33B6002302D7 /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; name = img; path = src/help/img; sourceTree = "<group>"; };
@@ -812,6 +817,9 @@
 				E2F471C31C86827B00594DAB /* HomeTableViewController.xib */,
 				E2B4BEEC1C896DFB0054F117 /* HomeCustomCell.h */,
 				E2B4BEED1C896E270054F117 /* HomeCustomCell.m */,
+				E23AF5081C8F8C35002501F3 /* HomeWebView.h */,
+				E23AF5091C8F8C48002501F3 /* HomeWebView.m */,
+				E23AF50B1C8FAE59002501F3 /* HomeWebView.xib */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -909,6 +917,7 @@
 				E2E56B2D1925CB7F007AC38C /* GACreateSiteModalViewController.xib in Resources */,
 				E2E56A971922E6D6007AC38C /* changed@2x.png in Resources */,
 				E241C685196A33B6002302D7 /* css in Resources */,
+				E23AF50C1C8FAE59002501F3 /* HomeWebView.xib in Resources */,
 				E2E56A981922E6D6007AC38C /* nochange@2x.png in Resources */,
 				E2A2FFCF1C854E59008B63A8 /* Biocollect-logo.png in Resources */,
 				E2E3AAD818F4E65E0005BB9E /* GADetailActivitiesTableViewController.xib in Resources */,
@@ -994,6 +1003,7 @@
 				E20189CD1C8963640031435D /* SDWebImageDecoder.m in Sources */,
 				E2E56A7F1920857C007AC38C /* GASiteJSON.m in Sources */,
 				E23586E718FCFF4900EE6D13 /* GAFormJSInterface.m in Sources */,
+				E23AF50A1C8F8C48002501F3 /* HomeWebView.m in Sources */,
 				E20189CF1C8963640031435D /* SDWebImageDownloader.m in Sources */,
 				B83825FE1A0C666B00690383 /* MRStopButton.m in Sources */,
 				B83825FC1A0C666B00690383 /* MRProgressOverlayView.m in Sources */,

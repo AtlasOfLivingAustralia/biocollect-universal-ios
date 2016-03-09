@@ -24,6 +24,8 @@
 #define kLastUpdated    @"lastUpdated"
 #define kDescription    @"description"
 #define kUrlImage       @"urlImage"
+#define kUrlWeb         @"urlWeb"
+#define kIsExternal     @"isExternal"
 
 @synthesize projectJSONArray;
 
@@ -105,6 +107,14 @@
 
 - (NSString *) urlImage {
     return [self.projectJSONDictionary objectForKey:kUrlImage];
+}
+
+- (NSString *) urlWeb {
+    return [self.projectJSONDictionary objectForKey:kUrlWeb];
+}
+
+- (BOOL) isExternal {
+    return [self.projectJSONDictionary objectForKey:kIsExternal];
 }
 
 @end

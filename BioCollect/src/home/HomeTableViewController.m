@@ -9,9 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "HomeTableViewController.h"
 #import "HomeCustomCell.h"
+#import "HomeWebView.h"
 
 @implementation HomeTableViewController
-@synthesize  bioProjects, appDelegate, bioProjectService, totalProjects, currentPage;
+@synthesize  bioProjects, appDelegate, bioProjectService, totalProjects, offset;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *) nibBundleOrNil {
     self.appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -28,8 +29,9 @@
     //Load project
     self.bioProjects = [[NSMutableArray alloc]init];
     NSError *error = nil;
-    self.totalProjects = [self.bioProjectService getBioProjects: bioProjects offset:0 max:10 error:&error];
-    self.currentPage = 0;
+    self.offset = 0;
+    NSInteger max = 1;
+    self.totalProjects = [self.bioProjectService getBioProjects: bioProjects offset:self.offset max:max error:&error];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -50,7 +52,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection: (NSInteger)section {
-    return [self.bioProjects count];
+    NSUInteger retValue = 0;
+    if(self.bioProjects != nil){
+        retValue = [self.bioProjects count];
+    }
+    return retValue;
+
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -64,10 +71,7 @@
     
     if (cell == nil) {
         cell = [[HomeCustomCell alloc] initWithStyle: UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-//        cell.detailTextLabel.numberOfLines = 2;
-//        cell.detailTextLabel.textColor = [UIColor grayColor];
-//        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-//        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
     if([self.bioProjects count] > 0) {
@@ -94,9 +98,52 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath {
     if(indexPath.section == 0){
         //Show next level depth.
+        HomeWebView *homeWebView = [[HomeWebView alloc] initWithNibName:@"HomeWebView" bundle:nil];
+        homeWebView.project =  [self.bioProjects objectAtIndex:indexPath.row];
+      
+        if(homeWebView.project && homeWebView.project.isExternal && ![homeWebView.project.urlWeb isEqual: [NSNull null]]) {
+            homeWebView.title = homeWebView.project.projectName;
+            [homeWebView.webView setScalesPageToFit:YES];
+            [[self navigationController] pushViewController:homeWebView animated:TRUE];
+            
+        } else if(homeWebView.project && !homeWebView.project.isExternal) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Info"
+                                                            message:@"Internal Project"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Dismiss"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            
+        } else if(homeWebView.project && homeWebView.project.isExternal && [homeWebView.project.urlWeb isEqual: [NSNull null]]) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Info"
+                                                            message:@"Project external web link not available"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Dismiss"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            
+        } else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                            message:@"Invalid Project"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Dismiss"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
     }
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height)) {
+        //Add loading message.
+        self.offset = self.offset + 1;
+        NSInteger max = 1;
+        NSError *error = nil;
+        self.totalProjects = [self.bioProjectService getBioProjects: bioProjects offset:self.offset max:max error:&error];
+        [self.tableView reloadData];
+    }
+}
 
 
 @end

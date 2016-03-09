@@ -9,6 +9,6 @@
 @interface BioProjectService : NSObject
 
 // Get BioCollect projects.
-- (NSInteger) getBioProjects : (NSMutableArray*)projects offset: (int) offset max: (int) max  error:(NSError**) error;
+- (NSInteger) getBioProjects : (NSMutableArray*)projects offset: (NSInteger) offset max: (NSInteger) max  error:(NSError**) error;
 
 @end

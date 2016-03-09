@@ -94,9 +94,9 @@
     homeVC = [[HomeTableViewController alloc] initWithNibName:@"HomeTableViewController" bundle:nil];
     UINavigationController *homeNC = [[UINavigationController alloc] initWithRootViewController: homeVC];
    
-    homeNC.tabBarItem.title = @"Home";
+    homeNC.tabBarItem.title = @"BioCollect";
     homeNC.tabBarItem.image = [UIImage imageNamed:@"briefcase_filled-25"];
-    homeNC.navigationBar.topItem.title = @"Home";
+    homeNC.navigationBar.topItem.title = @"BioCollect - Advanced data collection for biodiversity projects";
     
      //Help
     GAHelpVC  *helpVC = [[GAHelpVC alloc] initWithNibName:@"GAHelpVC" bundle:nil];

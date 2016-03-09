@@ -9,10 +9,9 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // configure control(s)
-        //self.descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, 300, 30)];
         self.descriptionLabel.textColor = [UIColor greenColor];
         self.descriptionLabel.font = [UIFont fontWithName:@"Arial" size:12.0f];
-        
+        self.detailTextLabel.textColor = [UIColor grayColor];
         [self addSubview:self.descriptionLabel];
     }
     return self;

@@ -18,9 +18,11 @@
 - (NSString *) lastUpdatedDate;
 - (NSString *) description;
 - (NSString *) urlImage;
+- (NSString *) urlWeb;
 - (NSDictionary*) gellCurrentProject;
 - (NSDictionary*)nextProject;
 - (NSDictionary*)firstProject;
+- (BOOL) isExternal;
 - (int) getProjectCount;
 - (BOOL) hasNext;
 @end

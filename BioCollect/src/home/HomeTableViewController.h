@@ -12,10 +12,12 @@
 
 @interface HomeTableViewController :  UITableViewController <UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *homeTableView;
+@property (strong, nonatomic) IBOutlet UIWebView *webView;
 
 @property (nonatomic, strong) NSMutableArray * bioProjects;
 @property (nonatomic, assign) NSInteger totalProjects;
-@property (nonatomic, assign) NSInteger currentPage;
+@property (nonatomic, assign) NSInteger offset;
+
 
 @property (nonatomic, strong) GAAppDelegate *appDelegate;
 @property (nonatomic, strong) BioProjectService *bioProjectService;

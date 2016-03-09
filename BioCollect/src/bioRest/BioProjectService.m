@@ -17,11 +17,11 @@
 #define kProjects @"projects"
 #define kTotal @"total"
 
-// Get BioCollect projects - Run as a sync task.
-- (NSInteger) getBioProjects : (NSMutableArray*) projects offset: (int) offset max: (int) max  error:(NSError**) error {
+// Get BioCollect projects - run as async task.
+- (NSInteger) getBioProjects : (NSMutableArray*) projects offset: (NSInteger) offset max: (NSInteger) max  error:(NSError**) error {
     //Request projects.
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    NSString *url = [[NSString alloc] initWithFormat: @"%@%@&offset=%dmax=%d", BIOCOLLECT_SERVER, BIO_PROJECT_SEARCH, offset, max];
+    NSString *url = [[NSString alloc] initWithFormat: @"%@%@&offset=%ld&max=%ld", BIOCOLLECT_SERVER, BIO_PROJECT_SEARCH, (long)offset, (long)max];
     NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [request setURL:[NSURL URLWithString:escapedUrlString]];
     [request setHTTPMethod:@"GET"];
@@ -49,6 +49,8 @@
                 project.description = projectJSON.description;
                 project.lastUpdated = projectJSON.lastUpdatedDate;
                 project.urlImage = projectJSON.urlImage;
+                project.urlWeb = projectJSON.urlWeb;
+                project.isExternal = projectJSON.isExternal;
                 [projects addObject:project];
             }
         }
