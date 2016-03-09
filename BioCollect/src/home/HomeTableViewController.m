@@ -12,6 +12,8 @@
 #import "HomeWebView.h"
 
 @implementation HomeTableViewController
+#define DEFAULT_MAX     10
+#define DEFAULT_OFFSET   0
 @synthesize  bioProjects, appDelegate, bioProjectService, totalProjects, offset;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *) nibBundleOrNil {
@@ -29,8 +31,8 @@
     //Load project
     self.bioProjects = [[NSMutableArray alloc]init];
     NSError *error = nil;
-    self.offset = 0;
-    NSInteger max = 1;
+    self.offset = DEFAULT_OFFSET;
+    NSInteger max = DEFAULT_MAX;
     self.totalProjects = [self.bioProjectService getBioProjects: bioProjects offset:self.offset max:max error:&error];
 }
 
@@ -138,7 +140,7 @@
     if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height)) {
         //Add loading message.
         self.offset = self.offset + 1;
-        NSInteger max = 1;
+        NSInteger max = DEFAULT_MAX;
         NSError *error = nil;
         self.totalProjects = [self.bioProjectService getBioProjects: bioProjects offset:self.offset max:max error:&error];
         [self.tableView reloadData];

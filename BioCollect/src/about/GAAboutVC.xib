@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GAAboutVC">
@@ -14,17 +15,11 @@
             <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="GreenArmy2.png" translatesAutoresizingMaskIntoConstraints="NO" id="YrH-Fs-Bk9">
-                    <rect key="frame" x="34" y="176" width="459" height="397"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="header.png" translatesAutoresizingMaskIntoConstraints="NO" id="Rlc-03-JPM">
-                    <rect key="frame" x="638" y="47" width="313" height="135"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="BioCollect-logo 2.png" translatesAutoresizingMaskIntoConstraints="NO" id="YrH-Fs-Bk9">
+                    <rect key="frame" x="72" y="185" width="459" height="397"/>
                 </imageView>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="msl-HR-m3F">
-                    <rect key="frame" x="585" y="176" width="419" height="372"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <rect key="frame" x="576" y="234" width="419" height="372"/>
                     <string key="text">The Green Army Programme is an Australian Government initiative providing young Australians with opportunities to develop skills, undertake training and gain experience in environmental and heritage conservation by participating in projects that generate real benefits for the environment.  For more information on the Green Army, go to: http://www.environment.gov.au/cleaner-environment/clean-land/green-army.
 
 The Green Army Programme app enables Green Army service providers to capture project activity data in the field, using an iPad (not available for iPhone). Data can be uploaded into the Department's online reporting tool (MERIT) once the device is connected to the internet.
@@ -37,13 +32,15 @@ Prior to using the app, users must have an approved project plan in MERIT and a 
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES"/>
                 </textView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ala_logo1.png" translatesAutoresizingMaskIntoConstraints="NO" id="Rlc-03-JPM">
+                    <rect key="frame" x="629" y="83" width="313" height="135"/>
+                </imageView>
             </subviews>
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
         </view>
     </objects>
     <resources>
-        <image name="GreenArmy2.png" width="1024" height="1024"/>
-        <image name="header.png" width="812" height="197"/>
+        <image name="BioCollect-logo 2.png" width="400" height="119"/>
+        <image name="ala_logo1.png" width="500" height="426"/>
     </resources>
 </document>
