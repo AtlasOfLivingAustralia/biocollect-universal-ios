@@ -11,12 +11,14 @@
 #import "UIImageView+WebCache.h"
 
 @interface HomeTableViewController :  UITableViewController <UITableViewDelegate>
+
 @property (strong, nonatomic) IBOutlet UITableView *homeTableView;
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 
 @property (nonatomic, strong) NSMutableArray * bioProjects;
 @property (nonatomic, assign) NSInteger totalProjects;
 @property (nonatomic, assign) NSInteger offset;
+@property (nonatomic, assign) BOOL loadingFinished;
 
 
 @property (nonatomic, strong) GAAppDelegate *appDelegate;

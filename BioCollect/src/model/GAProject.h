@@ -17,6 +17,7 @@
     NSString *urlImage;
     NSString *urlWeb;
     BOOL isExternal;
+    NSMutableArray *projectActivities;
     NSMutableArray *activities;
     NSMutableArray *sites;    
 }
@@ -30,6 +31,7 @@
 @property (nonatomic, strong) NSString * urlImage;
 @property (nonatomic, strong) NSString * urlWeb;
 @property (nonatomic, strong) NSMutableArray *activities;
+@property (nonatomic, strong) NSMutableArray *projectActivities;
 @property (nonatomic, strong) NSMutableArray *sites;
 
 @end

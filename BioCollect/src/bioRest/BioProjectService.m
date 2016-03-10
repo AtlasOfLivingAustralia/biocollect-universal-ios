@@ -14,10 +14,15 @@
 
 @implementation BioProjectService
 #define BIO_PROJECT_SEARCH @"/ws/project/search?initiator=biocollect"
+#define BIO_PROJECT_ACTIVITY_LIST @"/projectActivity/list/"
+
 #define kProjects @"projects"
 #define kTotal @"total"
 
-// Get BioCollect projects - run as async task.
+/*
+ Get BioCollect projects - run as async task.
+ Example: http://biocollect-test.ala.org.au/ws/project/search?initiator=biocollect&max=10&offset=0
+*/
 - (NSInteger) getBioProjects : (NSMutableArray*) projects offset: (NSInteger) offset max: (NSInteger) max  error:(NSError**) error {
     //Request projects.
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
@@ -26,8 +31,7 @@
     [request setURL:[NSURL URLWithString:escapedUrlString]];
     [request setHTTPMethod:@"GET"];
     NSURLResponse *response;
-    NSLog(@"[INFO] BioProjectService:getBioProjects - Biocollect projects search url %@",escapedUrlString);
-
+    DebugLog(@"[INFO] BioProjectService:getBioProjects - Biocollect projects search url %@",escapedUrlString);
     NSData *GETReply = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&*error];
     DebugLog(@"[INFO] BioProjectService:getBioProjects - Initiating ReST call.");
     
@@ -52,11 +56,51 @@
                 project.urlWeb = projectJSON.urlWeb;
                 project.isExternal = projectJSON.isExternal;
                 [projects addObject:project];
+
             }
         }
     }
-    
+    DebugLog(@"[INFO] BioProjectService:getBioProjects - Total projects %ld",totalProjects);
     return totalProjects;
 }
 
+/*
+ Get BioCollect project activity list
+ Example: hhttp://ecodata-test.ala.org.au/projectActivity/list/eccadc59-2dc5-44df-8aac-da41bcf17ba4
+*/
+-(void) getProjectActivities : (NSString*) projectId error:(NSError**) error {
+    
+    //Request projects.
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    NSString *url = [[NSString alloc] initWithFormat: @"%@%@%@", ECODATA_SERVER, BIO_PROJECT_ACTIVITY_LIST, projectId];
+    NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [request setURL:[NSURL URLWithString:escapedUrlString]];
+    [request setHTTPMethod:@"GET"];
+    NSURLResponse *response;
+    NSLog(@"[INFO] BioProjectService:getProjectActivities - Biocollect Project Activities list url %@",escapedUrlString);
+    
+    NSData *GETReply = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&*error];
+    DebugLog(@"[INFO] BioProjectService:getProjectActivities - Initiating ReST call.");
+    
+    if(*error == nil) {
+        NSError *jsonParsingError = nil;
+        NSMutableArray *projectActivitiesJSONArray = [NSJSONSerialization JSONObjectWithData:GETReply options: 0 error:&jsonParsingError];
+
+        if([projectActivitiesJSONArray count] > 0) {
+            
+        }
+    }
+}
+
+// List of all the Project Activities
+// http://ecodata-test.ala.org.au/projectActivity/list/eccadc59-2dc5-44df-8aac-da41bcf17ba4
+
+// Fauna
+// http://ecodata-test.ala.org.au/activity/list/09a5e016-ec4c-4421-9dbe-43c586d00e5e
+
+// All data
+// http://biocollect-test.ala.org.au/bioActivity/searchProjectActivities
+
+// Project Activity Data
+//http://biocollect-test.ala.org.au/bioActivity/searchProjectActivities?projectId=eccadc59-2dc5-44df-8aac-da41bcf17ba4&max=10&offset=0&sort=lastUpdated&order=DESC&flimit=1000&view=project&searchTerm=
 @end

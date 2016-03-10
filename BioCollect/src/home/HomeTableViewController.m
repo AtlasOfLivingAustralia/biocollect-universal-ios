@@ -12,9 +12,9 @@
 #import "HomeWebView.h"
 
 @implementation HomeTableViewController
-#define DEFAULT_MAX     10
-#define DEFAULT_OFFSET   0
-@synthesize  bioProjects, appDelegate, bioProjectService, totalProjects, offset;
+#define DEFAULT_MAX      10
+#define DEFAULT_OFFSET    0
+@synthesize  bioProjects, appDelegate, bioProjectService, totalProjects, offset, loadingFinished;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *) nibBundleOrNil {
     self.appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -27,13 +27,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    //Load project
     self.bioProjects = [[NSMutableArray alloc]init];
-    NSError *error = nil;
     self.offset = DEFAULT_OFFSET;
-    NSInteger max = DEFAULT_MAX;
-    self.totalProjects = [self.bioProjectService getBioProjects: bioProjects offset:self.offset max:max error:&error];
+    self.loadingFinished = TRUE;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -138,12 +134,25 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
     if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height)) {
-        //Add loading message.
-        self.offset = self.offset + 1;
-        NSInteger max = DEFAULT_MAX;
+        [self load];
+    }
+}
+
+- (void) load {
+    if(self.totalProjects != 0 && [self.bioProjects count] != 0 && self.totalProjects  == [self.bioProjects count]) {
+        //Reached the max.
+        DebugLog(@"Downloaded all the projects (%ld)", [self.bioProjects count])
+    } else if(self.loadingFinished){
+        self.loadingFinished = FALSE;
         NSError *error = nil;
-        self.totalProjects = [self.bioProjectService getBioProjects: bioProjects offset:self.offset max:max error:&error];
-        [self.tableView reloadData];
+        NSInteger total = [self.bioProjectService getBioProjects: bioProjects offset:self.offset max:DEFAULT_MAX error:&error];
+        DebugLog(@"%lu || %ld || %ld",(unsigned long)[self.bioProjects count], self.offset, total);        if(error == nil && total > 0) {
+            self.totalProjects = total;
+            [self.tableView reloadData];
+            self.offset = self.offset + DEFAULT_MAX;
+        }
+
+        self.loadingFinished = TRUE;
     }
 }
 

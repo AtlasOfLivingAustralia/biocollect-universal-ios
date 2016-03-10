@@ -86,6 +86,7 @@
 		E23586E718FCFF4900EE6D13 /* GAFormJSInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = E23586E618FCFF4900EE6D13 /* GAFormJSInterface.m */; };
 		E23AF50A1C8F8C48002501F3 /* HomeWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = E23AF5091C8F8C48002501F3 /* HomeWebView.m */; };
 		E23AF50C1C8FAE59002501F3 /* HomeWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E23AF50B1C8FAE59002501F3 /* HomeWebView.xib */; };
+		E23AF50F1C8FEEB7002501F3 /* ProjectActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = E23AF50E1C8FEEB7002501F3 /* ProjectActivity.m */; };
 		E241C680196A3061002302D7 /* pad-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E241C67F196A3061002302D7 /* pad-1@2x.png */; };
 		E241C685196A33B6002302D7 /* css in Resources */ = {isa = PBXBuildFile; fileRef = E241C681196A33B6002302D7 /* css */; };
 		E241C686196A33B6002302D7 /* img in Resources */ = {isa = PBXBuildFile; fileRef = E241C682196A33B6002302D7 /* img */; };
@@ -272,6 +273,8 @@
 		E23AF5081C8F8C35002501F3 /* HomeWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeWebView.h; path = src/home/HomeWebView.h; sourceTree = "<group>"; };
 		E23AF5091C8F8C48002501F3 /* HomeWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeWebView.m; path = src/home/HomeWebView.m; sourceTree = "<group>"; };
 		E23AF50B1C8FAE59002501F3 /* HomeWebView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeWebView.xib; path = src/home/HomeWebView.xib; sourceTree = "<group>"; };
+		E23AF50D1C8FEE21002501F3 /* ProjectActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProjectActivity.h; path = src/model/ProjectActivity.h; sourceTree = "<group>"; };
+		E23AF50E1C8FEEB7002501F3 /* ProjectActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProjectActivity.m; path = src/model/ProjectActivity.m; sourceTree = "<group>"; };
 		E241C67F196A3061002302D7 /* pad-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pad-1@2x.png"; path = "src/images/pad-1@2x.png"; sourceTree = "<group>"; };
 		E241C681196A33B6002302D7 /* css */ = {isa = PBXFileReference; lastKnownFileType = folder; name = css; path = src/help/css; sourceTree = "<group>"; };
 		E241C682196A33B6002302D7 /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; name = img; path = src/help/img; sourceTree = "<group>"; };
@@ -782,6 +785,8 @@
 				E2E56A7B192084D2007AC38C /* GASite.m */,
 				E2E56A7D1920857C007AC38C /* GASiteJSON.h */,
 				E2E56A7E1920857C007AC38C /* GASiteJSON.m */,
+				E23AF50D1C8FEE21002501F3 /* ProjectActivity.h */,
+				E23AF50E1C8FEEB7002501F3 /* ProjectActivity.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -988,6 +993,7 @@
 				E20189DF1C8963640031435D /* UIImageView+HighlightedWebCache.m in Sources */,
 				E2E3AAE018F514470005BB9E /* GAActivity.m in Sources */,
 				E20189C71C8963640031435D /* NSData+ImageContentType.m in Sources */,
+				E23AF50F1C8FEEB7002501F3 /* ProjectActivity.m in Sources */,
 				B83825FF1A0C666B00690383 /* MRMessageInterceptor.m in Sources */,
 				B83825FA1A0C666B00690383 /* MRIconView.m in Sources */,
 				B83825F61A0C666B00690383 /* MRBlurView.m in Sources */,

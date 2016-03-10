@@ -16,6 +16,7 @@
 
 #define REST_SERVER @"https://fieldcapture-test.ala.org.au"
 #define ECODATA_SERVER @"https://ecodata-test.ala.org.au"
-#define BIOCOLLECT_SERVER @"https://biocollect-test.ala.org.au"
+//#define BIOCOLLECT_SERVER @"https://biocollect-test.ala.org.au"
+#define BIOCOLLECT_SERVER @"http://devt.ala.org.au:8087/biocollect"
 
 #endif
