@@ -16,14 +16,14 @@
     NSString *description;
     NSString *urlImage;
     NSString *urlWeb;
-    BOOL isExternal;
+    int isExternal;
     NSMutableArray *projectActivities;
     NSMutableArray *activities;
     NSMutableArray *sites;    
 }
 
 @property (nonatomic, assign) int _id;
-@property (nonatomic, assign) BOOL isExternal;
+@property (nonatomic, assign) int isExternal;
 @property (nonatomic, strong) NSString * projectId;
 @property (nonatomic, strong) NSString * projectName;
 @property (nonatomic, strong) NSString * lastUpdated;

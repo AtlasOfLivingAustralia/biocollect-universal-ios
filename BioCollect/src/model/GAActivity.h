@@ -32,9 +32,14 @@
     NSString *plannedStartDate;
     int status; // 0 => NO_CHANGE, 1 = CHANGED
     NSString *siteId;
+    NSString *activityOwnerName;
+    NSString *projectActivityName;
     GASite *site;
     NSString *distance;
+    NSString *lastUpdated;
+    NSString *thumbnailUrl;
     NSArray *themes;
+    
 }
 @property (nonatomic, assign) int _id;
 @property (nonatomic, strong) NSString * activityName;
@@ -48,8 +53,12 @@
 @property (nonatomic, assign) int status;
 @property (nonatomic, strong) NSString * plannedStartDate;
 @property (nonatomic, strong) NSString * siteId;
+@property (nonatomic, strong) NSString * activityOwnerName;
 @property (nonatomic, strong) GASite * site;
 @property (nonatomic, strong) NSString * distance;
+@property (nonatomic, strong) NSString * lastUpdated;
+@property (nonatomic, strong) NSString * projectActivityName;
+@property (nonatomic, strong) NSString * thumbnailUrl;
 @property (nonatomic, strong) NSArray * themes;
 
 - (NSComparisonResult)compareByProgress:(GAActivity *)otherObject;

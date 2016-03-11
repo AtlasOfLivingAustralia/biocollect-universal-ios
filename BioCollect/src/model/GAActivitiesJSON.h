@@ -12,6 +12,7 @@
 
 - (id)initWithData:(NSData *)jsonData;
 -(NSString *) activityId;
+-(NSString *) projectActivityName; // ProjectActivity name
 -(NSString *) activityType;
 -(NSString *) projectId;
 -(NSString *) description;
@@ -24,7 +25,11 @@
 -(NSString *) outputs;
 -(NSString *) activityJSON;
 -(NSString *) siteId;
+-(NSString *) activityOwnerName;
+-(NSString *) thumbnailUrl;
 -(NSArray *) themes;
+
+- (int) totalActivities;
 
 - (NSDictionary*)getCurrentActivity;
 - (NSDictionary*)nextActivity;

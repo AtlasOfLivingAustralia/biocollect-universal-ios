@@ -14,6 +14,7 @@
 @property (assign, nonatomic) int index;
 @property (assign, nonatomic) BOOL hasNext;
 @property (strong, nonatomic) NSDictionary *activityJSONDictionary;
+@property (assign, nonatomic) int totalActivities;
 
 @end
 
@@ -32,7 +33,11 @@
 #define kOutputs @"outputs"
 #define kSiteId @"siteId"
 #define kThemes @"themes"
+#define kActivityOwnerName @"activityOwnerName"
+#define kProjectActivityName @"name"
+#define kThumbnailUrl @"thumbnailUrl"
 
+#define kTotalActivities @"total"
 #define kActivities @"activities"
 
 - (id)initWithData:(NSData *)jsonData {
@@ -43,6 +48,7 @@
     if(self) {
         NSError *jsonParsingError = nil;
         self.activitiesJSONArray = [[NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&jsonParsingError] objectForKey:kActivities];
+        self.totalActivities = [[[NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&jsonParsingError] objectForKey:kTotalActivities] integerValue];
         [self.activitiesJSONArray removeObjectIdenticalTo:[NSNull null]];
         self.activityJSONDictionary = [[NSDictionary alloc] init];
         self.index = 0;
@@ -87,14 +93,23 @@
 -(NSString *) progress {
     return [self.activityJSONDictionary objectForKey:kProgress];
 }
+-(NSString *) activityOwnerName {
+    return [self.activityJSONDictionary objectForKey:kActivityOwnerName];
+}
+
 -(NSString *) siteId {
     return [self.activityJSONDictionary objectForKey:kSiteId];
 }
 -(NSArray *) themes {
     return [self.activityJSONDictionary objectForKey:kThemes];
 }
+-(NSString *) projectActivityName {
+    return [self.activityJSONDictionary objectForKey:kProjectActivityName];
+}
 
-
+-(NSString *) thumbnailUrl {
+    return [self.activityJSONDictionary objectForKey:kThumbnailUrl];
+}
 
 -(NSString *) outputs {
     NSArray *outputArray = [self.activityJSONDictionary objectForKey:kOutputs];
