@@ -66,12 +66,7 @@
         NSString *password = self.passwordTextField.text;
         
         [appDelegate.restCall  authenticate:userName password:password error:&error];
-        if(error == nil) {
-            p = [appDelegate.restCall downloadProjects:&error];
-            if([p count] > 0) {
-                [appDelegate.sqlLite storeProjects : p];
-            }
-        }
+
         dispatch_async(dispatch_get_main_queue(), ^{
             //Dismiss the ui indicator modal
             [MRProgressOverlayView dismissOverlayForView:appDelegate.window animated:YES];
@@ -90,14 +85,9 @@
             else{
                 self.passwordTextField.text = @"";
                 self.usernameTextField.text = @"";
-                
-                //After completing the time consuming task run the UI update back in the main thread.
-                //[appDelegate updateTableModelsAndViews:p];
                 //Dismiss the login modal
                 [appDelegate.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
-                //[appDelegate.detailVC.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
             }
-            
         });
     });
 }
@@ -117,14 +107,24 @@
     return TRUE;
 }
 
-/*
--(void)layoutSubviews
-{
-    DebugLog(@"layoutSubviews called");
-    CGRect viewsize=[[UIScreen mainScreen]bounds];
-    self.view.frame=CGRectMake(0, 0, 320, viewsize.size.height);
+-(void) logout {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Confirm"
+                                                    message:@"Are you sure you want to logout?"
+                                                   delegate:self
+                                          cancelButtonTitle:@"No"
+                                          otherButtonTitles:@"Yes",nil];
+    [alert show];
 }
-*/
+
+#pragma mark - UIAlert view delegate.
+
+- (void)alertView:(UIAlertView *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    
+    GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+    if( buttonIndex != 0 ) {
+        [appDelegate displaySigninPage];
+    }
+}
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GALogin : UIViewController <UITextFieldDelegate>
+@interface GALogin : UIViewController <UITextFieldDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, retain) IBOutlet UIButton *loginButton;
 @property (nonatomic, retain) IBOutlet UITextField *usernameTextField;
@@ -16,4 +16,5 @@
 
 - (IBAction)onClickLogin:(id)sender;
 - (IBAction)onClickRegister:(id)sender;
+- (void) logout;
 @end

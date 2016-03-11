@@ -1,0 +1,17 @@
+//
+//  HomeWebView.h
+//  BioCollect
+//
+//  Created by Sathish Babu Sathyamoorthy on 9/03/2016.
+//  Copyright © 2016 Sathya Moorthy, Sathish (CSIRO IM&T, Clayton). All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import <UIKit/UIWebView.h>
+#import "GAActivity.h"
+
+@interface RecordWebView :  UIViewController <UIWebViewDelegate>
+@property (strong, nonatomic) IBOutlet UIWebView *webView;
+@property (nonatomic, strong) GAActivity *activity;
+@end
+
