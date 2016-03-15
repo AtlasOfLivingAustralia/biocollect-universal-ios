@@ -9,6 +9,7 @@
 #import "GAAppDelegate.h"
 #import "BioProjectService.h"
 #import "UIImageView+WebCache.h"
+#import "RecordsTableViewController.h"
 
 @interface HomeTableViewController :  UITableViewController <UITableViewDelegate>
 
@@ -23,5 +24,6 @@
 
 @property (nonatomic, strong) GAAppDelegate *appDelegate;
 @property (nonatomic, strong) BioProjectService *bioProjectService;
+@property (nonatomic, strong) RecordsTableViewController *recordsTableView;
 @end
 

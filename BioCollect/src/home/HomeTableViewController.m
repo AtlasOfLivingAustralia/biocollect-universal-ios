@@ -10,9 +10,9 @@
 #import "HomeTableViewController.h"
 #import "HomeCustomCell.h"
 #import "HomeWebView.h"
-
+#import "MRProgressOverlayView.h"
 @implementation HomeTableViewController
-#define DEFAULT_MAX      10
+#define DEFAULT_MAX       20
 #define DEFAULT_OFFSET    0
 @synthesize  bioProjects, appDelegate, bioProjectService, totalProjects, offset, loadingFinished;
 
@@ -21,15 +21,26 @@
     self.bioProjectService = self.appDelegate.bioProjectService;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        self.recordsTableView = [[RecordsTableViewController alloc] initWithNibName:@"RecordsTableViewController" bundle:nil];
+        self.bioProjects = [[NSMutableArray alloc]init];
+        self.offset = DEFAULT_OFFSET;
+        self.loadingFinished = TRUE;
+        
+        self.tableView.backgroundView = [[UIImageView alloc] initWithImage:
+                                         [UIImage imageNamed:@"biocollect_background.png"]];
+        UIBarButtonItem *syncButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"sync-25"] style:UIBarButtonItemStyleBordered
+                                                                      target:self action:@selector(resetAndDownloadProjects)];
+        UIBarButtonItem *signout = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"lock_filled-25"]
+                                                                    style:UIBarButtonItemStyleBordered
+                                                                   target:self.appDelegate.loginViewController action:@selector(logout)];
+
+        self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:signout,syncButton,nil];
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.bioProjects = [[NSMutableArray alloc]init];
-    self.offset = DEFAULT_OFFSET;
-    self.loadingFinished = TRUE;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -37,7 +48,6 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    
     [super viewDidAppear:animated];
 }
 
@@ -59,7 +69,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"Projects";
+     return [[NSString alloc] initWithFormat:@"Found %ld projects", self.totalProjects];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath: (NSIndexPath *)indexPath {
@@ -75,7 +85,8 @@
     if([self.bioProjects count] > 0) {
         GAProject *project = [self.bioProjects objectAtIndex:indexPath.row];
         cell.textLabel.text = project.projectName;
-        cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@", project.description];
+        
+        cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%d %@", indexPath.row, project.description];
 
         NSString *url = [[NSString alloc] initWithFormat: @"%@", project.urlImage];
         NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -96,23 +107,25 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath {
     if(indexPath.section == 0){
         //Show next level depth.
-        HomeWebView *homeWebView = [[HomeWebView alloc] initWithNibName:@"HomeWebView" bundle:nil];
-        homeWebView.project =  [self.bioProjects objectAtIndex:indexPath.row];
+        GAProject *project =  [self.bioProjects objectAtIndex:indexPath.row];
       
-        if(homeWebView.project && homeWebView.project.isExternal && ![homeWebView.project.urlWeb isEqual: [NSNull null]]) {
+        if(project && project.isExternal && ![project.urlWeb isEqual: [NSNull null]]) {
+            HomeWebView *homeWebView = [[HomeWebView alloc] initWithNibName:@"HomeWebView" bundle:nil];
+            homeWebView.project =  project;
+
             homeWebView.title = homeWebView.project.projectName;
             [homeWebView.webView setScalesPageToFit:YES];
             [[self navigationController] pushViewController:homeWebView animated:TRUE];
             
-        } else if(homeWebView.project && !homeWebView.project.isExternal) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Info"
-                                                            message:@"Internal Project"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"Dismiss"
-                                                  otherButtonTitles:nil];
-            [alert show];
+        } else if(project && !project.isExternal) {
+            self.recordsTableView.project = project;
+            self.recordsTableView.title = project.projectName;
+            self.recordsTableView.totalRecords = 0;
+            self.recordsTableView.offset = 0;
+            [self.recordsTableView.records removeAllObjects];
+            [[self navigationController] pushViewController:self.recordsTableView animated:TRUE];
             
-        } else if(homeWebView.project && homeWebView.project.isExternal && [homeWebView.project.urlWeb isEqual: [NSNull null]]) {
+        } else if(project && project.isExternal && [project.urlWeb isEqual: [NSNull null]]) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Info"
                                                             message:@"Project external web link not available"
                                                            delegate:self
@@ -132,9 +145,8 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    
     if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height)) {
-        [self load];
+        [self downloadProjects];
     }
 }
 
@@ -146,14 +158,61 @@
         self.loadingFinished = FALSE;
         NSError *error = nil;
         NSInteger total = [self.bioProjectService getBioProjects: bioProjects offset:self.offset max:DEFAULT_MAX error:&error];
-        DebugLog(@"%lu || %ld || %ld",(unsigned long)[self.bioProjects count], self.offset, total);        if(error == nil && total > 0) {
+        DebugLog(@"%lu || %ld || %ld",(unsigned long)[self.bioProjects count], self.offset, total);
+        if(error == nil && total > 0) {
             self.totalProjects = total;
-            [self.tableView reloadData];
             self.offset = self.offset + DEFAULT_MAX;
         }
 
         self.loadingFinished = TRUE;
     }
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    UILabel *myLabel = [[UILabel alloc] init];
+    myLabel.frame = CGRectMake(20, 8, 320, 20);
+    myLabel.font = [UIFont boldSystemFontOfSize:20];
+    myLabel.text = [self tableView:tableView titleForHeaderInSection:section];
+     myLabel.textColor = [UIColor blackColor];
+
+    UIView *headerView = [[UIView alloc] init];
+
+    [headerView addSubview:myLabel];
+    
+    return headerView;
+}
+
+-(void) resetAndDownloadProjects{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MRProgressOverlayView showOverlayAddedTo:self.appDelegate.window title:@"Downloading.." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+        });
+    });
+    
+   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self.bioProjects removeAllObjects];
+        self.totalProjects = 0;
+        self.offset = DEFAULT_OFFSET;
+        [self load];
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MRProgressOverlayView dismissOverlayForView:self.appDelegate.window animated:NO];
+            [self.tableView reloadData];
+           
+        });
+    });
+    
+}
+
+-(void) downloadProjects {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self load];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    });
+    
 }
 
 
