@@ -3,7 +3,7 @@
 //  BioCollect
 //
 //  Created by Sathish Babu Sathyamoorthy on 4/03/2016.
-//  Copyright © 2016 Sathya Moorthy, Sathish (CSIRO IM&T, Clayton). All rights reserved.
+//  Copyright © 2016 Sathya Moorthy, Sathish (Atlas of Living Australia). All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

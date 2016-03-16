@@ -2,8 +2,8 @@
 //  GAFormJSInterface.m
 //  GreenArmy
 //
-//  Created by Sathya Moorthy, Sathish (CSIRO IM&T, Clayton) on 15/04/2014.
-//  Copyright (c) 2014 Sathya Moorthy, Sathish (CSIRO IM&T, Clayton). All rights reserved.
+//  Created by Sathya Moorthy, Sathish (Atlas of Living Australia) on 15/04/2014.
+//  Copyright (c) 2014 Sathya Moorthy, Sathish (Atlas of Living Australia). All rights reserved.
 //
 
 #import "GAFormJSInterface.h"

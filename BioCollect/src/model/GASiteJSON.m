@@ -2,8 +2,8 @@
 //  GASiteJSON.m
 //  GreenArmy
 //
-//  Created by Sathya Moorthy, Sathish (CSIRO IM&T, Clayton) on 12/05/2014.
-//  Copyright (c) 2014 Sathya Moorthy, Sathish (CSIRO IM&T, Clayton). All rights reserved.
+//  Created by Sathya Moorthy, Sathish (Atlas of Living Australia) on 12/05/2014.
+//  Copyright (c) 2014 Sathya Moorthy, Sathish (Atlas of Living Australia). All rights reserved.
 //
 
 #import "GASiteJSON.h"
