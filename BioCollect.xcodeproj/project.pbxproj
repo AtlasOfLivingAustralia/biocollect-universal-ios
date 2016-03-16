@@ -23,6 +23,8 @@
 		B8BFD2C61919C3AC0063DA78 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8BFD2C51919C3AC0063DA78 /* QuartzCore.framework */; };
 		B8BFD2C81919C3BC0063DA78 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8BFD2C71919C3BC0063DA78 /* Accelerate.framework */; };
 		B8D551DE18F952DF00EDD006 /* GARestCall.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D551DD18F952DF00EDD006 /* GARestCall.m */; };
+		E20026371C926B430045C130 /* biocollect_background.png in Resources */ = {isa = PBXBuildFile; fileRef = E20026361C926B430045C130 /* biocollect_background.png */; };
+		E20026391C926F250045C130 /* csiro-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E20026381C926F250045C130 /* csiro-logo.png */; };
 		E20189891C8922DD0031435D /* BioProjectService.m in Sources */ = {isa = PBXBuildFile; fileRef = E20189881C8922DD0031435D /* BioProjectService.m */; };
 		E201898A1C8922DD0031435D /* BioProjectService.m in Sources */ = {isa = PBXBuildFile; fileRef = E20189881C8922DD0031435D /* BioProjectService.m */; };
 		E20189931C895EEC0031435D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E20189921C895EEC0031435D /* ImageIO.framework */; };
@@ -87,6 +89,11 @@
 		E23AF50A1C8F8C48002501F3 /* HomeWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = E23AF5091C8F8C48002501F3 /* HomeWebView.m */; };
 		E23AF50C1C8FAE59002501F3 /* HomeWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E23AF50B1C8FAE59002501F3 /* HomeWebView.xib */; };
 		E23AF50F1C8FEEB7002501F3 /* ProjectActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = E23AF50E1C8FEEB7002501F3 /* ProjectActivity.m */; };
+		E23AF5131C910F93002501F3 /* ProjectActivityJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E23AF5121C910F93002501F3 /* ProjectActivityJSON.m */; };
+		E23AF5161C911C69002501F3 /* RecordsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E23AF5151C911C69002501F3 /* RecordsTableViewController.m */; };
+		E23AF5181C911E45002501F3 /* RecordsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E23AF5171C911E45002501F3 /* RecordsTableViewController.xib */; };
+		E23AF5211C9187E3002501F3 /* RecordWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = E23AF5201C9187E3002501F3 /* RecordWebView.m */; };
+		E23AF5231C918862002501F3 /* RecordWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E23AF5221C918862002501F3 /* RecordWebView.xib */; };
 		E241C680196A3061002302D7 /* pad-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E241C67F196A3061002302D7 /* pad-1@2x.png */; };
 		E241C685196A33B6002302D7 /* css in Resources */ = {isa = PBXBuildFile; fileRef = E241C681196A33B6002302D7 /* css */; };
 		E241C686196A33B6002302D7 /* img in Resources */ = {isa = PBXBuildFile; fileRef = E241C682196A33B6002302D7 /* img */; };
@@ -204,6 +211,8 @@
 		B8BFD2C71919C3BC0063DA78 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		B8D551DC18F952DF00EDD006 /* GARestCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GARestCall.h; path = src/GARestCall.h; sourceTree = "<group>"; };
 		B8D551DD18F952DF00EDD006 /* GARestCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = GARestCall.m; path = src/GARestCall.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		E20026361C926B430045C130 /* biocollect_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = biocollect_background.png; path = src/images/biocollect_background.png; sourceTree = "<group>"; };
+		E20026381C926F250045C130 /* csiro-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "csiro-logo.png"; path = "src/images/csiro-logo.png"; sourceTree = "<group>"; };
 		E20189871C8922C90031435D /* BioProjectService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BioProjectService.h; path = src/bioRest/BioProjectService.h; sourceTree = "<group>"; };
 		E20189881C8922DD0031435D /* BioProjectService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BioProjectService.m; path = src/bioRest/BioProjectService.m; sourceTree = "<group>"; };
 		E20189921C895EEC0031435D /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -275,6 +284,14 @@
 		E23AF50B1C8FAE59002501F3 /* HomeWebView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeWebView.xib; path = src/home/HomeWebView.xib; sourceTree = "<group>"; };
 		E23AF50D1C8FEE21002501F3 /* ProjectActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProjectActivity.h; path = src/model/ProjectActivity.h; sourceTree = "<group>"; };
 		E23AF50E1C8FEEB7002501F3 /* ProjectActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProjectActivity.m; path = src/model/ProjectActivity.m; sourceTree = "<group>"; };
+		E23AF5111C910F3E002501F3 /* ProjectActivityJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProjectActivityJSON.h; path = src/model/ProjectActivityJSON.h; sourceTree = "<group>"; };
+		E23AF5121C910F93002501F3 /* ProjectActivityJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProjectActivityJSON.m; path = src/model/ProjectActivityJSON.m; sourceTree = "<group>"; };
+		E23AF5141C911C57002501F3 /* RecordsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecordsTableViewController.h; path = src/home/RecordsTableViewController.h; sourceTree = "<group>"; };
+		E23AF5151C911C69002501F3 /* RecordsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecordsTableViewController.m; path = src/home/RecordsTableViewController.m; sourceTree = "<group>"; };
+		E23AF5171C911E45002501F3 /* RecordsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RecordsTableViewController.xib; path = src/home/RecordsTableViewController.xib; sourceTree = "<group>"; };
+		E23AF51F1C9187A8002501F3 /* RecordWebVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecordWebVIew.h; path = src/home/RecordWebVIew.h; sourceTree = "<group>"; };
+		E23AF5201C9187E3002501F3 /* RecordWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecordWebView.m; path = src/home/RecordWebView.m; sourceTree = "<group>"; };
+		E23AF5221C918862002501F3 /* RecordWebView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RecordWebView.xib; path = src/home/RecordWebView.xib; sourceTree = "<group>"; };
 		E241C67F196A3061002302D7 /* pad-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pad-1@2x.png"; path = "src/images/pad-1@2x.png"; sourceTree = "<group>"; };
 		E241C681196A33B6002302D7 /* css */ = {isa = PBXFileReference; lastKnownFileType = folder; name = css; path = src/help/css; sourceTree = "<group>"; };
 		E241C682196A33B6002302D7 /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; name = img; path = src/help/img; sourceTree = "<group>"; };
@@ -464,6 +481,8 @@
 		B8D551DF18F98B7800EDD006 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E20026381C926F250045C130 /* csiro-logo.png */,
+				E20026361C926B430045C130 /* biocollect_background.png */,
 				E20189E51C8966700031435D /* Icon-placeholder.png */,
 				E2BB4EF21C855A0F0075F8BF /* BioCollect-logo 2.png */,
 				E2A2FFD01C854EDD008B63A8 /* BioCollect-logo 1.png */,
@@ -506,6 +525,13 @@
 				E2CCECFD190F82E6003655B7 /* started@2x.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		E200263A1C92795A0045C130 /* AllData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = AllData;
 			sourceTree = "<group>";
 		};
 		E20189831C891E390031435D /* bioReST */ = {
@@ -687,6 +713,7 @@
 		E2E3AA9218F4D2940005BB9E /* BioCollect */ = {
 			isa = PBXGroup;
 			children = (
+				E200263A1C92795A0045C130 /* AllData */,
 				E2F471C01C86816D00594DAB /* Home */,
 				E29A3543196678F3003D025D /* About */,
 				E2A4A4EF19664F8E006CAC22 /* EULA */,
@@ -787,6 +814,8 @@
 				E2E56A7E1920857C007AC38C /* GASiteJSON.m */,
 				E23AF50D1C8FEE21002501F3 /* ProjectActivity.h */,
 				E23AF50E1C8FEEB7002501F3 /* ProjectActivity.m */,
+				E23AF5111C910F3E002501F3 /* ProjectActivityJSON.h */,
+				E23AF5121C910F93002501F3 /* ProjectActivityJSON.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -825,6 +854,12 @@
 				E23AF5081C8F8C35002501F3 /* HomeWebView.h */,
 				E23AF5091C8F8C48002501F3 /* HomeWebView.m */,
 				E23AF50B1C8FAE59002501F3 /* HomeWebView.xib */,
+				E23AF5141C911C57002501F3 /* RecordsTableViewController.h */,
+				E23AF5151C911C69002501F3 /* RecordsTableViewController.m */,
+				E23AF5171C911E45002501F3 /* RecordsTableViewController.xib */,
+				E23AF51F1C9187A8002501F3 /* RecordWebVIew.h */,
+				E23AF5201C9187E3002501F3 /* RecordWebView.m */,
+				E23AF5221C918862002501F3 /* RecordWebView.xib */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -908,14 +943,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E23AF5181C911E45002501F3 /* RecordsTableViewController.xib in Resources */,
 				E22045C4192D7D0B00531116 /* help_filled-25@2x.png in Resources */,
 				E2CCED00190F82E6003655B7 /* finished@2x.png in Resources */,
 				E22045D1192D9EEC00531116 /* action-25@2x.png in Resources */,
 				E22045CE192D8F4800531116 /* loc1_changed@2x.png in Resources */,
 				E22045D2192D9EEC00531116 /* sync-25@2x.png in Resources */,
+				E23AF5231C918862002501F3 /* RecordWebView.xib in Resources */,
 				E2F8E56D19108A640093A3D3 /* Icon-Small@2x.png in Resources */,
 				E2E3AAC318F4D9070005BB9E /* GALogin.xib in Resources */,
+				E20026371C926B430045C130 /* biocollect_background.png in Resources */,
 				E227E3A2192CD57D00E22DC7 /* menu-25@2x.png in Resources */,
+				E20026391C926F250045C130 /* csiro-logo.png in Resources */,
 				E22045CC192D820500531116 /* heading@2x.png in Resources */,
 				E241C680196A3061002302D7 /* pad-1@2x.png in Resources */,
 				E20189A11C8962710031435D /* SDWebImage in Resources */,
@@ -1014,10 +1053,12 @@
 				B83825FE1A0C666B00690383 /* MRStopButton.m in Sources */,
 				B83825FC1A0C666B00690383 /* MRProgressOverlayView.m in Sources */,
 				E2E3AA9D18F4D2940005BB9E /* GAAppDelegate.m in Sources */,
+				E23AF5131C910F93002501F3 /* ProjectActivityJSON.m in Sources */,
 				E20189DB1C8963640031435D /* UIImage+MultiFormat.m in Sources */,
 				E2E3AAD718F4E65E0005BB9E /* GADetailActivitiesTableViewController.m in Sources */,
 				E20189DD1C8963640031435D /* UIImage+WebP.m in Sources */,
 				E23586E318FCFED600EE6D13 /* EasyJSWebView.m in Sources */,
+				E23AF5211C9187E3002501F3 /* RecordWebView.m in Sources */,
 				B83825F81A0C666B00690383 /* MRActivityIndicatorView.m in Sources */,
 				E27BDFB618F78221001EE2F8 /* GAProjectJSON.m in Sources */,
 				E24D527918F57662002A4F64 /* GADetailFormVIewController.m in Sources */,
@@ -1036,6 +1077,7 @@
 				B83825F71A0C666B00690383 /* UIImage+MRImageEffects.m in Sources */,
 				E20189C51C8963640031435D /* MKAnnotationView+WebCache.m in Sources */,
 				E2A4A4F819665009006CAC22 /* GAEULAViewController.m in Sources */,
+				E23AF5161C911C69002501F3 /* RecordsTableViewController.m in Sources */,
 				E20189D11C8963640031435D /* SDWebImageDownloaderOperation.m in Sources */,
 				E20284971C87D59300E8203F /* HomeTableViewController.m in Sources */,
 				E2E3AAE318F515410005BB9E /* GAProject.m in Sources */,

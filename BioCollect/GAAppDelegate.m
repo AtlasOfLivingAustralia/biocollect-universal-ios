@@ -19,6 +19,7 @@
 @interface GAAppDelegate ()
 @property (strong, nonatomic) GAMasterProjectTableViewController *masterProjectVC;
 @property (strong, nonatomic) HomeTableViewController *homeVC;
+@property (strong, nonatomic) RecordsTableViewController *recordsVC;
 @property (strong, nonatomic) GADetailActivitiesTableViewController *detailVC;
 @property (nonatomic, retain) GAActivity *updatedActivity;
 @property (nonatomic, retain) NSMutableArray *projects;
@@ -26,7 +27,7 @@
 @end
 @implementation GAAppDelegate
 
-@synthesize splitViewController, projects,masterProjectVC, detailVC, restCall, sqlLite, loginViewController, eulaVC, homeVC, bioProjectService;
+@synthesize splitViewController, projects,masterProjectVC, detailVC, restCall, sqlLite, loginViewController, eulaVC, homeVC, recordsVC, bioProjectService;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -76,29 +77,26 @@
 }
 
 -(void) addSplitViewtoRoot {
-    
-    //Split views
-/*    masterProjectVC = [[GAMasterProjectTableViewController alloc] initWithNibName:@"GAMasterProjectTableViewController" bundle:nil];
-    UINavigationController *masterProjectNC = [[UINavigationController alloc] initWithRootViewController: masterProjectVC];
-    
-    detailVC = [[GADetailActivitiesTableViewController alloc] initWithNibName:@"GADetailActivitiesTableViewController" bundle:nil];
-    UINavigationController *detailFormNC = [[UINavigationController alloc] initWithRootViewController : detailVC];
-    masterProjectVC.detailFormViewController = detailVC;
-    self.splitViewController = [[UISplitViewController alloc] init];
-    self.splitViewController.viewControllers =   @[masterProjectNC, detailFormNC];
-    self.splitViewController.delegate = detailVC;
-*/
-    // Add Home page view to the root controller.
-    // List of all the projects retreived from biocollect api.
-    
+    // BioCollect Home page
     homeVC = [[HomeTableViewController alloc] initWithNibName:@"HomeTableViewController" bundle:nil];
     UINavigationController *homeNC = [[UINavigationController alloc] initWithRootViewController: homeVC];
    
     homeNC.tabBarItem.title = @"BioCollect";
     homeNC.tabBarItem.image = [UIImage imageNamed:@"briefcase_filled-25"];
-    homeNC.navigationBar.topItem.title = @"BioCollect - Advanced data collection for biodiversity projects";
+    // - Advanced data collection for biodiversity projects
+    homeNC.navigationBar.topItem.title = @"BioCollect";
     
-     //Help
+    // Records view
+    recordsVC = [[RecordsTableViewController alloc] initWithNibName:@"RecordsTableViewController" bundle:nil];
+    UINavigationController *recordsNC = [[UINavigationController alloc] initWithRootViewController: recordsVC];
+    
+    recordsNC.tabBarItem.title = @"All Records";
+    recordsNC.tabBarItem.image = [UIImage imageNamed:@"pad"];
+    // - Advanced data collection for biodiversity projects
+    recordsNC.navigationBar.topItem.title = @"All Records";
+    
+    
+    //Help
     GAHelpVC  *helpVC = [[GAHelpVC alloc] initWithNibName:@"GAHelpVC" bundle:nil];
     UINavigationController *helpNC =  [[UINavigationController alloc] initWithRootViewController:helpVC];
     helpNC.tabBarItem.image = [UIImage imageNamed:@"help_filled-25"];
@@ -114,10 +112,7 @@
     
     //Tab bars
     UITabBarController  *tabBarController = [[UITabBarController alloc] init];
-//  NSArray* controllers = [NSArray arrayWithObjects:self.splitViewController,helpNC,aboutNC, nil];
-    NSArray* controllers = [NSArray arrayWithObjects:homeNC, helpNC,aboutNC, nil];
-    //self.splitViewController.tabBarItem.image = [UIImage imageNamed:@"briefcase_filled-25"];
-//    self.splitViewController.tabBarItem.title = @"My Activities";
+    NSArray* controllers = [NSArray arrayWithObjects:homeNC, recordsNC, helpNC,aboutNC, nil];
     tabBarController.viewControllers = controllers;
 
     [self.window setRootViewController:tabBarController];

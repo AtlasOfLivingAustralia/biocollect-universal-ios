@@ -114,7 +114,7 @@
 }
 
 - (BOOL) isExternal {
-    return [self.projectJSONDictionary objectForKey:kIsExternal];
+    return [[self.projectJSONDictionary objectForKey:kIsExternal] boolValue];
 }
 
 @end
