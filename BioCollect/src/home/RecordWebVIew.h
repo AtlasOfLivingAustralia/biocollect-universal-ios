@@ -13,5 +13,6 @@
 @interface RecordWebView :  UIViewController <UIWebViewDelegate>
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 @property (nonatomic, strong) GAActivity *activity;
+@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activityIndicator;
 @end
 

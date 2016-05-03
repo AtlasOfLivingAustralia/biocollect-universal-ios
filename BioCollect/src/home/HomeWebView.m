@@ -40,6 +40,7 @@
     DebugLog(@"[ERROR] HomeWebView:didFailLoadWithError Error loading %@", error);
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_async(dispatch_get_main_queue(), ^{
+            [self.activityIndicator stopAnimating];
             NSString *loadingError = [[NSString alloc] initWithFormat:@"%@", error];
 
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"

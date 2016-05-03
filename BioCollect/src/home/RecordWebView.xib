@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RecordWebView">
             <connections>
+                <outlet property="activityIndicator" destination="9FO-Oh-XBm" id="AFi-cq-Wab"/>
                 <outlet property="view" destination="iN0-l3-epB" id="TRB-Hd-4C8"/>
                 <outlet property="webView" destination="T23-Dg-e9T" id="O7Y-IE-qdj"/>
             </connections>
@@ -17,11 +18,21 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T23-Dg-e9T">
-                    <rect key="frame" x="77" y="358" width="240" height="128"/>
+                    <rect key="frame" x="180" y="236" width="240" height="128"/>
                     <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                 </webView>
+                <activityIndicatorView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="9FO-Oh-XBm">
+                    <rect key="frame" x="282" y="281" width="37" height="37"/>
+                    <color key="color" red="0.16862745100000001" green="0.4823529412" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="9FO-Oh-XBm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="281" id="4X9-Pm-qsx"/>
+                <constraint firstAttribute="trailing" secondItem="9FO-Oh-XBm" secondAttribute="trailing" constant="281" id="8gy-tH-hoe"/>
+                <constraint firstItem="9FO-Oh-XBm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="282" id="bCh-jP-XsG"/>
+                <constraint firstAttribute="bottom" secondItem="9FO-Oh-XBm" secondAttribute="bottom" constant="282" id="vMW-fe-jm4"/>
+            </constraints>
         </view>
     </objects>
 </document>
