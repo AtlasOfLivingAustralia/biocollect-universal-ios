@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeWebView">
             <connections>
+                <outlet property="activityIndicator" destination="Q3X-yb-Ti6" id="mG4-SS-QwZ"/>
                 <outlet property="view" destination="iN0-l3-epB" id="qXN-ml-BLt"/>
                 <outlet property="webView" destination="sap-TW-mf9" id="6Ly-bz-dfu"/>
             </connections>
@@ -20,8 +21,18 @@
                     <rect key="frame" x="180" y="236" width="240" height="128"/>
                     <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                 </webView>
+                <activityIndicatorView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Q3X-yb-Ti6">
+                    <rect key="frame" x="282" y="281" width="37" height="37"/>
+                    <color key="color" red="0.16862745100000001" green="0.4823529412" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Q3X-yb-Ti6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="281" id="0Wg-qL-kOt"/>
+                <constraint firstAttribute="trailing" secondItem="Q3X-yb-Ti6" secondAttribute="trailing" constant="281" id="3zY-n2-k6S"/>
+                <constraint firstItem="Q3X-yb-Ti6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="282" id="Sim-dx-O2A"/>
+                <constraint firstAttribute="bottom" secondItem="Q3X-yb-Ti6" secondAttribute="bottom" constant="282" id="h0z-uz-eXC"/>
+            </constraints>
         </view>
     </objects>
 </document>

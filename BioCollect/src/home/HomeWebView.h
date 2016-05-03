@@ -13,5 +13,7 @@
 @interface HomeWebView :  UIViewController <UIWebViewDelegate>
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 @property (nonatomic, strong) GAProject * project;
+@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activityIndicator;
+
 @end
 
