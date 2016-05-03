@@ -9,14 +9,8 @@
 #ifndef GreenArmy_GASettingsConstant_h
 #define GreenArmy_GASettingsConstant_h
 
-/*
- #define REST_SERVER @"http://fieldcapture-dev.ala.org.au"
- #define REST_SERVER @"https://fieldcapture-test.ala.org.au"
-*/
-
-#define REST_SERVER @"https://fieldcapture-test.ala.org.au"
-#define ECODATA_SERVER @"https://ecodata-test.ala.org.au"
-#define BIOCOLLECT_SERVER @"https://biocollect-test.ala.org.au"
-//#define BIOCOLLECT_SERVER @"http://devt.ala.org.au:8087/biocollect"
+#define REST_SERVER @"https://fieldcapture.ala.org.au"
+#define ECODATA_SERVER @"https://ecodata.ala.org.au"
+#define BIOCOLLECT_SERVER @"https://biocollect.ala.org.au"
 
 #endif

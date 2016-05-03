@@ -86,7 +86,7 @@
         GAProject *project = [self.bioProjects objectAtIndex:indexPath.row];
         cell.textLabel.text = project.projectName;
         
-        cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%d %@", indexPath.row, project.description];
+        cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@", project.description];
 
         NSString *url = [[NSString alloc] initWithFormat: @"%@", project.urlImage];
         NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];

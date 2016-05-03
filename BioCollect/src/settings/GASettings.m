@@ -28,7 +28,7 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kAuthKey];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kSortBy];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kDataToSync];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kEULA];
+    //[[NSUserDefaults standardUserDefaults] removeObjectForKey:kEULA];
     [[NSUserDefaults standardUserDefaults]synchronize];    
 }
 
