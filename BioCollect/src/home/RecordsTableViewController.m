@@ -66,7 +66,13 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [[NSString alloc] initWithFormat:@"Found %ld records", self.totalRecords];
+    NSString *title = nil;
+    if(self.loadingFinished){
+        title = [[NSString alloc] initWithFormat:@"Found %ld projects", self.totalRecords];
+    } else{
+        title = [[NSString alloc] initWithFormat:@"Loading..."];
+    }
+    return title;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath: (NSIndexPath *)indexPath {
