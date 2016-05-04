@@ -11,6 +11,7 @@
 #import "GAProject.h"
 #import "MRProgress.h"
 #import "GASettings.h"
+#import "MRProgressOverlayView.h"
 
 @interface GAMasterProjectTableViewController (){
     NSMutableArray *_objects;

@@ -47,10 +47,11 @@ static NSString *const MR_UINavigationControllerLastVisibleViewController = @"UI
 
 
 @implementation MRNavigationBarProgressView
+@dynamic progress;
 
 static NSNumberFormatter *progressNumberFormatter;
 
-+ (void)load {
++ (void)initialize {
     NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
     numberFormatter.numberStyle = NSNumberFormatterPercentStyle;
     numberFormatter.locale = NSLocale.currentLocale;
