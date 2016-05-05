@@ -26,7 +26,7 @@
         self.offset = DEFAULT_OFFSET;
         self.loadingFinished = TRUE;
         self.tableView.backgroundView = [[UIImageView alloc] initWithImage:
-                                         [UIImage imageNamed:@"biocollect_background.png"]];
+                                         [UIImage imageNamed:@"background.png"]];
         
 
         UIBarButtonItem *syncButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"sync-25"] style:UIBarButtonItemStyleBordered
@@ -68,7 +68,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     NSString *title = nil;
     if(self.loadingFinished){
-        title = [[NSString alloc] initWithFormat:@"Found %ld projects", self.totalRecords];
+        title = [[NSString alloc] initWithFormat:@"Found %ld records", self.totalRecords];
     } else{
         title = [[NSString alloc] initWithFormat:@"Loading..."];
     }
@@ -161,12 +161,10 @@
     
     UILabel *myLabel = [[UILabel alloc] init];
     myLabel.frame = CGRectMake(20, 8, 320, 20);
-    myLabel.font = [UIFont boldSystemFontOfSize:20];
     myLabel.text = [self tableView:tableView titleForHeaderInSection:section];
-    myLabel.textColor = [UIColor blackColor];
-    
+    myLabel.textColor = [UIColor whiteColor];
     UIView *headerView = [[UIView alloc] init];
-    
+
     [headerView addSubview:myLabel];
     
     return headerView;
@@ -193,6 +191,7 @@
     });
     
 }
+
 
 -(void) downloadProjects {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{

@@ -23,6 +23,7 @@
 @property (nonatomic, assign) BOOL loadingFinished;
 
 @property (nonatomic, strong) GAAppDelegate *appDelegate;
+
 @property (nonatomic, strong) BioProjectService *bioProjectService;
 
 @end
