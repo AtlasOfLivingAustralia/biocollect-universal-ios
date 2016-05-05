@@ -17,6 +17,9 @@
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 
 @property (nonatomic, strong) NSMutableArray * bioProjects;
+
+//Pagination info.
+@property (nonatomic, strong) NSString * query;
 @property (nonatomic, assign) NSInteger totalProjects;
 @property (nonatomic, assign) NSInteger offset;
 @property (nonatomic, assign) BOOL loadingFinished;
@@ -25,5 +28,6 @@
 @property (nonatomic, strong) GAAppDelegate *appDelegate;
 @property (nonatomic, strong) BioProjectService *bioProjectService;
 @property (nonatomic, strong) RecordsTableViewController *recordsTableView;
+-(void) resetProjects;
 @end
 

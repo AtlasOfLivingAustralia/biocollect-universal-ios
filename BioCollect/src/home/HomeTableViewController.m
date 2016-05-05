@@ -11,10 +11,13 @@
 #import "HomeCustomCell.h"
 #import "HomeWebView.h"
 #import "MRProgressOverlayView.h"
+
 @implementation HomeTableViewController
 #define DEFAULT_MAX       20
 #define DEFAULT_OFFSET    0
-@synthesize  bioProjects, appDelegate, bioProjectService, totalProjects, offset, loadingFinished;
+
+@synthesize  bioProjects, appDelegate, bioProjectService, totalProjects, offset, query, loadingFinished;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *) nibBundleOrNil {
     self.appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -25,9 +28,10 @@
         self.bioProjects = [[NSMutableArray alloc]init];
         self.offset = DEFAULT_OFFSET;
         self.loadingFinished = TRUE;
-        
+        self.query = @"";
+
         self.tableView.backgroundView = [[UIImageView alloc] initWithImage:
-                                         [UIImage imageNamed:@"biocollect_background.png"]];
+                                         [UIImage imageNamed:@"background.png"]];
         UIBarButtonItem *syncButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"sync-25"] style:UIBarButtonItemStyleBordered
                                                                       target:self action:@selector(resetAndDownloadProjects)];
         UIBarButtonItem *signout = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"lock_filled-25"]
@@ -45,10 +49,14 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    if(self.totalProjects  == 0) {
+        [self downloadProjects];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -157,13 +165,13 @@
 }
 
 - (void) load {
+    //Reached the max.
     if(self.totalProjects != 0 && [self.bioProjects count] != 0 && self.totalProjects  == [self.bioProjects count]) {
-        //Reached the max.
         DebugLog(@"Downloaded all the projects (%ld)", [self.bioProjects count])
     } else if(self.loadingFinished){
         self.loadingFinished = FALSE;
         NSError *error = nil;
-        NSInteger total = [self.bioProjectService getBioProjects: bioProjects offset:self.offset max:DEFAULT_MAX error:&error];
+        NSInteger total = [self.bioProjectService getBioProjects: bioProjects offset:self.offset max:DEFAULT_MAX query: self.query error:&error];
         DebugLog(@"%lu || %ld || %ld",(unsigned long)[self.bioProjects count], self.offset, total);
         if(error == nil && total > 0) {
             self.totalProjects = total;
@@ -175,14 +183,14 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    
     UILabel *myLabel = [[UILabel alloc] init];
     myLabel.frame = CGRectMake(20, 8, 320, 20);
-    myLabel.font = [UIFont boldSystemFontOfSize:20];
+    
     myLabel.text = [self tableView:tableView titleForHeaderInSection:section];
-     myLabel.textColor = [UIColor blackColor];
-
+    myLabel.textColor = [UIColor whiteColor];
     UIView *headerView = [[UIView alloc] init];
+
+    
 
     [headerView addSubview:myLabel];
     
@@ -221,5 +229,15 @@
     
 }
 
+
+-(void) resetProjects {
+    [self.bioProjects removeAllObjects];
+    self.totalProjects = 0;
+    self.offset = DEFAULT_OFFSET;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [MRProgressOverlayView dismissOverlayForView:self.appDelegate.window animated:NO];
+        [self.tableView reloadData];
+    });
+}
 
 @end
