@@ -18,34 +18,24 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter your username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Mr-es-5Kr">
-                    <rect key="frame" x="0.0" y="201" width="320" height="40"/>
-                    <color key="backgroundColor" red="0.16862745100000001" green="0.4823529412" blue="0.45882352939999999" alpha="1" colorSpace="deviceRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="aoG-xD-uNV"/>
-                    </constraints>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                    <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
-                </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter your password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fNj-KQ-8ms">
-                    <rect key="frame" x="0.0" y="263" width="320" height="40"/>
+                    <rect key="frame" x="0.0" y="268" width="320" height="34"/>
                     <color key="backgroundColor" red="0.16862745100000001" green="0.4823529412" blue="0.45882352939999999" alpha="1" colorSpace="deviceRGB"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="go" secureTextEntry="YES"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="68A-Kc-Inx"/>
+                    </connections>
                 </textField>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BioCollect-logo-01.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Zl-Cf-HZ3">
-                    <rect key="frame" x="40" y="19" width="240" height="149"/>
-                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NHI-xz-TYg">
-                    <rect key="frame" x="97" y="334" width="127" height="37"/>
+                    <rect key="frame" x="97" y="322" width="127" height="32"/>
                     <color key="backgroundColor" red="0.7843137255" green="0.30196078430000001" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="37" id="cxj-Qv-PjD"/>
+                        <constraint firstAttribute="height" constant="32" id="cxj-Qv-PjD"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                    <state key="normal" title="Login">
+                    <state key="normal" title="Submit">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -53,22 +43,38 @@
                         <action selector="onClickLogin:" destination="-1" eventType="touchUpInside" id="8jJ-N0-cWo"/>
                     </connections>
                 </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter your username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Mr-es-5Kr">
+                    <rect key="frame" x="0.0" y="214" width="320" height="34"/>
+                    <color key="backgroundColor" red="0.16862745100000001" green="0.4823529412" blue="0.45882352939999999" alpha="1" colorSpace="deviceRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="aoG-xD-uNV"/>
+                    </constraints>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="XIp-st-dbz"/>
+                    </connections>
+                </textField>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BioCollect-logo-01.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Zl-Cf-HZ3">
+                    <rect key="frame" x="37" y="33" width="247" height="165"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="NHI-xz-TYg" firstAttribute="top" secondItem="fNj-KQ-8ms" secondAttribute="bottom" constant="31" id="Chm-gj-3gR"/>
-                <constraint firstAttribute="bottom" secondItem="7Zl-Cf-HZ3" secondAttribute="bottom" constant="400" id="FnA-fx-QDG"/>
-                <constraint firstItem="7Zl-Cf-HZ3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="19" id="GJ4-3e-7ap"/>
+                <constraint firstItem="NHI-xz-TYg" firstAttribute="top" secondItem="fNj-KQ-8ms" secondAttribute="bottom" constant="20" id="Chm-gj-3gR"/>
+                <constraint firstAttribute="bottom" secondItem="7Zl-Cf-HZ3" secondAttribute="bottom" constant="370" id="FnA-fx-QDG"/>
+                <constraint firstItem="7Zl-Cf-HZ3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="33" id="GJ4-3e-7ap"/>
                 <constraint firstItem="fNj-KQ-8ms" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="H1e-ky-V4H"/>
                 <constraint firstItem="8Mr-es-5Kr" firstAttribute="leading" secondItem="fNj-KQ-8ms" secondAttribute="leading" id="JcS-ue-cmB"/>
-                <constraint firstItem="8Mr-es-5Kr" firstAttribute="top" secondItem="7Zl-Cf-HZ3" secondAttribute="bottom" constant="33" id="Maf-NG-tx7"/>
-                <constraint firstAttribute="bottom" secondItem="NHI-xz-TYg" secondAttribute="bottom" constant="197" id="RSI-OE-XNl"/>
-                <constraint firstItem="7Zl-Cf-HZ3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="YEH-od-l4Y"/>
+                <constraint firstItem="8Mr-es-5Kr" firstAttribute="top" secondItem="7Zl-Cf-HZ3" secondAttribute="bottom" constant="16" id="Maf-NG-tx7"/>
+                <constraint firstAttribute="bottom" secondItem="NHI-xz-TYg" secondAttribute="bottom" constant="214" id="RSI-OE-XNl"/>
+                <constraint firstItem="7Zl-Cf-HZ3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="37" id="YEH-od-l4Y"/>
                 <constraint firstItem="NHI-xz-TYg" firstAttribute="trailing" secondItem="fNj-KQ-8ms" secondAttribute="trailing" constant="-96" id="bN4-gm-VDs"/>
                 <constraint firstAttribute="trailing" secondItem="fNj-KQ-8ms" secondAttribute="trailing" id="ila-Ay-vYp"/>
-                <constraint firstItem="fNj-KQ-8ms" firstAttribute="top" secondItem="8Mr-es-5Kr" secondAttribute="bottom" constant="22" id="ixv-C6-pJa"/>
+                <constraint firstItem="fNj-KQ-8ms" firstAttribute="top" secondItem="8Mr-es-5Kr" secondAttribute="bottom" constant="20" id="ixv-C6-pJa"/>
                 <constraint firstItem="NHI-xz-TYg" firstAttribute="leading" secondItem="fNj-KQ-8ms" secondAttribute="leading" constant="97" id="kFm-eZ-x8u"/>
-                <constraint firstAttribute="trailing" secondItem="7Zl-Cf-HZ3" secondAttribute="trailing" constant="40" id="rX3-cA-fpe"/>
+                <constraint firstAttribute="trailing" secondItem="7Zl-Cf-HZ3" secondAttribute="trailing" constant="36" id="rX3-cA-fpe"/>
                 <constraint firstItem="8Mr-es-5Kr" firstAttribute="trailing" secondItem="fNj-KQ-8ms" secondAttribute="trailing" id="tGK-cW-S9v"/>
             </constraints>
             <point key="canvasLocation" x="460" y="482"/>
