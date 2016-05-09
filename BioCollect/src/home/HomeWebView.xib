@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeWebView">
@@ -31,8 +31,18 @@
                 <constraint firstItem="Q3X-yb-Ti6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="281" id="0Wg-qL-kOt"/>
                 <constraint firstAttribute="trailing" secondItem="Q3X-yb-Ti6" secondAttribute="trailing" constant="281" id="3zY-n2-k6S"/>
                 <constraint firstItem="Q3X-yb-Ti6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="282" id="Sim-dx-O2A"/>
+                <constraint firstItem="Q3X-yb-Ti6" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="TYq-eZ-Cds"/>
                 <constraint firstAttribute="bottom" secondItem="Q3X-yb-Ti6" secondAttribute="bottom" constant="282" id="h0z-uz-eXC"/>
+                <constraint firstItem="Q3X-yb-Ti6" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ufN-x5-mKk"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="0Wg-qL-kOt"/>
+                    <exclude reference="3zY-n2-k6S"/>
+                    <exclude reference="Sim-dx-O2A"/>
+                    <exclude reference="h0z-uz-eXC"/>
+                </mask>
+            </variation>
         </view>
     </objects>
 </document>

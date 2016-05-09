@@ -30,9 +30,21 @@
             <constraints>
                 <constraint firstItem="9FO-Oh-XBm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="281" id="4X9-Pm-qsx"/>
                 <constraint firstAttribute="trailing" secondItem="9FO-Oh-XBm" secondAttribute="trailing" constant="281" id="8gy-tH-hoe"/>
+                <constraint firstItem="9FO-Oh-XBm" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="EtI-co-CbD"/>
+                <constraint firstAttribute="trailing" secondItem="9FO-Oh-XBm" secondAttribute="trailing" constant="281" id="Xz6-tc-AU9"/>
                 <constraint firstItem="9FO-Oh-XBm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="282" id="bCh-jP-XsG"/>
+                <constraint firstItem="9FO-Oh-XBm" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="rIa-wC-dRg"/>
                 <constraint firstAttribute="bottom" secondItem="9FO-Oh-XBm" secondAttribute="bottom" constant="282" id="vMW-fe-jm4"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="4X9-Pm-qsx"/>
+                    <exclude reference="8gy-tH-hoe"/>
+                    <exclude reference="Xz6-tc-AU9"/>
+                    <exclude reference="bCh-jP-XsG"/>
+                    <exclude reference="vMW-fe-jm4"/>
+                </mask>
+            </variation>
         </view>
     </objects>
 </document>
