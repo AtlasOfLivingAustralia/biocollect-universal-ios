@@ -15,6 +15,10 @@
 #import "GASettings.h"
 #import "GAHelpVC.h"
 #import "HomeTableViewController.h"
+#import "MRProgressOverlayView.h"
+
+#define IDIOM    UI_USER_INTERFACE_IDIOM()
+#define IPAD     UIUserInterfaceIdiomPad
 
 @interface GAAppDelegate ()
 @property (strong, nonatomic) GAMasterProjectTableViewController *masterProjectVC;
@@ -32,8 +36,15 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.loginViewController = [[GALogin alloc] initWithNibName:@"GALogin" bundle:nil];
-    self.eulaVC = [[GAEULAViewController alloc] initWithNibName:@"GAEULAViewController" bundle:nil];
+    
+    if ( IDIOM == IPAD ) {
+        self.eulaVC = [[GAEULAViewController alloc] initWithNibName:@"GAEULAViewController" bundle:nil];
+        self.loginViewController = [[GALogin alloc] initWithNibName:@"GALogin" bundle:nil];
+    } else {
+        self.eulaVC = [[GAEULAViewController alloc] initWithNibName:@"EULAiPhoneViewController" bundle:nil];
+        self.loginViewController = [[GALogin alloc] initWithNibName:@"LoginiPhoneView" bundle:nil];
+    }
+
     
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
@@ -45,6 +56,12 @@
     bioProjectService = [[BioProjectService alloc] init];
     
     [self addSplitViewtoRoot];
+    
+    [[UITabBar appearance] setTintColor:[UIColor colorWithRed:43.0/255.0 green:123.0/255.0 blue:117.0/255.0 alpha:1]];
+    
+    [[UIBarButtonItem appearance] setTintColor:[UIColor colorWithRed:43.0/255.0 green:123.0/255.0 blue:117.0/255.0 alpha:1]];
+
+    [[MRProgressOverlayView appearance] setTintColor:[UIColor colorWithRed:43.0/255.0 green:123.0/255.0 blue:117.0/255.0 alpha:1]];
     
     return YES;
 }
@@ -104,7 +121,13 @@
     helpNC.navigationBar.topItem.title = @"Help";
     
     //About
-    UIViewController *aboutVC = [[UIViewController alloc] initWithNibName:@"GAAboutVC" bundle:nil];
+    UIViewController *aboutVC = nil;
+    if ( IDIOM == IPAD ){
+       aboutVC = [[UIViewController alloc] initWithNibName:@"GAAboutVC" bundle:nil];
+    } else{
+       aboutVC = [[UIViewController alloc] initWithNibName:@"AboutiPhoneView" bundle:nil];
+    }
+    
     UINavigationController *aboutNC =  [[UINavigationController alloc] initWithRootViewController:aboutVC];
     aboutNC.tabBarItem.title = @"About";
     aboutNC.tabBarItem.image = [UIImage imageNamed:@"info_filled-25"];
@@ -118,7 +141,7 @@
     [self.window setRootViewController:tabBarController];
     [self.window makeKeyAndVisible];
 
-    if([[GASettings getEULA] length] == 0 && ![[GASettings getEULA] isEqualToString:kEULAAgreed]){
+    if([[GASettings getEULA] length] == 0 && ![[GASettings getEULA]isEqualToString:kEULAAgreed]){
         [self.window.rootViewController presentViewController:eulaVC animated:NO completion:nil];
     }
     else if([GASettings getAuthKey] == 0){
@@ -140,8 +163,9 @@
     [self.detailVC updateActivityTableModel : self.projects];
 }
 
--(void) displaySigninPage{
+-(void) displaySigninPage {
     [GASettings resetAllFields];
+    [self.homeVC resetProjects];
     [self.sqlLite deleteAllTables];
     [self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
 //  [self.loginViewController setModalPresentationStyle:UIMinimumKeepAliveTimeout];
