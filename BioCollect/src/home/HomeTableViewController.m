@@ -39,6 +39,7 @@
                                                                    target:self.appDelegate.loginViewController action:@selector(logout)];
 
         self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:signout,syncButton,nil];
+        
     }
     return self;
 }

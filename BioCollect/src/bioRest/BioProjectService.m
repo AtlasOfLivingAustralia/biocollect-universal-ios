@@ -23,12 +23,12 @@
 
 /*
  Get BioCollect projects - run as async task.
- Example: http://biocollect-test.ala.org.au/ws/project/search?initiator=biocollect&max=10&offset=0
+ Example: http://biocollect-test.ala.org.au/ws/project/search?initiator=biocollect&max=10&offset=0&q=test
 */
-- (NSInteger) getBioProjects : (NSMutableArray*) projects offset: (NSInteger) offset max: (NSInteger) max  error:(NSError**) error {
-    //Request projects.
+- (NSInteger) getBioProjects : (NSMutableArray*) projects offset: (NSInteger) offset max: (NSInteger) max query: (NSString*) query error:(NSError**) error {
+
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    NSString *url = [[NSString alloc] initWithFormat: @"%@%@&offset=%ld&max=%ld", BIOCOLLECT_SERVER, BIO_PROJECT_SEARCH, (long)offset, (long)max];
+    NSString *url = [[NSString alloc] initWithFormat: @"%@%@&offset=%ld&max=%ld&q=%@", BIOCOLLECT_SERVER, BIO_PROJECT_SEARCH, (long)offset, (long)max, (NSString*) query];
     NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [request setURL:[NSURL URLWithString:escapedUrlString]];
     [request setHTTPMethod:@"GET"];
