@@ -10,6 +10,7 @@
 #import "GAAppDelegate.h"
 #import "MRProgress.h"
 #import "GASettings.h"
+#import "MRProgressOverlayView.h"
 
 @interface GALogin ()
 
@@ -55,7 +56,7 @@
 -(void) authenticate {
     // Processing UI indicator on the main thread.
     GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
-    [MRProgressOverlayView showOverlayAddedTo:appDelegate.window title:@"Processing.." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+    [MRProgressOverlayView showOverlayAddedTo:appDelegate.window title:@"Processing.." mode:MRProgressOverlayViewModeIndeterminateSmall animated:YES];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         // Time consuming processing on the seperate task
