@@ -24,7 +24,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BioCollect-logo-01.png" translatesAutoresizingMaskIntoConstraints="NO" id="NMM-Ey-TzK">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BioCollect-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="NMM-Ey-TzK">
                                 <rect key="frame" x="36" y="121" width="248" height="222"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="222" id="O2Q-8D-NlO"/>
@@ -48,6 +48,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BioCollect-logo-01.png" width="945" height="612"/>
+        <image name="BioCollect-logo.png" width="512" height="444"/>
     </resources>
 </document>

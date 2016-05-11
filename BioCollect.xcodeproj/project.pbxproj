@@ -65,6 +65,11 @@
 		E20189E71C8966700031435D /* Icon-placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = E20189E51C8966700031435D /* Icon-placeholder.png */; };
 		E20284971C87D59300E8203F /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E20284961C87D59300E8203F /* HomeTableViewController.m */; };
 		E20284981C87D59300E8203F /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E20284961C87D59300E8203F /* HomeTableViewController.m */; };
+		E20D1B561CDC145100A3607B /* AboutiPhoneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E20D1B551CDC145100A3607B /* AboutiPhoneView.xib */; };
+		E20D1B581CDC570800A3607B /* LaunchScreen~iphone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E20D1B571CDC570800A3607B /* LaunchScreen~iphone.storyboard */; };
+		E20D1B5A1CDC72BA00A3607B /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = E20D1B591CDC72BA00A3607B /* background.png */; };
+		E211B04A1CE18A3E00DBC1AF /* 512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = E211B0491CE18A3E00DBC1AF /* 512x512.png */; };
+		E211B04C1CE18BC500DBC1AF /* BioCollect-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E211B04B1CE18BC500DBC1AF /* BioCollect-logo.png */; };
 		E22045C0192C755A00531116 /* search_bk_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E22045BF192C755A00531116 /* search_bk_red@2x.png */; };
 		E22045C2192D7C8F00531116 /* briefcase_filled-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E22045C1192D7C8F00531116 /* briefcase_filled-25@2x.png */; };
 		E22045C4192D7D0B00531116 /* help_filled-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E22045C3192D7D0B00531116 /* help_filled-25@2x.png */; };
@@ -101,11 +106,17 @@
 		E241C688196A33B6002302D7 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = E241C684196A33B6002302D7 /* index.html */; };
 		E24D527918F57662002A4F64 /* GADetailFormVIewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E24D527718F57662002A4F64 /* GADetailFormVIewController.m */; };
 		E24D527A18F57662002A4F64 /* GADetailFormVIewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E24D527818F57662002A4F64 /* GADetailFormVIewController.xib */; };
+		E25185FC1CD9E13F0068B4E0 /* EULAiPhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E25185FB1CD9E13F0068B4E0 /* EULAiPhoneViewController.xib */; };
 		E252EE6A193579BE0005B101 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E252EE69193579BE0005B101 /* CoreData.framework */; };
 		E252EE6C193579C60005B101 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E252EE6B193579C60005B101 /* SystemConfiguration.framework */; };
 		E27BDFB618F78221001EE2F8 /* GAProjectJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E27BDFB518F78221001EE2F8 /* GAProjectJSON.m */; };
 		E27BDFD518F78D97001EE2F8 /* GASettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E27BDFD418F78D97001EE2F8 /* GASettings.m */; };
 		E27BDFD918F7AA07001EE2F8 /* GAActivitiesJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E27BDFD818F7AA07001EE2F8 /* GAActivitiesJSON.m */; };
+		E291220F1CDAC425005D9638 /* LaunchScreen~ipad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E291220E1CDAC425005D9638 /* LaunchScreen~ipad.storyboard */; };
+		E29122111CDAD093005D9638 /* LoginiPhoneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E29122101CDAD093005D9638 /* LoginiPhoneView.xib */; };
+		E29122131CDADDEE005D9638 /* BioCollect-logo-01.png in Resources */ = {isa = PBXBuildFile; fileRef = E29122121CDADDEE005D9638 /* BioCollect-logo-01.png */; };
+		E29122151CDADE25005D9638 /* BioCollect-logo-01.png in Resources */ = {isa = PBXBuildFile; fileRef = E29122141CDADE25005D9638 /* BioCollect-logo-01.png */; };
+		E291221B1CDB3BEC005D9638 /* background~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = E291221A1CDB3BEC005D9638 /* background~ipad.png */; };
 		E29A353F19667675003D025D /* GAHelpVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E29A353D19667675003D025D /* GAHelpVC.m */; };
 		E29A354019667675003D025D /* GAHelpVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E29A353E19667675003D025D /* GAHelpVC.xib */; };
 		E29A35421966781C003D025D /* searchbar_bk@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E29A35411966781C003D025D /* searchbar_bk@2x.png */; };
@@ -113,7 +124,6 @@
 		E29A354819667925003D025D /* GAAboutVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E29A354619667925003D025D /* GAAboutVC.xib */; };
 		E2A2FFCB1C8546F0008B63A8 /* ala_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A2FFCA1C8546F0008B63A8 /* ala_logo.png */; };
 		E2A2FFCD1C8547A5008B63A8 /* ala_logo1.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A2FFCC1C8547A5008B63A8 /* ala_logo1.png */; };
-		E2A2FFCF1C854E59008B63A8 /* Biocollect-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A2FFCE1C854E59008B63A8 /* Biocollect-logo.png */; };
 		E2A2FFD11C854EDD008B63A8 /* BioCollect-logo 1.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A2FFD01C854EDD008B63A8 /* BioCollect-logo 1.png */; };
 		E2A4A4EE19663E29006CAC22 /* header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A4A4ED19663E29006CAC22 /* header@2x.png */; };
 		E2A4A4F819665009006CAC22 /* GAEULAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A4A4F619665009006CAC22 /* GAEULAViewController.m */; };
@@ -253,6 +263,11 @@
 		E20189E51C8966700031435D /* Icon-placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-placeholder.png"; path = "src/images/Icon-placeholder.png"; sourceTree = "<group>"; };
 		E20284951C87D56400E8203F /* HomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeTableViewController.h; path = src/home/HomeTableViewController.h; sourceTree = "<group>"; };
 		E20284961C87D59300E8203F /* HomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeTableViewController.m; path = src/home/HomeTableViewController.m; sourceTree = "<group>"; };
+		E20D1B551CDC145100A3607B /* AboutiPhoneView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutiPhoneView.xib; path = src/about/AboutiPhoneView.xib; sourceTree = "<group>"; };
+		E20D1B571CDC570800A3607B /* LaunchScreen~iphone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "LaunchScreen~iphone.storyboard"; path = "src/LaunchScreen~iphone.storyboard"; sourceTree = "<group>"; };
+		E20D1B591CDC72BA00A3607B /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = src/images/background.png; sourceTree = "<group>"; };
+		E211B0491CE18A3E00DBC1AF /* 512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 512x512.png; path = src/images/512x512.png; sourceTree = "<group>"; };
+		E211B04B1CE18BC500DBC1AF /* BioCollect-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BioCollect-logo.png"; path = "src/images/BioCollect-logo.png"; sourceTree = "<group>"; };
 		E22045BF192C755A00531116 /* search_bk_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "search_bk_red@2x.png"; path = "src/images/search_bk_red@2x.png"; sourceTree = "<group>"; };
 		E22045C1192D7C8F00531116 /* briefcase_filled-25@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "briefcase_filled-25@2x.png"; path = "src/images/briefcase_filled-25@2x.png"; sourceTree = "<group>"; };
 		E22045C3192D7D0B00531116 /* help_filled-25@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help_filled-25@2x.png"; path = "src/images/help_filled-25@2x.png"; sourceTree = "<group>"; };
@@ -300,6 +315,7 @@
 		E24D527618F57662002A4F64 /* GADetailFormVIewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADetailFormVIewController.h; path = src/GADetailFormVIewController.h; sourceTree = "<group>"; };
 		E24D527718F57662002A4F64 /* GADetailFormVIewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = GADetailFormVIewController.m; path = src/GADetailFormVIewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E24D527818F57662002A4F64 /* GADetailFormVIewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GADetailFormVIewController.xib; path = src/GADetailFormVIewController.xib; sourceTree = "<group>"; };
+		E25185FB1CD9E13F0068B4E0 /* EULAiPhoneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EULAiPhoneViewController.xib; path = src/eula/EULAiPhoneViewController.xib; sourceTree = "<group>"; };
 		E252EE69193579BE0005B101 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		E252EE6B193579C60005B101 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E252EE6D193579DC0005B101 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -310,6 +326,11 @@
 		E27BDFD618F78DC7001EE2F8 /* GASettingsConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GASettingsConstant.h; path = src/settings/GASettingsConstant.h; sourceTree = "<group>"; };
 		E27BDFD718F7AA07001EE2F8 /* GAActivitiesJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAActivitiesJSON.h; path = src/model/GAActivitiesJSON.h; sourceTree = "<group>"; };
 		E27BDFD818F7AA07001EE2F8 /* GAActivitiesJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAActivitiesJSON.m; path = src/model/GAActivitiesJSON.m; sourceTree = "<group>"; };
+		E291220E1CDAC425005D9638 /* LaunchScreen~ipad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "LaunchScreen~ipad.storyboard"; path = "src/LaunchScreen~ipad.storyboard"; sourceTree = "<group>"; };
+		E29122101CDAD093005D9638 /* LoginiPhoneView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginiPhoneView.xib; path = src/LoginiPhoneView.xib; sourceTree = "<group>"; };
+		E29122121CDADDEE005D9638 /* BioCollect-logo-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BioCollect-logo-01.png"; path = "src/images/BioCollect-logo-01.png"; sourceTree = "<group>"; };
+		E29122141CDADE25005D9638 /* BioCollect-logo-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BioCollect-logo-01.png"; path = "src/images/BioCollect-logo-01.png"; sourceTree = "<group>"; };
+		E291221A1CDB3BEC005D9638 /* background~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background~ipad.png"; path = "src/images/background~ipad.png"; sourceTree = "<group>"; };
 		E29A353C19667675003D025D /* GAHelpVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAHelpVC.h; path = src/help/GAHelpVC.h; sourceTree = "<group>"; };
 		E29A353D19667675003D025D /* GAHelpVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAHelpVC.m; path = src/help/GAHelpVC.m; sourceTree = "<group>"; };
 		E29A353E19667675003D025D /* GAHelpVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GAHelpVC.xib; path = src/help/GAHelpVC.xib; sourceTree = "<group>"; };
@@ -319,7 +340,6 @@
 		E29A354619667925003D025D /* GAAboutVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GAAboutVC.xib; path = src/about/GAAboutVC.xib; sourceTree = "<group>"; };
 		E2A2FFCA1C8546F0008B63A8 /* ala_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ala_logo.png; path = src/images/ala_logo.png; sourceTree = "<group>"; };
 		E2A2FFCC1C8547A5008B63A8 /* ala_logo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ala_logo1.png; path = src/images/ala_logo1.png; sourceTree = "<group>"; };
-		E2A2FFCE1C854E59008B63A8 /* Biocollect-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Biocollect-logo.png"; path = "src/images/Biocollect-logo.png"; sourceTree = "<group>"; };
 		E2A2FFD01C854EDD008B63A8 /* BioCollect-logo 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BioCollect-logo 1.png"; path = "src/images/BioCollect-logo 1.png"; sourceTree = "<group>"; };
 		E2A4A4ED19663E29006CAC22 /* header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "header@2x.png"; path = "src/images/header@2x.png"; sourceTree = "<group>"; };
 		E2A4A4F519665009006CAC22 /* GAEULAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAEULAViewController.h; path = src/eula/GAEULAViewController.h; sourceTree = "<group>"; };
@@ -481,12 +501,16 @@
 		B8D551DF18F98B7800EDD006 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E211B04B1CE18BC500DBC1AF /* BioCollect-logo.png */,
+				E20D1B591CDC72BA00A3607B /* background.png */,
+				E291221A1CDB3BEC005D9638 /* background~ipad.png */,
+				E29122141CDADE25005D9638 /* BioCollect-logo-01.png */,
 				E20026381C926F250045C130 /* csiro-logo.png */,
+				E211B0491CE18A3E00DBC1AF /* 512x512.png */,
 				E20026361C926B430045C130 /* biocollect_background.png */,
 				E20189E51C8966700031435D /* Icon-placeholder.png */,
 				E2BB4EF21C855A0F0075F8BF /* BioCollect-logo 2.png */,
 				E2A2FFD01C854EDD008B63A8 /* BioCollect-logo 1.png */,
-				E2A2FFCE1C854E59008B63A8 /* Biocollect-logo.png */,
 				E2A2FFCC1C8547A5008B63A8 /* ala_logo1.png */,
 				E2A2FFCA1C8546F0008B63A8 /* ala_logo.png */,
 				E241C67F196A3061002302D7 /* pad-1@2x.png */,
@@ -586,6 +610,7 @@
 		E23586D318FBB27900EE6D13 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
+				E29122121CDADDEE005D9638 /* BioCollect-logo-01.png */,
 				E23586D418FBB6FE00EE6D13 /* database */,
 			);
 			name = Persistence;
@@ -657,6 +682,7 @@
 				E29A354419667925003D025D /* GAAboutVC.h */,
 				E29A354519667925003D025D /* GAAboutVC.m */,
 				E29A354619667925003D025D /* GAAboutVC.xib */,
+				E20D1B551CDC145100A3607B /* AboutiPhoneView.xib */,
 			);
 			name = About;
 			sourceTree = "<group>";
@@ -667,6 +693,7 @@
 				E2A4A4F519665009006CAC22 /* GAEULAViewController.h */,
 				E2A4A4F619665009006CAC22 /* GAEULAViewController.m */,
 				E2A4A4F719665009006CAC22 /* GAEULAViewController.xib */,
+				E25185FB1CD9E13F0068B4E0 /* EULAiPhoneViewController.xib */,
 			);
 			name = EULA;
 			sourceTree = "<group>";
@@ -731,6 +758,8 @@
 				E2E3AA9C18F4D2940005BB9E /* GAAppDelegate.m */,
 				E2E3AA9E18F4D2940005BB9E /* Images.xcassets */,
 				E2E3AA9318F4D2940005BB9E /* Supporting Files */,
+				E291220E1CDAC425005D9638 /* LaunchScreen~ipad.storyboard */,
+				E20D1B571CDC570800A3607B /* LaunchScreen~iphone.storyboard */,
 			);
 			path = BioCollect;
 			sourceTree = "<group>";
@@ -770,6 +799,7 @@
 				E2E3AABF18F4D9070005BB9E /* GALogin.h */,
 				E2E3AAC018F4D9070005BB9E /* GALogin.m */,
 				E2E3AAC118F4D9070005BB9E /* GALogin.xib */,
+				E29122101CDAD093005D9638 /* LoginiPhoneView.xib */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -944,15 +974,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				E23AF5181C911E45002501F3 /* RecordsTableViewController.xib in Resources */,
+				E20D1B561CDC145100A3607B /* AboutiPhoneView.xib in Resources */,
 				E22045C4192D7D0B00531116 /* help_filled-25@2x.png in Resources */,
 				E2CCED00190F82E6003655B7 /* finished@2x.png in Resources */,
 				E22045D1192D9EEC00531116 /* action-25@2x.png in Resources */,
 				E22045CE192D8F4800531116 /* loc1_changed@2x.png in Resources */,
+				E211B04A1CE18A3E00DBC1AF /* 512x512.png in Resources */,
 				E22045D2192D9EEC00531116 /* sync-25@2x.png in Resources */,
 				E23AF5231C918862002501F3 /* RecordWebView.xib in Resources */,
 				E2F8E56D19108A640093A3D3 /* Icon-Small@2x.png in Resources */,
 				E2E3AAC318F4D9070005BB9E /* GALogin.xib in Resources */,
 				E20026371C926B430045C130 /* biocollect_background.png in Resources */,
+				E211B04C1CE18BC500DBC1AF /* BioCollect-logo.png in Resources */,
 				E227E3A2192CD57D00E22DC7 /* menu-25@2x.png in Resources */,
 				E20026391C926F250045C130 /* csiro-logo.png in Resources */,
 				E22045CC192D820500531116 /* heading@2x.png in Resources */,
@@ -961,22 +994,27 @@
 				E2E56B2D1925CB7F007AC38C /* GACreateSiteModalViewController.xib in Resources */,
 				E2E56A971922E6D6007AC38C /* changed@2x.png in Resources */,
 				E241C685196A33B6002302D7 /* css in Resources */,
+				E20D1B5A1CDC72BA00A3607B /* background.png in Resources */,
+				E29122111CDAD093005D9638 /* LoginiPhoneView.xib in Resources */,
 				E23AF50C1C8FAE59002501F3 /* HomeWebView.xib in Resources */,
 				E2E56A981922E6D6007AC38C /* nochange@2x.png in Resources */,
-				E2A2FFCF1C854E59008B63A8 /* Biocollect-logo.png in Resources */,
 				E2E3AAD818F4E65E0005BB9E /* GADetailActivitiesTableViewController.xib in Resources */,
 				E22045C8192D7E5900531116 /* pad@2x.png in Resources */,
 				E2CCED02190F82E6003655B7 /* started@2x.png in Resources */,
+				E25185FC1CD9E13F0068B4E0 /* EULAiPhoneViewController.xib in Resources */,
 				E2F8E56F19108DA10093A3D3 /* GreenArmy2.png in Resources */,
 				E2E3AADC18F4FAC90005BB9E /* GAMasterProjectTableViewController.xib in Resources */,
 				E24D527A18F57662002A4F64 /* GADetailFormVIewController.xib in Resources */,
 				E2F8E56819108A640093A3D3 /* Icon-60.png in Resources */,
 				E227E39A192CD0FD00E22DC7 /* site_map@2x.png in Resources */,
 				E241C686196A33B6002302D7 /* img in Resources */,
+				E291221B1CDB3BEC005D9638 /* background~ipad.png in Resources */,
 				E2E3AA9718F4D2940005BB9E /* InfoPlist.strings in Resources */,
+				E29122151CDADE25005D9638 /* BioCollect-logo-01.png in Resources */,
 				E241C687196A33B6002302D7 /* js in Resources */,
 				E2F8E56619108A640093A3D3 /* Icon-40.png in Resources */,
 				E2BB4EF31C855A0F0075F8BF /* BioCollect-logo 2.png in Resources */,
+				E291220F1CDAC425005D9638 /* LaunchScreen~ipad.storyboard in Resources */,
 				E2E8F744192245E60029574B /* loc1_nochange@2x.png in Resources */,
 				E227E3A4192CDA2F00E22DC7 /* geo_fence-25@2x.png in Resources */,
 				E22045C6192D7DA500531116 /* info_filled-25@2x.png in Resources */,
@@ -990,6 +1028,7 @@
 				E22045CA192D7EDD00531116 /* profile@2x.png in Resources */,
 				E227E39C192CD30D00E22DC7 /* lock_filled-25@2x.png in Resources */,
 				E2F8E56B19108A640093A3D3 /* Icon-76@2x.png in Resources */,
+				E20D1B581CDC570800A3607B /* LaunchScreen~iphone.storyboard in Resources */,
 				E2A2FFCD1C8547A5008B63A8 /* ala_logo1.png in Resources */,
 				E2E3AA9F18F4D2940005BB9E /* Images.xcassets in Resources */,
 				E29A354019667675003D025D /* GAHelpVC.xib in Resources */,
@@ -999,6 +1038,7 @@
 				E2F8E56C19108A640093A3D3 /* Icon-Small.png in Resources */,
 				E2E43395190FAE5700A3FAB2 /* cancelled@2x.png in Resources */,
 				E2CCED01190F82E6003655B7 /* planned@2x.png in Resources */,
+				E29122131CDADDEE005D9638 /* BioCollect-logo-01.png in Resources */,
 				E2A2FFD11C854EDD008B63A8 /* BioCollect-logo 1.png in Resources */,
 				E29A35421966781C003D025D /* searchbar_bk@2x.png in Resources */,
 				E2F471C41C86827B00594DAB /* HomeTableViewController.xib in Resources */,
@@ -1244,6 +1284,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.tablet.biocollect;
 				PRODUCT_NAME = BioCollect;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1253,8 +1294,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = BioCollectIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Department of Sustainability, Environment, Water, Population and Communities (Q8GMSB2GP2)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Department of Sustainability, Environment, Water, Population and Communities (Q8GMSB2GP2)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_NS_ASSERTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BioCollect/BioCollect-Prefix.pch";
@@ -1267,7 +1308,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.tablet.biocollect;
 				PRODUCT_NAME = BioCollect;
-				PROVISIONING_PROFILE = "BB65262A-6196-407F-BE65-E69019234998";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

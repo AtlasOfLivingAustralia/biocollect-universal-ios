@@ -18,7 +18,7 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ala_logo1.png" translatesAutoresizingMaskIntoConstraints="NO" id="qsa-FI-gXc">
                     <rect key="frame" x="204" y="71" width="98" height="69"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" image="BioCollect-logo-01.png" translatesAutoresizingMaskIntoConstraints="NO" id="qbk-NO-MeC">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" image="BioCollect-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="qbk-NO-MeC">
                     <rect key="frame" x="23" y="65" width="116" height="75"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="116" id="yUc-wK-Yjx"/>
@@ -74,7 +74,7 @@ The system is fully integrated with other Atlas tools and we are currently worki
         </view>
     </objects>
     <resources>
-        <image name="BioCollect-logo-01.png" width="945" height="612"/>
+        <image name="BioCollect-logo.png" width="512" height="444"/>
         <image name="ala_logo1.png" width="500" height="426"/>
     </resources>
 </document>
