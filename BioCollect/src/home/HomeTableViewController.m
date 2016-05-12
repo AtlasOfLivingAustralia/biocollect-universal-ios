@@ -37,9 +37,7 @@
         UIBarButtonItem *signout = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"lock_filled-25"]
                                                                     style:UIBarButtonItemStyleBordered
                                                                    target:self.appDelegate.loginViewController action:@selector(logout)];
-
-        self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:signout,syncButton,nil];
-        
+        self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects: signout,syncButton,nil];
     }
     return self;
 }
