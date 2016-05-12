@@ -16,6 +16,7 @@
 #import "GAHelpVC.h"
 #import "HomeTableViewController.h"
 #import "MRProgressOverlayView.h"
+#import "ContactVC.h"
 
 #define IDIOM    UI_USER_INTERFACE_IDIOM()
 #define IPAD     UIUserInterfaceIdiomPad
@@ -100,25 +101,22 @@
    
     homeNC.tabBarItem.title = @"BioCollect";
     homeNC.tabBarItem.image = [UIImage imageNamed:@"briefcase_filled-25"];
-    // - Advanced data collection for biodiversity projects
     homeNC.navigationBar.topItem.title = @"BioCollect";
-    
+
     // Records view
     recordsVC = [[RecordsTableViewController alloc] initWithNibName:@"RecordsTableViewController" bundle:nil];
     UINavigationController *recordsNC = [[UINavigationController alloc] initWithRootViewController: recordsVC];
     
     recordsNC.tabBarItem.title = @"All Records";
     recordsNC.tabBarItem.image = [UIImage imageNamed:@"pad"];
-    // - Advanced data collection for biodiversity projects
     recordsNC.navigationBar.topItem.title = @"All Records";
     
-    
     //Help
-    GAHelpVC  *helpVC = [[GAHelpVC alloc] initWithNibName:@"GAHelpVC" bundle:nil];
-    UINavigationController *helpNC =  [[UINavigationController alloc] initWithRootViewController:helpVC];
-    helpNC.tabBarItem.image = [UIImage imageNamed:@"help_filled-25"];
-    helpNC.tabBarItem.title = @"Help";
-    helpNC.navigationBar.topItem.title = @"Help";
+    ContactVC  *contactVC = [[ContactVC alloc] initWithNibName:@"ContactVC" bundle:nil];
+    UINavigationController *contactNC =  [[UINavigationController alloc] initWithRootViewController:contactVC];
+    contactNC.tabBarItem.image = [UIImage imageNamed:@"help_filled-25"];
+    contactNC.tabBarItem.title = @"Contact";
+    contactNC.navigationBar.topItem.title = @"Contact";
     
     //About
     UIViewController *aboutVC = nil;
@@ -135,7 +133,7 @@
     
     //Tab bars
     UITabBarController  *tabBarController = [[UITabBarController alloc] init];
-    NSArray* controllers = [NSArray arrayWithObjects:homeNC, recordsNC, helpNC,aboutNC, nil];
+    NSArray* controllers = [NSArray arrayWithObjects:homeNC, recordsNC,aboutNC,contactNC, nil];
     tabBarController.viewControllers = controllers;
 
     [self.window setRootViewController:tabBarController];

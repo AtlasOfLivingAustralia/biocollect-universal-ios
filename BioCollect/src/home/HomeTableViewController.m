@@ -12,6 +12,8 @@
 #import "HomeWebView.h"
 #import "MRProgressOverlayView.h"
 
+
+
 @implementation HomeTableViewController
 #define DEFAULT_MAX       20
 #define DEFAULT_OFFSET    0
@@ -30,14 +32,17 @@
         self.loadingFinished = TRUE;
         self.query = @"";
 
-        self.tableView.backgroundView = [[UIImageView alloc] initWithImage:
-                                         [UIImage imageNamed:@"background.png"]];
         UIBarButtonItem *syncButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"sync-25"] style:UIBarButtonItemStyleBordered
                                                                       target:self action:@selector(resetAndDownloadProjects)];
         UIBarButtonItem *signout = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"lock_filled-25"]
                                                                     style:UIBarButtonItemStyleBordered
                                                                    target:self.appDelegate.loginViewController action:@selector(logout)];
         self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects: signout,syncButton,nil];
+        
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BioCollect-text-small"]];
+        imageView.contentMode = UIViewContentModeCenter;
+        self.navigationItem.titleView =imageView;
+        
     }
     return self;
 }
@@ -186,11 +191,8 @@
     myLabel.frame = CGRectMake(20, 8, 320, 20);
     
     myLabel.text = [self tableView:tableView titleForHeaderInSection:section];
-    myLabel.textColor = [UIColor whiteColor];
+    myLabel.textColor = [UIColor blackColor ];
     UIView *headerView = [[UIView alloc] init];
-
-    
-
     [headerView addSubview:myLabel];
     
     return headerView;
