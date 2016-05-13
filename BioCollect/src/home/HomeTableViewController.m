@@ -93,7 +93,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath: (NSIndexPath *)indexPath {
-    
+
     static NSString *CellIdentifier = @"Cell";
     HomeCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
@@ -194,7 +194,7 @@
     myLabel.frame = CGRectMake(20, 8, 320, 20);
     
     myLabel.text = [self tableView:tableView titleForHeaderInSection:section];
-    myLabel.textColor = [UIColor colorWithRed:200.0/255.0 green:77.0/255.0 blue:47.0/255.0 alpha:1];
+    myLabel.textColor = [UIColor colorWithRed:200.0/255.0 green:77.0/255.0 blue:117.0/255.0 alpha:1];
     UIView *headerView = [[UIView alloc] init];
     [headerView addSubview:myLabel];
     
@@ -212,26 +212,24 @@
 - (void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller {
     //When the user taps the Cancel Button, or anywhere aside from the view.
     isSearching = NO;
+    
+    [self.bioProjects removeAllObjects];
+    self.totalProjects = 0;
+    self.offset = DEFAULT_OFFSET;
+    self.query = @"";
+    [self load];
 }
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
-
     if(isSearching) {
         [self.bioProjects removeAllObjects];
         self.totalProjects = 0;
         self.offset = DEFAULT_OFFSET;
         self.query = searchString;
         [self load];
-        
-    } else {
-        [self.bioProjects removeAllObjects];
-        self.totalProjects = 0;
-        self.offset = DEFAULT_OFFSET;
-        self.query = @"";
-        [self load];
     }
-    
+
     // Return YES to cause the search result table view to be reloaded.
     return YES;
 }
