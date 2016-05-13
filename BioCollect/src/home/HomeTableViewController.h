@@ -11,7 +11,7 @@
 #import "UIImageView+WebCache.h"
 #import "RecordsTableViewController.h"
 
-@interface HomeTableViewController :  UITableViewController <UITableViewDelegate>
+@interface HomeTableViewController :  UITableViewController <UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *homeTableView;
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
@@ -24,6 +24,8 @@
 @property (nonatomic, assign) NSInteger offset;
 @property (nonatomic, assign) BOOL loadingFinished;
 
+//Search flag
+@property (nonatomic, assign) BOOL isSearching;
 
 @property (nonatomic, strong) GAAppDelegate *appDelegate;
 @property (nonatomic, strong) BioProjectService *bioProjectService;

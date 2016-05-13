@@ -58,11 +58,11 @@
     
     [self addSplitViewtoRoot];
     
-    [[UITabBar appearance] setTintColor:[UIColor colorWithRed:43.0/255.0 green:123.0/255.0 blue:117.0/255.0 alpha:1]];
+    [[UITabBar appearance] setTintColor: [UIColor colorWithRed:200.0/255.0 green:77.0/255.0 blue:47.0/255.0 alpha:1]];
     
-    [[UIBarButtonItem appearance] setTintColor:[UIColor colorWithRed:43.0/255.0 green:123.0/255.0 blue:117.0/255.0 alpha:1]];
+    [[UIBarButtonItem appearance] setTintColor:[UIColor colorWithRed:200.0/255.0 green:77.0/255.0 blue:47.0/255.0 alpha:1]];
 
-    [[MRProgressOverlayView appearance] setTintColor:[UIColor colorWithRed:43.0/255.0 green:123.0/255.0 blue:117.0/255.0 alpha:1]];
+    [[MRProgressOverlayView appearance] setTintColor:[UIColor colorWithRed:200.0/255.0 green:77.0/255.0 blue:47.0/255.0 alpha:1]];
     
     return YES;
 }

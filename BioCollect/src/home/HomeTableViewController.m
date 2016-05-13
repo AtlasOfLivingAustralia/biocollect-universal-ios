@@ -12,38 +12,36 @@
 #import "HomeWebView.h"
 #import "MRProgressOverlayView.h"
 
-
-
 @implementation HomeTableViewController
 #define DEFAULT_MAX       20
 #define DEFAULT_OFFSET    0
 
-@synthesize  bioProjects, appDelegate, bioProjectService, totalProjects, offset, query, loadingFinished;
-
+@synthesize  bioProjects, appDelegate, bioProjectService, totalProjects, offset, query, loadingFinished, isSearching;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *) nibBundleOrNil {
     self.appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
     self.bioProjectService = self.appDelegate.bioProjectService;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
     if (self) {
+        //Initialise
         self.recordsTableView = [[RecordsTableViewController alloc] initWithNibName:@"RecordsTableViewController" bundle:nil];
         self.bioProjects = [[NSMutableArray alloc]init];
         self.offset = DEFAULT_OFFSET;
         self.loadingFinished = TRUE;
         self.query = @"";
+        self.isSearching = NO;
 
-        UIBarButtonItem *syncButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"sync-25"] style:UIBarButtonItemStyleBordered
-                                                                      target:self action:@selector(resetAndDownloadProjects)];
-        UIBarButtonItem *signout = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"lock_filled-25"]
-                                                                    style:UIBarButtonItemStyleBordered
-                                                                   target:self.appDelegate.loginViewController action:@selector(logout)];
+        //Set bar button.
+        UIBarButtonItem *syncButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"sync-25"] style:UIBarButtonItemStyleBordered target:self action:@selector(resetAndDownloadProjects)];
+        UIBarButtonItem *signout = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"lock_filled-25"] style:UIBarButtonItemStyleBordered target:self.appDelegate.loginViewController action:@selector(logout)];
         self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects: signout,syncButton,nil];
         
         UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BioCollect-text-small"]];
         imageView.contentMode = UIViewContentModeCenter;
-        self.navigationItem.titleView =imageView;
-        
+        self.navigationItem.titleView = imageView;
     }
+    
     return self;
 }
 
@@ -67,6 +65,8 @@
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark - TableViewDelegae
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -82,8 +82,10 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     NSString *title = nil;
-    if(self.loadingFinished){
-        title = [[NSString alloc] initWithFormat:@"Found %ld projects", self.totalProjects];
+    if(self.isSearching) {
+      title = @"";
+    } else if(self.loadingFinished){
+        title = [[NSString alloc] initWithFormat:@"Found %ld projects", (long)self.totalProjects];
     } else{
        title = [[NSString alloc] initWithFormat:@"Loading..."];
     }
@@ -109,8 +111,7 @@
         NSString *url = [[NSString alloc] initWithFormat: @"%@", project.urlImage];
         NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 
-        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:escapedUrlString]
-                          placeholderImage:[UIImage imageNamed:@"icon-placeholder.png"]];
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:escapedUrlString] placeholderImage:[UIImage imageNamed:@"icon-placeholder.png"]];
 
     }
     
@@ -123,6 +124,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath {
+    
     if(indexPath.section == 0){
         //Show next level depth.
         GAProject *project =  [self.bioProjects objectAtIndex:indexPath.row];
@@ -169,6 +171,7 @@
 }
 
 - (void) load {
+    
     //Reached the max.
     if(self.totalProjects != 0 && [self.bioProjects count] != 0 && self.totalProjects  == [self.bioProjects count]) {
         DebugLog(@"Downloaded all the projects (%ld)", [self.bioProjects count])
@@ -191,36 +194,81 @@
     myLabel.frame = CGRectMake(20, 8, 320, 20);
     
     myLabel.text = [self tableView:tableView titleForHeaderInSection:section];
-    myLabel.textColor = [UIColor blackColor ];
+    myLabel.textColor = [UIColor colorWithRed:200.0/255.0 green:77.0/255.0 blue:47.0/255.0 alpha:1];
     UIView *headerView = [[UIView alloc] init];
     [headerView addSubview:myLabel];
     
     return headerView;
 }
 
--(void) resetAndDownloadProjects{
+
+#pragma mark - UISearchDisplayControllerDelegate
+
+- (void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller {
+    //When the user taps the search bar, this means that the controller will begin searching.
+    isSearching = YES;
+}
+
+- (void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller {
+    //When the user taps the Cancel Button, or anywhere aside from the view.
+    isSearching = NO;
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+
+    if(isSearching) {
+        [self.bioProjects removeAllObjects];
+        self.totalProjects = 0;
+        self.offset = DEFAULT_OFFSET;
+        self.query = searchString;
+        [self load];
+        
+    } else {
+        [self.bioProjects removeAllObjects];
+        self.totalProjects = 0;
+        self.offset = DEFAULT_OFFSET;
+        self.query = @"";
+        [self load];
+    }
+    
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption
+{
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
+}
+
+
+#pragma mark - Project Search
+
+-(void) resetAndDownloadProjects
+{
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_async(dispatch_get_main_queue(), ^{
             [MRProgressOverlayView showOverlayAddedTo:self.appDelegate.window title:@"Downloading.." mode:MRProgressOverlayViewModeIndeterminateSmall animated:YES];
         });
     });
     
-   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [self.bioProjects removeAllObjects];
         self.totalProjects = 0;
         self.offset = DEFAULT_OFFSET;
         [self load];
-
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             [MRProgressOverlayView dismissOverlayForView:self.appDelegate.window animated:NO];
             [self.tableView reloadData];
-           
         });
     });
     
 }
 
--(void) downloadProjects {
+-(void) downloadProjects
+{
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [self load];
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -230,8 +278,8 @@
     
 }
 
-
--(void) resetProjects {
+-(void) resetProjects
+{
     [self.bioProjects removeAllObjects];
     self.totalProjects = 0;
     self.offset = DEFAULT_OFFSET;
