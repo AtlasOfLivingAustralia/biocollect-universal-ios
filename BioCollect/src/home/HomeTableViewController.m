@@ -222,7 +222,7 @@
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
-    if(isSearching) {
+    if(isSearching && [searchString length] >= 3) {
         [self.bioProjects removeAllObjects];
         self.totalProjects = 0;
         self.offset = DEFAULT_OFFSET;

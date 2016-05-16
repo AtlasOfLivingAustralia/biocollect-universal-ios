@@ -12,18 +12,23 @@
 #import "BioProjectService.h"
 #import "UIImageView+WebCache.h"
 
-@interface RecordsTableViewController :  UITableViewController <UITableViewDelegate>
+@interface RecordsTableViewController :  UITableViewController <UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *recordsTableView;
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 @property (nonatomic, strong) NSMutableArray *records;
 @property (nonatomic, strong) GAProject *project;
+
+//Pagination info.
 @property (nonatomic, assign) NSInteger totalRecords;
 @property (nonatomic, assign) NSInteger offset;
 @property (nonatomic, assign) BOOL loadingFinished;
+@property (nonatomic, strong) NSString * query;
+
+//Search flag
+@property (nonatomic, assign) BOOL isSearching;
 
 @property (nonatomic, strong) GAAppDelegate *appDelegate;
-
 @property (nonatomic, strong) BioProjectService *bioProjectService;
 
 @end

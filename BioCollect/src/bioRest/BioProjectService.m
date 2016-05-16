@@ -65,15 +65,17 @@
 }
 
 // List of all activities associated to the project
-// http://biocollect-test.ala.org.au/bioActivity/searchProjectActivities?projectId=eccadc59-2dc5-44df-8aac-da41bcf17ba4&view=project
-- (NSInteger) getActivities : (NSMutableArray*) records offset: (NSInteger) offset max: (NSInteger) max projectId: (NSString*) projectId error:(NSError**) error {
+// http://biocollect-test.ala.org.au/bioActivity/searchProjectActivities?projectId=eccadc59-2dc5-44df-8aac-da41bcf17ba4&view=project&searhTerm=
+// http://biocollect-test.ala.org.au/bioActivity/searchProjectActivities?view=allrecords&searchTerm=test
+
+- (NSInteger) getActivities : (NSMutableArray*) records offset: (NSInteger) offset max: (NSInteger) max projectId: (NSString*) projectId query: (NSString*) query error:(NSError**) error {
     //Request projects.
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     NSString *url = nil;
     if(projectId) {
         url = [[NSString alloc] initWithFormat: @"%@%@?view=project&offset=%ld&max=%ld&projectId=%@", BIOCOLLECT_SERVER, BIO_ACTIVITIES, (long)offset, (long)max, projectId];
     } else {
-        url = [[NSString alloc] initWithFormat: @"%@%@?view=all&offset=%ld&max=%ld", BIOCOLLECT_SERVER, BIO_ACTIVITIES, (long)offset, (long)max];
+        url = [[NSString alloc] initWithFormat: @"%@%@?view=all&offset=%ld&max=%ld&searchTerm=%@", BIOCOLLECT_SERVER, BIO_ACTIVITIES, (long)offset, (long)max, query];
     }
     
     NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];

@@ -12,9 +12,10 @@
 #import "MRProgressOverlayView.h"
 
 @implementation RecordsTableViewController
-#define DEFAULT_MAX      20
-#define DEFAULT_OFFSET    0
-@synthesize  records, appDelegate, bioProjectService, totalRecords, offset, loadingFinished;
+#define DEFAULT_MAX     20
+#define DEFAULT_OFFSET  0
+#define SEARCH_LENGTH   3
+@synthesize  records, appDelegate, bioProjectService, totalRecords, offset, loadingFinished, isSearching, query;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *) nibBundleOrNil {
@@ -25,14 +26,12 @@
         self.records = [[NSMutableArray alloc]init];
         self.offset = DEFAULT_OFFSET;
         self.loadingFinished = TRUE;
-        self.tableView.backgroundView = [[UIImageView alloc] initWithImage:
-                                         [UIImage imageNamed:@"background.png"]];
-        
+        self.query = @"";
+        self.isSearching = NO;
 
         UIBarButtonItem *syncButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"sync-25"] style:UIBarButtonItemStyleBordered
                                                                       target:self action:@selector(resetAndDownloadProjects)];
         self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:syncButton,nil];
-
     }
     return self;
 }
@@ -41,11 +40,11 @@
     [super viewDidLoad];
 }
 
-- (void)viewWillAppear:(BOOL)animated{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 }
 
--(void)viewDidAppear:(BOOL)animated{
+-(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 }
 
@@ -67,8 +66,10 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     NSString *title = nil;
-    if(self.loadingFinished){
-        title = [[NSString alloc] initWithFormat:@"Found %ld records", self.totalRecords];
+    if(self.isSearching) {
+        title = @"";
+    } else if(self.loadingFinished){
+        title = [[NSString alloc] initWithFormat:@"Found %ld records", (long)self.totalRecords];
     } else{
         title = [[NSString alloc] initWithFormat:@"Loading..."];
     }
@@ -116,7 +117,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath {
-    if(indexPath.section == 0){
+    if(indexPath.section == 0) {
         //Show next level depth.
         GAActivity *activity =  [self.records objectAtIndex:indexPath.row];
         
@@ -139,6 +140,7 @@
     }
 }
 
+
 - (void) load {
     if(self.totalRecords != 0 && [self.records count] != 0 && self.totalRecords  == [self.records count]) {
         //Reached the max.
@@ -147,7 +149,7 @@
         self.loadingFinished = FALSE;
         NSError *error = nil;
         NSString *projectId = self.project ? self.project.projectId : nil;
-        NSInteger total = [self.bioProjectService getActivities: records offset:self.offset max:DEFAULT_MAX projectId: projectId error:&error];
+        NSInteger total = [self.bioProjectService getActivities: records offset:self.offset max:DEFAULT_MAX projectId: projectId query:self.query error:&error];
         DebugLog(@"%lu || %ld || %ld",(unsigned long)[self.bioProjects count], self.offset, total);
         if(error == nil && total > 0) {
             self.totalRecords = total;
@@ -158,20 +160,19 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    
     UILabel *myLabel = [[UILabel alloc] init];
     myLabel.frame = CGRectMake(20, 8, 320, 20);
+    
     myLabel.text = [self tableView:tableView titleForHeaderInSection:section];
-    myLabel.textColor = [UIColor whiteColor];
+    myLabel.textColor = [UIColor colorWithRed:200.0/255.0 green:77.0/255.0 blue:117.0/255.0 alpha:1];
     UIView *headerView = [[UIView alloc] init];
-
     [headerView addSubview:myLabel];
     
     return headerView;
 }
 
 
--(void) resetAndDownloadProjects{
+-(void) resetAndDownloadProjects {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_async(dispatch_get_main_queue(), ^{
             [MRProgressOverlayView showOverlayAddedTo:self.appDelegate.window title:@"Downloading.." mode:MRProgressOverlayViewModeIndeterminateSmall animated:YES];
@@ -189,9 +190,7 @@
             [self.tableView reloadData];
         });
     });
-    
 }
-
 
 -(void) downloadProjects {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -200,6 +199,69 @@
             [self.tableView reloadData];
         });
     });
+}
+
+# pragma Records Handler
+- (void) searchRecords :(NSString*) searchString{
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [self searchIndicator: spinner searching:TRUE];
+
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self.records removeAllObjects];
+        self.totalRecords = 0;
+        self.offset = DEFAULT_OFFSET;
+        self.query = searchString;
+        [self load];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self searchIndicator: spinner searching:FALSE];
+            [self.searchDisplayController.searchResultsTableView reloadData];
+        });
+    });
+}
+
+-(void) searchIndicator: (UIActivityIndicatorView *) spinner searching: (BOOL) searching {
+    if(searching) {
+        spinner.center = self.view.center;
+        [self.searchDisplayController.searchResultsTableView addSubview : spinner];
+        [spinner startAnimating];
+    } else{
+        [spinner stopAnimating];
+    }
+
+    UITableView *tableView = self.searchDisplayController.searchResultsTableView;
+    for( UIView *subview in tableView.subviews ) {
+        if( [subview class] == [UILabel class] ) {
+            UILabel *lbl = (UILabel*)subview; // sv changed to subview.
+            lbl.text = searching ? @"Searching..." : @"No Results";
+        }
+    }
+}
+
+#pragma mark - UISearchDisplayControllerDelegate
+- (void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller {
+    //When the user taps the search bar, this means that the controller will begin searching.
+    isSearching = YES;
+}
+
+- (void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller {
+    //When the user taps the Cancel Button, or anywhere aside from the view.
+    isSearching = NO;
+    [self searchRecords :@""];
     
 }
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+    if(isSearching && [searchString length] >= SEARCH_LENGTH) {
+        [self searchRecords :searchString];
+    }
+    
+    // Return YES to cause the search result table view to be reloaded.
+    return NO;
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption {
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
+}
+
 @end
