@@ -15,7 +15,7 @@
 #define DEFAULT_MAX     20
 #define DEFAULT_OFFSET  0
 #define SEARCH_LENGTH   3
-@synthesize  records, appDelegate, bioProjectService, totalRecords, offset, loadingFinished, isSearching, query;
+@synthesize  records, appDelegate, bioProjectService, totalRecords, offset, loadingFinished, isSearching, query, spinner;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *) nibBundleOrNil {
@@ -32,6 +32,7 @@
         UIBarButtonItem *syncButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"sync-25"] style:UIBarButtonItemStyleBordered
                                                                       target:self action:@selector(resetAndDownloadProjects)];
         self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:syncButton,nil];
+        spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     }
     return self;
 }
@@ -203,8 +204,8 @@
 
 # pragma Records Handler
 - (void) searchRecords :(NSString*) searchString{
-    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    [self searchIndicator: spinner searching:TRUE];
+    //UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [self searchIndicator:TRUE];
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [self.records removeAllObjects];
@@ -213,19 +214,19 @@
         self.query = searchString;
         [self load];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self searchIndicator: spinner searching:FALSE];
+            [self searchIndicator:FALSE];
             [self.searchDisplayController.searchResultsTableView reloadData];
         });
     });
 }
 
--(void) searchIndicator: (UIActivityIndicatorView *) spinner searching: (BOOL) searching {
+-(void) searchIndicator: (BOOL) searching {
     if(searching) {
-        spinner.center = self.view.center;
+        self.spinner.center = self.view.center;
         [self.searchDisplayController.searchResultsTableView addSubview : spinner];
-        [spinner startAnimating];
+        [self.spinner startAnimating];
     } else{
-        [spinner stopAnimating];
+        [self.spinner stopAnimating];
     }
 
     UITableView *tableView = self.searchDisplayController.searchResultsTableView;

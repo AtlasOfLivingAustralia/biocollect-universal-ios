@@ -18,6 +18,7 @@
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 @property (nonatomic, strong) NSMutableArray *records;
 @property (nonatomic, strong) GAProject *project;
+@property (nonatomic, strong) UIActivityIndicatorView *spinner;
 
 //Pagination info.
 @property (nonatomic, assign) NSInteger totalRecords;
