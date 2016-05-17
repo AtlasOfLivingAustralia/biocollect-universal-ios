@@ -208,13 +208,13 @@
 - (void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller {
     //When the user taps the Cancel Button, or anywhere aside from the view.
     isSearching = NO;
-    [self searchProjects :@""];
+    [self searchProjects :@"" cancelTriggered:TRUE];
     
 }
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
     if(isSearching && [searchString length] >= SEARCH_LENGTH) {
-        [self searchProjects :searchString];
+        [self searchProjects :searchString cancelTriggered:FALSE];
     }
    
     // Return YES to cause the search result table view to be reloaded.
@@ -276,18 +276,22 @@
 
 # pragma Project Results Handler
 
-- (void) searchProjects :(NSString*) searchString{
+- (void) searchProjects :(NSString*) searchString cancelTriggered: (BOOL) cancelTriggered {
     [self searchIndicator:TRUE];
+    [self.bioProjects removeAllObjects];
+    self.totalProjects = 0;
+    self.offset = DEFAULT_OFFSET;
+    self.query = searchString;
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self.bioProjects removeAllObjects];
-        self.totalProjects = 0;
-        self.offset = DEFAULT_OFFSET;
-        self.query = searchString;
         [self load];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self searchIndicator:FALSE];
-            [self.searchDisplayController.searchResultsTableView reloadData];
+            if(cancelTriggered) {
+                [self.tableView reloadData];
+            } else {
+                [self.searchDisplayController.searchResultsTableView reloadData];
+            }
         });
     });
 }
