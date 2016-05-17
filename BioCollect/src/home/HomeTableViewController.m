@@ -19,12 +19,11 @@
 @synthesize  bioProjects, appDelegate, bioProjectService, totalProjects, offset, query, loadingFinished, isSearching, spinner;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *) nibBundleOrNil {
-    self.appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.bioProjectService = self.appDelegate.bioProjectService;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    
     if (self) {
         //Initialise
+        self.appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+        self.bioProjectService = self.appDelegate.bioProjectService;
         self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         self.recordsTableView = [[RecordsTableViewController alloc] initWithNibName:@"RecordsTableViewController" bundle:nil];
         self.bioProjects = [[NSMutableArray alloc]init];
@@ -294,6 +293,7 @@
 }
 
 -(void) searchIndicator: (BOOL) searching {
+    
     if(searching) {
         self.spinner.center = self.view.center;
         [self.searchDisplayController.searchResultsTableView addSubview : spinner];

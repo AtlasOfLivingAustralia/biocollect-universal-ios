@@ -112,19 +112,22 @@
     recordsNC.navigationBar.topItem.title = @"All Records";
     
     //Help
-    ContactVC  *contactVC = [[ContactVC alloc] initWithNibName:@"ContactVC" bundle:nil];
+    ContactVC  *contactVC = nil;
+
+    //About
+    UIViewController *aboutVC = nil;
+    if ( IDIOM == IPAD ){
+        contactVC = [[ContactVC alloc] initWithNibName:@"ContactVC" bundle:nil];
+        aboutVC = [[UIViewController alloc] initWithNibName:@"GAAboutVC" bundle:nil];
+    } else {
+        contactVC = [[ContactVC alloc] initWithNibName:@"ContactiPhoneVC" bundle:nil];
+        aboutVC = [[UIViewController alloc] initWithNibName:@"AboutiPhoneView" bundle:nil];
+    }
+    
     UINavigationController *contactNC =  [[UINavigationController alloc] initWithRootViewController:contactVC];
     contactNC.tabBarItem.image = [UIImage imageNamed:@"help_filled-25"];
     contactNC.tabBarItem.title = @"Contact";
     contactNC.navigationBar.topItem.title = @"Contact";
-    
-    //About
-    UIViewController *aboutVC = nil;
-    if ( IDIOM == IPAD ){
-       aboutVC = [[UIViewController alloc] initWithNibName:@"GAAboutVC" bundle:nil];
-    } else{
-       aboutVC = [[UIViewController alloc] initWithNibName:@"AboutiPhoneView" bundle:nil];
-    }
     
     UINavigationController *aboutNC =  [[UINavigationController alloc] initWithRootViewController:aboutVC];
     aboutNC.tabBarItem.title = @"About";

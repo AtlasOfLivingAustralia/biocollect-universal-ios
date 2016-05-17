@@ -70,6 +70,7 @@
 		E20D1B5A1CDC72BA00A3607B /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = E20D1B591CDC72BA00A3607B /* background.png */; };
 		E211B04A1CE18A3E00DBC1AF /* 512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = E211B0491CE18A3E00DBC1AF /* 512x512.png */; };
 		E211B04C1CE18BC500DBC1AF /* BioCollect-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E211B04B1CE18BC500DBC1AF /* BioCollect-logo.png */; };
+		E21BCB7E1CEAA1A200FFFE5F /* ContactiPhoneVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E21BCB7D1CEAA1A200FFFE5F /* ContactiPhoneVC.xib */; };
 		E22045C0192C755A00531116 /* search_bk_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E22045BF192C755A00531116 /* search_bk_red@2x.png */; };
 		E22045C2192D7C8F00531116 /* briefcase_filled-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E22045C1192D7C8F00531116 /* briefcase_filled-25@2x.png */; };
 		E22045C4192D7D0B00531116 /* help_filled-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E22045C3192D7D0B00531116 /* help_filled-25@2x.png */; };
@@ -272,6 +273,7 @@
 		E20D1B591CDC72BA00A3607B /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = src/images/background.png; sourceTree = "<group>"; };
 		E211B0491CE18A3E00DBC1AF /* 512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 512x512.png; path = src/images/512x512.png; sourceTree = "<group>"; };
 		E211B04B1CE18BC500DBC1AF /* BioCollect-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BioCollect-logo.png"; path = "src/images/BioCollect-logo.png"; sourceTree = "<group>"; };
+		E21BCB7D1CEAA1A200FFFE5F /* ContactiPhoneVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ContactiPhoneVC.xib; path = src/contact/ContactiPhoneVC.xib; sourceTree = "<group>"; };
 		E22045BF192C755A00531116 /* search_bk_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "search_bk_red@2x.png"; path = "src/images/search_bk_red@2x.png"; sourceTree = "<group>"; };
 		E22045C1192D7C8F00531116 /* briefcase_filled-25@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "briefcase_filled-25@2x.png"; path = "src/images/briefcase_filled-25@2x.png"; sourceTree = "<group>"; };
 		E22045C3192D7D0B00531116 /* help_filled-25@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help_filled-25@2x.png"; path = "src/images/help_filled-25@2x.png"; sourceTree = "<group>"; };
@@ -665,6 +667,7 @@
 				E24E0B261CE403D9006ECE0E /* ContactVC.h */,
 				E24E0B271CE40402006ECE0E /* ContactVC.m */,
 				E24E0B291CE40464006ECE0E /* ContactVC.xib */,
+				E21BCB7D1CEAA1A200FFFE5F /* ContactiPhoneVC.xib */,
 			);
 			name = contact;
 			sourceTree = "<group>";
@@ -1023,6 +1026,7 @@
 				E23AF50C1C8FAE59002501F3 /* HomeWebView.xib in Resources */,
 				E2E56A981922E6D6007AC38C /* nochange@2x.png in Resources */,
 				E2E3AAD818F4E65E0005BB9E /* GADetailActivitiesTableViewController.xib in Resources */,
+				E21BCB7E1CEAA1A200FFFE5F /* ContactiPhoneVC.xib in Resources */,
 				E22045C8192D7E5900531116 /* pad@2x.png in Resources */,
 				E2CCED02190F82E6003655B7 /* started@2x.png in Resources */,
 				E25185FC1CD9E13F0068B4E0 /* EULAiPhoneViewController.xib in Resources */,
