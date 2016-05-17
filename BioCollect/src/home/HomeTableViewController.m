@@ -13,10 +13,10 @@
 #import "MRProgressOverlayView.h"
 
 @implementation HomeTableViewController
-#define DEFAULT_MAX       20
-#define DEFAULT_OFFSET    0
-
-@synthesize  bioProjects, appDelegate, bioProjectService, totalProjects, offset, query, loadingFinished, isSearching;
+#define DEFAULT_MAX     20
+#define DEFAULT_OFFSET  0
+#define SEARCH_LENGTH   3
+@synthesize  bioProjects, appDelegate, bioProjectService, totalProjects, offset, query, loadingFinished, isSearching, spinner;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *) nibBundleOrNil {
     self.appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -25,6 +25,7 @@
     
     if (self) {
         //Initialise
+        self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         self.recordsTableView = [[RecordsTableViewController alloc] initWithNibName:@"RecordsTableViewController" bundle:nil];
         self.bioProjects = [[NSMutableArray alloc]init];
         self.offset = DEFAULT_OFFSET;
@@ -105,16 +106,12 @@
     if([self.bioProjects count] > 0) {
         GAProject *project = [self.bioProjects objectAtIndex:indexPath.row];
         cell.textLabel.text = project.projectName;
-        
         cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@", project.description];
-
         NSString *url = [[NSString alloc] initWithFormat: @"%@", project.urlImage];
         NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-
         [cell.imageView sd_setImageWithURL:[NSURL URLWithString:escapedUrlString] placeholderImage:[UIImage imageNamed:@"icon-placeholder.png"]];
-
     }
-    
+
     return cell;
 }
 
@@ -212,27 +209,19 @@
 - (void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller {
     //When the user taps the Cancel Button, or anywhere aside from the view.
     isSearching = NO;
+    [self searchProjects :@""];
     
-    [self.bioProjects removeAllObjects];
-    self.totalProjects = 0;
-    self.offset = DEFAULT_OFFSET;
-    self.query = @"";
-    [self load];
 }
 
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
-{
-    if(isSearching && [searchString length] >= 3) {
-        [self.bioProjects removeAllObjects];
-        self.totalProjects = 0;
-        self.offset = DEFAULT_OFFSET;
-        self.query = searchString;
-        [self load];
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+    if(isSearching && [searchString length] >= SEARCH_LENGTH) {
+        [self searchProjects :searchString];
     }
-
+   
     // Return YES to cause the search result table view to be reloaded.
-    return YES;
+    return NO;
 }
+
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption
 {
@@ -240,8 +229,7 @@
     return YES;
 }
 
-
-#pragma mark - Project Search
+#pragma mark - Project table view handler
 
 -(void) resetAndDownloadProjects
 {
@@ -285,6 +273,42 @@
         [MRProgressOverlayView dismissOverlayForView:self.appDelegate.window animated:NO];
         [self.tableView reloadData];
     });
+}
+
+# pragma Project Results Handler
+
+- (void) searchProjects :(NSString*) searchString{
+    [self searchIndicator:TRUE];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self.bioProjects removeAllObjects];
+        self.totalProjects = 0;
+        self.offset = DEFAULT_OFFSET;
+        self.query = searchString;
+        [self load];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self searchIndicator:FALSE];
+            [self.searchDisplayController.searchResultsTableView reloadData];
+        });
+    });
+}
+
+-(void) searchIndicator: (BOOL) searching {
+    if(searching) {
+        self.spinner.center = self.view.center;
+        [self.searchDisplayController.searchResultsTableView addSubview : spinner];
+        [self.spinner startAnimating];
+    } else{
+        [self.spinner stopAnimating];
+    }
+    
+    UITableView *tableView = self.searchDisplayController.searchResultsTableView;
+    for( UIView *subview in tableView.subviews ) {
+        if( [subview class] == [UILabel class] ) {
+            UILabel *lbl = (UILabel*)subview;
+            lbl.text = searching ? @"Searching..." : @"No Results";
+        }
+    }
 }
 
 @end

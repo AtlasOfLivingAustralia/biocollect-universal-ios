@@ -15,8 +15,7 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *homeTableView;
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
-
-@property (nonatomic, strong) NSMutableArray * bioProjects;
+@property (nonatomic, strong) UIActivityIndicatorView *spinner;
 
 //Pagination info.
 @property (nonatomic, strong) NSString * query;
@@ -30,6 +29,8 @@
 @property (nonatomic, strong) GAAppDelegate *appDelegate;
 @property (nonatomic, strong) BioProjectService *bioProjectService;
 @property (nonatomic, strong) RecordsTableViewController *recordsTableView;
+@property (nonatomic, strong) NSMutableArray * bioProjects;
 -(void) resetProjects;
+
 @end
 
