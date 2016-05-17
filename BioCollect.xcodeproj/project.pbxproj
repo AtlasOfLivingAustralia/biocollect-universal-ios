@@ -71,6 +71,8 @@
 		E211B04A1CE18A3E00DBC1AF /* 512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = E211B0491CE18A3E00DBC1AF /* 512x512.png */; };
 		E211B04C1CE18BC500DBC1AF /* BioCollect-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E211B04B1CE18BC500DBC1AF /* BioCollect-logo.png */; };
 		E21BCB7E1CEAA1A200FFFE5F /* ContactiPhoneVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E21BCB7D1CEAA1A200FFFE5F /* ContactiPhoneVC.xib */; };
+		E21CD17F1CEAF7E80021536B /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E21CD17E1CEAF7E80021536B /* Images-2.xcassets */; };
+		E21CD1831CEAF8E10021536B /* JGActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = E21CD1821CEAF8E10021536B /* JGActionSheet.m */; };
 		E22045C0192C755A00531116 /* search_bk_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E22045BF192C755A00531116 /* search_bk_red@2x.png */; };
 		E22045C2192D7C8F00531116 /* briefcase_filled-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E22045C1192D7C8F00531116 /* briefcase_filled-25@2x.png */; };
 		E22045C4192D7D0B00531116 /* help_filled-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E22045C3192D7D0B00531116 /* help_filled-25@2x.png */; };
@@ -274,6 +276,9 @@
 		E211B0491CE18A3E00DBC1AF /* 512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 512x512.png; path = src/images/512x512.png; sourceTree = "<group>"; };
 		E211B04B1CE18BC500DBC1AF /* BioCollect-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BioCollect-logo.png"; path = "src/images/BioCollect-logo.png"; sourceTree = "<group>"; };
 		E21BCB7D1CEAA1A200FFFE5F /* ContactiPhoneVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ContactiPhoneVC.xib; path = src/contact/ContactiPhoneVC.xib; sourceTree = "<group>"; };
+		E21CD17E1CEAF7E80021536B /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
+		E21CD1811CEAF8E10021536B /* JGActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JGActionSheet.h; path = src/JGActionSheet/JGActionSheet.h; sourceTree = "<group>"; };
+		E21CD1821CEAF8E10021536B /* JGActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JGActionSheet.m; path = src/JGActionSheet/JGActionSheet.m; sourceTree = "<group>"; };
 		E22045BF192C755A00531116 /* search_bk_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "search_bk_red@2x.png"; path = "src/images/search_bk_red@2x.png"; sourceTree = "<group>"; };
 		E22045C1192D7C8F00531116 /* briefcase_filled-25@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "briefcase_filled-25@2x.png"; path = "src/images/briefcase_filled-25@2x.png"; sourceTree = "<group>"; };
 		E22045C3192D7D0B00531116 /* help_filled-25@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help_filled-25@2x.png"; path = "src/images/help_filled-25@2x.png"; sourceTree = "<group>"; };
@@ -620,6 +625,15 @@
 			name = SDWebImage;
 			sourceTree = "<group>";
 		};
+		E21CD1801CEAF89F0021536B /* JGActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				E21CD1811CEAF8E10021536B /* JGActionSheet.h */,
+				E21CD1821CEAF8E10021536B /* JGActionSheet.m */,
+			);
+			name = JGActionSheet;
+			sourceTree = "<group>";
+		};
 		E23586D318FBB27900EE6D13 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
@@ -785,6 +799,7 @@
 				E2E3AA9318F4D2940005BB9E /* Supporting Files */,
 				E291220E1CDAC425005D9638 /* LaunchScreen~ipad.storyboard */,
 				E20D1B571CDC570800A3607B /* LaunchScreen.storyboard */,
+				E21CD17E1CEAF7E80021536B /* Images-2.xcassets */,
 			);
 			path = BioCollect;
 			sourceTree = "<group>";
@@ -878,6 +893,7 @@
 		E2E56A8619209128007AC38C /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				E21CD1801CEAF89F0021536B /* JGActionSheet */,
 				E201898B1C895E5A0031435D /* SDWebImage */,
 				B83825D71A0C666B00690383 /* MRActivityUI */,
 			);
@@ -1070,6 +1086,7 @@
 				E2A2FFD11C854EDD008B63A8 /* BioCollect-logo 1.png in Resources */,
 				E29A35421966781C003D025D /* searchbar_bk@2x.png in Resources */,
 				E2F471C41C86827B00594DAB /* HomeTableViewController.xib in Resources */,
+				E21CD17F1CEAF7E80021536B /* Images-2.xcassets in Resources */,
 				E2B627511CE4119A00A89179 /* BioCollect-text-small.png in Resources */,
 				E22045C0192C755A00531116 /* search_bk_red@2x.png in Resources */,
 				E2F8E56719108A640093A3D3 /* Icon-40@2x.png in Resources */,
@@ -1108,6 +1125,7 @@
 				E2E56B2C1925CB7F007AC38C /* GACreateSiteModalViewController.m in Sources */,
 				E29A354719667925003D025D /* GAAboutVC.m in Sources */,
 				B8D551DE18F952DF00EDD006 /* GARestCall.m in Sources */,
+				E21CD1831CEAF8E10021536B /* JGActionSheet.m in Sources */,
 				E20189CB1C8963640031435D /* SDWebImageCompat.m in Sources */,
 				E2B4BEEE1C896E270054F117 /* HomeCustomCell.m in Sources */,
 				E20189D31C8963640031435D /* SDWebImageManager.m in Sources */,
@@ -1292,7 +1310,7 @@
 		E2E3AAB618F4D2940005BB9E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = BioCollectIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = BioCollect;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1311,7 +1329,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.tablet.biocollect;
+				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.biocollect;
 				PRODUCT_NAME = BioCollect;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1322,7 +1340,7 @@
 		E2E3AAB718F4D2940005BB9E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = BioCollectIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = BioCollect;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1336,7 +1354,7 @@
 					"$(PROJECT_DIR)/BioCollect/src/Framework",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.tablet.biocollect;
+				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.biocollect;
 				PRODUCT_NAME = BioCollect;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
