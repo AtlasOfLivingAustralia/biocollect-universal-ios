@@ -66,7 +66,7 @@
 		E20284971C87D59300E8203F /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E20284961C87D59300E8203F /* HomeTableViewController.m */; };
 		E20284981C87D59300E8203F /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E20284961C87D59300E8203F /* HomeTableViewController.m */; };
 		E20D1B561CDC145100A3607B /* AboutiPhoneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E20D1B551CDC145100A3607B /* AboutiPhoneView.xib */; };
-		E20D1B581CDC570800A3607B /* LaunchScreen~iphone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E20D1B571CDC570800A3607B /* LaunchScreen~iphone.storyboard */; };
+		E20D1B581CDC570800A3607B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E20D1B571CDC570800A3607B /* LaunchScreen.storyboard */; };
 		E20D1B5A1CDC72BA00A3607B /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = E20D1B591CDC72BA00A3607B /* background.png */; };
 		E211B04A1CE18A3E00DBC1AF /* 512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = E211B0491CE18A3E00DBC1AF /* 512x512.png */; };
 		E211B04C1CE18BC500DBC1AF /* BioCollect-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E211B04B1CE18BC500DBC1AF /* BioCollect-logo.png */; };
@@ -269,7 +269,7 @@
 		E20284951C87D56400E8203F /* HomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeTableViewController.h; path = src/home/HomeTableViewController.h; sourceTree = "<group>"; };
 		E20284961C87D59300E8203F /* HomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeTableViewController.m; path = src/home/HomeTableViewController.m; sourceTree = "<group>"; };
 		E20D1B551CDC145100A3607B /* AboutiPhoneView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutiPhoneView.xib; path = src/about/AboutiPhoneView.xib; sourceTree = "<group>"; };
-		E20D1B571CDC570800A3607B /* LaunchScreen~iphone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "LaunchScreen~iphone.storyboard"; path = "src/LaunchScreen~iphone.storyboard"; sourceTree = "<group>"; };
+		E20D1B571CDC570800A3607B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = src/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E20D1B591CDC72BA00A3607B /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = src/images/background.png; sourceTree = "<group>"; };
 		E211B0491CE18A3E00DBC1AF /* 512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 512x512.png; path = src/images/512x512.png; sourceTree = "<group>"; };
 		E211B04B1CE18BC500DBC1AF /* BioCollect-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BioCollect-logo.png"; path = "src/images/BioCollect-logo.png"; sourceTree = "<group>"; };
@@ -784,7 +784,7 @@
 				E2E3AA9E18F4D2940005BB9E /* Images.xcassets */,
 				E2E3AA9318F4D2940005BB9E /* Supporting Files */,
 				E291220E1CDAC425005D9638 /* LaunchScreen~ipad.storyboard */,
-				E20D1B571CDC570800A3607B /* LaunchScreen~iphone.storyboard */,
+				E20D1B571CDC570800A3607B /* LaunchScreen.storyboard */,
 			);
 			path = BioCollect;
 			sourceTree = "<group>";
@@ -1056,7 +1056,7 @@
 				E22045CA192D7EDD00531116 /* profile@2x.png in Resources */,
 				E227E39C192CD30D00E22DC7 /* lock_filled-25@2x.png in Resources */,
 				E2F8E56B19108A640093A3D3 /* Icon-76@2x.png in Resources */,
-				E20D1B581CDC570800A3607B /* LaunchScreen~iphone.storyboard in Resources */,
+				E20D1B581CDC570800A3607B /* LaunchScreen.storyboard in Resources */,
 				E2A2FFCD1C8547A5008B63A8 /* ala_logo1.png in Resources */,
 				E2E3AA9F18F4D2940005BB9E /* Images.xcassets in Resources */,
 				E29A354019667675003D025D /* GAHelpVC.xib in Resources */,
