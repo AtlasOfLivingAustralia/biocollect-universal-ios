@@ -141,6 +141,7 @@
 		E2CCED00190F82E6003655B7 /* finished@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2CCECFB190F82E6003655B7 /* finished@2x.png */; };
 		E2CCED01190F82E6003655B7 /* planned@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2CCECFC190F82E6003655B7 /* planned@2x.png */; };
 		E2CCED02190F82E6003655B7 /* started@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2CCECFD190F82E6003655B7 /* started@2x.png */; };
+		E2E24AC21CED4DDF00F6D4CA /* table-place-holder.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E24AC11CED4DDF00F6D4CA /* table-place-holder.png */; };
 		E2E3AA8D18F4D2940005BB9E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E3AA8C18F4D2940005BB9E /* Foundation.framework */; };
 		E2E3AA8F18F4D2940005BB9E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E3AA8E18F4D2940005BB9E /* CoreGraphics.framework */; };
 		E2E3AA9118F4D2940005BB9E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E3AA9018F4D2940005BB9E /* UIKit.framework */; };
@@ -368,6 +369,7 @@
 		E2CCECFB190F82E6003655B7 /* finished@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "finished@2x.png"; path = "src/images/finished@2x.png"; sourceTree = "<group>"; };
 		E2CCECFC190F82E6003655B7 /* planned@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "planned@2x.png"; path = "src/images/planned@2x.png"; sourceTree = "<group>"; };
 		E2CCECFD190F82E6003655B7 /* started@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "started@2x.png"; path = "src/images/started@2x.png"; sourceTree = "<group>"; };
+		E2E24AC11CED4DDF00F6D4CA /* table-place-holder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "table-place-holder.png"; path = "src/images/table-place-holder.png"; sourceTree = "<group>"; };
 		E2E3AA8918F4D2940005BB9E /* BioCollect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BioCollect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2E3AA8C18F4D2940005BB9E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E2E3AA8E18F4D2940005BB9E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -517,6 +519,7 @@
 		B8D551DF18F98B7800EDD006 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E2E24AC11CED4DDF00F6D4CA /* table-place-holder.png */,
 				E2B6274E1CE40F8800A89179 /* BioCollect-text.png */,
 				E211B04B1CE18BC500DBC1AF /* BioCollect-logo.png */,
 				E20D1B591CDC72BA00A3607B /* background.png */,
@@ -1054,6 +1057,7 @@
 				E241C686196A33B6002302D7 /* img in Resources */,
 				E291221B1CDB3BEC005D9638 /* background~ipad.png in Resources */,
 				E2E3AA9718F4D2940005BB9E /* InfoPlist.strings in Resources */,
+				E2E24AC21CED4DDF00F6D4CA /* table-place-holder.png in Resources */,
 				E29122151CDADE25005D9638 /* BioCollect-logo-01.png in Resources */,
 				E241C687196A33B6002302D7 /* js in Resources */,
 				E2F8E56619108A640093A3D3 /* Icon-40.png in Resources */,

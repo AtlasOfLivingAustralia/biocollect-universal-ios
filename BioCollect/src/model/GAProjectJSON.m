@@ -106,7 +106,13 @@
 }
 
 - (NSString *) urlImage {
-    return [self.projectJSONDictionary objectForKey:kUrlImage];
+    NSString *url = [self.projectJSONDictionary objectForKey:kUrlImage];
+    
+    if (url == (id)[NSNull null] || url.length == 0 ) {
+      url = [[[NSBundle mainBundle] URLForResource:@"table-place-holder" withExtension:@"png"] absoluteString];
+    }
+    
+    return url;
 }
 
 - (NSString *) urlWeb {

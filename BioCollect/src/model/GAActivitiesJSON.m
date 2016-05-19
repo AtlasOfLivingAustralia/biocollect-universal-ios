@@ -108,7 +108,13 @@
 }
 
 -(NSString *) thumbnailUrl {
-    return [self.activityJSONDictionary objectForKey:kThumbnailUrl];
+    NSString *url = [self.activityJSONDictionary objectForKey:kThumbnailUrl];
+    
+    if (url == (id)[NSNull null] || url.length == 0 ) {
+        url = [[[NSBundle mainBundle] URLForResource:@"table-place-holder" withExtension:@"png"] absoluteString];
+    }
+    
+    return url;
 }
 
 -(NSString *) outputs {

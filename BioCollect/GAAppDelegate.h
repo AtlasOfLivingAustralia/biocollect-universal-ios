@@ -18,6 +18,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UISplitViewController *splitViewController;
+@property (strong, nonatomic) UITabBarController  *tabBarController;
 
 
 //All Singleton classes

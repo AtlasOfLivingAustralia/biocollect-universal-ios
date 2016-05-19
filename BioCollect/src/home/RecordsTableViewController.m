@@ -100,7 +100,7 @@
         NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         
         [cell.imageView sd_setImageWithURL:[NSURL URLWithString:escapedUrlString]
-                          placeholderImage:[UIImage imageNamed:@"icon-placeholder.png"]];
+                          placeholderImage:[UIImage imageNamed:@"table-place-holder.png"]];
     }
     
     return cell;
