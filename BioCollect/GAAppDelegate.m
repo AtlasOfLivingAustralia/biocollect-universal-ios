@@ -32,7 +32,7 @@
 @end
 @implementation GAAppDelegate
 
-@synthesize splitViewController, projects,masterProjectVC, detailVC, restCall, sqlLite, loginViewController, eulaVC, homeVC, recordsVC, bioProjectService;
+@synthesize splitViewController, projects,masterProjectVC, detailVC, restCall, sqlLite, loginViewController, eulaVC, homeVC, recordsVC, bioProjectService,tabBarController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -135,7 +135,7 @@
     aboutNC.navigationBar.topItem.title = @"About";
     
     //Tab bars
-    UITabBarController  *tabBarController = [[UITabBarController alloc] init];
+    tabBarController = [[UITabBarController alloc] init];
     NSArray* controllers = [NSArray arrayWithObjects:homeNC, recordsNC,aboutNC,contactNC, nil];
     tabBarController.viewControllers = controllers;
 
@@ -169,8 +169,11 @@
     [self.homeVC resetProjects];
     [self.sqlLite deleteAllTables];
     [self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
-//  [self.loginViewController setModalPresentationStyle:UIMinimumKeepAliveTimeout];
-    [self.window.rootViewController presentViewController:self.loginViewController animated:NO completion:nil];
+    [UIView transitionWithView:self.window
+                      duration:0.5
+                       options:UIViewAnimationOptionTransitionFlipFromLeft
+                    animations:^{ self.window.rootViewController = self.loginViewController; }
+                    completion:nil];
 }
 
 -(NSString *) uploadChangedActivities : (NSError **) e{

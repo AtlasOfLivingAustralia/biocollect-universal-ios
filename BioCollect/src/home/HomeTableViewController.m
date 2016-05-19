@@ -12,15 +12,48 @@
 #import "HomeWebView.h"
 #import "MRProgressOverlayView.h"
 
+@interface HomeTableViewController()
+@property (strong, nonatomic) JGActionSheet *menu;
+@property (strong, nonatomic) JGActionSheetSection *projectStatus;
+@property (strong, nonatomic) JGActionSheetSection *dataShared;
+@property (strong, nonatomic) JGActionSheetSection *actionSection;
+@end
+
 @implementation HomeTableViewController
 #define DEFAULT_MAX     20
 #define DEFAULT_OFFSET  0
 #define SEARCH_LENGTH   3
-@synthesize  bioProjects, appDelegate, bioProjectService, totalProjects, offset, query, loadingFinished, isSearching, spinner;
+
+#define PROJECT_ACTIVE @"active"
+#define PROJECT_COMPLETED @"completed"
+
+#define PROJECT_ACTIVE_STR @"Active ✅"
+#define PROJECT_COMPLETED_STR @"Completed ✅"
+#define PROJECT_ACTIVE_CROSS_STR @"Active"
+#define PROJECT_COMPLETED_CROSS_STR @"Completed" // ❌
+
+#define DATA_SHARING_STR @"Contributing data to the ALA ✅"
+#define DATA_SHARING_CROSS_STR @"Contributing data to the ALA"
+
+#define FILTER_SECTION_STATUS   0
+#define FILTER_SECTION_SHARING  FILTER_SECTION_STATUS   + 1
+#define FILTER_SECTION_DONE     FILTER_SECTION_SHARING  + 1
+
+#define FILTER_STATUS_ACTIVE    0
+#define FILTER_STATUS_COMPLETED FILTER_STATUS_ACTIVE + 1
+
+#define FILTER_SHARING    0
+
+#define FILTER_SECTION_RESET 0
+#define FILTER_SECTION_OK FILTER_SECTION_RESET + 1
+
+@synthesize  bioProjects, appDelegate, bioProjectService, totalProjects, offset, query, loadingFinished, isSearching, spinner, activeChecked, completedChecked, searchParams, dataSharingChecked;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *) nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+
     if (self) {
+        
         //Initialise
         self.appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
         self.bioProjectService = self.appDelegate.bioProjectService;
@@ -30,12 +63,21 @@
         self.offset = DEFAULT_OFFSET;
         self.loadingFinished = TRUE;
         self.query = @"";
+        self.searchParams = @"";
+        self.activeChecked = FALSE;
+        self.completedChecked = FALSE;
+        self.dataSharingChecked = FALSE;
+        
         self.isSearching = NO;
 
         //Set bar button.
+        UIBarButtonItem *menuSheet = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"action-25"]
+                                                                        style:UIBarButtonItemStyleBordered
+                                                                       target:self action:@selector(showMenu:)];
+        
         UIBarButtonItem *syncButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"sync-25"] style:UIBarButtonItemStyleBordered target:self action:@selector(resetAndDownloadProjects)];
         UIBarButtonItem *signout = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"lock_filled-25"] style:UIBarButtonItemStyleBordered target:self.appDelegate.loginViewController action:@selector(logout)];
-        self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects: signout,syncButton,nil];
+        self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects: signout,syncButton, menuSheet,nil];
         
         UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BioCollect-text-small"]];
         imageView.contentMode = UIViewContentModeCenter;
@@ -43,6 +85,101 @@
     }
     
     return self;
+}
+
+-(void)showMenu:(id)sender
+{
+    if(self.menu == nil) {
+       
+        self.projectStatus = [JGActionSheetSection sectionWithTitle:@"Filter by"
+                                                                message:@"Project Status"
+                                                                buttonTitles:@[PROJECT_ACTIVE_CROSS_STR, PROJECT_COMPLETED_CROSS_STR]
+                                                                buttonStyle:JGActionSheetButtonStyleDefault];
+        [self.projectStatus setButtonStyle:JGActionSheetButtonStyleDefault forButtonAtIndex:0];
+        [self.projectStatus setButtonStyle:JGActionSheetButtonStyleDefault forButtonAtIndex:1];
+        
+        self.dataShared = [JGActionSheetSection sectionWithTitle:nil
+                                                                 message:@"Data Sharing"
+                                                                 buttonTitles:@[DATA_SHARING_CROSS_STR]
+                                                                 buttonStyle:JGActionSheetButtonStyleDefault];
+        [self.dataShared setButtonStyle:JGActionSheetButtonStyleDefault forButtonAtIndex:0];
+        
+        
+        self.actionSection = [JGActionSheetSection sectionWithTitle:nil message:nil buttonTitles:@[@"RESET", @"DONE"] buttonStyle:JGActionSheetButtonStyleGreen];
+        [self.actionSection setButtonStyle:JGActionSheetButtonStyleDefault forButtonAtIndex:0];
+        [self.actionSection setButtonStyle:JGActionSheetButtonStyleGreen forButtonAtIndex:1];
+        
+        NSArray *sections = @[self.projectStatus, self.dataShared, self.actionSection];
+        self.menu = [JGActionSheet actionSheetWithSections: sections];
+        
+        //Assign delegate.
+        [self.menu setDelegate:self];
+    }
+    
+    // Fix to prevent menu disappearing from the screen. 
+    [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
+    [self.menu showInView:self.view animated:YES];
+    
+}
+
+- (void)actionSheet:(JGActionSheet *)actionSheet pressedButtonAtIndexPath:(NSIndexPath *)indexPath{
+    NSString *statusParam;
+    NSString *dataSharingParam;
+    
+    switch(indexPath.section) {
+        case FILTER_SECTION_STATUS:
+            if(indexPath.row == FILTER_STATUS_ACTIVE) {
+                self.activeChecked = self.activeChecked ? FALSE : TRUE;
+                [self.projectStatus setButtonStyle:JGActionSheetButtonStyleDefault forButtonAtIndex:0 newTitle: self.activeChecked ? PROJECT_ACTIVE_STR : PROJECT_ACTIVE_CROSS_STR];
+            } else if (indexPath.row == FILTER_STATUS_COMPLETED) {
+                self.completedChecked = self.completedChecked ? FALSE : TRUE;
+                [self.projectStatus setButtonStyle:JGActionSheetButtonStyleDefault forButtonAtIndex:1 newTitle: self.completedChecked ? PROJECT_COMPLETED_STR : PROJECT_COMPLETED_CROSS_STR];
+            }
+            break;
+            
+        case FILTER_SECTION_SHARING:
+            if(indexPath.row == FILTER_SHARING) {
+                self.dataSharingChecked = self.dataSharingChecked ? FALSE : TRUE;
+                [self.dataShared setButtonStyle:JGActionSheetButtonStyleDefault forButtonAtIndex:0 newTitle: self.dataSharingChecked ? DATA_SHARING_STR : DATA_SHARING_CROSS_STR];
+                
+            }
+            break;
+
+        case FILTER_SECTION_DONE:
+            if(indexPath.row == FILTER_SECTION_RESET) {
+                self.activeChecked = FALSE;
+                self.completedChecked = FALSE;
+                self.dataSharingChecked = FALSE;
+                
+                [self.projectStatus setButtonStyle:JGActionSheetButtonStyleDefault forButtonAtIndex:0 newTitle: self.activeChecked ? PROJECT_ACTIVE_STR : PROJECT_ACTIVE_CROSS_STR];
+                [self.projectStatus setButtonStyle:JGActionSheetButtonStyleDefault forButtonAtIndex:1 newTitle: self.completedChecked ? PROJECT_COMPLETED_STR : PROJECT_COMPLETED_CROSS_STR];
+                [self.dataShared setButtonStyle:JGActionSheetButtonStyleDefault forButtonAtIndex:0 newTitle: self.dataSharingChecked ? DATA_SHARING_STR : DATA_SHARING_CROSS_STR];
+            }
+            
+            if ((self.activeChecked && self.completedChecked) || (!self.activeChecked && !self.completedChecked)) {
+                statusParam = @"";
+            } else if(self.activeChecked) {
+                statusParam = @"&status=active";
+            } else if(self.completedChecked) {
+                statusParam = @"&status=completed";
+            }
+            
+            if(self.dataSharingChecked) {
+                dataSharingParam = @"&isContributingDataToAla=true";
+            } else {
+                dataSharingParam = @"&isContributingDataToAla=false";
+            }
+            
+            self.searchParams = [[NSString alloc]initWithFormat:@"%@%@",statusParam,dataSharingParam];
+            [actionSheet dismissAnimated:YES];
+            [self searchProjects :@"" cancelTriggered:TRUE];
+
+            
+            break;
+            
+        default:
+            break;
+    }
 }
 
 - (void)viewDidLoad {
@@ -108,7 +245,7 @@
         cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@", project.description];
         NSString *url = [[NSString alloc] initWithFormat: @"%@", project.urlImage];
         NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:escapedUrlString] placeholderImage:[UIImage imageNamed:@"icon-placeholder.png"]];
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:escapedUrlString] placeholderImage:[UIImage imageNamed:@"table-place-holder.png"]];
     }
 
     return cell;
@@ -174,7 +311,7 @@
     } else if(self.loadingFinished){
         self.loadingFinished = FALSE;
         NSError *error = nil;
-        NSInteger total = [self.bioProjectService getBioProjects: bioProjects offset:self.offset max:DEFAULT_MAX query: self.query error:&error];
+        NSInteger total = [self.bioProjectService getBioProjects: bioProjects offset:self.offset max:DEFAULT_MAX query: self.query params:self.searchParams error:&error];
         DebugLog(@"%lu || %ld || %ld",(unsigned long)[self.bioProjects count], self.offset, total);
         if(error == nil && total > 0) {
             self.totalProjects = total;
@@ -296,7 +433,7 @@
     });
 }
 
--(void) searchIndicator: (BOOL) searching {
+- (void) searchIndicator: (BOOL) searching {
     
     if(searching) {
         self.spinner.center = self.view.center;

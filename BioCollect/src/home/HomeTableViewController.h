@@ -10,8 +10,9 @@
 #import "BioProjectService.h"
 #import "UIImageView+WebCache.h"
 #import "RecordsTableViewController.h"
+#import "JGActionSheet.h"
 
-@interface HomeTableViewController :  UITableViewController <UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate>
+@interface HomeTableViewController :  UITableViewController <UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate, UIActionSheetDelegate, JGActionSheetDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *homeTableView;
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
@@ -21,7 +22,13 @@
 @property (nonatomic, strong) NSString * query;
 @property (nonatomic, assign) NSInteger totalProjects;
 @property (nonatomic, assign) NSInteger offset;
+@property (nonatomic, strong) NSString *searchParams;
 @property (nonatomic, assign) BOOL loadingFinished;
+@property (nonatomic, assign) BOOL activeChecked;
+@property (nonatomic, assign) BOOL completedChecked;
+@property (nonatomic, assign) BOOL dataSharingChecked;
+
+
 
 //Search flag
 @property (nonatomic, assign) BOOL isSearching;

@@ -40,10 +40,20 @@
 - (IBAction)onClickAgree:(id)sender{
     [GASettings setEULA:kEULAAgreed];
     GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+  
+    /*
     UIViewController* presentingViewController = self.presentingViewController;
     [self dismissViewControllerAnimated:NO completion:^{
         [presentingViewController presentViewController:appDelegate.loginViewController animated:NO completion:nil];
+     
     }];
+    */
+    [appDelegate.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
+    [UIView transitionWithView:appDelegate.window
+                      duration:0.5
+                       options:UIViewAnimationOptionTransitionFlipFromLeft
+                    animations:^{ appDelegate.window.rootViewController = appDelegate.loginViewController; }
+                    completion:nil];
 }
 
 @end
