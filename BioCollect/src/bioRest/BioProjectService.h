@@ -9,7 +9,7 @@
 @interface BioProjectService : NSObject
 
 // Get all projects.
-- (NSInteger) getBioProjects : (NSMutableArray*)projects offset: (NSInteger) offset max: (NSInteger) max query:(NSString*) query error:(NSError**) error;
+- (NSInteger) getBioProjects : (NSMutableArray*)projects offset: (NSInteger) offset max: (NSInteger) max query:(NSString*) query params:(NSString*) params error:(NSError**) error;
 
 // Get activities for the given projectId.
 - (NSInteger) getActivities : (NSMutableArray*) records offset: (NSInteger) offset max: (NSInteger) max projectId: (NSString*) projectId query:(NSString*) query error:(NSError**) error;

@@ -88,6 +88,12 @@
                 self.usernameTextField.text = @"";
                 //Dismiss the login modal
                 [appDelegate.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
+                
+                [UIView transitionWithView:appDelegate.window
+                                  duration:0.5
+                                   options:UIViewAnimationOptionTransitionFlipFromLeft
+                                animations:^{ appDelegate.window.rootViewController = appDelegate.tabBarController; }
+                                completion:nil];
             }
         });
     });
