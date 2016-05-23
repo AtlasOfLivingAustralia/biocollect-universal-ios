@@ -114,6 +114,12 @@
 		E25185FC1CD9E13F0068B4E0 /* EULAiPhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E25185FB1CD9E13F0068B4E0 /* EULAiPhoneViewController.xib */; };
 		E252EE6A193579BE0005B101 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E252EE69193579BE0005B101 /* CoreData.framework */; };
 		E252EE6C193579C60005B101 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E252EE6B193579C60005B101 /* SystemConfiguration.framework */; };
+		E2636DD71CF2E57C00000371 /* about_filled-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2636DD21CF2E57C00000371 /* about_filled-25@2x.png */; };
+		E2636DD81CF2E57C00000371 /* box_filled-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2636DD31CF2E57C00000371 /* box_filled-25@2x.png */; };
+		E2636DD91CF2E57C00000371 /* brief_filled-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2636DD41CF2E57C00000371 /* brief_filled-25@2x.png */; };
+		E2636DDA1CF2E57C00000371 /* briefcase_filled-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2636DD51CF2E57C00000371 /* briefcase_filled-25@2x.png */; };
+		E2636DDB1CF2E57C00000371 /* contact_filled-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2636DD61CF2E57C00000371 /* contact_filled-25@2x.png */; };
+		E2636DDD1CF2E68500000371 /* home_filled-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2636DDC1CF2E68500000371 /* home_filled-25@2x.png */; };
 		E27BDFB618F78221001EE2F8 /* GAProjectJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E27BDFB518F78221001EE2F8 /* GAProjectJSON.m */; };
 		E27BDFD518F78D97001EE2F8 /* GASettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E27BDFD418F78D97001EE2F8 /* GASettings.m */; };
 		E27BDFD918F7AA07001EE2F8 /* GAActivitiesJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E27BDFD818F7AA07001EE2F8 /* GAActivitiesJSON.m */; };
@@ -334,6 +340,12 @@
 		E252EE69193579BE0005B101 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		E252EE6B193579C60005B101 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E252EE6D193579DC0005B101 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		E2636DD21CF2E57C00000371 /* about_filled-25@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "about_filled-25@2x.png"; path = "src/images/about_filled-25@2x.png"; sourceTree = "<group>"; };
+		E2636DD31CF2E57C00000371 /* box_filled-25@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "box_filled-25@2x.png"; path = "src/images/box_filled-25@2x.png"; sourceTree = "<group>"; };
+		E2636DD41CF2E57C00000371 /* brief_filled-25@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "brief_filled-25@2x.png"; path = "src/images/brief_filled-25@2x.png"; sourceTree = "<group>"; };
+		E2636DD51CF2E57C00000371 /* briefcase_filled-25@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "briefcase_filled-25@2x.png"; path = "src/images/briefcase_filled-25@2x.png"; sourceTree = "<group>"; };
+		E2636DD61CF2E57C00000371 /* contact_filled-25@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "contact_filled-25@2x.png"; path = "src/images/contact_filled-25@2x.png"; sourceTree = "<group>"; };
+		E2636DDC1CF2E68500000371 /* home_filled-25@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "home_filled-25@2x.png"; path = "src/images/home_filled-25@2x.png"; sourceTree = "<group>"; };
 		E27BDFB418F78221001EE2F8 /* GAProjectJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAProjectJSON.h; path = src/model/GAProjectJSON.h; sourceTree = "<group>"; };
 		E27BDFB518F78221001EE2F8 /* GAProjectJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAProjectJSON.m; path = src/model/GAProjectJSON.m; sourceTree = "<group>"; };
 		E27BDFD318F78D97001EE2F8 /* GASettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GASettings.h; path = src/settings/GASettings.h; sourceTree = "<group>"; };
@@ -519,6 +531,12 @@
 		B8D551DF18F98B7800EDD006 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E2636DDC1CF2E68500000371 /* home_filled-25@2x.png */,
+				E2636DD21CF2E57C00000371 /* about_filled-25@2x.png */,
+				E2636DD31CF2E57C00000371 /* box_filled-25@2x.png */,
+				E2636DD41CF2E57C00000371 /* brief_filled-25@2x.png */,
+				E2636DD51CF2E57C00000371 /* briefcase_filled-25@2x.png */,
+				E2636DD61CF2E57C00000371 /* contact_filled-25@2x.png */,
 				E2E24AC11CED4DDF00F6D4CA /* table-place-holder.png */,
 				E2B6274E1CE40F8800A89179 /* BioCollect-text.png */,
 				E211B04B1CE18BC500DBC1AF /* BioCollect-logo.png */,
@@ -1028,12 +1046,14 @@
 				E22045D2192D9EEC00531116 /* sync-25@2x.png in Resources */,
 				E23AF5231C918862002501F3 /* RecordWebView.xib in Resources */,
 				E2F8E56D19108A640093A3D3 /* Icon-Small@2x.png in Resources */,
+				E2636DD91CF2E57C00000371 /* brief_filled-25@2x.png in Resources */,
 				E2E3AAC318F4D9070005BB9E /* GALogin.xib in Resources */,
 				E20026371C926B430045C130 /* biocollect_background.png in Resources */,
 				E211B04C1CE18BC500DBC1AF /* BioCollect-logo.png in Resources */,
 				E2B6274F1CE40F8800A89179 /* BioCollect-text.png in Resources */,
 				E227E3A2192CD57D00E22DC7 /* menu-25@2x.png in Resources */,
 				E20026391C926F250045C130 /* csiro-logo.png in Resources */,
+				E2636DDA1CF2E57C00000371 /* briefcase_filled-25@2x.png in Resources */,
 				E22045CC192D820500531116 /* heading@2x.png in Resources */,
 				E241C680196A3061002302D7 /* pad-1@2x.png in Resources */,
 				E20189A11C8962710031435D /* SDWebImage in Resources */,
@@ -1042,6 +1062,7 @@
 				E241C685196A33B6002302D7 /* css in Resources */,
 				E20D1B5A1CDC72BA00A3607B /* background.png in Resources */,
 				E29122111CDAD093005D9638 /* LoginiPhoneView.xib in Resources */,
+				E2636DDB1CF2E57C00000371 /* contact_filled-25@2x.png in Resources */,
 				E23AF50C1C8FAE59002501F3 /* HomeWebView.xib in Resources */,
 				E2E56A981922E6D6007AC38C /* nochange@2x.png in Resources */,
 				E2E3AAD818F4E65E0005BB9E /* GADetailActivitiesTableViewController.xib in Resources */,
@@ -1058,6 +1079,7 @@
 				E291221B1CDB3BEC005D9638 /* background~ipad.png in Resources */,
 				E2E3AA9718F4D2940005BB9E /* InfoPlist.strings in Resources */,
 				E2E24AC21CED4DDF00F6D4CA /* table-place-holder.png in Resources */,
+				E2636DDD1CF2E68500000371 /* home_filled-25@2x.png in Resources */,
 				E29122151CDADE25005D9638 /* BioCollect-logo-01.png in Resources */,
 				E241C687196A33B6002302D7 /* js in Resources */,
 				E2F8E56619108A640093A3D3 /* Icon-40.png in Resources */,
@@ -1066,6 +1088,7 @@
 				E2E8F744192245E60029574B /* loc1_nochange@2x.png in Resources */,
 				E227E3A4192CDA2F00E22DC7 /* geo_fence-25@2x.png in Resources */,
 				E22045C6192D7DA500531116 /* info_filled-25@2x.png in Resources */,
+				E2636DD71CF2E57C00000371 /* about_filled-25@2x.png in Resources */,
 				E2A4A4EE19663E29006CAC22 /* header@2x.png in Resources */,
 				E2F8E56919108A640093A3D3 /* Icon-60@2x.png in Resources */,
 				E241C688196A33B6002302D7 /* index.html in Resources */,
@@ -1083,6 +1106,7 @@
 				E22045C2192D7C8F00531116 /* briefcase_filled-25@2x.png in Resources */,
 				E2A4A4F919665009006CAC22 /* GAEULAViewController.xib in Resources */,
 				E29A354819667925003D025D /* GAAboutVC.xib in Resources */,
+				E2636DD81CF2E57C00000371 /* box_filled-25@2x.png in Resources */,
 				E2F8E56C19108A640093A3D3 /* Icon-Small.png in Resources */,
 				E2E43395190FAE5700A3FAB2 /* cancelled@2x.png in Resources */,
 				E2CCED01190F82E6003655B7 /* planned@2x.png in Resources */,

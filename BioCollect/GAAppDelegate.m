@@ -103,21 +103,21 @@
     homeVC = [[HomeTableViewController alloc] initWithNibName:@"HomeTableViewController" bundle:nil];
     UINavigationController *homeNC = [[UINavigationController alloc] initWithRootViewController: homeVC];
     homeNC.tabBarItem.title = @"BioCollect";
-    homeNC.tabBarItem.image = [UIImage imageNamed:@"briefcase_filled-25"];
+    homeNC.tabBarItem.image = [UIImage imageNamed:@"home_filled-25"];
     homeNC.navigationBar.topItem.title = @"BioCollect";
 
     // Records view
     recordsVC = [[RecordsTableViewController alloc] initWithNibName:@"RecordsTableViewController" bundle:nil];
     UINavigationController *recordsNC = [[UINavigationController alloc] initWithRootViewController: recordsVC];
     recordsNC.tabBarItem.title = @"All Records";
-    recordsNC.tabBarItem.image = [UIImage imageNamed:@"pad"];
+    recordsNC.tabBarItem.image = [UIImage imageNamed:@"box_filled-25"];
     recordsNC.navigationBar.topItem.title = @"All Records";
     
     // My projects
     myProjectsVC = [[HomeTableViewController alloc] initWithNibNameForMyProjects:@"HomeTableViewController" bundle:nil];
     UINavigationController *myProjectsNC = [[UINavigationController alloc] initWithRootViewController: myProjectsVC];
     myProjectsNC.tabBarItem.title = @"My Projects";
-    myProjectsNC.tabBarItem.image = [UIImage imageNamed:@"briefcase_filled-25"];
+    myProjectsNC.tabBarItem.image = [UIImage imageNamed:@"brief_filled-25"];
     myProjectsNC.navigationBar.topItem.title = @"My Projects";
 
     // My Records
@@ -125,7 +125,7 @@
     myRecordsVC.myRecords = TRUE;
     UINavigationController *myRecordsNC = [[UINavigationController alloc] initWithRootViewController: myRecordsVC];
     myRecordsNC.tabBarItem.title = @"My Records";
-    myRecordsNC.tabBarItem.image = [UIImage imageNamed:@"pad"];
+    myRecordsNC.tabBarItem.image = [UIImage imageNamed:@"box_filled-25"];
     myRecordsNC.navigationBar.topItem.title = @"My Records";
     
     
@@ -143,13 +143,13 @@
     }
     
     UINavigationController *contactNC =  [[UINavigationController alloc] initWithRootViewController:contactVC];
-    contactNC.tabBarItem.image = [UIImage imageNamed:@"help_filled-25"];
+    contactNC.tabBarItem.image = [UIImage imageNamed:@"contact_filled-25"];
     contactNC.tabBarItem.title = @"Contact";
     contactNC.navigationBar.topItem.title = @"Contact";
     
     UINavigationController *aboutNC =  [[UINavigationController alloc] initWithRootViewController:aboutVC];
     aboutNC.tabBarItem.title = @"About";
-    aboutNC.tabBarItem.image = [UIImage imageNamed:@"info_filled-25"];
+    aboutNC.tabBarItem.image = [UIImage imageNamed:@"about_filled-25"];
     aboutNC.navigationBar.topItem.title = @"About";
     
     //Tab bars
