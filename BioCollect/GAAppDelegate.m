@@ -159,12 +159,15 @@
 
     [self.window setRootViewController:tabBarController];
     [self.window makeKeyAndVisible];
-
+    
+    /*
     if([[GASettings getEULA] length] == 0 && ![[GASettings getEULA]isEqualToString:kEULAAgreed]){
         [self.window.rootViewController presentViewController:eulaVC animated:NO completion:nil];
     }
-    else if([GASettings getAuthKey] == 0){
-        DebugLog(@"[INFO] GAAppDelegate:addSplitViewtoRoot - displaying sign-in page");
+    else
+    */
+    
+    if([GASettings getAuthKey] == 0){
         [self displaySigninPage];
         
     }else{

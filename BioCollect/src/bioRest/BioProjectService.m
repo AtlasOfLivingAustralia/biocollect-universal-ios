@@ -78,10 +78,10 @@
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     NSString *url = nil;
     if(projectId) {
-        url = [[NSString alloc] initWithFormat: @"%@%@?view=project&offset=%ld&max=%ld&projectId=%@&searchTerm=%@&mobile=true&view=project", BIOCOLLECT_SERVER, BIO_ACTIVITIES, (long)offset, (long)max, projectId,query];
+        url = [[NSString alloc] initWithFormat: @"%@%@?view=project&offset=%ld&max=%ld&projectId=%@&searchTerm=%@&mobile=true", BIOCOLLECT_SERVER, BIO_ACTIVITIES, (long)offset, (long)max, projectId,query];
     } else {
-        NSString *myRecordsStr = myRecords ? @"&view=myrecords" : @"";
-        url = [[NSString alloc] initWithFormat: @"%@%@?view=all&offset=%ld&max=%ld&searchTerm=%@&mobile=true%@", BIOCOLLECT_SERVER, BIO_ACTIVITIES, (long)offset, (long)max, query, myRecordsStr];
+        NSString *myRecordsStr = myRecords ? @"&view=myrecords" : @"&view=all";
+        url = [[NSString alloc] initWithFormat: @"%@%@?offset=%ld&max=%ld&searchTerm=%@&mobile=true%@", BIOCOLLECT_SERVER, BIO_ACTIVITIES, (long)offset, (long)max, query, myRecordsStr];
     }
     
     NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
