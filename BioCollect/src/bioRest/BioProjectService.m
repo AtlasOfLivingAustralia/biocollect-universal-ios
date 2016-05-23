@@ -13,6 +13,7 @@
 #import "GAActivitiesJSON.h"
 #import "GAProjectJSON.h"
 #import "GASettingsConstant.h"
+#import "GASettings.h"
 
 @implementation BioProjectService
 #define BIO_PROJECT_SEARCH @"/ws/project/search?initiator=biocollect&sort=nameSort"
@@ -25,13 +26,17 @@
  Get BioCollect projects - run as async task.
  Example: http://biocollect-test.ala.org.au/ws/project/search?initiator=biocollect&max=10&offset=0&q=test
 */
-- (NSInteger) getBioProjects : (NSMutableArray*) projects offset: (NSInteger) offset max: (NSInteger) max query: (NSString*) query params: (NSString*) params error:(NSError**) error {
+- (NSInteger) getBioProjects : (NSMutableArray*) projects offset: (NSInteger) offset max: (NSInteger) max query: (NSString*) query params: (NSString*) params isUserPage: (BOOL) isUserPage error:(NSError**) error {
 
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    NSString *url = [[NSString alloc] initWithFormat: @"%@%@&offset=%ld&max=%ld&q=%@%@", BIOCOLLECT_SERVER, BIO_PROJECT_SEARCH, (long)offset, (long)max, (NSString*) query, (NSString*) params];
+    NSString *userPage = isUserPage ? @"&isUserPage=true" : @"";
+    NSString *url = [[NSString alloc] initWithFormat: @"%@%@&offset=%ld&max=%ld&q=%@%@&mobile=true%@", BIOCOLLECT_SERVER, BIO_PROJECT_SEARCH, (long)offset, (long)max, (NSString*) query, (NSString*) params, userPage];
     NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [request setURL:[NSURL URLWithString:escapedUrlString]];
+    [request setValue:[GASettings getEmailAddress] forHTTPHeaderField:@"userName"];
+    [request setValue:[GASettings getAuthKey] forHTTPHeaderField:@"authKey"];
     [request setHTTPMethod:@"GET"];
+  
     NSURLResponse *response;
     DebugLog(@"[INFO] BioProjectService:getBioProjects - Biocollect projects search url %@",escapedUrlString);
     NSData *GETReply = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&*error];
@@ -68,19 +73,23 @@
 // http://biocollect-test.ala.org.au/bioActivity/searchProjectActivities?projectId=eccadc59-2dc5-44df-8aac-da41bcf17ba4&view=project&searhTerm=
 // http://biocollect-test.ala.org.au/bioActivity/searchProjectActivities?view=allrecords&searchTerm=test
 
-- (NSInteger) getActivities : (NSMutableArray*) records offset: (NSInteger) offset max: (NSInteger) max projectId: (NSString*) projectId query: (NSString*) query error:(NSError**) error {
+- (NSInteger) getActivities : (NSMutableArray*) records offset: (NSInteger) offset max: (NSInteger) max projectId: (NSString*) projectId query: (NSString*) query myRecords: (BOOL) myRecords error:(NSError**) error {
     //Request projects.
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     NSString *url = nil;
     if(projectId) {
-        url = [[NSString alloc] initWithFormat: @"%@%@?view=project&offset=%ld&max=%ld&projectId=%@&searchTerm=%@", BIOCOLLECT_SERVER, BIO_ACTIVITIES, (long)offset, (long)max, projectId,query];
+        url = [[NSString alloc] initWithFormat: @"%@%@?view=project&offset=%ld&max=%ld&projectId=%@&searchTerm=%@&mobile=true&view=project", BIOCOLLECT_SERVER, BIO_ACTIVITIES, (long)offset, (long)max, projectId,query];
     } else {
-        url = [[NSString alloc] initWithFormat: @"%@%@?view=all&offset=%ld&max=%ld&searchTerm=%@", BIOCOLLECT_SERVER, BIO_ACTIVITIES, (long)offset, (long)max, query];
+        NSString *myRecordsStr = myRecords ? @"&view=myrecords" : @"";
+        url = [[NSString alloc] initWithFormat: @"%@%@?view=all&offset=%ld&max=%ld&searchTerm=%@&mobile=true%@", BIOCOLLECT_SERVER, BIO_ACTIVITIES, (long)offset, (long)max, query, myRecordsStr];
     }
     
     NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [request setURL:[NSURL URLWithString:escapedUrlString]];
     [request setHTTPMethod:@"GET"];
+    [request setValue:[GASettings getEmailAddress] forHTTPHeaderField:@"userName"];
+    [request setValue:[GASettings getAuthKey] forHTTPHeaderField:@"authKey"];
+
     NSURLResponse *response;
     DebugLog(@"[INFO] BioProjectService:getActivities - Biocollect activities search url %@",escapedUrlString);
     NSData *GETReply = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&*error];
@@ -105,7 +114,6 @@
             activity.lastUpdated = ([activitiesJSON.lastUpdated length])?(activitiesJSON.lastUpdated):@"-";
             [records addObject:activity];
         }
-
     }
     
     return totalRecords;
@@ -115,6 +123,7 @@
  Get BioCollect project activity list
  Example: http://ecodata-test.ala.org.au/projectActivity/list/eccadc59-2dc5-44df-8aac-da41bcf17ba4
 */
+
 -(void) getProjectActivities : (NSString*) projectId error:(NSError**) error {
     
     //Request projects.

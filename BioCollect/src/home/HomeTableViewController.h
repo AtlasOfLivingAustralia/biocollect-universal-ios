@@ -23,12 +23,11 @@
 @property (nonatomic, assign) NSInteger totalProjects;
 @property (nonatomic, assign) NSInteger offset;
 @property (nonatomic, strong) NSString *searchParams;
+@property (nonatomic, assign) BOOL isUserPage;
 @property (nonatomic, assign) BOOL loadingFinished;
 @property (nonatomic, assign) BOOL activeChecked;
 @property (nonatomic, assign) BOOL completedChecked;
 @property (nonatomic, assign) BOOL dataSharingChecked;
-
-
 
 //Search flag
 @property (nonatomic, assign) BOOL isSearching;
@@ -37,7 +36,8 @@
 @property (nonatomic, strong) BioProjectService *bioProjectService;
 @property (nonatomic, strong) RecordsTableViewController *recordsTableView;
 @property (nonatomic, strong) NSMutableArray * bioProjects;
--(void) resetProjects;
 
+- (void) resetProjects;
+- (id) initWithNibNameForMyProjects :(NSString *)nibNameOrNil bundle:(NSBundle *) nibBundleOrNil;
 @end
 

@@ -25,14 +25,18 @@
 @property (strong, nonatomic) GAMasterProjectTableViewController *masterProjectVC;
 @property (strong, nonatomic) HomeTableViewController *homeVC;
 @property (strong, nonatomic) RecordsTableViewController *recordsVC;
+@property (strong, nonatomic) HomeTableViewController *myProjectsVC;
+@property (strong, nonatomic) RecordsTableViewController *myRecordsVC;
+
 @property (strong, nonatomic) GADetailActivitiesTableViewController *detailVC;
 @property (nonatomic, retain) GAActivity *updatedActivity;
+
 @property (nonatomic, retain) NSMutableArray *projects;
 
 @end
 @implementation GAAppDelegate
 
-@synthesize splitViewController, projects,masterProjectVC, detailVC, restCall, sqlLite, loginViewController, eulaVC, homeVC, recordsVC, bioProjectService,tabBarController;
+@synthesize splitViewController, projects,masterProjectVC, detailVC, restCall, sqlLite, loginViewController, eulaVC, homeVC, recordsVC, myProjectsVC, myRecordsVC, bioProjectService,tabBarController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -98,7 +102,6 @@
     // BioCollect Home page
     homeVC = [[HomeTableViewController alloc] initWithNibName:@"HomeTableViewController" bundle:nil];
     UINavigationController *homeNC = [[UINavigationController alloc] initWithRootViewController: homeVC];
-   
     homeNC.tabBarItem.title = @"BioCollect";
     homeNC.tabBarItem.image = [UIImage imageNamed:@"briefcase_filled-25"];
     homeNC.navigationBar.topItem.title = @"BioCollect";
@@ -106,10 +109,25 @@
     // Records view
     recordsVC = [[RecordsTableViewController alloc] initWithNibName:@"RecordsTableViewController" bundle:nil];
     UINavigationController *recordsNC = [[UINavigationController alloc] initWithRootViewController: recordsVC];
-    
     recordsNC.tabBarItem.title = @"All Records";
     recordsNC.tabBarItem.image = [UIImage imageNamed:@"pad"];
     recordsNC.navigationBar.topItem.title = @"All Records";
+    
+    // My projects
+    myProjectsVC = [[HomeTableViewController alloc] initWithNibNameForMyProjects:@"HomeTableViewController" bundle:nil];
+    UINavigationController *myProjectsNC = [[UINavigationController alloc] initWithRootViewController: myProjectsVC];
+    myProjectsNC.tabBarItem.title = @"My Projects";
+    myProjectsNC.tabBarItem.image = [UIImage imageNamed:@"briefcase_filled-25"];
+    myProjectsNC.navigationBar.topItem.title = @"My Projects";
+
+    // My Records
+    myRecordsVC = [[RecordsTableViewController alloc] initWithNibName:@"RecordsTableViewController" bundle:nil];
+    myRecordsVC.myRecords = TRUE;
+    UINavigationController *myRecordsNC = [[UINavigationController alloc] initWithRootViewController: myRecordsVC];
+    myRecordsNC.tabBarItem.title = @"My Records";
+    myRecordsNC.tabBarItem.image = [UIImage imageNamed:@"pad"];
+    myRecordsNC.navigationBar.topItem.title = @"My Records";
+    
     
     //Help
     ContactVC  *contactVC = nil;
@@ -136,7 +154,7 @@
     
     //Tab bars
     tabBarController = [[UITabBarController alloc] init];
-    NSArray* controllers = [NSArray arrayWithObjects:homeNC, recordsNC,aboutNC,contactNC, nil];
+    NSArray* controllers = [NSArray arrayWithObjects:homeNC, recordsNC, myProjectsNC, myRecordsNC, aboutNC,contactNC, nil];
     tabBarController.viewControllers = controllers;
 
     [self.window setRootViewController:tabBarController];

@@ -47,7 +47,26 @@
 #define FILTER_SECTION_RESET 0
 #define FILTER_SECTION_OK FILTER_SECTION_RESET + 1
 
-@synthesize  bioProjects, appDelegate, bioProjectService, totalProjects, offset, query, loadingFinished, isSearching, spinner, activeChecked, completedChecked, searchParams, dataSharingChecked;
+@synthesize  bioProjects, appDelegate, bioProjectService, totalProjects, offset, query, loadingFinished, isSearching, spinner, activeChecked, completedChecked, searchParams, dataSharingChecked,isUserPage;
+
+- (id) initWithNibNameForMyProjects :(NSString *)nibNameOrNil bundle:(NSBundle *) nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
+    if (self) {
+        //Initialise
+        [self initialise];
+        self.isUserPage = TRUE;
+        
+        UIBarButtonItem *menuSheet = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"action-25"]
+                                                                      style:UIBarButtonItemStyleBordered
+                                                                     target:self action:@selector(showMenu:)];
+        UIBarButtonItem *syncButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"sync-25"] style:UIBarButtonItemStyleBordered target:self action:@selector(resetAndDownloadProjects)];
+        
+        self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects: syncButton, menuSheet,nil];
+    }
+    
+    return self;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *) nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -55,21 +74,9 @@
     if (self) {
         
         //Initialise
-        self.appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
-        self.bioProjectService = self.appDelegate.bioProjectService;
-        self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        self.recordsTableView = [[RecordsTableViewController alloc] initWithNibName:@"RecordsTableViewController" bundle:nil];
-        self.bioProjects = [[NSMutableArray alloc]init];
-        self.offset = DEFAULT_OFFSET;
-        self.loadingFinished = TRUE;
-        self.query = @"";
-        self.searchParams = @"";
-        self.activeChecked = FALSE;
-        self.completedChecked = FALSE;
-        self.dataSharingChecked = FALSE;
+        [self initialise];
+        self.isUserPage = FALSE;
         
-        self.isSearching = NO;
-
         //Set bar button.
         UIBarButtonItem *menuSheet = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"action-25"]
                                                                         style:UIBarButtonItemStyleBordered
@@ -82,9 +89,26 @@
         UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BioCollect-text-small"]];
         imageView.contentMode = UIViewContentModeCenter;
         self.navigationItem.titleView = imageView;
+        
     }
     
     return self;
+}
+
+-(void) initialise {
+    self.appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.bioProjectService = self.appDelegate.bioProjectService;
+    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.recordsTableView = [[RecordsTableViewController alloc] initWithNibName:@"RecordsTableViewController" bundle:nil];
+    self.bioProjects = [[NSMutableArray alloc]init];
+    self.offset = DEFAULT_OFFSET;
+    self.loadingFinished = TRUE;
+    self.query = @"";
+    self.searchParams = @"";
+    self.activeChecked = FALSE;
+    self.completedChecked = FALSE;
+    self.dataSharingChecked = FALSE;
+    self.isSearching = NO;
 }
 
 -(void)showMenu:(id)sender
@@ -311,7 +335,7 @@
     } else if(self.loadingFinished){
         self.loadingFinished = FALSE;
         NSError *error = nil;
-        NSInteger total = [self.bioProjectService getBioProjects: bioProjects offset:self.offset max:DEFAULT_MAX query: self.query params:self.searchParams error:&error];
+        NSInteger total = [self.bioProjectService getBioProjects: bioProjects offset:self.offset max:DEFAULT_MAX query: self.query params:self.searchParams isUserPage:self.isUserPage error:&error];
         DebugLog(@"%lu || %ld || %ld",(unsigned long)[self.bioProjects count], self.offset, total);
         if(error == nil && total > 0) {
             self.totalProjects = total;

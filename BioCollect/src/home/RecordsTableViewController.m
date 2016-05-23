@@ -15,7 +15,7 @@
 #define DEFAULT_MAX     20
 #define DEFAULT_OFFSET  0
 #define SEARCH_LENGTH   3
-@synthesize  records, appDelegate, bioProjectService, totalRecords, offset, loadingFinished, isSearching, query, spinner;
+@synthesize  records, appDelegate, bioProjectService, totalRecords, offset, loadingFinished, isSearching, query, spinner, myRecords;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *) nibBundleOrNil {
@@ -150,7 +150,7 @@
         self.loadingFinished = FALSE;
         NSError *error = nil;
         NSString *projectId = self.project ? self.project.projectId : nil;
-        NSInteger total = [self.bioProjectService getActivities: records offset:self.offset max:DEFAULT_MAX projectId: projectId query:self.query error:&error];
+        NSInteger total = [self.bioProjectService getActivities: records offset:self.offset max:DEFAULT_MAX projectId: projectId query:self.query myRecords:self.myRecords error:&error];
         DebugLog(@"%lu || %ld || %ld",(unsigned long)[self.bioProjects count], self.offset, total);
         if(error == nil && total > 0) {
             self.totalRecords = total;

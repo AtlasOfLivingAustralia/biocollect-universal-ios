@@ -25,6 +25,7 @@
 @property (nonatomic, assign) NSInteger offset;
 @property (nonatomic, assign) BOOL loadingFinished;
 @property (nonatomic, strong) NSString * query;
+@property (nonatomic, assign) BOOL myRecords;
 
 //Search flag
 @property (nonatomic, assign) BOOL isSearching;
