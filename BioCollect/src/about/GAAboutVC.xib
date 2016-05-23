@@ -24,7 +24,7 @@
                         <fragment content="BioCollect">
                             <attributes>
                                 <color key="NSColor" red="0.29803921568627451" green="0.29019607843137257" blue="0.30196078431372547" alpha="1" colorSpace="calibratedRGB"/>
-                                <font key="NSFont" size="32" name="Helvetica-Bold"/>
+                                <font key="NSFont" size="25" name="Helvetica-Bold"/>
                                 <real key="NSKern" value="0.0"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                     <tabStops/>
@@ -47,7 +47,7 @@ ICAgICAgICAgICAKA
                         <fragment content="Advanced data collection for biodiversity projects">
                             <attributes>
                                 <color key="NSColor" red="0.92549019607843142" green="0.30980392156862746" blue="0.22352941176470589" alpha="1" colorSpace="calibratedRGB"/>
-                                <font key="NSFont" size="21" name="Helvetica"/>
+                                <font key="NSFont" size="18" name="Helvetica"/>
                                 <real key="NSKern" value="0.0"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                     <tabStops/>
