@@ -28,9 +28,6 @@
                         <outlet property="delegate" destination="-1" id="68A-Kc-Inx"/>
                     </connections>
                 </textField>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BioCollect-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Zl-Cf-HZ3">
-                    <rect key="frame" x="37" y="33" width="247" height="165"/>
-                </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter your username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Mr-es-5Kr">
                     <rect key="frame" x="0.0" y="214" width="320" height="30"/>
                     <color key="backgroundColor" red="0.16862745100000001" green="0.4823529412" blue="0.45882352939999999" alpha="1" colorSpace="deviceRGB"/>
@@ -59,21 +56,24 @@
                         <action selector="onClickLogin:" destination="-1" eventType="touchUpInside" id="8jJ-N0-cWo"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BioCollect-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Zl-Cf-HZ3">
+                    <rect key="frame" x="67" y="51" width="187" height="130"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="NHI-xz-TYg" firstAttribute="top" secondItem="fNj-KQ-8ms" secondAttribute="bottom" constant="24" id="Chm-gj-3gR"/>
-                <constraint firstAttribute="bottom" secondItem="7Zl-Cf-HZ3" secondAttribute="bottom" constant="370" id="FnA-fx-QDG"/>
-                <constraint firstItem="7Zl-Cf-HZ3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="33" id="GJ4-3e-7ap"/>
+                <constraint firstAttribute="bottom" secondItem="7Zl-Cf-HZ3" secondAttribute="bottom" constant="387" id="FnA-fx-QDG"/>
+                <constraint firstItem="7Zl-Cf-HZ3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="51" id="GJ4-3e-7ap"/>
                 <constraint firstItem="fNj-KQ-8ms" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="H1e-ky-V4H"/>
                 <constraint firstItem="8Mr-es-5Kr" firstAttribute="leading" secondItem="fNj-KQ-8ms" secondAttribute="leading" id="JcS-ue-cmB"/>
-                <constraint firstItem="8Mr-es-5Kr" firstAttribute="top" secondItem="7Zl-Cf-HZ3" secondAttribute="bottom" constant="16" id="Maf-NG-tx7"/>
+                <constraint firstItem="8Mr-es-5Kr" firstAttribute="top" secondItem="7Zl-Cf-HZ3" secondAttribute="bottom" constant="33" id="Maf-NG-tx7"/>
                 <constraint firstAttribute="bottom" secondItem="NHI-xz-TYg" secondAttribute="bottom" constant="227" id="RSI-OE-XNl"/>
-                <constraint firstItem="7Zl-Cf-HZ3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="37" id="YEH-od-l4Y"/>
+                <constraint firstItem="7Zl-Cf-HZ3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="67" id="YEH-od-l4Y"/>
                 <constraint firstItem="NHI-xz-TYg" firstAttribute="trailing" secondItem="fNj-KQ-8ms" secondAttribute="trailing" constant="-96" id="bN4-gm-VDs"/>
                 <constraint firstAttribute="trailing" secondItem="fNj-KQ-8ms" secondAttribute="trailing" id="ila-Ay-vYp"/>
                 <constraint firstItem="NHI-xz-TYg" firstAttribute="leading" secondItem="fNj-KQ-8ms" secondAttribute="leading" constant="97" id="kFm-eZ-x8u"/>
-                <constraint firstAttribute="trailing" secondItem="7Zl-Cf-HZ3" secondAttribute="trailing" constant="36" id="rX3-cA-fpe"/>
+                <constraint firstAttribute="trailing" secondItem="7Zl-Cf-HZ3" secondAttribute="trailing" constant="66" id="rX3-cA-fpe"/>
                 <constraint firstItem="8Mr-es-5Kr" firstAttribute="trailing" secondItem="fNj-KQ-8ms" secondAttribute="trailing" id="tGK-cW-S9v"/>
             </constraints>
             <point key="canvasLocation" x="460" y="482"/>
