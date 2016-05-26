@@ -133,7 +133,7 @@
     [request setURL:[NSURL URLWithString:escapedUrlString]];
     [request setHTTPMethod:@"GET"];
     NSURLResponse *response;
-    NSLog(@"[INFO] BioProjectService:getProjectActivities - Biocollect Project Activities list url %@",escapedUrlString);
+    DebugLog(@"[INFO] BioProjectService:getProjectActivities - Biocollect Project Activities list url %@",escapedUrlString);
     
     NSData *GETReply = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&*error];
     DebugLog(@"[INFO] BioProjectService:getProjectActivities - Initiating ReST call.");

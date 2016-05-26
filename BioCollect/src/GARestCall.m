@@ -118,7 +118,7 @@
     [request setValue:[GASettings getEmailAddress] forHTTPHeaderField:@"userName"];
     [request setValue:[GASettings getAuthKey] forHTTPHeaderField:@"authKey"];
     [request setURL:[NSURL URLWithString:escapedUrlString]];
-    NSLog(@"ReSt projects url %@",escapedUrlString);
+    DebugLog(@"ReSt projects url %@",escapedUrlString);
     [request setHTTPMethod:@"GET"];
     NSURLResponse *response;
     NSData *GETReply = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&*error];
