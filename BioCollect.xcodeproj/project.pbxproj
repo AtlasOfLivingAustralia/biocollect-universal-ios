@@ -131,6 +131,8 @@
 		E2CCED00190F82E6003655B7 /* finished@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2CCECFB190F82E6003655B7 /* finished@2x.png */; };
 		E2CCED01190F82E6003655B7 /* planned@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2CCECFC190F82E6003655B7 /* planned@2x.png */; };
 		E2CCED02190F82E6003655B7 /* started@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2CCECFD190F82E6003655B7 /* started@2x.png */; };
+		E2DCF1ED1CF68D8B008D438C /* Default-568h.png in Resources */ = {isa = PBXBuildFile; fileRef = E2DCF1EB1CF68D8B008D438C /* Default-568h.png */; };
+		E2DCF1EE1CF68D8B008D438C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2DCF1EC1CF68D8B008D438C /* Default-568h@2x.png */; };
 		E2E24AC21CED4DDF00F6D4CA /* table-place-holder.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E24AC11CED4DDF00F6D4CA /* table-place-holder.png */; };
 		E2E3AA8D18F4D2940005BB9E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E3AA8C18F4D2940005BB9E /* Foundation.framework */; };
 		E2E3AA8F18F4D2940005BB9E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E3AA8E18F4D2940005BB9E /* CoreGraphics.framework */; };
@@ -364,6 +366,8 @@
 		E2CCECFB190F82E6003655B7 /* finished@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "finished@2x.png"; path = "src/images/finished@2x.png"; sourceTree = "<group>"; };
 		E2CCECFC190F82E6003655B7 /* planned@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "planned@2x.png"; path = "src/images/planned@2x.png"; sourceTree = "<group>"; };
 		E2CCECFD190F82E6003655B7 /* started@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "started@2x.png"; path = "src/images/started@2x.png"; sourceTree = "<group>"; };
+		E2DCF1EB1CF68D8B008D438C /* Default-568h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h.png"; sourceTree = "<group>"; };
+		E2DCF1EC1CF68D8B008D438C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		E2E24AC11CED4DDF00F6D4CA /* table-place-holder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "table-place-holder.png"; path = "src/images/table-place-holder.png"; sourceTree = "<group>"; };
 		E2E3AA8918F4D2940005BB9E /* BioCollect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BioCollect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2E3AA8C18F4D2940005BB9E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -743,6 +747,8 @@
 		E2E3AA8018F4D2940005BB9E = {
 			isa = PBXGroup;
 			children = (
+				E2DCF1EB1CF68D8B008D438C /* Default-568h.png */,
+				E2DCF1EC1CF68D8B008D438C /* Default-568h@2x.png */,
 				E2E3AA9218F4D2940005BB9E /* BioCollect */,
 				E2E3AAAB18F4D2940005BB9E /* BioCollectTests */,
 				E2E3AA8B18F4D2940005BB9E /* Frameworks */,
@@ -988,7 +994,7 @@
 				ORGANIZATIONNAME = "Sathya Moorthy, Sathish (CSIRO IM&T, Clayton)";
 				TargetAttributes = {
 					E2E3AA8818F4D2940005BB9E = {
-						DevelopmentTeam = VS75428PD6;
+						DevelopmentTeam = VP6SGJQWPU;
 					};
 					E2E3AAA318F4D2940005BB9E = {
 						TestTargetID = E2E3AA8818F4D2940005BB9E;
@@ -1067,6 +1073,7 @@
 				E241C687196A33B6002302D7 /* js in Resources */,
 				E2F8E56619108A640093A3D3 /* Icon-40.png in Resources */,
 				E2BB4EF31C855A0F0075F8BF /* BioCollect-logo 2.png in Resources */,
+				E2DCF1EE1CF68D8B008D438C /* Default-568h@2x.png in Resources */,
 				E291220F1CDAC425005D9638 /* LaunchScreen~ipad.storyboard in Resources */,
 				E2E8F744192245E60029574B /* loc1_nochange@2x.png in Resources */,
 				E227E3A4192CDA2F00E22DC7 /* geo_fence-25@2x.png in Resources */,
@@ -1078,6 +1085,7 @@
 				E2A2FFCB1C8546F0008B63A8 /* ala_logo.png in Resources */,
 				E2E56B2819259D0B007AC38C /* StaticWebPages in Resources */,
 				E20189E61C8966700031435D /* Icon-placeholder.png in Resources */,
+				E2DCF1ED1CF68D8B008D438C /* Default-568h.png in Resources */,
 				E2F8E56A19108A640093A3D3 /* Icon-76.png in Resources */,
 				E22045CA192D7EDD00531116 /* profile@2x.png in Resources */,
 				E227E39C192CD30D00E22DC7 /* lock_filled-25@2x.png in Resources */,
@@ -1326,7 +1334,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.biocollect;
 				PRODUCT_NAME = BioCollect;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "9a27d24a-07f5-44ec-809e-6fbae0531959";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1351,7 +1359,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.biocollect;
 				PRODUCT_NAME = BioCollect;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "9a27d24a-07f5-44ec-809e-6fbae0531959";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
