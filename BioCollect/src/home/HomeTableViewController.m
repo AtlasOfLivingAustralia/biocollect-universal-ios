@@ -60,6 +60,7 @@
         UIBarButtonItem *menuSheet = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"action-25"]
                                                                       style:UIBarButtonItemStyleBordered
                                                                      target:self action:@selector(showMenu:)];
+        
         UIBarButtonItem *syncButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"sync-25"] style:UIBarButtonItemStyleBordered target:self action:@selector(resetAndDownloadProjects)];
         
         self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects: syncButton, menuSheet,nil];
@@ -183,15 +184,17 @@
             if ((self.activeChecked && self.completedChecked) || (!self.activeChecked && !self.completedChecked)) {
                 statusParam = @"";
             } else if(self.activeChecked) {
-                statusParam = @"&status=active";
+                statusParam = @"&fq=status:active";
             } else if(self.completedChecked) {
-                statusParam = @"&status=completed";
+                statusParam = @"&fq=status:completed";
+            } else if(self.activeChecked && self.completedChecked) {
+                statusParam = @"&fq=status:active&fq=status:completed";
             }
             
             if(self.dataSharingChecked) {
-                dataSharingParam = @"&isContributingDataToAla=true";
+                dataSharingParam = @"fq=tags:isContributingDataToAla";
             } else {
-                dataSharingParam = @"&isContributingDataToAla=false";
+                dataSharingParam = @"";
             }
             
             self.searchParams = [[NSString alloc]initWithFormat:@"%@%@",statusParam,dataSharingParam];
