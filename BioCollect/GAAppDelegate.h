@@ -13,6 +13,7 @@
 #import "GALogin.h"
 #import "BioProjectService.h"
 #import "GAEULAViewController.h"
+#import "OzHomeVC.h"
 
 @interface GAAppDelegate : UIResponder <UIApplicationDelegate, UIAlertViewDelegate>
 
@@ -27,6 +28,9 @@
 @property (nonatomic, retain) GASqlLiteDatabase *sqlLite;
 @property (nonatomic, retain) GALogin *loginViewController;
 @property (nonatomic, retain) GAEULAViewController * eulaVC;
+@property (nonatomic, strong, readonly) NSMutableArray *records;
+@property (nonatomic, strong, readonly) NSURL *recordArchivePath;
+@property (nonatomic, assign) BOOL projectsModified;
 
 -(void) updateTableModelsAndViews : (NSMutableArray *) p;
 -(void) displaySigninPage;
@@ -34,5 +38,7 @@
 -(void) uploadAndDownload : (BOOL) enablePop;
 -(void) goBackToDetailViewController;
 -(void) closeDetailModal;
+-(void) addRecord:(RecordForm *) record;
+-(void) removeRecords:(NSArray *) records;
 @end
 

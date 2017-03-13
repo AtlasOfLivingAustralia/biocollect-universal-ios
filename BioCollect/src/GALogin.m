@@ -10,15 +10,16 @@
 #import "GAAppDelegate.h"
 #import "MRProgress.h"
 #import "GASettings.h"
+#import "GASettingsConstant.h"
 #import "MRProgressOverlayView.h"
-
+#import "SVModalWebViewController.h"
 @interface GALogin ()
 
 @end
 
 @implementation GALogin
 
-@synthesize loginButton, usernameTextField, passwordTextField;
+@synthesize loginButton, usernameTextField, passwordTextField,registerButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -49,8 +50,10 @@
     [self authenticate];
 }
 - (IBAction)onClickRegister:(id)sender{
-    //TODO: Render the webpage under the webview modal.
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://auth.ala.org.au/userdetails/registration/createAccount"]];
+    NSString *url = [[NSString alloc] initWithFormat:@"%@%@", AUTH_SERVER, AUTH_REGISTER];
+    SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress: url];
+    webViewController.title = @"Register";
+    [self presentViewController:webViewController animated:YES completion:NULL];
 }
 
 -(void) authenticate {

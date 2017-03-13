@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,30 +16,30 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="438" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright © 2016 Atlas of Living Australia. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="obG-Y5-kRd">
-                                <rect key="frame" x="20" y="559" width="560" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.074509806930000005" green="0.34901961679999999" blue="0.25098040700000002" alpha="1" colorSpace="deviceRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BioCollect-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ccy-0Q-pkY">
-                                <rect key="frame" x="148" y="158" width="304" height="221"/>
-                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="elb-MX-k1B">
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" image="ala_logo1.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ae2-ZQ-aua">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="7H2-Pd-s9s"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright © 2016 Atlas of Living Australia. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="obG-Y5-kRd">
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.072871983051300049" green="0.28351467847824097" blue="0.19197852909564972" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Ccy-0Q-pkY" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="0ca-Fe-1jd"/>
-                            <constraint firstItem="Ccy-0Q-pkY" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="128" id="3qf-rQ-JGY"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="obG-Y5-kRd" secondAttribute="trailing" id="MIh-dQ-pbd"/>
-                            <constraint firstItem="Ccy-0Q-pkY" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="138" id="WTs-pu-7hf"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Ccy-0Q-pkY" secondAttribute="bottom" constant="221" id="Yyp-uB-lAp"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="obG-Y5-kRd" secondAttribute="leading" id="ZIl-Vt-quh"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Ccy-0Q-pkY" secondAttribute="trailing" constant="128" id="l2o-qw-oRT"/>
-                            <constraint firstItem="obG-Y5-kRd" firstAttribute="top" secondItem="Ccy-0Q-pkY" secondAttribute="bottom" constant="180" id="qOa-ap-5oL"/>
-                            <constraint firstItem="Ccy-0Q-pkY" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-31.5" id="w7b-ve-RWX"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="elb-MX-k1B" secondAttribute="bottomMargin" id="9C6-Xn-dp5"/>
+                            <constraint firstItem="elb-MX-k1B" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="BEo-a8-9Di"/>
+                            <constraint firstItem="elb-MX-k1B" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="20" id="d0y-OY-Dav"/>
+                            <constraint firstItem="elb-MX-k1B" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailing" id="dWt-am-v5t"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -48,6 +49,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BioCollect-logo.png" width="512" height="444"/>
+        <image name="ala_logo1.png" width="500" height="426"/>
     </resources>
 </document>

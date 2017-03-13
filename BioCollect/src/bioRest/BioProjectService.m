@@ -14,6 +14,8 @@
 #import "GAProjectJSON.h"
 #import "GASettingsConstant.h"
 #import "GASettings.h"
+#import "ProjectActivitiesJSON.h"
+#import "ProjectActivity.h"
 
 @implementation BioProjectService
 #define BIO_PROJECT_SEARCH @"/ws/project/search?initiator=biocollect&sort=nameSort"
@@ -105,6 +107,7 @@
             activity.activityName = activitiesJSON.activityType;
             activity.description = ([activitiesJSON.description length])?(activitiesJSON.description):@"";
             activity.url = [[NSString alloc] initWithFormat:@"%@/bioActivity/index/%@?mobile=true",BIOCOLLECT_SERVER,activitiesJSON.activityId];
+            activity.editUrl = [[NSString alloc] initWithFormat:@"%@/bioActivity/mobileEdit/%@?mobile=true",BIOCOLLECT_SERVER,activitiesJSON.activityId];
             activity._id = -1;
             activity.activityOwnerName = activitiesJSON.activityOwnerName;
             activity.activityId = activitiesJSON.activityId;
@@ -112,6 +115,7 @@
             activity.projectActivityName = activitiesJSON.projectActivityName;
             activity.thumbnailUrl = activitiesJSON.thumbnailUrl;
             activity.lastUpdated = ([activitiesJSON.lastUpdated length])?(activitiesJSON.lastUpdated):@"-";
+            activity.records = activitiesJSON.records;
             [records addObject:activity];
         }
     }
@@ -124,28 +128,35 @@
  Example: http://ecodata-test.ala.org.au/projectActivity/list/eccadc59-2dc5-44df-8aac-da41bcf17ba4
 */
 
--(void) getProjectActivities : (NSString*) projectId error:(NSError**) error {
+-(void) getProjectActivities : (NSMutableArray*) pActivities projectId: (NSString*) projectId error:(NSError**) error {
     
     //Request projects.
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    NSString *url = [[NSString alloc] initWithFormat: @"%@%@%@", ECODATA_SERVER, BIO_PROJECT_ACTIVITY_LIST, projectId];
+    NSString *url = [[NSString alloc] initWithFormat: @"%@%@/%@", BIOCOLLECT_SERVER, LIST_PROJECT_ACTIVITIES, projectId];
     NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [request setURL:[NSURL URLWithString:escapedUrlString]];
     [request setHTTPMethod:@"GET"];
     NSURLResponse *response;
-    DebugLog(@"[INFO] BioProjectService:getProjectActivities - Biocollect Project Activities list url %@",escapedUrlString);
     
     NSData *GETReply = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&*error];
-    DebugLog(@"[INFO] BioProjectService:getProjectActivities - Initiating ReST call.");
     
     if(*error == nil) {
-        NSError *jsonParsingError = nil;
-        NSMutableArray *projectActivitiesJSONArray = [NSJSONSerialization JSONObjectWithData:GETReply options: 0 error:&jsonParsingError];
-
-        if([projectActivitiesJSONArray count] > 0) {
-            
+        ProjectActivitiesJSON  *pActivitiesJSON = [[ProjectActivitiesJSON alloc] initWithData:GETReply];
+        while([pActivitiesJSON hasNext]) {
+            [pActivitiesJSON nextProjectActivity];
+            ProjectActivity *pActivity = [[ProjectActivity alloc] init];
+            pActivity.name = pActivitiesJSON.name;
+            pActivity.description = ([pActivitiesJSON.description length])?(pActivitiesJSON.description):@"";
+            pActivity.projectId = pActivitiesJSON.projectId;
+            pActivity.projectActivityId = pActivitiesJSON.projectActivityId;
+            pActivity.published = pActivitiesJSON.published;
+            BOOL published = [pActivity.published boolValue];
+            if(published){
+                [pActivities addObject:pActivity];
+            }
         }
     }
+    
 }
 
 

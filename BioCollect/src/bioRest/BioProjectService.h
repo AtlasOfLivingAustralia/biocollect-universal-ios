@@ -15,4 +15,5 @@
 // Get activities for the given projectId.
 - (NSInteger) getActivities : (NSMutableArray*) records offset: (NSInteger) offset max: (NSInteger) max projectId: (NSString*) projectId query:(NSString*) query myRecords:(BOOL) myRecords  error:(NSError**) error;
 
+-(void) getProjectActivities : (NSMutableArray*) pActivities projectId: (NSString*) projectId error:(NSError**) error;
 @end
