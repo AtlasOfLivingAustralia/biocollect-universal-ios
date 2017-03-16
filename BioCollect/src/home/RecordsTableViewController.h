@@ -11,15 +11,19 @@
 #import "GAAppDelegate.h"
 #import "BioProjectService.h"
 #import "UIImageView+WebCache.h"
-
-@interface RecordsTableViewController :  UITableViewController <UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate>
-
+#import "JGActionSheet.h"
+#import "SVModalWebViewController.h"
+@interface RecordsTableViewController :  UITableViewController <UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate, JGActionSheetDelegate, UIWebViewDelegate>
+- (id)initWithNibNameAndUserActions:(NSString *)nibNameOrNil bundle:(NSBundle *) nibBundleOrNil;
+    
 @property (strong, nonatomic) IBOutlet UITableView *recordsTableView;
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 @property (nonatomic, strong) NSMutableArray *records;
 @property (nonatomic, strong) GAProject *project;
+@property (nonatomic, strong) GAActivity *selectedActivity;
+@property (nonatomic, strong) NSString * projectId;
 @property (nonatomic, strong) UIActivityIndicatorView *spinner;
-
+@property (nonatomic, strong) SVModalWebViewController *webViewController;
 //Pagination info.
 @property (nonatomic, assign) NSInteger totalRecords;
 @property (nonatomic, assign) NSInteger offset;
@@ -30,7 +34,11 @@
 //Search flag
 @property (nonatomic, assign) BOOL isSearching;
 
-@property (nonatomic, strong) GAAppDelegate *appDelegate;
+@property (nonatomic, assign) BOOL showUserActions;
+
+//All project activities
+@property (nonatomic, strong) NSMutableArray *pActivties;
+
 @property (nonatomic, strong) BioProjectService *bioProjectService;
 
 @end

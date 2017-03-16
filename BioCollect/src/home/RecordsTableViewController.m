@@ -10,31 +10,154 @@
 #import "HomeCustomCell.h"
 #import "RecordWebVIew.h"
 #import "MRProgressOverlayView.h"
+#import "GAAppDelegate.h"
+
+#import "GASettingsConstant.h"
+#import "GASettings.h"
+#import "ProjectActivity.h"
+#import "RKDropdownAlert.h"
+
+@interface RecordsTableViewController ()
+    @property (nonatomic, strong) GAAppDelegate *appDelegate;
+    @property (strong, nonatomic) JGActionSheet *menu;
+    @property (strong, nonatomic) JGActionSheetSection *surveyListMenu;
+    @property (strong, nonatomic) JGActionSheetSection *cancelGroup;
+@end
 
 @implementation RecordsTableViewController
 #define DEFAULT_MAX     20
 #define DEFAULT_OFFSET  0
 #define SEARCH_LENGTH   3
-@synthesize  records, appDelegate, bioProjectService, totalRecords, offset, loadingFinished, isSearching, query, spinner, myRecords;
+@synthesize  webViewController, records, appDelegate, bioProjectService, totalRecords, offset, loadingFinished, isSearching, query, spinner, myRecords, projectId, pActivties;
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *) nibBundleOrNil {
+- (id)initWithNibNameAndUserActions:(NSString *)nibNameOrNil bundle:(NSBundle *) nibBundleOrNil {
     self.appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
     self.bioProjectService = self.appDelegate.bioProjectService;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self.menu = nil;
     if (self) {
         self.records = [[NSMutableArray alloc]init];
+        self.pActivties = [[NSMutableArray alloc] init];
         self.offset = DEFAULT_OFFSET;
         self.loadingFinished = TRUE;
         self.query = @"";
         self.isSearching = NO;
 
-        UIBarButtonItem *syncButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"sync-25"] style:UIBarButtonItemStyleBordered
-                                                                      target:self action:@selector(resetAndDownloadProjects)];
-        self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:syncButton,nil];
+        UIBarButtonItem *syncButton = [[UIBarButtonItem alloc]
+                                       initWithImage: [UIImage imageNamed:@"sync-25"]
+                                       style:UIBarButtonItemStyleBordered
+                                       target:self
+                                       action:@selector(resetAndDownloadProjects)];
+       
+        UIBarButtonItem *plusButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(selectActivity)];
+        NSArray *btns = [NSArray arrayWithObjects:plusButton, syncButton,nil];
+        btns = [NSArray arrayWithObjects:plusButton, syncButton,nil];
+        self.navigationItem.rightBarButtonItems = btns;
+        spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    }
+    
+    return self;
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *) nibBundleOrNil {
+    self.appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.bioProjectService = self.appDelegate.bioProjectService;
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self.menu = nil;
+    if (self) {
+        self.records = [[NSMutableArray alloc]init];
+        self.pActivties = [[NSMutableArray alloc] init];
+        self.offset = DEFAULT_OFFSET;
+        self.loadingFinished = TRUE;
+        self.query = @"";
+        self.isSearching = NO;
+        
+        UIBarButtonItem *syncButton = [[UIBarButtonItem alloc]
+                                       initWithImage: [UIImage imageNamed:@"sync-25"]
+                                       style:UIBarButtonItemStyleBordered
+                                       target:self
+                                       action:@selector(resetAndDownloadProjects)];
+        
+        NSArray *btns = [NSArray arrayWithObjects:syncButton,nil];
+        self.navigationItem.rightBarButtonItems = btns;
         spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     }
     return self;
+}
+
+
+-(void) selectActivity
+{
+    // Load all project activityIds.
+    NSError *error;
+    [self.pActivties removeAllObjects];
+    [self.bioProjectService getProjectActivities:pActivties projectId: self.project.projectId error: &error];
+    if(error == nil && [pActivties count] > 0) {
+    
+        self.surveyListMenu = nil;
+        NSMutableArray *list = [[NSMutableArray alloc] init];
+        for (int i = 0; i <[pActivties count]; i++) {
+            ProjectActivity *pa = pActivties[i];
+            [list addObject:pa.name];
+        }
+        NSArray *arrayList = [NSArray arrayWithArray:list];
+        self.surveyListMenu = [JGActionSheetSection sectionWithTitle:nil message:@"Select Survey" buttonTitles:arrayList buttonStyle:JGActionSheetButtonStyleGreen];
+
+        self.cancelGroup = [JGActionSheetSection sectionWithTitle:nil
+                                                          message:nil
+                                                     buttonTitles:@[@"Cancel"]
+                                                      buttonStyle:JGActionSheetButtonStyleDefault];
+        [self.cancelGroup setButtonStyle:JGActionSheetButtonStyleDefault forButtonAtIndex:0];
+        
+        NSArray *sections = @[self.surveyListMenu,  self.cancelGroup];
+        self.menu = [JGActionSheet actionSheetWithSections: sections];
+        
+        //Assign delegate.
+         [self.menu setDelegate:self];
+        if([self.tableView isDescendantOfView:self.view]){
+            [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
+            [self.menu showInView:self.tableView animated:YES];
+        } else {
+            [self.menu showInView:self.view animated:YES];
+        }
+
+    }
+}
+
+- (void)actionSheet:(JGActionSheet *)actionSheet pressedButtonAtIndexPath:(NSIndexPath *)indexPath {
+    
+    switch(indexPath.section) {
+        case 0:
+            if(indexPath.row >= 0) {
+                ProjectActivity *pa = self.pActivties[indexPath.row];
+                                                      
+                NSString *url = [[NSString alloc] initWithFormat:@"%@/bioActivity/mobileCreate/%@", BIOCOLLECT_SERVER, pa.projectActivityId];
+                NSMutableURLRequest *request = [self loadRequest: url];
+                self.webViewController = [[SVModalWebViewController alloc] initWithURLRequest: request];
+                self.webViewController.title = [[NSString alloc] initWithFormat:@"%@", pa.name];
+                self.webViewController.webViewDelegate = self;
+                
+                [self presentViewController: webViewController animated:YES completion: nil];
+            }
+            break;
+        case 1:
+        default:
+            break;
+    }
+    
+    [actionSheet dismissAnimated:YES];
+    self.menu = nil;
+}
+-(NSMutableURLRequest *) loadRequest: (NSString*) url{
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:url]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:[GASettings getEmailAddress] forHTTPHeaderField:@"userName"];
+    [request setValue:[GASettings getAuthKey] forHTTPHeaderField:@"authKey"];
+    [request setTimeoutInterval: DEFAULT_TIMEOUT];
+    return request;
 }
 
 - (void)viewDidLoad {
@@ -93,7 +216,14 @@
         NSArray *dateArray = [activity.lastUpdated componentsSeparatedByString: @"T"];
         NSString *lastUpdated = [dateArray objectAtIndex: 0];
         
-        cell.textLabel.text = activity.projectActivityName;
+        if([activity.records count] > 0) {
+            NSDictionary *item = [activity.records objectAtIndex:0];
+            NSString *speciesName = [item objectForKey:@"name"];
+            cell.textLabel.text = ((speciesName != (id)[NSNull null]) && [speciesName length] > 0) ? [item objectForKey:@"name"] : @"No species name";
+        } else {
+            cell.textLabel.text = activity.projectActivityName;
+        }
+        
         NSString *description = [[NSString alloc] initWithFormat:@"Submitted by:%@, on:%@, Activity type:%@ ", activity.activityOwnerName, lastUpdated, activity.activityName];
         cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@", description];
         
@@ -102,6 +232,18 @@
         
         [cell.imageView sd_setImageWithURL:[NSURL URLWithString:escapedUrlString]
                           placeholderImage:[UIImage imageNamed:@"table-place-holder.png"]];
+       
+        if(self.showUserActions) {
+            UIImage *image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"edit"]];
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+            CGRect frame = CGRectMake(44.0, 44.0, image.size.width, image.size.height);
+            button.frame = frame;
+            self.selectedActivity = activity;
+            [button setBackgroundImage:image forState:UIControlStateNormal];
+            [button addTarget:self action:@selector(accessoryButtonTapped:event:)  forControlEvents:UIControlEventTouchUpInside];
+            button.backgroundColor = [UIColor clearColor];
+            cell.accessoryView = button;
+        }
     }
     
     return cell;
@@ -111,6 +253,20 @@
     // Return NO if you do not want the specified item to be editable.
     return NO;
 }
+
+-(void) accessoryButtonTapped:(id)sender event:(id)event{
+    // Open web view with
+    if(self.selectedActivity &&  self.selectedActivity.url){
+        NSString *url = [[NSString alloc] initWithFormat:@"%@",self.selectedActivity.editUrl];
+        NSMutableURLRequest *request = [self loadRequest: url];
+        self.webViewController = [[SVModalWebViewController alloc] initWithURLRequest: request];
+        self.webViewController.title = [[NSString alloc] initWithFormat:@"Edit"];
+        self.webViewController.webViewDelegate = self;
+        
+        [self presentViewController: webViewController animated:YES completion: nil];
+    }
+}
+
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height)) {
@@ -150,8 +306,11 @@
     } else if(self.loadingFinished){
         self.loadingFinished = FALSE;
         NSError *error = nil;
-        NSString *projectId = self.project ? self.project.projectId : nil;
-        NSInteger total = [self.bioProjectService getActivities: records offset:self.offset max:DEFAULT_MAX projectId: projectId query:self.query myRecords:self.myRecords error:&error];
+        NSString *pId = self.project ? self.project.projectId : nil;
+        if(self.projectId){
+            pId = self.projectId;
+        }
+        NSInteger total = [self.bioProjectService getActivities: records offset:self.offset max:DEFAULT_MAX projectId: pId query:self.query myRecords:self.myRecords error:&error];
         DebugLog(@"%lu || %ld || %ld",(unsigned long)[self.bioProjects count], self.offset, total);
         if(error == nil && total > 0) {
             self.totalRecords = total;
@@ -270,4 +429,14 @@
     return YES;
 }
 
+// Webview Delegate
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    NSString *currentUrl = webView.request.URL.absoluteString;
+    if([currentUrl hasSuffix: @"#successfully-posted"]) {
+        [RKDropdownAlert title:@"" message:@"Successfully posted." backgroundColor:[UIColor greenColor] textColor:[UIColor whiteColor] time:10];
+        [self.webViewController dismissViewControllerAnimated:false completion:NULL];
+        [self resetAndDownloadProjects];
+    }
+}
+    
 @end

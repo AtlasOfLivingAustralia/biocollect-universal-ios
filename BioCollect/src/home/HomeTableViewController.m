@@ -54,6 +54,7 @@
     
     if (self) {
         //Initialise
+        self.showUserActions = TRUE;
         [self initialise];
         self.isUserPage = TRUE;
         
@@ -64,6 +65,7 @@
         UIBarButtonItem *syncButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"sync-25"] style:UIBarButtonItemStyleBordered target:self action:@selector(resetAndDownloadProjects)];
         
         self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects: syncButton, menuSheet,nil];
+        
     }
     
     return self;
@@ -75,6 +77,7 @@
     if (self) {
         
         //Initialise
+        self.showUserActions = FALSE;
         [self initialise];
         self.isUserPage = FALSE;
         
@@ -90,7 +93,6 @@
         UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BioCollect-text-small"]];
         imageView.contentMode = UIViewContentModeCenter;
         self.navigationItem.titleView = imageView;
-        
     }
     
     return self;
@@ -100,7 +102,12 @@
     self.appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
     self.bioProjectService = self.appDelegate.bioProjectService;
     self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    self.recordsTableView = [[RecordsTableViewController alloc] initWithNibName:@"RecordsTableViewController" bundle:nil];
+    
+    if(self.showUserActions) {
+        self.recordsTableView = [[RecordsTableViewController alloc] initWithNibNameAndUserActions:@"RecordsTableViewController" bundle:nil];
+    } else {
+        self.recordsTableView = [[RecordsTableViewController alloc] initWithNibName:@"RecordsTableViewController" bundle:nil];
+    }
     self.bioProjects = [[NSMutableArray alloc]init];
     self.offset = DEFAULT_OFFSET;
     self.loadingFinished = TRUE;
@@ -112,8 +119,7 @@
     self.isSearching = NO;
 }
 
--(void)showMenu:(id)sender
-{
+-(void)showMenu:(id)sender {
     if(self.menu == nil) {
        
         self.projectStatus = [JGActionSheetSection sectionWithTitle:@"Filter by"
@@ -303,6 +309,7 @@
             self.recordsTableView.totalRecords = 0;
             self.recordsTableView.offset = 0;
             [self.recordsTableView.records removeAllObjects];
+            self.recordsTableView.showUserActions = self.showUserActions;
             [[self navigationController] pushViewController:self.recordsTableView animated:TRUE];
             
         } else if(project && project.isExternal && [project.urlWeb isEqual: [NSNull null]]) {
@@ -334,7 +341,7 @@
     
     //Reached the max.
     if(self.totalProjects != 0 && [self.bioProjects count] != 0 && self.totalProjects  == [self.bioProjects count]) {
-        DebugLog(@"Downloaded all the projects (%ld)", [self.bioProjects count])
+        DebugLog(@"Downloaded all the projects (%ld)", [self.bioProjects count]);
     } else if(self.loadingFinished){
         self.loadingFinished = FALSE;
         NSError *error = nil;
@@ -415,6 +422,7 @@
     });
     
 }
+
 
 -(void) downloadProjects
 {

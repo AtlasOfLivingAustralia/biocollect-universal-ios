@@ -29,8 +29,11 @@
 @property (nonatomic, assign) BOOL completedChecked;
 @property (nonatomic, assign) BOOL dataSharingChecked;
 
+
 //Search flag
 @property (nonatomic, assign) BOOL isSearching;
+
+@property (nonatomic, assign) BOOL showUserActions;
 
 @property (nonatomic, strong) GAAppDelegate *appDelegate;
 @property (nonatomic, strong) BioProjectService *bioProjectService;
