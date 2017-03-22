@@ -13,6 +13,9 @@
 #define kSortBy @"sortBy"
 #define kDataToSync @"dataToSync"
 #define kEULA @"EULA"
+#define kFirstName @"firstName"
+#define kLastName @"lastName"
+#define kUserId @"userId"
 
 @implementation GASettings
 
@@ -28,6 +31,9 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kAuthKey];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kSortBy];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kDataToSync];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kFirstName];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kLastName];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kUserId];
     //[[NSUserDefaults standardUserDefaults] removeObjectForKey:kEULA];
     [[NSUserDefaults standardUserDefaults]synchronize];    
 }
@@ -49,6 +55,26 @@
 
 +(NSString*) getDataToSync{
     return [[NSUserDefaults standardUserDefaults] objectForKey:kDataToSync];
+}
+
++(NSString*) getFirstName{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kFirstName];
+}
+
++(NSString*) getLastName{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kLastName];
+}
+
++(NSString*) getUserId{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kUserId];
+}
+
+
++(NSString*) getFullName{
+    NSString *firstName =[[NSUserDefaults standardUserDefaults] objectForKey: kFirstName]?:@"";
+    NSString *lastName =[[NSUserDefaults standardUserDefaults] objectForKey: kLastName]?:@"";
+    
+    return [NSString stringWithFormat:@"%@ %@", firstName, lastName];
 }
 
 +(void) setEmailAddress : (NSString *) emailAddress{
@@ -75,5 +101,21 @@
     [[NSUserDefaults standardUserDefaults] setObject:EULA forKey:kEULA];
     [[NSUserDefaults standardUserDefaults]synchronize];
 }
+
++(void) setFirstName:(NSString *)firstName{
+    [[NSUserDefaults standardUserDefaults] setObject:firstName forKey:kFirstName];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+}
+
++(void) setLastName:(NSString *)lastName{
+    [[NSUserDefaults standardUserDefaults] setObject:lastName forKey:kLastName];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+}
+
++(void) setUserId:(NSString *)userId{
+    [[NSUserDefaults standardUserDefaults] setObject:userId forKey:kUserId];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+}
+
 
 @end

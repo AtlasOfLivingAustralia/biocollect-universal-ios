@@ -28,6 +28,7 @@
 -(NSString *) activityOwnerName;
 -(NSString *) thumbnailUrl;
 -(NSArray *) themes;
+-(NSArray *) records;
 
 - (int) totalActivities;
 

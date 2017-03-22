@@ -36,6 +36,7 @@
 #define kActivityOwnerName @"activityOwnerName"
 #define kProjectActivityName @"name"
 #define kThumbnailUrl @"thumbnailUrl"
+#define kRecords @"records"
 
 #define kTotalActivities @"total"
 #define kActivities @"activities"
@@ -103,6 +104,11 @@
 -(NSArray *) themes {
     return [self.activityJSONDictionary objectForKey:kThemes];
 }
+
+-(NSArray *) records {
+    return [self.activityJSONDictionary objectForKey:kRecords];
+}
+
 -(NSString *) projectActivityName {
     return [self.activityJSONDictionary objectForKey:kProjectActivityName];
 }

@@ -18,10 +18,17 @@
 +(void) setAuthKey: (NSString *) authKey;
 +(void) setEmailAddress : (NSString *) emailAddress;
 +(void) setEULA : (NSString *) EULA;
++(void) setFirstName : (NSString *) firstName;
++(void) setLastName : (NSString *) secondName;
++(void) setUserId : (NSString *) userId;
 +(void) resetAllFields;
 +(NSString*) getAuthKey;
 +(NSString*) getEmailAddress;
 +(NSString*) getSortBy;
 +(NSString*) getDataToSync;
 +(NSString*) getEULA;
++(NSString*) getLastName;
++(NSString*) getFirstName;
++(NSString*) getFullName;
++(NSString*) getUserId;
 @end
