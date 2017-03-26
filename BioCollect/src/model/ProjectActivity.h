@@ -7,19 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
+
 @interface ProjectActivity : NSObject {
     int _id;
     NSString *projectId;
-    NSString *projectActivityId
-    NSString *name
-    NSString *lastUpdated
-    NSString *description
+    NSString *projectActivityId;
+    NSString *name;
+    NSString *description;
+    NSString *published;
 }
 
 @property (nonatomic, assign) int _id;
 @property (nonatomic, strong) NSString * projectId;
 @property (nonatomic, strong) NSString * projectActivityId;
-@property (nonatomic, strong) NSString * projectId;
-@property (nonatomic, strong) NSString * projectId;
+@property (nonatomic, strong) NSString * name;
+@property (nonatomic, strong) NSString * description;
+@property (nonatomic, strong) NSString * published;
 
+
+@end
 

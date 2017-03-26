@@ -6,4 +6,8 @@
 //  Copyright © 2016 Sathya Moorthy, Sathish (Atlas of Living Australia). All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "ProjectActivity.h"
+
+@implementation ProjectActivity
+@synthesize _id,projectId,projectActivityId, name,description, published;
+@end
