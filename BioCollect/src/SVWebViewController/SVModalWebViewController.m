@@ -38,7 +38,7 @@
 - (instancetype)initWithURLRequest:(NSURLRequest *)request {
     self.webViewController = [[SVWebViewController alloc] initWithURLRequest:request];
     if (self = [super initWithRootViewController:self.webViewController]) {
-        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                                                                     target:self.webViewController
                                                                                     action:@selector(doneButtonTapped:)];
         

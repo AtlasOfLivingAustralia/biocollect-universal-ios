@@ -174,8 +174,15 @@
     
     //Tab bars
     tabBarController = [[UITabBarController alloc] init];
-    //NSArray* controllers = [NSArray arrayWithObjects: ozHomeNC, aboutNC,contactNC, nil];
-    NSArray* controllers = [NSArray arrayWithObjects: homeNC, recordsNC, myProjectsNC, myRecordsNC,contactNC, nil];
+    NSArray* controllers = nil;
+    NSString *appType = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_AppType"];
+    if([appType isEqualToString:@"custom"]) {
+        controllers = [NSArray arrayWithObjects: ozHomeNC, aboutNC,contactNC, nil];
+    } else {
+        controllers = [NSArray arrayWithObjects: homeNC, recordsNC, myProjectsNC, myRecordsNC,contactNC, nil];
+    }
+    
+    
     tabBarController.viewControllers = controllers;
 
     [self.window setRootViewController:tabBarController];

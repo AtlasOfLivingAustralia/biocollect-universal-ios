@@ -52,6 +52,7 @@
 		B87373E51DB7027F0057027E /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B87373E41DB7027F0057027E /* RecordViewController.m */; };
 		B87373E91DB703280057027E /* RecordForm.m in Sources */ = {isa = PBXBuildFile; fileRef = B87373E81DB703280057027E /* RecordForm.m */; };
 		B89441FB18FA38F500BB5928 /* GAProjectsUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B89441FA18FA38F500BB5928 /* GAProjectsUtil.m */; };
+		B89B235B1EA825A900A2B66F /* BioCollect-info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B89B235A1EA825A900A2B66F /* BioCollect-info.plist */; };
 		B8BFD2C61919C3AC0063DA78 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8BFD2C51919C3AC0063DA78 /* QuartzCore.framework */; };
 		B8BFD2C81919C3BC0063DA78 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8BFD2C71919C3BC0063DA78 /* Accelerate.framework */; };
 		B8D551DE18F952DF00EDD006 /* GARestCall.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D551DD18F952DF00EDD006 /* GARestCall.m */; };
@@ -504,6 +505,7 @@
 		B87373E81DB703280057027E /* RecordForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecordForm.m; path = src/record/RecordForm.m; sourceTree = "<group>"; };
 		B89441F918FA38F500BB5928 /* GAProjectsUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAProjectsUtil.h; path = src/model/GAProjectsUtil.h; sourceTree = "<group>"; };
 		B89441FA18FA38F500BB5928 /* GAProjectsUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAProjectsUtil.m; path = src/model/GAProjectsUtil.m; sourceTree = "<group>"; };
+		B89B235A1EA825A900A2B66F /* BioCollect-info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "BioCollect-info.plist"; path = "BioCollect/BioCollect-info.plist"; sourceTree = "<group>"; };
 		B8BFD2C51919C3AC0063DA78 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B8BFD2C71919C3BC0063DA78 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		B8D551DC18F952DF00EDD006 /* GARestCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GARestCall.h; path = src/GARestCall.h; sourceTree = "<group>"; };
@@ -643,7 +645,6 @@
 		E2A4A4F619665009006CAC22 /* GAEULAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAEULAViewController.m; path = src/eula/GAEULAViewController.m; sourceTree = "<group>"; };
 		E2A4A4F719665009006CAC22 /* GAEULAViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GAEULAViewController.xib; path = src/eula/GAEULAViewController.xib; sourceTree = "<group>"; };
 		E2AECFA81E73D3010035DF28 /* BioCollect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BioCollect.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E2AECFA91E73D3010035DF28 /* Oz Atlas copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Oz Atlas copy-Info.plist"; path = "/Users/sat01a/All/sat01a_git/iosv2/ozAtlas/Oz Atlas copy-Info.plist"; sourceTree = "<absolute>"; };
 		E2B4BEEC1C896DFB0054F117 /* HomeCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeCustomCell.h; path = src/home/HomeCustomCell.h; sourceTree = "<group>"; };
 		E2B4BEED1C896E270054F117 /* HomeCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeCustomCell.m; path = src/home/HomeCustomCell.m; sourceTree = "<group>"; };
 		E2B6274E1CE40F8800A89179 /* BioCollect-text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BioCollect-text.png"; path = "src/images/BioCollect-text.png"; sourceTree = "<group>"; };
@@ -1229,7 +1230,7 @@
 				E2E3AAAB18F4D2940005BB9E /* BioCollectTests */,
 				E2E3AA8B18F4D2940005BB9E /* Frameworks */,
 				E2E3AA8A18F4D2940005BB9E /* Products */,
-				E2AECFA91E73D3010035DF28 /* Oz Atlas copy-Info.plist */,
+				B89B235A1EA825A900A2B66F /* BioCollect-info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1535,6 +1536,7 @@
 				E2AECF481E73D3010035DF28 /* finished@2x.png in Resources */,
 				E2AECF491E73D3010035DF28 /* action-25@2x.png in Resources */,
 				E2AECF4A1E73D3010035DF28 /* ContactVC.xib in Resources */,
+				B89B235B1EA825A900A2B66F /* BioCollect-info.plist in Resources */,
 				E2AECF4B1E73D3010035DF28 /* loc1_changed@2x.png in Resources */,
 				E2AECF4C1E73D3010035DF28 /* 512x512.png in Resources */,
 				E2AECF4D1E73D3010035DF28 /* sync-25@2x.png in Resources */,
@@ -1996,7 +1998,7 @@
 					"DEBUG=0",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "Oz Atlas copy-Info.plist";
+				INFOPLIST_FILE = "BioCollect/BioCollect-info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2022,7 +2024,7 @@
 				ENABLE_NS_ASSERTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BioCollect/Oz Atlas-Prefix.pch";
-				INFOPLIST_FILE = "Oz Atlas copy-Info.plist";
+				INFOPLIST_FILE = "BioCollect/BioCollect-info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

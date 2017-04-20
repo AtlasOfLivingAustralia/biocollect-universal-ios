@@ -37,8 +37,10 @@
 	<string>Location is required to find out where you are</string>
 	<key>NSLocationUsageDescription</key>
 	<string>Location usage used</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>$(PRODUCT_NAME) uses Camera</string>
+    <key>NSCameraUsageDescription</key>
+    <string>This app requires access to the camera.</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>This app requires access to the photo library.</string>
 	<key>UILaunchImages</key>
 	<array>
 		<dict>
@@ -76,7 +78,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-    <key>Bio_AppType</key>
-    <string>custom</string>
+	<key>Bio_AppType</key>
+	<string>generic</string>
 </dict>
 </plist>
