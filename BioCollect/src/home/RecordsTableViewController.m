@@ -55,6 +55,36 @@
         btns = [NSArray arrayWithObjects:plusButton, syncButton,nil];
         self.navigationItem.rightBarButtonItems = btns;
         spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        self.showUserActions = TRUE;
+    }
+    
+    return self;
+}
+
+- (id)initWithNibNameAndUserActionsAndWithoutPlus:(NSString *)nibNameOrNil bundle:(NSBundle *) nibBundleOrNil {
+    self.appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.bioProjectService = self.appDelegate.bioProjectService;
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self.menu = nil;
+    if (self) {
+        self.records = [[NSMutableArray alloc]init];
+        self.pActivties = [[NSMutableArray alloc] init];
+        self.offset = DEFAULT_OFFSET;
+        self.loadingFinished = TRUE;
+        self.query = @"";
+        self.isSearching = NO;
+        
+        UIBarButtonItem *syncButton = [[UIBarButtonItem alloc]
+                                       initWithImage: [UIImage imageNamed:@"sync-25"]
+                                       style:UIBarButtonItemStyleBordered
+                                       target:self
+                                       action:@selector(resetAndDownloadProjects)];
+        
+        NSArray *btns = [NSArray arrayWithObjects: syncButton,nil];
+        btns = [NSArray arrayWithObjects: syncButton,nil];
+        self.navigationItem.rightBarButtonItems = btns;
+        spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        self.showUserActions = TRUE;
     }
     
     return self;
@@ -224,7 +254,7 @@
             cell.textLabel.text = activity.projectActivityName;
         }
         
-        NSString *description = [[NSString alloc] initWithFormat:@"Submitted by:%@, on:%@, Activity type:%@ ", activity.activityOwnerName, lastUpdated, activity.activityName];
+        NSString *description = [[NSString alloc] initWithFormat:@"%@, %@,%@ ", activity.activityOwnerName, lastUpdated, activity.activityName];
         cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@", description];
         
         NSString *url = [[NSString alloc] initWithFormat: @"%@", activity.thumbnailUrl];
@@ -234,7 +264,7 @@
                           placeholderImage:[UIImage imageNamed:@"table-place-holder.png"]];
        
         if(self.showUserActions) {
-            UIImage *image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"edit"]];
+            UIImage *image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"edit_dark"]];
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
             CGRect frame = CGRectMake(44.0, 44.0, image.size.width, image.size.height);
             button.frame = frame;
@@ -433,7 +463,7 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     NSString *currentUrl = webView.request.URL.absoluteString;
     if([currentUrl hasSuffix: @"#successfully-posted"]) {
-        [RKDropdownAlert title:@"" message:@"Successfully posted." backgroundColor:[UIColor greenColor] textColor:[UIColor whiteColor] time:10];
+        [RKDropdownAlert title:@"" message:@"Successfully submitted." backgroundColor:[UIColor orangeColor] textColor:[UIColor whiteColor] time:10];
         [self.webViewController dismissViewControllerAnimated:false completion:NULL];
         [self resetAndDownloadProjects];
     }

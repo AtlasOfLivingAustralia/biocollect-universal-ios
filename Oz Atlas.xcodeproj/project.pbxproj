@@ -51,6 +51,8 @@
 		B87373E21DB7021B0057027E /* FXForms.m in Sources */ = {isa = PBXBuildFile; fileRef = B87373E11DB7021B0057027E /* FXForms.m */; };
 		B87373E51DB7027F0057027E /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B87373E41DB7027F0057027E /* RecordViewController.m */; };
 		B87373E91DB703280057027E /* RecordForm.m in Sources */ = {isa = PBXBuildFile; fileRef = B87373E81DB703280057027E /* RecordForm.m */; };
+		B87488AB1EB83A1D00C5BD40 /* edit_dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B87488AA1EB83A1D00C5BD40 /* edit_dark@2x.png */; };
+		B87488AC1EB83A1D00C5BD40 /* edit_dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B87488AA1EB83A1D00C5BD40 /* edit_dark@2x.png */; };
 		B89441FB18FA38F500BB5928 /* GAProjectsUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B89441FA18FA38F500BB5928 /* GAProjectsUtil.m */; };
 		B89B235B1EA825A900A2B66F /* BioCollect-info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B89B235A1EA825A900A2B66F /* BioCollect-info.plist */; };
 		B8BFD2C61919C3AC0063DA78 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8BFD2C51919C3AC0063DA78 /* QuartzCore.framework */; };
@@ -503,6 +505,7 @@
 		B87373E61DB702980057027E /* RecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecordViewController.h; path = src/record/RecordViewController.h; sourceTree = "<group>"; };
 		B87373E71DB703110057027E /* RecordForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecordForm.h; path = src/record/RecordForm.h; sourceTree = "<group>"; };
 		B87373E81DB703280057027E /* RecordForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecordForm.m; path = src/record/RecordForm.m; sourceTree = "<group>"; };
+		B87488AA1EB83A1D00C5BD40 /* edit_dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "edit_dark@2x.png"; path = "src/images/edit_dark@2x.png"; sourceTree = "<group>"; };
 		B89441F918FA38F500BB5928 /* GAProjectsUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAProjectsUtil.h; path = src/model/GAProjectsUtil.h; sourceTree = "<group>"; };
 		B89441FA18FA38F500BB5928 /* GAProjectsUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAProjectsUtil.m; path = src/model/GAProjectsUtil.m; sourceTree = "<group>"; };
 		B89B235A1EA825A900A2B66F /* BioCollect-info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "BioCollect-info.plist"; path = "BioCollect/BioCollect-info.plist"; sourceTree = "<group>"; };
@@ -1001,6 +1004,7 @@
 		B8D551DF18F98B7800EDD006 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B87488AA1EB83A1D00C5BD40 /* edit_dark@2x.png */,
 				E2EF6E631E6797F400279A55 /* edit@2x.png */,
 				E2636DDC1CF2E68500000371 /* home_filled-25@2x.png */,
 				E2636DD21CF2E57C00000371 /* about_filled-25@2x.png */,
@@ -1534,6 +1538,7 @@
 				E2AECF461E73D3010035DF28 /* help_filled-25@2x.png in Resources */,
 				E2AECF471E73D3010035DF28 /* SpeciesSearchTableViewController.xib in Resources */,
 				E2AECF481E73D3010035DF28 /* finished@2x.png in Resources */,
+				B87488AC1EB83A1D00C5BD40 /* edit_dark@2x.png in Resources */,
 				E2AECF491E73D3010035DF28 /* action-25@2x.png in Resources */,
 				E2AECF4A1E73D3010035DF28 /* ContactVC.xib in Resources */,
 				B89B235B1EA825A900A2B66F /* BioCollect-info.plist in Resources */,
@@ -1700,6 +1705,7 @@
 				E2F8E56919108A640093A3D3 /* Icon-60@2x.png in Resources */,
 				E241C688196A33B6002302D7 /* index.html in Resources */,
 				E2A2FFCB1C8546F0008B63A8 /* ala_logo.png in Resources */,
+				B87488AB1EB83A1D00C5BD40 /* edit_dark@2x.png in Resources */,
 				E2E56B2819259D0B007AC38C /* StaticWebPages in Resources */,
 				8709D1C91DB9926700E49C7E /* MapViewController.xib in Resources */,
 				E20189E61C8966700031435D /* Icon-placeholder.png in Resources */,

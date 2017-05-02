@@ -15,7 +15,8 @@
 #import "SVModalWebViewController.h"
 @interface RecordsTableViewController :  UITableViewController <UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate, JGActionSheetDelegate, UIWebViewDelegate>
 - (id)initWithNibNameAndUserActions:(NSString *)nibNameOrNil bundle:(NSBundle *) nibBundleOrNil;
-    
+- (id)initWithNibNameAndUserActionsAndWithoutPlus:(NSString *)nibNameOrNil bundle:(NSBundle *) nibBundleOrNil;
+
 @property (strong, nonatomic) IBOutlet UITableView *recordsTableView;
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 @property (nonatomic, strong) NSMutableArray *records;

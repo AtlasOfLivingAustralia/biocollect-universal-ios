@@ -132,7 +132,7 @@
     recordsNC.navigationBar.topItem.title = @"All Records";
     
     // My Records
-    myRecordsVC = [[RecordsTableViewController alloc] initWithNibName:@"RecordsTableViewController" bundle:nil];
+    myRecordsVC = [[RecordsTableViewController alloc] initWithNibNameAndUserActionsAndWithoutPlus:@"RecordsTableViewController" bundle:nil];
     myRecordsVC.myRecords = TRUE;
     UINavigationController *myRecordsNC = [[UINavigationController alloc] initWithRootViewController: myRecordsVC];
     myRecordsNC.tabBarItem.title = @"My Records";
