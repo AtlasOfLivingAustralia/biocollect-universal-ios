@@ -79,11 +79,13 @@
     //Request projects.
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     NSString *url = nil;
+    NSString *userId = [GASettings getUserId];
+    
     if(projectId) {
-        url = [[NSString alloc] initWithFormat: @"%@%@?view=project&offset=%ld&max=%ld&projectId=%@&searchTerm=%@&mobile=true", BIOCOLLECT_SERVER, BIO_ACTIVITIES, (long)offset, (long)max, projectId,query];
+        url = [[NSString alloc] initWithFormat: @"%@%@?view=project&offset=%ld&max=%ld&projectId=%@&searchTerm=%@&mobile=true&userId=%@", BIOCOLLECT_SERVER, BIO_ACTIVITIES, (long)offset, (long)max, projectId,query,userId];
     } else {
         NSString *myRecordsStr = myRecords ? @"&view=myrecords" : @"&view=all";
-        url = [[NSString alloc] initWithFormat: @"%@%@?offset=%ld&max=%ld&searchTerm=%@&mobile=true%@", BIOCOLLECT_SERVER, BIO_ACTIVITIES, (long)offset, (long)max, query, myRecordsStr];
+        url = [[NSString alloc] initWithFormat: @"%@%@?offset=%ld&max=%ld&searchTerm=%@&mobile=true%@&userId=%@", BIOCOLLECT_SERVER, BIO_ACTIVITIES, (long)offset, (long)max, query, myRecordsStr,userId];
     }
     
     NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -116,6 +118,7 @@
             activity.thumbnailUrl = activitiesJSON.thumbnailUrl;
             activity.lastUpdated = ([activitiesJSON.lastUpdated length])?(activitiesJSON.lastUpdated):@"-";
             activity.records = activitiesJSON.records;
+            activity.showCrud = activitiesJSON.showCrud;
             [records addObject:activity];
         }
     }

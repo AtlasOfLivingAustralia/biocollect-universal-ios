@@ -184,6 +184,11 @@
     
     
     tabBarController.viewControllers = controllers;
+    [[UITabBar appearance] setTintColor: [self colorFromHexString: @"#F1582B"]];
+    [[UIBarButtonItem appearance] setTintColor: [self colorFromHexString: @"#F1582B"]];
+    //[[UINavigationBar appearance] setBarTintColor: [self colorFromHexString: @"#3A3A3C"]];
+    [[UINavigationBar appearance] setTranslucent:NO];
+
 
     [self.window setRootViewController:tabBarController];
     [self.window makeKeyAndVisible];
@@ -195,6 +200,14 @@
         DebugLog(@"[INFO] GAAppDelegate:addSplitViewtoRoot - loading data from db.");
         [self updateTableModelsAndViews:[self.sqlLite loadProjectsAndActivities]];
     }
+}
+
+-(UIColor *)colorFromHexString:(NSString *)hexString {
+    unsigned rgbValue = 0;
+    NSScanner *scanner = [NSScanner scannerWithString:hexString];
+    [scanner setScanLocation:1]; // bypass '#' character
+    [scanner scanHexInt:&rgbValue];
+    return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
 }
 
 

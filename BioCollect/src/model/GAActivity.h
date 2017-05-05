@@ -41,6 +41,7 @@
     NSString *thumbnailUrl;
     NSArray *themes;
     NSArray *records;
+    BOOL showCrud;
     
 }
 
@@ -65,6 +66,7 @@
 @property (nonatomic, strong) NSString * thumbnailUrl;
 @property (nonatomic, strong) NSArray * themes;
 @property (nonatomic, strong) NSArray * records;
+@property (nonatomic, assign) BOOL showCrud;
 
 - (NSComparisonResult)compareByProgress:(GAActivity *)otherObject;
 - (NSComparisonResult)compareByName:(GAActivity *)otherObject;

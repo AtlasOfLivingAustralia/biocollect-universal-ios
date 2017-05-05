@@ -29,6 +29,7 @@
 -(NSString *) thumbnailUrl;
 -(NSArray *) themes;
 -(NSArray *) records;
+-(BOOL) showCrud;
 
 - (int) totalActivities;
 

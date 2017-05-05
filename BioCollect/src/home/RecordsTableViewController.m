@@ -263,7 +263,7 @@
         [cell.imageView sd_setImageWithURL:[NSURL URLWithString:escapedUrlString]
                           placeholderImage:[UIImage imageNamed:@"table-place-holder.png"]];
        
-        if(self.showUserActions) {
+        if(activity.showCrud) {
             UIImage *image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"edit_dark"]];
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
             CGRect frame = CGRectMake(44.0, 44.0, image.size.width, image.size.height);
@@ -273,6 +273,8 @@
             [button addTarget:self action:@selector(accessoryButtonTapped:event:)  forControlEvents:UIControlEventTouchUpInside];
             button.backgroundColor = [UIColor clearColor];
             cell.accessoryView = button;
+        } else {
+            cell.accessoryView = nil;
         }
     }
     
@@ -352,10 +354,11 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UILabel *myLabel = [[UILabel alloc] init];
-    myLabel.frame = CGRectMake(20, 8, 320, 20);
-    
+    myLabel.frame = CGRectMake(0, 0, 320, 30);
+    myLabel.backgroundColor = [UIColor colorWithRed:58.0/255.0 green:58.0/255.0 blue:60.0/255.0 alpha:1];
+    myLabel.textAlignment = UITextAlignmentCenter;
     myLabel.text = [self tableView:tableView titleForHeaderInSection:section];
-    myLabel.textColor = [UIColor colorWithRed:200.0/255.0 green:77.0/255.0 blue:117.0/255.0 alpha:1];
+    myLabel.textColor = [UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1];
     UIView *headerView = [[UIView alloc] init];
     [headerView addSubview:myLabel];
     

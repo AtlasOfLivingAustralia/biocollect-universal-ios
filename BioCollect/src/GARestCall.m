@@ -100,6 +100,7 @@
             if([jsonError length] == 0 ) {
                 [GASettings setEmailAddress:username];
                 [GASettings setAuthKey:[respDict objectForKey:@"authKey"]];
+                
                 DebugLog(@"[SUCCESS] GARest:authenticate Authentication successful. User=%@",username);
             }
             else {

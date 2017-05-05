@@ -144,6 +144,8 @@
 		E291220F1CDAC425005D9638 /* LaunchScreen~ipad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E291220E1CDAC425005D9638 /* LaunchScreen~ipad.storyboard */; };
 		E29122111CDAD093005D9638 /* LoginiPhoneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E29122101CDAD093005D9638 /* LoginiPhoneView.xib */; };
 		E291221B1CDB3BEC005D9638 /* background~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = E291221A1CDB3BEC005D9638 /* background~ipad.png */; };
+		E29402941EBC061D00CCFEE7 /* header-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E29402931EBC061D00CCFEE7 /* header-logo@2x.png */; };
+		E29402951EBC061D00CCFEE7 /* header-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E29402931EBC061D00CCFEE7 /* header-logo@2x.png */; };
 		E29A353F19667675003D025D /* GAHelpVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E29A353D19667675003D025D /* GAHelpVC.m */; };
 		E29A354019667675003D025D /* GAHelpVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E29A353E19667675003D025D /* GAHelpVC.xib */; };
 		E29A35421966781C003D025D /* searchbar_bk@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E29A35411966781C003D025D /* searchbar_bk@2x.png */; };
@@ -633,6 +635,7 @@
 		E291220E1CDAC425005D9638 /* LaunchScreen~ipad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "LaunchScreen~ipad.storyboard"; path = "src/LaunchScreen~ipad.storyboard"; sourceTree = "<group>"; };
 		E29122101CDAD093005D9638 /* LoginiPhoneView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginiPhoneView.xib; path = src/LoginiPhoneView.xib; sourceTree = "<group>"; };
 		E291221A1CDB3BEC005D9638 /* background~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background~ipad.png"; path = "src/images/background~ipad.png"; sourceTree = "<group>"; };
+		E29402931EBC061D00CCFEE7 /* header-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "header-logo@2x.png"; path = "src/images/header-logo@2x.png"; sourceTree = "<group>"; };
 		E29A353C19667675003D025D /* GAHelpVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAHelpVC.h; path = src/help/GAHelpVC.h; sourceTree = "<group>"; };
 		E29A353D19667675003D025D /* GAHelpVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAHelpVC.m; path = src/help/GAHelpVC.m; sourceTree = "<group>"; };
 		E29A353E19667675003D025D /* GAHelpVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GAHelpVC.xib; path = src/help/GAHelpVC.xib; sourceTree = "<group>"; };
@@ -1004,6 +1007,7 @@
 		B8D551DF18F98B7800EDD006 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E29402931EBC061D00CCFEE7 /* header-logo@2x.png */,
 				B87488AA1EB83A1D00C5BD40 /* edit_dark@2x.png */,
 				E2EF6E631E6797F400279A55 /* edit@2x.png */,
 				E2636DDC1CF2E68500000371 /* home_filled-25@2x.png */,
@@ -1491,6 +1495,9 @@
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Sathya Moorthy, Sathish (CSIRO IM&T, Clayton)";
 				TargetAttributes = {
+					E2AECEE01E73D3010035DF28 = {
+						DevelopmentTeam = VP6SGJQWPU;
+					};
 					E2E3AA8818F4D2940005BB9E = {
 						DevelopmentTeam = VP6SGJQWPU;
 					};
@@ -1610,6 +1617,7 @@
 				E2AECF8C1E73D3010035DF28 /* lock_filled-25@2x.png in Resources */,
 				E2AECF8D1E73D3010035DF28 /* Icon-76@2x.png in Resources */,
 				E2AECF8E1E73D3010035DF28 /* ajax_loader.gif in Resources */,
+				E29402951EBC061D00CCFEE7 /* header-logo@2x.png in Resources */,
 				E2AECF8F1E73D3010035DF28 /* LaunchScreen.storyboard in Resources */,
 				E2AECF901E73D3010035DF28 /* ala_logo1.png in Resources */,
 				E2AECF911E73D3010035DF28 /* SVWebViewControllerActivitySafari-iPad.png in Resources */,
@@ -1702,6 +1710,7 @@
 				E2636DD71CF2E57C00000371 /* about_filled-25@2x.png in Resources */,
 				E2A4A4EE19663E29006CAC22 /* header@2x.png in Resources */,
 				B87373D21DB6DFE90057027E /* SVWebViewController.strings in Resources */,
+				E29402941EBC061D00CCFEE7 /* header-logo@2x.png in Resources */,
 				E2F8E56919108A640093A3D3 /* Icon-60@2x.png in Resources */,
 				E241C688196A33B6002302D7 /* index.html in Resources */,
 				E2A2FFCB1C8546F0008B63A8 /* ala_logo.png in Resources */,
@@ -1995,8 +2004,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = BioCollect;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Sathish Sathyamoorthy (VP6SGJQWPU)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Sathish Sathyamoorthy (VP6SGJQWPU)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Sathish Sathyamoorthy (X53HL7Y98N)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sathish Sathyamoorthy (X53HL7Y98N)";
+				DEVELOPMENT_TEAM = VP6SGJQWPU;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BioCollect/Oz Atlas-Prefix.pch";
@@ -2014,7 +2024,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.biocollect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9a27d24a-07f5-44ec-809e-6fbae0531959";
+				PROVISIONING_PROFILE = "ff942d60-dbea-4b73-9392-b24265ddd547";
+				PROVISIONING_PROFILE_SPECIFIER = "BioCollect-Dev-Provisional";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

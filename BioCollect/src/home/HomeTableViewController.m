@@ -36,8 +36,7 @@
 #define DATA_SHARING_CROSS_STR @"Contributing data to the ALA"
 
 #define FILTER_SECTION_STATUS   0
-#define FILTER_SECTION_SHARING  FILTER_SECTION_STATUS   + 1
-#define FILTER_SECTION_DONE     FILTER_SECTION_SHARING  + 1
+#define FILTER_SECTION_DONE     FILTER_SECTION_STATUS  + 1
 
 #define FILTER_STATUS_ACTIVE    0
 #define FILTER_STATUS_COMPLETED FILTER_STATUS_ACTIVE + 1
@@ -64,7 +63,8 @@
         
         UIBarButtonItem *syncButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"sync-25"] style:UIBarButtonItemStyleBordered target:self action:@selector(resetAndDownloadProjects)];
         
-        self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects: syncButton, menuSheet,nil];
+        self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects: syncButton, nil];
+        
         
     }
     
@@ -88,11 +88,11 @@
         
         UIBarButtonItem *syncButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"sync-25"] style:UIBarButtonItemStyleBordered target:self action:@selector(resetAndDownloadProjects)];
         UIBarButtonItem *signout = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"lock_filled-25"] style:UIBarButtonItemStyleBordered target:self.appDelegate.loginViewController action:@selector(logout)];
-        self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects: signout,syncButton, menuSheet,nil];
-        
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BioCollect-text-small"]];
+        self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects: signout,syncButton, nil];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"header-logo"]];
         imageView.contentMode = UIViewContentModeCenter;
         self.navigationItem.titleView = imageView;
+     
     }
     
     return self;
@@ -140,7 +140,7 @@
         [self.actionSection setButtonStyle:JGActionSheetButtonStyleDefault forButtonAtIndex:0];
         [self.actionSection setButtonStyle:JGActionSheetButtonStyleGreen forButtonAtIndex:1];
         
-        NSArray *sections = @[self.projectStatus, self.dataShared, self.actionSection];
+        NSArray *sections = @[self.projectStatus,  self.actionSection];
         self.menu = [JGActionSheet actionSheetWithSections: sections];
         
         //Assign delegate.
@@ -167,7 +167,7 @@
                 [self.projectStatus setButtonStyle:JGActionSheetButtonStyleDefault forButtonAtIndex:1 newTitle: self.completedChecked ? PROJECT_COMPLETED_STR : PROJECT_COMPLETED_CROSS_STR];
             }
             break;
-            
+        /*
         case FILTER_SECTION_SHARING:
             if(indexPath.row == FILTER_SHARING) {
                 self.dataSharingChecked = self.dataSharingChecked ? FALSE : TRUE;
@@ -175,7 +175,7 @@
                 
             }
             break;
-
+        */
         case FILTER_SECTION_DONE:
             if(indexPath.row == FILTER_SECTION_RESET) {
                 self.activeChecked = FALSE;
@@ -221,7 +221,6 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -234,6 +233,7 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
 
 #pragma mark - TableViewDelegae
 
@@ -358,10 +358,11 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UILabel *myLabel = [[UILabel alloc] init];
-    myLabel.frame = CGRectMake(20, 8, 320, 20);
-    
+    myLabel.frame = CGRectMake(0, 0, 320, 30);
+    myLabel.backgroundColor = [UIColor colorWithRed:58.0/255.0 green:58.0/255.0 blue:60.0/255.0 alpha:1];
+    myLabel.textAlignment = UITextAlignmentCenter;
     myLabel.text = [self tableView:tableView titleForHeaderInSection:section];
-    myLabel.textColor = [UIColor colorWithRed:200.0/255.0 green:77.0/255.0 blue:117.0/255.0 alpha:1];
+    myLabel.textColor = [UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1];
     UIView *headerView = [[UIView alloc] init];
     [headerView addSubview:myLabel];
     

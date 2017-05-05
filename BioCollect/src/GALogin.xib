@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="12120" systemVersion="16A323" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+    <device id="ipad9_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,12 +24,16 @@
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VXN-BQ-UrK">
+                    <rect key="frame" x="8" y="40" width="744" height="444"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="R6t-Br-0hR">
+                            <rect key="frame" x="0.0" y="0.0" width="372" height="444"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rS2-0q-3No">
+                                    <rect key="frame" x="0.0" y="0.0" width="372" height="444"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ala_logo1.png" translatesAutoresizingMaskIntoConstraints="NO" id="tAF-8h-0M9">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BioCollect-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="tAF-8h-0M9">
+                                            <rect key="frame" x="11" y="0.0" width="350" height="444"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="350" id="tb0-zL-wgP"/>
                                             </constraints>
@@ -36,10 +43,13 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="1Ij-vx-RII">
+                            <rect key="frame" x="372" y="132.5" width="372" height="179"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Jki-Wb-vsF">
+                                    <rect key="frame" x="11" y="0.0" width="350" height="179"/>
                                     <subviews>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kxv-VP-IOl">
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="d6a-RN-eSD"/>
                                             </constraints>
@@ -51,6 +61,7 @@
                                             </connections>
                                         </textField>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vQW-p6-QBI">
+                                            <rect key="frame" x="0.0" y="50" width="350" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="a8U-Ap-bSo"/>
                                             </constraints>
@@ -62,7 +73,8 @@
                                             </connections>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Vz-Kd-TvP">
-                                            <color key="backgroundColor" red="0.94630175829999996" green="0.34607410430000002" blue="0.16973054409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <rect key="frame" x="0.0" y="100" width="350" height="40"/>
+                                            <color key="backgroundColor" red="0.94509803921568625" green="0.34509803921568627" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="6bA-7c-8E8"/>
                                             </constraints>
@@ -81,6 +93,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WKW-kF-Zxv">
+                                            <rect key="frame" x="0.0" y="150" width="350" height="29"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <state key="normal" title="Not registered?">
                                                 <color key="titleColor" red="0.94509803920000002" green="0.34901960780000002" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -112,7 +125,7 @@
         </view>
     </objects>
     <resources>
-        <image name="ala_logo1.png" width="500" height="426"/>
+        <image name="BioCollect-logo.png" width="512" height="444"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

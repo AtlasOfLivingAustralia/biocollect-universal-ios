@@ -37,6 +37,7 @@
 #define kProjectActivityName @"name"
 #define kThumbnailUrl @"thumbnailUrl"
 #define kRecords @"records"
+#define kShowCrud @"showCrud"
 
 #define kTotalActivities @"total"
 #define kActivities @"activities"
@@ -111,6 +112,10 @@
 
 -(NSString *) projectActivityName {
     return [self.activityJSONDictionary objectForKey:kProjectActivityName];
+}
+
+-(BOOL) showCrud {
+    return [[self.activityJSONDictionary objectForKey:kShowCrud] boolValue];
 }
 
 -(NSString *) thumbnailUrl {

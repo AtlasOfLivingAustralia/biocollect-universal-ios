@@ -9,7 +9,7 @@
 #import "GAActivity.h"
 
 @implementation GAActivity
-@synthesize _id, url, activityName, description, progress, activityId, projectId, outputJSON, activityJSON, status, plannedStartDate,siteId,site,distance,themes,activityOwnerName, projectActivityName,lastUpdated, records;
+@synthesize _id, url, activityName, description, progress, activityId, projectId, outputJSON, activityJSON, status, plannedStartDate,siteId,site,distance,themes,activityOwnerName, projectActivityName,lastUpdated, records, showCrud;
 
 - (NSComparisonResult)compareByProgress:(GAActivity *)otherObject {
     return [self.progress compare:otherObject.progress];
