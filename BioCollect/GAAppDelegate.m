@@ -222,6 +222,8 @@
 -(void) displaySigninPage {
     [GASettings resetAllFields];
     [self.homeVC resetProjects];
+    [self.recordsVC resetRecords];
+    [GASettings resetAllFields];
     [self.sqlLite deleteAllTables];
     [self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
     [UIView transitionWithView:self.window

@@ -42,4 +42,5 @@
 
 @property (nonatomic, strong) BioProjectService *bioProjectService;
 
+-(void) resetRecords;
 @end

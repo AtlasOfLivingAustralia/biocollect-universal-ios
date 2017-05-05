@@ -386,6 +386,18 @@
     });
 }
 
+-(void) resetRecords
+{
+    [self.records removeAllObjects];
+    self.totalRecords = 0;
+    self.offset = DEFAULT_OFFSET;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [MRProgressOverlayView dismissOverlayForView:self.appDelegate.window animated:NO];
+        [self.tableView reloadData];
+    });
+}
+
+
 -(void) downloadProjects {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [self load];
