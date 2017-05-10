@@ -25,7 +25,7 @@
 @end
 
 @implementation RecordsTableViewController
-#define DEFAULT_MAX     20
+#define DEFAULT_MAX     50
 #define DEFAULT_OFFSET  0
 #define SEARCH_LENGTH   3
 @synthesize  webViewController, records, appDelegate, bioProjectService, totalRecords, offset, loadingFinished, isSearching, query, spinner, myRecords, projectId, pActivties;
@@ -268,7 +268,7 @@
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
             CGRect frame = CGRectMake(44.0, 44.0, image.size.width, image.size.height);
             button.frame = frame;
-            self.selectedActivity = activity;
+            //self.selectedActivity = activity;
             [button setBackgroundImage:image forState:UIControlStateNormal];
             [button addTarget:self action:@selector(accessoryButtonTapped:event:)  forControlEvents:UIControlEventTouchUpInside];
             button.backgroundColor = [UIColor clearColor];
@@ -286,18 +286,32 @@
     return NO;
 }
 
--(void) accessoryButtonTapped:(id)sender event:(id)event{
-    // Open web view with
-    if(self.selectedActivity &&  self.selectedActivity.url){
-        NSString *url = [[NSString alloc] initWithFormat:@"%@",self.selectedActivity.editUrl];
-        NSMutableURLRequest *request = [self loadRequest: url];
-        self.webViewController = [[SVModalWebViewController alloc] initWithURLRequest: request];
-        self.webViewController.title = [[NSString alloc] initWithFormat:@"Edit"];
-        self.webViewController.webViewDelegate = self;
-        
-        [self presentViewController: webViewController animated:YES completion: nil];
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
+    if([self.records count] > 0) {
+        GAActivity *activity = [self.records objectAtIndex:indexPath.row];
+        if(activity.url) {
+            NSString *url = [[NSString alloc] initWithFormat:@"%@",activity.editUrl];
+            NSMutableURLRequest *request = [self loadRequest: url];
+            self.webViewController = [[SVModalWebViewController alloc] initWithURLRequest: request];
+            self.webViewController.title = [[NSString alloc] initWithFormat:@"Edit"];
+            self.webViewController.webViewDelegate = self;
+            
+            [self presentViewController: webViewController animated:YES completion: nil];
+        }
     }
 }
+
+
+-(void) accessoryButtonTapped:(id)sender event:(id)event{
+    NSSet *touches = [event allTouches];
+    UITouch *touch = [touches anyObject];
+    CGPoint currentTouchPosition = [touch locationInView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:currentTouchPosition];
+    if (indexPath != nil) {
+        [self tableView: self.tableView accessoryButtonTappedForRowWithIndexPath:indexPath];
+    }
+}
+
 
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -354,11 +368,13 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UILabel *myLabel = [[UILabel alloc] init];
-    myLabel.frame = CGRectMake(0, 0, 320, 30);
-    myLabel.backgroundColor = [UIColor colorWithRed:58.0/255.0 green:58.0/255.0 blue:60.0/255.0 alpha:1];
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    myLabel.frame = CGRectMake(0, 0, screenWidth, 30);
+    myLabel.backgroundColor = [UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1];
     myLabel.textAlignment = UITextAlignmentCenter;
     myLabel.text = [self tableView:tableView titleForHeaderInSection:section];
-    myLabel.textColor = [UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1];
+    myLabel.textColor = [UIColor whiteColor];
     UIView *headerView = [[UIView alloc] init];
     [headerView addSubview:myLabel];
     
@@ -478,7 +494,11 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     NSString *currentUrl = webView.request.URL.absoluteString;
     if([currentUrl hasSuffix: @"#successfully-posted"]) {
-        [RKDropdownAlert title:@"" message:@"Successfully submitted." backgroundColor:[UIColor orangeColor] textColor:[UIColor whiteColor] time:10];
+       /*
+        [RKDropdownAlert title:@"Successfully Submitted." message:@"Submitted record will be visible in few seconds!" backgroundColor:[UIColor colorWithRed:58.0/255.0 green:58.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] time:5];
+        */
+        [RKDropdownAlert title:@"Successfully Submitted." message:@"Submitted record will be visible in few seconds!" backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+        
         [self.webViewController dismissViewControllerAnimated:false completion:NULL];
         [self resetAndDownloadProjects];
     }

@@ -20,7 +20,7 @@
 @end
 
 @implementation HomeTableViewController
-#define DEFAULT_MAX     20
+#define DEFAULT_MAX     50
 #define DEFAULT_OFFSET  0
 #define SEARCH_LENGTH   3
 
@@ -358,17 +358,22 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UILabel *myLabel = [[UILabel alloc] init];
-    myLabel.frame = CGRectMake(0, 0, 320, 30);
-    myLabel.backgroundColor = [UIColor colorWithRed:58.0/255.0 green:58.0/255.0 blue:60.0/255.0 alpha:1];
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    myLabel.frame = CGRectMake(0, 0, screenWidth, 30);
+    myLabel.backgroundColor = [UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1];
     myLabel.textAlignment = UITextAlignmentCenter;
     myLabel.text = [self tableView:tableView titleForHeaderInSection:section];
-    myLabel.textColor = [UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1];
+    myLabel.textColor = [UIColor whiteColor];
     UIView *headerView = [[UIView alloc] init];
     [headerView addSubview:myLabel];
     
     return headerView;
 }
-
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [self.tableView reloadData];
+}
 
 #pragma mark - UISearchDisplayControllerDelegate
 
