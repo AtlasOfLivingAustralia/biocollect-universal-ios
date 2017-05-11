@@ -24,16 +24,16 @@
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VXN-BQ-UrK">
-                    <rect key="frame" x="8" y="40" width="744" height="444"/>
+                    <rect key="frame" x="8" y="40" width="744" height="237"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="R6t-Br-0hR">
-                            <rect key="frame" x="0.0" y="0.0" width="372" height="444"/>
+                            <rect key="frame" x="0.0" y="0.0" width="372" height="237"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rS2-0q-3No">
-                                    <rect key="frame" x="0.0" y="0.0" width="372" height="444"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="372" height="237"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BioCollect-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="tAF-8h-0M9">
-                                            <rect key="frame" x="11" y="0.0" width="350" height="444"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BioCollect-Name-Only.png" translatesAutoresizingMaskIntoConstraints="NO" id="tAF-8h-0M9">
+                                            <rect key="frame" x="11" y="0.0" width="350" height="237"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="350" id="tb0-zL-wgP"/>
                                             </constraints>
@@ -43,10 +43,10 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="1Ij-vx-RII">
-                            <rect key="frame" x="372" y="132.5" width="372" height="179"/>
+                            <rect key="frame" x="372" y="27.5" width="372" height="182"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Jki-Wb-vsF">
-                                    <rect key="frame" x="11" y="0.0" width="350" height="179"/>
+                                    <rect key="frame" x="11" y="0.0" width="350" height="182"/>
                                     <subviews>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kxv-VP-IOl">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="40"/>
@@ -93,10 +93,10 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WKW-kF-Zxv">
-                                            <rect key="frame" x="0.0" y="150" width="350" height="29"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <rect key="frame" x="0.0" y="150" width="350" height="32"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <state key="normal" title="Not registered?">
-                                                <color key="titleColor" red="0.94509803920000002" green="0.34901960780000002" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
                                             </state>
                                             <connections>
                                                 <action selector="onClickRegister:" destination="-1" eventType="touchUpInside" id="ZFo-Xc-2FL"/>
@@ -125,7 +125,7 @@
         </view>
     </objects>
     <resources>
-        <image name="BioCollect-logo.png" width="512" height="444"/>
+        <image name="BioCollect-Name-Only.png" width="646" height="237"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

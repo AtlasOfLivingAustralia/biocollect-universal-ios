@@ -13,6 +13,8 @@
 #import "GASettingsConstant.h"
 #import "MRProgressOverlayView.h"
 #import "SVModalWebViewController.h"
+#define IDIOM    UI_USER_INTERFACE_IDIOM()
+#define IPAD     UIUserInterfaceIdiomPad
 @interface GALogin ()
 
 @end
@@ -25,7 +27,11 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-       
+        if ( IDIOM == IPAD ) {
+            [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bk_iPad.png"]]];
+        } else {
+            [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bk_iPhone.png"]]];
+        }
     }
  
     return self;
