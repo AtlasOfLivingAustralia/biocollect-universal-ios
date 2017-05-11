@@ -132,7 +132,7 @@
             [list addObject:pa.name];
         }
         NSArray *arrayList = [NSArray arrayWithArray:list];
-        self.surveyListMenu = [JGActionSheetSection sectionWithTitle:nil message:@"Select Survey" buttonTitles:arrayList buttonStyle:JGActionSheetButtonStyleGreen];
+        self.surveyListMenu = [JGActionSheetSection sectionWithTitle:@"Select survey to add records" message:@"Survey names" buttonTitles:arrayList buttonStyle:JGActionSheetButtonStyleGreen];
 
         self.cancelGroup = [JGActionSheetSection sectionWithTitle:nil
                                                           message:nil
@@ -145,13 +145,14 @@
         
         //Assign delegate.
          [self.menu setDelegate:self];
+        
         if([self.tableView isDescendantOfView:self.view]){
             [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
-            [self.menu showInView:self.tableView animated:YES];
+            self.appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+            [self.menu showInView:self.appDelegate.window.rootViewController.view animated:YES];
         } else {
-            [self.menu showInView:self.view animated:YES];
+            [self.menu showInView:self.appDelegate.window.rootViewController.view animated:YES];
         }
-
     }
 }
 
