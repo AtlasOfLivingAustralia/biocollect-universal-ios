@@ -67,4 +67,19 @@
     return self.webViewController.delegate;
 }
 
+/*
+ iPhone specific issue, works fine on iPad!
+ issue:
+ http://stackoverflow.com/questions/25942676/ios-8-sdk-modal-uiwebview-and-camera-image-picker
+*/
+
+-(void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion
+{
+    if ( self.presentedViewController || !flag)
+    {
+        [super dismissViewControllerAnimated:flag completion:completion];
+    }
+}
+
+
 @end

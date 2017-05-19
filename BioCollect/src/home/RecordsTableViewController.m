@@ -265,7 +265,7 @@
                           placeholderImage:[UIImage imageNamed:@"table-place-holder.png"]];
        
         if(activity.showCrud) {
-            UIImage *image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"edit_dark"]];
+            UIImage *image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"edit_icon"]];
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
             CGRect frame = CGRectMake(44.0, 44.0, image.size.width, image.size.height);
             button.frame = frame;
