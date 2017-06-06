@@ -33,46 +33,36 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.backgroundColor = [UIColor whiteColor];
         cell.textLabel.textColor = [UIColor blackColor];
-        
-        /*
-        UIView *stroke = [[UIView alloc] init];
-        stroke.backgroundColor = [UIColor grayColor];
-        stroke.translatesAutoresizingMaskIntoConstraints = NO;
-        [cell.contentView addSubview:stroke];
-        NSDictionary *views = NSDictionaryOfVariableBindings(stroke);
-        [cell.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[stroke(1)]|" options:0 metrics:nil views:views]];
-        [cell.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[stroke]|" options:0 metrics:nil views:views]];
-       */  
     }
     if(indexPath.row == 0) {
         cell.textLabel.text = @"Record a sightings";
         cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@", @""];
         NSString *url = [[NSString alloc] initWithFormat: @"%@", @""];
         NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:escapedUrlString] placeholderImage:[UIImage imageNamed:@"nochange"]];
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:escapedUrlString] placeholderImage:[UIImage imageNamed:@"icon_camera"]];
     } else if(indexPath.row == 1) {
         cell.textLabel.text = @"All sightings";
         cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@", @""];
         NSString *url = [[NSString alloc] initWithFormat: @"%@", @""];
         NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:escapedUrlString] placeholderImage:[UIImage imageNamed:@"nochange"]];
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:escapedUrlString] placeholderImage:[UIImage imageNamed:@"icon_all_records"]];
     }
     else if(indexPath.row == 2) {
         cell.textLabel.text = @"My sightings";
         cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@", @""];
         NSString *url = [[NSString alloc] initWithFormat: @"%@", @""];
         NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:escapedUrlString] placeholderImage:[UIImage imageNamed:@"nochange"]];
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:escapedUrlString] placeholderImage:[UIImage imageNamed:@"icon_my_records"]];
     } else if(indexPath.row == 3) {
-        cell.textLabel.text = @"Explore species by location";
+        cell.textLabel.text = @"Explore species";
         cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@", @""];
         NSString *url = [[NSString alloc] initWithFormat: @"%@", @""];
         NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:escapedUrlString] placeholderImage:[UIImage imageNamed:@"loc1_changed"]];
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:escapedUrlString] placeholderImage:[UIImage imageNamed:@"icon_location"]];
     } else if(indexPath.row == 4) {
-        cell.textLabel.text = @"Synchornise records on disk";
+        cell.textLabel.text = @"Draft";
         cell.detailTextLabel.text = @"";
-        [cell.imageView setImage:[UIImage imageNamed:@"nochange"]];
+        [cell.imageView setImage:[UIImage imageNamed:@"icon_draft"]];
     }
     
     return cell;

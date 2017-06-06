@@ -20,7 +20,6 @@
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]))
     {
         //set up form
-        
         RecordForm *record = [[RecordForm alloc] init];
         record.surveyDate = [NSDate date];
         record.howManySpecies = 1;
@@ -36,8 +35,9 @@
         
         self.speciesSearchVC = [[SpeciesSearchTableViewController alloc] initWithNibName:@"SpeciesSearchTableViewController" bundle:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveSpeciesHandler:) name:@"SPECIESSEARCH SELECTED" object:nil];
-        
     }
+    
+    
     return self;
 }
 

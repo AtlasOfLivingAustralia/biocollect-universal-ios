@@ -108,41 +108,53 @@
 
 }
 
+-(UIColor *)colorFromHexString:(NSString *)hexString {
+    unsigned rgbValue = 0;
+    NSScanner *scanner = [NSScanner scannerWithString:hexString];
+    [scanner setScanLocation:1]; // bypass '#' character
+    [scanner scanHexInt:&rgbValue];
+    return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
+}
+
+- (NSDictionary *)confidentField
+{
+    return @{@"textLabel.color": [self colorFromHexString: @"#F1582B"]};
+}
+
 - (NSArray *)fields
 {
     return @[
-
-             @{FXFormFieldKey: @"speciesDisplayName", FXFormFieldTitle: @"Species Name", FXFormFieldHeader: @"Species Information", FXFormFieldType: FXFormFieldTypeLabel,  FXFormFieldAction: @"showSpeciesSearchTableViewController:", FXFormFieldPlaceholder: @"No species selected"},
-             @"confident",
-             @{FXFormFieldKey:@"howManySpecies", FXFormFieldTitle:@"Number of individuals", FXFormFieldCell: [FXFormStepperCell class]},
-             @{FXFormFieldKey: @"identificationTags", FXFormFieldOptions: @[@"Amphibians", @"Amphibians, Australian Ground Frogs", @"Birds"]},
-             @{FXFormFieldKey: @"comments", FXFormFieldTitle:@"Notes", FXFormFieldType: FXFormFieldTypeLongText,FXFormFieldPlaceholder: @"" },
-
-             @{FXFormFieldKey: @"location", FXFormFieldTitle:@"Pick a location", FXFormFieldPlaceholder: @"", FXFormFieldHeader: @"Location", FXFormFieldViewController: @"MapViewController"},
-             @{FXFormFieldKey: @"locationNotes", FXFormFieldTitle:@"Notes", FXFormFieldType: FXFormFieldTypeLongText, FXFormFieldPlaceholder: @""},
              
-             @{FXFormFieldKey: @"surveyDate", FXFormFieldTitle:@"Date", FXFormFieldHeader: @"Sightings Information"},
-             @{FXFormFieldKey: @"surveyDate", FXFormFieldTitle:@"Time", FXFormFieldType: FXFormFieldTypeTime,FXFormFieldPlaceholder: @"" },
-             @{FXFormFieldKey: @"recordedBy", FXFormFieldDefaultValue: [GASettings getFullName]},
-             @{FXFormFieldKey: @"notes", FXFormFieldType: FXFormFieldTypeLongText,FXFormFieldPlaceholder: @"" },
              
-             @{FXFormFieldKey:@"speciesPhoto", FXFormFieldTitle:@"Image", FXFormFieldHeader: @"Multimedia - Image"},
-             @{FXFormFieldKey:@"photoTitle", FXFormFieldTitle:@"Title"},
-             @{FXFormFieldKey:@"photoDate", FXFormFieldTitle:@"Date"},
-             @{FXFormFieldKey:@"photoAttribution", FXFormFieldTitle:@"Attribution"},
-             @{FXFormFieldKey:@"photoLicence", FXFormFieldTitle:@"Licence", FXFormFieldOptions: @[@"CC BY", @"CC BY-NC", @"CC BY-SA", @"CC BY-NC-SA"], FXFormFieldDefaultValue: @"CC BY",  FXFormFieldValueTransformer: ^(id input) {
+             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey:@"speciesPhoto", FXFormFieldTitle:@"Image", FXFormFieldHeader: @"1. Upload Photo"},
+             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey:@"photoTitle", FXFormFieldTitle:@"Title"},
+             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey:@"photoDate", FXFormFieldTitle:@"Date"},
+             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey:@"photoAttribution", FXFormFieldTitle:@"Attribution"},
+             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey:@"photoLicence", FXFormFieldTitle:@"Licence", FXFormFieldOptions: @[@"CC BY", @"CC BY-NC", @"CC BY-SA", @"CC BY-NC-SA"], FXFormFieldDefaultValue: @"CC BY",  FXFormFieldValueTransformer: ^(id input) {
                  NSDictionary *licences = @{@"CC BY":@"CC Attribution",@"CC BY-NC":@"CC Attribution-Noncommercial",@"CC BY-SA":@"CC Attribution-Share Alike",@"CC BY-NC-SA":@"CC Attribution-Noncommercial-Share Alike"};
                  return licences[ input ];
              }},
-             @{FXFormFieldKey: @"photoNotes",FXFormFieldTitle:@"Notes", FXFormFieldType: FXFormFieldTypeLongText},
+             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"photoNotes",FXFormFieldTitle:@"Notes", FXFormFieldType: FXFormFieldTypeLongText},
+             
+
+             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"speciesDisplayName", FXFormFieldTitle: @"Species Name", FXFormFieldHeader: @"2. Species Information", FXFormFieldType: FXFormFieldTypeLabel,  FXFormFieldAction: @"showSpeciesSearchTableViewController:", FXFormFieldPlaceholder: @"No species selected"},
+             @"confident",
+             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey:@"howManySpecies", FXFormFieldTitle:@"Number of individuals", FXFormFieldCell: [FXFormStepperCell class]},
+             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"identificationTags", FXFormFieldOptions: @[@"Amphibians", @"Amphibians, Australian Ground Frogs", @"Birds"]},
+             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"comments", FXFormFieldTitle:@"Notes", FXFormFieldType: FXFormFieldTypeLongText,FXFormFieldPlaceholder: @"" },
+
+             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"location", FXFormFieldTitle:@"3. Select location", FXFormFieldPlaceholder: @"", FXFormFieldHeader: @"Location", FXFormFieldViewController: @"MapViewController"},
+             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"locationNotes", FXFormFieldTitle:@"Notes", FXFormFieldType: FXFormFieldTypeLongText, FXFormFieldPlaceholder: @""},
+             
+             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"surveyDate", FXFormFieldTitle:@"Date", FXFormFieldHeader: @"4. Sightings Information"},
+             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"surveyDate", FXFormFieldTitle:@"Time", FXFormFieldType: FXFormFieldTypeTime,FXFormFieldPlaceholder: @"" },
+             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"recordedBy", FXFormFieldDefaultValue: [GASettings getFullName]},
+             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"notes", FXFormFieldType: FXFormFieldTypeLongText,FXFormFieldPlaceholder: @"" },
+             
              ];
     
     
 }
-
-//we're happy with the layout and properties of our login form, but we
-//want to add an additional button field at the end, so
-//we've used the extraFields method
 
 - (NSArray *)extraFields
 {
@@ -250,6 +262,7 @@
                      }]
              };
 }
+
 
 /**
  * combine related photo fields to a dictionary

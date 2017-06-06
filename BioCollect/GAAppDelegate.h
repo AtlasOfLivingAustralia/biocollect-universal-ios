@@ -20,8 +20,7 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UISplitViewController *splitViewController;
 @property (strong, nonatomic) UITabBarController  *tabBarController;
-
-
+@property (strong, nonatomic) UINavigationController *ozHomeNC;
 //All Singleton classes
 @property (nonatomic, retain) GARestCall *restCall;
 @property (nonatomic, retain) BioProjectService *bioProjectService;

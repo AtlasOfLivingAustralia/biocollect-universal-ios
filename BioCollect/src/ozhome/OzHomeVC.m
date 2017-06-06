@@ -18,13 +18,9 @@
 #import "MGSpotyViewControllerDelegate.h"
 #import "GAAppDelegate.h"
 
-
-
 @interface OzHomeVC ()
 
 @end
-
-
 
 @implementation OzHomeVC {
     OzHomeVCDelegate *delegate_;
@@ -39,7 +35,6 @@
         delegate_ = [OzHomeVCDelegate new];
         
         self.overViewUpFadeOut = YES;
-        
         self.blurRadius = 8.f;
     }
     return self;
@@ -58,9 +53,7 @@
 - (UIView *)myOverView
 {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.overView.frame.size.width, 250)];
-    
     [self mg_addElementOnView:view];
-    
     return view;
 }
 
@@ -83,7 +76,7 @@
     imageView.translatesAutoresizingMaskIntoConstraints = NO;
     [imageView setContentMode:UIViewContentModeScaleAspectFill];
     [imageView setClipsToBounds:YES];
-    [imageView setImage:[UIImage imageNamed:@"OzHome"]];
+    [imageView setImage:[UIImage imageNamed:@"OzHome2"]];
     [imageView.layer setBorderColor:[UIColor whiteColor].CGColor];
     [imageView.layer setBorderWidth:2.0];
     [imageView.layer setCornerRadius:45.0];

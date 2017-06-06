@@ -26,11 +26,15 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    NSString *appType = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_AppType"];
     if (self) {
+        NSString *imageName;
         if ( IDIOM == IPAD ) {
-            [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bk_iPad.png"]]];
+            imageName = [[NSString alloc] initWithFormat:@"%@", [appType isEqualToString:@"custom"] ? @"b7-ipad.jpg" : @"bk_iPad.png"];
+            [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:imageName]]];
         } else {
-            [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bk_iPhone.png"]]];
+            imageName = [[NSString alloc] initWithFormat:@"%@", [appType isEqualToString:@"custom"] ? @"bk8.jpg" : @"bk_iPad.png"];
+            [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:imageName]]];
         }
     }
  
@@ -98,11 +102,21 @@
                 //Dismiss the login modal
                 [appDelegate.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
                 
-                [UIView transitionWithView:appDelegate.window
-                                  duration:0.5
-                                   options:UIViewAnimationOptionTransitionFlipFromLeft
-                                animations:^{ appDelegate.window.rootViewController = appDelegate.tabBarController; }
-                                completion:nil];
+                NSString *appType = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_AppType"];
+                if([appType isEqualToString:@"custom"]) {
+                    [UIView transitionWithView:appDelegate.window
+                                      duration:0.5
+                                       options:UIViewAnimationOptionTransitionFlipFromLeft
+                                    animations:^{ appDelegate.window.rootViewController = appDelegate.ozHomeNC; }
+                                    completion:nil];
+                }
+                else {
+                    [UIView transitionWithView:appDelegate.window
+                                      duration:0.5
+                                       options:UIViewAnimationOptionTransitionFlipFromLeft
+                                    animations:^{ appDelegate.window.rootViewController = appDelegate.tabBarController; }
+                                    completion:nil];
+                }
             }
         });
     });

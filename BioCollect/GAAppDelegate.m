@@ -36,7 +36,7 @@
 @end
 @implementation GAAppDelegate
 
-@synthesize splitViewController, projects,masterProjectVC, detailVC, restCall, sqlLite, loginViewController, eulaVC, homeVC, recordsVC, myProjectsVC, myRecordsVC, bioProjectService,tabBarController;
+@synthesize splitViewController, projects,masterProjectVC, detailVC, restCall, sqlLite, loginViewController, eulaVC, homeVC, recordsVC, myProjectsVC, myRecordsVC, bioProjectService,tabBarController,ozHomeNC;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -164,33 +164,28 @@
     aboutNC.navigationBar.topItem.title = @"About";
     
     //ozHome page
-    OzHomeVC *ozHomeVC = [[OzHomeVC alloc] initWithMainImage:[UIImage imageNamed:@"OzHome"]];
-    UINavigationController *ozHomeNC = [[UINavigationController alloc] initWithRootViewController: ozHomeVC];
-    ozHomeNC.tabBarItem.title = @"Home";
+    OzHomeVC *ozHomeVC = [[OzHomeVC alloc] initWithMainImage:[UIImage imageNamed:@"OzHome2"]];
+    ozHomeNC = [[UINavigationController alloc] initWithRootViewController: ozHomeVC];
+    ozHomeNC.tabBarItem.title = @"Oz Atlas";
     ozHomeNC.tabBarItem.image = [UIImage imageNamed:@"home_filled-25"];
-    ozHomeNC.navigationBar.topItem.title = @"Home";
-
-    
+    ozHomeNC.navigationBar.topItem.title = @"Oz Atlas";
     
     //Tab bars
-    tabBarController = [[UITabBarController alloc] init];
     NSArray* controllers = nil;
     NSString *appType = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_AppType"];
     if([appType isEqualToString:@"custom"]) {
-        controllers = [NSArray arrayWithObjects: ozHomeNC, aboutNC,contactNC, nil];
+        [self.window setRootViewController:ozHomeNC];
     } else {
+        tabBarController = [[UITabBarController alloc] init];
         controllers = [NSArray arrayWithObjects: homeNC, recordsNC, myProjectsNC, myRecordsNC,contactNC, nil];
+        tabBarController.viewControllers = controllers;
+        [self.window setRootViewController:tabBarController];
     }
     
-    
-    tabBarController.viewControllers = controllers;
     [[UITabBar appearance] setTintColor: [self colorFromHexString: @"#F1582B"]];
     [[UIBarButtonItem appearance] setTintColor: [self colorFromHexString: @"#F1582B"]];
-    //[[UINavigationBar appearance] setBarTintColor: [self colorFromHexString: @"#3A3A3C"]];
     [[UINavigationBar appearance] setTranslucent:NO];
-
-
-    [self.window setRootViewController:tabBarController];
+    [[UINavigationBar appearance] setTintColor: [self colorFromHexString: @"#F1582B"]];
     [self.window makeKeyAndVisible];
 
     if([GASettings getAuthKey] == 0){
