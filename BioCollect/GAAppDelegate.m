@@ -174,6 +174,7 @@
     NSArray* controllers = nil;
     NSString *appType = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_AppType"];
     if([appType isEqualToString:@"custom"]) {
+        //OzHomeVC.navigationController.navigationBar.barTintColor = [UIColor blackColor];
         [self.window setRootViewController:ozHomeNC];
     } else {
         tabBarController = [[UITabBarController alloc] init];

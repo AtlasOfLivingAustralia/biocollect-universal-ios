@@ -323,32 +323,32 @@
  * update photo related fields with the properties in data.
  */
 - (void) updateImageSettings: (NSMutableDictionary *) data{
-    if(data){
-        if(data[@"files"] && [data[@"files"] count]){
-            NSDictionary *file = data[@"files"][0];
-            
-            if(!self.photoTitle){
-                self.photoTitle = file[@"name"];
-            }
-            
-            if(!self.photoAttribution){
-                self.photoAttribution = file[@"attribution"];
-            }
-            
-            if(!self.photoDate) {
-                // todo: how to format string date?
-            }
-            
-            if(!self.photoAttribution){
-                self.photoAttribution = file[@"attribution"];
-            }
-            
-            self.photoUrl = file[@"url"];
-            self.photoThumbnailUrl = file[@"thumbnail_url"];
-            self.photoFilename = file[@"name"];
-            self.photoContentType = file[@"contentType"];
+    
+    if(data && [data count] > 0 && data[@"files"] && [data[@"files"] count]){
+        NSDictionary *file = data[@"files"][0];
+        
+        if(!self.photoTitle){
+            self.photoTitle = file[@"name"];
         }
+        
+        if(!self.photoAttribution){
+            self.photoAttribution = file[@"attribution"];
+        }
+        
+        if(!self.photoDate) {
+            // todo: how to format string date?
+        }
+        
+        if(!self.photoAttribution){
+            self.photoAttribution = file[@"attribution"];
+        }
+        
+        self.photoUrl = file[@"url"];
+        self.photoThumbnailUrl = file[@"thumbnail_url"];
+        self.photoFilename = file[@"name"];
+        self.photoContentType = file[@"contentType"];
     }
+    
 }
 
 - (NSString *) getSubtitle{
