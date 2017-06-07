@@ -2,10 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Bio_AppType</key>
+	<string>custom</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>BioCollect</string>
+	<string>Oz Atlas</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIcons</key>
@@ -37,6 +39,8 @@
 	<string>Location is required to find out where you are</string>
 	<key>NSLocationUsageDescription</key>
 	<string>Location usage used</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Location is required to find out where you are</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>$(PRODUCT_NAME) uses Camera</string>
 	<key>UILaunchImages</key>
@@ -76,9 +80,5 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-    <key>Bio_AppType</key>
-    <string>custom</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Location is required to find out where you are</string>
 </dict>
 </plist>

@@ -113,9 +113,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Pass the selected object to the new view controller.
     self.selectedSpecies = displayItems[indexPath.row];
-    
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"SPECIESSEARCH SELECTED" object: self.selectedSpecies];
+    [self.navigationController popViewControllerAnimated:YES];
     // Push the view controller.
-    [self dismissViewControllerAnimated:YES completion:nil];
+    //[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -221,5 +222,23 @@
     if(self.offset < self.totalResults){
         [self lookup];
     }
+}
+
+/**
+ * Custom table header skin.
+ */
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UILabel *myLabel = [[UILabel alloc] init];
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    myLabel.frame = CGRectMake(0, 0, screenWidth, 30);
+    myLabel.backgroundColor = [UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1];
+    myLabel.textAlignment = UITextAlignmentCenter;
+    myLabel.text = [self tableView:tableView titleForHeaderInSection:section];
+    myLabel.textColor = [UIColor whiteColor];
+    UIView *headerView = [[UIView alloc] init];
+    [headerView addSubview:myLabel];
+    
+    return headerView;
 }
 @end

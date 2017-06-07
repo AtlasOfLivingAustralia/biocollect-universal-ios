@@ -2207,7 +2207,7 @@
 		E2E3AAB618F4D2940005BB9E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = BioCollect;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "Oz Atlas";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Sathish Sathyamoorthy (VP6SGJQWPU)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Sathish Sathyamoorthy (VP6SGJQWPU)";
@@ -2237,7 +2237,7 @@
 		E2E3AAB718F4D2940005BB9E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = BioCollect;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "Oz Atlas";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Sathish Sathyamoorthy (VP6SGJQWPU)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Sathish Sathyamoorthy (VP6SGJQWPU)";

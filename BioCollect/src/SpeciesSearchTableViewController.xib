@@ -20,9 +20,10 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-            <searchBar key="tableHeaderView" contentMode="redraw" translucent="NO" id="4b9-6S-zAQ">
+            <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" translucent="NO" id="4b9-6S-zAQ">
                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                <color key="backgroundColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
                 <textInputTraits key="textInputTraits"/>
                 <connections>
                     <outlet property="delegate" destination="-1" id="Y41-k5-lAB"/>
