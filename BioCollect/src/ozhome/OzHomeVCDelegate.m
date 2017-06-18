@@ -24,6 +24,7 @@
 
 #pragma mark - MGSpotyViewControllerDelegate
 
+
 - (CGFloat)spotyViewController:(MGSpotyViewController *)spotyViewController
        heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -52,24 +53,40 @@
     
     if (indexPath.row == 0) {
         RecordViewController *recordViewController = [[RecordViewController alloc] init];
-        recordViewController.title = @"Record a sightings";
+        recordViewController.title = @"Record Species";
         [spotyViewController.navigationController pushViewController:recordViewController animated:TRUE];
         NSLog(@"selected row");
         [spotyViewController.tableView deselectRowAtIndexPath:indexPath animated:YES];
     } else if(indexPath.row == 1) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+                                                        message:@"Explore Species"
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    } else if(indexPath.row == 2) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+                                                        message:@"My Sightings"
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    } else if(indexPath.row == 3) {
         self.recordsTableView = [[RecordsTableViewController alloc] initWithNibName:@"RecordsTableViewController" bundle:nil];
         self.recordsTableView.projectId = SIGHTINGS_PROJECT_ID;
-        self.recordsTableView.title = @"All Sightings";
+        self.recordsTableView.title = @"Search Sightings";
         self.recordsTableView.totalRecords = 0;
         self.recordsTableView.offset = 0;
         self.recordsTableView.myRecords = FALSE;
         [self.recordsTableView.records removeAllObjects];
         [spotyViewController.navigationController pushViewController:self.recordsTableView animated:TRUE];
     } else if(indexPath.row == 4) {
+      
+        
         GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
         if(self.syncViewController == nil){
             self.syncViewController = [[SyncTableViewController alloc] initWithNibName:@"SyncTableViewController" bundle:nil];
-            self.syncViewController.title = @"Records to sync";
+            self.syncViewController.title = @"Drafts";
         }
         
         [spotyViewController.navigationController pushViewController:self.syncViewController animated:TRUE];
@@ -78,11 +95,11 @@
             appDelegate.projectsModified = NO;
             [self.syncViewController.tableView reloadData];
         }
-        
         [spotyViewController.tableView deselectRowAtIndexPath:indexPath animated:YES];
+
     } else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
-                                                        message:@"Not Implemented."
+                                                        message:@"Invalid selection."
                                                        delegate:self
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];

@@ -17,6 +17,10 @@
 #import "OzHomeVC.h"
 #import "MGSpotyViewControllerDelegate.h"
 #import "GAAppDelegate.h"
+#import "GASettings.h"
+#import "OzHomeVCDelegate.h"
+#import "OzHomeVCDataSource.h"
+#import "RecordViewController.h"
 
 @interface OzHomeVC ()
 
@@ -40,13 +44,16 @@
     return self;
 }
 
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     self.dataSource = dataSource_;
     self.delegate = delegate_;
-    
+    [self navigationController].delegate = self;
+    //[self.navigationController setNavigationBarHidden:TRUE];
     [self setOverView:self.myOverView];
 }
 
@@ -62,11 +69,36 @@
     return YES;
 }
 
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    if(viewController == self)
+    {
+        if( ![self navigationController].navigationBarHidden)
+        {
+            [[self navigationController] setNavigationBarHidden:YES animated:YES];
+        }
+    }
+    else
+    {
+        if([self navigationController].navigationBarHidden)
+        {
+            [[self navigationController] setNavigationBarHidden:NO animated:YES];
+        }
+    }
+}
 
 #pragma mark - Private methods
 
 - (void)mg_addElementOnView:(UIView *)view
 {
+    NSString *firstname = [GASettings getFirstName];
+    NSString *displayName = nil;
+    if([firstname length] > 14) {
+        displayName = [[NSString alloc]initWithFormat:@"G'Day %@...",[firstname substringToIndex: MIN(14, [firstname length])]];
+    } else {
+        displayName = [[NSString alloc]initWithFormat:@"G'Day %@",firstname ? firstname : @""];
+    }
+
     //Add an example imageView
     UIView *itemsContainer = [UIView new];
     itemsContainer.translatesAutoresizingMaskIntoConstraints = NO;
@@ -91,7 +123,7 @@
     //Add an example label
     UILabel *lblTitle = [UILabel new];
     lblTitle.translatesAutoresizingMaskIntoConstraints = NO;
-    [lblTitle setText:@"Atlas of Living Australia"];
+    [lblTitle setText:displayName];
     [lblTitle setFont:[UIFont boldSystemFontOfSize:25.0]];
     [lblTitle setTextAlignment:NSTextAlignmentCenter];
     [lblTitle setTextColor:[UIColor whiteColor]];
@@ -142,6 +174,10 @@
     if (sender.state == UIGestureRecognizerStateEnded) {
         //[[[UIAlertView alloc] initWithTitle:@"Gesture recognizer" message:@"Touched image" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         // TODO : Show image..
+        
+        RecordViewController *recordViewController = [[RecordViewController alloc] init];
+        recordViewController.title = @"Record Species";
+        [self.navigationController pushViewController:recordViewController animated:TRUE];
     }
 }
 

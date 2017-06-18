@@ -125,12 +125,12 @@
 {
     return @[
              
-             //1. Select Species
-             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"speciesDisplayName", FXFormFieldTitle: @"Species Name *", FXFormFieldHeader: @"1. Select Species", FXFormFieldType: FXFormFieldTypeLabel,  FXFormFieldAction: @"showSpeciesSearchTableViewController:", FXFormFieldPlaceholder: @"No species selected"},
              
-             //2. Upload Photo
-             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey:@"speciesPhoto", FXFormFieldTitle:@"Image", FXFormFieldHeader: @"2. Upload Photo"},
-             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey:@"photoTitle", FXFormFieldTitle:@"Title"},
+             //1. Upload Photo
+             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey:@"speciesPhoto", FXFormFieldTitle:@"Species", FXFormFieldTypeImage:[UIImage imageNamed:@"icon_camera"],
+               FXFormFieldHeader: @"1. Upload Photo", FXFormFieldAction: @"parseImageMetadata:"},
+             
+             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey:@"photoTitle", FXFormFieldTitle:@"Title", FXFormFieldHeader: @"Image attributes"},
              @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey:@"photoAttribution", FXFormFieldTitle:@"Attribution"},
              @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey:@"photoDate", FXFormFieldTitle:@"Date"},
              @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey:@"photoLicence", FXFormFieldTitle:@"Licence", FXFormFieldOptions: @[@"CC BY", @"CC BY-NC", @"CC BY-SA", @"CC BY-NC-SA"], FXFormFieldDefaultValue: @"CC BY",  FXFormFieldValueTransformer: ^(id input) {
@@ -139,19 +139,26 @@
              }},
              @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"photoNotes",FXFormFieldTitle:@"Notes", FXFormFieldType: FXFormFieldTypeLongText},
              
+             
+             //1. Select Species
+             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"speciesDisplayName", FXFormFieldTitle: @"Species Name *", FXFormFieldHeader: @"2. Select Species", FXFormFieldType: FXFormFieldTypeLabel,  FXFormFieldAction: @"showSpeciesSearchTableViewController:", FXFormFieldPlaceholder: @"No species selected"},
+             @"confident",
 
              //3. Location
-             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"location", FXFormFieldTitle:@"3. Select location", FXFormFieldPlaceholder: @"", FXFormFieldHeader: @"Location", FXFormFieldViewController: @"MapViewController"},
+             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"location", FXFormFieldTitle:@"Select location *", FXFormFieldPlaceholder: @"", FXFormFieldHeader: @"3. Location", FXFormFieldViewController: @"HomeViewController"},
+             
              @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"locationNotes", FXFormFieldTitle:@"Notes", FXFormFieldType: FXFormFieldTypeLongText, FXFormFieldPlaceholder: @""},
              
              //4. Additional information
              @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"surveyDate", FXFormFieldTitle:@"Date", FXFormFieldHeader: @"4. Additional Information"},
              @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"surveyDate", FXFormFieldTitle:@"Time", FXFormFieldType: FXFormFieldTypeTime,FXFormFieldPlaceholder: @"" },
              @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey:@"howManySpecies", FXFormFieldTitle:@"Number of individuals", FXFormFieldCell: [FXFormStepperCell class]},
+            @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"recordedBy", FXFormFieldDefaultValue: [GASettings getFullName]},
+             
              @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"identificationTags", FXFormFieldOptions: @[@"Amphibians", @"Amphibians, Australian Ground Frogs", @"Birds"]},
-             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"recordedBy", FXFormFieldDefaultValue: [GASettings getFullName]},
-             @"confident",
+             
              @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"notes", FXFormFieldType: FXFormFieldTypeLongText,FXFormFieldPlaceholder: @"" },
+             
              /*@{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"comments", FXFormFieldTitle:@"Notes", FXFormFieldType: FXFormFieldTypeLongText,FXFormFieldPlaceholder: @"" },*/
              ];
 }
@@ -165,21 +172,39 @@
              //object in the responder chain that implements the submitForm
              //method, which in this case would be the AppDelegate
              
-             @{FXFormFieldTitle: @"Submit", FXFormFieldHeader: @"", FXFormFieldAction: @"submitLoginForm", @"backgroundColor": [UIColor colorWithRed:200.0/255.0 green:77.0/255.0 blue:47.0/255.0 alpha:1], @"textLabel.color": [UIColor whiteColor]}
+             @{FXFormFieldTitle: @"Publish", FXFormFieldHeader: @"", FXFormFieldAction: @"submitLoginForm", @"backgroundColor": [UIColor colorWithRed:200.0/255.0 green:77.0/255.0 blue:47.0/255.0 alpha:1], @"textLabel.color": [UIColor whiteColor]}
              
              ];
 }
 
 // hide these fields. they are autopopulated when a species is selected.
-- (NSArray *) excludedFields{
-    return @[
-             @"scientificName",
-             @"commonName",
-             @"guid",
-             @"uniqueId",
-             @"photoUrl",
-             @"photoThumbnailUrl"
-             ];
+- (NSArray *) excludedFields {
+    if(self.speciesPhoto == nil) {
+        return @[
+                 @"scientificName",
+                 @"commonName",
+                 @"guid",
+                 @"uniqueId",
+                 @"photoUrl",
+                 @"photoThumbnailUrl",
+                 @"photo",
+                 @"photoTitle",
+                 @"photoAttribution",
+                 @"photoLicence",
+                 @"photoNotes",
+                 @"photoDate"
+                 ];
+    } else {
+        return @[
+                 @"scientificName",
+                 @"commonName",
+                 @"guid",
+                 @"uniqueId",
+                 @"photoUrl",
+                 @"photoThumbnailUrl"
+                 ];
+    }
+    
 }
 
 - (NSString *)locationFieldDescription
@@ -297,6 +322,12 @@
     return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
 }
 
+- (NSData *) toJSONData {
+    NSDictionary *data = [self toBiocollectFormat];
+    NSError *e;
+    return [NSJSONSerialization dataWithJSONObject:data options:NSJSONWritingPrettyPrinted error:&e];
+}
+
 /*
  * http://stackoverflow.com/questions/16254575/how-do-i-get-iso-8601-date-in-ios
  */
@@ -367,7 +398,7 @@
         self.speciesDisplayName = self.scientificName;
     }
     
-    if([self.guid isEqual:@""]){
+    if(![self.guid isEqual:@""]){
         self.guid = guid;
     } else {
         self.guid = nil;

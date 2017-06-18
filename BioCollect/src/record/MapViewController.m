@@ -1,4 +1,4 @@
-    //
+//
 //  MapViewController.m
 //  Oz Atlas
 //
@@ -31,6 +31,8 @@
     mapRegion.span.longitudeDelta = 0.2;
     
     [self.mapView  setRegion:mapRegion animated: YES];
+    self.mapView.delegate = self;
+    
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(__unused BOOL)animated
@@ -42,6 +44,22 @@
     //update title
     self.title = [NSString stringWithFormat:@"Location: %0.3f, %0.3f",
                   mapView.centerCoordinate.latitude, mapView.centerCoordinate.longitude];
+}
+
+
+
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+{
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 800, 800);
+    [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
+    
+    // Add an annotation
+    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+    point.coordinate = userLocation.coordinate;
+    point.title = @"Where am I?";
+    point.subtitle = @"I'm here!!!";
+    
+    [self.mapView addAnnotation:point];
 }
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)theSearchBar

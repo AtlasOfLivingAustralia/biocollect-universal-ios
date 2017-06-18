@@ -100,7 +100,8 @@
             if([jsonError length] == 0 ) {
                 [GASettings setEmailAddress:username];
                 [GASettings setAuthKey:[respDict objectForKey:@"authKey"]];
-                
+                [GASettings setFirstName:[respDict objectForKey:@"firstName"]];
+                [GASettings setLastName:[respDict objectForKey:@"lastName"]];
                 DebugLog(@"[SUCCESS] GARest:authenticate Authentication successful. User=%@",username);
             }
             else {
@@ -372,6 +373,7 @@
  * create a record on server
  */
 - (NSMutableDictionary * )createRecord: (RecordForm *) record {
+    
     // first get unique id for species
     if(record.uniqueId == nil){
         NSString *uniqueId = [self getSpeciesUniqueId];
@@ -384,7 +386,7 @@
                                                                                     @"message":[NSNull null],
                                                                                     @"activityId": [NSNull null]
                                                                                     }];
-    if(record.uniqueId != nil){
+    if(record.uniqueId != nil) {
         // check if photo is attached. then upload photo.
         NSMutableDictionary *photoStatus = [self uploadImage:record.speciesPhoto];
         
@@ -392,14 +394,18 @@
         if((photoStatus == nil) || [[NSNumber numberWithInt:200] isEqual: photoStatus[@"statusCode"]]){
             [record updateImageSettings: photoStatus[@"resp"]];
             NSString *url = [NSString stringWithFormat:@"%@%@", BIOCOLLECT_SERVER, CREATE_RECORD];
+            NSString *data = [record toJSON];
+            NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[data length]];
+            
             NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
             [request setURL:[NSURL URLWithString:url]];
+            [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
             [request setValue:JSON_CONTENT_TYPE_VALUE forHTTPHeaderField:JSON_CONTENT_TYPE_KEY];
             [request setValue:[GASettings getEmailAddress] forHTTPHeaderField: @"userName"];
             [request setValue:[GASettings getAuthKey] forHTTPHeaderField: @"authKey"];
-            [request setHTTPBody:[[record toJSON] dataUsingEncoding:NSUTF8StringEncoding]];
+            [request setHTTPBody:[record toJSONData]];
             [request setHTTPMethod:@"POST"];
-            NSLog(@"%@", [record toJSON]);
+            NSLog(@"%@", data);
             
             NSError *e;
             NSURLResponse *response;

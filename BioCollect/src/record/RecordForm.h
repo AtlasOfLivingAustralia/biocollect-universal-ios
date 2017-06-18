@@ -43,6 +43,7 @@
 - (NSObject *) isValid;
 - (NSDictionary *) toDictionary;
 - (NSString *) toJSON;
+- (NSData *) toJSONData;
 - (void) updateImageSettings: (NSMutableDictionary *) data;
 - (NSString *) getSubtitle;
 - (void)setScientificName:(NSString *)sn commonName:(NSString *)cn guid:(NSString *)guid;

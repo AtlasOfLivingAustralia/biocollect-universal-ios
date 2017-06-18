@@ -7,7 +7,9 @@
 //
 
 #import "FXForms.h"
+#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface MapViewController : UIViewController <FXFormFieldViewController>
+@interface MapViewController : UIViewController <FXFormFieldViewController, MKMapViewDelegate, CLLocationManagerDelegate>
 @property (nonatomic, strong) FXFormField *field;
 @end

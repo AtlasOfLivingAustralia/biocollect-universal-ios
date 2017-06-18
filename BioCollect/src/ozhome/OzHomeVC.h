@@ -7,9 +7,7 @@
 //
 
 #import "MGSpotyViewController.h"
-#import "OzHomeVCDelegate.h"
-#import "OzHomeVCDataSource.h"
 
-@interface OzHomeVC : MGSpotyViewController
+@interface OzHomeVC : MGSpotyViewController <UINavigationControllerDelegate>
 
 @end

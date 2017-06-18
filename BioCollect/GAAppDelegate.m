@@ -174,19 +174,21 @@
     NSArray* controllers = nil;
     NSString *appType = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_AppType"];
     if([appType isEqualToString:@"custom"]) {
-        //OzHomeVC.navigationController.navigationBar.barTintColor = [UIColor blackColor];
+        [[UINavigationBar appearance] setBackgroundColor:[self colorFromHexString: @"#000000"]];
+        [[UINavigationBar appearance] setTranslucent:NO];
+        [[UINavigationBar appearance] setTintColor: [self colorFromHexString: @"#F1582B"]];
         [self.window setRootViewController:ozHomeNC];
     } else {
         tabBarController = [[UITabBarController alloc] init];
         controllers = [NSArray arrayWithObjects: homeNC, recordsNC, myProjectsNC, myRecordsNC,contactNC, nil];
         tabBarController.viewControllers = controllers;
+        [[UINavigationBar appearance] setTranslucent:NO];
         [self.window setRootViewController:tabBarController];
     }
     
     [[UITabBar appearance] setTintColor: [self colorFromHexString: @"#F1582B"]];
     [[UIBarButtonItem appearance] setTintColor: [self colorFromHexString: @"#F1582B"]];
-    [[UINavigationBar appearance] setTranslucent:NO];
-    [[UINavigationBar appearance] setTintColor: [self colorFromHexString: @"#F1582B"]];
+    
     [self.window makeKeyAndVisible];
 
     if([GASettings getAuthKey] == 0){

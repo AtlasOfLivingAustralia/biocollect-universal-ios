@@ -10,7 +10,8 @@
 #import "RecordForm.h"
 #import "GAAppDelegate.h"
 #import "MRProgressOverlayView.h"
-
+#import <ImageIO/CGImageProperties.h>
+#import <ImageIO/CGImageSource.h>
 
 @implementation RecordViewController
 
@@ -24,7 +25,7 @@
         record.surveyDate = [NSDate date];
         record.howManySpecies = 1;
         record.photoDate = [NSDate date];
-    
+        
         // location manager
         self.locationManager = [[CLLocationManager alloc] init];
         self.locationManager.delegate = self;
@@ -35,8 +36,8 @@
         
         self.speciesSearchVC = [[SpeciesSearchTableViewController alloc] initWithNibName:@"SpeciesSearchTableViewController" bundle:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveSpeciesHandler:) name:@"SPECIESSEARCH SELECTED" object:nil];
+        [self.formController.tableView setBackgroundColor:[UIColor blackColor]];
     }
-    
     
     return self;
 }
@@ -100,10 +101,26 @@
     });
 }
 
+
+- (void)parseImageMetadata:(id<FXFormFieldCell>)cell {
+    FXFormField *field = cell.field;
+    UIImage *image = (UIImage *) cell.field.value;
+    if(image != nil) {
+        NSData *jpegData = UIImageJPEGRepresentation(image, 1.0);
+        CGImageSourceRef source = CGImageSourceCreateWithData((__bridge CFDataRef)jpegData, NULL);
+        CFDictionaryRef imageMetaData = CGImageSourceCopyPropertiesAtIndex(source,0,NULL);
+        NSLog(@"%@", imageMetaData);
+        RecordForm *record = (RecordForm *)self.formController.form;
+        record.photoTitle = @"iOS_IMAGE";
+        self.formController.form = field.form;
+        [self.formController.tableView reloadData];
+    }
+}
 - (void)showSpeciesSearchTableViewController: (UITableViewCell *) sender {
     self.recordCell = sender;
     [self.navigationController pushViewController:self.speciesSearchVC animated:YES];
 }
+
 
 - (void)saveSpeciesHandler: (NSNotification *) notice{
     NSDictionary *selection = (NSDictionary *)[notice object];
@@ -113,7 +130,7 @@
     self.recordCell.detailTextLabel.text = record.speciesDisplayName;
 }
 
--(void) getLocation{
+-(void) getLocation {
     if(self.locationManager == nil) {
         self.locationManager = [[CLLocationManager alloc] init];
         [self.locationManager requestWhenInUseAuthorization];
@@ -132,7 +149,7 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
-    NSLog(@"didUpdateToLocation: %@", newLocation);
+    //NSLog(@"didUpdateToLocation: %@", newLocation);
     CLLocation *currentLocation = newLocation;
     RecordForm *record = self.formController.form;
     if (record.location == nil) {

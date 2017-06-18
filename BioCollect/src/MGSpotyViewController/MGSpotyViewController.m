@@ -230,7 +230,7 @@ static const NSUInteger kMGOverviewMainSubviewTag = 100;
     
     _overView.frame = rect;
     _mainImageView.frame = rect;
-    _tableView.frame = (CGRect){ 0, 0, size.width, size.height};
+    _tableView.frame = (CGRect){ 0, 0, size.width, size.height };
     
     //Clear
     _tableView.contentOffset = (CGPoint){ 0, 0 };

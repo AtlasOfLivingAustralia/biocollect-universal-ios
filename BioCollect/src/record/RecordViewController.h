@@ -11,7 +11,8 @@
 #import <MapKit/MapKit.h>
 #import "RecordForm.h"
 
-@interface RecordViewController : FXFormViewController<CLLocationManagerDelegate, UIAlertViewDelegate>
+//@interface RecordViewController : FXFormViewController<CLLocationManagerDelegate, UIAlertViewDelegate>
+@interface RecordViewController : FXFormViewController<UIAlertViewDelegate>
 @property (nonatomic, strong) SpeciesSearchTableViewController *speciesSearchVC;
 @property (nonatomic, strong) UITableViewCell<FXFormFieldCell> *recordCell;
 @property (nonatomic, strong) CLLocationManager *locationManager;
