@@ -20,5 +20,7 @@
 -(NSMutableArray *) downloadProjects : (NSError **) error;
 -(NSMutableArray *) autoCompleteSpecies : (NSString *) searchText numberOfItemsPerPage: (int) pageSize fromSerialNumber: (int) offset addSearchText:(BOOL)addUnmatchedTaxon viewController: (SpeciesSearchTableViewController *) vc;
 -(NSMutableDictionary * )createRecord: RecordForm;
+-(Boolean) notReachable;
+-(void)saveRecordToDisk: (RecordForm *) record;
 @end
     

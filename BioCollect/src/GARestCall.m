@@ -18,6 +18,7 @@
 #import "GASettingsConstant.h"
 #import "RecordForm.h"
 #import "SpeciesSearchTableViewController.h"
+#import "Reachability.h"
 
 @interface GARestCall()
 @property (nonatomic, retain) NSMutableArray *projects;
@@ -225,12 +226,12 @@
     NSString *url = [[NSString alloc] initWithFormat:@"%@%@&pageSize=%d&start=%d", AUTOCOMPLETE_URL, [searchText stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding], pageSize, offset];
     [request setURL:[NSURL URLWithString:url]];
     [request setHTTPMethod:@"GET"];
-//    [request setTimeoutInterval:60];
+//  [request setTimeoutInterval:60];
     
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *e) {
         NSMutableArray *results = [[NSMutableArray alloc] init];
-        int total;
+        int total = 0;
         if((e == nil) && (data != nil)){
             NSDictionary* respDict =  [NSJSONSerialization JSONObjectWithData:data
                                                                       options:kNilOptions error:&e];
@@ -373,7 +374,6 @@
  * create a record on server
  */
 - (NSMutableDictionary * )createRecord: (RecordForm *) record {
-    
     // first get unique id for species
     if(record.uniqueId == nil){
         NSString *uniqueId = [self getSpeciesUniqueId];
@@ -418,8 +418,9 @@
                     result[@"message"] = @"Record saved";
                     result[@"activityId"] = respDict[@"resp"][@"activityId"];
                     
-                    GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
-                    [appDelegate removeRecords:@[record]];
+                    //GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+                    //[appDelegate removeRecords:@[record]];
+                    record.uploaded = TRUE;
                 } else {
                     DebugLog(@"[ERROR] Server error %@",[*e localizedDescription]);
                     [self saveRecordToDisk: record];
@@ -488,7 +489,7 @@
         NSMutableDictionary *dict = [[NSMutableDictionary  alloc] initWithDictionary: @{ @"statusCode":[NSNull null],
                                                                                          @"resp": [NSNull null]
                                                                                          }];
-        NSData *imageData = UIImagePNGRepresentation(image);
+        NSData *imageData = UIImagePNGRepresentation([self resizeImage:image]);
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
         [request setURL: [NSURL URLWithString:url]];
         [request setHTTPMethod:@"POST"];
@@ -528,4 +529,55 @@
         return nil;
     }
 }
+
+-(UIImage *)resizeImage:(UIImage *)image
+{
+    float actualHeight = image.size.height;
+    float actualWidth = image.size.width;
+    float maxHeight = 800.0;
+    float maxWidth = 800.0;
+    float imgRatio = actualWidth/actualHeight;
+    float maxRatio = maxWidth/maxHeight;
+    float compressionQuality = 0.5;//50 percent compression
+    
+    if (actualHeight > maxHeight || actualWidth > maxWidth)
+    {
+        if(imgRatio < maxRatio)
+        {
+            //adjust width according to maxHeight
+            imgRatio = maxHeight / actualHeight;
+            actualWidth = imgRatio * actualWidth;
+            actualHeight = maxHeight;
+        }
+        else if(imgRatio > maxRatio)
+        {
+            //adjust height according to maxWidth
+            imgRatio = maxWidth / actualWidth;
+            actualHeight = imgRatio * actualHeight;
+            actualWidth = maxWidth;
+        }
+        else
+        {
+            actualHeight = maxHeight;
+            actualWidth = maxWidth;
+        }
+    }
+    
+    CGRect rect = CGRectMake(0.0, 0.0, actualWidth, actualHeight);
+    UIGraphicsBeginImageContext(rect.size);
+    [image drawInRect:rect];
+    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+    NSData *imageData = UIImageJPEGRepresentation(img, compressionQuality);
+    UIGraphicsEndImageContext();
+    
+    return [UIImage imageWithData:imageData];
+    
+}
+
+-(Boolean) notReachable {
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    return (networkStatus == NotReachable);
+}
+
 @end

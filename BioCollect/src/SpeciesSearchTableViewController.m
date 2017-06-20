@@ -10,6 +10,7 @@
 #import "GAAppDelegate.h"
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "SpeciesCell.h"
+#import "RKDropdownAlert.h"
 
 @interface SpeciesSearchTableViewController ()
 @end
@@ -29,10 +30,11 @@
         self.navigationItem.title = @"Search species";
     }
     
-    // add done button
-    UIBarButtonItem *btnDone = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(btnDonePressed)];
-    self.navigationItem.rightBarButtonItem = btnDone;
-    btnDone.enabled=TRUE;
+   
+    UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithTitle:@"Reload" style:UIBarButtonItemStyleBordered target:self action:@selector(btnRefreshPressed)];
+    
+    self.navigationItem.rightBarButtonItem = reloadButton;
+    reloadButton.enabled=TRUE;
 
     // add cancel button
     UIBarButtonItem *btnCancel = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(btnCancelPressed)];
@@ -41,6 +43,8 @@
 
     // spinner to show searching
     self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    
+    
     return  self;
 }
 
@@ -125,11 +129,15 @@
         title = @"Loading...";
     } else if(self.loadingFinished){
         if(self.totalResults > 0){
-            title = [NSString stringWithFormat:@"Found %d results", self.totalResults];
-        } else{
-            title = @"No results found";
+            NSNumberFormatter *fmt = [[NSNumberFormatter alloc] init];
+            [fmt setNumberStyle:NSNumberFormatterDecimalStyle]; // to get commas (or locale equivalent)
+            [fmt setMaximumFractionDigits:0]; // to avoid any decimal
+            title = [NSString stringWithFormat:@"Found %@ results", [fmt stringFromNumber:@(self.totalResults)]];
+        } else if([self.displayItems count] == 0){
+            title = @"Enter species name on the above text field.";
+        } else if([self.displayItems count] == 1 && self.totalResults == 0){
+            title = @"Select unmatched taxon";
         }
-        
         [self.spinner stopAnimating];
     }
     
@@ -148,6 +156,15 @@
     }
 }
 
+#pragma mark - Search bar delegate
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    
+    [displayItems removeAllObjects];
+    self.loadingFinished = NO;
+    self.isSearching = YES;
+    [self loadFirstPage];
+}
+
 #pragma mark - Navigation controller
 - (void) searchBarSearchButtonClicked:(UISearchBar*) theSearchBar{
     [theSearchBar resignFirstResponder];
@@ -157,9 +174,19 @@
     [self loadFirstPage];
 }
 
-- (void) btnDonePressed {
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"SPECIESSEARCH SELECTED" object: self.selectedSpecies];
-    [self.navigationController popViewControllerAnimated:YES];
+- (void) btnRefreshPressed {
+    /*if(self.selectedSpecies != nil) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"SPECIESSEARCH SELECTED" object: self.selectedSpecies];
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+    
+     [RKDropdownAlert title:@"ERROR" message:@"Please select the species" backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+    }
+     */
+    [displayItems removeAllObjects];
+    self.loadingFinished = NO;
+    self.isSearching = YES;
+    [self loadFirstPage];
 }
 
 - (void)btnCancelPressed {
@@ -201,7 +228,9 @@
     GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
     int limit = SEARCH_PAGE_SIZE;
     NSMutableArray *result = [appDelegate.restCall autoCompleteSpecies:self.searchBar.text numberOfItemsPerPage: limit fromSerialNumber: self.offset addSearchText:YES viewController:self];
-    [displayItems addObjectsFromArray:result];
+    if(result != nil && [result count] > 0) {
+            [displayItems addObjectsFromArray:result];
+    }
     [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 }
 

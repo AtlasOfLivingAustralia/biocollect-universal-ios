@@ -113,6 +113,7 @@
         self.navigationItem.rightBarButtonItems = btns;
         spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     }
+    
     return self;
 }
 
@@ -193,6 +194,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self resetAndDownloadProjects];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
