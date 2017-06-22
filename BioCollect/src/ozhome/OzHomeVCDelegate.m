@@ -14,6 +14,7 @@
 #import "RecordsTableViewController.h"
 #import "SyncTableViewController.h"
 #import "GAAppDelegate.h"
+#import "RKDropdownAlert.h"
 
 @interface OzHomeVCDelegate()
     @property (nonatomic, strong) RecordsTableViewController *recordsTableView;
@@ -65,39 +66,57 @@
                                               otherButtonTitles:nil];
         [alert show];
     } else if(indexPath.row == 2) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
-                                                        message:@"My Sightings"
-                                                       delegate:self
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
+        self.recordsTableView = [[RecordsTableViewController alloc] initWithNibName:@"RecordsTableViewController" bundle:nil];
+        self.recordsTableView.title = @"My records";
+        self.recordsTableView.totalRecords = 0;
+        self.recordsTableView.myRecords = 0;
+        self.recordsTableView.offset = 0;
+        self.recordsTableView.myRecords = TRUE;
+        [self.recordsTableView.records removeAllObjects];
+        [spotyViewController.navigationController pushViewController:self.recordsTableView animated:TRUE];
     } else if(indexPath.row == 3) {
         self.recordsTableView = [[RecordsTableViewController alloc] initWithNibName:@"RecordsTableViewController" bundle:nil];
         self.recordsTableView.projectId = SIGHTINGS_PROJECT_ID;
-        self.recordsTableView.title = @"Search Sightings";
+        self.recordsTableView.title = @"Search records";
         self.recordsTableView.totalRecords = 0;
         self.recordsTableView.offset = 0;
         self.recordsTableView.myRecords = FALSE;
         [self.recordsTableView.records removeAllObjects];
         [spotyViewController.navigationController pushViewController:self.recordsTableView animated:TRUE];
+        
     } else if(indexPath.row == 4) {
-      
-        
         GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
-        if(self.syncViewController == nil){
-            self.syncViewController = [[SyncTableViewController alloc] initWithNibName:@"SyncTableViewController" bundle:nil];
-            self.syncViewController.title = @"Drafts";
-        }
-        
-        [spotyViewController.navigationController pushViewController:self.syncViewController animated:TRUE];
-        
-        if(appDelegate.projectsModified){
-            appDelegate.projectsModified = NO;
-            [self.syncViewController.tableView reloadData];
-        }
-        [spotyViewController.tableView deselectRowAtIndexPath:indexPath animated:YES];
+        if([appDelegate.records count] == 0) {
+            [RKDropdownAlert title:@"No drafts available" message:@"" backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
 
-    } else {
+        } else {
+            if(self.syncViewController == nil){
+                self.syncViewController = [[SyncTableViewController alloc] initWithNibName:@"SyncTableViewController" bundle:nil];
+                self.syncViewController.title = @"Drafts";
+            }
+            
+            [spotyViewController.navigationController pushViewController:self.syncViewController animated:TRUE];
+            
+            if(appDelegate.projectsModified){
+                appDelegate.projectsModified = NO;
+                [self.syncViewController.tableView reloadData];
+            }
+            [spotyViewController.tableView deselectRowAtIndexPath:indexPath animated:YES];
+        }
+    } else if(indexPath.row == 5) {
+        NSString *url = [[NSString alloc] initWithFormat:@"https://www.ala.org.au/about-the-atlas"];
+        SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress: url];
+        webViewController.title = @"About";
+        GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+        [appDelegate.ozHomeNC presentViewController:webViewController animated:YES completion:NULL];
+        
+    } else if(indexPath.row == 6) {
+        NSString *url = [[NSString alloc] initWithFormat:@"https://www.ala.org.au/about-the-atlas/contact-us/"];
+        SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress: url];
+        webViewController.title = @"Contact";
+        GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+        [appDelegate.ozHomeNC presentViewController:webViewController animated:YES completion:NULL];
+    }    else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
                                                         message:@"Invalid selection."
                                                        delegate:self

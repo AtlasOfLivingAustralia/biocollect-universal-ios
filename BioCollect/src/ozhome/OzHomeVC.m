@@ -85,6 +85,7 @@
             [[self navigationController] setNavigationBarHidden:NO animated:YES];
         }
     }
+    [self.tableView reloadData];
 }
 
 #pragma mark - Private methods
@@ -172,9 +173,6 @@
 - (void)handleTap:(UITapGestureRecognizer *)sender
 {
     if (sender.state == UIGestureRecognizerStateEnded) {
-        //[[[UIAlertView alloc] initWithTitle:@"Gesture recognizer" message:@"Touched image" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-        // TODO : Show image..
-        
         RecordViewController *recordViewController = [[RecordViewController alloc] init];
         recordViewController.title = @"Record Species";
         [self.navigationController pushViewController:recordViewController animated:TRUE];

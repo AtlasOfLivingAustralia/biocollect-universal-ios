@@ -11,6 +11,7 @@
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "SpeciesCell.h"
 #import "RKDropdownAlert.h"
+#import "SVModalWebViewController.h"
 
 @interface SpeciesSearchTableViewController ()
 @end
@@ -90,6 +91,7 @@
         cell = [[SpeciesCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
         cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
         cell.autoresizesSubviews = YES;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
     NSDictionary *species = [displayItems objectAtIndex:indexPath.row];
@@ -107,11 +109,46 @@
     } else {
         cell.imageView.image = self.noImage;
     }
+   
+    if(![species[@"rank"] isEqualToString: @"unmatched taxon"] ) {
+        //http://bie.ala.org.au/species/Rattus rattus
+        UIImage *image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"icon_about"]];
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        CGRect frame = CGRectMake(44.0, 44.0, image.size.width, image.size.height);
+        button.frame = frame;
+        [button setBackgroundImage:image forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(accessoryButtonTapped:event:)  forControlEvents:UIControlEventTouchUpInside];
+        button.backgroundColor = [UIColor clearColor];
+        cell.accessoryView = button;
+    }
     
     return cell;
 }
 
 #pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+    
+    NSDictionary *species = [displayItems objectAtIndex:indexPath.row];
+    if(![species[@"rank"] isEqualToString: @"unmatched taxon"] ) {
+        NSString *url = [[NSString alloc] initWithFormat:@"http://bie.ala.org.au/species/%@",species[@"guid"]];
+        NSString *encoded =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress: encoded];
+        webViewController.title = [[NSString alloc] initWithFormat:species[@"displayName"]];
+        webViewController.webViewDelegate = self;
+        [self presentViewController: webViewController animated:YES completion: nil];
+    }
+}
+
+-(void) accessoryButtonTapped:(id)sender event:(id)event{
+    NSSet *touches = [event allTouches];
+    UITouch *touch = [touches anyObject];
+    CGPoint currentTouchPosition = [touch locationInView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:currentTouchPosition];
+    if (indexPath != nil) {
+        [self tableView: self.tableView accessoryButtonTappedForRowWithIndexPath:indexPath];
+    }
+}
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -119,8 +156,6 @@
     self.selectedSpecies = displayItems[indexPath.row];
     [[NSNotificationCenter defaultCenter]postNotificationName:@"SPECIESSEARCH SELECTED" object: self.selectedSpecies];
     [self.navigationController popViewControllerAnimated:YES];
-    // Push the view controller.
-    //[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {

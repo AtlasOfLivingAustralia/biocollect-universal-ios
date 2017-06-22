@@ -9,6 +9,7 @@
 #import "OzHomeVCDataSource.h"
 #import "MGSpotyViewController.h"
 #import "HomeCustomCell.h"
+#import "GAAppDelegate.h"
 
 @implementation OzHomeVCDataSource
 
@@ -18,7 +19,7 @@
 - (NSInteger)spotyViewController:(MGSpotyViewController *)spotyViewController
            numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    return 7;
 }
 
 - (UITableViewCell *)spotyViewController:(MGSpotyViewController *)spotyViewController
@@ -48,27 +49,34 @@
         [cell.imageView sd_setImageWithURL:[NSURL URLWithString:escapedUrlString] placeholderImage:[UIImage imageNamed:@"icon_location"]];
     }
     else if(indexPath.row == 2) {
-        cell.textLabel.text = @"My sightings";
+        cell.textLabel.text = @"My records";
         cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@", @""];
         NSString *url = [[NSString alloc] initWithFormat: @"%@", @""];
         NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         [cell.imageView sd_setImageWithURL:[NSURL URLWithString:escapedUrlString] placeholderImage:[UIImage imageNamed:@"icon_my_records"]];
     } else if(indexPath.row == 3) {
-        
-        cell.textLabel.text = @"Search sightings";
+        cell.textLabel.text = @"Search records";
         cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@", @""];
         NSString *url = [[NSString alloc] initWithFormat: @"%@", @""];
         NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         [cell.imageView sd_setImageWithURL:[NSURL URLWithString:escapedUrlString] placeholderImage:[UIImage imageNamed:@"icon_all_records"]];
-        
     } else if(indexPath.row == 4) {
-        cell.textLabel.text = @"Drafts";
-        cell.detailTextLabel.text = @"";
+        GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+        if([appDelegate.records count] > 0) {
+            cell.textLabel.text = [[NSString alloc] initWithFormat: @"Drafts - %ld records",[appDelegate.records count]];
+        } else {
+            cell.textLabel.text = @"Drafts";
+        }
+        
         [cell.imageView setImage:[UIImage imageNamed:@"icon_draft"]];
     } else if(indexPath.row == 5) {
         cell.textLabel.text = @"About";
         cell.detailTextLabel.text = @"";
         [cell.imageView setImage:[UIImage imageNamed:@"icon_about"]];
+    } else if(indexPath.row == 6) {
+        cell.textLabel.text = @"Contact us";
+        cell.detailTextLabel.text = @"";
+        [cell.imageView setImage:[UIImage imageNamed:@"icon_address"]];
     } else {
         cell.textLabel.text = @"About";
         cell.detailTextLabel.text = @"";

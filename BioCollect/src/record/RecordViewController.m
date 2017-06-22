@@ -12,6 +12,7 @@
 #import "MRProgressOverlayView.h"
 #import <ImageIO/CGImageProperties.h>
 #import <ImageIO/CGImageSource.h>
+#import "RKDropdownAlert.h"
 
 @implementation RecordViewController
 
@@ -24,6 +25,8 @@
         RecordForm *record = [[RecordForm alloc] init];
         record.surveyDate = [NSDate date];
         record.howManySpecies = 1;
+        record.confident = TRUE;
+        record.uploaded = FALSE;
         record.photoDate = [NSDate date];
         
         // location manager
@@ -55,12 +58,7 @@
     NSMutableDictionary *formValidity = [record isValid];
     NSNumber *valid = formValidity[@"valid"];
     if( [valid isEqualToNumber:[NSNumber numberWithInt: 0]] ) {
-        [[[UIAlertView alloc] initWithTitle: @"Form not valid"
-                                    message:[formValidity valueForKey:@"message"]
-                                   delegate:nil
-                          cancelButtonTitle:nil
-                          otherButtonTitles:@"OK", nil] show];
-
+         [RKDropdownAlert title:@"ERROR" message:[formValidity valueForKey:@"message"] backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
     } else {
         [self createRecord:record];
     }
@@ -72,26 +70,39 @@
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            // set animation to show record creation is in progress
             [MRProgressOverlayView showOverlayAddedTo:appDelegate.window title:@"Processing.." mode:MRProgressOverlayViewModeIndeterminateSmall animated:YES];
         });
     });
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSMutableDictionary *status = [[appDelegate restCall] createRecord: record];
-        NSNumber *statusCode = status[@"status"];
+        
+        // Check internet and server status, if no internet connection then save the data on to disk.
+        NSMutableDictionary *status;
+        NSNumber *statusCode;
+        BOOL notReachable = FALSE;
+        if([[appDelegate restCall] notReachable]) {
+            notReachable = TRUE;
+            [[appDelegate restCall] saveRecordToDisk: record];
+        } else {
+            status = [[appDelegate restCall] createRecord: record];
+            statusCode = status[@"status"];
+        }
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             [MRProgressOverlayView dismissOverlayForView:appDelegate.window animated:NO];
             
-            if([statusCode isEqualToNumber: [NSNumber numberWithInt: 200]]){
+            // Saved to local disk due
+            if(notReachable) {
+                [RKDropdownAlert title:@"Device offline" message:@"Record succesfully saved as Draft." backgroundColor:[UIColor colorWithRed:243.0/255.0 green:156.0/255.0 blue:18.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+            else if([statusCode isEqualToNumber: [NSNumber numberWithInt: 200]]){
                 record.activityId = status[@"activityId"];
-                [[[UIAlertView alloc] initWithTitle:@"Successfully submitted."
-                                            message:status[@"message"]
-                                           delegate:self
-                                  cancelButtonTitle:nil
-                                  otherButtonTitles:@"OK", nil] show];
+                [appDelegate removeRecords: @[record]];
+                [RKDropdownAlert title:@"Record successfully submitted!" message:@"" backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+                [self.navigationController popViewControllerAnimated:YES];
             } else {
-                [[[UIAlertView alloc] initWithTitle:@"Submission failed"
+                [[[UIAlertView alloc] initWithTitle:@"Record submission failed, try again later."
                                             message:status[@"message"]
                                            delegate: self
                                   cancelButtonTitle:nil

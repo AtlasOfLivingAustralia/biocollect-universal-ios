@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SpeciesSearchTableViewController : UITableViewController
+@interface SpeciesSearchTableViewController : UITableViewController<UITableViewDelegate>
 {
     NSMutableArray *displayItems;
     NSDictionary *selectedSpecies;

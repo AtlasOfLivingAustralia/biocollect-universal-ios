@@ -39,6 +39,8 @@
 @property (nonatomic, copy) NSString *photoFilename;
 
 @property (nonatomic, strong) NSDictionary *propertyKey;
+//Flag
+@property (nonatomic) BOOL uploaded;
 
 - (NSObject *) isValid;
 - (NSDictionary *) toDictionary;

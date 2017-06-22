@@ -42,7 +42,8 @@
                          @"photoUrlKey":@"photoUrl",
                          @"photoThumbnailUrlKey":@"photoThumbnailUrl",
                          @"photoContentTypeKey":@"photoContentType",
-                         @"photoFilenameKey": @"photoFilename"
+                         @"photoFilenameKey": @"photoFilename",
+                         @"uploadedKey": @"uploaded"
                          };
     return  self;
 }
@@ -76,6 +77,7 @@
     self.photoThumbnailUrl = [aDecoder decodeObjectForKey: propertyKey[@"photoThumbnailUrlKey"]];
     self.photoContentType = [aDecoder decodeObjectForKey: propertyKey[@"photoContentTypeKey"]];
     self.photoFilename = [aDecoder decodeObjectForKey: propertyKey[@"photoFilenameKey"]];
+    self.uploaded = [aDecoder decodeBoolForKey: propertyKey[@"uploadedKey"]];
     return self;
 }
 
@@ -105,7 +107,7 @@
     [aCoder encodeObject:self.photoThumbnailUrl forKey: propertyKey[@"photoThumbnailUrlKey"]];
     [aCoder encodeObject:self.photoContentType forKey: propertyKey[@"photoContentTypeKey"]];
     [aCoder encodeObject:self.photoFilename forKey: propertyKey[@"photoFilenameKey"]];
-
+    [aCoder encodeBool:self.uploaded forKey: propertyKey[@"uploadedKey"]];
 }
 
 -(UIColor *)colorFromHexString:(NSString *)hexString {
@@ -155,7 +157,7 @@
              @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey:@"howManySpecies", FXFormFieldTitle:@"Number of individuals", FXFormFieldCell: [FXFormStepperCell class]},
             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"recordedBy", FXFormFieldDefaultValue: [GASettings getFullName]},
              
-             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"identificationTags", FXFormFieldOptions: @[@"Amphibians", @"Amphibians, Australian Ground Frogs", @"Birds"]},
+             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"identificationTags", FXFormFieldOptions: @[@"Amphibians",@"Amphibians, Australian Ground Frogs",@"Amphibians, Narrow-Mouthed Frogs",@"Amphibians, Tree Frogs",@"Amphibians, True Frogs",@"Amphibians, True Toads",@"Birds",@"Birds, Bitterns, Ibises",@"Birds, Buttonquails",@"Birds, Cranes",@"Birds, Cuckoos",@"Birds, Doves",@"Birds, Ducks, Geese, Swans",@"Birds, Falcons",@"Birds, Flamingos",@"Birds, Fowls",@"Birds, Grebes",@"Birds, Hummingbirds, Swifts",@"Birds, Kingfishers",@"Birds, Large waterbirds",@"Birds, Nightjars, Frogmouths, Potoos",@"Birds, Ostriches",@"Birds, Owls",@"Birds, Parrots",@"Birds, Penguins",@"Birds, Perching Birds",@"Birds, Petrels, Fulmars",@"Birds, Waders, Gulls, Auks",@"Crustaceans",@"Crustaceans, Barnacles, Copepods",@"Crustaceans, Crabs, Lobsters",@"Crustaceans, Fairy shrimp, Clam shrimp",@"Crustaceans, Seed shrimp",@"Fish",@"Fish, Anchovies ",@"Fish, Angel Sharks",@"Fish, Anglerfishes",@"Fish, Baldfishes,Tubeshoulders",@"Fish, Batoids",@"Fish, Batrachoidiforms",@"Fish, Beardfishes",@"Fish, Boarfishes",@"Fish, Bonefishes",@"Fish, Bonytongues",@"Fish, Bullhead Sharks",@"Fish, Carpet Sharks",@"Fish, Catfishes",@"Fish, Chimaeras",@"Fish, Cods",@"Fish, Cow Sharks",@"Fish, Cowfishes",@"Fish, Deep-sea ray-finned fishes",@"Fish, Deep-sea ray-finned fishes",@"Fish, Dogfish Sharks",@"Fish, Dragonfishes",@"Fish, Eels",@"Fish, Electric Rays",@"Fish, Flatfishes",@"Fish, Ground Sharks",@"Fish, Guitarfish",@"Fish, Hagfishes",@"Fish, Halfbeeks",@"Fish, Jellynose Fishes",@"Fish, Killifishes",@"Fish, Latern Fishes, Neoscopelids",@"Fish, Lungfish",@"Fish, Mackerel Sharks",@"Fish, Marine ray-finned fish",@"Fish, Milkfishes",@"Fish, Minnows",@"Fish, Mullet fish",@"Fish, Opahs",@"Fish, Ophidiiforms",@"Fish, Perch-like Fishes",@"Fish, Rainbow Fishes",@"Fish, Ray-finned fishes",@"Fish, Sackpharynx Fishes",@"Fish, Salmons",@"Fish, Saw Sharks",@"Fish, Sawfish",@"Fish, Scorpion Fishes, Sculpins",@"Fish, Softnose Skates",@"Fish, Spiny Eels",@"Fish, Swamp Eels",@"Fish, Tarpons",@"Fungi",@"Fungi, Asco's",@"Fungi, Basidio's",@"Fungi, Chytrids",@"Fungi, Glomeromycota",@"Fungi, Zygomycetes",@"Insects and Spiders",@"Insects and Spiders, Alderflies, Dobsonflies, Fishflies",@"Insects and Spiders, Beetles",@"Insects and Spiders, Booklice, Barklice, Barkflies",@"Insects and Spiders, Bristletails",@"Insects and Spiders, Butterflies, Moths",@"Insects and Spiders, Caddisflies, Sedge-flies or Rail-flies",@"Insects and Spiders, Cicadas, Aphids, Planthoppers, Leafhoppers, Shield Bugs",@"Insects and Spiders, Cockroaches, Termites",@"Insects and Spiders, Dragonflies, Damselflies",@"Insects and Spiders, Earwigs",@"Insects and Spiders, Fleas",@"Insects and Spiders, Flies, Mosquitoes",@"Insects and Spiders, Grasshoppers, Crickets, Locusts, Katydids, Weta, Lubber",@"Insects and Spiders, Lacewings, Mantidflies, Antlions",@"Insects and Spiders, Lice",@"Insects and Spiders, Mantises",@"Insects and Spiders, Mayflies, Shadlfies",@"Insects and Spiders, Scorpionflies, Hangingflies",@"Insects and Spiders, Silverfish",@"Insects and Spiders, Spiders",@"Insects and Spiders, Stick Insects, Phasmids",@"Insects and Spiders, Stoneflies",@"Insects and Spiders, Thrips",@"Insects and Spiders, Twisted-Wing Parasites",@"Insects and Spiders, Wasps, Ants, Bees, Sawflies",@"Insects and Spiders, Webspinners",@"Insects and Spiders, Zorapterans",@"Mammals",@"Mammals, Bandicoots, Bilbies",@"Mammals, Bats",@"Mammals, Carnivores",@"Mammals, Carnivorous Marsupials",@"Mammals, Dolphins, Porpoises, Whales",@"Mammals, Dugongs, Manatees, Sea Cows",@"Mammals, Even-toed hoofed",@"Mammals, Hares, Pikas, Rabbits",@"Mammals, Herbivorous Marsupials",@"Mammals, Marsupial Moles",@"Mammals, Monotremes",@"Mammals, Odd-toed hoofed",@"Mammals, Rodents",@"Mammals, Shrews, Hedgehogs",@"Molluscs",@"Molluscs, Chitons",@"Molluscs, Cuttlefish",@"Molluscs, Gastropods, Slugs, Snails",@"Molluscs, Mussels, Clams",@"Molluscs, Solenogasters",@"Molluscs, Tooth Shells",@"Plants",@"Plants, Conifers, Cycads",@"Plants, Dicots",@"Plants, Ferns and Allies",@"Plants, Flowering plants",@"Plants, Monocots",@"Reptiles",@"Reptiles, Crocodiles",@"Reptiles, Lizards, Snakes",@"Reptiles, Tortoises, Turtles, Terrapins"]},
              
              @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"notes", FXFormFieldType: FXFormFieldTypeLongText,FXFormFieldPlaceholder: @"" },
              
@@ -172,7 +174,7 @@
              //object in the responder chain that implements the submitForm
              //method, which in this case would be the AppDelegate
              
-             @{FXFormFieldTitle: @"Publish", FXFormFieldHeader: @"", FXFormFieldAction: @"submitLoginForm", @"backgroundColor": [UIColor colorWithRed:200.0/255.0 green:77.0/255.0 blue:47.0/255.0 alpha:1], @"textLabel.color": [UIColor whiteColor]}
+             @{FXFormFieldTitle: @"Save", FXFormFieldHeader: @"", FXFormFieldAction: @"submitLoginForm", @"backgroundColor": [UIColor colorWithRed:200.0/255.0 green:77.0/255.0 blue:47.0/255.0 alpha:1], @"textLabel.color": [UIColor whiteColor]}
              
              ];
 }
@@ -192,7 +194,8 @@
                  @"photoAttribution",
                  @"photoLicence",
                  @"photoNotes",
-                 @"photoDate"
+                 @"photoDate",
+                 @"uploaded"
                  ];
     } else {
         return @[
@@ -201,7 +204,8 @@
                  @"guid",
                  @"uniqueId",
                  @"photoUrl",
-                 @"photoThumbnailUrl"
+                 @"photoThumbnailUrl",
+                 @"uploaded"
                  ];
     }
     
@@ -228,20 +232,20 @@
     NSDictionary *mandatory = @{ @"scientificName":@"species name", @"location": @"location", @"surveyDate": @"survey date"};
     if([self scientificName] == nil){
         validity[@"valid"] =  [NSNumber numberWithInt:0];
-        [invalidFields addObject: @"species name"];
+        [invalidFields addObject: @"\n* Species name"];
     }
     
     if([self location] == nil){
         validity[@"valid"] =  [NSNumber numberWithInt:0];
-        [invalidFields addObject: @"location"];
+        [invalidFields addObject: @"\n* Location"];
     }
     
     if([self surveyDate] == nil){
         validity[@"valid"] =  [NSNumber numberWithInt:0];
-        [invalidFields addObject: @"survey date"];
+        [invalidFields addObject: @"\n* Survey date"];
     }
     
-    NSString *msg = [NSString stringWithFormat:@"The following mandatory fields are invalid - %@", [invalidFields componentsJoinedByString:@", "]];
+    NSString *msg = [NSString stringWithFormat:@"Following mandatory fields are missing:%@", [invalidFields componentsJoinedByString:@", "]];
     [validity setValue: msg forKey:@"message"];
     
     return validity;

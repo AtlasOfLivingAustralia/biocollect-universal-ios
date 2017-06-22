@@ -10,6 +10,8 @@
 #import "RecordForm.h"
 #import "GAAppDelegate.h"
 #import "RecordViewController.h"
+#import "RKDropdownAlert.h"
+#import "MRProgressOverlayView.h"
 
 @interface SyncTableViewController ()
 @property(strong, nonatomic) UIImage * noImage;
@@ -66,35 +68,39 @@
     return [displayItems count];
 }
 
-- (void)btnSyncPressed{
+- (void)btnSyncPressed {
+    
+    GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+    [MRProgressOverlayView showOverlayAddedTo:appDelegate.window title:@"Uploading, please wait..." mode:MRProgressOverlayViewModeIndeterminateSmall animated:YES];
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
-            NSMutableDictionary *respDict;
-            NSMutableArray *recordsToRemove = [[NSMutableArray alloc]init];
-            for(RecordForm *record in self.displayItems){
+        
+        NSMutableDictionary *respDict;
+        NSMutableArray *removeRecords = [NSMutableArray array];
+        
+        for(int i = 0; i < [self.displayItems count]; i++) {
+            RecordForm *record = self.displayItems[i];
+            if(!record.uploaded) {
                 respDict = [appDelegate.restCall createRecord: record];
-                if([respDict[@"status"] isEqualToNumber: [NSNumber numberWithInt: 200]]){
-                    [recordsToRemove addObject:record];
+                if(record.uploaded) {
+                    [removeRecords addObject: record];
                 }
             }
+        }
+        
+        [appDelegate removeRecords: removeRecords];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
             
-            [appDelegate removeRecords: recordsToRemove];
+            [MRProgressOverlayView dismissOverlayForView:appDelegate.window animated:NO];
+            
             [self.tableView reloadData];
             
             if([self.displayItems count] > 0){
-                [[[UIAlertView alloc] initWithTitle:@"Record not synchronised"
-                                            message:[NSString stringWithFormat:@"%d records could not be synchronised."]
-                                           delegate:nil
-                                  cancelButtonTitle:nil
-                                  otherButtonTitles:@"OK", nil] show];
-    
+                [RKDropdownAlert title:@"Record upload failed" message:@"Please try again later." backgroundColor:[UIColor colorWithRed:243.0/255.0 green:156.0/255.0 blue:18.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
             } else {
-                [[[UIAlertView alloc] initWithTitle:@"Records synchronisation successful"
-                                            message:@"All records are now saved on server."
-                                           delegate:nil
-                                  cancelButtonTitle:nil
-                                  otherButtonTitles:@"OK", nil] show];
+                [RKDropdownAlert title:@"Record successfully uploaded" message:@"" backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+                [self.navigationController popViewControllerAnimated:YES];
             }
         });
     });
