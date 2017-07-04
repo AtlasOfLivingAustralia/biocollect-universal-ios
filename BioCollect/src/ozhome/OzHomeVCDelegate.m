@@ -54,20 +54,15 @@
     
     if (indexPath.row == 0) {
         RecordViewController *recordViewController = [[RecordViewController alloc] init];
-        recordViewController.title = @"Record Species";
+        recordViewController.title = @"Record a Sighting";
         [spotyViewController.navigationController pushViewController:recordViewController animated:TRUE];
         NSLog(@"selected row");
         [spotyViewController.tableView deselectRowAtIndexPath:indexPath animated:YES];
     } else if(indexPath.row == 1) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
-                                                        message:@"Explore Species"
-                                                       delegate:self
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
+        [RKDropdownAlert title:@"Explore Species - Under development." message:@"" backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
     } else if(indexPath.row == 2) {
         self.recordsTableView = [[RecordsTableViewController alloc] initWithNibName:@"RecordsTableViewController" bundle:nil];
-        self.recordsTableView.title = @"My records";
+        self.recordsTableView.title = @"My Sightings";
         self.recordsTableView.totalRecords = 0;
         self.recordsTableView.myRecords = 0;
         self.recordsTableView.offset = 0;
@@ -77,7 +72,7 @@
     } else if(indexPath.row == 3) {
         self.recordsTableView = [[RecordsTableViewController alloc] initWithNibName:@"RecordsTableViewController" bundle:nil];
         self.recordsTableView.projectId = SIGHTINGS_PROJECT_ID;
-        self.recordsTableView.title = @"Search records";
+        self.recordsTableView.title = @"All Sightings";
         self.recordsTableView.totalRecords = 0;
         self.recordsTableView.offset = 0;
         self.recordsTableView.myRecords = FALSE;
@@ -87,12 +82,12 @@
     } else if(indexPath.row == 4) {
         GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
         if([appDelegate.records count] == 0) {
-            [RKDropdownAlert title:@"No drafts available" message:@"" backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+            [RKDropdownAlert title:@"No draft sightings available" message:@"" backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
 
         } else {
             if(self.syncViewController == nil){
                 self.syncViewController = [[SyncTableViewController alloc] initWithNibName:@"SyncTableViewController" bundle:nil];
-                self.syncViewController.title = @"Drafts";
+                self.syncViewController.title = @"Draft Sightings";
             }
             
             [spotyViewController.navigationController pushViewController:self.syncViewController animated:TRUE];
@@ -106,14 +101,14 @@
     } else if(indexPath.row == 5) {
         NSString *url = [[NSString alloc] initWithFormat:@"https://www.ala.org.au/about-the-atlas"];
         SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress: url];
-        webViewController.title = @"About";
+        webViewController.title = @"About the ALA";
         GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
         [appDelegate.ozHomeNC presentViewController:webViewController animated:YES completion:NULL];
         
     } else if(indexPath.row == 6) {
         NSString *url = [[NSString alloc] initWithFormat:@"https://www.ala.org.au/about-the-atlas/contact-us/"];
         SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress: url];
-        webViewController.title = @"Contact";
+        webViewController.title = @"Contact the ALA";
         GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
         [appDelegate.ozHomeNC presentViewController:webViewController animated:YES completion:NULL];
     }    else {

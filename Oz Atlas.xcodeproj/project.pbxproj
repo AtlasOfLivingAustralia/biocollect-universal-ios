@@ -66,6 +66,9 @@
 		E20189E71C8966700031435D /* Icon-placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = E20189E51C8966700031435D /* Icon-placeholder.png */; };
 		E20284971C87D59300E8203F /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E20284961C87D59300E8203F /* HomeTableViewController.m */; };
 		E20284981C87D59300E8203F /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E20284961C87D59300E8203F /* HomeTableViewController.m */; };
+		E20B2D991F008B7F006782A2 /* icon_marker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E20B2D981F008B7F006782A2 /* icon_marker@2x.png */; };
+		E20B2D9B1F009005006782A2 /* icon_search_plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E20B2D9A1F009005006782A2 /* icon_search_plus@2x.png */; };
+		E20B2D9C1F009005006782A2 /* icon_search_plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E20B2D9A1F009005006782A2 /* icon_search_plus@2x.png */; };
 		E20D1B561CDC145100A3607B /* AboutiPhoneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E20D1B551CDC145100A3607B /* AboutiPhoneView.xib */; };
 		E20D1B581CDC570800A3607B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E20D1B571CDC570800A3607B /* LaunchScreen.storyboard */; };
 		E20D1B5A1CDC72BA00A3607B /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = E20D1B591CDC72BA00A3607B /* background.png */; };
@@ -604,6 +607,8 @@
 		E20189E51C8966700031435D /* Icon-placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-placeholder.png"; path = "src/images/Icon-placeholder.png"; sourceTree = "<group>"; };
 		E20284951C87D56400E8203F /* HomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeTableViewController.h; path = src/home/HomeTableViewController.h; sourceTree = "<group>"; };
 		E20284961C87D59300E8203F /* HomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeTableViewController.m; path = src/home/HomeTableViewController.m; sourceTree = "<group>"; };
+		E20B2D981F008B7F006782A2 /* icon_marker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_marker@2x.png"; path = "src/images/icon_marker@2x.png"; sourceTree = "<group>"; };
+		E20B2D9A1F009005006782A2 /* icon_search_plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_search_plus@2x.png"; path = "src/images/icon_search_plus@2x.png"; sourceTree = "<group>"; };
 		E20D1B551CDC145100A3607B /* AboutiPhoneView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutiPhoneView.xib; path = src/about/AboutiPhoneView.xib; sourceTree = "<group>"; };
 		E20D1B571CDC570800A3607B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = src/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E20D1B591CDC72BA00A3607B /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = src/images/background.png; sourceTree = "<group>"; };
@@ -1157,7 +1162,9 @@
 		B8D551DF18F98B7800EDD006 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E20B2D9A1F009005006782A2 /* icon_search_plus@2x.png */,
 				E27B3F941EF62BB500DBB47D /* icon_address@2x.png */,
+				E20B2D981F008B7F006782A2 /* icon_marker@2x.png */,
 				E27B3F951EF62BB500DBB47D /* icon_street_view@2x.png */,
 				E24690ED1EF5F19B00F2F8B8 /* icon_about@2x.png */,
 				E27B8F581EF526C200B01FAB /* ala_logo_transparent.png */,
@@ -1805,6 +1812,7 @@
 				E2AECF461E73D3010035DF28 /* help_filled-25@2x.png in Resources */,
 				E25D8F041EE5813200ED4D0F /* icon_my_records@2x.png in Resources */,
 				E2AECF471E73D3010035DF28 /* SpeciesSearchTableViewController.xib in Resources */,
+				E20B2D9C1F009005006782A2 /* icon_search_plus@2x.png in Resources */,
 				E2AECF481E73D3010035DF28 /* finished@2x.png in Resources */,
 				E2AECF491E73D3010035DF28 /* action-25@2x.png in Resources */,
 				E2AECF4A1E73D3010035DF28 /* ContactVC.xib in Resources */,
@@ -1930,6 +1938,7 @@
 				8709E9B31DB5A0FF00D04585 /* SpeciesSearchTableViewController.xib in Resources */,
 				E2CCED00190F82E6003655B7 /* finished@2x.png in Resources */,
 				E22045D1192D9EEC00531116 /* action-25@2x.png in Resources */,
+				E20B2D9B1F009005006782A2 /* icon_search_plus@2x.png in Resources */,
 				E24E0B2A1CE40464006ECE0E /* ContactVC.xib in Resources */,
 				E22045CE192D8F4800531116 /* loc1_changed@2x.png in Resources */,
 				E211B04A1CE18A3E00DBC1AF /* 512x512.png in Resources */,
@@ -1966,6 +1975,7 @@
 				E2E3AAD818F4E65E0005BB9E /* GADetailActivitiesTableViewController.xib in Resources */,
 				B87373D91DB6DFE90057027E /* SVWebViewControllerActivityChrome@2x.png in Resources */,
 				B87373D41DB6DFE90057027E /* SVWebViewController.bundle in Resources */,
+				E20B2D991F008B7F006782A2 /* icon_marker@2x.png in Resources */,
 				E21BCB7E1CEAA1A200FFFE5F /* ContactiPhoneVC.xib in Resources */,
 				E22045C8192D7E5900531116 /* pad@2x.png in Resources */,
 				E2CCED02190F82E6003655B7 /* started@2x.png in Resources */,
@@ -2488,7 +2498,7 @@
 		E2E3AAB618F4D2940005BB9E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "Oz Atlas";
+				ASSETCATALOG_COMPILER_APPICON_NAME = OzAtlasv1;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Sathish Sathyamoorthy (X53HL7Y98N)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sathish Sathyamoorthy (X53HL7Y98N)";
@@ -2508,7 +2518,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.ozatlas;
+				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.mobile;
 				PRODUCT_NAME = "Oz Atlas";
 				PROVISIONING_PROFILE = "315a2d99-0857-41a0-b50c-320de55baf46";
 				PROVISIONING_PROFILE_SPECIFIER = "ozAtlas-v1-dev-profile";
@@ -2520,10 +2530,10 @@
 		E2E3AAB718F4D2940005BB9E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "Oz Atlas";
+				ASSETCATALOG_COMPILER_APPICON_NAME = OzAtlasv1;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Sathish Sathyamoorthy (X53HL7Y98N)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sathish Sathyamoorthy (X53HL7Y98N)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Sathish Sathyamoorthy (VP6SGJQWPU)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Sathish Sathyamoorthy (VP6SGJQWPU)";
 				DEVELOPMENT_TEAM = VP6SGJQWPU;
 				ENABLE_NS_ASSERTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2535,10 +2545,10 @@
 					"$(PROJECT_DIR)/BioCollect/src/Framework",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.ozatlas;
+				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.mobile;
 				PRODUCT_NAME = "Oz Atlas";
-				PROVISIONING_PROFILE = "9a27d24a-07f5-44ec-809e-6fbae0531959";
-				PROVISIONING_PROFILE_SPECIFIER = "ozAtlas-v1-dev-profile";
+				PROVISIONING_PROFILE = "ae287aa7-a066-42ab-9527-900ff5ce85d1";
+				PROVISIONING_PROFILE_SPECIFIER = "ALA-OzAtlas-Prod-Existing-App";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

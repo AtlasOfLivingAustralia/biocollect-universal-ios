@@ -36,26 +36,26 @@
         cell.textLabel.textColor = [UIColor blackColor];
     }
     if(indexPath.row == 0) {
-        cell.textLabel.text = @"Record species";
+        cell.textLabel.text = @"Record a Sighting";
         cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@", @""];
         NSString *url = [[NSString alloc] initWithFormat: @"%@", @""];
         NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         [cell.imageView sd_setImageWithURL:[NSURL URLWithString:escapedUrlString] placeholderImage:[UIImage imageNamed:@"icon_camera"]];
     } else if(indexPath.row == 1) {
-        cell.textLabel.text = @"Explore species";
+        cell.textLabel.text = @"Explore Species";
         cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@", @""];
         NSString *url = [[NSString alloc] initWithFormat: @"%@", @""];
         NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         [cell.imageView sd_setImageWithURL:[NSURL URLWithString:escapedUrlString] placeholderImage:[UIImage imageNamed:@"icon_location"]];
     }
     else if(indexPath.row == 2) {
-        cell.textLabel.text = @"My records";
+        cell.textLabel.text = @"My Sightings";
         cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@", @""];
         NSString *url = [[NSString alloc] initWithFormat: @"%@", @""];
         NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         [cell.imageView sd_setImageWithURL:[NSURL URLWithString:escapedUrlString] placeholderImage:[UIImage imageNamed:@"icon_my_records"]];
     } else if(indexPath.row == 3) {
-        cell.textLabel.text = @"Search records";
+        cell.textLabel.text = @"All Sightings";
         cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@", @""];
         NSString *url = [[NSString alloc] initWithFormat: @"%@", @""];
         NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -65,16 +65,16 @@
         if([appDelegate.records count] > 0) {
             cell.textLabel.text = [[NSString alloc] initWithFormat: @"Drafts - %ld records",[appDelegate.records count]];
         } else {
-            cell.textLabel.text = @"Drafts";
+            cell.textLabel.text = @"Draft Sightings";
         }
         
         [cell.imageView setImage:[UIImage imageNamed:@"icon_draft"]];
     } else if(indexPath.row == 5) {
-        cell.textLabel.text = @"About";
+        cell.textLabel.text = @"About the ALA";
         cell.detailTextLabel.text = @"";
         [cell.imageView setImage:[UIImage imageNamed:@"icon_about"]];
     } else if(indexPath.row == 6) {
-        cell.textLabel.text = @"Contact us";
+        cell.textLabel.text = @"Contact the ALA";
         cell.detailTextLabel.text = @"";
         [cell.imageView setImage:[UIImage imageNamed:@"icon_address"]];
     } else {
