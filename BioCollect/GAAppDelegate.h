@@ -14,6 +14,7 @@
 #import "BioProjectService.h"
 #import "GAEULAViewController.h"
 #import "OzHomeVC.h"
+#import "SpeciesService.h"
 
 @interface GAAppDelegate : UIResponder <UIApplicationDelegate, UIAlertViewDelegate>
 
@@ -23,6 +24,7 @@
 @property (strong, nonatomic) UINavigationController *ozHomeNC;
 //All Singleton classes
 @property (nonatomic, retain) GARestCall *restCall;
+@property (nonatomic, retain) SpeciesService *speciesService;
 @property (nonatomic, retain) BioProjectService *bioProjectService;
 @property (nonatomic, retain) GASqlLiteDatabase *sqlLite;
 @property (nonatomic, retain) GALogin *loginViewController;

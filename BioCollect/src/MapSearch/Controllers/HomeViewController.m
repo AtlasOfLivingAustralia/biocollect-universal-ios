@@ -12,6 +12,7 @@
 #import "DetailsViewController.h"
 #import "AFJSONRequestOperation.h"
 #import "Storage.h"
+#import "SpeciesGroupTableViewController.h"
 
 @interface HomeViewController ()
 
@@ -29,7 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
+    
     UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Search"];
     _clearButton = [[UIBarButtonItem alloc] initWithTitle:@"Clear" style:UIBarButtonItemStyleBordered target:self action:@selector(clearButtonPressed)];
     _clearButton.enabled = NO;
@@ -41,6 +42,7 @@
     _navBar.items = @[item];
     _navBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [self.view addSubview:_navBar];
+    
     
     // --
     
@@ -93,9 +95,7 @@
                forControlEvents:UIControlEventValueChanged];
     UIBarButtonItem *segmentedButton = [[UIBarButtonItem alloc] initWithCustomView:segmentedControl];
     
-    
     _toolBar.items = @[mapButtonItem, spacing, segmentedButton, spacing];
-    
     
     _webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
     _webView.delegate = self;
@@ -130,6 +130,21 @@
         [self showPinCoordinate:self.mapView.centerCoordinate];
         [self zoomToAnnotationsBounds:_annotations];
     }
+    
+    if([self.customView isEqualToString: @"explore"]) {
+        UIBarButtonItem *next = [[UIBarButtonItem alloc] initWithTitle:@"Next >" style:UIBarButtonItemStyleBordered target:self action:@selector(exploreSpeciesPressed)];
+        self.navigationItem.rightBarButtonItem = next;
+        self.mapView.centerCoordinate = ((CLLocation *)self.clLocation).coordinate;
+        [self showPinCoordinate:self.mapView.centerCoordinate];
+        [self zoomToAnnotationsBounds:_annotations];
+        
+        // Draw overlay
+        int meter = 1000; // 1km
+        MKCircle *circle= [[MKCircle alloc]init];
+        circle = [MKCircle circleWithCenterCoordinate:CLLocationCoordinate2DMake(((CLLocation *)self.clLocation).coordinate.latitude, ((CLLocation *)self.clLocation).coordinate.longitude) radius:meter];
+        [self.mapView addOverlay:circle];
+    }
+
 }
 
 
@@ -557,23 +572,56 @@
 
 
 -(void) setFormValue: (CLLocation *)location {
-    if(location == nil) {
-        //update field value
-        self.field.value = [[CLLocation alloc] initWithLatitude:_mapView.centerCoordinate.latitude
-                                                      longitude:_mapView.centerCoordinate.longitude];
-        
-        //update title
-        self.title = [NSString stringWithFormat:@"Location: %0.3f, %0.3f",
-                      _mapView.centerCoordinate.latitude, _mapView.centerCoordinate.longitude];
-    } else {
-        //update field value
-        self.field.value = location;
-        
-        //update title
-        self.title = [NSString stringWithFormat:@"Location: %0.3f, %0.3f",
-                      location.coordinate.latitude, location.coordinate.longitude];
+    if(self.field != nil) {
+        if(location == nil) {
+            //update field value
+            self.field.value = [[CLLocation alloc] initWithLatitude:_mapView.centerCoordinate.latitude
+                                                          longitude:_mapView.centerCoordinate.longitude];
+            
+            //update title
+            self.title = [NSString stringWithFormat:@"Location: %0.3f, %0.3f",
+                          _mapView.centerCoordinate.latitude, _mapView.centerCoordinate.longitude];
+        } else {
+            //update field value
+            self.field.value = location;
+            
+            //update title
+            self.title = [NSString stringWithFormat:@"Location: %0.3f, %0.3f",
+                          location.coordinate.latitude, location.coordinate.longitude];
+        }
     }
     
+    if(self.locationDetails != nil) {
+        NSMutableDictionary *dictionary = self.locationDetails;
+        if(location == nil) {
+            dictionary[@"lat"] = [NSString stringWithFormat:@"%0.3f",_mapView.centerCoordinate.latitude];
+            dictionary[@"lng"] = [NSString stringWithFormat:@"%0.3f",_mapView.centerCoordinate.longitude];
+            dictionary[@"radius"] = @"5";
+        } else {
+            dictionary[@"lat"] = [NSString stringWithFormat:@"%0.3f",location.coordinate.latitude];
+            dictionary[@"lng"] = [NSString stringWithFormat:@"%0.3f",location.coordinate.longitude];
+            dictionary[@"radius"] = @"5";
+        }
+    }
+    
+}
+
+#pragma Species Explore
+
+-(void) exploreSpeciesPressed {
+    SpeciesGroupTableViewController *speciesGroup = [[SpeciesGroupTableViewController alloc] initWithNibName:@"SpeciesGroupTableViewController" bundle:nil];
+    speciesGroup.locationDetails = self.locationDetails;
+    [self.navigationController pushViewController:speciesGroup animated:TRUE];
+}
+
+- (MKOverlayView *) mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
+
+    MKCircleView *circleView = [[MKCircleView alloc] initWithCircle:(MKCircle*)overlay];
+    circleView.fillColor = [[UIColor grayColor] colorWithAlphaComponent:0.2];
+    circleView.strokeColor = [[UIColor blackColor] colorWithAlphaComponent:0.7];
+    circleView.lineWidth = 2;
+    return circleView;
+   
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import <MapKit/MKCircleView.h>
 #import <CoreLocation/CoreLocation.h>
 #import "SettingsViewController.h"
 #import "BookmarksViewController.h"
@@ -38,6 +39,9 @@
 }
 
 @property (nonatomic, strong) FXFormField *field;
+@property (nonatomic, strong) NSMutableDictionary *locationDetails;
+@property (nonatomic, strong) CLLocation *clLocation;
+@property (nonatomic, strong) NSString *customView; // allowed "". "explore".
 @property (strong, nonatomic) MKMapView *mapView;
 
 @end

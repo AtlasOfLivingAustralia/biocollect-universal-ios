@@ -15,6 +15,8 @@
 #import "SyncTableViewController.h"
 #import "GAAppDelegate.h"
 #import "RKDropdownAlert.h"
+#import "SpeciesGroupTableViewController.h"
+#import "HomeViewController.h"
 
 @interface OzHomeVCDelegate()
     @property (nonatomic, strong) RecordsTableViewController *recordsTableView;
@@ -22,6 +24,14 @@
 @end
 
 @implementation OzHomeVCDelegate
+
+-(id) init{
+    // location manager
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    [self.locationManager startUpdatingLocation];
+    return self;
+}
 
 #pragma mark - MGSpotyViewControllerDelegate
 
@@ -56,10 +66,23 @@
         RecordViewController *recordViewController = [[RecordViewController alloc] init];
         recordViewController.title = @"Record a Sighting";
         [spotyViewController.navigationController pushViewController:recordViewController animated:TRUE];
-        NSLog(@"selected row");
+        
         [spotyViewController.tableView deselectRowAtIndexPath:indexPath animated:YES];
     } else if(indexPath.row == 1) {
-        [RKDropdownAlert title:@"Explore Species - Under development." message:@"" backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+        //[RKDropdownAlert title:@"Explore Species - Under development." message:@"" backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+        //SpeciesGroupTableViewController *speciesGroup = [[SpeciesGroupTableViewController alloc] initWithNibName:@"SpeciesGroupTableViewController" bundle:nil];
+        //[spotyViewController.navigationController pushViewController:speciesGroup animated:TRUE];
+        
+        HomeViewController *homeMapViewController = [[HomeViewController alloc] init];
+        homeMapViewController.customView = @"explore";
+        homeMapViewController.clLocation =  self.curentLocation;
+        NSMutableDictionary *dict = [NSMutableDictionary new];
+        dict[@"lat"] = @"-37.9659145";
+        dict[@"lng"] = @"145.0715558";
+        dict[@"radius"] = @"2";
+        homeMapViewController.locationDetails = dict;
+        [spotyViewController.navigationController pushViewController:homeMapViewController animated:TRUE];
+        
     } else if(indexPath.row == 2) {
         self.recordsTableView = [[RecordsTableViewController alloc] initWithNibName:@"RecordsTableViewController" bundle:nil];
         self.recordsTableView.title = @"My Sightings";
@@ -126,4 +149,15 @@
     NSLog(@"deselected row");
 }
 
+#pragma location delegate
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    NSLog(@"didFailWithError: %@", error);
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    NSLog(@"didUpdateToLocation: %@", newLocation);
+    self.curentLocation = newLocation;
+}
 @end

@@ -18,4 +18,5 @@
 @property (nonatomic, strong) CLLocationManager *locationManager;
 
 - (void) setRecord: (RecordForm *) record;
+- (void) setRecordSpecies: (NSDictionary *) species;
 @end

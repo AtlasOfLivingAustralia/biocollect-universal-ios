@@ -8,6 +8,8 @@
 
 #import "MGSpotyViewController.h"
 
+
 @interface OzHomeVC : MGSpotyViewController <UINavigationControllerDelegate>
+
 
 @end

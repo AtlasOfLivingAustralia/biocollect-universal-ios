@@ -55,6 +55,8 @@
     [self navigationController].delegate = self;
     //[self.navigationController setNavigationBarHidden:TRUE];
     [self setOverView:self.myOverView];
+    
+   
 }
 
 - (UIView *)myOverView
@@ -178,6 +180,7 @@
         [self.navigationController pushViewController:recordViewController animated:TRUE];
     }
 }
+
 
 
 @end

@@ -36,7 +36,7 @@
 @end
 @implementation GAAppDelegate
 
-@synthesize splitViewController, projects,masterProjectVC, detailVC, restCall, sqlLite, loginViewController, eulaVC, homeVC, recordsVC, myProjectsVC, myRecordsVC, bioProjectService,tabBarController,ozHomeNC;
+@synthesize splitViewController, projects,masterProjectVC, detailVC, restCall, sqlLite, loginViewController, eulaVC, homeVC, recordsVC, myProjectsVC, myRecordsVC, bioProjectService,tabBarController,ozHomeNC, speciesService;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -60,6 +60,7 @@
     restCall = [[GARestCall alloc]init];
     sqlLite = [[GASqlLiteDatabase alloc] init];
     bioProjectService = [[BioProjectService alloc] init];
+    speciesService = [[SpeciesService alloc] init];
     
     [self addSplitViewtoRoot];
     

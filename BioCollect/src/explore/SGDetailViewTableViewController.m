@@ -1,47 +1,42 @@
-//
-//  SpeciesSearchTableViewController.m
-//  Oz Atlas
-//
-//  Created by Varghese, Temi (PI, Black Mountain) on 17/10/16.
-//  Copyright © 2016 Sathya Moorthy, Sathish (CSIRO IM&T, Clayton). All rights reserved.
-//
 
-#import "SpeciesSearchTableViewController.h"
-#import "GAAppDelegate.h"
-#import "SDWebImage/UIImageView+WebCache.h"
+#import "SGDetailViewTableViewController.h"
 #import "SpeciesCell.h"
+#import "UIImageView+WebCache.h"
 #import "RKDropdownAlert.h"
 #import "SVModalWebViewController.h"
+#import "GAAppDelegate.h"
+#import "GASettingsConstant.h"
+#import "RecordViewController.h"
 
-@interface SpeciesSearchTableViewController ()
+@interface SGDetailViewTableViewController ()
+@property (nonatomic, assign) int fixedTotal;
 @end
 
-
-@implementation SpeciesSearchTableViewController
-
+@implementation SGDetailViewTableViewController
 #define SEARCH_PAGE_SIZE 20;
 
-@synthesize speciesTableView, displayItems, selectedSpecies, searchBar;
+@synthesize speciesTableView, displayItems, selectedSpecies, selectedGroup, km;
 
 #pragma mark - init
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if(self){
-        self.navigationItem.title = @"Search species";
+        self.navigationItem.title = @"Select Species";
+    }
+    // spinner to show searching
+    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    return  self;
+}
+
+- (instancetype)initWithSelectedGroupNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil selectedGroup:(NSDictionary *) dictionary{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if(self){
+        selectedGroup = dictionary;
+        self.navigationItem.title = @"Select Species";
+        self.fixedTotal =  [dictionary[@"speciesCount"]  intValue] ;
     }
     
-   
-    UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithTitle:@"Reload" style:UIBarButtonItemStyleBordered target:self action:@selector(btnRefreshPressed)];
-    
-    self.navigationItem.rightBarButtonItem = reloadButton;
-    reloadButton.enabled=TRUE;
-
-    // add cancel button
-    UIBarButtonItem *btnCancel = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(btnCancelPressed)];
-    self.navigationItem.leftBarButtonItem = btnCancel;
-    btnCancel.enabled=TRUE;
-
     // spinner to show searching
     self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     
@@ -56,10 +51,9 @@
     displayItems = [[NSMutableArray alloc] initWithCapacity:0];
     
     // search settings
-    self.totalResults = 0;
+    self.totalResults = self.fixedTotal;
     self.offset = 0;
     
-    [self searchBar].text = @"";
     [self loadFirstPage];
     
     // table view settings
@@ -74,12 +68,10 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
     return [displayItems count];
 }
 
@@ -96,31 +88,30 @@
     
     NSDictionary *species = [displayItems objectAtIndex:indexPath.row];
     NSString *thumbnail;
-    cell.textLabel.text = species[@"displayName"];
-    cell.detailTextLabel.text = species[@"rank"];
     
-    if(self.noImage == nil){
-        self.noImage = [UIImage imageNamed:@"table-place-holder"];
-    }
+    NSString *labelText = [[NSString alloc] initWithFormat:@"%@",species[@"name"]];
     
-    thumbnail = (([species objectForKey:@"thumbnailUrl"] != nil) && (species[@"thumbnailUrl"] != [NSNull null]))? species[@"thumbnailUrl"] :@"";
+    NSString *detailLabelText = [[NSString alloc] initWithFormat:@"%@, %@",  [species[@"commonName"] length] > 0 ? species[@"commonName"] : @"N/A", [species[@"kingdom"] length] > 0 ? species[@"kingdom"] : @"N/A"];
+    
+    cell.textLabel.text = labelText;
+    cell.detailTextLabel.text = detailLabelText;
+    
+    thumbnail = [[NSString alloc] initWithFormat:@"%@%@/%@", PROXY_SERVER, SPECIES_THUMBNAIL, species[@"guid"]];
     if(![thumbnail isEqualToString:@""]){
-        [cell.imageView sd_setImageWithURL:[NSURL URLWithString: thumbnail] placeholderImage:[UIImage imageNamed:@"ajax_loader.gif"] options:SDWebImageRefreshCached ];
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString: thumbnail] placeholderImage:[UIImage imageNamed:@"noImage85.jpg"] options:SDWebImageRefreshCached];
     } else {
-        cell.imageView.image = self.noImage;
+        cell.imageView.image = [UIImage imageNamed:@"noImage85.jpg"];
     }
-   
-    if(![species[@"rank"] isEqualToString: @"unmatched taxon"] ) {
-        //http://bie.ala.org.au/species/Rattus rattus
-        UIImage *image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"icon_about"]];
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        CGRect frame = CGRectMake(44.0, 44.0, image.size.width, image.size.height);
-        button.frame = frame;
-        [button setBackgroundImage:image forState:UIControlStateNormal];
-        [button addTarget:self action:@selector(accessoryButtonTapped:event:)  forControlEvents:UIControlEventTouchUpInside];
-        button.backgroundColor = [UIColor clearColor];
-        cell.accessoryView = button;
-    }
+
+    
+    UIImage *image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"icon_about"]];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    CGRect frame = CGRectMake(44.0, 44.0, image.size.width, image.size.height);
+    button.frame = frame;
+    [button setBackgroundImage:image forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(accessoryButtonTapped:event:)  forControlEvents:UIControlEventTouchUpInside];
+    button.backgroundColor = [UIColor clearColor];
+    cell.accessoryView = button;
     
     return cell;
 }
@@ -130,14 +121,13 @@
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     
     NSDictionary *species = [displayItems objectAtIndex:indexPath.row];
-    if(![species[@"rank"] isEqualToString: @"unmatched taxon"] ) {
-        NSString *url = [[NSString alloc] initWithFormat:@"http://bie.ala.org.au/species/%@",species[@"guid"]];
-        NSString *encoded =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress: encoded];
-        webViewController.title = [[NSString alloc] initWithFormat:species[@"displayName"]];
-        webViewController.webViewDelegate = self;
-        [self presentViewController: webViewController animated:YES completion: nil];
-    }
+    NSString *url = [[NSString alloc] initWithFormat:@"http://bie.ala.org.au/species/%@",species[@"guid"]];
+    NSString *encoded =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress: encoded];
+    webViewController.title = [[NSString alloc] initWithFormat: species[@"name"]];
+    webViewController.webViewDelegate = self;
+    [self presentViewController: webViewController animated:YES completion: nil];
+    
 }
 
 -(void) accessoryButtonTapped:(id)sender event:(id)event{
@@ -152,10 +142,11 @@
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Pass the selected object to the new view controller.
-    self.selectedSpecies = displayItems[indexPath.row];
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"SPECIESSEARCH SELECTED" object: self.selectedSpecies];
-    [self.navigationController popViewControllerAnimated:YES];
+    NSDictionary *species = [displayItems objectAtIndex:indexPath.row];
+    RecordViewController *recordViewController = [[RecordViewController alloc] init];
+    recordViewController.title = @"Record a Sighting";
+    [recordViewController setRecordSpecies: species];
+    [self.navigationController pushViewController:recordViewController animated:TRUE];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -167,11 +158,7 @@
             NSNumberFormatter *fmt = [[NSNumberFormatter alloc] init];
             [fmt setNumberStyle:NSNumberFormatterDecimalStyle]; // to get commas (or locale equivalent)
             [fmt setMaximumFractionDigits:0]; // to avoid any decimal
-            title = [NSString stringWithFormat:@"Found %@ results", [fmt stringFromNumber:@(self.totalResults)]];
-        } else if([self.displayItems count] == 0){
-            title = @"Enter species name on the above text field.";
-        } else if([self.displayItems count] == 1 && self.totalResults == 0){
-            title = @"Select unmatched taxon";
+            title = @"3. Record or explore sightings";
         }
         [self.spinner stopAnimating];
     }
@@ -211,12 +198,12 @@
 
 - (void) btnRefreshPressed {
     /*if(self.selectedSpecies != nil) {
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"SPECIESSEARCH SELECTED" object: self.selectedSpecies];
-        [self.navigationController popViewControllerAnimated:YES];
-    } else {
-    
+     [[NSNotificationCenter defaultCenter]postNotificationName:@"SPECIESSEARCH SELECTED" object: self.selectedSpecies];
+     [self.navigationController popViewControllerAnimated:YES];
+     } else {
+     
      [RKDropdownAlert title:@"ERROR" message:@"Please select the species" backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
-    }
+     }
      */
     [displayItems removeAllObjects];
     self.loadingFinished = NO;
@@ -225,17 +212,17 @@
 }
 
 - (void)btnCancelPressed {
-    [searchBar resignFirstResponder];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 /**
  * update display items after asynchronous search
  */
--(void)updateDisplayItems: (NSMutableArray *)data totalRecords: (int) total{
+-(void)updateDisplayItems: (NSMutableArray *)data totalRecords: (int) total setKm: (int) kilometer {
     self.loadingFinished = YES;
     self.isSearching = NO;
-    self.totalResults = total;
+    self.totalResults = self.fixedTotal;
+    self.km = kilometer;
     [displayItems addObjectsFromArray:data];
     
     // run reload data on main thread. otherwise, table rendering will be very slow.
@@ -259,22 +246,16 @@
  */
 - (void) lookup {
     [self showOrHideActivityIndicator];
-    
     GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
-    int limit = SEARCH_PAGE_SIZE;
-    NSMutableArray *result = [appDelegate.restCall autoCompleteSpecies:self.searchBar.text numberOfItemsPerPage: limit fromSerialNumber: self.offset addSearchText:YES viewController:self];
-    if(result != nil && [result count] > 0) {
-        [displayItems addObjectsFromArray:result];
-    }
-    [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+    [appDelegate.speciesService getSpecies:selectedGroup[@"name"] numberOfItemsPerPage: 20 fromSerialNumber: self.offset viewController: self];
 }
 
 /**
  * load first page
  */
-- (void) loadFirstPage{
+- (void) loadFirstPage {
     self.offset = 0;
-    self.totalResults = 0;
+    self.totalResults = self.fixedTotal;
     [self lookup];
 }
 

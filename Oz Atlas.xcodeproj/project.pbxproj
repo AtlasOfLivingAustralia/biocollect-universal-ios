@@ -239,6 +239,54 @@
 		E2A4A4EE19663E29006CAC22 /* header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A4A4ED19663E29006CAC22 /* header@2x.png */; };
 		E2A4A4F819665009006CAC22 /* GAEULAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A4A4F619665009006CAC22 /* GAEULAViewController.m */; };
 		E2A4A4F919665009006CAC22 /* GAEULAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2A4A4F719665009006CAC22 /* GAEULAViewController.xib */; };
+		E2A6BE8C1F0C91C500F1A57E /* SpeciesGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A6BE8B1F0C91C500F1A57E /* SpeciesGroupTableViewController.m */; };
+		E2A6BE8D1F0C91C500F1A57E /* SpeciesGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A6BE8B1F0C91C500F1A57E /* SpeciesGroupTableViewController.m */; };
+		E2A6BE8F1F0C922D00F1A57E /* SpeciesGroupTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BE8E1F0C922D00F1A57E /* SpeciesGroupTableViewController.xib */; };
+		E2A6BE901F0C922D00F1A57E /* SpeciesGroupTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BE8E1F0C922D00F1A57E /* SpeciesGroupTableViewController.xib */; };
+		E2A6BE931F0C9DAE00F1A57E /* SpeciesService.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A6BE921F0C9DAE00F1A57E /* SpeciesService.m */; };
+		E2A6BE941F0C9DAE00F1A57E /* SpeciesService.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A6BE921F0C9DAE00F1A57E /* SpeciesService.m */; };
+		E2A6BEAC1F0CCFC000F1A57E /* Algae.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BE9A1F0CCFC000F1A57E /* Algae.jpg */; };
+		E2A6BEAD1F0CCFC000F1A57E /* Algae.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BE9A1F0CCFC000F1A57E /* Algae.jpg */; };
+		E2A6BEAE1F0CCFC000F1A57E /* Amphibians.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BE9B1F0CCFC000F1A57E /* Amphibians.jpg */; };
+		E2A6BEAF1F0CCFC000F1A57E /* Amphibians.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BE9B1F0CCFC000F1A57E /* Amphibians.jpg */; };
+		E2A6BEB01F0CCFC000F1A57E /* Angiosperms.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BE9C1F0CCFC000F1A57E /* Angiosperms.jpg */; };
+		E2A6BEB11F0CCFC000F1A57E /* Angiosperms.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BE9C1F0CCFC000F1A57E /* Angiosperms.jpg */; };
+		E2A6BEB21F0CCFC000F1A57E /* Birds.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BE9D1F0CCFC000F1A57E /* Birds.jpg */; };
+		E2A6BEB31F0CCFC000F1A57E /* Birds.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BE9D1F0CCFC000F1A57E /* Birds.jpg */; };
+		E2A6BEB41F0CCFC000F1A57E /* Bryophytes.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BE9E1F0CCFC000F1A57E /* Bryophytes.jpg */; };
+		E2A6BEB51F0CCFC000F1A57E /* Bryophytes.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BE9E1F0CCFC000F1A57E /* Bryophytes.jpg */; };
+		E2A6BEB61F0CCFC000F1A57E /* Crustaceans.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BE9F1F0CCFC000F1A57E /* Crustaceans.jpg */; };
+		E2A6BEB71F0CCFC000F1A57E /* Crustaceans.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BE9F1F0CCFC000F1A57E /* Crustaceans.jpg */; };
+		E2A6BEB81F0CCFC000F1A57E /* Dicots.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA01F0CCFC000F1A57E /* Dicots.jpg */; };
+		E2A6BEB91F0CCFC000F1A57E /* Dicots.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA01F0CCFC000F1A57E /* Dicots.jpg */; };
+		E2A6BEBA1F0CCFC000F1A57E /* FernsAndAllies.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA11F0CCFC000F1A57E /* FernsAndAllies.jpg */; };
+		E2A6BEBB1F0CCFC000F1A57E /* FernsAndAllies.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA11F0CCFC000F1A57E /* FernsAndAllies.jpg */; };
+		E2A6BEBC1F0CCFC000F1A57E /* Fish.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA21F0CCFC000F1A57E /* Fish.jpg */; };
+		E2A6BEBD1F0CCFC000F1A57E /* Fish.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA21F0CCFC000F1A57E /* Fish.jpg */; };
+		E2A6BEBE1F0CCFC000F1A57E /* Fungi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA31F0CCFC000F1A57E /* Fungi.jpg */; };
+		E2A6BEBF1F0CCFC000F1A57E /* Fungi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA31F0CCFC000F1A57E /* Fungi.jpg */; };
+		E2A6BEC01F0CCFC000F1A57E /* Gymnosperms.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA41F0CCFC000F1A57E /* Gymnosperms.jpg */; };
+		E2A6BEC11F0CCFC000F1A57E /* Gymnosperms.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA41F0CCFC000F1A57E /* Gymnosperms.jpg */; };
+		E2A6BEC21F0CCFC000F1A57E /* Insects.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA51F0CCFC000F1A57E /* Insects.jpg */; };
+		E2A6BEC31F0CCFC000F1A57E /* Insects.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA51F0CCFC000F1A57E /* Insects.jpg */; };
+		E2A6BEC41F0CCFC000F1A57E /* Mammals.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA61F0CCFC000F1A57E /* Mammals.jpg */; };
+		E2A6BEC51F0CCFC000F1A57E /* Mammals.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA61F0CCFC000F1A57E /* Mammals.jpg */; };
+		E2A6BEC61F0CCFC000F1A57E /* Molluscs.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA71F0CCFC000F1A57E /* Molluscs.jpg */; };
+		E2A6BEC71F0CCFC000F1A57E /* Molluscs.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA71F0CCFC000F1A57E /* Molluscs.jpg */; };
+		E2A6BEC81F0CCFC000F1A57E /* Monocots.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA81F0CCFC000F1A57E /* Monocots.jpg */; };
+		E2A6BEC91F0CCFC000F1A57E /* Monocots.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA81F0CCFC000F1A57E /* Monocots.jpg */; };
+		E2A6BECA1F0CCFC000F1A57E /* noImage85.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA91F0CCFC000F1A57E /* noImage85.jpg */; };
+		E2A6BECB1F0CCFC000F1A57E /* noImage85.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA91F0CCFC000F1A57E /* noImage85.jpg */; };
+		E2A6BECC1F0CCFC000F1A57E /* Plants.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEAA1F0CCFC000F1A57E /* Plants.jpg */; };
+		E2A6BECD1F0CCFC000F1A57E /* Plants.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEAA1F0CCFC000F1A57E /* Plants.jpg */; };
+		E2A6BECE1F0CCFC000F1A57E /* Reptiles.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEAB1F0CCFC000F1A57E /* Reptiles.jpg */; };
+		E2A6BECF1F0CCFC000F1A57E /* Reptiles.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEAB1F0CCFC000F1A57E /* Reptiles.jpg */; };
+		E2A6BED11F0CDD6700F1A57E /* icon_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BED01F0CDD6700F1A57E /* icon_right@2x.png */; };
+		E2A6BED21F0CDD6700F1A57E /* icon_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BED01F0CDD6700F1A57E /* icon_right@2x.png */; };
+		E2A6BED51F0CE04C00F1A57E /* SGDetailViewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A6BED41F0CE04C00F1A57E /* SGDetailViewTableViewController.m */; };
+		E2A6BED61F0CE04C00F1A57E /* SGDetailViewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A6BED41F0CE04C00F1A57E /* SGDetailViewTableViewController.m */; };
+		E2A6BED81F0CE06800F1A57E /* SGDetailViewTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BED71F0CE06800F1A57E /* SGDetailViewTableViewController.xib */; };
+		E2A6BED91F0CE06800F1A57E /* SGDetailViewTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BED71F0CE06800F1A57E /* SGDetailViewTableViewController.xib */; };
 		E2AECEE21E73D3010035DF28 /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B87373E41DB7027F0057027E /* RecordViewController.m */; };
 		E2AECEE31E73D3010035DF28 /* SDWebImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = E2636E1E1CF43C4000000371 /* SDWebImageDecoder.m */; };
 		E2AECEE41E73D3010035DF28 /* SDWebImagePrefetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = E2636E271CF43C4100000371 /* SDWebImagePrefetcher.m */; };
@@ -801,6 +849,33 @@
 		E2A4A4F519665009006CAC22 /* GAEULAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAEULAViewController.h; path = src/eula/GAEULAViewController.h; sourceTree = "<group>"; };
 		E2A4A4F619665009006CAC22 /* GAEULAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAEULAViewController.m; path = src/eula/GAEULAViewController.m; sourceTree = "<group>"; };
 		E2A4A4F719665009006CAC22 /* GAEULAViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GAEULAViewController.xib; path = src/eula/GAEULAViewController.xib; sourceTree = "<group>"; };
+		E2A6BE8A1F0C91A600F1A57E /* SpeciesGroupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpeciesGroupTableViewController.h; path = src/explore/SpeciesGroupTableViewController.h; sourceTree = "<group>"; };
+		E2A6BE8B1F0C91C500F1A57E /* SpeciesGroupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpeciesGroupTableViewController.m; path = src/explore/SpeciesGroupTableViewController.m; sourceTree = "<group>"; };
+		E2A6BE8E1F0C922D00F1A57E /* SpeciesGroupTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SpeciesGroupTableViewController.xib; path = src/explore/SpeciesGroupTableViewController.xib; sourceTree = "<group>"; };
+		E2A6BE911F0C9CC600F1A57E /* SpeciesService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpeciesService.h; path = src/bioRest/SpeciesService.h; sourceTree = "<group>"; };
+		E2A6BE921F0C9DAE00F1A57E /* SpeciesService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpeciesService.m; path = src/bioRest/SpeciesService.m; sourceTree = "<group>"; };
+		E2A6BE9A1F0CCFC000F1A57E /* Algae.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Algae.jpg; path = src/images/species/Algae.jpg; sourceTree = "<group>"; };
+		E2A6BE9B1F0CCFC000F1A57E /* Amphibians.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Amphibians.jpg; path = src/images/species/Amphibians.jpg; sourceTree = "<group>"; };
+		E2A6BE9C1F0CCFC000F1A57E /* Angiosperms.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Angiosperms.jpg; path = src/images/species/Angiosperms.jpg; sourceTree = "<group>"; };
+		E2A6BE9D1F0CCFC000F1A57E /* Birds.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Birds.jpg; path = src/images/species/Birds.jpg; sourceTree = "<group>"; };
+		E2A6BE9E1F0CCFC000F1A57E /* Bryophytes.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Bryophytes.jpg; path = src/images/species/Bryophytes.jpg; sourceTree = "<group>"; };
+		E2A6BE9F1F0CCFC000F1A57E /* Crustaceans.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Crustaceans.jpg; path = src/images/species/Crustaceans.jpg; sourceTree = "<group>"; };
+		E2A6BEA01F0CCFC000F1A57E /* Dicots.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Dicots.jpg; path = src/images/species/Dicots.jpg; sourceTree = "<group>"; };
+		E2A6BEA11F0CCFC000F1A57E /* FernsAndAllies.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = FernsAndAllies.jpg; path = src/images/species/FernsAndAllies.jpg; sourceTree = "<group>"; };
+		E2A6BEA21F0CCFC000F1A57E /* Fish.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Fish.jpg; path = src/images/species/Fish.jpg; sourceTree = "<group>"; };
+		E2A6BEA31F0CCFC000F1A57E /* Fungi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Fungi.jpg; path = src/images/species/Fungi.jpg; sourceTree = "<group>"; };
+		E2A6BEA41F0CCFC000F1A57E /* Gymnosperms.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Gymnosperms.jpg; path = src/images/species/Gymnosperms.jpg; sourceTree = "<group>"; };
+		E2A6BEA51F0CCFC000F1A57E /* Insects.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Insects.jpg; path = src/images/species/Insects.jpg; sourceTree = "<group>"; };
+		E2A6BEA61F0CCFC000F1A57E /* Mammals.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Mammals.jpg; path = src/images/species/Mammals.jpg; sourceTree = "<group>"; };
+		E2A6BEA71F0CCFC000F1A57E /* Molluscs.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Molluscs.jpg; path = src/images/species/Molluscs.jpg; sourceTree = "<group>"; };
+		E2A6BEA81F0CCFC000F1A57E /* Monocots.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Monocots.jpg; path = src/images/species/Monocots.jpg; sourceTree = "<group>"; };
+		E2A6BEA91F0CCFC000F1A57E /* noImage85.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = noImage85.jpg; path = src/images/species/noImage85.jpg; sourceTree = "<group>"; };
+		E2A6BEAA1F0CCFC000F1A57E /* Plants.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Plants.jpg; path = src/images/species/Plants.jpg; sourceTree = "<group>"; };
+		E2A6BEAB1F0CCFC000F1A57E /* Reptiles.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Reptiles.jpg; path = src/images/species/Reptiles.jpg; sourceTree = "<group>"; };
+		E2A6BED01F0CDD6700F1A57E /* icon_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_right@2x.png"; path = "src/images/icon_right@2x.png"; sourceTree = "<group>"; };
+		E2A6BED31F0CE03B00F1A57E /* SGDetailViewTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGDetailViewTableViewController.h; path = src/explore/SGDetailViewTableViewController.h; sourceTree = "<group>"; };
+		E2A6BED41F0CE04C00F1A57E /* SGDetailViewTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGDetailViewTableViewController.m; path = src/explore/SGDetailViewTableViewController.m; sourceTree = "<group>"; };
+		E2A6BED71F0CE06800F1A57E /* SGDetailViewTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SGDetailViewTableViewController.xib; path = src/explore/SGDetailViewTableViewController.xib; sourceTree = "<group>"; };
 		E2AECFA81E73D3010035DF28 /* BioCollect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BioCollect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2B4BEEC1C896DFB0054F117 /* HomeCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeCustomCell.h; path = src/home/HomeCustomCell.h; sourceTree = "<group>"; };
 		E2B4BEED1C896E270054F117 /* HomeCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeCustomCell.m; path = src/home/HomeCustomCell.m; sourceTree = "<group>"; };
@@ -998,6 +1073,7 @@
 		B839846B1DA5EFCA00551C67 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E2A6BE891F0C916100F1A57E /* Explore */,
 				E27B8F371EF4E68900B01FAB /* MapSearch */,
 				87B700091DC2E46C0066C236 /* Sync */,
 				B87373E31DB702280057027E /* Record */,
@@ -1162,9 +1238,11 @@
 		B8D551DF18F98B7800EDD006 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E2A6BE991F0CCFB200F1A57E /* species */,
 				E20B2D9A1F009005006782A2 /* icon_search_plus@2x.png */,
 				E27B3F941EF62BB500DBB47D /* icon_address@2x.png */,
 				E20B2D981F008B7F006782A2 /* icon_marker@2x.png */,
+				E2A6BED01F0CDD6700F1A57E /* icon_right@2x.png */,
 				E27B3F951EF62BB500DBB47D /* icon_street_view@2x.png */,
 				E24690ED1EF5F19B00F2F8B8 /* icon_about@2x.png */,
 				E27B8F581EF526C200B01FAB /* ala_logo_transparent.png */,
@@ -1252,6 +1330,8 @@
 				E2B90FBA1EF77C320052F817 /* Reachability.m */,
 				E20189871C8922C90031435D /* BioProjectService.h */,
 				E20189881C8922DD0031435D /* BioProjectService.m */,
+				E2A6BE911F0C9CC600F1A57E /* SpeciesService.h */,
+				E2A6BE921F0C9DAE00F1A57E /* SpeciesService.m */,
 			);
 			name = bioReST;
 			sourceTree = "<group>";
@@ -1491,6 +1571,44 @@
 				E25185FB1CD9E13F0068B4E0 /* EULAiPhoneViewController.xib */,
 			);
 			name = EULA;
+			sourceTree = "<group>";
+		};
+		E2A6BE891F0C916100F1A57E /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				E2A6BE8A1F0C91A600F1A57E /* SpeciesGroupTableViewController.h */,
+				E2A6BE8B1F0C91C500F1A57E /* SpeciesGroupTableViewController.m */,
+				E2A6BE8E1F0C922D00F1A57E /* SpeciesGroupTableViewController.xib */,
+				E2A6BED31F0CE03B00F1A57E /* SGDetailViewTableViewController.h */,
+				E2A6BED41F0CE04C00F1A57E /* SGDetailViewTableViewController.m */,
+				E2A6BED71F0CE06800F1A57E /* SGDetailViewTableViewController.xib */,
+			);
+			name = Explore;
+			sourceTree = "<group>";
+		};
+		E2A6BE991F0CCFB200F1A57E /* species */ = {
+			isa = PBXGroup;
+			children = (
+				E2A6BE9A1F0CCFC000F1A57E /* Algae.jpg */,
+				E2A6BE9B1F0CCFC000F1A57E /* Amphibians.jpg */,
+				E2A6BE9C1F0CCFC000F1A57E /* Angiosperms.jpg */,
+				E2A6BE9D1F0CCFC000F1A57E /* Birds.jpg */,
+				E2A6BE9E1F0CCFC000F1A57E /* Bryophytes.jpg */,
+				E2A6BE9F1F0CCFC000F1A57E /* Crustaceans.jpg */,
+				E2A6BEA01F0CCFC000F1A57E /* Dicots.jpg */,
+				E2A6BEA11F0CCFC000F1A57E /* FernsAndAllies.jpg */,
+				E2A6BEA21F0CCFC000F1A57E /* Fish.jpg */,
+				E2A6BEA31F0CCFC000F1A57E /* Fungi.jpg */,
+				E2A6BEA41F0CCFC000F1A57E /* Gymnosperms.jpg */,
+				E2A6BEA51F0CCFC000F1A57E /* Insects.jpg */,
+				E2A6BEA61F0CCFC000F1A57E /* Mammals.jpg */,
+				E2A6BEA71F0CCFC000F1A57E /* Molluscs.jpg */,
+				E2A6BEA81F0CCFC000F1A57E /* Monocots.jpg */,
+				E2A6BEA91F0CCFC000F1A57E /* noImage85.jpg */,
+				E2A6BEAA1F0CCFC000F1A57E /* Plants.jpg */,
+				E2A6BEAB1F0CCFC000F1A57E /* Reptiles.jpg */,
+			);
+			name = species;
 			sourceTree = "<group>";
 		};
 		E2E3AA8018F4D2940005BB9E = {
@@ -1808,6 +1926,8 @@
 				E2AECF431E73D3010035DF28 /* RecordsTableViewController.xib in Resources */,
 				E25D8EF81EE57E8600ED4D0F /* camera_icon.png in Resources */,
 				E2AECF441E73D3010035DF28 /* AboutiPhoneView.xib in Resources */,
+				E2A6BEC71F0CCFC000F1A57E /* Molluscs.jpg in Resources */,
+				E2A6BEC91F0CCFC000F1A57E /* Monocots.jpg in Resources */,
 				E2AECF451E73D3010035DF28 /* SVWebViewControllerActivitySafari-iPad@2x.png in Resources */,
 				E2AECF461E73D3010035DF28 /* help_filled-25@2x.png in Resources */,
 				E25D8F041EE5813200ED4D0F /* icon_my_records@2x.png in Resources */,
@@ -1826,6 +1946,7 @@
 				E2AECF4F1E73D3010035DF28 /* RecordWebView.xib in Resources */,
 				E2AECF501E73D3010035DF28 /* Icon-Small@2x.png in Resources */,
 				E2AECF511E73D3010035DF28 /* brief_filled-25@2x.png in Resources */,
+				E2A6BED91F0CE06800F1A57E /* SGDetailViewTableViewController.xib in Resources */,
 				E2AECF521E73D3010035DF28 /* GALogin.xib in Resources */,
 				E2AECF531E73D3010035DF28 /* SVWebViewControllerActivitySafari@2x.png in Resources */,
 				E2AECF541E73D3010035DF28 /* biocollect_background.png in Resources */,
@@ -1840,16 +1961,20 @@
 				E2AECF5C1E73D3010035DF28 /* (null) in Resources */,
 				E2AECF5D1E73D3010035DF28 /* GACreateSiteModalViewController.xib in Resources */,
 				E2AECF5E1E73D3010035DF28 /* changed@2x.png in Resources */,
+				E2A6BEC11F0CCFC000F1A57E /* Gymnosperms.jpg in Resources */,
 				E2AECF5F1E73D3010035DF28 /* css in Resources */,
 				E29A6E331EF3638E00D891CC /* atlasoflivingaust.png in Resources */,
 				E2AECF601E73D3010035DF28 /* background.png in Resources */,
+				E2A6BECB1F0CCFC000F1A57E /* noImage85.jpg in Resources */,
 				E24690EF1EF5F19B00F2F8B8 /* icon_about@2x.png in Resources */,
 				E2AECF611E73D3010035DF28 /* LoginiPhoneView.xib in Resources */,
 				E2AECF621E73D3010035DF28 /* contact_filled-25@2x.png in Resources */,
 				E2AECF631E73D3010035DF28 /* HomeWebView.xib in Resources */,
 				E2AECF641E73D3010035DF28 /* nochange@2x.png in Resources */,
+				E2A6BEAF1F0CCFC000F1A57E /* Amphibians.jpg in Resources */,
 				E2AECF651E73D3010035DF28 /* GADetailActivitiesTableViewController.xib in Resources */,
 				E29A6E361EF3640E00D891CC /* logo_transparent.png in Resources */,
+				E2A6BEB51F0CCFC000F1A57E /* Bryophytes.jpg in Resources */,
 				E27B3F971EF62BB500DBB47D /* icon_address@2x.png in Resources */,
 				E2AECF661E73D3010035DF28 /* SVWebViewControllerActivityChrome@2x.png in Resources */,
 				E2AECF671E73D3010035DF28 /* SVWebViewController.bundle in Resources */,
@@ -1857,11 +1982,14 @@
 				E2AECF691E73D3010035DF28 /* pad@2x.png in Resources */,
 				E2AECF6A1E73D3010035DF28 /* started@2x.png in Resources */,
 				E2AECF6B1E73D3010035DF28 /* EULAiPhoneViewController.xib in Resources */,
+				E2A6BEC31F0CCFC000F1A57E /* Insects.jpg in Resources */,
 				E2AECF6C1E73D3010035DF28 /* SVWebViewControllerActivityChrome-iPad.png in Resources */,
 				E2AECF6D1E73D3010035DF28 /* GreenArmy2.png in Resources */,
 				E2AECF6E1E73D3010035DF28 /* GAMasterProjectTableViewController.xib in Resources */,
 				E2AECF6F1E73D3010035DF28 /* GADetailFormVIewController.xib in Resources */,
 				E2AECF701E73D3010035DF28 /* Icon-60.png in Resources */,
+				E2A6BEBD1F0CCFC000F1A57E /* Fish.jpg in Resources */,
+				E2A6BECF1F0CCFC000F1A57E /* Reptiles.jpg in Resources */,
 				E2AECF711E73D3010035DF28 /* site_map@2x.png in Resources */,
 				E2AECF721E73D3010035DF28 /* img in Resources */,
 				E2AECF731E73D3010035DF28 /* background~ipad.png in Resources */,
@@ -1869,13 +1997,18 @@
 				E2AECF741E73D3010035DF28 /* InfoPlist.strings in Resources */,
 				E247DD6D1EC3398900A1C0A5 /* bk8.jpg in Resources */,
 				E2AECF751E73D3010035DF28 /* table-place-holder.png in Resources */,
+				E2A6BEBF1F0CCFC000F1A57E /* Fungi.jpg in Resources */,
 				E2AECF761E73D3010035DF28 /* home_filled-25@2x.png in Resources */,
 				E2AECF771E73D3010035DF28 /* js in Resources */,
 				E2AECF781E73D3010035DF28 /* Icon-40.png in Resources */,
 				E2AECF791E73D3010035DF28 /* edit@2x.png in Resources */,
+				E2A6BE901F0C922D00F1A57E /* SpeciesGroupTableViewController.xib in Resources */,
 				E2AECF7A1E73D3010035DF28 /* BioCollect-logo 2.png in Resources */,
 				E2AECF7B1E73D3010035DF28 /* Default-568h@2x.png in Resources */,
+				E2A6BED21F0CDD6700F1A57E /* icon_right@2x.png in Resources */,
+				E2A6BEAD1F0CCFC000F1A57E /* Algae.jpg in Resources */,
 				E27B8F571EF51DA600B01FAB /* ala_name.png in Resources */,
+				E2A6BEB11F0CCFC000F1A57E /* Angiosperms.jpg in Resources */,
 				E28AF9BB1EC4310A007042C4 /* bk_iPad.png in Resources */,
 				E2AECF7D1E73D3010035DF28 /* loc1_nochange@2x.png in Resources */,
 				E2AECF7E1E73D3010035DF28 /* geo_fence-25@2x.png in Resources */,
@@ -1887,11 +2020,14 @@
 				E25D8EFE1EE5813200ED4D0F /* icon_all_records@2x.png in Resources */,
 				E2AECF841E73D3010035DF28 /* index.html in Resources */,
 				E2AECF851E73D3010035DF28 /* ala_logo.png in Resources */,
+				E2A6BEB91F0CCFC000F1A57E /* Dicots.jpg in Resources */,
 				E2AECF861E73D3010035DF28 /* StaticWebPages in Resources */,
 				E2AECF871E73D3010035DF28 /* MapViewController.xib in Resources */,
 				E2AECF881E73D3010035DF28 /* Icon-placeholder.png in Resources */,
+				E2A6BEC51F0CCFC000F1A57E /* Mammals.jpg in Resources */,
 				E2C544481ECDCA8C00641951 /* edit_icon@2x.png in Resources */,
 				E2AECF891E73D3010035DF28 /* Default-568h.png in Resources */,
+				E2A6BEB71F0CCFC000F1A57E /* Crustaceans.jpg in Resources */,
 				E247DD6A1EC3373B00A1C0A5 /* bk6.jpg in Resources */,
 				E2AECF8A1E73D3010035DF28 /* Icon-76.png in Resources */,
 				E2AECF8B1E73D3010035DF28 /* profile@2x.png in Resources */,
@@ -1903,9 +2039,11 @@
 				E27B8F541EF5187A00B01FAB /* ala_logo_1.png in Resources */,
 				E2AECF901E73D3010035DF28 /* ala_logo1.png in Resources */,
 				E2AECF911E73D3010035DF28 /* SVWebViewControllerActivitySafari-iPad.png in Resources */,
+				E2A6BECD1F0CCFC000F1A57E /* Plants.jpg in Resources */,
 				E2AECF921E73D3010035DF28 /* Images.xcassets in Resources */,
 				E2AECF931E73D3010035DF28 /* GAHelpVC.xib in Resources */,
 				E247DD701EC33C5900A1C0A5 /* BioCollect-Name-Only.png in Resources */,
+				E2A6BEBB1F0CCFC000F1A57E /* FernsAndAllies.jpg in Resources */,
 				E25D8F071EE5820100ED4D0F /* icon_location@2x.png in Resources */,
 				E2AECF951E73D3010035DF28 /* GAEULAViewController.xib in Resources */,
 				E2AECF961E73D3010035DF28 /* GAAboutVC.xib in Resources */,
@@ -1917,6 +2055,7 @@
 				E2AECF9C1E73D3010035DF28 /* searchbar_bk@2x.png in Resources */,
 				E2AECF9D1E73D3010035DF28 /* SyncTableViewController.xib in Resources */,
 				E2AECF9E1E73D3010035DF28 /* HomeTableViewController.xib in Resources */,
+				E2A6BEB31F0CCFC000F1A57E /* Birds.jpg in Resources */,
 				E2AECF9F1E73D3010035DF28 /* Images-2.xcassets in Resources */,
 				E2AECFA01E73D3010035DF28 /* BioCollect-text-small.png in Resources */,
 				E2AECFA11E73D3010035DF28 /* search_bk_red@2x.png in Resources */,
@@ -1934,6 +2073,8 @@
 				E23AF5181C911E45002501F3 /* RecordsTableViewController.xib in Resources */,
 				E20D1B561CDC145100A3607B /* AboutiPhoneView.xib in Resources */,
 				B87373DB1DB6DFE90057027E /* SVWebViewControllerActivitySafari-iPad@2x.png in Resources */,
+				E2A6BEC61F0CCFC000F1A57E /* Molluscs.jpg in Resources */,
+				E2A6BEC81F0CCFC000F1A57E /* Monocots.jpg in Resources */,
 				E22045C4192D7D0B00531116 /* help_filled-25@2x.png in Resources */,
 				8709E9B31DB5A0FF00D04585 /* SpeciesSearchTableViewController.xib in Resources */,
 				E2CCED00190F82E6003655B7 /* finished@2x.png in Resources */,
@@ -1952,6 +2093,7 @@
 				B87373DD1DB6DFE90057027E /* SVWebViewControllerActivitySafari@2x.png in Resources */,
 				E20026371C926B430045C130 /* biocollect_background.png in Resources */,
 				E211B04C1CE18BC500DBC1AF /* BioCollect-logo.png in Resources */,
+				E2A6BED81F0CE06800F1A57E /* SGDetailViewTableViewController.xib in Resources */,
 				E2B6274F1CE40F8800A89179 /* BioCollect-text.png in Resources */,
 				E25D8F061EE5820100ED4D0F /* icon_location@2x.png in Resources */,
 				E247DD691EC3373B00A1C0A5 /* bk6.jpg in Resources */,
@@ -1966,16 +2108,20 @@
 				E20189A11C8962710031435D /* (null) in Resources */,
 				E2E56B2D1925CB7F007AC38C /* GACreateSiteModalViewController.xib in Resources */,
 				E2E56A971922E6D6007AC38C /* changed@2x.png in Resources */,
+				E2A6BEC01F0CCFC000F1A57E /* Gymnosperms.jpg in Resources */,
 				E241C685196A33B6002302D7 /* css in Resources */,
 				E20D1B5A1CDC72BA00A3607B /* background.png in Resources */,
 				E29122111CDAD093005D9638 /* LoginiPhoneView.xib in Resources */,
+				E2A6BECA1F0CCFC000F1A57E /* noImage85.jpg in Resources */,
 				E2636DDB1CF2E57C00000371 /* contact_filled-25@2x.png in Resources */,
 				E23AF50C1C8FAE59002501F3 /* HomeWebView.xib in Resources */,
 				E2E56A981922E6D6007AC38C /* nochange@2x.png in Resources */,
 				E2E3AAD818F4E65E0005BB9E /* GADetailActivitiesTableViewController.xib in Resources */,
 				B87373D91DB6DFE90057027E /* SVWebViewControllerActivityChrome@2x.png in Resources */,
+				E2A6BEAE1F0CCFC000F1A57E /* Amphibians.jpg in Resources */,
 				B87373D41DB6DFE90057027E /* SVWebViewController.bundle in Resources */,
 				E20B2D991F008B7F006782A2 /* icon_marker@2x.png in Resources */,
+				E2A6BEB41F0CCFC000F1A57E /* Bryophytes.jpg in Resources */,
 				E21BCB7E1CEAA1A200FFFE5F /* ContactiPhoneVC.xib in Resources */,
 				E22045C8192D7E5900531116 /* pad@2x.png in Resources */,
 				E2CCED02190F82E6003655B7 /* started@2x.png in Resources */,
@@ -1983,11 +2129,14 @@
 				B87373D61DB6DFE90057027E /* SVWebViewControllerActivityChrome-iPad.png in Resources */,
 				E2F8E56F19108DA10093A3D3 /* GreenArmy2.png in Resources */,
 				E2E3AADC18F4FAC90005BB9E /* GAMasterProjectTableViewController.xib in Resources */,
+				E2A6BEC21F0CCFC000F1A57E /* Insects.jpg in Resources */,
 				E27B3F981EF62BB500DBB47D /* icon_street_view@2x.png in Resources */,
 				E24D527A18F57662002A4F64 /* GADetailFormVIewController.xib in Resources */,
 				E2F8E56819108A640093A3D3 /* Icon-60.png in Resources */,
 				E227E39A192CD0FD00E22DC7 /* site_map@2x.png in Resources */,
 				E241C686196A33B6002302D7 /* img in Resources */,
+				E2A6BEBC1F0CCFC000F1A57E /* Fish.jpg in Resources */,
+				E2A6BECE1F0CCFC000F1A57E /* Reptiles.jpg in Resources */,
 				E291221B1CDB3BEC005D9638 /* background~ipad.png in Resources */,
 				E2E3AA9718F4D2940005BB9E /* InfoPlist.strings in Resources */,
 				E2E24AC21CED4DDF00F6D4CA /* table-place-holder.png in Resources */,
@@ -1995,13 +2144,18 @@
 				E241C687196A33B6002302D7 /* js in Resources */,
 				E2F8E56619108A640093A3D3 /* Icon-40.png in Resources */,
 				E25D8EFF1EE5813200ED4D0F /* icon_camera@2x.png in Resources */,
+				E2A6BEBE1F0CCFC000F1A57E /* Fungi.jpg in Resources */,
 				E27B8F591EF526C200B01FAB /* ala_logo_transparent.png in Resources */,
 				E2EF6E641E6797F400279A55 /* edit@2x.png in Resources */,
 				E2BB4EF31C855A0F0075F8BF /* BioCollect-logo 2.png in Resources */,
 				E29A6E321EF3638E00D891CC /* atlasoflivingaust.png in Resources */,
+				E2A6BE8F1F0C922D00F1A57E /* SpeciesGroupTableViewController.xib in Resources */,
 				E2DCF1EE1CF68D8B008D438C /* Default-568h@2x.png in Resources */,
 				E29A6E351EF3640E00D891CC /* logo_transparent.png in Resources */,
+				E2A6BED11F0CDD6700F1A57E /* icon_right@2x.png in Resources */,
+				E2A6BEAC1F0CCFC000F1A57E /* Algae.jpg in Resources */,
 				E2E8F744192245E60029574B /* loc1_nochange@2x.png in Resources */,
+				E2A6BEB01F0CCFC000F1A57E /* Angiosperms.jpg in Resources */,
 				E227E3A4192CDA2F00E22DC7 /* geo_fence-25@2x.png in Resources */,
 				E25D8F011EE5813200ED4D0F /* icon_draft@2x.png in Resources */,
 				E22045C6192D7DA500531116 /* info_filled-25@2x.png in Resources */,
@@ -2013,11 +2167,14 @@
 				E2F8E56919108A640093A3D3 /* Icon-60@2x.png in Resources */,
 				E241C688196A33B6002302D7 /* index.html in Resources */,
 				E27B3F961EF62BB500DBB47D /* icon_address@2x.png in Resources */,
+				E2A6BEB81F0CCFC000F1A57E /* Dicots.jpg in Resources */,
 				E2A2FFCB1C8546F0008B63A8 /* ala_logo.png in Resources */,
 				E2E56B2819259D0B007AC38C /* StaticWebPages in Resources */,
 				8709D1C91DB9926700E49C7E /* MapViewController.xib in Resources */,
+				E2A6BEC41F0CCFC000F1A57E /* Mammals.jpg in Resources */,
 				E27B8F531EF5187A00B01FAB /* ala_logo_1.png in Resources */,
 				E20189E61C8966700031435D /* Icon-placeholder.png in Resources */,
+				E2A6BEB61F0CCFC000F1A57E /* Crustaceans.jpg in Resources */,
 				E2DCF1ED1CF68D8B008D438C /* Default-568h.png in Resources */,
 				E2F8E56A19108A640093A3D3 /* Icon-76.png in Resources */,
 				E22045CA192D7EDD00531116 /* profile@2x.png in Resources */,
@@ -2029,9 +2186,11 @@
 				E2A2FFCD1C8547A5008B63A8 /* ala_logo1.png in Resources */,
 				B87373DA1DB6DFE90057027E /* SVWebViewControllerActivitySafari-iPad.png in Resources */,
 				E2E3AA9F18F4D2940005BB9E /* Images.xcassets in Resources */,
+				E2A6BECC1F0CCFC000F1A57E /* Plants.jpg in Resources */,
 				E29A354019667675003D025D /* GAHelpVC.xib in Resources */,
 				E2A4A4F919665009006CAC22 /* GAEULAViewController.xib in Resources */,
 				E29A354819667925003D025D /* GAAboutVC.xib in Resources */,
+				E2A6BEBA1F0CCFC000F1A57E /* FernsAndAllies.jpg in Resources */,
 				E2636DD81CF2E57C00000371 /* box_filled-25@2x.png in Resources */,
 				E2F8E56C19108A640093A3D3 /* Icon-Small.png in Resources */,
 				E2E43395190FAE5700A3FAB2 /* cancelled@2x.png in Resources */,
@@ -2043,6 +2202,7 @@
 				87B700131DC2E5520066C236 /* SyncTableViewController.xib in Resources */,
 				E2F471C41C86827B00594DAB /* HomeTableViewController.xib in Resources */,
 				E21CD17F1CEAF7E80021536B /* Images-2.xcassets in Resources */,
+				E2A6BEB21F0CCFC000F1A57E /* Birds.jpg in Resources */,
 				E2B627511CE4119A00A89179 /* BioCollect-text-small.png in Resources */,
 				E22045C0192C755A00531116 /* search_bk_red@2x.png in Resources */,
 				E28AF9BA1EC4310A007042C4 /* bk_iPad.png in Resources */,
@@ -2085,6 +2245,7 @@
 				E2AECEEC1E73D3010035DF28 /* UIImage+WebP.m in Sources */,
 				E2AECEED1E73D3010035DF28 /* ProjectActivity.m in Sources */,
 				E2B90FBC1EF77C320052F817 /* Reachability.m in Sources */,
+				E2A6BE8D1F0C91C500F1A57E /* SpeciesGroupTableViewController.m in Sources */,
 				E2AECEEE1E73D3010035DF28 /* MRMessageInterceptor.m in Sources */,
 				E2AECEEF1E73D3010035DF28 /* MRIconView.m in Sources */,
 				E2AECEF01E73D3010035DF28 /* MRBlurView.m in Sources */,
@@ -2166,10 +2327,12 @@
 				E27B8F331EF4E5FE00B01FAB /* UIScreen+REUIKitAdditions.m in Sources */,
 				E2AECF2C1E73D3010035DF28 /* GAEULAViewController.m in Sources */,
 				E27B8F2F1EF4E5FE00B01FAB /* UIImage+REUIKitAdditions.m in Sources */,
+				E2A6BE941F0C9DAE00F1A57E /* SpeciesService.m in Sources */,
 				E2AECF2D1E73D3010035DF28 /* RecordsTableViewController.m in Sources */,
 				E2AECF2E1E73D3010035DF28 /* HomeTableViewController.m in Sources */,
 				E2AECF2F1E73D3010035DF28 /* GAProject.m in Sources */,
 				E2AECF301E73D3010035DF28 /* GAProjectsUtil.m in Sources */,
+				E2A6BED61F0CE04C00F1A57E /* SGDetailViewTableViewController.m in Sources */,
 				E2AECF311E73D3010035DF28 /* SpeciesCell.m in Sources */,
 				E2AECF321E73D3010035DF28 /* BioProjectService.m in Sources */,
 				E2AECF331E73D3010035DF28 /* EasyJSWebViewProxyDelegate.m in Sources */,
@@ -2199,6 +2362,7 @@
 				E2636E421CF43C4100000371 /* UIImage+WebP.m in Sources */,
 				E23AF50F1C8FEEB7002501F3 /* ProjectActivity.m in Sources */,
 				E2B90FBB1EF77C320052F817 /* Reachability.m in Sources */,
+				E2A6BE8C1F0C91C500F1A57E /* SpeciesGroupTableViewController.m in Sources */,
 				B83825FF1A0C666B00690383 /* MRMessageInterceptor.m in Sources */,
 				B83825FA1A0C666B00690383 /* MRIconView.m in Sources */,
 				B83825F61A0C666B00690383 /* MRBlurView.m in Sources */,
@@ -2280,10 +2444,12 @@
 				E27B8F321EF4E5FE00B01FAB /* UIScreen+REUIKitAdditions.m in Sources */,
 				E2A4A4F819665009006CAC22 /* GAEULAViewController.m in Sources */,
 				E27B8F2E1EF4E5FE00B01FAB /* UIImage+REUIKitAdditions.m in Sources */,
+				E2A6BE931F0C9DAE00F1A57E /* SpeciesService.m in Sources */,
 				E23AF5161C911C69002501F3 /* RecordsTableViewController.m in Sources */,
 				E20284971C87D59300E8203F /* HomeTableViewController.m in Sources */,
 				E2E3AAE318F515410005BB9E /* GAProject.m in Sources */,
 				B89441FB18FA38F500BB5928 /* GAProjectsUtil.m in Sources */,
+				E2A6BED51F0CE04C00F1A57E /* SGDetailViewTableViewController.m in Sources */,
 				872EFB041DBF7DC1006EB9BF /* SpeciesCell.m in Sources */,
 				E20189891C8922DD0031435D /* BioProjectService.m in Sources */,
 				E23586E418FCFED600EE6D13 /* EasyJSWebViewProxyDelegate.m in Sources */,

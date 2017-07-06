@@ -142,11 +142,11 @@
              @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"photoNotes",FXFormFieldTitle:@"Notes", FXFormFieldType: FXFormFieldTypeLongText},
              
              //2. Location
-             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"location", FXFormFieldTitle:@"Select Location *", FXFormFieldPlaceholder: @"", FXFormFieldHeader: @"2. Location", FXFormFieldViewController: @"HomeViewController", FXFormFieldTypeImage:[UIImage imageNamed:@"icon_marker"]},
+             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"location", FXFormFieldTitle:@"Location *", FXFormFieldPlaceholder: @"", FXFormFieldHeader: @"2. Select Location", FXFormFieldViewController: @"HomeViewController", FXFormFieldTypeImage:[UIImage imageNamed:@"icon_marker"]},
              
              
              //3. Select Species
-             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"speciesDisplayName", FXFormFieldTitle: @"Species Name *", FXFormFieldHeader: @"3. Select Species", FXFormFieldType: FXFormFieldTypeLabel,  FXFormFieldAction: @"showSpeciesSearchTableViewController:", FXFormFieldPlaceholder: @"No species selected", FXFormFieldTypeImage:[UIImage imageNamed:@"icon_search_plus"]},
+             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"speciesDisplayName", FXFormFieldTitle: @"Name *", FXFormFieldHeader: @"3. Select Species", FXFormFieldType: FXFormFieldTypeLabel,  FXFormFieldAction: @"showSpeciesSearchTableViewController:", FXFormFieldPlaceholder: @"No species selected", FXFormFieldTypeImage:[UIImage imageNamed:@"icon_search_plus"]},
              
              @"confident",
 

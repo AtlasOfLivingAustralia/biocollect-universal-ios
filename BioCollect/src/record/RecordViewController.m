@@ -176,4 +176,10 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (void) setRecordSpecies: (NSDictionary *) species {
+    RecordForm *record = self.formController.form;
+    [record setScientificName:species[@"name"] commonName:species[@"commonName"] guid:species[@"guid"]];
+    self.recordCell.detailTextLabel.text = record.speciesDisplayName;
+}
 @end

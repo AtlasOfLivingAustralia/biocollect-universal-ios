@@ -32,4 +32,10 @@
 #define PROJECT_ACTIVITY_NAME @"Single Sighting - Advanced"
 #define SIGHTINGS_PROJECT_ID @"b3d8e243-1137-4d26-9e15-c5a6f90815eb"
 
+// Species Proxy URL:
+#define PROXY_SERVER @"http://ozatlas-proxy.ala.org.au"
+#define SPECIES_GROUPS @"/proxy/exploreGroups" // ?lat=-37.9659145&lon=145.0715558&radius=532
+#define SPECIES_GROUP @"/proxy/exploreGroup" // ?group=Animals&lat=-37.9659145&lon=145.0715558&radius=7&start=0&pageSize=10&common=true
+#define SPECIES_THUMBNAIL @"/image/thumbnail" // /urn:lsid:biodiversity.org.au:afd.taxon:7d37e5ed-7232-4ae2-a423-6c63c9a118dd
+
 #endif
