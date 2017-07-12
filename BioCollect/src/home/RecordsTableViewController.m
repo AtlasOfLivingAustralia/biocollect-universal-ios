@@ -258,7 +258,7 @@
             cell.textLabel.text = activity.projectActivityName;
         }
         
-        NSString *description = [[NSString alloc] initWithFormat:@"%@, %@,%@ ", activity.activityOwnerName, lastUpdated, activity.activityName];
+        NSString *description = [[NSString alloc] initWithFormat:@"%@, %@, %@", activity.activityOwnerName, lastUpdated, activity.activityName];
         cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@", description];
         
         NSString *url = [[NSString alloc] initWithFormat: @"%@", activity.thumbnailUrl];

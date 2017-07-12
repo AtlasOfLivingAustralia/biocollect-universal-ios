@@ -13,9 +13,12 @@
 #import "AFJSONRequestOperation.h"
 #import "Storage.h"
 #import "SpeciesGroupTableViewController.h"
+#import "RKDropdownAlert.h"
+#import "GAAppDelegate.h"
 
 @interface HomeViewController ()
-
+@property (nonatomic, assign) BOOL nextRegionChangeIsFromUserInteraction;
+@property (nonatomic, assign) int circleInMeter;
 @end
 
 @implementation HomeViewController
@@ -42,7 +45,6 @@
     _navBar.items = @[item];
     _navBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [self.view addSubview:_navBar];
-    
     
     // --
     
@@ -81,6 +83,8 @@
     _toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 44, self.view.frame.size.width, 44)];
     [self.view addSubview:_toolBar];
     _toolBar.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
+    
+    
     
     MKUserTrackingBarButtonItem *mapButtonItem = [[MKUserTrackingBarButtonItem alloc] initWithMapView:_mapView];
     
@@ -129,26 +133,43 @@
         self.mapView.centerCoordinate = ((CLLocation *)self.field.value).coordinate;
         [self showPinCoordinate:self.mapView.centerCoordinate];
         [self zoomToAnnotationsBounds:_annotations];
+        
     }
     
     if([self.customView isEqualToString: @"explore"]) {
-        UIBarButtonItem *next = [[UIBarButtonItem alloc] initWithTitle:@"Next >" style:UIBarButtonItemStyleBordered target:self action:@selector(exploreSpeciesPressed)];
+        UIBarButtonItem *next = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(exploreSpeciesPressed)];
         self.navigationItem.rightBarButtonItem = next;
         self.mapView.centerCoordinate = ((CLLocation *)self.clLocation).coordinate;
         [self showPinCoordinate:self.mapView.centerCoordinate];
         [self zoomToAnnotationsBounds:_annotations];
         
         // Draw overlay
-        int meter = 1000; // 1km
-        MKCircle *circle= [[MKCircle alloc]init];
-        circle = [MKCircle circleWithCenterCoordinate:CLLocationCoordinate2DMake(((CLLocation *)self.clLocation).coordinate.latitude, ((CLLocation *)self.clLocation).coordinate.longitude) radius:meter];
-        [self.mapView addOverlay:circle];
+        self.circle = [[MKCircle alloc]init];
+        self.circleInMeter = 5000;
+        self.circle = [MKCircle circleWithCenterCoordinate:CLLocationCoordinate2DMake(((CLLocation *)self.clLocation).coordinate.latitude, ((CLLocation *)self.clLocation).coordinate.longitude) radius:self.circleInMeter];
+        [self.mapView addOverlay: self.circle];
+        
+        MKCoordinateRegion mapRegion;
+        mapRegion.center = self.mapView.userLocation.coordinate;
+        mapRegion.span.latitudeDelta = 0.2;
+        mapRegion.span.longitudeDelta = 0.2;
+        [self.mapView setRegion:mapRegion animated: YES];
+
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        CGFloat x = (screenRect.size.width/2)-40;
+        CGFloat y = (screenRect.size.height)-150;
+        
+        UIStepper *areaZoom = [[UIStepper alloc] initWithFrame:(CGRect){{x, y}, 20, 20}];
+        [areaZoom addTarget:self action:@selector(cricleZoomControlChanged:) forControlEvents:UIControlEventValueChanged];
+        self.circleInMeter = 5000;
+        areaZoom.stepValue = self.circleInMeter;
+        areaZoom.continuous = YES;
+        areaZoom.minimumValue = 5000;
+        areaZoom.maximumValue = 500000;
+        [self.view addSubview: areaZoom];
+        self.title = [NSString stringWithFormat:@"1. Radius: %0.0f km", (double)self.circleInMeter/1000];
     }
-
 }
-
-
-
 
 - (void)zoomToAnnotationsBounds:(NSArray *)annotations
 {
@@ -259,6 +280,13 @@
 - (void)segmentedControlChanged:(UISegmentedControl *)sender
 {
     _mapView.mapType = sender.selectedSegmentIndex;
+}
+
+- (void)cricleZoomControlChanged:(UIStepper *)sender
+{
+    double value = [sender value];
+    self.circleInMeter = value;
+    [self updateCircle];
 }
 
 - (NSString *)placemarkDescription:(CLPlacemark *)placemark
@@ -442,10 +470,11 @@
         customPinView.draggable = YES;
     }
     
-    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    rightButton.tag = 1;
-  //  customPinView.rightCalloutAccessoryView = rightButton;
-    
+    if([self.customView isEqualToString:@"explore"]) {
+        UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
+        rightButton.tag = 1;
+        customPinView.rightCalloutAccessoryView = rightButton;
+    }
     
     UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
     leftButton.tag = 0;
@@ -475,9 +504,7 @@
             _webView.alpha = 1;
         } completion:nil];
     } else {
-        DetailsViewController *detailsViewController = [[DetailsViewController alloc] initWithStyle:UITableViewStyleGrouped];
-        detailsViewController.title = @"Info";
-        [self.navigationController pushViewController:detailsViewController animated:YES];
+        [self exploreSpeciesPressed];
     }
 }
 
@@ -535,7 +562,14 @@
                             newLocation.coordinate.latitude,
                             newLocation.coordinate.longitude];
     
-    NSLog(@"%@", displayStr);
+    NSLog(@"HomeViewController >> %@", displayStr);
+    
+    MKCoordinateRegion mapRegion;
+    mapRegion.center = self.mapView.userLocation.coordinate;
+    mapRegion.span.latitudeDelta = 0.005;
+    mapRegion.span.longitudeDelta = 0.005;
+    [self.mapView setRegion:mapRegion animated: YES];
+    
 }
 
 #pragma mark -
@@ -575,8 +609,7 @@
     if(self.field != nil) {
         if(location == nil) {
             //update field value
-            self.field.value = [[CLLocation alloc] initWithLatitude:_mapView.centerCoordinate.latitude
-                                                          longitude:_mapView.centerCoordinate.longitude];
+            self.field.value = [[CLLocation alloc] initWithLatitude:_mapView.centerCoordinate.latitude longitude:_mapView.centerCoordinate.longitude];
             
             //update title
             self.title = [NSString stringWithFormat:@"Location: %0.3f, %0.3f",
@@ -594,22 +627,37 @@
     if(self.locationDetails != nil) {
         NSMutableDictionary *dictionary = self.locationDetails;
         if(location == nil) {
-            dictionary[@"lat"] = [NSString stringWithFormat:@"%0.3f",_mapView.centerCoordinate.latitude];
-            dictionary[@"lng"] = [NSString stringWithFormat:@"%0.3f",_mapView.centerCoordinate.longitude];
-            dictionary[@"radius"] = @"5";
+            self.clLocation = [[CLLocation alloc] initWithLatitude:_mapView.centerCoordinate.latitude longitude:_mapView.centerCoordinate.longitude];
         } else {
-            dictionary[@"lat"] = [NSString stringWithFormat:@"%0.3f",location.coordinate.latitude];
-            dictionary[@"lng"] = [NSString stringWithFormat:@"%0.3f",location.coordinate.longitude];
-            dictionary[@"radius"] = @"5";
+            self.clLocation = location;
         }
     }
     
+    [self updateCircle];
+}
+
+-(void) updateCircle{
+    if([self.customView isEqualToString:@"explore"] && self.clLocation != nil) {
+        [self.mapView removeOverlays: self.mapView.overlays];
+        self.circle = [MKCircle circleWithCenterCoordinate:CLLocationCoordinate2DMake(((CLLocation *)self.clLocation).coordinate.latitude, ((CLLocation *)self.clLocation).coordinate.longitude) radius:self.circleInMeter];
+        [self.mapView addOverlay: self.circle];
+        self.title = [NSString stringWithFormat:@"Radius: %0.0f km", (double)self.circleInMeter/1000];
+    }
 }
 
 #pragma Species Explore
 
 -(void) exploreSpeciesPressed {
+    GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+    if([[appDelegate restCall] notReachable]) {
+        [RKDropdownAlert title:@"Device offline" message:@"Please try later!" backgroundColor:[UIColor colorWithRed:243.0/255.0 green:156.0/255.0 blue:18.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+        return;
+    }
+    
     SpeciesGroupTableViewController *speciesGroup = [[SpeciesGroupTableViewController alloc] initWithNibName:@"SpeciesGroupTableViewController" bundle:nil];
+    self.locationDetails[@"lat"] = [NSString stringWithFormat:@"%0.3f",self.clLocation.coordinate.latitude];
+    self.locationDetails[@"lng"] = [NSString stringWithFormat:@"%0.3f",self.clLocation.coordinate.longitude];
+    self.locationDetails[@"radius"] = [NSString stringWithFormat:@"%d",self.circleInMeter/1000];
     speciesGroup.locationDetails = self.locationDetails;
     [self.navigationController pushViewController:speciesGroup animated:TRUE];
 }
@@ -617,11 +665,10 @@
 - (MKOverlayView *) mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
 
     MKCircleView *circleView = [[MKCircleView alloc] initWithCircle:(MKCircle*)overlay];
-    circleView.fillColor = [[UIColor grayColor] colorWithAlphaComponent:0.2];
+    circleView.fillColor = [[UIColor colorWithRed:200.0/255.0 green:77.0/255.0 blue:47.0/255.0 alpha:1] colorWithAlphaComponent:0.2];
     circleView.strokeColor = [[UIColor blackColor] colorWithAlphaComponent:0.7];
     circleView.lineWidth = 2;
     return circleView;
-   
 }
 
 @end

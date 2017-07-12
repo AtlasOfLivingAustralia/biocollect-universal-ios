@@ -42,6 +42,8 @@
 @property (nonatomic, strong) NSMutableDictionary *locationDetails;
 @property (nonatomic, strong) CLLocation *clLocation;
 @property (nonatomic, strong) NSString *customView; // allowed "". "explore".
+@property (strong, nonatomic) MKCircle *circle;
 @property (strong, nonatomic) MKMapView *mapView;
+
 
 @end

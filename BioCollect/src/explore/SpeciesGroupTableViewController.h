@@ -19,9 +19,6 @@
 @property (nonatomic, assign) BOOL isSearching;
 @property (nonatomic, assign) BOOL loadingFinished;
 
-//km
-@property (nonatomic, assign) int km;
-
 //Location details [lat, lng, radius]
 @property (strong, nonatomic) NSMutableDictionary *locationDetails;
 

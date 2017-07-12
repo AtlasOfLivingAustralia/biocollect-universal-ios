@@ -61,7 +61,7 @@
 
 - (void)spotyViewController:(MGSpotyViewController *)spotyViewController didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
     if (indexPath.row == 0) {
         RecordViewController *recordViewController = [[RecordViewController alloc] init];
         recordViewController.title = @"Record a Sighting";
@@ -69,21 +69,25 @@
         
         [spotyViewController.tableView deselectRowAtIndexPath:indexPath animated:YES];
     } else if(indexPath.row == 1) {
-        //[RKDropdownAlert title:@"Explore Species - Under development." message:@"" backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
-        //SpeciesGroupTableViewController *speciesGroup = [[SpeciesGroupTableViewController alloc] initWithNibName:@"SpeciesGroupTableViewController" bundle:nil];
-        //[spotyViewController.navigationController pushViewController:speciesGroup animated:TRUE];
-        
+        if([[appDelegate restCall] notReachable]) {
+            [RKDropdownAlert title:@"Device offline" message:@"Please try later!" backgroundColor:[UIColor colorWithRed:243.0/255.0 green:156.0/255.0 blue:18.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+            return;
+        }
         HomeViewController *homeMapViewController = [[HomeViewController alloc] init];
         homeMapViewController.customView = @"explore";
         homeMapViewController.clLocation =  self.curentLocation;
         NSMutableDictionary *dict = [NSMutableDictionary new];
-        dict[@"lat"] = @"-37.9659145";
-        dict[@"lng"] = @"145.0715558";
-        dict[@"radius"] = @"2";
+        dict[@"lat"] = @"0";
+        dict[@"lng"] = @"0";
+        dict[@"radius"] = @"5";
         homeMapViewController.locationDetails = dict;
         [spotyViewController.navigationController pushViewController:homeMapViewController animated:TRUE];
         
     } else if(indexPath.row == 2) {
+        if([[appDelegate restCall] notReachable]) {
+            [RKDropdownAlert title:@"Device offline" message:@"Please try later!" backgroundColor:[UIColor colorWithRed:243.0/255.0 green:156.0/255.0 blue:18.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+            return;
+        }
         self.recordsTableView = [[RecordsTableViewController alloc] initWithNibName:@"RecordsTableViewController" bundle:nil];
         self.recordsTableView.title = @"My Sightings";
         self.recordsTableView.totalRecords = 0;
@@ -93,6 +97,10 @@
         [self.recordsTableView.records removeAllObjects];
         [spotyViewController.navigationController pushViewController:self.recordsTableView animated:TRUE];
     } else if(indexPath.row == 3) {
+        if([[appDelegate restCall] notReachable]) {
+            [RKDropdownAlert title:@"Device offline" message:@"Please try later!" backgroundColor:[UIColor colorWithRed:243.0/255.0 green:156.0/255.0 blue:18.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+            return;
+        }
         self.recordsTableView = [[RecordsTableViewController alloc] initWithNibName:@"RecordsTableViewController" bundle:nil];
         self.recordsTableView.projectId = SIGHTINGS_PROJECT_ID;
         self.recordsTableView.title = @"All Sightings";
@@ -103,7 +111,6 @@
         [spotyViewController.navigationController pushViewController:self.recordsTableView animated:TRUE];
         
     } else if(indexPath.row == 4) {
-        GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
         if([appDelegate.records count] == 0) {
             [RKDropdownAlert title:@"No draft sightings available" message:@"" backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
 
@@ -122,6 +129,10 @@
             [spotyViewController.tableView deselectRowAtIndexPath:indexPath animated:YES];
         }
     } else if(indexPath.row == 5) {
+        if([[appDelegate restCall] notReachable]) {
+            [RKDropdownAlert title:@"Device offline" message:@"Please try later!" backgroundColor:[UIColor colorWithRed:243.0/255.0 green:156.0/255.0 blue:18.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+            return;
+        }
         NSString *url = [[NSString alloc] initWithFormat:@"https://www.ala.org.au/about-the-atlas"];
         SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress: url];
         webViewController.title = @"About the ALA";
@@ -129,6 +140,10 @@
         [appDelegate.ozHomeNC presentViewController:webViewController animated:YES completion:NULL];
         
     } else if(indexPath.row == 6) {
+        if([[appDelegate restCall] notReachable]) {
+            [RKDropdownAlert title:@"Device offline" message:@"Please try later!" backgroundColor:[UIColor colorWithRed:243.0/255.0 green:156.0/255.0 blue:18.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+            return;
+        }
         NSString *url = [[NSString alloc] initWithFormat:@"https://www.ala.org.au/about-the-atlas/contact-us/"];
         SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress: url];
         webViewController.title = @"Contact the ALA";
@@ -157,7 +172,7 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
-    NSLog(@"didUpdateToLocation: %@", newLocation);
+    //NSLog(@"didUpdateToLocation: %@", newLocation);
     self.curentLocation = newLocation;
 }
 @end

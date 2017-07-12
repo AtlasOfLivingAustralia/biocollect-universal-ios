@@ -22,9 +22,6 @@
 // Filter
 @property (nonatomic, strong) NSDictionary *selectedGroup;
 
-//km
-@property (nonatomic, assign) int km;
-
 //Location details [lat, lng, radius]
 @property (strong, nonatomic) NSMutableDictionary *locationDetails;
 

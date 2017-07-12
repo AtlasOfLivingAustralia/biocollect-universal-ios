@@ -14,7 +14,7 @@
 @implementation SpeciesGroupTableViewController
 #define SEARCH_PAGE_SIZE 20;
 
-@synthesize speciesTableView, displayItems, selectedSpecies, km;
+@synthesize speciesTableView, displayItems, selectedSpecies;
 
 #pragma mark - init
 
@@ -77,7 +77,7 @@
     NSString *thumbnail;
     
     NSString *labelText = [[NSString alloc] initWithFormat:@"%@",species[@"name"]];
-    NSString *detailLabelText = [[NSString alloc] initWithFormat:@"%@ species around %d km", species[@"speciesCount"], self.km];
+    NSString *detailLabelText = [[NSString alloc] initWithFormat:@"%@ species around %@ km", species[@"speciesCount"], self.locationDetails[@"radius"]];
     
     cell.textLabel.text = labelText;
     cell.detailTextLabel.text = detailLabelText;
@@ -132,16 +132,18 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Pass the selected object to the new view controller.
     NSDictionary *species = displayItems[indexPath.row];
-   
     if([species[@"speciesCount"] intValue] == 0) {
         [RKDropdownAlert title:@"" message:@"No species found!" backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
     } else {
+        GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+        if([[appDelegate restCall] notReachable]) {
+            [RKDropdownAlert title:@"Device offline" message:@"Please try later!" backgroundColor:[UIColor colorWithRed:243.0/255.0 green:156.0/255.0 blue:18.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+            return;
+        }
         SGDetailViewTableViewController *speciesGroup = [[SGDetailViewTableViewController alloc] initWithSelectedGroupNibName:@"SGDetailViewTableViewController" bundle:nil selectedGroup:species];
-        speciesGroup.km = self.km;
+        speciesGroup.locationDetails =  self.locationDetails;
         [self.navigationController pushViewController:speciesGroup animated:TRUE];
     }
-    
-    //[self.navigationController popViewControllerAnimated:YES];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -217,7 +219,6 @@
     self.loadingFinished = YES;
     self.isSearching = NO;
     self.totalResults = total;
-    self.km = kilometer;
     [displayItems addObjectsFromArray:data];
     
     // For species group, nopagination is required.

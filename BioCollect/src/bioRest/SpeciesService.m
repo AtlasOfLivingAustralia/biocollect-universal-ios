@@ -17,9 +17,11 @@
 -(NSMutableArray *) getSpecies : (NSString *) groupName numberOfItemsPerPage: (int) pageSize fromSerialNumber: (int) offset  viewController: (SpeciesGroupTableViewController *) vc{
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     NSString *url = nil;
-    float lat = -37.9659145;
-    float lng = 145.0715558;
-    int radius = 5;
+    NSMutableDictionary *dictionary = vc.locationDetails;
+    
+    float lat = [dictionary[@"lat"] floatValue];
+    float lng = [dictionary[@"lng"] floatValue];
+    int radius = [dictionary[@"radius"] intValue];;
     offset = offset ?: 0;
     pageSize = pageSize ?: 10;
     

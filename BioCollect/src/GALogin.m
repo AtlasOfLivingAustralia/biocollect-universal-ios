@@ -30,10 +30,10 @@
     if (self) {
         NSString *imageName;
         if ( IDIOM == IPAD ) {
-            imageName = [[NSString alloc] initWithFormat:@"%@", [appType isEqualToString:@"custom"] ? @"bk8.jpg" : @"bk_iPad.png"];
+            imageName = [[NSString alloc] initWithFormat:@"%@", [appType isEqualToString:@"custom"] ? @"oz_iPad.jpg" : @"bk_iPad.png"];
             [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:imageName]]];
         } else {
-            imageName = [[NSString alloc] initWithFormat:@"%@", [appType isEqualToString:@"custom"] ? @"bk8.jpg" : @"bk_iPad.png"];
+            imageName = [[NSString alloc] initWithFormat:@"%@", [appType isEqualToString:@"custom"] ? @"oz_iPhone.jpg" : @"bk_iPad.png"];
             [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:imageName]]];
         }
     }

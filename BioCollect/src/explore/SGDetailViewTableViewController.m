@@ -15,7 +15,7 @@
 @implementation SGDetailViewTableViewController
 #define SEARCH_PAGE_SIZE 20;
 
-@synthesize speciesTableView, displayItems, selectedSpecies, selectedGroup, km;
+@synthesize speciesTableView, displayItems, selectedSpecies, selectedGroup;
 
 #pragma mark - init
 
@@ -33,7 +33,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if(self){
         selectedGroup = dictionary;
-        self.navigationItem.title = @"Select Species";
+        self.navigationItem.title = dictionary[@"name"];
         self.fixedTotal =  [dictionary[@"speciesCount"]  intValue] ;
     }
     
@@ -158,7 +158,7 @@
             NSNumberFormatter *fmt = [[NSNumberFormatter alloc] init];
             [fmt setNumberStyle:NSNumberFormatterDecimalStyle]; // to get commas (or locale equivalent)
             [fmt setMaximumFractionDigits:0]; // to avoid any decimal
-            title = @"3. Record or explore sightings";
+            title = @"3. Record or explore species";
         }
         [self.spinner stopAnimating];
     }
@@ -197,14 +197,6 @@
 }
 
 - (void) btnRefreshPressed {
-    /*if(self.selectedSpecies != nil) {
-     [[NSNotificationCenter defaultCenter]postNotificationName:@"SPECIESSEARCH SELECTED" object: self.selectedSpecies];
-     [self.navigationController popViewControllerAnimated:YES];
-     } else {
-     
-     [RKDropdownAlert title:@"ERROR" message:@"Please select the species" backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
-     }
-     */
     [displayItems removeAllObjects];
     self.loadingFinished = NO;
     self.isSearching = YES;
@@ -222,7 +214,6 @@
     self.loadingFinished = YES;
     self.isSearching = NO;
     self.totalResults = self.fixedTotal;
-    self.km = kilometer;
     [displayItems addObjectsFromArray:data];
     
     // run reload data on main thread. otherwise, table rendering will be very slow.
