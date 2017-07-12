@@ -27,7 +27,7 @@
     
     if(self){
         // sync button
-        UIBarButtonItem *btnSync = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(btnSyncPressed)];
+        UIBarButtonItem *btnSync = [[UIBarButtonItem alloc] initWithTitle:@"Upload" style:UIBarButtonItemStyleBordered target:self action:@selector(btnSyncPressed)];
         self.navigationItem.rightBarButtonItem = btnSync;
         
         // load data
@@ -37,7 +37,7 @@
         //settings
         self.cellIdentifier = @"recordcell";
         if(self.noImage == nil){
-            self.noImage = [UIImage imageNamed:@"table-place-holder"];
+            self.noImage = [UIImage imageNamed:@"noImage85.jpg"];
         }
         
         // table view display settings

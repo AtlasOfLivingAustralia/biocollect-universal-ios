@@ -258,6 +258,7 @@
 
 - (NSDictionary *) getData{
     NSDictionary *data = @{
+                           @"notes":[self notes]?:[NSNull null],
                            @"surveyDate":[self dateToString: self.surveyDate]?:[NSNull null],
                            @"surveyStartTime": [self getTimeFromDate: self.surveyDate] ?:[NSNull null],
                            @"recordedBy":[self recordedBy]?:[NSNull null],

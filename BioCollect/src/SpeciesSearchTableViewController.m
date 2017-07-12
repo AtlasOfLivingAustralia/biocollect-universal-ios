@@ -19,7 +19,7 @@
 
 @implementation SpeciesSearchTableViewController
 
-#define SEARCH_PAGE_SIZE 20;
+#define SEARCH_PAGE_SIZE 50;
 
 @synthesize speciesTableView, displayItems, selectedSpecies, searchBar;
 
@@ -100,7 +100,7 @@
     cell.detailTextLabel.text = species[@"rank"];
     
     if(self.noImage == nil){
-        self.noImage = [UIImage imageNamed:@"table-place-holder"];
+        self.noImage = [UIImage imageNamed:@"noImage85.jpg"];
     }
     
     thumbnail = (([species objectForKey:@"thumbnailUrl"] != nil) && (species[@"thumbnailUrl"] != [NSNull null]))? species[@"thumbnailUrl"] :@"";
@@ -259,7 +259,6 @@
  */
 - (void) lookup {
     [self showOrHideActivityIndicator];
-    
     GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
     int limit = SEARCH_PAGE_SIZE;
     NSMutableArray *result = [appDelegate.restCall autoCompleteSpecies:self.searchBar.text numberOfItemsPerPage: limit fromSerialNumber: self.offset addSearchText:YES viewController:self];

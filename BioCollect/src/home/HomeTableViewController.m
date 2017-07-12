@@ -279,7 +279,7 @@
         cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@", project.description];
         NSString *url = [[NSString alloc] initWithFormat: @"%@", project.urlImage];
         NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:escapedUrlString] placeholderImage:[UIImage imageNamed:@"table-place-holder.png"]];
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:escapedUrlString] placeholderImage:[UIImage imageNamed:@"noImage85.jpg"]];
     }
 
     return cell;

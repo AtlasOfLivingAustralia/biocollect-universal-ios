@@ -20,7 +20,7 @@
 @implementation BioProjectService
 #define BIO_PROJECT_SEARCH @"/ws/project/search?initiator=biocollect&sort=nameSort"
 #define BIO_PROJECT_ACTIVITY_LIST @"/projectActivity/list/"
-#define BIO_ACTIVITIES @"/bioActivity/searchProjectActivities"
+#define BIO_ACTIVITIES @"/ws/bioactivity/search"
 #define kProjects @"projects"
 #define kTotal @"total"
 

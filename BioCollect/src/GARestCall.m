@@ -103,6 +103,7 @@
                 [GASettings setAuthKey:[respDict objectForKey:@"authKey"]];
                 [GASettings setFirstName:[respDict objectForKey:@"firstName"]];
                 [GASettings setLastName:[respDict objectForKey:@"lastName"]];
+                [GASettings setUserId:[respDict objectForKey:@"userId"]];
                 DebugLog(@"[SUCCESS] GARest:authenticate Authentication successful. User=%@",username);
             }
             else {

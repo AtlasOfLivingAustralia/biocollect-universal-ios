@@ -122,7 +122,7 @@
     NSString *url = [self.activityJSONDictionary objectForKey:kThumbnailUrl];
     
     if (url == (id)[NSNull null] || url.length == 0 ) {
-        url = [[[NSBundle mainBundle] URLForResource:@"table-place-holder" withExtension:@"png"] absoluteString];
+        url = [[[NSBundle mainBundle] URLForResource:@"noImage85" withExtension:@"jpg"] absoluteString];
     }
     
     return url;

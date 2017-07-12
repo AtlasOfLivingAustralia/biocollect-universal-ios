@@ -265,7 +265,7 @@
         NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         
         [cell.imageView sd_setImageWithURL:[NSURL URLWithString:escapedUrlString]
-                          placeholderImage:[UIImage imageNamed:@"table-place-holder.png"]];
+                          placeholderImage:[UIImage imageNamed:@"noImage85.jpg"]];
        
         if(activity.showCrud) {
             UIImage *image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"edit_icon"]];
