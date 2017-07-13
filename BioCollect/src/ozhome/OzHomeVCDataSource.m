@@ -10,6 +10,7 @@
 #import "MGSpotyViewController.h"
 #import "HomeCustomCell.h"
 #import "GAAppDelegate.h"
+#import "GASettings.h"
 
 @implementation OzHomeVCDataSource
 
@@ -19,7 +20,7 @@
 - (NSInteger)spotyViewController:(MGSpotyViewController *)spotyViewController
            numberOfRowsInSection:(NSInteger)section
 {
-    return 7;
+    return 8;
 }
 
 - (UITableViewCell *)spotyViewController:(MGSpotyViewController *)spotyViewController
@@ -77,6 +78,10 @@
         cell.textLabel.text = @"Contact the ALA";
         cell.detailTextLabel.text = @"";
         [cell.imageView setImage:[UIImage imageNamed:@"icon_address"]];
+    } else if(indexPath.row == 7) {
+        cell.textLabel.text = [GASettings appVersion];
+        cell.detailTextLabel.text = @"";
+        [cell.imageView setImage:[UIImage imageNamed:@"icon_version"]];
     } else {
         cell.textLabel.text = @"About";
         cell.detailTextLabel.text = @"";

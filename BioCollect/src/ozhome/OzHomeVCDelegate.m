@@ -17,6 +17,7 @@
 #import "RKDropdownAlert.h"
 #import "SpeciesGroupTableViewController.h"
 #import "HomeViewController.h"
+#import "GASettings.h"
 
 @interface OzHomeVCDelegate()
     @property (nonatomic, strong) RecordsTableViewController *recordsTableView;
@@ -133,12 +134,11 @@
             [RKDropdownAlert title:@"Device offline" message:@"Please try later!" backgroundColor:[UIColor colorWithRed:243.0/255.0 green:156.0/255.0 blue:18.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
             return;
         }
-        NSString *url = [[NSString alloc] initWithFormat:@"https://www.ala.org.au/about-the-atlas"];
+        NSString *url = [[NSString alloc] initWithFormat:@"https://www.ala.org.au/who-we-are/"];
         SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress: url];
         webViewController.title = @"About the ALA";
         GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
         [appDelegate.ozHomeNC presentViewController:webViewController animated:YES completion:NULL];
-        
     } else if(indexPath.row == 6) {
         if([[appDelegate restCall] notReachable]) {
             [RKDropdownAlert title:@"Device offline" message:@"Please try later!" backgroundColor:[UIColor colorWithRed:243.0/255.0 green:156.0/255.0 blue:18.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
@@ -149,7 +149,9 @@
         webViewController.title = @"Contact the ALA";
         GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
         [appDelegate.ozHomeNC presentViewController:webViewController animated:YES completion:NULL];
-    }    else {
+    } else if(indexPath.row == 7) {
+        [RKDropdownAlert title:@"Oz Atlas" message:[GASettings appVersion] backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+    } else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
                                                         message:@"Invalid selection."
                                                        delegate:self

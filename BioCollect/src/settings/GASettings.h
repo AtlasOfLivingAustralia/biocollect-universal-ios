@@ -31,4 +31,5 @@
 +(NSString*) getFirstName;
 +(NSString*) getFullName;
 +(NSString*) getUserId;
++(NSString*) appVersion;
 @end

@@ -117,5 +117,11 @@
     [[NSUserDefaults standardUserDefaults]synchronize];
 }
 
++(NSString*) appVersion{
+    NSString * ver = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
+    NSString * build = [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
+    return [[NSString alloc] initWithFormat:@"App version - %@ (%@)",ver,build];
+}
+
 
 @end

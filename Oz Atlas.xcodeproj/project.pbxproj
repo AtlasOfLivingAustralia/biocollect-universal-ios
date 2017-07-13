@@ -486,6 +486,8 @@
 		E2B90FBB1EF77C320052F817 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B90FBA1EF77C320052F817 /* Reachability.m */; };
 		E2B90FBC1EF77C320052F817 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B90FBA1EF77C320052F817 /* Reachability.m */; };
 		E2BB4EF31C855A0F0075F8BF /* BioCollect-logo 2.png in Resources */ = {isa = PBXBuildFile; fileRef = E2BB4EF21C855A0F0075F8BF /* BioCollect-logo 2.png */; };
+		E2C00BC51F173A3A00443DBD /* icon_version@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C00BC41F173A3A00443DBD /* icon_version@2x.png */; };
+		E2C00BC61F173A3A00443DBD /* icon_version@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C00BC41F173A3A00443DBD /* icon_version@2x.png */; };
 		E2C544471ECDCA8C00641951 /* edit_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C544461ECDCA8C00641951 /* edit_icon@2x.png */; };
 		E2C544481ECDCA8C00641951 /* edit_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C544461ECDCA8C00641951 /* edit_icon@2x.png */; };
 		E2CCECFF190F82E6003655B7 /* deferred@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2CCECFA190F82E6003655B7 /* deferred@2x.png */; };
@@ -887,6 +889,7 @@
 		E2B90FB91EF77C320052F817 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = src/bioRest/Reachability.h; sourceTree = "<group>"; };
 		E2B90FBA1EF77C320052F817 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = src/bioRest/Reachability.m; sourceTree = "<group>"; };
 		E2BB4EF21C855A0F0075F8BF /* BioCollect-logo 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BioCollect-logo 2.png"; path = "src/images/BioCollect-logo 2.png"; sourceTree = "<group>"; };
+		E2C00BC41F173A3A00443DBD /* icon_version@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_version@2x.png"; path = "src/images/icon_version@2x.png"; sourceTree = "<group>"; };
 		E2C544461ECDCA8C00641951 /* edit_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "edit_icon@2x.png"; path = "src/images/edit_icon@2x.png"; sourceTree = "<group>"; };
 		E2CCECFA190F82E6003655B7 /* deferred@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "deferred@2x.png"; path = "src/images/deferred@2x.png"; sourceTree = "<group>"; };
 		E2CCECFB190F82E6003655B7 /* finished@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "finished@2x.png"; path = "src/images/finished@2x.png"; sourceTree = "<group>"; };
@@ -1417,6 +1420,7 @@
 		E2424C3D1F0F60D600E4E13F /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				E2C00BC41F173A3A00443DBD /* icon_version@2x.png */,
 				E25D8F051EE5820100ED4D0F /* icon_location@2x.png */,
 				E25D8EF91EE5813200ED4D0F /* icon_all_records@2x.png */,
 				E25D8EFA1EE5813200ED4D0F /* icon_camera@2x.png */,
@@ -2081,6 +2085,7 @@
 				E2AECF981E73D3010035DF28 /* Icon-Small.png in Resources */,
 				E2AECF991E73D3010035DF28 /* cancelled@2x.png in Resources */,
 				E2AECF9A1E73D3010035DF28 /* planned@2x.png in Resources */,
+				E2C00BC61F173A3A00443DBD /* icon_version@2x.png in Resources */,
 				E2AECF9B1E73D3010035DF28 /* BioCollect-logo 1.png in Resources */,
 				E2AECF9C1E73D3010035DF28 /* searchbar_bk@2x.png in Resources */,
 				E2AECF9D1E73D3010035DF28 /* SyncTableViewController.xib in Resources */,
@@ -2229,6 +2234,7 @@
 				E2A2FFD11C854EDD008B63A8 /* BioCollect-logo 1.png in Resources */,
 				E29A35421966781C003D025D /* searchbar_bk@2x.png in Resources */,
 				E25D8EFD1EE5813200ED4D0F /* icon_all_records@2x.png in Resources */,
+				E2C00BC51F173A3A00443DBD /* icon_version@2x.png in Resources */,
 				87B700131DC2E5520066C236 /* SyncTableViewController.xib in Resources */,
 				E2F471C41C86827B00594DAB /* HomeTableViewController.xib in Resources */,
 				E21CD17F1CEAF7E80021536B /* Images-2.xcassets in Resources */,
