@@ -7,6 +7,8 @@
 #import "GAAppDelegate.h"
 #import "GASettingsConstant.h"
 #import "RecordViewController.h"
+#import "MRProgressOverlayView.h"
+
 
 @interface SGDetailViewTableViewController ()
 @property (nonatomic, assign) int fixedTotal;
@@ -24,8 +26,6 @@
     if(self){
         self.navigationItem.title = @"Select Species";
     }
-    // spinner to show searching
-    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     return  self;
 }
 
@@ -36,10 +36,6 @@
         self.navigationItem.title = dictionary[@"name"];
         self.fixedTotal =  [dictionary[@"speciesCount"]  intValue] ;
     }
-    
-    // spinner to show searching
-    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    
     
     return  self;
 }
@@ -160,7 +156,6 @@
             [fmt setMaximumFractionDigits:0]; // to avoid any decimal
             title = @"3. Record or explore species";
         }
-        [self.spinner stopAnimating];
     }
     
     return title;
@@ -168,14 +163,13 @@
 
 #pragma mark - Table view display
 - (void)showOrHideActivityIndicator {
-    if(self.isSearching){
-        self.spinner.center = speciesTableView.center;
-        [speciesTableView addSubview : self.spinner];
-        [self.spinner startAnimating];
-    } else {
-        [self.spinner performSelectorOnMainThread:@selector(removeFromSuperview) withObject:nil waitUntilDone:NO ];
-        [self.spinner stopAnimating];
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if(!self.loadingFinished){
+            [MRProgressOverlayView showOverlayAddedTo:self.tableView title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminateSmall animated:YES];
+        } else {
+            [MRProgressOverlayView dismissOverlayForView:self.tableView animated:YES];
+        }
+    });
 }
 
 #pragma mark - Search bar delegate

@@ -12,6 +12,7 @@
 #import "SpeciesCell.h"
 #import "RKDropdownAlert.h"
 #import "SVModalWebViewController.h"
+#import "MRProgressOverlayView.h"
 
 @interface SpeciesSearchTableViewController ()
 @end
@@ -41,10 +42,6 @@
     UIBarButtonItem *btnCancel = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(btnCancelPressed)];
     self.navigationItem.leftBarButtonItem = btnCancel;
     btnCancel.enabled=TRUE;
-
-    // spinner to show searching
-    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    
     
     return  self;
 }
@@ -173,7 +170,6 @@
         } else if([self.displayItems count] == 1 && self.totalResults == 0){
             title = @"Select unmatched taxon";
         }
-        [self.spinner stopAnimating];
     }
     
     return title;
@@ -181,14 +177,13 @@
 
 #pragma mark - Table view display
 - (void)showOrHideActivityIndicator {
-    if(self.isSearching){
-        self.spinner.center = speciesTableView.center;
-        [speciesTableView addSubview : self.spinner];
-        [self.spinner startAnimating];
-    } else {
-        [self.spinner performSelectorOnMainThread:@selector(removeFromSuperview) withObject:nil waitUntilDone:NO ];
-        [self.spinner stopAnimating];
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if(!self.loadingFinished){
+            [MRProgressOverlayView showOverlayAddedTo:self.tableView title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminateSmall animated:YES];
+        } else {
+            [MRProgressOverlayView dismissOverlayForView:self.tableView animated:YES];
+        }
+    });
 }
 
 #pragma mark - Search bar delegate

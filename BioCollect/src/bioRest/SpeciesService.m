@@ -14,7 +14,7 @@
 -(void) getSpecies:  (NSMutableArray *) speciesArray {
 }
 
--(NSMutableArray *) getSpecies : (NSString *) groupName numberOfItemsPerPage: (int) pageSize fromSerialNumber: (int) offset  viewController: (SpeciesGroupTableViewController *) vc{
+-(NSMutableArray *) getSpecies : (NSString *) groupName numberOfItemsPerPage: (int) pageSize fromSerialNumber: (int) offset  viewController: (SpeciesGroupTableViewController *) vc {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     NSString *url = nil;
     NSMutableDictionary *dictionary = vc.locationDetails;
@@ -34,6 +34,7 @@
     [request setURL:[NSURL URLWithString:url]];
     [request setHTTPMethod:@"GET"];
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    
     [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *e) {
         NSMutableArray *results = [[NSMutableArray alloc] init];
         int total = 0;
@@ -48,6 +49,7 @@
         if(vc != nil){
             [vc updateDisplayItems:results totalRecords: total setKm:radius];
         }
+        
     }];
     
     NSMutableArray *initialResult = [[NSMutableArray alloc] init];

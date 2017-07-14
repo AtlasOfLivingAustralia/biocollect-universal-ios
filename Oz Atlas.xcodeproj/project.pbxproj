@@ -488,6 +488,8 @@
 		E2BB4EF31C855A0F0075F8BF /* BioCollect-logo 2.png in Resources */ = {isa = PBXBuildFile; fileRef = E2BB4EF21C855A0F0075F8BF /* BioCollect-logo 2.png */; };
 		E2C00BC51F173A3A00443DBD /* icon_version@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C00BC41F173A3A00443DBD /* icon_version@2x.png */; };
 		E2C00BC61F173A3A00443DBD /* icon_version@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C00BC41F173A3A00443DBD /* icon_version@2x.png */; };
+		E2C00BC81F17464600443DBD /* icon_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C00BC71F17464600443DBD /* icon_logo@2x.png */; };
+		E2C00BC91F17464600443DBD /* icon_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C00BC71F17464600443DBD /* icon_logo@2x.png */; };
 		E2C544471ECDCA8C00641951 /* edit_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C544461ECDCA8C00641951 /* edit_icon@2x.png */; };
 		E2C544481ECDCA8C00641951 /* edit_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C544461ECDCA8C00641951 /* edit_icon@2x.png */; };
 		E2CCECFF190F82E6003655B7 /* deferred@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2CCECFA190F82E6003655B7 /* deferred@2x.png */; };
@@ -890,6 +892,7 @@
 		E2B90FBA1EF77C320052F817 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = src/bioRest/Reachability.m; sourceTree = "<group>"; };
 		E2BB4EF21C855A0F0075F8BF /* BioCollect-logo 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BioCollect-logo 2.png"; path = "src/images/BioCollect-logo 2.png"; sourceTree = "<group>"; };
 		E2C00BC41F173A3A00443DBD /* icon_version@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_version@2x.png"; path = "src/images/icon_version@2x.png"; sourceTree = "<group>"; };
+		E2C00BC71F17464600443DBD /* icon_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_logo@2x.png"; path = "src/images/icon_logo@2x.png"; sourceTree = "<group>"; };
 		E2C544461ECDCA8C00641951 /* edit_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "edit_icon@2x.png"; path = "src/images/edit_icon@2x.png"; sourceTree = "<group>"; };
 		E2CCECFA190F82E6003655B7 /* deferred@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "deferred@2x.png"; path = "src/images/deferred@2x.png"; sourceTree = "<group>"; };
 		E2CCECFB190F82E6003655B7 /* finished@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "finished@2x.png"; path = "src/images/finished@2x.png"; sourceTree = "<group>"; };
@@ -1420,6 +1423,7 @@
 		E2424C3D1F0F60D600E4E13F /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				E2C00BC71F17464600443DBD /* icon_logo@2x.png */,
 				E2C00BC41F173A3A00443DBD /* icon_version@2x.png */,
 				E25D8F051EE5820100ED4D0F /* icon_location@2x.png */,
 				E25D8EF91EE5813200ED4D0F /* icon_all_records@2x.png */,
@@ -1978,6 +1982,7 @@
 				E2AECF4E1E73D3010035DF28 /* SVWebViewControllerActivityChrome-iPad@2x.png in Resources */,
 				E2AECF4F1E73D3010035DF28 /* RecordWebView.xib in Resources */,
 				E2AECF501E73D3010035DF28 /* Icon-Small@2x.png in Resources */,
+				E2C00BC91F17464600443DBD /* icon_logo@2x.png in Resources */,
 				E2AECF511E73D3010035DF28 /* brief_filled-25@2x.png in Resources */,
 				E2A6BED91F0CE06800F1A57E /* SGDetailViewTableViewController.xib in Resources */,
 				E2AECF521E73D3010035DF28 /* GALogin.xib in Resources */,
@@ -2127,6 +2132,7 @@
 				E2E3AAC318F4D9070005BB9E /* GALogin.xib in Resources */,
 				B87373DD1DB6DFE90057027E /* SVWebViewControllerActivitySafari@2x.png in Resources */,
 				E20026371C926B430045C130 /* biocollect_background.png in Resources */,
+				E2C00BC81F17464600443DBD /* icon_logo@2x.png in Resources */,
 				E211B04C1CE18BC500DBC1AF /* BioCollect-logo.png in Resources */,
 				E2A6BED81F0CE06800F1A57E /* SGDetailViewTableViewController.xib in Resources */,
 				E2B6274F1CE40F8800A89179 /* BioCollect-text.png in Resources */,

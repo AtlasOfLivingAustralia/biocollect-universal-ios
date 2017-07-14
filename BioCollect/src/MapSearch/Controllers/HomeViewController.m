@@ -316,6 +316,8 @@
             return;
         CLPlacemark *placemark = [placemarks objectAtIndex:0];
         annotation.subtitle = [self placemarkDescription:placemark];
+        _address = annotation.subtitle;
+        [self setFormValue:location];
     }];
     
     [self setFormValue:location];
@@ -612,15 +614,20 @@
             self.field.value = [[CLLocation alloc] initWithLatitude:_mapView.centerCoordinate.latitude longitude:_mapView.centerCoordinate.longitude];
             
             //update title
-            self.title = [NSString stringWithFormat:@"Location: %0.3f, %0.3f",
+            self.title = _address ? _address : [NSString stringWithFormat:@"Location: %0.3f, %0.3f",
                           _mapView.centerCoordinate.latitude, _mapView.centerCoordinate.longitude];
         } else {
             //update field value
             self.field.value = location;
             
             //update title
-            self.title = [NSString stringWithFormat:@"Location: %0.3f, %0.3f",
+            self.title = _address ? _address : [NSString stringWithFormat:@"Location: %0.3f, %0.3f",
                           location.coordinate.latitude, location.coordinate.longitude];
+        }
+        
+        if(_address != nil) {
+            RecordForm *record = self.field.form;
+            [record setLocationNotes:_address];
         }
     }
     

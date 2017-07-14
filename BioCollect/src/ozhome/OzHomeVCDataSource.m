@@ -81,11 +81,11 @@
     } else if(indexPath.row == 7) {
         cell.textLabel.text = [GASettings appVersion];
         cell.detailTextLabel.text = @"";
-        [cell.imageView setImage:[UIImage imageNamed:@"icon_version"]];
+        [cell.imageView setImage:[UIImage imageNamed:@"icon_logo"]];
     } else {
         cell.textLabel.text = @"About";
         cell.detailTextLabel.text = @"";
-        [cell.imageView setImage:[UIImage imageNamed:@"icon_draft"]];
+        [cell.imageView setImage:[UIImage imageNamed:@"icon_logo"]];
     }
     
     return cell;

@@ -38,6 +38,7 @@
     CLLocationManager *_locationManager;
 }
 
+@property (nonatomic, strong) NSString *address;
 @property (nonatomic, strong) FXFormField *field;
 @property (nonatomic, strong) NSMutableDictionary *locationDetails;
 @property (nonatomic, strong) CLLocation *clLocation;

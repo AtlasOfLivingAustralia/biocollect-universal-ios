@@ -129,7 +129,7 @@
              
              
              //1. Upload Photo
-             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey:@"speciesPhoto", FXFormFieldTitle:@"Species Photo", FXFormFieldTypeImage:[UIImage imageNamed:@"icon_camera"],
+             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey:@"speciesPhoto", FXFormFieldTitle:@"Species photo", FXFormFieldTypeImage:[UIImage imageNamed:@"icon_camera"],
                FXFormFieldHeader: @"1. Take or Upload a Photo", FXFormFieldAction: @"parseImageMetadata:"},
              
              @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey:@"photoTitle", FXFormFieldTitle:@"Title", FXFormFieldHeader: @"Image attributes"},
@@ -144,7 +144,6 @@
              //2. Location
              @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"location", FXFormFieldTitle:@"Location *", FXFormFieldPlaceholder: @"", FXFormFieldHeader: @"2. Select Location", FXFormFieldViewController: @"HomeViewController", FXFormFieldTypeImage:[UIImage imageNamed:@"icon_marker"]},
              
-             
              //3. Select Species
              @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"speciesDisplayName", FXFormFieldTitle: @"Name *", FXFormFieldHeader: @"3. Select Species", FXFormFieldType: FXFormFieldTypeLabel,  FXFormFieldAction: @"showSpeciesSearchTableViewController:", FXFormFieldPlaceholder: @"No species selected", FXFormFieldTypeImage:[UIImage imageNamed:@"icon_search_plus"]},
              
@@ -157,11 +156,11 @@
              @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"surveyDate", FXFormFieldTitle:@"Date", FXFormFieldHeader: @"4. Observation Details"},
              @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"surveyDate", FXFormFieldTitle:@"Time", FXFormFieldType: FXFormFieldTypeTime,FXFormFieldPlaceholder: @"" },
              @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey:@"howManySpecies", FXFormFieldTitle:@"Number of individuals", FXFormFieldCell: [FXFormStepperCell class]},
-            @{@"textLabel.color": [self colorFromHexString: @"#F1582B"], FXFormFieldTitle: @"Recorded By", FXFormFieldKey: @"recordedBy", FXFormFieldDefaultValue: [GASettings getFullName]},
+            @{@"textLabel.color": [self colorFromHexString: @"#F1582B"], FXFormFieldTitle: @"Recorded by", FXFormFieldKey: @"recordedBy", FXFormFieldDefaultValue: [GASettings getFullName]},
              
-             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldTitle: @"Identification Tags", FXFormFieldKey: @"identificationTags", FXFormFieldOptions: @[@"Amphibians",@"Amphibians, Australian Ground Frogs",@"Amphibians, Narrow-Mouthed Frogs",@"Amphibians, Tree Frogs",@"Amphibians, True Frogs",@"Amphibians, True Toads",@"Birds",@"Birds, Bitterns, Ibises",@"Birds, Buttonquails",@"Birds, Cranes",@"Birds, Cuckoos",@"Birds, Doves",@"Birds, Ducks, Geese, Swans",@"Birds, Falcons",@"Birds, Flamingos",@"Birds, Fowls",@"Birds, Grebes",@"Birds, Hummingbirds, Swifts",@"Birds, Kingfishers",@"Birds, Large waterbirds",@"Birds, Nightjars, Frogmouths, Potoos",@"Birds, Ostriches",@"Birds, Owls",@"Birds, Parrots",@"Birds, Penguins",@"Birds, Perching Birds",@"Birds, Petrels, Fulmars",@"Birds, Waders, Gulls, Auks",@"Crustaceans",@"Crustaceans, Barnacles, Copepods",@"Crustaceans, Crabs, Lobsters",@"Crustaceans, Fairy shrimp, Clam shrimp",@"Crustaceans, Seed shrimp",@"Fish",@"Fish, Anchovies ",@"Fish, Angel Sharks",@"Fish, Anglerfishes",@"Fish, Baldfishes,Tubeshoulders",@"Fish, Batoids",@"Fish, Batrachoidiforms",@"Fish, Beardfishes",@"Fish, Boarfishes",@"Fish, Bonefishes",@"Fish, Bonytongues",@"Fish, Bullhead Sharks",@"Fish, Carpet Sharks",@"Fish, Catfishes",@"Fish, Chimaeras",@"Fish, Cods",@"Fish, Cow Sharks",@"Fish, Cowfishes",@"Fish, Deep-sea ray-finned fishes",@"Fish, Deep-sea ray-finned fishes",@"Fish, Dogfish Sharks",@"Fish, Dragonfishes",@"Fish, Eels",@"Fish, Electric Rays",@"Fish, Flatfishes",@"Fish, Ground Sharks",@"Fish, Guitarfish",@"Fish, Hagfishes",@"Fish, Halfbeeks",@"Fish, Jellynose Fishes",@"Fish, Killifishes",@"Fish, Latern Fishes, Neoscopelids",@"Fish, Lungfish",@"Fish, Mackerel Sharks",@"Fish, Marine ray-finned fish",@"Fish, Milkfishes",@"Fish, Minnows",@"Fish, Mullet fish",@"Fish, Opahs",@"Fish, Ophidiiforms",@"Fish, Perch-like Fishes",@"Fish, Rainbow Fishes",@"Fish, Ray-finned fishes",@"Fish, Sackpharynx Fishes",@"Fish, Salmons",@"Fish, Saw Sharks",@"Fish, Sawfish",@"Fish, Scorpion Fishes, Sculpins",@"Fish, Softnose Skates",@"Fish, Spiny Eels",@"Fish, Swamp Eels",@"Fish, Tarpons",@"Fungi",@"Fungi, Asco's",@"Fungi, Basidio's",@"Fungi, Chytrids",@"Fungi, Glomeromycota",@"Fungi, Zygomycetes",@"Insects and Spiders",@"Insects and Spiders, Alderflies, Dobsonflies, Fishflies",@"Insects and Spiders, Beetles",@"Insects and Spiders, Booklice, Barklice, Barkflies",@"Insects and Spiders, Bristletails",@"Insects and Spiders, Butterflies, Moths",@"Insects and Spiders, Caddisflies, Sedge-flies or Rail-flies",@"Insects and Spiders, Cicadas, Aphids, Planthoppers, Leafhoppers, Shield Bugs",@"Insects and Spiders, Cockroaches, Termites",@"Insects and Spiders, Dragonflies, Damselflies",@"Insects and Spiders, Earwigs",@"Insects and Spiders, Fleas",@"Insects and Spiders, Flies, Mosquitoes",@"Insects and Spiders, Grasshoppers, Crickets, Locusts, Katydids, Weta, Lubber",@"Insects and Spiders, Lacewings, Mantidflies, Antlions",@"Insects and Spiders, Lice",@"Insects and Spiders, Mantises",@"Insects and Spiders, Mayflies, Shadlfies",@"Insects and Spiders, Scorpionflies, Hangingflies",@"Insects and Spiders, Silverfish",@"Insects and Spiders, Spiders",@"Insects and Spiders, Stick Insects, Phasmids",@"Insects and Spiders, Stoneflies",@"Insects and Spiders, Thrips",@"Insects and Spiders, Twisted-Wing Parasites",@"Insects and Spiders, Wasps, Ants, Bees, Sawflies",@"Insects and Spiders, Webspinners",@"Insects and Spiders, Zorapterans",@"Mammals",@"Mammals, Bandicoots, Bilbies",@"Mammals, Bats",@"Mammals, Carnivores",@"Mammals, Carnivorous Marsupials",@"Mammals, Dolphins, Porpoises, Whales",@"Mammals, Dugongs, Manatees, Sea Cows",@"Mammals, Even-toed hoofed",@"Mammals, Hares, Pikas, Rabbits",@"Mammals, Herbivorous Marsupials",@"Mammals, Marsupial Moles",@"Mammals, Monotremes",@"Mammals, Odd-toed hoofed",@"Mammals, Rodents",@"Mammals, Shrews, Hedgehogs",@"Molluscs",@"Molluscs, Chitons",@"Molluscs, Cuttlefish",@"Molluscs, Gastropods, Slugs, Snails",@"Molluscs, Mussels, Clams",@"Molluscs, Solenogasters",@"Molluscs, Tooth Shells",@"Plants",@"Plants, Conifers, Cycads",@"Plants, Dicots",@"Plants, Ferns and Allies",@"Plants, Flowering plants",@"Plants, Monocots",@"Reptiles",@"Reptiles, Crocodiles",@"Reptiles, Lizards, Snakes",@"Reptiles, Tortoises, Turtles, Terrapins"]},
+             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldTitle: @"Identification tags", FXFormFieldKey: @"identificationTags", FXFormFieldOptions: @[@"Amphibians",@"Amphibians, Australian Ground Frogs",@"Amphibians, Narrow-Mouthed Frogs",@"Amphibians, Tree Frogs",@"Amphibians, True Frogs",@"Amphibians, True Toads",@"Birds",@"Birds, Bitterns, Ibises",@"Birds, Buttonquails",@"Birds, Cranes",@"Birds, Cuckoos",@"Birds, Doves",@"Birds, Ducks, Geese, Swans",@"Birds, Falcons",@"Birds, Flamingos",@"Birds, Fowls",@"Birds, Grebes",@"Birds, Hummingbirds, Swifts",@"Birds, Kingfishers",@"Birds, Large waterbirds",@"Birds, Nightjars, Frogmouths, Potoos",@"Birds, Ostriches",@"Birds, Owls",@"Birds, Parrots",@"Birds, Penguins",@"Birds, Perching Birds",@"Birds, Petrels, Fulmars",@"Birds, Waders, Gulls, Auks",@"Crustaceans",@"Crustaceans, Barnacles, Copepods",@"Crustaceans, Crabs, Lobsters",@"Crustaceans, Fairy shrimp, Clam shrimp",@"Crustaceans, Seed shrimp",@"Fish",@"Fish, Anchovies ",@"Fish, Angel Sharks",@"Fish, Anglerfishes",@"Fish, Baldfishes,Tubeshoulders",@"Fish, Batoids",@"Fish, Batrachoidiforms",@"Fish, Beardfishes",@"Fish, Boarfishes",@"Fish, Bonefishes",@"Fish, Bonytongues",@"Fish, Bullhead Sharks",@"Fish, Carpet Sharks",@"Fish, Catfishes",@"Fish, Chimaeras",@"Fish, Cods",@"Fish, Cow Sharks",@"Fish, Cowfishes",@"Fish, Deep-sea ray-finned fishes",@"Fish, Deep-sea ray-finned fishes",@"Fish, Dogfish Sharks",@"Fish, Dragonfishes",@"Fish, Eels",@"Fish, Electric Rays",@"Fish, Flatfishes",@"Fish, Ground Sharks",@"Fish, Guitarfish",@"Fish, Hagfishes",@"Fish, Halfbeeks",@"Fish, Jellynose Fishes",@"Fish, Killifishes",@"Fish, Latern Fishes, Neoscopelids",@"Fish, Lungfish",@"Fish, Mackerel Sharks",@"Fish, Marine ray-finned fish",@"Fish, Milkfishes",@"Fish, Minnows",@"Fish, Mullet fish",@"Fish, Opahs",@"Fish, Ophidiiforms",@"Fish, Perch-like Fishes",@"Fish, Rainbow Fishes",@"Fish, Ray-finned fishes",@"Fish, Sackpharynx Fishes",@"Fish, Salmons",@"Fish, Saw Sharks",@"Fish, Sawfish",@"Fish, Scorpion Fishes, Sculpins",@"Fish, Softnose Skates",@"Fish, Spiny Eels",@"Fish, Swamp Eels",@"Fish, Tarpons",@"Fungi",@"Fungi, Asco's",@"Fungi, Basidio's",@"Fungi, Chytrids",@"Fungi, Glomeromycota",@"Fungi, Zygomycetes",@"Insects and Spiders",@"Insects and Spiders, Alderflies, Dobsonflies, Fishflies",@"Insects and Spiders, Beetles",@"Insects and Spiders, Booklice, Barklice, Barkflies",@"Insects and Spiders, Bristletails",@"Insects and Spiders, Butterflies, Moths",@"Insects and Spiders, Caddisflies, Sedge-flies or Rail-flies",@"Insects and Spiders, Cicadas, Aphids, Planthoppers, Leafhoppers, Shield Bugs",@"Insects and Spiders, Cockroaches, Termites",@"Insects and Spiders, Dragonflies, Damselflies",@"Insects and Spiders, Earwigs",@"Insects and Spiders, Fleas",@"Insects and Spiders, Flies, Mosquitoes",@"Insects and Spiders, Grasshoppers, Crickets, Locusts, Katydids, Weta, Lubber",@"Insects and Spiders, Lacewings, Mantidflies, Antlions",@"Insects and Spiders, Lice",@"Insects and Spiders, Mantises",@"Insects and Spiders, Mayflies, Shadlfies",@"Insects and Spiders, Scorpionflies, Hangingflies",@"Insects and Spiders, Silverfish",@"Insects and Spiders, Spiders",@"Insects and Spiders, Stick Insects, Phasmids",@"Insects and Spiders, Stoneflies",@"Insects and Spiders, Thrips",@"Insects and Spiders, Twisted-Wing Parasites",@"Insects and Spiders, Wasps, Ants, Bees, Sawflies",@"Insects and Spiders, Webspinners",@"Insects and Spiders, Zorapterans",@"Mammals",@"Mammals, Bandicoots, Bilbies",@"Mammals, Bats",@"Mammals, Carnivores",@"Mammals, Carnivorous Marsupials",@"Mammals, Dolphins, Porpoises, Whales",@"Mammals, Dugongs, Manatees, Sea Cows",@"Mammals, Even-toed hoofed",@"Mammals, Hares, Pikas, Rabbits",@"Mammals, Herbivorous Marsupials",@"Mammals, Marsupial Moles",@"Mammals, Monotremes",@"Mammals, Odd-toed hoofed",@"Mammals, Rodents",@"Mammals, Shrews, Hedgehogs",@"Molluscs",@"Molluscs, Chitons",@"Molluscs, Cuttlefish",@"Molluscs, Gastropods, Slugs, Snails",@"Molluscs, Mussels, Clams",@"Molluscs, Solenogasters",@"Molluscs, Tooth Shells",@"Plants",@"Plants, Conifers, Cycads",@"Plants, Dicots",@"Plants, Ferns and Allies",@"Plants, Flowering plants",@"Plants, Monocots",@"Reptiles",@"Reptiles, Crocodiles",@"Reptiles, Lizards, Snakes",@"Reptiles, Tortoises, Turtles, Terrapins"]},
              
-             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"notes", FXFormFieldType: FXFormFieldTypeLongText,FXFormFieldPlaceholder: @"", FXFormFieldTitle: @"Observation Notes" },
+             @{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"notes", FXFormFieldType: FXFormFieldTypeLongText,FXFormFieldPlaceholder: @"", FXFormFieldTitle: @"Observation notes" },
              
              /*@{@"textLabel.color": [self colorFromHexString: @"#F1582B"],FXFormFieldKey: @"comments", FXFormFieldTitle:@"Notes", FXFormFieldType: FXFormFieldTypeLongText,FXFormFieldPlaceholder: @"" },*/
              ];
@@ -183,8 +182,9 @@
 
 // hide these fields. they are autopopulated when a species is selected.
 - (NSArray *) excludedFields {
+    NSArray *items = nil;
     if(self.speciesPhoto == nil) {
-        return @[
+        items = @[
                  @"scientificName",
                  @"commonName",
                  @"guid",
@@ -200,7 +200,7 @@
                  @"uploaded"
                  ];
     } else {
-        return @[
+        items =  @[
                  @"scientificName",
                  @"commonName",
                  @"guid",
@@ -214,15 +214,21 @@
                  ];
     }
     
+    return items;
+    
 }
 
 - (NSString *)locationFieldDescription
 {
-    return self.location? [NSString stringWithFormat:@"%0.3f, %0.3f",
-                           self.location.coordinate.latitude,
-                           self.location.coordinate.longitude]: nil;
-}
+    NSString *displayStr  = nil;
+    if(self.location != nil && [self.locationNotes length] == 0){
+        displayStr = [NSString stringWithFormat:@"%0.3f, %0.3f",self.location.coordinate.latitude,self.location.coordinate.longitude];
+    } else if(self.location != nil) {
+        displayStr = self.locationNotes;
+    }
 
+    return displayStr;
+}
 
 - (NSString *)speciesDisplayNameFieldDescription {
     return self.speciesDisplayName;
@@ -414,4 +420,6 @@
         self.guid = nil;
     }
 }
+
+
 @end

@@ -219,6 +219,7 @@
     }
     return nil;
 }
+
 /**
  * Search BIE to autocomplete a species.
  */
@@ -227,7 +228,6 @@
     NSString *url = [[NSString alloc] initWithFormat:@"%@%@&pageSize=%d&start=%d", AUTOCOMPLETE_URL, [searchText stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding], pageSize, offset];
     [request setURL:[NSURL URLWithString:url]];
     [request setHTTPMethod:@"GET"];
-//  [request setTimeoutInterval:60];
     
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *e) {
@@ -261,7 +261,7 @@
             [initialResult addObject: unmatchedTaxon];
         }
     }
-    
+
     return initialResult;
 }
 
