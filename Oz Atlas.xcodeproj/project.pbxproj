@@ -534,6 +534,8 @@
 		E2EF6E621E678A4F00279A55 /* RKDropdownAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EF6E611E678A4F00279A55 /* RKDropdownAlert.m */; };
 		E2EF6E641E6797F400279A55 /* edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2EF6E631E6797F400279A55 /* edit@2x.png */; };
 		E2F471C41C86827B00594DAB /* HomeTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2F471C31C86827B00594DAB /* HomeTableViewController.xib */; };
+		E2F674BE1F18FD5D0040C704 /* ALA-logo-inline.png in Resources */ = {isa = PBXBuildFile; fileRef = E2F674BD1F18FD5D0040C704 /* ALA-logo-inline.png */; };
+		E2F674BF1F18FD5D0040C704 /* ALA-logo-inline.png in Resources */ = {isa = PBXBuildFile; fileRef = E2F674BD1F18FD5D0040C704 /* ALA-logo-inline.png */; };
 		E2F8E56619108A640093A3D3 /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = E2F8E55E19108A640093A3D3 /* Icon-40.png */; };
 		E2F8E56719108A640093A3D3 /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2F8E55F19108A640093A3D3 /* Icon-40@2x.png */; };
 		E2F8E56819108A640093A3D3 /* Icon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = E2F8E56019108A640093A3D3 /* Icon-60.png */; };
@@ -949,6 +951,7 @@
 		E2EF6E611E678A4F00279A55 /* RKDropdownAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKDropdownAlert.m; sourceTree = "<group>"; };
 		E2EF6E631E6797F400279A55 /* edit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "edit@2x.png"; path = "src/images/edit@2x.png"; sourceTree = "<group>"; };
 		E2F471C31C86827B00594DAB /* HomeTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeTableViewController.xib; path = src/home/HomeTableViewController.xib; sourceTree = "<group>"; };
+		E2F674BD1F18FD5D0040C704 /* ALA-logo-inline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ALA-logo-inline.png"; path = "src/images/ALA-logo-inline.png"; sourceTree = "<group>"; };
 		E2F8E55E19108A640093A3D3 /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-40.png"; path = "src/images/Icon-40.png"; sourceTree = "<group>"; };
 		E2F8E55F19108A640093A3D3 /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-40@2x.png"; path = "src/images/Icon-40@2x.png"; sourceTree = "<group>"; };
 		E2F8E56019108A640093A3D3 /* Icon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-60.png"; path = "src/images/Icon-60.png"; sourceTree = "<group>"; };
@@ -1443,6 +1446,7 @@
 		E2424C3E1F0F60F200E4E13F /* logo */ = {
 			isa = PBXGroup;
 			children = (
+				E2F674BD1F18FD5D0040C704 /* ALA-logo-inline.png */,
 				E27B8F581EF526C200B01FAB /* ala_logo_transparent.png */,
 				E27B8F551EF51DA600B01FAB /* ala_name.png */,
 				E29A6E341EF3640E00D891CC /* logo_transparent.png */,
@@ -2085,6 +2089,7 @@
 				E2A6BEBB1F0CCFC000F1A57E /* FernsAndAllies.jpg in Resources */,
 				E25D8F071EE5820100ED4D0F /* icon_location@2x.png in Resources */,
 				E2AECF951E73D3010035DF28 /* GAEULAViewController.xib in Resources */,
+				E2F674BF1F18FD5D0040C704 /* ALA-logo-inline.png in Resources */,
 				E2AECF961E73D3010035DF28 /* GAAboutVC.xib in Resources */,
 				E2AECF971E73D3010035DF28 /* box_filled-25@2x.png in Resources */,
 				E2AECF981E73D3010035DF28 /* Icon-Small.png in Resources */,
@@ -2235,6 +2240,7 @@
 				E2636DD81CF2E57C00000371 /* box_filled-25@2x.png in Resources */,
 				E2F8E56C19108A640093A3D3 /* Icon-Small.png in Resources */,
 				E2E43395190FAE5700A3FAB2 /* cancelled@2x.png in Resources */,
+				E2F674BE1F18FD5D0040C704 /* ALA-logo-inline.png in Resources */,
 				E25D8EF71EE57E8600ED4D0F /* camera_icon.png in Resources */,
 				E2CCED01190F82E6003655B7 /* planned@2x.png in Resources */,
 				E2A2FFD11C854EDD008B63A8 /* BioCollect-logo 1.png in Resources */,

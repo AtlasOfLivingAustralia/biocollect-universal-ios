@@ -31,6 +31,20 @@
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     [self.locationManager startUpdatingLocation];
+    
+    // Check authorization status (with class method)
+    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+    // User has never been asked to decide on location authorization
+    if (status == kCLAuthorizationStatusNotDetermined) {
+        //Requesting when in use auth"
+        [_locationManager requestWhenInUseAuthorization];
+    }
+    // User has denied location use (either for this app or for all apps
+    else if (status == kCLAuthorizationStatusDenied) {
+        // Location services denied"
+        // Alert the user and send them to the settings to turn on location
+    }
+
     return self;
 }
 
@@ -64,6 +78,7 @@
 {
     GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
     if (indexPath.row == 0) {
+        [self.locationManager startUpdatingLocation];
         RecordViewController *recordViewController = [[RecordViewController alloc] init];
         recordViewController.title = @"Record a Sighting";
         [spotyViewController.navigationController pushViewController:recordViewController animated:TRUE];
@@ -74,6 +89,7 @@
             [RKDropdownAlert title:@"Device offline" message:@"Please try later!" backgroundColor:[UIColor colorWithRed:243.0/255.0 green:156.0/255.0 blue:18.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
             return;
         }
+        [self.locationManager startUpdatingLocation];
         HomeViewController *homeMapViewController = [[HomeViewController alloc] init];
         homeMapViewController.customView = @"explore";
         homeMapViewController.clLocation =  self.curentLocation;
@@ -169,12 +185,29 @@
 #pragma location delegate
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
-    NSLog(@"didFailWithError: %@", error);
+    [_locationManager stopUpdatingLocation];
+    NSString *message = nil;
+    switch([error code])
+    {
+        case kCLErrorNetwork: // general, network-related error
+            message = @"Please check your network connection";
+            break;
+        case kCLErrorDenied:
+            message = @"Please go to Settings and turn on Location Service for this app.";
+            break;
+        default:
+            message = @"Network error";
+            break;
+    }
+
+    [RKDropdownAlert title:@"Location Service Error" message:message backgroundColor:[UIColor colorWithRed:243.0/255.0 green:156.0/255.0 blue:18.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
-    //NSLog(@"didUpdateToLocation: %@", newLocation);
     self.curentLocation = newLocation;
 }
+#pragma mark MKMapViewDelegate
+
 @end
