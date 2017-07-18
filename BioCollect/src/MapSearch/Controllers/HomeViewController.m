@@ -19,6 +19,7 @@
 @interface HomeViewController ()
 @property (nonatomic, assign) BOOL nextRegionChangeIsFromUserInteraction;
 @property (nonatomic, assign) int circleInMeter;
+@property (nonatomic, strong) CLLocation *lastKnownGPSLocation;
 @end
 
 @implementation HomeViewController
@@ -133,7 +134,7 @@
         self.mapView.centerCoordinate = ((CLLocation *)self.field.value).coordinate;
         [self showPinCoordinate:self.mapView.centerCoordinate];
         [self zoomToAnnotationsBounds:_annotations];
-        
+        [self setFormValue:(CLLocation *)self.field.value];
     }
     
     if([self.customView isEqualToString: @"explore"]) {
@@ -169,6 +170,8 @@
         [self.view addSubview: areaZoom];
         self.title = [NSString stringWithFormat:@"1. Radius: %0.0f km", (double)self.circleInMeter/1000];
     }
+    
+    
 }
 
 - (void)zoomToAnnotationsBounds:(NSArray *)annotations
@@ -308,15 +311,14 @@
     annotation.title = @"Dropped Pin";
     [self.mapView addAnnotation:annotation];
     [_droppedAnnotations addObject:annotation];
-    
+
+    // Get geocoordinate and replace the address
     CLLocation *location = [[CLLocation alloc] initWithCoordinate:coordinate altitude:0 horizontalAccuracy:1 verticalAccuracy:1 course:0 speed:0 timestamp:[NSDate date]];
-    
     [_geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
         if (error || [placemarks count] == 0)
             return;
         CLPlacemark *placemark = [placemarks objectAtIndex:0];
         annotation.subtitle = [self placemarkDescription:placemark];
-        _address = annotation.subtitle;
         [self setFormValue:location];
     }];
     
@@ -403,7 +405,8 @@
             }
             [_annotations addObject:annotation];
             [_mapView addAnnotation:annotation];
-            
+            //Update form value.
+            [self setFormValue:placemark.location];
             if (first) {
                 NSString *result = [self placemarkDescription:placemark];
                 for (NSDictionary *info in _searches) {
@@ -418,7 +421,6 @@
             first = NO;
         }
         [self zoomToAnnotationsBounds:_annotations];
-        [self setFormValue:nil];
     }];
 }
 
@@ -559,7 +561,7 @@
 #pragma mark CLLocationManagerDelegate
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    /*  CLLocationManagerDelegate delegate to update new location. */
+    /*  CLLocationManagerDelegate delegate to update new location.
     NSString *displayStr = [[NSString alloc] initWithFormat:@"Latitude: %0.6f Longitude: %0.6f",
                             newLocation.coordinate.latitude,
                             newLocation.coordinate.longitude];
@@ -571,7 +573,7 @@
     mapRegion.span.latitudeDelta = 0.005;
     mapRegion.span.longitudeDelta = 0.005;
     [self.mapView setRegion:mapRegion animated: YES];
-    
+ */
 }
 
 #pragma mark -
@@ -596,18 +598,69 @@
     }
 }
 
--(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+-(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)newLocation
 {
+    if (newLocation == nil) {
+        //can happen if still waiting for user permission
+        return;
+    }
+    if (!CLLocationCoordinate2DIsValid(newLocation.coordinate)) {
+        //can happen if just resumed from some time in the background
+        return;
+    }
+    
+    // Update map location.
     MKCoordinateRegion mapRegion;
+    _mapView.userLocation.coordinate = newLocation.coordinate;
     mapRegion.center = _mapView.userLocation.coordinate;
     mapRegion.span.latitudeDelta = 0.005;
     mapRegion.span.longitudeDelta = 0.005;
     [_mapView setRegion:mapRegion animated: YES];
-    [self setFormValue:nil];
+    [self setFormValue:newLocation.location];
+    _lastKnownGPSLocation = newLocation.location;
 }
 
 
 -(void) setFormValue: (CLLocation *)location {
+    CLLocation *newLocation = location;
+    if(newLocation == nil) {
+        newLocation = [[CLLocation alloc] initWithLatitude:_mapView.centerCoordinate.latitude longitude:_mapView.centerCoordinate.longitude];
+    }
+    
+    // Set default locatiom.
+    self.clLocation = newLocation;
+    self.field.value = newLocation;
+    RecordForm *record = self.field.form;
+    [record setLocationNotes:self.title];
+    self.title = [NSString stringWithFormat:@"%0.3f, %0.3f", newLocation.coordinate.latitude, newLocation.coordinate.longitude];
+
+    MKCoordinateRegion mapRegion;
+    mapRegion.center = location.coordinate;
+    if([self.customView isEqualToString:@"explore"]){
+        mapRegion.span.latitudeDelta = 0.2;
+        mapRegion.span.longitudeDelta = 0.2;
+    } else {
+        mapRegion.span.latitudeDelta = 0.005;
+        mapRegion.span.longitudeDelta = 0.005;
+    }
+    [_mapView setRegion:mapRegion animated: YES];
+    
+    // For explore view, update the circle.
+    [self updateCircle];
+    
+    // Get address for the given coordinates.
+    [_geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (error || [placemarks count] == 0) {
+            return;
+        }
+        CLPlacemark *placemark = [placemarks objectAtIndex:0];
+        self.title = [self placemarkDescription:placemark];
+        [record setLocationNotes:self.title];
+    }];
+    
+    
+    /*
+    NSLog(@"Updating location");
     if(self.field != nil) {
         if(location == nil) {
             //update field value
@@ -640,10 +693,36 @@
         }
     }
     
+    MKCoordinateRegion mapRegion;
+    mapRegion.center = location.coordinate;
+    if([self.customView isEqualToString:@"explore"]){
+        mapRegion.span.latitudeDelta = 0.2;
+        mapRegion.span.longitudeDelta = 0.2;
+    } else {
+        mapRegion.span.latitudeDelta = 0.005;
+        mapRegion.span.longitudeDelta = 0.005;
+    }
+    [_mapView setRegion:mapRegion animated: YES];
+    
     [self updateCircle];
+    
+    // Finally update address:
+    [_geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (error || [placemarks count] == 0)
+            return;
+        CLPlacemark *placemark = [placemarks objectAtIndex:0];
+        annotation.subtitle = [self placemarkDescription:placemark];
+        _address = annotation.subtitle;
+        [self setFormValue:location];
+    }];
+    */
 }
 
--(void) updateCircle{
+
+/*
+ Update map with a circle overlay.
+*/
+-(void) updateCircle {
     if([self.customView isEqualToString:@"explore"] && self.clLocation != nil) {
         [self.mapView removeOverlays: self.mapView.overlays];
         self.circle = [MKCircle circleWithCenterCoordinate:CLLocationCoordinate2DMake(((CLLocation *)self.clLocation).coordinate.latitude, ((CLLocation *)self.clLocation).coordinate.longitude) radius:self.circleInMeter];
@@ -669,13 +748,21 @@
     [self.navigationController pushViewController:speciesGroup animated:TRUE];
 }
 
-- (MKOverlayView *) mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
+#pragma circle overlay
 
+- (MKOverlayView *) mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
     MKCircleView *circleView = [[MKCircleView alloc] initWithCircle:(MKCircle*)overlay];
     circleView.fillColor = [[UIColor colorWithRed:200.0/255.0 green:77.0/255.0 blue:47.0/255.0 alpha:1] colorWithAlphaComponent:0.2];
     circleView.strokeColor = [[UIColor blackColor] colorWithAlphaComponent:0.7];
     circleView.lineWidth = 2;
     return circleView;
+}
+
+#pragma user tracking mode.
+- (void)mapView:(MKMapView *)mapView didChangeUserTrackingMode:(MKUserTrackingMode)mode animated:(BOOL)animated {
+    if(_lastKnownGPSLocation != nil) {
+        [self setFormValue:_lastKnownGPSLocation];
+    }
 }
 
 @end

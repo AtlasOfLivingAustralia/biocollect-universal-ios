@@ -8,7 +8,7 @@
 #import "GASettingsConstant.h"
 #import "RecordViewController.h"
 #import "MRProgressOverlayView.h"
-
+#import "RecordForm.h"
 
 @interface SGDetailViewTableViewController ()
 @property (nonatomic, assign) int fixedTotal;
@@ -142,6 +142,12 @@
     RecordViewController *recordViewController = [[RecordViewController alloc] init];
     recordViewController.title = @"Record a Sighting";
     [recordViewController setRecordSpecies: species];
+    RecordForm *record = recordViewController.formController.form;
+    if(record != nil) {
+        NSString *lat = self.locationDetails[@"lat"];
+        NSString *lng = self.locationDetails[@"lng"];
+        record.location = [[CLLocation alloc] initWithLatitude:[lat floatValue] longitude:[lng floatValue]];
+    }
     [self.navigationController pushViewController:recordViewController animated:TRUE];
 }
 
