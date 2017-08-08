@@ -111,7 +111,7 @@
     imageView.translatesAutoresizingMaskIntoConstraints = NO;
     [imageView setContentMode:UIViewContentModeScaleAspectFill];
     [imageView setClipsToBounds:YES];
-    [imageView setImage:[UIImage imageNamed:@"OzHome2"]];
+    [imageView setImage:[UIImage imageNamed:@"ala_logo_3"]];
     [imageView.layer setBorderColor:[UIColor whiteColor].CGColor];
     [imageView.layer setBorderWidth:2.0];
     [imageView.layer setCornerRadius:45.0];

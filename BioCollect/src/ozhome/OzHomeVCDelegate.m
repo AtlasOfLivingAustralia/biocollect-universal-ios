@@ -152,7 +152,7 @@
         }
         NSString *url = [[NSString alloc] initWithFormat:@"https://www.ala.org.au/who-we-are/"];
         SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress: url];
-        webViewController.title = @"About the ALA";
+        webViewController.title = @"About";
         GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
         [appDelegate.ozHomeNC presentViewController:webViewController animated:YES completion:NULL];
     } else if(indexPath.row == 6) {
@@ -162,7 +162,7 @@
         }
         NSString *url = [[NSString alloc] initWithFormat:@"https://www.ala.org.au/about-the-atlas/contact-us/"];
         SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress: url];
-        webViewController.title = @"Contact the ALA";
+        webViewController.title = @"Contact";
         GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
         [appDelegate.ozHomeNC presentViewController:webViewController animated:YES completion:NULL];
     } else if(indexPath.row == 7) {

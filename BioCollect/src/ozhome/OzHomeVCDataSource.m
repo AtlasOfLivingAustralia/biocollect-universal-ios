@@ -43,7 +43,7 @@
         NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         [cell.imageView sd_setImageWithURL:[NSURL URLWithString:escapedUrlString] placeholderImage:[UIImage imageNamed:@"icon_camera"]];
     } else if(indexPath.row == 1) {
-        cell.textLabel.text = @"Explore Species";
+        cell.textLabel.text = @"Species by Location";
         cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@", @""];
         NSString *url = [[NSString alloc] initWithFormat: @"%@", @""];
         NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -71,11 +71,11 @@
         
         [cell.imageView setImage:[UIImage imageNamed:@"icon_draft"]];
     } else if(indexPath.row == 5) {
-        cell.textLabel.text = @"About the ALA";
+        cell.textLabel.text = @"About";
         cell.detailTextLabel.text = @"";
         [cell.imageView setImage:[UIImage imageNamed:@"icon_about"]];
     } else if(indexPath.row == 6) {
-        cell.textLabel.text = @"Contact the ALA";
+        cell.textLabel.text = @"Contact";
         cell.detailTextLabel.text = @"";
         [cell.imageView setImage:[UIImage imageNamed:@"icon_address"]];
     } else if(indexPath.row == 7) {
