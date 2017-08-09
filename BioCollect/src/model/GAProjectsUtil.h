@@ -1,6 +1,5 @@
 //
 //  GAProjectsHandler.h
-//  GreenArmy
 //
 //  Created by Sathish iMac on 13/04/2014.
 //  Copyright (c) 2014 Sathya Moorthy, Sathish (Atlas of Living Australia). All rights reserved.

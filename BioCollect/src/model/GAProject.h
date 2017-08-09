@@ -1,6 +1,5 @@
 //
 //  GAProject.h
-//  GreenArmy
 //
 //  Created by Sathya Moorthy, Sathish (Atlas of Living Australia) on 9/04/2014.
 //  Copyright (c) 2014 Sathya Moorthy, Sathish (Atlas of Living Australia). All rights reserved.

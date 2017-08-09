@@ -1,6 +1,5 @@
 //
 //  GAAppDelegate.h
-//  GreenArmy
 //
 //  Created by Sathya Moorthy, Sathish (Atlas of Living Australia) on 9/04/2014.
 //  Copyright (c) 2014 Sathya Moorthy, Sathish (Atlas of Living Australia). All rights reserved.
@@ -22,6 +21,7 @@
 @property (strong, nonatomic) UISplitViewController *splitViewController;
 @property (strong, nonatomic) UITabBarController  *tabBarController;
 @property (strong, nonatomic) UINavigationController *ozHomeNC;
+
 //All Singleton classes
 @property (nonatomic, retain) GARestCall *restCall;
 @property (nonatomic, retain) SpeciesService *speciesService;

@@ -1,6 +1,5 @@
 //
 //  GAAppDelegate.m
-//  GreenArmy
 //
 //  Created by Sathya Moorthy, Sathish (Atlas of Living Australia) on 9/04/2014.
 //  Copyright (c) 2014 Sathya Moorthy, Sathish (Atlas of Living Australia). All rights reserved.
@@ -70,7 +69,6 @@
 
     [[MRProgressOverlayView appearance] setTintColor:[UIColor colorWithRed:200.0/255.0 green:77.0/255.0 blue:47.0/255.0 alpha:1]];
     
-    //
     
     NSArray<NSURL *> *urls = [NSFileManager.defaultManager URLsForDirectory:NSDocumentDirectory inDomains: NSUserDomainMask];
     if([urls count] > 0){
