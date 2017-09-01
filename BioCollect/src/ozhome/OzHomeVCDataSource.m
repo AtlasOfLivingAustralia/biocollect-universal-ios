@@ -11,22 +11,68 @@
 #import "HomeCustomCell.h"
 #import "GAAppDelegate.h"
 #import "GASettings.h"
+#import "GASettingsConstant.h"
 
 @implementation OzHomeVCDataSource
 
 
 #pragma mark - MGSpotyViewControllerDataSource
 
-- (NSInteger)spotyViewController:(MGSpotyViewController *)spotyViewController
-           numberOfRowsInSection:(NSInteger)section
+- (NSInteger)spotyViewController:(MGSpotyViewController *)spotyViewController numberOfRowsInSection:(NSInteger)section
 {
-    return 8;
+    if([HUB_VIEW isEqualToString: [GASettings appView]]) {
+        NSArray *menuItems = [[NSBundle mainBundle] objectForInfoDictionaryKey: APP_MENU];
+        return [menuItems count];
+    } else {
+        return 8;
+    }
 }
 
 - (UITableViewCell *)spotyViewController:(MGSpotyViewController *)spotyViewController
                                tableView:(UITableView *)tableView
                    cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if([HUB_VIEW isEqualToString: [GASettings appView]]) {
+        return [self hubView: spotyViewController tableView:tableView cellForRowAtIndexPath:indexPath];
+    } else {
+        return [self ozAtlasView: spotyViewController tableView:tableView cellForRowAtIndexPath:indexPath];
+    }
+}
+
+- (UITableViewCell *) hubView : (MGSpotyViewController *)spotyViewController
+                         tableView:(UITableView *)tableView
+             cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *identifier = @"CellID";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+
+    if(!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.backgroundColor = [UIColor whiteColor];
+        cell.textLabel.textColor = [UIColor blackColor];
+    }
+    
+    NSArray *menuItems = [[NSBundle mainBundle] objectForInfoDictionaryKey: APP_MENU];
+    if([menuItems count] > indexPath.row) {
+        NSDictionary *menuAttributes = menuItems [indexPath.row];
+        cell.textLabel.text  = [menuAttributes objectForKey:@"title"];
+        NSString *icon = [menuAttributes objectForKey:@"icon"];
+        if (icon == (id)[NSNull null] || icon.length == 0 ) {
+            [cell.imageView setImage:[UIImage imageNamed:@"icon_about"]];
+            
+        } else {
+            [cell.imageView setImage:[UIImage imageNamed:icon]];
+        }
+    }
+    
+    return cell;
+}
+
+
+- (UITableViewCell *) ozAtlasView : (MGSpotyViewController *)spotyViewController
+                         tableView:(UITableView *)tableView
+            cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"CellID";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     

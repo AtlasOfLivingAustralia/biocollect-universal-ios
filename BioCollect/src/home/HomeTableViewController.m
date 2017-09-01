@@ -89,10 +89,11 @@
         UIBarButtonItem *syncButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"sync-25"] style:UIBarButtonItemStyleBordered target:self action:@selector(resetAndDownloadProjects)];
         UIBarButtonItem *signout = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"lock_filled-25"] style:UIBarButtonItemStyleBordered target:self.appDelegate.loginViewController action:@selector(logout)];
         self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects: signout,syncButton, nil];
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"header-logo"]];
+       
+        /*UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"header-logo"]];
         imageView.contentMode = UIViewContentModeCenter;
         self.navigationItem.titleView = imageView;
-     
+         */
     }
     
     return self;

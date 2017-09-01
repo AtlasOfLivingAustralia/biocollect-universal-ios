@@ -122,5 +122,30 @@
     return [[NSString alloc] initWithFormat:@"App version - %@ (%@)",ver,build];
 }
 
++(NSString*) appView {
+   return [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_AppType"];
+}
+
++(NSString*) appTheme {
+    return [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_Theme"];
+}
+
++(NSString*) appHomeBkBig {
+    NSString *value = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_Home_BK_Big"];
+    if (value == (id)[NSNull null] || value.length == 0 ) {
+        value = @"OzHome2";
+    }
+    return value;
+}
+
++(NSString*) appHomeBkSmall {
+    NSString *value = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_Home_BK_Small"];
+    if (value == (id)[NSNull null] || value.length == 0 ) {
+        value = @"ala_logo_3";
+    }
+    
+    return value;
+}
+
 
 @end

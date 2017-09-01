@@ -35,7 +35,7 @@
 @end
 @implementation GAAppDelegate
 
-@synthesize splitViewController, projects,masterProjectVC, detailVC, restCall, sqlLite, loginViewController, eulaVC, homeVC, recordsVC, myProjectsVC, myRecordsVC, bioProjectService,tabBarController,ozHomeNC, speciesService;
+@synthesize splitViewController, projects,masterProjectVC, detailVC, restCall, sqlLite, loginViewController, eulaVC, homeVC, recordsVC, myProjectsVC, myRecordsVC, bioProjectService,tabBarController,ozHomeNC, speciesService, alaWKWebView;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -163,11 +163,21 @@
     aboutNC.navigationBar.topItem.title = @"About";
     
     //ozHome page
-    OzHomeVC *ozHomeVC = [[OzHomeVC alloc] initWithMainImage:[UIImage imageNamed:@"OzHome2"]];
+    OzHomeVC *ozHomeVC = [[OzHomeVC alloc] initWithMainImage:[UIImage imageNamed:[GASettings appHomeBkBig]]];
     ozHomeNC = [[UINavigationController alloc] initWithRootViewController: ozHomeVC];
     ozHomeNC.tabBarItem.title = @"Oz Atlas";
     ozHomeNC.tabBarItem.image = [UIImage imageNamed:@"home_filled-25"];
     ozHomeNC.navigationBar.topItem.title = @"Oz Atlas";
+    
+    //Webview home
+    /*
+    self.alaWKWebView = [[ALAWKWebView alloc] initWithNibName:@"ALAWKWebView" bundle:nil];
+    UINavigationController *alaWKWebViewNC = [[UINavigationController alloc] initWithRootViewController: self.alaWKWebView];
+    alaWKWebViewNC.tabBarItem.title = @"Home";
+    alaWKWebViewNC.tabBarItem.image = [UIImage imageNamed:@"home_filled-25"];
+    alaWKWebViewNC.navigationBar.topItem.title = @"Welcome";
+    [alaWKWebViewNC.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName]];
+    */
     
     //Tab bars
     NSArray* controllers = nil;
@@ -177,23 +187,44 @@
         [[UINavigationBar appearance] setTranslucent:NO];
         [[UINavigationBar appearance] setTintColor: [self colorFromHexString: @"#F1582B"]];
         [self.window setRootViewController:ozHomeNC];
+        [[UITabBar appearance] setTintColor: [self colorFromHexString: @"#F1582B"]];
+        [[UIBarButtonItem appearance] setTintColor: [self colorFromHexString: @"#F1582B"]];
+        
+    } else if([appType isEqualToString:@"hubview"]) {
+        /*tabBarController = [[UITabBarController alloc] init];
+        controllers = [NSArray arrayWithObjects: homeNC, recordsNC, myProjectsNC, myRecordsNC, nil];
+        tabBarController.viewControllers = controllers;
+        [[UINavigationBar appearance] setTranslucent:NO];
+        [self.window setRootViewController:tabBarController];
+        //[self.alaWKWebView homeView:nil];
+        [[UITabBar appearance] setTintColor: [self colorFromHexString: @"#F15A24"]];
+        [[UIBarButtonItem appearance] setTintColor: [self colorFromHexString: @"#F15A24"]];
+         */
+        
+        [[UINavigationBar appearance] setBackgroundColor:[self colorFromHexString: @"#000000"]];
+        [[UINavigationBar appearance] setTranslucent:NO];
+        [[UINavigationBar appearance] setTintColor: [self colorFromHexString: @"#F1582B"]];
+        [self.window setRootViewController:ozHomeNC];
+        [[UITabBar appearance] setTintColor: [self colorFromHexString: [GASettings appTheme]]];
+        [[UIBarButtonItem appearance] setTintColor: [self colorFromHexString: [GASettings appTheme]]];
+        
     } else {
         tabBarController = [[UITabBarController alloc] init];
         controllers = [NSArray arrayWithObjects: homeNC, recordsNC, myProjectsNC, myRecordsNC,contactNC, nil];
         tabBarController.viewControllers = controllers;
         [[UINavigationBar appearance] setTranslucent:NO];
         [self.window setRootViewController:tabBarController];
+        [[UITabBar appearance] setTintColor: [self colorFromHexString: @"#F1582B"]];
+        [[UIBarButtonItem appearance] setTintColor: [self colorFromHexString: @"#F1582B"]];
     }
     
-    [[UITabBar appearance] setTintColor: [self colorFromHexString: @"#F1582B"]];
-    [[UIBarButtonItem appearance] setTintColor: [self colorFromHexString: @"#F1582B"]];
     
     [self.window makeKeyAndVisible];
 
     if([GASettings getAuthKey] == 0){
         [self displaySigninPage];
         
-    }else{
+    } else{
         DebugLog(@"[INFO] GAAppDelegate:addSplitViewtoRoot - loading data from db.");
         [self updateTableModelsAndViews:[self.sqlLite loadProjectsAndActivities]];
     }

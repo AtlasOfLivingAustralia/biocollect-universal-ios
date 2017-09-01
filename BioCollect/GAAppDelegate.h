@@ -14,6 +14,7 @@
 #import "GAEULAViewController.h"
 #import "OzHomeVC.h"
 #import "SpeciesService.h"
+#import "ALAWKWebView.h"
 
 @interface GAAppDelegate : UIResponder <UIApplicationDelegate, UIAlertViewDelegate>
 
@@ -21,6 +22,8 @@
 @property (strong, nonatomic) UISplitViewController *splitViewController;
 @property (strong, nonatomic) UITabBarController  *tabBarController;
 @property (strong, nonatomic) UINavigationController *ozHomeNC;
+@property (strong, nonatomic) ALAWKWebView *alaWKWebView;
+
 
 //All Singleton classes
 @property (nonatomic, retain) GARestCall *restCall;
