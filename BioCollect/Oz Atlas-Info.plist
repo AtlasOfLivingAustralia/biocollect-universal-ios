@@ -82,5 +82,12 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    
+    <!-- App Theme Configuration -->
+    <key>Bio_Home_Login_Image_iPad</key>
+    <string>oz_iPad.jpg</string>
+    <key>Bio_Home_Login_Image_iPhone</key>
+    <string>oz_iPhone</string>
+
 </dict>
 </plist>

@@ -15,6 +15,8 @@
 #define kFirstName @"firstName"
 #define kLastName @"lastName"
 #define kUserId @"userId"
+#define IDIOM    UI_USER_INTERFACE_IDIOM()
+#define IPAD     UIUserInterfaceIdiomPad
 
 @implementation GASettings
 
@@ -147,5 +149,34 @@
     return value;
 }
 
++(NSString*) appLoginImage {
+    NSString *imageName = nil;
+    NSString *value = nil;
+    if ( IDIOM == IPAD ) {
+        value = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_Home_Login_Image_iPad"];
+    } else {
+        value = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_Home_Login_Image_iPhone"];
+    }
+    return value;
+}
+
++(NSString*) appLoginLogo {
+    NSString *imageName = nil;
+    NSString *value = nil;
+    value = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_Home_Login_Image_Logo"];
+    
+    if (value == (id)[NSNull null] || value.length == 0 ) {
+        value = @"ALA-logo-inline.png";
+    }
+    return value;
+}
+
++(NSString*) appHubName {
+    NSString *value = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_HubName"];
+    if (value == (id)[NSNull null] || value.length == 0 ) {
+        value = @"";
+    }
+    return value;
+}
 
 @end

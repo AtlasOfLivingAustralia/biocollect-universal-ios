@@ -32,7 +32,8 @@
 
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     NSString *userPage = isUserPage ? @"&isUserPage=true" : @"";
-    NSString *url = [[NSString alloc] initWithFormat: @"%@%@&offset=%ld&max=%ld&q=%@%@&mobile=true%@", BIOCOLLECT_SERVER, BIO_PROJECT_SEARCH, (long)offset, (long)max, (NSString*) query, (NSString*) params, userPage];
+    NSString *hubName = [GASettings appHubName];
+    NSString *url = [[NSString alloc] initWithFormat: @"%@%@&offset=%ld&max=%ld&q=%@%@&mobile=true%@&hub=%@", BIOCOLLECT_SERVER, BIO_PROJECT_SEARCH, (long)offset, (long)max, (NSString*) query, (NSString*) params, userPage,hubName];
     NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [request setURL:[NSURL URLWithString:escapedUrlString]];
     [request setValue:[GASettings getEmailAddress] forHTTPHeaderField:@"userName"];
@@ -80,15 +81,15 @@
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     NSString *url = nil;
     NSString *userId = [GASettings getUserId];
-    
+    NSString *hubName = [GASettings appHubName];
     if(projectId) {
-        url = [[NSString alloc] initWithFormat: @"%@%@?view=project&offset=%ld&max=%ld&projectId=%@&searchTerm=%@&mobile=true&userId=%@", BIOCOLLECT_SERVER, BIO_ACTIVITIES, (long)offset, (long)max, projectId,query,userId];
+        url = [[NSString alloc] initWithFormat: @"%@%@?hub=%@&view=project&offset=%ld&max=%ld&projectId=%@&searchTerm=%@&mobile=true&userId=%@", BIOCOLLECT_SERVER, BIO_ACTIVITIES, hubName, (long)offset, (long)max, projectId,query,userId];
     } else {
-        NSString *myRecordsStr = myRecords ? @"&view=myrecords" : @"&view=all";
+        NSString *myRecordsStr = myRecords ? @"&view=myrecords" : @"&view=allrecords";
         NSString *appType = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_AppType"];
         //TODO - FIx this
         NSString *facet = [appType isEqualToString:@"custom"] ? SIGHTINGS_PROJECT_NAME_FACET : @"";
-        url = [[NSString alloc] initWithFormat: @"%@%@?offset=%ld&max=%ld&searchTerm=%@&mobile=true%@&userId=%@&%@", BIOCOLLECT_SERVER, BIO_ACTIVITIES, (long)offset, (long)max, query, myRecordsStr,userId,facet];
+        url = [[NSString alloc] initWithFormat: @"%@%@?hub=%@&offset=%ld&max=%ld&searchTerm=%@&mobile=true%@&userId=%@&%@", BIOCOLLECT_SERVER, BIO_ACTIVITIES, hubName, (long)offset, (long)max, query, myRecordsStr,userId,facet];
     }
     
     NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];

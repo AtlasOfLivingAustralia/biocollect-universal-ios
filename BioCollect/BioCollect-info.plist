@@ -82,5 +82,12 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+    
+    <!-- App Theme Configuration -->
+    <key>Bio_Home_Login_Image_iPad</key>
+    <string>bk_iPad</string>
+    <key>Bio_Home_Login_Image_iPhone</key>
+    <string>bk_iPhone</string>
+
 </dict>
 </plist>

@@ -19,6 +19,7 @@
 #import "HomeViewController.h"
 #import "GASettings.h"
 #import "HomeTableViewController.h"
+#import "RecordsTableViewController.h"
 
 @interface OzHomeVCDelegate()
     @property (nonatomic, strong) RecordsTableViewController *recordsTableView;
@@ -234,7 +235,10 @@
 
     if([menuItems count] > indexPath.row) {
         NSDictionary *menuAttributes = menuItems [indexPath.row];
-        if([[menuAttributes objectForKey:@"view"] isEqualToString:@"hub_projects"]) {
+        if([[menuAttributes objectForKey:@"view"] isEqualToString:@"hub_all_records"]){
+            RecordsTableViewController *recordsVC = [[RecordsTableViewController alloc] initWithNibName:@"RecordsTableViewController" bundle:nil];
+            [spotyViewController.navigationController pushViewController: recordsVC animated:TRUE];
+        } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"hub_projects"]) {
             HomeTableViewController *homeVC = [[HomeTableViewController alloc] initWithNibName:@"HomeTableViewController" bundle:nil];
             [spotyViewController.navigationController pushViewController: homeVC animated:TRUE];
         } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"web_url"]) {

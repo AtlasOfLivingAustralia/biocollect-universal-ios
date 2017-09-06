@@ -712,6 +712,9 @@
 		E2BA84081F583B2A008BE68F /* icon_briefcase@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2BA84071F583B2A008BE68F /* icon_briefcase@2x.png */; };
 		E2BA84091F583B2A008BE68F /* icon_briefcase@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2BA84071F583B2A008BE68F /* icon_briefcase@2x.png */; };
 		E2BA840A1F583B2A008BE68F /* icon_briefcase@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2BA84071F583B2A008BE68F /* icon_briefcase@2x.png */; };
+		E2BA840F1F5EAFEB008BE68F /* biocontrolhub_iPad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2BA840D1F5EAFEB008BE68F /* biocontrolhub_iPad.jpg */; };
+		E2BA84101F5EAFEB008BE68F /* biocontrolhub_iPhone.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2BA840E1F5EAFEB008BE68F /* biocontrolhub_iPhone.jpg */; };
+		E2BA84141F5EBE03008BE68F /* biocontrol_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E2BA84131F5EBE03008BE68F /* biocontrol_logo.png */; };
 		E2C00BC51F173A3A00443DBD /* icon_version@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C00BC41F173A3A00443DBD /* icon_version@2x.png */; };
 		E2C00BC61F173A3A00443DBD /* icon_version@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C00BC41F173A3A00443DBD /* icon_version@2x.png */; };
 		E2C00BC81F17464600443DBD /* icon_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C00BC71F17464600443DBD /* icon_logo@2x.png */; };
@@ -1106,6 +1109,9 @@
 		E2BA84031F582DC1008BE68F /* biocontrolhub_home_bk.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = biocontrolhub_home_bk.jpg; path = src/images/homebk/biocontrolhub_home_bk.jpg; sourceTree = "<group>"; };
 		E2BA84051F58317E008BE68F /* biocontrolhub_bk_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "biocontrolhub_bk_small@2x.png"; path = "src/images/homebk/biocontrolhub_bk_small@2x.png"; sourceTree = "<group>"; };
 		E2BA84071F583B2A008BE68F /* icon_briefcase@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_briefcase@2x.png"; path = "src/images/icon_briefcase@2x.png"; sourceTree = "<group>"; };
+		E2BA840D1F5EAFEB008BE68F /* biocontrolhub_iPad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = biocontrolhub_iPad.jpg; path = src/images/bk/biocontrolhub_iPad.jpg; sourceTree = "<group>"; };
+		E2BA840E1F5EAFEB008BE68F /* biocontrolhub_iPhone.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = biocontrolhub_iPhone.jpg; path = src/images/bk/biocontrolhub_iPhone.jpg; sourceTree = "<group>"; };
+		E2BA84131F5EBE03008BE68F /* biocontrol_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = biocontrol_logo.png; path = src/images/bk/biocontrol_logo.png; sourceTree = "<group>"; };
 		E2C00BC41F173A3A00443DBD /* icon_version@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_version@2x.png"; path = "src/images/icon_version@2x.png"; sourceTree = "<group>"; };
 		E2C00BC71F17464600443DBD /* icon_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_logo@2x.png"; path = "src/images/icon_logo@2x.png"; sourceTree = "<group>"; };
 		E2C544461ECDCA8C00641951 /* edit_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "edit_icon@2x.png"; path = "src/images/edit_icon@2x.png"; sourceTree = "<group>"; };
@@ -1468,54 +1474,12 @@
 		B8D551DF18F98B7800EDD006 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				E2BA84021F582828008BE68F /* homebk */,
-				E2B334251F2AC67800B71E77 /* ala_logo_2.png */,
-				E2B3342B1F2ACA8400B71E77 /* ala_large_logo.png */,
-				E2424C421F0F632500E4E13F /* bk */,
+				E2BA840C1F5EACD7008BE68F /* extras */,
+				E2BA840B1F5EACA3008BE68F /* ozatlas */,
+				E2BA84021F582828008BE68F /* biocontrolhub */,
 				E2424C3E1F0F60F200E4E13F /* logo */,
 				E2424C3D1F0F60D600E4E13F /* icons */,
 				E2A6BE991F0CCFB200F1A57E /* species */,
-				E25D8EF61EE57E8600ED4D0F /* camera_icon.png */,
-				E2424C3F1F0F624300E4E13F /* bk_iPhone.png */,
-				E2C544461ECDCA8C00641951 /* edit_icon@2x.png */,
-				E28AF9B91EC4310A007042C4 /* bk_iPad.png */,
-				E247DD6E1EC33C5900A1C0A5 /* BioCollect-Name-Only.png */,
-				E29402931EBC061D00CCFEE7 /* header-logo@2x.png */,
-				E2636DDC1CF2E68500000371 /* home_filled-25@2x.png */,
-				E2636DD21CF2E57C00000371 /* about_filled-25@2x.png */,
-				E2636DD31CF2E57C00000371 /* box_filled-25@2x.png */,
-				E2636DD41CF2E57C00000371 /* brief_filled-25@2x.png */,
-				E2636DD51CF2E57C00000371 /* briefcase_filled-25@2x.png */,
-				E2636DD61CF2E57C00000371 /* contact_filled-25@2x.png */,
-				E2E24AC11CED4DDF00F6D4CA /* table-place-holder.png */,
-				E2B6274E1CE40F8800A89179 /* BioCollect-text.png */,
-				E211B04B1CE18BC500DBC1AF /* BioCollect-logo.png */,
-				E2B627501CE4119A00A89179 /* BioCollect-text-small.png */,
-				E20026381C926F250045C130 /* csiro-logo.png */,
-				E211B0491CE18A3E00DBC1AF /* 512x512.png */,
-				E2A2FFCC1C8547A5008B63A8 /* ala_logo1.png */,
-				E2A2FFCA1C8546F0008B63A8 /* ala_logo.png */,
-				E241C67F196A3061002302D7 /* pad-1@2x.png */,
-				E22045CF192D9EEC00531116 /* action-25@2x.png */,
-				E22045D0192D9EEC00531116 /* sync-25@2x.png */,
-				E29A35411966781C003D025D /* searchbar_bk@2x.png */,
-				E2B334281F2AC93200B71E77 /* ala_logo_3.png */,
-				E22045C9192D7EDD00531116 /* profile@2x.png */,
-				E22045CD192D8F4800531116 /* loc1_changed@2x.png */,
-				E22045C7192D7E5900531116 /* pad@2x.png */,
-				E22045C5192D7DA500531116 /* info_filled-25@2x.png */,
-				E22045C3192D7D0B00531116 /* help_filled-25@2x.png */,
-				E22045C1192D7C8F00531116 /* briefcase_filled-25@2x.png */,
-				E227E3A3192CDA2F00E22DC7 /* geo_fence-25@2x.png */,
-				E227E39B192CD30D00E22DC7 /* lock_filled-25@2x.png */,
-				E227E3A1192CD57D00E22DC7 /* menu-25@2x.png */,
-				E22045BF192C755A00531116 /* search_bk_red@2x.png */,
-				E227E398192CD0FD00E22DC7 /* site_map@2x.png */,
-				E2E56A951922E6D6007AC38C /* changed@2x.png */,
-				E2E8F743192245E60029574B /* loc1_nochange@2x.png */,
-				E2E43394190FAE5700A3FAB2 /* cancelled@2x.png */,
-				E2CCECFC190F82E6003655B7 /* planned@2x.png */,
-				8705B92F1DC041770015E171 /* ajax_loader.gif */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -1653,15 +1617,6 @@
 				E27B8F521EF5187A00B01FAB /* ala_logo_1.png */,
 			);
 			name = logo;
-			sourceTree = "<group>";
-		};
-		E2424C421F0F632500E4E13F /* bk */ = {
-			isa = PBXGroup;
-			children = (
-				E2424C431F0F634F00E4E13F /* oz_iPad.jpg */,
-				E2424C441F0F634F00E4E13F /* oz_iPhone.jpg */,
-			);
-			name = bk;
 			sourceTree = "<group>";
 		};
 		E24E0B251CE40378006ECE0E /* Contact */ = {
@@ -1860,13 +1815,75 @@
 			name = WKWebView;
 			sourceTree = "<group>";
 		};
-		E2BA84021F582828008BE68F /* homebk */ = {
+		E2BA84021F582828008BE68F /* biocontrolhub */ = {
 			isa = PBXGroup;
 			children = (
+				E2BA84131F5EBE03008BE68F /* biocontrol_logo.png */,
+				E2BA840D1F5EAFEB008BE68F /* biocontrolhub_iPad.jpg */,
+				E2BA840E1F5EAFEB008BE68F /* biocontrolhub_iPhone.jpg */,
 				E2BA84051F58317E008BE68F /* biocontrolhub_bk_small@2x.png */,
 				E2BA84031F582DC1008BE68F /* biocontrolhub_home_bk.jpg */,
 			);
-			name = homebk;
+			name = biocontrolhub;
+			sourceTree = "<group>";
+		};
+		E2BA840B1F5EACA3008BE68F /* ozatlas */ = {
+			isa = PBXGroup;
+			children = (
+				E2424C431F0F634F00E4E13F /* oz_iPad.jpg */,
+				E2424C441F0F634F00E4E13F /* oz_iPhone.jpg */,
+				E2B334251F2AC67800B71E77 /* ala_logo_2.png */,
+				E2B3342B1F2ACA8400B71E77 /* ala_large_logo.png */,
+			);
+			name = ozatlas;
+			sourceTree = "<group>";
+		};
+		E2BA840C1F5EACD7008BE68F /* extras */ = {
+			isa = PBXGroup;
+			children = (
+				E25D8EF61EE57E8600ED4D0F /* camera_icon.png */,
+				E2424C3F1F0F624300E4E13F /* bk_iPhone.png */,
+				E2C544461ECDCA8C00641951 /* edit_icon@2x.png */,
+				E28AF9B91EC4310A007042C4 /* bk_iPad.png */,
+				E247DD6E1EC33C5900A1C0A5 /* BioCollect-Name-Only.png */,
+				E29402931EBC061D00CCFEE7 /* header-logo@2x.png */,
+				E2636DDC1CF2E68500000371 /* home_filled-25@2x.png */,
+				E2636DD21CF2E57C00000371 /* about_filled-25@2x.png */,
+				E2636DD31CF2E57C00000371 /* box_filled-25@2x.png */,
+				E2636DD41CF2E57C00000371 /* brief_filled-25@2x.png */,
+				E2636DD51CF2E57C00000371 /* briefcase_filled-25@2x.png */,
+				E2636DD61CF2E57C00000371 /* contact_filled-25@2x.png */,
+				E2E24AC11CED4DDF00F6D4CA /* table-place-holder.png */,
+				E2B6274E1CE40F8800A89179 /* BioCollect-text.png */,
+				E211B04B1CE18BC500DBC1AF /* BioCollect-logo.png */,
+				E2B627501CE4119A00A89179 /* BioCollect-text-small.png */,
+				E20026381C926F250045C130 /* csiro-logo.png */,
+				E211B0491CE18A3E00DBC1AF /* 512x512.png */,
+				E2A2FFCC1C8547A5008B63A8 /* ala_logo1.png */,
+				E2A2FFCA1C8546F0008B63A8 /* ala_logo.png */,
+				E241C67F196A3061002302D7 /* pad-1@2x.png */,
+				E22045CF192D9EEC00531116 /* action-25@2x.png */,
+				E22045D0192D9EEC00531116 /* sync-25@2x.png */,
+				E29A35411966781C003D025D /* searchbar_bk@2x.png */,
+				E2B334281F2AC93200B71E77 /* ala_logo_3.png */,
+				E22045C9192D7EDD00531116 /* profile@2x.png */,
+				E22045CD192D8F4800531116 /* loc1_changed@2x.png */,
+				E22045C7192D7E5900531116 /* pad@2x.png */,
+				E22045C5192D7DA500531116 /* info_filled-25@2x.png */,
+				E22045C3192D7D0B00531116 /* help_filled-25@2x.png */,
+				E22045C1192D7C8F00531116 /* briefcase_filled-25@2x.png */,
+				E227E3A3192CDA2F00E22DC7 /* geo_fence-25@2x.png */,
+				E227E39B192CD30D00E22DC7 /* lock_filled-25@2x.png */,
+				E227E3A1192CD57D00E22DC7 /* menu-25@2x.png */,
+				E22045BF192C755A00531116 /* search_bk_red@2x.png */,
+				E227E398192CD0FD00E22DC7 /* site_map@2x.png */,
+				E2E56A951922E6D6007AC38C /* changed@2x.png */,
+				E2E8F743192245E60029574B /* loc1_nochange@2x.png */,
+				E2E43394190FAE5700A3FAB2 /* cancelled@2x.png */,
+				E2CCECFC190F82E6003655B7 /* planned@2x.png */,
+				8705B92F1DC041770015E171 /* ajax_loader.gif */,
+			);
+			name = extras;
 			sourceTree = "<group>";
 		};
 		E2E3AA8018F4D2940005BB9E = {
@@ -1924,8 +1941,8 @@
 				E23586D818FCFE3900EE6D13 /* WebView */,
 				E23586D318FBB27900EE6D13 /* Persistence */,
 				B8D551DF18F98B7800EDD006 /* Images */,
-				E27BDFD218F78D6D001EE2F8 /* Settings */,
 				E27BDFB718F7895C001EE2F8 /* Services */,
+				E27BDFD218F78D6D001EE2F8 /* Settings */,
 				E2E3AA9B18F4D2940005BB9E /* GAAppDelegate.h */,
 				E2E3AA9C18F4D2940005BB9E /* GAAppDelegate.m */,
 				E2E3AA9E18F4D2940005BB9E /* Images.xcassets */,
@@ -2237,6 +2254,7 @@
 				E26639041F52EB9B00F1F1CE /* edit_icon@2x.png in Resources */,
 				E26639051F52EB9B00F1F1CE /* (null) in Resources */,
 				E26639061F52EB9B00F1F1CE /* GACreateSiteModalViewController.xib in Resources */,
+				E2BA84141F5EBE03008BE68F /* biocontrol_logo.png in Resources */,
 				E26639071F52EB9B00F1F1CE /* ala_logo_3.png in Resources */,
 				E26639081F52EB9B00F1F1CE /* changed@2x.png in Resources */,
 				E26639091F52EB9B00F1F1CE /* Gymnosperms.jpg in Resources */,
@@ -2293,9 +2311,11 @@
 				E26639391F52EB9B00F1F1CE /* index.html in Resources */,
 				E266393A1F52EB9B00F1F1CE /* icon_address@2x.png in Resources */,
 				E266393B1F52EB9B00F1F1CE /* Dicots.jpg in Resources */,
+				E2BA84101F5EAFEB008BE68F /* biocontrolhub_iPhone.jpg in Resources */,
 				E266393C1F52EB9B00F1F1CE /* ala_logo.png in Resources */,
 				E266393D1F52EB9B00F1F1CE /* StaticWebPages in Resources */,
 				E266393E1F52EB9B00F1F1CE /* MapViewController.xib in Resources */,
+				E2BA840F1F5EAFEB008BE68F /* biocontrolhub_iPad.jpg in Resources */,
 				E266393F1F52EB9B00F1F1CE /* Mammals.jpg in Resources */,
 				E26639401F52EB9B00F1F1CE /* ala_logo_1.png in Resources */,
 				E26639411F52EB9B00F1F1CE /* Crustaceans.jpg in Resources */,

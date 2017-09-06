@@ -35,6 +35,7 @@
 +(NSString*) appTheme;
 +(NSString*) appHomeBkBig;
 +(NSString*) appHomeBkSmall;
-
++(NSString*) appLoginImage;
++(NSString*) appHubName;
 
 @end

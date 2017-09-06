@@ -84,6 +84,14 @@
     <!-- App Theme Configuration -->
     <key>Bio_AppType</key>
     <string>hubview</string>
+    <key>Bio_HubName</key>
+    <string>biocontrolhub</string>
+    <key>Bio_Home_Login_Image_Logo</key>
+    <string>biocontrol_logo.png</string>
+    <key>Bio_Home_Login_Image_iPad</key>
+    <string>biocontrolhub_iPad.jpg</string>
+    <key>Bio_Home_Login_Image_iPhone</key>
+    <string>biocontrolhub_iPhone.jpg</string>
     <key>Bio_Home_BK_Big</key>
     <string>biocontrolhub_home_bk.jpg</string>
     <key>Bio_Home_BK_Small</key>
@@ -108,7 +116,7 @@
             <key>icon</key>
             <string>icon_all_records</string>
             <key>view</key>
-            <string>hub_projects</string>
+            <string>hub_all_records</string>
             <key>url</key>
             <string></string>
         </dict>
