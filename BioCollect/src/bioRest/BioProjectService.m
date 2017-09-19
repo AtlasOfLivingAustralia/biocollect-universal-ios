@@ -33,7 +33,7 @@
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     NSString *userPage = isUserPage ? @"&isUserPage=true" : @"";
     NSString *hubName = [GASettings appHubName];
-    NSString *url = [[NSString alloc] initWithFormat: @"%@%@&offset=%ld&max=%ld&q=%@%@&mobile=true%@&hub=%@", BIOCOLLECT_SERVER, BIO_PROJECT_SEARCH, (long)offset, (long)max, (NSString*) query, (NSString*) params, userPage,hubName];
+    NSString *url = [[NSString alloc] initWithFormat: @"%@%@&offset=%ld&max=%ld&q=%@%@&mobile=true%@&hub=%@&fq=isContributingDataToAla:T", BIOCOLLECT_SERVER, BIO_PROJECT_SEARCH, (long)offset, (long)max, (NSString*) query, (NSString*) params, userPage,hubName];
     NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [request setURL:[NSURL URLWithString:escapedUrlString]];
     [request setValue:[GASettings getEmailAddress] forHTTPHeaderField:@"userName"];

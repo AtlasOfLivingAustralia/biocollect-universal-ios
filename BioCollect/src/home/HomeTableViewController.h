@@ -25,9 +25,6 @@
 @property (nonatomic, strong) NSString *searchParams;
 @property (nonatomic, assign) BOOL isUserPage;
 @property (nonatomic, assign) BOOL loadingFinished;
-@property (nonatomic, assign) BOOL activeChecked;
-@property (nonatomic, assign) BOOL completedChecked;
-@property (nonatomic, assign) BOOL dataSharingChecked;
 
 
 //Search flag
@@ -41,6 +38,5 @@
 @property (nonatomic, strong) NSMutableArray * bioProjects;
 
 - (void) resetProjects;
-- (id) initWithNibNameForMyProjects :(NSString *)nibNameOrNil bundle:(NSBundle *) nibBundleOrNil;
 @end
 

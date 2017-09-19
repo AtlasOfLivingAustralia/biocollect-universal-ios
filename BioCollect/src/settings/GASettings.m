@@ -166,7 +166,7 @@
     value = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_Home_Login_Image_Logo"];
     
     if (value == (id)[NSNull null] || value.length == 0 ) {
-        value = @"ALA-logo-inline.png";
+        value = @"biocontrol_logo.png";
     }
     return value;
 }

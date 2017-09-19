@@ -247,6 +247,12 @@
             webViewController.title = [menuAttributes objectForKey:@"title"];
             GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
             [appDelegate.ozHomeNC presentViewController:webViewController animated:YES completion:NULL];
+        } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"web_external_url"]) {
+            NSString *url = [[NSString alloc] initWithFormat:@"%@", [menuAttributes objectForKey:@"url"]];
+            SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress: url];
+            webViewController.title = [menuAttributes objectForKey:@"title"];
+            GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+            [appDelegate.ozHomeNC presentViewController:webViewController animated:YES completion:NULL];
         } else {
             DebugLog(@"ERROR",@"Unsupported hub view.")
         }

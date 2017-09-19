@@ -84,10 +84,96 @@
 	</array>
     
     <!-- App Theme Configuration -->
+    <key>Bio_AppType</key>
+    <string>hubview</string>
+    <key>Bio_HubName</key>
+    <string></string>
     <key>Bio_Home_Login_Image_iPad</key>
     <string>bk_iPad</string>
     <key>Bio_Home_Login_Image_iPhone</key>
     <string>bk_iPhone</string>
-
+    <key>Bio_Home_Login_Image_Logo</key>
+    <string>ALA-logo-inline.png</string>
+    <key>Bio_Theme</key>
+    <string>#F1582B</string>
+    <key>Bio_Home_BK_Big</key>
+    <string>biocollect_home_bk.jpg</string>
+    <key>Bio_Home_BK_Small</key>
+    <string>biocollect_logo_1.png</string>
+    
+    <key>Bio_Menu</key>
+    <array>
+        <dict>
+            <key>title</key>
+            <string>Projects</string>
+            <key>icon</key>
+            <string>icon_briefcase</string>
+            <key>view</key>
+            <string>hub_projects</string>
+            <key>url</key>
+            <string></string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>All Records</string>
+            <key>icon</key>
+            <string>icon_all_records</string>
+            <key>view</key>
+            <string>hub_all_records</string>
+            <key>url</key>
+            <string></string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>My Projects</string>
+            <key>icon</key>
+            <string>icon_briefcase</string>
+            <key>view</key>
+            <string>hub_all_records</string>
+            <key>url</key>
+            <string></string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>My Records</string>
+            <key>icon</key>
+            <string>icon_all_records</string>
+            <key>view</key>
+            <string>hub_all_records</string>
+            <key>url</key>
+            <string></string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>Contact us</string>
+            <key>icon</key>
+            <string>icon_address</string>
+            <key>view</key>
+            <string>web_external_url</string>
+            <key>url</key>
+            <string><![CDATA[https://www.ala.org.au/who-we-are/contact-us/]]></string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>About BioCollect</string>
+            <key>icon</key>
+            <string>icon_about</string>
+            <key>view</key>
+            <string>web_external_url</string>
+            <key>url</key>
+            <string><![CDATA[https://www.ala.org.au/biocollect/]]></string>
+        </dict>
+        
+        <dict>
+            <key>title</key>
+            <string>About ALA</string>
+            <key>icon</key>
+            <string>icon_logo</string>
+            <key>view</key>
+            <string>web_external_url</string>
+            <key>url</key>
+            <string><![CDATA[https://www.ala.org.au/who-we-are/]]></string>
+        </dict>
+    </array>
 </dict>
 </plist>

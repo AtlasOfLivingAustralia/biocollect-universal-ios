@@ -36,7 +36,7 @@
 
 - (void)viewDidLoad
 {
-    [self.logoImageView setImage:[UIImage imageNamed: @"biocontrol_logo.png"]];
+    [self.logoImageView setImage:[UIImage imageNamed: [GASettings appLoginLogo]]];
     [super viewDidLoad];
 }
 

@@ -117,7 +117,7 @@
     
 
     // My projects
-    myProjectsVC = [[HomeTableViewController alloc] initWithNibNameForMyProjects:@"HomeTableViewController" bundle:nil];
+    myProjectsVC = [[HomeTableViewController alloc] initWithNibName:@"HomeTableViewController" bundle:nil];
     UINavigationController *myProjectsNC = [[UINavigationController alloc] initWithRootViewController: myProjectsVC];
     myProjectsNC.tabBarItem.title = @"My Projects";
     myProjectsNC.tabBarItem.image = [UIImage imageNamed:@"brief_filled-25"];
@@ -191,24 +191,15 @@
         [[UIBarButtonItem appearance] setTintColor: [self colorFromHexString: @"#F1582B"]];
         
     } else if([appType isEqualToString:@"hubview"]) {
-        /*tabBarController = [[UITabBarController alloc] init];
-        controllers = [NSArray arrayWithObjects: homeNC, recordsNC, myProjectsNC, myRecordsNC, nil];
-        tabBarController.viewControllers = controllers;
-        [[UINavigationBar appearance] setTranslucent:NO];
-        [self.window setRootViewController:tabBarController];
-        //[self.alaWKWebView homeView:nil];
-        [[UITabBar appearance] setTintColor: [self colorFromHexString: @"#F15A24"]];
-        [[UIBarButtonItem appearance] setTintColor: [self colorFromHexString: @"#F15A24"]];
-         */
-        
         [[UINavigationBar appearance] setBackgroundColor:[self colorFromHexString: @"#000000"]];
         [[UINavigationBar appearance] setTranslucent:NO];
-        [[UINavigationBar appearance] setTintColor: [self colorFromHexString: @"#F1582B"]];
         [self.window setRootViewController:ozHomeNC];
         [[UITabBar appearance] setTintColor: [self colorFromHexString: [GASettings appTheme]]];
         [[UIBarButtonItem appearance] setTintColor: [self colorFromHexString: [GASettings appTheme]]];
         
     } else {
+        // BioCollect View.
+        /*
         tabBarController = [[UITabBarController alloc] init];
         controllers = [NSArray arrayWithObjects: homeNC, recordsNC, myProjectsNC, myRecordsNC,contactNC, nil];
         tabBarController.viewControllers = controllers;
@@ -216,6 +207,11 @@
         [self.window setRootViewController:tabBarController];
         [[UITabBar appearance] setTintColor: [self colorFromHexString: @"#F1582B"]];
         [[UIBarButtonItem appearance] setTintColor: [self colorFromHexString: @"#F1582B"]];
+         */
+        [[UITabBar appearance] setTintColor: [self colorFromHexString: [GASettings appTheme]]];
+        [[UIBarButtonItem appearance] setTintColor: [self colorFromHexString: [GASettings appTheme]]];
+        [[UINavigationBar appearance] setTranslucent:NO];
+        [self.window setRootViewController:ozHomeNC];
     }
     
     

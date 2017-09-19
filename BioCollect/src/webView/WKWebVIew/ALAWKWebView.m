@@ -46,14 +46,7 @@
                                                                      target:self action:@selector(showOptions:)];
         self.navigationItem.leftBarButtonItems = [NSArray arrayWithObjects: leftMenu, nil];
         self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects: rightMenu, nil];
-        
-        
-        //AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        //UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[appDelegate.mkmUtil logoFileText]]];
-        //imageView.contentMode = UIViewContentModeCenter;
-        //self.navigationItem.titleView = imageView;
-        
-        
+
         [self.view addSubview:_webView];
         self.indicator.center = CGPointMake(CGRectGetMidX(_webView.bounds), CGRectGetMidY(_webView.bounds));
         [self.view addSubview:_indicator];
@@ -88,25 +81,14 @@
     if (message.body && [message.body isEqualToString:@"project-trigger"]) {
         // Switch tab.
         dispatch_async(dispatch_get_main_queue(), ^{
-            /*AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-            appDelegate.tabBarController.selectedViewController = [appDelegate.tabBarController.viewControllers objectAtIndex:1];
-            if([appDelegate.mkmUtil notReachable]) {
-                [MKMUtil internetDownError];
-            }
-            // Refreshing here, stuffs up the UI.
-            [appDelegate.notificationVC refresh];
-            */
+
         });
     }
 }
 
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
-    /*if ([keyPath isEqualToString:@"estimatedProgress"]) {
-     if ([change[NSKeyValueChangeKindKey] integerValue] == NSKeyValueObservingOptionNew) {
-     
-     }
-     }*/
+
 }
 
 -(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
@@ -120,16 +102,7 @@
         NSHTTPURLResponse * response = (NSHTTPURLResponse *)navigationResponse.response;
         if (response.statusCode != 200) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                
-                /*
-                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                 message:@"Authentication denied, try logging out and logging in again."
-                 delegate:nil
-                 cancelButtonTitle:@"Cancel"
-                 otherButtonTitles:nil];
-                 [alert show];
-                 */
-                
+
             });
         }
         
@@ -153,30 +126,12 @@
         appDelegate.tabBarController.selectedViewController = [appDelegate.tabBarController.viewControllers objectAtIndex:0];
         [self setLoadRequest];
         [_webView loadRequest:request];
-        
-        /*
-        if([appDelegate.mkmUtil notReachable]) {
-            [MKMUtil internetDownError];
-        }
-        */
     });
 }
 
 -(void) setLoadRequest {
     
     GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
-    /*
-    if([appDelegate.mkmUtil notReachable]) {
-        [MKMUtil internetDownError];
-        return;
-    }
-    */
-    //[request setHTTPMethod:@"POST"];
-    //[request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    //NSString *token = appDelegate.user && appDelegate.user.accessToken ? appDelegate.user.accessToken : @"";
-    //[request setValue: [[NSString alloc] initWithFormat:@"Bearer %@",token] forHTTPHeaderField:@"Authorization"];
-    //[request setTimeoutInterval: DEFAULT_TIMEOUT];
-    
     [_webView loadRequest:request];
     [_webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
 }

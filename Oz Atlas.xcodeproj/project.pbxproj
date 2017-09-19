@@ -68,7 +68,7 @@
 		E20B2D9C1F009005006782A2 /* icon_search_plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E20B2D9A1F009005006782A2 /* icon_search_plus@2x.png */; };
 		E20D1B561CDC145100A3607B /* AboutiPhoneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E20D1B551CDC145100A3607B /* AboutiPhoneView.xib */; };
 		E20D1B581CDC570800A3607B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E20D1B571CDC570800A3607B /* LaunchScreen.storyboard */; };
-		E211B04A1CE18A3E00DBC1AF /* 512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = E211B0491CE18A3E00DBC1AF /* 512x512.png */; };
+		E211B04A1CE18A3E00DBC1AF /* biocollect_logo_1.png in Resources */ = {isa = PBXBuildFile; fileRef = E211B0491CE18A3E00DBC1AF /* biocollect_logo_1.png */; };
 		E211B04C1CE18BC500DBC1AF /* BioCollect-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E211B04B1CE18BC500DBC1AF /* BioCollect-logo.png */; };
 		E21BCB7E1CEAA1A200FFFE5F /* ContactiPhoneVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E21BCB7D1CEAA1A200FFFE5F /* ContactiPhoneVC.xib */; };
 		E21CD17F1CEAF7E80021536B /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E21CD17E1CEAF7E80021536B /* Images-2.xcassets */; };
@@ -288,7 +288,7 @@
 		E26638EE1F52EB9B00F1F1CE /* icon_search_plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E20B2D9A1F009005006782A2 /* icon_search_plus@2x.png */; };
 		E26638EF1F52EB9B00F1F1CE /* ContactVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E24E0B291CE40464006ECE0E /* ContactVC.xib */; };
 		E26638F01F52EB9B00F1F1CE /* loc1_changed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E22045CD192D8F4800531116 /* loc1_changed@2x.png */; };
-		E26638F11F52EB9B00F1F1CE /* 512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = E211B0491CE18A3E00DBC1AF /* 512x512.png */; };
+		E26638F11F52EB9B00F1F1CE /* biocollect_logo_1.png in Resources */ = {isa = PBXBuildFile; fileRef = E211B0491CE18A3E00DBC1AF /* biocollect_logo_1.png */; };
 		E26638F21F52EB9B00F1F1CE /* sync-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E22045D0192D9EEC00531116 /* sync-25@2x.png */; };
 		E26638F31F52EB9B00F1F1CE /* SVWebViewControllerActivityChrome-iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B87373C41DB6DFE90057027E /* SVWebViewControllerActivityChrome-iPad@2x.png */; };
 		E26638F41F52EB9B00F1F1CE /* RecordWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E23AF5221C918862002501F3 /* RecordWebView.xib */; };
@@ -400,6 +400,7 @@
 		E266395E1F52EB9B00F1F1CE /* bk_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = E28AF9B91EC4310A007042C4 /* bk_iPad.png */; };
 		E266395F1F52EB9B00F1F1CE /* Default-568.png in Resources */ = {isa = PBXBuildFile; fileRef = E2DCF1EF1CF6A19C008D438C /* Default-568.png */; };
 		E26639601F52EB9B00F1F1CE /* icon_my_records@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E25D8EFC1EE5813200ED4D0F /* icon_my_records@2x.png */; };
+		E26F18F71F678B760084485A /* biocollect_home_bk.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E26F18F61F678B760084485A /* biocollect_home_bk.jpg */; };
 		E27B3F961EF62BB500DBB47D /* icon_address@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E27B3F941EF62BB500DBB47D /* icon_address@2x.png */; };
 		E27B3F971EF62BB500DBB47D /* icon_address@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E27B3F941EF62BB500DBB47D /* icon_address@2x.png */; };
 		E27B3F981EF62BB500DBB47D /* icon_street_view@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E27B3F951EF62BB500DBB47D /* icon_street_view@2x.png */; };
@@ -624,7 +625,7 @@
 		E2AECF491E73D3010035DF28 /* action-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E22045CF192D9EEC00531116 /* action-25@2x.png */; };
 		E2AECF4A1E73D3010035DF28 /* ContactVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E24E0B291CE40464006ECE0E /* ContactVC.xib */; };
 		E2AECF4B1E73D3010035DF28 /* loc1_changed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E22045CD192D8F4800531116 /* loc1_changed@2x.png */; };
-		E2AECF4C1E73D3010035DF28 /* 512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = E211B0491CE18A3E00DBC1AF /* 512x512.png */; };
+		E2AECF4C1E73D3010035DF28 /* biocollect_logo_1.png in Resources */ = {isa = PBXBuildFile; fileRef = E211B0491CE18A3E00DBC1AF /* biocollect_logo_1.png */; };
 		E2AECF4D1E73D3010035DF28 /* sync-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E22045D0192D9EEC00531116 /* sync-25@2x.png */; };
 		E2AECF4E1E73D3010035DF28 /* SVWebViewControllerActivityChrome-iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B87373C41DB6DFE90057027E /* SVWebViewControllerActivityChrome-iPad@2x.png */; };
 		E2AECF4F1E73D3010035DF28 /* RecordWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E23AF5221C918862002501F3 /* RecordWebView.xib */; };
@@ -880,7 +881,7 @@
 		E20B2D9A1F009005006782A2 /* icon_search_plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_search_plus@2x.png"; path = "src/images/icon_search_plus@2x.png"; sourceTree = "<group>"; };
 		E20D1B551CDC145100A3607B /* AboutiPhoneView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutiPhoneView.xib; path = src/about/AboutiPhoneView.xib; sourceTree = "<group>"; };
 		E20D1B571CDC570800A3607B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = src/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		E211B0491CE18A3E00DBC1AF /* 512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 512x512.png; path = src/images/512x512.png; sourceTree = "<group>"; };
+		E211B0491CE18A3E00DBC1AF /* biocollect_logo_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = biocollect_logo_1.png; path = src/images/biocollect_logo_1.png; sourceTree = "<group>"; };
 		E211B04B1CE18BC500DBC1AF /* BioCollect-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BioCollect-logo.png"; path = "src/images/BioCollect-logo.png"; sourceTree = "<group>"; };
 		E21BCB7D1CEAA1A200FFFE5F /* ContactiPhoneVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ContactiPhoneVC.xib; path = src/contact/ContactiPhoneVC.xib; sourceTree = "<group>"; };
 		E21CD17E1CEAF7E80021536B /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
@@ -991,6 +992,7 @@
 		E2636E351CF43C4100000371 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+WebCacheOperation.m"; path = "src/SDWebImage/UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		E26639641F52EB9B00F1F1CE /* Bio Control Hub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bio Control Hub.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E26639651F52EB9C00F1F1CE /* BioControlHub.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = BioControlHub.plist; path = "/Users/sat01a/All/sat01a_git/biocollect-universal-ios-3/BioControlHub.plist"; sourceTree = "<absolute>"; };
+		E26F18F61F678B760084485A /* biocollect_home_bk.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = biocollect_home_bk.jpg; path = src/images/biocollect/biocollect_home_bk.jpg; sourceTree = "<group>"; };
 		E27B3F941EF62BB500DBB47D /* icon_address@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_address@2x.png"; path = "src/images/icon_address@2x.png"; sourceTree = "<group>"; };
 		E27B3F951EF62BB500DBB47D /* icon_street_view@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_street_view@2x.png"; path = "src/images/icon_street_view@2x.png"; sourceTree = "<group>"; };
 		E27B8EF21EF4E5FE00B01FAB /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
@@ -1474,6 +1476,7 @@
 		B8D551DF18F98B7800EDD006 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E26F18F51F6789970084485A /* biocollect */,
 				E2BA840C1F5EACD7008BE68F /* extras */,
 				E2BA840B1F5EACA3008BE68F /* ozatlas */,
 				E2BA84021F582828008BE68F /* biocontrolhub */,
@@ -1628,6 +1631,20 @@
 				E21BCB7D1CEAA1A200FFFE5F /* ContactiPhoneVC.xib */,
 			);
 			name = Contact;
+			sourceTree = "<group>";
+		};
+		E26F18F51F6789970084485A /* biocollect */ = {
+			isa = PBXGroup;
+			children = (
+				E26F18F61F678B760084485A /* biocollect_home_bk.jpg */,
+				E2424C3F1F0F624300E4E13F /* bk_iPhone.png */,
+				E2B6274E1CE40F8800A89179 /* BioCollect-text.png */,
+				E211B04B1CE18BC500DBC1AF /* BioCollect-logo.png */,
+				E2B627501CE4119A00A89179 /* BioCollect-text-small.png */,
+				E28AF9B91EC4310A007042C4 /* bk_iPad.png */,
+				E211B0491CE18A3E00DBC1AF /* biocollect_logo_1.png */,
+			);
+			name = biocollect;
 			sourceTree = "<group>";
 		};
 		E27B8EF11EF4E5FE00B01FAB /* AFNetworking */ = {
@@ -1842,9 +1859,7 @@
 			isa = PBXGroup;
 			children = (
 				E25D8EF61EE57E8600ED4D0F /* camera_icon.png */,
-				E2424C3F1F0F624300E4E13F /* bk_iPhone.png */,
 				E2C544461ECDCA8C00641951 /* edit_icon@2x.png */,
-				E28AF9B91EC4310A007042C4 /* bk_iPad.png */,
 				E247DD6E1EC33C5900A1C0A5 /* BioCollect-Name-Only.png */,
 				E29402931EBC061D00CCFEE7 /* header-logo@2x.png */,
 				E2636DDC1CF2E68500000371 /* home_filled-25@2x.png */,
@@ -1854,11 +1869,7 @@
 				E2636DD51CF2E57C00000371 /* briefcase_filled-25@2x.png */,
 				E2636DD61CF2E57C00000371 /* contact_filled-25@2x.png */,
 				E2E24AC11CED4DDF00F6D4CA /* table-place-holder.png */,
-				E2B6274E1CE40F8800A89179 /* BioCollect-text.png */,
-				E211B04B1CE18BC500DBC1AF /* BioCollect-logo.png */,
-				E2B627501CE4119A00A89179 /* BioCollect-text-small.png */,
 				E20026381C926F250045C130 /* csiro-logo.png */,
-				E211B0491CE18A3E00DBC1AF /* 512x512.png */,
 				E2A2FFCC1C8547A5008B63A8 /* ala_logo1.png */,
 				E2A2FFCA1C8546F0008B63A8 /* ala_logo.png */,
 				E241C67F196A3061002302D7 /* pad-1@2x.png */,
@@ -2232,7 +2243,7 @@
 				E26638EE1F52EB9B00F1F1CE /* icon_search_plus@2x.png in Resources */,
 				E26638EF1F52EB9B00F1F1CE /* ContactVC.xib in Resources */,
 				E26638F01F52EB9B00F1F1CE /* loc1_changed@2x.png in Resources */,
-				E26638F11F52EB9B00F1F1CE /* 512x512.png in Resources */,
+				E26638F11F52EB9B00F1F1CE /* biocollect_logo_1.png in Resources */,
 				E26638F21F52EB9B00F1F1CE /* sync-25@2x.png in Resources */,
 				E26638F31F52EB9B00F1F1CE /* SVWebViewControllerActivityChrome-iPad@2x.png in Resources */,
 				E26638F41F52EB9B00F1F1CE /* RecordWebView.xib in Resources */,
@@ -2374,7 +2385,7 @@
 				E2AECF4B1E73D3010035DF28 /* loc1_changed@2x.png in Resources */,
 				E25D8F021EE5813200ED4D0F /* icon_draft@2x.png in Resources */,
 				E2424C461F0F634F00E4E13F /* oz_iPad.jpg in Resources */,
-				E2AECF4C1E73D3010035DF28 /* 512x512.png in Resources */,
+				E2AECF4C1E73D3010035DF28 /* biocollect_logo_1.png in Resources */,
 				E27B8F5A1EF526C200B01FAB /* ala_logo_transparent.png in Resources */,
 				E2AECF4D1E73D3010035DF28 /* sync-25@2x.png in Resources */,
 				E2AECF4E1E73D3010035DF28 /* SVWebViewControllerActivityChrome-iPad@2x.png in Resources */,
@@ -2413,6 +2424,7 @@
 				E2AECF671E73D3010035DF28 /* SVWebViewController.bundle in Resources */,
 				E2AECF681E73D3010035DF28 /* ContactiPhoneVC.xib in Resources */,
 				E2BA84001F558BA4008BE68F /* ALAWKWebView.xib in Resources */,
+				E26F18F71F678B760084485A /* biocollect_home_bk.jpg in Resources */,
 				E2AECF691E73D3010035DF28 /* pad@2x.png in Resources */,
 				E2AECF6B1E73D3010035DF28 /* EULAiPhoneViewController.xib in Resources */,
 				E2A6BEC31F0CCFC000F1A57E /* Insects.jpg in Resources */,
@@ -2501,7 +2513,7 @@
 				E20B2D9B1F009005006782A2 /* icon_search_plus@2x.png in Resources */,
 				E24E0B2A1CE40464006ECE0E /* ContactVC.xib in Resources */,
 				E22045CE192D8F4800531116 /* loc1_changed@2x.png in Resources */,
-				E211B04A1CE18A3E00DBC1AF /* 512x512.png in Resources */,
+				E211B04A1CE18A3E00DBC1AF /* biocollect_logo_1.png in Resources */,
 				E22045D2192D9EEC00531116 /* sync-25@2x.png in Resources */,
 				B87373D71DB6DFE90057027E /* SVWebViewControllerActivityChrome-iPad@2x.png in Resources */,
 				E23AF5231C918862002501F3 /* RecordWebView.xib in Resources */,

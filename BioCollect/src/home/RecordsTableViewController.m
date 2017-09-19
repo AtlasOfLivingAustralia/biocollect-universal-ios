@@ -128,7 +128,7 @@
     
         self.surveyListMenu = nil;
         NSMutableArray *list = [[NSMutableArray alloc] init];
-        for (int i = 0; i <[pActivties count]; i++) {
+        for (int i = 0; i < [pActivties count]; i++) {
             ProjectActivity *pa = pActivties[i];
             [list addObject:pa.name];
         }
@@ -145,7 +145,7 @@
         self.menu = [JGActionSheet actionSheetWithSections: sections];
         
         //Assign delegate.
-         [self.menu setDelegate:self];
+        [self.menu setDelegate:self];
         
         if([self.tableView isDescendantOfView:self.view]){
             [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
@@ -498,9 +498,6 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     NSString *currentUrl = webView.request.URL.absoluteString;
     if([currentUrl hasSuffix: @"#successfully-posted"]) {
-       /*
-        [RKDropdownAlert title:@"Successfully Submitted." message:@"Submitted record will be visible in few seconds!" backgroundColor:[UIColor colorWithRed:58.0/255.0 green:58.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] time:5];
-        */
         [RKDropdownAlert title:@"Successfully Submitted." message:@"Submitted record will be visible in few seconds!" backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
         
         [self.webViewController dismissViewControllerAnimated:false completion:NULL];
