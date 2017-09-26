@@ -235,12 +235,20 @@
 
     if([menuItems count] > indexPath.row) {
         NSDictionary *menuAttributes = menuItems [indexPath.row];
-        if([[menuAttributes objectForKey:@"view"] isEqualToString:@"hub_all_records"]){
-            RecordsTableViewController *recordsVC = [[RecordsTableViewController alloc] initWithNibName:@"RecordsTableViewController" bundle:nil];
-            [spotyViewController.navigationController pushViewController: recordsVC animated:TRUE];
-        } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"hub_projects"]) {
+        if([[menuAttributes objectForKey:@"view"] isEqualToString:@"hub_projects"]) {
             HomeTableViewController *homeVC = [[HomeTableViewController alloc] initWithNibName:@"HomeTableViewController" bundle:nil];
             [spotyViewController.navigationController pushViewController: homeVC animated:TRUE];
+        } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"my_hub_projects"]) {
+            HomeTableViewController *homeVC = [[HomeTableViewController alloc] initWithNibName:@"HomeTableViewController" bundle:nil];
+            homeVC.isUserPage = TRUE;
+            [spotyViewController.navigationController pushViewController: homeVC animated:TRUE];
+        } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"hub_all_records"]){
+            RecordsTableViewController *recordsVC = [[RecordsTableViewController alloc] initWithNibName:@"RecordsTableViewController" bundle:nil];
+            [spotyViewController.navigationController pushViewController: recordsVC animated:TRUE];
+        } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"my_hub_records"]){
+            RecordsTableViewController *recordsVC = [[RecordsTableViewController alloc] initWithNibName:@"RecordsTableViewController" bundle:nil];
+            recordsVC.myRecords = TRUE;
+            [spotyViewController.navigationController pushViewController: recordsVC animated:TRUE];
         } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"web_url"]) {
             NSString *url = [[NSString alloc] initWithFormat:@"%@%@", BIOCOLLECT_SERVER, [menuAttributes objectForKey:@"url"]];
             SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress: url];

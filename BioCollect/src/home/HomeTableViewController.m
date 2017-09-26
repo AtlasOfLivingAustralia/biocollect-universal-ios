@@ -53,7 +53,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
 
     if (self) {
-        
         //Initialise
         self.showUserActions = TRUE;
         [self initialise];
@@ -127,10 +126,10 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     NSString *title = nil;
     if(self.isSearching) {
-      title = @"";
+      title = [[NSString alloc] initWithFormat:@"Found %ld projects", (long)self.totalProjects];
     } else if(self.loadingFinished && (long)self.totalProjects > 0){
         title = [[NSString alloc] initWithFormat:@"Found %ld projects", (long)self.totalProjects];
-    } else{
+    } else {
        title = [[NSString alloc] initWithFormat:@"Loading..."];
     }
     return title;
@@ -235,10 +234,10 @@
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
     myLabel.frame = CGRectMake(0, 0, screenWidth, 30);
-    myLabel.backgroundColor = [UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1];
+    myLabel.backgroundColor = [UIColor colorWithRed:53/255.0 green:54/255.0 blue:49/255.0 alpha:1];
     myLabel.textAlignment = UITextAlignmentCenter;
     myLabel.text = [self tableView:tableView titleForHeaderInSection:section];
-    myLabel.textColor = [UIColor whiteColor];
+    myLabel.textColor = [UIColor grayColor];
     UIView *headerView = [[UIView alloc] init];
     [headerView addSubview:myLabel];
     

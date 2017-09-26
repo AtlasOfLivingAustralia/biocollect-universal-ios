@@ -199,15 +199,6 @@
         
     } else {
         // BioCollect View.
-        /*
-        tabBarController = [[UITabBarController alloc] init];
-        controllers = [NSArray arrayWithObjects: homeNC, recordsNC, myProjectsNC, myRecordsNC,contactNC, nil];
-        tabBarController.viewControllers = controllers;
-        [[UINavigationBar appearance] setTranslucent:NO];
-        [self.window setRootViewController:tabBarController];
-        [[UITabBar appearance] setTintColor: [self colorFromHexString: @"#F1582B"]];
-        [[UIBarButtonItem appearance] setTintColor: [self colorFromHexString: @"#F1582B"]];
-         */
         [[UITabBar appearance] setTintColor: [self colorFromHexString: [GASettings appTheme]]];
         [[UIBarButtonItem appearance] setTintColor: [self colorFromHexString: [GASettings appTheme]]];
         [[UINavigationBar appearance] setTranslucent:NO];

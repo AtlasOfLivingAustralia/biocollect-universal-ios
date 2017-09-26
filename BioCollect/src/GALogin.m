@@ -94,20 +94,11 @@
                 [appDelegate.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
                 
                 NSString *appType = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_AppType"];
-                if([appType isEqualToString:@"custom"]) {
-                    [UIView transitionWithView:appDelegate.window
-                                      duration:0.5
-                                       options:UIViewAnimationOptionTransitionFlipFromLeft
-                                    animations:^{ appDelegate.window.rootViewController = appDelegate.ozHomeNC; }
-                                    completion:nil];
-                }
-                else {
-                    [UIView transitionWithView:appDelegate.window
-                                      duration:0.5
-                                       options:UIViewAnimationOptionTransitionFlipFromLeft
-                                    animations:^{ appDelegate.window.rootViewController = appDelegate.tabBarController; }
-                                    completion:nil];
-                }
+                [UIView transitionWithView:appDelegate.window
+                                  duration:0.5
+                                   options:UIViewAnimationOptionTransitionFlipFromLeft
+                                animations:^{ appDelegate.window.rootViewController = appDelegate.ozHomeNC; }
+                                completion:nil];
             }
         });
     });
