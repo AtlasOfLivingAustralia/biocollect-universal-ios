@@ -11,5 +11,5 @@
 
 @interface OzHomeVC : MGSpotyViewController <UINavigationControllerDelegate>
 
-
+- (void) updateGreetingsLabel;
 @end

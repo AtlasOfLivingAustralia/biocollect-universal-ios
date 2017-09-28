@@ -261,7 +261,9 @@
             webViewController.title = [menuAttributes objectForKey:@"title"];
             GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
             [appDelegate.ozHomeNC presentViewController:webViewController animated:YES completion:NULL];
-        } else {
+        } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"version"]) {
+            [RKDropdownAlert title:[[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleDisplayName"] message:[GASettings appVersion] backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+        }else {
             DebugLog(@"ERROR",@"Unsupported hub view.")
         }
     }
