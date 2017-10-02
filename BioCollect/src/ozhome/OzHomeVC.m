@@ -181,11 +181,6 @@
 
 - (void)handleTap:(UITapGestureRecognizer *)sender
 {
-    if (sender.state == UIGestureRecognizerStateEnded) {
-        RecordViewController *recordViewController = [[RecordViewController alloc] init];
-        recordViewController.title = @"Record Species";
-        [self.navigationController pushViewController:recordViewController animated:TRUE];
-    }
     [self updateGreetingsLabel];
 }
 

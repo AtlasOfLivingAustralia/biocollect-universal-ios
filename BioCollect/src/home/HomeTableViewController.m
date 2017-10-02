@@ -99,7 +99,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     if(self.totalProjects  == 0) {
-        [self downloadProjects];
+        [self resetAndDownloadProjects];
     }
 }
 
@@ -124,15 +124,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSString *title = nil;
-    if(self.isSearching) {
-      title = [[NSString alloc] initWithFormat:@"Found %ld projects", (long)self.totalProjects];
-    } else if(self.loadingFinished && (long)self.totalProjects > 0){
-        title = [[NSString alloc] initWithFormat:@"Found %ld projects", (long)self.totalProjects];
-    } else {
-       title = [[NSString alloc] initWithFormat:@"Loading..."];
-    }
-    return title;
+    return [[NSString alloc] initWithFormat:@"Found %ld projects", (long)self.totalProjects];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath: (NSIndexPath *)indexPath {
@@ -211,7 +203,6 @@
 }
 
 - (void) load {
-    
     //Reached the max.
     if(self.totalProjects != 0 && [self.bioProjects count] != 0 && self.totalProjects  == [self.bioProjects count]) {
         DebugLog(@"Downloaded all the projects (%ld)", [self.bioProjects count]);
