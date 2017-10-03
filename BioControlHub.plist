@@ -121,14 +121,34 @@
             <string></string>
         </dict>
         <dict>
+            <key>icon</key>
+            <string>icon_all_records</string>
             <key>title</key>
-            <string>Case Studies</string>
+            <string>My Data</string>
+            <key>url</key>
+            <string></string>
+            <key>view</key>
+            <string>my_hub_records</string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>What is Biological Control?</string>
             <key>icon</key>
             <string></string>
             <key>view</key>
             <string>web_url</string>
             <key>url</key>
-            <string><![CDATA[/biocontrolhub/staticPage/index?page=related_websites&mobile=true]]></string>
+            <string><![CDATA[/biocontrolhub/staticPage/index?page=what_is_biocontrol&mobile=true]]></string>
+        </dict>
+        <dict>
+            <key>title</key>
+            <string>Sharing and using data</string>
+            <key>icon</key>
+            <string></string>
+            <key>view</key>
+            <string>web_url</string>
+            <key>url</key>
+            <string><![CDATA[/biocontrolhub/staticPage/index?page=get_involved&mobile=true]]></string>
         </dict>
         <dict>
             <key>title</key>
@@ -138,17 +158,7 @@
             <key>view</key>
             <string>web_url</string>
             <key>url</key>
-            <string><![CDATA[/biocontrolhub/staticPage/index?page=materialss&mobile=true]]></string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>How can I get involved</string>
-            <key>icon</key>
-            <string></string>
-            <key>view</key>
-            <string>web_url</string>
-            <key>url</key>
-            <string><![CDATA[/biocontrolhub/staticPage/index?page=get_involved]]></string>
+            <string><![CDATA[/biocontrolhub/staticPage/index?page=materials&mobile=true]]></string>
         </dict>
         <dict>
             <key>title</key>
@@ -158,7 +168,17 @@
             <key>view</key>
             <string>web_url</string>
             <key>url</key>
-            <string><![CDATA[/biocontrolhub/staticPage/index?page=what_is_biocontrol&mobile=true]]></string>
+            <string><![CDATA[/biocontrolhub/staticPage/index?page=identify_biocontrol_agents&mobile=true]]></string>
+        </dict>
+        <dict>
+            <key>icon</key>
+            <string>icon_about</string>
+            <key>title</key>
+            <string>BioCollect</string>
+            <key>url</key>
+            <string>https://www.ala.org.au/biocollect/</string>
+            <key>view</key>
+            <string>web_external_url</string>
         </dict>
     </array>
 </dict>
