@@ -237,17 +237,21 @@
         NSDictionary *menuAttributes = menuItems [indexPath.row];
         if([[menuAttributes objectForKey:@"view"] isEqualToString:@"hub_projects"]) {
             HomeTableViewController *homeVC = [[HomeTableViewController alloc] initWithNibName:@"HomeTableViewController" bundle:nil];
+            homeVC.title = [menuAttributes objectForKey:@"title"];
             [spotyViewController.navigationController pushViewController: homeVC animated:TRUE];
         } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"my_hub_projects"]) {
             HomeTableViewController *homeVC = [[HomeTableViewController alloc] initWithNibName:@"HomeTableViewController" bundle:nil];
             homeVC.isUserPage = TRUE;
+            homeVC.title = [menuAttributes objectForKey:@"title"];
             [spotyViewController.navigationController pushViewController: homeVC animated:TRUE];
         } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"hub_all_records"]){
             RecordsTableViewController *recordsVC = [[RecordsTableViewController alloc] initWithNibName:@"RecordsTableViewController" bundle:nil];
+            recordsVC.title = [menuAttributes objectForKey:@"title"];
             [spotyViewController.navigationController pushViewController: recordsVC animated:TRUE];
         } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"my_hub_records"]){
             RecordsTableViewController *recordsVC = [[RecordsTableViewController alloc] initWithNibName:@"RecordsTableViewController" bundle:nil];
             recordsVC.myRecords = TRUE;
+            recordsVC.title = [menuAttributes objectForKey:@"title"];
             [spotyViewController.navigationController pushViewController: recordsVC animated:TRUE];
         } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"web_url"]) {
             NSString *url = [[NSString alloc] initWithFormat:@"%@%@", BIOCOLLECT_SERVER, [menuAttributes objectForKey:@"url"]];
