@@ -14,6 +14,10 @@
 #define ECODATA_SERVER @"https://ecodata.ala.org.au"
 #define BIOCOLLECT_SERVER @"https://biocollect.ala.org.au"
 
+
+//#define ECODATA_SERVER @"http://devt.ala.org.au:8080/ecodata"
+//#define BIOCOLLECT_SERVER @"http://devt.ala.org.au:8087/biocollect"
+
 #define LIST_PROJECT_ACTIVITIES @"/ws/survey/list"
 #define AUTOCOMPLETE_URL @"http://bie.ala.org.au/ws/search.json?sort=scientificName&q="
 #define AUTH_SERVER  @"https://auth.ala.org.au"

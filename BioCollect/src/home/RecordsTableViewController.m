@@ -256,11 +256,8 @@
         
         NSString *description = [[NSString alloc] initWithFormat:@"%@, %@, %@", activity.activityOwnerName, lastUpdated, activity.activityName];
         cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@", description];
-        
-        NSString *url = [[NSString alloc] initWithFormat: @"%@", activity.thumbnailUrl];
-        NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        
-        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:escapedUrlString]
+
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:activity.thumbnailUrl]
                           placeholderImage:[UIImage imageNamed:@"noImage85.jpg"]];
        
         if(activity.showCrud) {

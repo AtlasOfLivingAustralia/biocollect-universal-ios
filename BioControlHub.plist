@@ -2,6 +2,115 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Bio_AppType</key>
+	<string>hubview</string>
+	<key>Bio_Home_BK_Big</key>
+	<string>biocontrolhub_home_bk.jpg</string>
+	<key>Bio_Home_BK_Small</key>
+	<string>biocontrolhub_bk_small</string>
+	<key>Bio_Home_Login_Image_Logo</key>
+	<string>biocontrol_logo.png</string>
+	<key>Bio_Home_Login_Image_iPad</key>
+	<string>biocontrolhub_iPad.jpg</string>
+	<key>Bio_Home_Login_Image_iPhone</key>
+	<string>biocontrolhub_iPhone.jpg</string>
+	<key>Bio_HubName</key>
+	<string>biocontrolhub</string>
+	<key>Bio_Menu</key>
+	<array>
+		<dict>
+			<key>icon</key>
+			<string>icon_briefcase</string>
+			<key>title</key>
+			<string>Biocontrol Projects</string>
+			<key>url</key>
+			<string></string>
+			<key>view</key>
+			<string>hub_projects</string>
+		</dict>
+		<dict>
+			<key>icon</key>
+			<string>icon_all_records</string>
+			<key>title</key>
+			<string>Data</string>
+			<key>url</key>
+			<string></string>
+			<key>view</key>
+			<string>hub_all_records</string>
+		</dict>
+		<dict>
+			<key>icon</key>
+			<string>icon_all_records</string>
+			<key>title</key>
+			<string>My Data</string>
+			<key>url</key>
+			<string></string>
+			<key>view</key>
+			<string>my_hub_records</string>
+		</dict>
+		<dict>
+			<key>icon</key>
+			<string></string>
+			<key>title</key>
+			<string>What is Biological Control?</string>
+			<key>url</key>
+			<string>/biocontrolhub/staticPage/index?page=what_is_biocontrol&amp;mobile=true</string>
+			<key>view</key>
+			<string>web_url</string>
+		</dict>
+		<dict>
+			<key>icon</key>
+			<string></string>
+			<key>title</key>
+			<string>Sharing and using data</string>
+			<key>url</key>
+			<string>/biocontrolhub/staticPage/index?page=get_involved&amp;mobile=true</string>
+			<key>view</key>
+			<string>web_url</string>
+		</dict>
+		<dict>
+			<key>icon</key>
+			<string></string>
+			<key>title</key>
+			<string>Additional Resources</string>
+			<key>url</key>
+			<string>/biocontrolhub/staticPage/index?page=materials&amp;mobile=true</string>
+			<key>view</key>
+			<string>web_url</string>
+		</dict>
+		<dict>
+			<key>icon</key>
+			<string></string>
+			<key>title</key>
+			<string>About</string>
+			<key>url</key>
+			<string>/biocontrolhub/staticPage/index?page=identify_biocontrol_agents&amp;mobile=true</string>
+			<key>view</key>
+			<string>web_url</string>
+		</dict>
+		<dict>
+			<key>icon</key>
+			<string>icon_about</string>
+			<key>title</key>
+			<string>BioCollect</string>
+			<key>url</key>
+			<string>https://www.ala.org.au/biocollect/</string>
+			<key>view</key>
+			<string>web_external_url</string>
+		</dict>
+		<dict>
+			<key>icon</key>
+			<string>icon_logo</string>
+			<key>na</key>
+			<string>na</string>
+			<key>title</key>
+			<string>App version</string>
+			<key>view</key>
+			<string>version</string>
+		</dict>
+	</array>
+	<key>Bio_Theme</key>
+	<string>#F15A24</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -25,7 +134,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>01</string>
+	<string>02</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -80,106 +189,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    
-    <!-- App Theme Configuration -->
-    <key>Bio_AppType</key>
-    <string>hubview</string>
-    <key>Bio_HubName</key>
-    <string>biocontrolhub</string>
-    <key>Bio_Home_Login_Image_Logo</key>
-    <string>biocontrol_logo.png</string>
-    <key>Bio_Home_Login_Image_iPad</key>
-    <string>biocontrolhub_iPad.jpg</string>
-    <key>Bio_Home_Login_Image_iPhone</key>
-    <string>biocontrolhub_iPhone.jpg</string>
-    <key>Bio_Home_BK_Big</key>
-    <string>biocontrolhub_home_bk.jpg</string>
-    <key>Bio_Home_BK_Small</key>
-    <string>biocontrolhub_bk_small</string>
-    <key>Bio_Theme</key>
-    <string>#F15A24</string>
-    <key>Bio_Menu</key>
-    <array>
-        <dict>
-            <key>title</key>
-            <string>Biocontrol Projects</string>
-            <key>icon</key>
-            <string>icon_briefcase</string>
-            <key>view</key>
-            <string>hub_projects</string>
-            <key>url</key>
-            <string></string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>Data</string>
-            <key>icon</key>
-            <string>icon_all_records</string>
-            <key>view</key>
-            <string>hub_all_records</string>
-            <key>url</key>
-            <string></string>
-        </dict>
-        <dict>
-            <key>icon</key>
-            <string>icon_all_records</string>
-            <key>title</key>
-            <string>My Data</string>
-            <key>url</key>
-            <string></string>
-            <key>view</key>
-            <string>my_hub_records</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>What is Biological Control?</string>
-            <key>icon</key>
-            <string></string>
-            <key>view</key>
-            <string>web_url</string>
-            <key>url</key>
-            <string><![CDATA[/biocontrolhub/staticPage/index?page=what_is_biocontrol&mobile=true]]></string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>Sharing and using data</string>
-            <key>icon</key>
-            <string></string>
-            <key>view</key>
-            <string>web_url</string>
-            <key>url</key>
-            <string><![CDATA[/biocontrolhub/staticPage/index?page=get_involved&mobile=true]]></string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>Additional Resources</string>
-            <key>icon</key>
-            <string></string>
-            <key>view</key>
-            <string>web_url</string>
-            <key>url</key>
-            <string><![CDATA[/biocontrolhub/staticPage/index?page=materials&mobile=true]]></string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>About</string>
-            <key>icon</key>
-            <string></string>
-            <key>view</key>
-            <string>web_url</string>
-            <key>url</key>
-            <string><![CDATA[/biocontrolhub/staticPage/index?page=identify_biocontrol_agents&mobile=true]]></string>
-        </dict>
-        <dict>
-            <key>icon</key>
-            <string>icon_about</string>
-            <key>title</key>
-            <string>BioCollect</string>
-            <key>url</key>
-            <string>https://www.ala.org.au/biocollect/</string>
-            <key>view</key>
-            <string>web_external_url</string>
-        </dict>
-    </array>
 </dict>
 </plist>
