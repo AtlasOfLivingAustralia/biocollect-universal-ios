@@ -15,8 +15,8 @@
 #import "MRProgressOverlayView.h"
 
 @interface SpeciesSearchTableViewController ()
+@property (nonatomic, assign) BOOL isDownload;
 @end
-
 
 @implementation SpeciesSearchTableViewController
 
@@ -26,12 +26,26 @@
 
 #pragma mark - init
 
+- (instancetype)initWithNibNameForDownload:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if(self){
+        self.navigationItem.title = @"Download species";
+    }
+    
+    UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithTitle:@"Reload" style:UIBarButtonItemStyleBordered target:self action:@selector(btnRefreshPressed)];
+    
+    self.navigationItem.rightBarButtonItem = reloadButton;
+    reloadButton.enabled=TRUE;
+    self.isDownload = TRUE;
+    return  self;
+}
+
+
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if(self){
         self.navigationItem.title = @"Search species";
     }
-    
    
     UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithTitle:@"Reload" style:UIBarButtonItemStyleBordered target:self action:@selector(btnRefreshPressed)];
     
@@ -42,9 +56,10 @@
     UIBarButtonItem *btnCancel = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(btnCancelPressed)];
     self.navigationItem.leftBarButtonItem = btnCancel;
     btnCancel.enabled=TRUE;
-    
+    self.isDownload = FALSE;
     return  self;
 }
+
 
 #pragma mark - standard functions
 - (void)viewDidLoad {
@@ -109,7 +124,9 @@
    
     if(![species[@"rank"] isEqualToString: @"unmatched taxon"] ) {
         //http://bie.ala.org.au/species/Rattus rattus
-        UIImage *image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"icon_about"]];
+        //NSString *imageName = self.isDownload ? @"icon_download" : @"icon_about";
+        NSString *imageName = @"icon_about";
+        UIImage *image = [UIImage imageNamed:[[NSString alloc] initWithFormat:imageName]];
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         CGRect frame = CGRectMake(44.0, 44.0, image.size.width, image.size.height);
         button.frame = frame;
@@ -128,7 +145,7 @@
     
     NSDictionary *species = [displayItems objectAtIndex:indexPath.row];
     if(![species[@"rank"] isEqualToString: @"unmatched taxon"] ) {
-        NSString *url = [[NSString alloc] initWithFormat:@"http://bie.ala.org.au/species/%@",species[@"guid"]];
+        NSString *url = [[NSString alloc] initWithFormat:@"https://bie.ala.org.au/species/%@",species[@"guid"]];
         NSString *encoded =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress: encoded];
         webViewController.title = [[NSString alloc] initWithFormat:species[@"displayName"]];
@@ -152,7 +169,23 @@
     // Pass the selected object to the new view controller.
     self.selectedSpecies = displayItems[indexPath.row];
     [[NSNotificationCenter defaultCenter]postNotificationName:@"SPECIESSEARCH SELECTED" object: self.selectedSpecies];
-    [self.navigationController popViewControllerAnimated:YES];
+    if(self.isDownload) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MRProgressOverlayView showOverlayAddedTo:self.tableView title:@"Downloading..." mode:MRProgressOverlayViewModeIndeterminateSmall animated:YES];
+            [self performBlock:^{
+                [MRProgressOverlayView dismissOverlayForView:self.tableView animated:YES];
+                GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+                MRProgressOverlayView *progressView = [MRProgressOverlayView showOverlayAddedTo:appDelegate.window animated:YES];
+                progressView.mode = MRProgressOverlayViewModeCheckmark;
+                progressView.titleLabelText = @"Downloaded";
+                [self performBlock:^{
+                    [progressView dismiss:YES];
+                } afterDelay:1.0];
+            } afterDelay:0.5];
+        });
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -205,14 +238,15 @@
 }
 
 - (void) btnRefreshPressed {
-    /*if(self.selectedSpecies != nil) {
+    /*
+    if(self.selectedSpecies != nil) {
         [[NSNotificationCenter defaultCenter]postNotificationName:@"SPECIESSEARCH SELECTED" object: self.selectedSpecies];
         [self.navigationController popViewControllerAnimated:YES];
     } else {
     
      [RKDropdownAlert title:@"ERROR" message:@"Please select the species" backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
     }
-     */
+    */
     [displayItems removeAllObjects];
     self.loadingFinished = NO;
     self.isSearching = YES;
@@ -284,7 +318,7 @@
 
 /**
  * Custom table header skin.
- */
+ 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UILabel *myLabel = [[UILabel alloc] init];
     CGRect screenRect = [[UIScreen mainScreen] bounds];
@@ -298,5 +332,25 @@
     [headerView addSubview:myLabel];
     
     return headerView;
+}
+*/
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UILabel *myLabel = [[UILabel alloc] init];
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    myLabel.frame = CGRectMake(0, 0, screenWidth, 30);
+    myLabel.backgroundColor = [UIColor colorWithRed:53/255.0 green:54/255.0 blue:49/255.0 alpha:1];
+    myLabel.textAlignment = UITextAlignmentCenter;
+    myLabel.text = [self tableView:tableView titleForHeaderInSection:section];
+    myLabel.textColor = [UIColor grayColor];
+    UIView *headerView = [[UIView alloc] init];
+    [headerView addSubview:myLabel];
+    
+    return headerView;
+}
+
+- (void)performBlock:(void(^)())block afterDelay:(NSTimeInterval)delay {
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), block);
 }
 @end

@@ -1,5 +1,4 @@
 #import <UIKit/UIKit.h>
-
 @interface SpeciesGroupTableViewController : UITableViewController<UITableViewDelegate>
 {
     NSMutableArray *displayItems;
@@ -20,6 +19,7 @@
 
 //Location details [lat, lng, radius]
 @property (strong, nonatomic) NSMutableDictionary *locationDetails;
+@property (nonatomic, assign) BOOL isDownload;
 
 -(void)updateDisplayItems: (NSMutableArray *)data totalRecords: (int) total setKm: (int) kilometer;
 @end

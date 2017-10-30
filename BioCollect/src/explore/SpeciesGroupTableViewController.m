@@ -22,7 +22,7 @@
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if(self){
-        self.navigationItem.title = @"Explore species";
+        self.navigationItem.title = @"Species Group";
     }
     
     return  self;
@@ -97,6 +97,17 @@
         cell.accessoryView = button;
     }
     
+    if(self.isDownload) {
+        UIImage *image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"icon_download"]];
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        CGRect frame = CGRectMake(44.0, 44.0, image.size.width, image.size.height);
+        button.frame = frame;
+        [button setBackgroundImage:image forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(accessoryButtonTapped:event:)  forControlEvents:UIControlEventTouchUpInside];
+        button.backgroundColor = [UIColor clearColor];
+        cell.accessoryView = button;
+    }
+
     return cell;
 }
 
@@ -105,7 +116,23 @@
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     
     NSDictionary *species = [displayItems objectAtIndex:indexPath.row];
-    if(![species[@"rank"] isEqualToString: @"unmatched taxon"] ) {
+    if([species[@"speciesCount"] intValue] == 0) {
+        [RKDropdownAlert title:@"" message:@"No species found!" backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+    } else if(self.isDownload){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MRProgressOverlayView showOverlayAddedTo:self.tableView title:@"Downloading..." mode:MRProgressOverlayViewModeIndeterminateSmall animated:YES];
+            [self performBlock:^{
+                [MRProgressOverlayView dismissOverlayForView:self.tableView animated:YES];
+                GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+                MRProgressOverlayView *progressView = [MRProgressOverlayView showOverlayAddedTo:appDelegate.window animated:YES];
+                progressView.mode = MRProgressOverlayViewModeCheckmark;
+                progressView.titleLabelText = @"Downloaded";
+                [self performBlock:^{
+                    [progressView dismiss:YES];
+                } afterDelay:2.0];
+            } afterDelay:2.0];
+        });
+    } else if(![species[@"rank"] isEqualToString: @"unmatched taxon"] ) {
         NSString *url = [[NSString alloc] initWithFormat:@"http://bie.ala.org.au/species/%@",species[@"guid"]];
         NSString *encoded =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress: encoded];
@@ -131,6 +158,20 @@
     NSDictionary *species = displayItems[indexPath.row];
     if([species[@"speciesCount"] intValue] == 0) {
         [RKDropdownAlert title:@"" message:@"No species found!" backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+    } else if(self.isDownload){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MRProgressOverlayView showOverlayAddedTo:self.tableView title:@"Downloading..." mode:MRProgressOverlayViewModeIndeterminateSmall animated:YES];
+            [self performBlock:^{
+                [MRProgressOverlayView dismissOverlayForView:self.tableView animated:YES];
+                GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+                MRProgressOverlayView *progressView = [MRProgressOverlayView showOverlayAddedTo:appDelegate.window animated:YES];
+                progressView.mode = MRProgressOverlayViewModeCheckmark;
+                progressView.titleLabelText = @"Downloaded";
+                [self performBlock:^{
+                    [progressView dismiss:YES];
+                } afterDelay:1.0];
+            } afterDelay:0.5];
+        });
     } else {
         GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
         if([[appDelegate restCall] notReachable]) {
@@ -152,7 +193,7 @@
             NSNumberFormatter *fmt = [[NSNumberFormatter alloc] init];
             [fmt setNumberStyle:NSNumberFormatterDecimalStyle]; // to get commas (or locale equivalent)
             [fmt setMaximumFractionDigits:0]; // to avoid any decimal
-            title = @"2. Select species group";
+            title = self.isDownload ? @"Download species group" :  @"2. Select species group";
         }
     }
     
@@ -271,13 +312,21 @@
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
     myLabel.frame = CGRectMake(0, 0, screenWidth, 30);
-    myLabel.backgroundColor = [UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1];
+    myLabel.backgroundColor = [UIColor colorWithRed:53/255.0 green:54/255.0 blue:49/255.0 alpha:1];
     myLabel.textAlignment = UITextAlignmentCenter;
     myLabel.text = [self tableView:tableView titleForHeaderInSection:section];
-    myLabel.textColor = [UIColor whiteColor];
+    myLabel.textColor = [UIColor grayColor];
     UIView *headerView = [[UIView alloc] init];
     [headerView addSubview:myLabel];
     
     return headerView;
 }
+
+
+- (void)performBlock:(void(^)())block afterDelay:(NSTimeInterval)delay {
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), block);
+}
+
+
 @end

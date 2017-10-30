@@ -28,4 +28,5 @@
 @property (nonatomic, assign) BOOL loadingFinished;
 
 -(void)updateDisplayItems: (NSMutableArray *)data totalRecords: (int) total;
+-(instancetype) initWithNibNameForDownload:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
 @end
