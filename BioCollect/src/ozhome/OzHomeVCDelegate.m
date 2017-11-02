@@ -18,6 +18,8 @@
 #import "SpeciesGroupTableViewController.h"
 #import "HomeViewController.h"
 #import "GASettings.h"
+#import "HomeTableViewController.h"
+#import "RecordsTableViewController.h"
 
 @interface OzHomeVCDelegate()
     @property (nonatomic, strong) RecordsTableViewController *recordsTableView;
@@ -74,8 +76,50 @@
     NSLog(@"%1.2f", scrollView.contentOffset.y);
 }
 
-- (void)spotyViewController:(MGSpotyViewController *)spotyViewController didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)spotyViewController:(MGSpotyViewController *)spotyViewController didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if([HUB_VIEW isEqualToString: [GASettings appView]]) {
+        [self hubViewController:spotyViewController didSelectRowAtIndexPath:indexPath];
+    } else {
+        [self ozAtlasViewController:spotyViewController didSelectRowAtIndexPath:indexPath];
+    }
+}
+
+- (void)spotyViewController:(MGSpotyViewController *)spotyViewController didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"deselected row");
+}
+
+#pragma location delegate
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    [_locationManager stopUpdatingLocation];
+    NSString *message = nil;
+    switch([error code])
+    {
+        case kCLErrorNetwork: // general, network-related error
+            message = @"Please check your network connection";
+            break;
+        case kCLErrorDenied:
+            message = @"Please go to Settings and turn on Location Service for this app.";
+            break;
+        default:
+            message = @"Network error";
+            break;
+    }
+
+    [RKDropdownAlert title:@"Location Service Error" message:message backgroundColor:[UIColor colorWithRed:243.0/255.0 green:156.0/255.0 blue:18.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    self.curentLocation = newLocation;
+}
+#pragma mark MKMapViewDelegate
+
+#pragma view based controller
+- (void)ozAtlasViewController:(MGSpotyViewController *)spotyViewController didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+ 
     GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
     if (indexPath.row == 0) {
         [self.locationManager startUpdatingLocation];
@@ -130,7 +174,7 @@
     } else if(indexPath.row == 4) {
         if([appDelegate.records count] == 0) {
             [RKDropdownAlert title:@"No draft sightings available" message:@"" backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
-
+            
         } else {
             if(self.syncViewController == nil){
                 self.syncViewController = [[SyncTableViewController alloc] initWithNibName:@"SyncTableViewController" bundle:nil];
@@ -175,39 +219,54 @@
                                               otherButtonTitles:nil];
         [alert show];
     }
+
 }
 
-- (void)spotyViewController:(MGSpotyViewController *)spotyViewController didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"deselected row");
-}
+- (void)hubViewController:(MGSpotyViewController *)spotyViewController didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Supported hub views
+    // Projects home page, web view url's
+    // HomeTableViewController === hub_projects
+    // SVModalWebViewController === web_url
+    // SVModalWebViewController === allrecords
+    // SVModalWebViewController === myrecords
+    
+    GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSArray *menuItems = [[NSBundle mainBundle] objectForInfoDictionaryKey: APP_MENU];
 
-#pragma location delegate
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
-{
-    [_locationManager stopUpdatingLocation];
-    NSString *message = nil;
-    switch([error code])
-    {
-        case kCLErrorNetwork: // general, network-related error
-            message = @"Please check your network connection";
-            break;
-        case kCLErrorDenied:
-            message = @"Please go to Settings and turn on Location Service for this app.";
-            break;
-        default:
-            message = @"Network error";
-            break;
+    if([menuItems count] > indexPath.row) {
+        NSDictionary *menuAttributes = menuItems [indexPath.row];
+        if([[menuAttributes objectForKey:@"view"] isEqualToString:@"hub_projects"]) {
+            HomeTableViewController *homeVC = [[HomeTableViewController alloc] initWithNibName:@"HomeTableViewController" bundle:nil];
+            [spotyViewController.navigationController pushViewController: homeVC animated:TRUE];
+        } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"my_hub_projects"]) {
+            HomeTableViewController *homeVC = [[HomeTableViewController alloc] initWithNibName:@"HomeTableViewController" bundle:nil];
+            homeVC.isUserPage = TRUE;
+            [spotyViewController.navigationController pushViewController: homeVC animated:TRUE];
+        } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"hub_all_records"]){
+            RecordsTableViewController *recordsVC = [[RecordsTableViewController alloc] initWithNibName:@"RecordsTableViewController" bundle:nil];
+            [spotyViewController.navigationController pushViewController: recordsVC animated:TRUE];
+        } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"my_hub_records"]){
+            RecordsTableViewController *recordsVC = [[RecordsTableViewController alloc] initWithNibName:@"RecordsTableViewController" bundle:nil];
+            recordsVC.myRecords = TRUE;
+            [spotyViewController.navigationController pushViewController: recordsVC animated:TRUE];
+        } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"web_url"]) {
+            NSString *url = [[NSString alloc] initWithFormat:@"%@%@", BIOCOLLECT_SERVER, [menuAttributes objectForKey:@"url"]];
+            SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress: url];
+            webViewController.title = [menuAttributes objectForKey:@"title"];
+            GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+            [appDelegate.ozHomeNC presentViewController:webViewController animated:YES completion:NULL];
+        } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"web_external_url"]) {
+            NSString *url = [[NSString alloc] initWithFormat:@"%@", [menuAttributes objectForKey:@"url"]];
+            SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress: url];
+            webViewController.title = [menuAttributes objectForKey:@"title"];
+            GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+            [appDelegate.ozHomeNC presentViewController:webViewController animated:YES completion:NULL];
+        } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"version"]) {
+            [RKDropdownAlert title:[[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleDisplayName"] message:[GASettings appVersion] backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+        }else {
+            DebugLog(@"ERROR",@"Unsupported hub view.")
+        }
     }
-
-    [RKDropdownAlert title:@"Location Service Error" message:message backgroundColor:[UIColor colorWithRed:243.0/255.0 green:156.0/255.0 blue:18.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
-
 }
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
-{
-    self.curentLocation = newLocation;
-}
-#pragma mark MKMapViewDelegate
 
 @end

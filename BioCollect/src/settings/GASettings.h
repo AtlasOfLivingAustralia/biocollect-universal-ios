@@ -31,4 +31,11 @@
 +(NSString*) getFullName;
 +(NSString*) getUserId;
 +(NSString*) appVersion;
++(NSString*) appView;
++(NSString*) appTheme;
++(NSString*) appHomeBkBig;
++(NSString*) appHomeBkSmall;
++(NSString*) appLoginImage;
++(NSString*) appHubName;
++(NSString*) appLoginLogo;
 @end

@@ -46,53 +46,21 @@
 #define FILTER_SECTION_RESET 0
 #define FILTER_SECTION_OK FILTER_SECTION_RESET + 1
 
-@synthesize  bioProjects, appDelegate, bioProjectService, totalProjects, offset, query, loadingFinished, isSearching, spinner, activeChecked, completedChecked, searchParams, dataSharingChecked,isUserPage;
+@synthesize  bioProjects, appDelegate, bioProjectService, totalProjects, offset, query, loadingFinished, isSearching, spinner,  searchParams, isUserPage;
 
-- (id) initWithNibNameForMyProjects :(NSString *)nibNameOrNil bundle:(NSBundle *) nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    
-    if (self) {
-        //Initialise
-        self.showUserActions = TRUE;
-        [self initialise];
-        self.isUserPage = TRUE;
-        
-        UIBarButtonItem *menuSheet = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"action-25"]
-                                                                      style:UIBarButtonItemStyleBordered
-                                                                     target:self action:@selector(showMenu:)];
-        
-        UIBarButtonItem *syncButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"sync-25"] style:UIBarButtonItemStyleBordered target:self action:@selector(resetAndDownloadProjects)];
-        
-        self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects: syncButton, nil];
-        
-        
-    }
-    
-    return self;
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *) nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
 
     if (self) {
-        
         //Initialise
-        self.showUserActions = FALSE;
+        self.showUserActions = TRUE;
         [self initialise];
         self.isUserPage = FALSE;
-        
-        //Set bar button.
-        UIBarButtonItem *menuSheet = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"action-25"]
-                                                                        style:UIBarButtonItemStyleBordered
-                                                                       target:self action:@selector(showMenu:)];
         
         UIBarButtonItem *syncButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"sync-25"] style:UIBarButtonItemStyleBordered target:self action:@selector(resetAndDownloadProjects)];
         UIBarButtonItem *signout = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"lock_filled-25"] style:UIBarButtonItemStyleBordered target:self.appDelegate.loginViewController action:@selector(logout)];
         self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects: signout,syncButton, nil];
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"header-logo"]];
-        imageView.contentMode = UIViewContentModeCenter;
-        self.navigationItem.titleView = imageView;
-     
     }
     
     return self;
@@ -113,107 +81,11 @@
     self.loadingFinished = TRUE;
     self.query = @"";
     self.searchParams = @"";
-    self.activeChecked = FALSE;
-    self.completedChecked = FALSE;
-    self.dataSharingChecked = FALSE;
+
     self.isSearching = NO;
 }
 
--(void)showMenu:(id)sender {
-    if(self.menu == nil) {
-       
-        self.projectStatus = [JGActionSheetSection sectionWithTitle:@"Filter by"
-                                                                message:@"Project Status"
-                                                                buttonTitles:@[PROJECT_ACTIVE_CROSS_STR, PROJECT_COMPLETED_CROSS_STR]
-                                                                buttonStyle:JGActionSheetButtonStyleDefault];
-        [self.projectStatus setButtonStyle:JGActionSheetButtonStyleDefault forButtonAtIndex:0];
-        [self.projectStatus setButtonStyle:JGActionSheetButtonStyleDefault forButtonAtIndex:1];
-        
-        self.dataShared = [JGActionSheetSection sectionWithTitle:nil
-                                                                 message:@"Data Sharing"
-                                                                 buttonTitles:@[DATA_SHARING_CROSS_STR]
-                                                                 buttonStyle:JGActionSheetButtonStyleDefault];
-        [self.dataShared setButtonStyle:JGActionSheetButtonStyleDefault forButtonAtIndex:0];
-        
-        
-        self.actionSection = [JGActionSheetSection sectionWithTitle:nil message:nil buttonTitles:@[@"RESET", @"DONE"] buttonStyle:JGActionSheetButtonStyleGreen];
-        [self.actionSection setButtonStyle:JGActionSheetButtonStyleDefault forButtonAtIndex:0];
-        [self.actionSection setButtonStyle:JGActionSheetButtonStyleGreen forButtonAtIndex:1];
-        
-        NSArray *sections = @[self.projectStatus,  self.actionSection];
-        self.menu = [JGActionSheet actionSheetWithSections: sections];
-        
-        //Assign delegate.
-        [self.menu setDelegate:self];
-    }
-    
-    // Fix to prevent menu disappearing from the screen. 
-    [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
-    [self.menu showInView:self.view animated:YES];
-    
-}
 
-- (void)actionSheet:(JGActionSheet *)actionSheet pressedButtonAtIndexPath:(NSIndexPath *)indexPath{
-    NSString *statusParam;
-    NSString *dataSharingParam;
-    
-    switch(indexPath.section) {
-        case FILTER_SECTION_STATUS:
-            if(indexPath.row == FILTER_STATUS_ACTIVE) {
-                self.activeChecked = self.activeChecked ? FALSE : TRUE;
-                [self.projectStatus setButtonStyle:JGActionSheetButtonStyleDefault forButtonAtIndex:0 newTitle: self.activeChecked ? PROJECT_ACTIVE_STR : PROJECT_ACTIVE_CROSS_STR];
-            } else if (indexPath.row == FILTER_STATUS_COMPLETED) {
-                self.completedChecked = self.completedChecked ? FALSE : TRUE;
-                [self.projectStatus setButtonStyle:JGActionSheetButtonStyleDefault forButtonAtIndex:1 newTitle: self.completedChecked ? PROJECT_COMPLETED_STR : PROJECT_COMPLETED_CROSS_STR];
-            }
-            break;
-        /*
-        case FILTER_SECTION_SHARING:
-            if(indexPath.row == FILTER_SHARING) {
-                self.dataSharingChecked = self.dataSharingChecked ? FALSE : TRUE;
-                [self.dataShared setButtonStyle:JGActionSheetButtonStyleDefault forButtonAtIndex:0 newTitle: self.dataSharingChecked ? DATA_SHARING_STR : DATA_SHARING_CROSS_STR];
-                
-            }
-            break;
-        */
-        case FILTER_SECTION_DONE:
-            if(indexPath.row == FILTER_SECTION_RESET) {
-                self.activeChecked = FALSE;
-                self.completedChecked = FALSE;
-                self.dataSharingChecked = FALSE;
-                
-                [self.projectStatus setButtonStyle:JGActionSheetButtonStyleDefault forButtonAtIndex:0 newTitle: self.activeChecked ? PROJECT_ACTIVE_STR : PROJECT_ACTIVE_CROSS_STR];
-                [self.projectStatus setButtonStyle:JGActionSheetButtonStyleDefault forButtonAtIndex:1 newTitle: self.completedChecked ? PROJECT_COMPLETED_STR : PROJECT_COMPLETED_CROSS_STR];
-                [self.dataShared setButtonStyle:JGActionSheetButtonStyleDefault forButtonAtIndex:0 newTitle: self.dataSharingChecked ? DATA_SHARING_STR : DATA_SHARING_CROSS_STR];
-            }
-            
-            if ((self.activeChecked && self.completedChecked) || (!self.activeChecked && !self.completedChecked)) {
-                statusParam = @"";
-            } else if(self.activeChecked) {
-                statusParam = @"&fq=status:active";
-            } else if(self.completedChecked) {
-                statusParam = @"&fq=status:completed";
-            } else if(self.activeChecked && self.completedChecked) {
-                statusParam = @"&fq=status:active&fq=status:completed";
-            }
-            
-            if(self.dataSharingChecked) {
-                dataSharingParam = @"fq=tags:isContributingDataToAla";
-            } else {
-                dataSharingParam = @"";
-            }
-            
-            self.searchParams = [[NSString alloc]initWithFormat:@"%@%@",statusParam,dataSharingParam];
-            [actionSheet dismissAnimated:YES];
-            [self searchProjects :@"" cancelTriggered:TRUE];
-
-            
-            break;
-            
-        default:
-            break;
-    }
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -227,7 +99,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     if(self.totalProjects  == 0) {
-        [self downloadProjects];
+        [self resetAndDownloadProjects];
     }
 }
 
@@ -252,15 +124,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSString *title = nil;
-    if(self.isSearching) {
-      title = @"";
-    } else if(self.loadingFinished){
-        title = [[NSString alloc] initWithFormat:@"Found %ld projects", (long)self.totalProjects];
-    } else{
-       title = [[NSString alloc] initWithFormat:@"Loading..."];
-    }
-    return title;
+    return [[NSString alloc] initWithFormat:@"Found %ld projects", (long)self.totalProjects];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath: (NSIndexPath *)indexPath {
@@ -339,7 +203,6 @@
 }
 
 - (void) load {
-    
     //Reached the max.
     if(self.totalProjects != 0 && [self.bioProjects count] != 0 && self.totalProjects  == [self.bioProjects count]) {
         DebugLog(@"Downloaded all the projects (%ld)", [self.bioProjects count]);
@@ -362,10 +225,10 @@
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
     myLabel.frame = CGRectMake(0, 0, screenWidth, 30);
-    myLabel.backgroundColor = [UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1];
+    myLabel.backgroundColor = [UIColor colorWithRed:53/255.0 green:54/255.0 blue:49/255.0 alpha:1];
     myLabel.textAlignment = UITextAlignmentCenter;
     myLabel.text = [self tableView:tableView titleForHeaderInSection:section];
-    myLabel.textColor = [UIColor whiteColor];
+    myLabel.textColor = [UIColor grayColor];
     UIView *headerView = [[UIView alloc] init];
     [headerView addSubview:myLabel];
     

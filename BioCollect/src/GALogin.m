@@ -13,29 +13,19 @@
 #import "GASettingsConstant.h"
 #import "MRProgressOverlayView.h"
 #import "SVModalWebViewController.h"
-#define IDIOM    UI_USER_INTERFACE_IDIOM()
-#define IPAD     UIUserInterfaceIdiomPad
 @interface GALogin ()
 
 @end
 
 @implementation GALogin
 
-@synthesize loginButton, usernameTextField, passwordTextField,registerButton;
+@synthesize loginButton, usernameTextField, passwordTextField,registerButton, logoImageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    NSString *appType = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_AppType"];
     if (self) {
-        NSString *imageName;
-        if ( IDIOM == IPAD ) {
-            imageName = [[NSString alloc] initWithFormat:@"%@", [appType isEqualToString:@"custom"] ? @"oz_iPad.jpg" : @"bk_iPad.png"];
-            [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:imageName]]];
-        } else {
-            imageName = [[NSString alloc] initWithFormat:@"%@", [appType isEqualToString:@"custom"] ? @"oz_iPhone.jpg" : @"bk_iPad.png"];
-            [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:imageName]]];
-        }
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:[GASettings appLoginImage]]]];
     }
  
     return self;
@@ -46,6 +36,7 @@
 
 - (void)viewDidLoad
 {
+    [self.logoImageView setImage:[UIImage imageNamed: [GASettings appLoginLogo]]];
     [super viewDidLoad];
 }
 
@@ -103,20 +94,11 @@
                 [appDelegate.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
                 
                 NSString *appType = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_AppType"];
-                if([appType isEqualToString:@"custom"]) {
-                    [UIView transitionWithView:appDelegate.window
-                                      duration:0.5
-                                       options:UIViewAnimationOptionTransitionFlipFromLeft
-                                    animations:^{ appDelegate.window.rootViewController = appDelegate.ozHomeNC; }
-                                    completion:nil];
-                }
-                else {
-                    [UIView transitionWithView:appDelegate.window
-                                      duration:0.5
-                                       options:UIViewAnimationOptionTransitionFlipFromLeft
-                                    animations:^{ appDelegate.window.rootViewController = appDelegate.tabBarController; }
-                                    completion:nil];
-                }
+                [UIView transitionWithView:appDelegate.window
+                                  duration:0.5
+                                   options:UIViewAnimationOptionTransitionFlipFromLeft
+                                animations:^{ appDelegate.window.rootViewController = appDelegate.ozHomeNC; }
+                                completion:nil];
             }
         });
     });

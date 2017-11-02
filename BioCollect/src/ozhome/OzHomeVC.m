@@ -23,7 +23,7 @@
 #import "RecordViewController.h"
 
 @interface OzHomeVC ()
-
+@property(strong, nonatomic) UILabel *lblTitle;
 @end
 
 @implementation OzHomeVC {
@@ -45,6 +45,9 @@
 }
 
 
+- (void)viewDidAppear:(BOOL)animated {
+    [self updateGreetingsLabel];
+}
 
 - (void)viewDidLoad
 {
@@ -94,14 +97,6 @@
 
 - (void)mg_addElementOnView:(UIView *)view
 {
-    NSString *firstname = [GASettings getFirstName];
-    NSString *displayName = nil;
-    if([firstname length] > 14) {
-        displayName = [[NSString alloc]initWithFormat:@"G'Day %@...",[firstname substringToIndex: MIN(14, [firstname length])]];
-    } else {
-        displayName = [[NSString alloc]initWithFormat:@"G'Day %@",firstname ? firstname : @""];
-    }
-
     //Add an example imageView
     UIView *itemsContainer = [UIView new];
     itemsContainer.translatesAutoresizingMaskIntoConstraints = NO;
@@ -111,7 +106,7 @@
     imageView.translatesAutoresizingMaskIntoConstraints = NO;
     [imageView setContentMode:UIViewContentModeScaleAspectFill];
     [imageView setClipsToBounds:YES];
-    [imageView setImage:[UIImage imageNamed:@"ala_logo_3"]];
+    [imageView setImage:[UIImage imageNamed:[GASettings appHomeBkSmall]]];
     [imageView.layer setBorderColor:[UIColor whiteColor].CGColor];
     [imageView.layer setBorderWidth:2.0];
     [imageView.layer setCornerRadius:45.0];
@@ -124,16 +119,9 @@
     
     
     //Add an example label
-    UILabel *lblTitle = [UILabel new];
-    lblTitle.translatesAutoresizingMaskIntoConstraints = NO;
-    [lblTitle setText:displayName];
-    [lblTitle setFont:[UIFont boldSystemFontOfSize:25.0]];
-    [lblTitle setTextAlignment:NSTextAlignmentCenter];
-    [lblTitle setTextColor:[UIColor whiteColor]];
-    lblTitle.numberOfLines = 0;
-    lblTitle.lineBreakMode = NSLineBreakByWordWrapping;
-    [itemsContainer addSubview:lblTitle];
-    
+    _lblTitle = [UILabel new];
+    [self updateGreetingsLabel];
+    [itemsContainer addSubview:_lblTitle];
     
     //Add an example button
     UIButton *btContact = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -148,18 +136,37 @@
     [view addConstraint:[NSLayoutConstraint constraintWithItem:itemsContainer attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
     [view addConstraint:[NSLayoutConstraint constraintWithItem:itemsContainer attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
     
-    NSDictionary *items = NSDictionaryOfVariableBindings(imageView, lblTitle, btContact);
+    NSDictionary *items = NSDictionaryOfVariableBindings(imageView, _lblTitle, btContact);
     [items enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         [itemsContainer addConstraint:[NSLayoutConstraint constraintWithItem:obj attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:itemsContainer attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
     }];
     
     [itemsContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[imageView(90)]" options:0 metrics:nil views:items]];
     [itemsContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[btContact(70)]" options:0 metrics:nil views:items]];
-    [itemsContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-10-[lblTitle]-10-|" options:0 metrics:nil views:items]];
+    [itemsContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-10-[_lblTitle]-10-|" options:0 metrics:nil views:items]];
     
-    [itemsContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[imageView(90)]-10-[lblTitle]-10-[btContact(30)]|" options:0 metrics:nil views:items]];
+    [itemsContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[imageView(90)]-10-[_lblTitle]-10-[btContact(30)]|" options:0 metrics:nil views:items]];
 }
 
+-(void) updateGreetingsLabel {
+    NSString *firstname = [GASettings getFirstName];
+    NSString *displayName = nil;
+    if([firstname length] > 14) {
+        displayName = [[NSString alloc]initWithFormat:@"G'Day %@...",[firstname substringToIndex: MIN(14, [firstname length])]];
+    } else if ([firstname length] > 0) {
+        displayName = [[NSString alloc]initWithFormat:@"G'Day %@",firstname];
+    } else {
+        NSString *value = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleDisplayName"];
+        displayName = [[NSString alloc]initWithFormat:@"Welcome to %@",value];
+    }
+    _lblTitle.translatesAutoresizingMaskIntoConstraints = NO;
+    [_lblTitle setText:displayName];
+    [_lblTitle setFont:[UIFont boldSystemFontOfSize:25.0]];
+    [_lblTitle setTextAlignment:NSTextAlignmentCenter];
+    [_lblTitle setTextColor:[UIColor whiteColor]];
+    _lblTitle.numberOfLines = 0;
+    _lblTitle.lineBreakMode = NSLineBreakByWordWrapping;
+}
 
 #pragma mark - Action
 
@@ -174,11 +181,7 @@
 
 - (void)handleTap:(UITapGestureRecognizer *)sender
 {
-    if (sender.state == UIGestureRecognizerStateEnded) {
-        RecordViewController *recordViewController = [[RecordViewController alloc] init];
-        recordViewController.title = @"Record Species";
-        [self.navigationController pushViewController:recordViewController animated:TRUE];
-    }
+    [self updateGreetingsLabel];
 }
 
 

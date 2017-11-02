@@ -15,6 +15,8 @@
 #define kFirstName @"firstName"
 #define kLastName @"lastName"
 #define kUserId @"userId"
+#define IDIOM    UI_USER_INTERFACE_IDIOM()
+#define IPAD     UIUserInterfaceIdiomPad
 
 @implementation GASettings
 
@@ -120,6 +122,61 @@
     NSString * ver = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
     NSString * build = [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
     return [[NSString alloc] initWithFormat:@"App version - %@ (%@)",ver,build];
+}
+
++(NSString*) appView {
+   return [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_AppType"];
+}
+
++(NSString*) appTheme {
+    return [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_Theme"];
+}
+
++(NSString*) appHomeBkBig {
+    NSString *value = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_Home_BK_Big"];
+    if (value == (id)[NSNull null] || value.length == 0 ) {
+        value = @"OzHome2";
+    }
+    return value;
+}
+
++(NSString*) appHomeBkSmall {
+    NSString *value = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_Home_BK_Small"];
+    if (value == (id)[NSNull null] || value.length == 0 ) {
+        value = @"ala_logo_3";
+    }
+    
+    return value;
+}
+
++(NSString*) appLoginImage {
+    NSString *imageName = nil;
+    NSString *value = nil;
+    if ( IDIOM == IPAD ) {
+        value = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_Home_Login_Image_iPad"];
+    } else {
+        value = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_Home_Login_Image_iPhone"];
+    }
+    return value;
+}
+
++(NSString*) appLoginLogo {
+    NSString *imageName = nil;
+    NSString *value = nil;
+    value = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_Home_Login_Image_Logo"];
+    
+    if (value == (id)[NSNull null] || value.length == 0 ) {
+        value = @"biocontrol_logo.png";
+    }
+    return value;
+}
+
++(NSString*) appHubName {
+    NSString *value = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_HubName"];
+    if (value == (id)[NSNull null] || value.length == 0 ) {
+        value = @"";
+    }
+    return value;
 }
 
 

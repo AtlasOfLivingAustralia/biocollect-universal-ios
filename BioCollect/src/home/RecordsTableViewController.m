@@ -128,7 +128,7 @@
     
         self.surveyListMenu = nil;
         NSMutableArray *list = [[NSMutableArray alloc] init];
-        for (int i = 0; i <[pActivties count]; i++) {
+        for (int i = 0; i < [pActivties count]; i++) {
             ProjectActivity *pa = pActivties[i];
             [list addObject:pa.name];
         }
@@ -145,7 +145,7 @@
         self.menu = [JGActionSheet actionSheetWithSections: sections];
         
         //Assign delegate.
-         [self.menu setDelegate:self];
+        [self.menu setDelegate:self];
         
         if([self.tableView isDescendantOfView:self.view]){
             [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
@@ -154,6 +154,8 @@
         } else {
             [self.menu showInView:self.appDelegate.window.rootViewController.view animated:YES];
         }
+    } else {
+        [RKDropdownAlert title:@"Survey not available." message:@"" backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
     }
 }
 
@@ -194,7 +196,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self resetAndDownloadProjects];
     self.tableView.rowHeight = 60;
 }
 
@@ -205,6 +206,9 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    if(self.totalRecords  == 0) {
+        [self resetAndDownloadProjects];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -224,15 +228,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSString *title = nil;
-    if(self.isSearching) {
-        title = @"";
-    } else if(self.loadingFinished){
-        title = [[NSString alloc] initWithFormat:@"Found %ld records", (long)self.totalRecords];
-    } else{
-        title = [[NSString alloc] initWithFormat:@"Loading..."];
-    }
-    return title;
+    return [[NSString alloc] initWithFormat:@"Found %ld records", (long)self.totalRecords];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath: (NSIndexPath *)indexPath {
@@ -375,10 +371,10 @@
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
     myLabel.frame = CGRectMake(0, 0, screenWidth, 30);
-    myLabel.backgroundColor = [UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1];
+    myLabel.backgroundColor = [UIColor colorWithRed:53/255.0 green:54/255.0 blue:49/255.0 alpha:1];
     myLabel.textAlignment = UITextAlignmentCenter;
     myLabel.text = [self tableView:tableView titleForHeaderInSection:section];
-    myLabel.textColor = [UIColor whiteColor];
+    myLabel.textColor = [UIColor grayColor];
     UIView *headerView = [[UIView alloc] init];
     [headerView addSubview:myLabel];
     
@@ -498,9 +494,6 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     NSString *currentUrl = webView.request.URL.absoluteString;
     if([currentUrl hasSuffix: @"#successfully-posted"]) {
-       /*
-        [RKDropdownAlert title:@"Successfully Submitted." message:@"Submitted record will be visible in few seconds!" backgroundColor:[UIColor colorWithRed:58.0/255.0 green:58.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] time:5];
-        */
         [RKDropdownAlert title:@"Successfully Submitted." message:@"Submitted record will be visible in few seconds!" backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
         
         [self.webViewController dismissViewControllerAnimated:false completion:NULL];
