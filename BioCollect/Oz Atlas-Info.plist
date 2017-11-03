@@ -4,6 +4,10 @@
 <dict>
 	<key>Bio_AppType</key>
 	<string>custom</string>
+	<key>Bio_Home_Login_Image_iPad</key>
+	<string>oz_iPad.jpg</string>
+	<key>Bio_Home_Login_Image_iPhone</key>
+	<string>oz_iPhone</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -23,11 +27,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.4</string>
+	<string>1.5</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>03</string>
+	<string>01</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -82,12 +86,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    
-    <!-- App Theme Configuration -->
-    <key>Bio_Home_Login_Image_iPad</key>
-    <string>oz_iPad.jpg</string>
-    <key>Bio_Home_Login_Image_iPhone</key>
-    <string>oz_iPhone</string>
-
 </dict>
 </plist>

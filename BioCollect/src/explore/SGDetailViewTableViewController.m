@@ -170,11 +170,11 @@
 #pragma mark - Table view display
 - (void)showOrHideActivityIndicator {
     dispatch_async(dispatch_get_main_queue(), ^{
-        if(!self.loadingFinished){
+        /*if(!self.loadingFinished){
             [MRProgressOverlayView showOverlayAddedTo:self.tableView title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminateSmall animated:YES];
         } else {
             [MRProgressOverlayView dismissOverlayForView:self.tableView animated:YES];
-        }
+        }*/
     });
 }
 
