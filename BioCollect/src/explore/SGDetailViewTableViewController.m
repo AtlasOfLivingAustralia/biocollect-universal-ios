@@ -100,9 +100,9 @@
     }
 
     
-    UIImage *image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"icon_about"]];
+    UIImage *image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"icon_about_2"]];
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    CGRect frame = CGRectMake(44.0, 44.0, image.size.width, image.size.height);
+    CGRect frame = CGRectMake(320.0 - 44.0, 0.0, 44, 44);
     button.frame = frame;
     [button setBackgroundImage:image forState:UIControlStateNormal];
     [button addTarget:self action:@selector(accessoryButtonTapped:event:)  forControlEvents:UIControlEventTouchUpInside];
