@@ -111,6 +111,8 @@
 		E2424C461F0F634F00E4E13F /* oz_iPad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2424C431F0F634F00E4E13F /* oz_iPad.jpg */; };
 		E2424C471F0F634F00E4E13F /* oz_iPhone.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2424C441F0F634F00E4E13F /* oz_iPhone.jpg */; };
 		E2424C481F0F634F00E4E13F /* oz_iPhone.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2424C441F0F634F00E4E13F /* oz_iPhone.jpg */; };
+		E24626BB1FAA930C0086D897 /* icon_about_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E24626BA1FAA930B0086D897 /* icon_about_2@2x.png */; };
+		E24626BC1FAA930C0086D897 /* icon_about_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E24626BA1FAA930B0086D897 /* icon_about_2@2x.png */; };
 		E24690EE1EF5F19B00F2F8B8 /* icon_about@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E24690ED1EF5F19B00F2F8B8 /* icon_about@2x.png */; };
 		E24690EF1EF5F19B00F2F8B8 /* icon_about@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E24690ED1EF5F19B00F2F8B8 /* icon_about@2x.png */; };
 		E247DD6F1EC33C5900A1C0A5 /* BioCollect-Name-Only.png in Resources */ = {isa = PBXBuildFile; fileRef = E247DD6E1EC33C5900A1C0A5 /* BioCollect-Name-Only.png */; };
@@ -933,6 +935,7 @@
 		E2424C3F1F0F624300E4E13F /* bk_iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bk_iPhone.png; path = src/images/bk_iPhone.png; sourceTree = "<group>"; };
 		E2424C431F0F634F00E4E13F /* oz_iPad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = oz_iPad.jpg; path = src/images/bk/oz_iPad.jpg; sourceTree = "<group>"; };
 		E2424C441F0F634F00E4E13F /* oz_iPhone.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = oz_iPhone.jpg; path = src/images/bk/oz_iPhone.jpg; sourceTree = "<group>"; };
+		E24626BA1FAA930B0086D897 /* icon_about_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_about_2@2x.png"; path = "src/images/icon_about_2@2x.png"; sourceTree = "<group>"; };
 		E24690ED1EF5F19B00F2F8B8 /* icon_about@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_about@2x.png"; path = "src/images/icon_about@2x.png"; sourceTree = "<group>"; };
 		E247DD6E1EC33C5900A1C0A5 /* BioCollect-Name-Only.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BioCollect-Name-Only.png"; path = "src/images/BioCollect-Name-Only.png"; sourceTree = "<group>"; };
 		E24D527618F57662002A4F64 /* GADetailFormVIewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADetailFormVIewController.h; path = src/GADetailFormVIewController.h; sourceTree = "<group>"; };
@@ -1592,6 +1595,7 @@
 		E2424C3D1F0F60D600E4E13F /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				E24626BA1FAA930B0086D897 /* icon_about_2@2x.png */,
 				E2BA84071F583B2A008BE68F /* icon_briefcase@2x.png */,
 				E2C00BC71F17464600443DBD /* icon_logo@2x.png */,
 				E2C00BC41F173A3A00443DBD /* icon_version@2x.png */,
@@ -2495,6 +2499,7 @@
 				E2AECFA01E73D3010035DF28 /* BioCollect-text-small.png in Resources */,
 				E2AECFA11E73D3010035DF28 /* search_bk_red@2x.png in Resources */,
 				E2AECFA31E73D3010035DF28 /* Default-568.png in Resources */,
+				E24626BC1FAA930C0086D897 /* icon_about_2@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2627,6 +2632,7 @@
 				E28AF9BA1EC4310A007042C4 /* bk_iPad.png in Resources */,
 				E2DCF1F01CF6A19C008D438C /* Default-568.png in Resources */,
 				E25D8F031EE5813200ED4D0F /* icon_my_records@2x.png in Resources */,
+				E24626BB1FAA930C0086D897 /* icon_about_2@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3283,8 +3289,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.mobile;
 				PRODUCT_NAME = "Oz Atlas";
-				PROVISIONING_PROFILE = "315a2d99-0857-41a0-b50c-320de55baf46";
-				PROVISIONING_PROFILE_SPECIFIER = "ozAtlas-v1-dev-profile";
+				PROVISIONING_PROFILE = "ae287aa7-a066-42ab-9527-900ff5ce85d1";
+				PROVISIONING_PROFILE_SPECIFIER = "ALA-OzAtlas-Prod-Existing-App";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

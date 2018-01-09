@@ -19,7 +19,7 @@
 //#define BIOCOLLECT_SERVER @"http://devt.ala.org.au:8087/biocollect"
 
 #define LIST_PROJECT_ACTIVITIES @"/ws/survey/list"
-#define AUTOCOMPLETE_URL @"http://bie.ala.org.au/ws/search.json?sort=scientificName&q="
+#define AUTOCOMPLETE_URL @"http://bie.ala.org.au/ws/search.json?sort=scientificName&fq=taxonomicStatus:accepted&q="
 #define AUTH_SERVER  @"https://auth.ala.org.au"
 #define AUTH_REGISTER @"/userdetails/registration/createAccount"
 #define AUTH_USERDETAILS @"/userdetails/userDetails/getUserDetails?userName="
