@@ -293,7 +293,7 @@
              @"projectStage":@"",
              @"mainTheme":@"",
              @"type":PROJECT_NAME,
-             @"projectId": SIGHTINGS_PROJECT_ID,
+             @"projectId": [GASettings appProjectID],
              @"siteId":@"",
              @"outputs":@[@{
                      @"name":PROJECT_ACTIVITY_NAME,

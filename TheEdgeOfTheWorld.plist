@@ -2,28 +2,32 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Bio_About_Url</key>
+	<string>http://sarahmarquis.ch/explorer/</string>
 	<key>Bio_AppType</key>
 	<string>custom</string>
-	<key>Bio_Project_Activity_ID</key>
-	<string>e61eb018-02a9-4e3b-a4b3-9d6be33d9cbb</string>
-	<key>Bio_Project_ID</key>
-	<string>f813c99c-1a1d-4096-8eeb-cbc40e321101</string>
-	<key>Bio_Project_Name</key>
-	<string>ALA species sightings and OzAtlas</string>
-	<key>Bio_About_Url</key>
-	<string>https://www.ala.org.au/who-we-are/</string>
 	<key>Bio_Contact_Url</key>
-	<string>https://www.ala.org.au/about-the-atlas/contact-us/</string>
+	<string>https://sarah-marquis.squarespace.com/contact/</string>
+	<key>Bio_Home_BK_Big</key>
+	<string>edge_of_the_world_home_bk.jpg</string>
+	<key>Bio_Home_BK_Small</key>
+	<string>edge_of_the_world_home_bk_small</string>
 	<key>Bio_Home_Login_Image_Logo</key>
-	<string>ALA-logo-inline</string>
+	<string>edge_of_the_world_home_login</string>
 	<key>Bio_Home_Login_Image_iPad</key>
-	<string>oz_iPad.jpg</string>
+	<string>edge_home_login_iPad.jpg</string>
 	<key>Bio_Home_Login_Image_iPhone</key>
-	<string>oz_iPhone.jpg</string>
+	<string>edge_home_login_iPhone.jpg</string>
+	<key>Bio_Project_Activity_ID</key>
+	<string>e13a5e26-707f-42f8-a1d8-5b301ee59d2d</string>
+	<key>Bio_Project_ID</key>
+	<string>260c8864-11a9-4c5e-8fcc-7bc6acd6a8e5</string>
+	<key>Bio_Project_Name</key>
+	<string>The Edge of the World</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Oz Atlas</string>
+	<string>Edge of the World</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIcons</key>
@@ -39,11 +43,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.5.1</string>
+	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>01</string>
+	<string>02</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>

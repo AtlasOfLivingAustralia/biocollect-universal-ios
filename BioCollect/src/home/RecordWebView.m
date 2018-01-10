@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "RecordWebVIew.h"
 #import "GAAppDelegate.h"
+#import "GASettings.h"
+#import "GASettingsConstant.h"
 
 @implementation RecordWebView
 @synthesize activity,activityIndicator;
@@ -24,12 +26,19 @@
     self.webView.delegate = self;
     [self.activityIndicator startAnimating];
     NSString *urlWithParameter = [NSString stringWithFormat: @"%@", self.activity.url];
-    
-    //Do some parsing and determine whether barCodeData is straight url.
-    NSURL *url = [NSURL URLWithString: urlWithParameter];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [self.webView setScalesPageToFit:YES];
-    [self.webView  loadRequest: request];
+    [self.webView  loadRequest: [self loadRequest: urlWithParameter]];
+}
+
+-(NSMutableURLRequest *) loadRequest: (NSString*) url {
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:url]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:[GASettings getEmailAddress] forHTTPHeaderField:@"userName"];
+    [request setValue:[GASettings getAuthKey] forHTTPHeaderField:@"authKey"];
+    [request setTimeoutInterval: DEFAULT_TIMEOUT];
+    return request;
 }
 
 

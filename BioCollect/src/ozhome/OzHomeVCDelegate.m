@@ -163,7 +163,7 @@
             return;
         }
         self.recordsTableView = [[RecordsTableViewController alloc] initWithNibName:@"RecordsTableViewController" bundle:nil];
-        self.recordsTableView.projectId = SIGHTINGS_PROJECT_ID;
+        self.recordsTableView.projectId = [GASettings appProjectID];
         self.recordsTableView.title = @"All Sightings";
         self.recordsTableView.totalRecords = 0;
         self.recordsTableView.offset = 0;
@@ -194,7 +194,7 @@
             [RKDropdownAlert title:@"Device offline" message:@"Please try later!" backgroundColor:[UIColor colorWithRed:243.0/255.0 green:156.0/255.0 blue:18.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
             return;
         }
-        NSString *url = [[NSString alloc] initWithFormat:@"https://www.ala.org.au/who-we-are/"];
+        NSString *url = [[NSString alloc] initWithFormat:[GASettings appAboutUrl]];
         SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress: url];
         webViewController.title = @"About";
         GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -204,7 +204,7 @@
             [RKDropdownAlert title:@"Device offline" message:@"Please try later!" backgroundColor:[UIColor colorWithRed:243.0/255.0 green:156.0/255.0 blue:18.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
             return;
         }
-        NSString *url = [[NSString alloc] initWithFormat:@"https://www.ala.org.au/about-the-atlas/contact-us/"];
+        NSString *url = [[NSString alloc] initWithFormat:[GASettings appContactUrl]];
         SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress: url];
         webViewController.title = @"Contact";
         GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];

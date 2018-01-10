@@ -394,7 +394,8 @@
         
         if((photoStatus == nil) || [[NSNumber numberWithInt:200] isEqual: photoStatus[@"statusCode"]]){
             [record updateImageSettings: photoStatus[@"resp"]];
-            NSString *url = [NSString stringWithFormat:@"%@%@", BIOCOLLECT_SERVER, CREATE_RECORD];
+            
+            NSString *url = [NSString stringWithFormat:@"%@%@%@", BIOCOLLECT_SERVER, CREATE_RECORD, [GASettings appProjectActivityID]];
             NSString *data = [record toJSON];
             NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[data length]];
             
