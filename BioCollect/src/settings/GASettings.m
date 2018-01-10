@@ -180,4 +180,42 @@
 }
 
 
+
++(NSString*) appProjectID {
+    NSString *value = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_Project_ID"];
+    if (value == (id)[NSNull null] || value.length == 0 ) {
+        value = @"";
+    }
+    return value;
+}
++(NSString*) appProjectActivityID {
+    NSString *value = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_Project_Activity_ID"];
+    if (value == (id)[NSNull null] || value.length == 0 ) {
+        value = @"";
+    }
+    return value;
+}
++(NSString*) appProjectName {
+    NSString *value = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_Project_Name"];
+    if (value == (id)[NSNull null] || value.length == 0 ) {
+        value = @"";
+    }
+    return value;
+}
+
++(NSString*) appAboutUrl {
+    NSString *value = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_About_Url"];
+    if (value == (id)[NSNull null] || value.length == 0 ) {
+        value = @"";
+    }
+    return value;
+}
+
++(NSString*) appContactUrl{
+    NSString *value = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_Contact_Url"];
+    if (value == (id)[NSNull null] || value.length == 0 ) {
+        value = @"";
+    }
+    return value;
+}
 @end

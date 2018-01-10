@@ -87,8 +87,7 @@
     } else {
         NSString *myRecordsStr = myRecords ? @"&view=myrecords" : @"&view=allrecords";
         NSString *appType = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_AppType"];
-        //TODO - FIx this
-        NSString *facet = [appType isEqualToString:@"custom"] ? SIGHTINGS_PROJECT_NAME_FACET : @"";
+        NSString *facet = [appType isEqualToString:@"custom"] ? [[NSString alloc] initWithFormat: @"%@%@",SIGHTINGS_PROJECT_NAME_FACET, [GASettings appProjectName]] : @"";
         url = [[NSString alloc] initWithFormat: @"%@%@?hub=%@&offset=%ld&max=%ld&searchTerm=%@&mobile=true%@&userId=%@&%@", BIOCOLLECT_SERVER, BIO_ACTIVITIES, hubName, (long)offset, (long)max, query, myRecordsStr,userId,facet];
     }
     

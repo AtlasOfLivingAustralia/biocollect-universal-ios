@@ -38,4 +38,10 @@
 +(NSString*) appLoginImage;
 +(NSString*) appHubName;
 +(NSString*) appLoginLogo;
++(NSString*) appProjectID;
++(NSString*) appProjectActivityID;
++(NSString*) appProjectName;
++(NSString*) appAboutUrl;
++(NSString*) appContactUrl;
+
 @end
