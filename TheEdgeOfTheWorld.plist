@@ -24,6 +24,8 @@
 	<string>260c8864-11a9-4c5e-8fcc-7bc6acd6a8e5</string>
 	<key>Bio_Project_Name</key>
 	<string>The Edge of the World</string>
+    <key>Bio_HubName</key>
+    <string></string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>

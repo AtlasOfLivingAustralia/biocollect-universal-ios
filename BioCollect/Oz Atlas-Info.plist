@@ -10,6 +10,8 @@
 	<string>f813c99c-1a1d-4096-8eeb-cbc40e321101</string>
 	<key>Bio_Project_Name</key>
 	<string>ALA species sightings and OzAtlas</string>
+    <key>Bio_HubName</key>
+    <string></string>
 	<key>Bio_About_Url</key>
 	<string>https://www.ala.org.au/who-we-are/</string>
 	<key>Bio_Contact_Url</key>

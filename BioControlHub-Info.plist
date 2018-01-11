@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Bio_AppType</key>
+	<string>hubview</string>
+	<key>Bio_Home_BK_Big</key>
+	<string>biocontrolhub_home_bk.jpg</string>
+	<key>Bio_Home_BK_Small</key>
+	<string>biocontrolhub_bk_small</string>
+	<key>Bio_Home_Login_Image_Logo</key>
+	<string>biocontrol_logo.png</string>
+	<key>Bio_Home_Login_Image_iPad</key>
+	<string>biocontrol_hub_home_login_iPad.jpg</string>
+	<key>Bio_Home_Login_Image_iPhone</key>
+	<string>biocontrol_hub_home_login_iPhone.jpg</string>
+	<key>Bio_HubName</key>
+	<string>biocontrolhub</string>
+	<key>Bio_Menu</key>
+	<array>
+		<dict>
+			<key>icon</key>
+			<string>icon_briefcase</string>
+			<key>title</key>
+			<string>Biocontrol Projects</string>
+			<key>url</key>
+			<string></string>
+			<key>view</key>
+			<string>hub_projects</string>
+		</dict>
+		<dict>
+			<key>icon</key>
+			<string>icon_all_records</string>
+			<key>title</key>
+			<string>Data</string>
+			<key>url</key>
+			<string></string>
+			<key>view</key>
+			<string>hub_all_records</string>
+		</dict>
+		<dict>
+			<key>icon</key>
+			<string>icon_all_records</string>
+			<key>title</key>
+			<string>My Data</string>
+			<key>url</key>
+			<string></string>
+			<key>view</key>
+			<string>my_hub_records</string>
+		</dict>
+		<dict>
+			<key>icon</key>
+			<string>icon_location</string>
+			<key>title</key>
+			<string>Explore Species</string>
+			<key>url</key>
+			<string></string>
+			<key>view</key>
+			<string>hub_explore</string>
+		</dict>
+		<dict>
+			<key>icon</key>
+			<string>icon_draft</string>
+			<key>title</key>
+			<string>Drafts</string>
+			<key>url</key>
+			<string></string>
+			<key>view</key>
+			<string>hub_drafts</string>
+		</dict>
+		<dict>
+			<key>icon</key>
+			<string></string>
+			<key>title</key>
+			<string>What is Biological Control?</string>
+			<key>url</key>
+			<string>/biocontrolhub/staticPage/index?page=what_is_biocontrol&amp;mobile=true</string>
+			<key>view</key>
+			<string>web_url</string>
+		</dict>
+		<dict>
+			<key>icon</key>
+			<string></string>
+			<key>title</key>
+			<string>Sharing and using data</string>
+			<key>url</key>
+			<string>/biocontrolhub/staticPage/index?page=get_involved&amp;mobile=true</string>
+			<key>view</key>
+			<string>web_url</string>
+		</dict>
+		<dict>
+			<key>icon</key>
+			<string></string>
+			<key>title</key>
+			<string>Additional Resources</string>
+			<key>url</key>
+			<string>/biocontrolhub/staticPage/index?page=materials&amp;mobile=true</string>
+			<key>view</key>
+			<string>web_url</string>
+		</dict>
+		<dict>
+			<key>icon</key>
+			<string></string>
+			<key>title</key>
+			<string>About</string>
+			<key>url</key>
+			<string>/biocontrolhub/staticPage/index?page=identify_biocontrol_agents&amp;mobile=true</string>
+			<key>view</key>
+			<string>web_url</string>
+		</dict>
+		<dict>
+			<key>icon</key>
+			<string>icon_logo</string>
+			<key>na</key>
+			<string>na</string>
+			<key>title</key>
+			<string>App version</string>
+			<key>view</key>
+			<string>version</string>
+		</dict>
+	</array>
+	<key>Bio_Project_Activity_ID</key>
+	<string>e61eb018-02a9-4e3b-a4b3-9d6be33d9cbb</string>
+	<key>Bio_Project_ID</key>
+	<string>f813c99c-1a1d-4096-8eeb-cbc40e321101</string>
+	<key>Bio_Project_Name</key>
+	<string>ALA species sightings and OzAtlas</string>
+	<key>Bio_Theme</key>
+	<string>#F15A24</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>Bio Control Hub</string>
+	<key>CFBundleExecutable</key>
+	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleIcons</key>
+	<dict/>
+	<key>CFBundleIcons~ipad</key>
+	<dict/>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>${PRODUCT_NAME}</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>05</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>This app requires access to the camera.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Location is required to find out where you are</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Location usage used</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Location is required to find out where you are</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>$(PRODUCT_NAME) uses Camera</string>
+	<key>UILaunchImages</key>
+	<array>
+		<dict>
+			<key>UILaunchImageMinimumOSVersion</key>
+			<string>7.0</string>
+			<key>UILaunchImageName</key>
+			<string>Default-568</string>
+			<key>UILaunchImageOrientation</key>
+			<string>Portrait</string>
+			<key>UILaunchImageSize</key>
+			<string>{320, 568}</string>
+		</dict>
+	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+	</array>
+	<key>UIRequiresFullScreen</key>
+	<true/>
+	<key>UIStatusBarHidden~ipad</key>
+	<false/>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+</dict>
+</plist>
