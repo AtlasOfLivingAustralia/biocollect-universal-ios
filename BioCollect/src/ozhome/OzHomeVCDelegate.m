@@ -267,6 +267,41 @@
             [appDelegate.ozHomeNC presentViewController:webViewController animated:YES completion:NULL];
         } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"version"]) {
             [RKDropdownAlert title:[[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleDisplayName"] message:[GASettings appVersion] backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+        } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"hub_explore"]) {
+            if([[appDelegate restCall] notReachable]) {
+                [RKDropdownAlert title:@"Device offline" message:@"Please try later!" backgroundColor:[UIColor colorWithRed:243.0/255.0 green:156.0/255.0 blue:18.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+                return;
+            }
+            [self.locationManager startUpdatingLocation];
+            HomeViewController *homeMapViewController = [[HomeViewController alloc] init];
+            homeMapViewController.customView = @"explore";
+            homeMapViewController.clLocation =  self.curentLocation;
+            NSMutableDictionary *dict = [NSMutableDictionary new];
+            dict[@"lat"] = @"0";
+            dict[@"lng"] = @"0";
+            dict[@"radius"] = @"5";
+            homeMapViewController.locationDetails = dict;
+            [spotyViewController.navigationController pushViewController:homeMapViewController animated:TRUE];
+            
+        } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"hub_drafts"]){
+            if([appDelegate.records count] == 0) {
+                [RKDropdownAlert title:@"No draft sightings available" message:@"" backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+                
+            } else {
+                if(self.syncViewController == nil){
+                    self.syncViewController = [[SyncTableViewController alloc] initWithNibName:@"SyncTableViewController" bundle:nil];
+                    self.syncViewController.title = @"Draft Sightings";
+                }
+                
+                [spotyViewController.navigationController pushViewController:self.syncViewController animated:TRUE];
+                
+                if(appDelegate.projectsModified){
+                    appDelegate.projectsModified = NO;
+                    [self.syncViewController.tableView reloadData];
+                }
+                [spotyViewController.tableView deselectRowAtIndexPath:indexPath animated:YES];
+            }
+            
         }else {
             DebugLog(@"ERROR",@"Unsupported hub view.")
         }

@@ -114,7 +114,6 @@
         } else {
             cell.textLabel.text = @"Draft Sightings";
         }
-        
         [cell.imageView setImage:[UIImage imageNamed:@"icon_draft"]];
     } else if(indexPath.row == 5) {
         cell.textLabel.text = @"About";

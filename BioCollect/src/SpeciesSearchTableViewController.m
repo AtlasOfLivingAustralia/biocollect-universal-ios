@@ -123,7 +123,7 @@
     }
    
     if(![species[@"rank"] isEqualToString: @"unmatched taxon"] ) {
-        UIImage *image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"icon_about_2"]];
+        UIImage *image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"icon_about_square"]];
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         CGRect frame = CGRectMake(320.0 - 44.0, 0.0, 44, 44);
         button.frame = frame;

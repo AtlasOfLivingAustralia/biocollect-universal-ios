@@ -77,11 +77,12 @@
 // http://biocollect-test.ala.org.au/bioActivity/searchProjectActivities?view=allrecords&searchTerm=test
 
 - (NSInteger) getActivities : (NSMutableArray*) records offset: (NSInteger) offset max: (NSInteger) max projectId: (NSString*) projectId query: (NSString*) query myRecords: (BOOL) myRecords error:(NSError**) error {
+    
     //Request projects.
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     NSString *url = nil;
     NSString *userId = [GASettings getUserId];
-    NSString *hubName = [GASettings appHubName];
+    NSString *hubName = myRecords ? @"" : [GASettings appHubName]; // TODO fix this to filter the records for specific hub. [GASettings appHubName];
     if(projectId) {
         url = [[NSString alloc] initWithFormat: @"%@%@?hub=%@&view=project&offset=%ld&max=%ld&projectId=%@&searchTerm=%@&mobile=true&userId=%@", BIOCOLLECT_SERVER, BIO_ACTIVITIES, hubName, (long)offset, (long)max, projectId,query,userId];
     } else {
