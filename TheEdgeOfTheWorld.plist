@@ -60,11 +60,11 @@
 	<key>NSCameraUsageDescription</key>
 	<string>App uses camera to capture species photo.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Your current location is required to determine species coordinates.</string>
+	<string>Location required to determine species coordinates.</string>
 	<key>NSLocationUsageDescription</key>
-	<string>Your current location is required to determine species coordinates.</string>
+	<string>Location required to determine species coordinates.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Your current location is required to determine species coordinates.</string>
+	<string>Location required to determine species coordinates.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>$(PRODUCT_NAME) uses camera to capture species photo.</string>
 	<key>UILaunchImages</key>
