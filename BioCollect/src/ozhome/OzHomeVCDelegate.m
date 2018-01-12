@@ -229,6 +229,10 @@
     // SVModalWebViewController === web_url
     // SVModalWebViewController === allrecords
     // SVModalWebViewController === myrecords
+    // SyncTableViewController == hub_drafts
+    // HomeViewController == hub_explore
+    // == add_track
+    // == tracker_settings
     
     GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
     NSArray *menuItems = [[NSBundle mainBundle] objectForInfoDictionaryKey: APP_MENU];
@@ -298,7 +302,11 @@
                 [spotyViewController.tableView deselectRowAtIndexPath:indexPath animated:YES];
             }
             
-        }else {
+        } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"add_track"]) {
+            [RKDropdownAlert title:@"Under development" message:@"" backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+        } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"tracker_settings"]) {
+            [RKDropdownAlert title:@"Under development" message:@"" backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+        } else {
             DebugLog(@"ERROR",@"Unsupported hub view.")
         }
     }

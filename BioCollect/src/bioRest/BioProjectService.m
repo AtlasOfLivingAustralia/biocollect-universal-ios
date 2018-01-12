@@ -82,7 +82,7 @@
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     NSString *url = nil;
     NSString *userId = [GASettings getUserId];
-    NSString *hubName = myRecords ? @"" : [GASettings appHubName]; // TODO fix this to filter the records for specific hub. [GASettings appHubName];
+    NSString *hubName = [GASettings appHubName]; // TODO fix this to filter the records for specific hub. [GASettings appHubName];
     if(projectId) {
         url = [[NSString alloc] initWithFormat: @"%@%@?hub=%@&view=project&offset=%ld&max=%ld&projectId=%@&searchTerm=%@&mobile=true&userId=%@", BIOCOLLECT_SERVER, BIO_ACTIVITIES, hubName, (long)offset, (long)max, projectId,query,userId];
     } else {
@@ -112,8 +112,8 @@
             GAActivity *activity = [[GAActivity alloc] init];
             activity.activityName = activitiesJSON.activityType;
             activity.description = ([activitiesJSON.description length])?(activitiesJSON.description):@"";
-            activity.url = [[NSString alloc] initWithFormat:@"%@/bioActivity/index/%@?mobile=true",BIOCOLLECT_SERVER,activitiesJSON.activityId];
-            activity.editUrl = [[NSString alloc] initWithFormat:@"%@/bioActivity/mobileEdit/%@?mobile=true",BIOCOLLECT_SERVER,activitiesJSON.activityId];
+            activity.url = [[NSString alloc] initWithFormat:@"%@/sightings/bioActivity/index/%@?mobile=true",BIOCOLLECT_SERVER,activitiesJSON.activityId];
+            activity.editUrl = [[NSString alloc] initWithFormat:@"%@/sightings/bioActivity/mobileEdit/%@?mobile=true",BIOCOLLECT_SERVER,activitiesJSON.activityId];
             activity._id = -1;
             activity.activityOwnerName = activitiesJSON.activityOwnerName;
             activity.activityId = activitiesJSON.activityId;

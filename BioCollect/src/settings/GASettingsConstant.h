@@ -20,6 +20,10 @@
 #define AUTH_REGISTER @"/userdetails/registration/createAccount"
 #define AUTH_USERDETAILS @"/userdetails/userDetails/getUserDetails?userName="
 
+// Get list of projects associated to the hub:
+// https://biocollect-test.ala.org.au/ws/project/search?sort=nameSort&hub=trackshub&fq=isExternal:F&initiator=biocollect&max=50&offset=0&mobile=true
+// Get list of activities associated wit the project. >>  https://biocollect-test.ala.org.au/ws/survey/list/2f4eed05-5be1-417d-a4ab-174f5b24d22a
+
 #define UNIQUE_SPECIES_ID @"/ws/species/uniqueId"
 #define DOCUMENT_UPLOAD_URL @"/ws/attachment/upload"
 #define PROJECT_NAME @"OzAtlas Sightings"
