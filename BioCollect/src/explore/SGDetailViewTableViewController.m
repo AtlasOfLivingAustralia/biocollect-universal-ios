@@ -9,6 +9,7 @@
 #import "RecordViewController.h"
 #import "MRProgressOverlayView.h"
 #import "RecordForm.h"
+#import "GASettings.h"
 
 @interface SGDetailViewTableViewController ()
 @property (nonatomic, assign) int fixedTotal;
@@ -102,7 +103,7 @@
     
     UIImage *image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"icon_about_square"]];
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    CGRect frame = CGRectMake(320.0 - 44.0, 0.0, 44, 44);
+    CGRect frame = CGRectMake(320.0 - 44.0, 0.0, 50, 50);
     button.frame = frame;
     [button setBackgroundImage:image forState:UIControlStateNormal];
     [button addTarget:self action:@selector(accessoryButtonTapped:event:)  forControlEvents:UIControlEventTouchUpInside];
@@ -139,16 +140,25 @@
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *species = [displayItems objectAtIndex:indexPath.row];
-    RecordViewController *recordViewController = [[RecordViewController alloc] init];
-    recordViewController.title = @"Record a Sighting";
-    [recordViewController setRecordSpecies: species];
-    RecordForm *record = recordViewController.formController.form;
-    if(record != nil) {
-        NSString *lat = self.locationDetails[@"lat"];
-        NSString *lng = self.locationDetails[@"lng"];
-        record.location = [[CLLocation alloc] initWithLatitude:[lat floatValue] longitude:[lng floatValue]];
+    if([[GASettings appView] isEqualToString:@"custom"]) {
+        RecordViewController *recordViewController = [[RecordViewController alloc] init];
+        recordViewController.title = @"Record a Sighting";
+        [recordViewController setRecordSpecies: species];
+        RecordForm *record = recordViewController.formController.form;
+        if(record != nil) {
+            NSString *lat = self.locationDetails[@"lat"];
+            NSString *lng = self.locationDetails[@"lng"];
+            record.location = [[CLLocation alloc] initWithLatitude:[lat floatValue] longitude:[lng floatValue]];
+        }
+        [self.navigationController pushViewController:recordViewController animated:TRUE];
+    } else {
+        NSString *url = [[NSString alloc] initWithFormat:@"http://bie.ala.org.au/species/%@",species[@"guid"]];
+        NSString *encoded =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress: encoded];
+        webViewController.title = [[NSString alloc] initWithFormat: species[@"name"]];
+        webViewController.webViewDelegate = self;
+        [self presentViewController: webViewController animated:YES completion: nil];
     }
-    [self.navigationController pushViewController:recordViewController animated:TRUE];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {

@@ -13,6 +13,7 @@
 #define REST_SERVER @"https://fieldcapture.ala.org.au"
 #define ECODATA_SERVER @"https://ecodata.ala.org.au"
 #define BIOCOLLECT_SERVER @"https://biocollect.ala.org.au"
+#define LISTS_SERVER @"https://lists.ala.org.au"
 
 
 //#define ECODATA_SERVER @"http://devt.ala.org.au:8080/ecodata"
@@ -23,6 +24,16 @@
 #define AUTH_SERVER  @"https://auth.ala.org.au"
 #define AUTH_REGISTER @"/userdetails/registration/createAccount"
 #define AUTH_USERDETAILS @"/userdetails/userDetails/getUserDetails?userName="
+
+// Tracker app:
+#define GET_SPECIES_LIST @"/ws/speciesListItems/dr8016?includeKVP=true"
+
+// Get list of projects associated to the hub:
+// https://biocollect-test.ala.org.au/ws/project/search?sort=nameSort&hub=trackshub&fq=isExternal:F&initiator=biocollect&max=50&offset=0&mobile=true
+// Get list of activities associated wit the project. >>  https://biocollect-test.ala.org.au/ws/survey/list/2f4eed05-5be1-417d-a4ab-174f5b24d22a
+
+// Get Species lists:
+// https://lists.ala.org.au/ws/speciesListItems/dr8016?includeKVP=true
 
 #define UNIQUE_SPECIES_ID @"/ws/species/uniqueId"
 #define DOCUMENT_UPLOAD_URL @"/ws/attachment/upload"

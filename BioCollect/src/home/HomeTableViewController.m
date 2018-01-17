@@ -145,6 +145,15 @@
         cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@", project.description];
         [cell.imageView sd_setImageWithURL:[NSURL URLWithString:project.urlImage] placeholderImage:[UIImage imageNamed:@"noImage85.jpg"]];
     }
+    
+    UIImage *image = [UIImage imageNamed:@"icon_about_square"];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    CGRect frame = CGRectMake(320.0 - 44.0, 0.0, 50, 50);
+    button.frame = frame;
+    [button setBackgroundImage:image forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(accessoryButtonTapped:event:)  forControlEvents:UIControlEventTouchUpInside];
+    button.backgroundColor = [UIColor clearColor];
+    cell.accessoryView = button;
 
     UIImage *image = [UIImage imageNamed:@"icon_about"];
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];

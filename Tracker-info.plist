@@ -2,79 +2,71 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Bio_About_Url</key>
+	<string>https://www.ala.org.au/who-we-are/</string>
 	<key>Bio_AppType</key>
 	<string>hubview</string>
+	<key>Bio_Contact_Url</key>
+	<string>https://www.ala.org.au/about-the-atlas/contact-us/</string>
 	<key>Bio_Home_BK_Big</key>
-	<string>biocontrolhub_home_bk.jpg</string>
+	<string>tracker_home_bk.jpg</string>
 	<key>Bio_Home_BK_Small</key>
-	<string>biocontrolhub_bk_small</string>
+	<string>tracker_home_bk_small</string>
 	<key>Bio_Home_Login_Image_Logo</key>
-	<string>biocontrol_logo.png</string>
+	<string>tracker_login_logo.png</string>
 	<key>Bio_Home_Login_Image_iPad</key>
-	<string>biocontrol_hub_home_login_iPad.jpg</string>
+	<string>tracker_home_login_iPad.jpg</string>
 	<key>Bio_Home_Login_Image_iPhone</key>
-	<string>biocontrol_hub_home_login_iPhone.jpg</string>
+	<string>tracker_home_login_iPhone.jpg</string>
 	<key>Bio_HubName</key>
-	<string>biocontrolhub</string>
+	<string>trackshub</string>
+	<key>Bio_Project_Activity_ID</key>
+	<string>e61eb018-02a9-4e3b-a4b3-9d6be33d9cbb</string>
+	<key>Bio_Project_ID</key>
+	<string>f813c99c-1a1d-4096-8eeb-cbc40e321101</string>
+	<key>Bio_Project_Name</key>
+	<string>ALA species sightings and OzAtlas</string>
+	<key>Bio_Theme</key>
+	<string>#F15A24</string>
 	<key>Bio_Menu</key>
 	<array>
 		<dict>
 			<key>icon</key>
-			<string>icon_briefcase</string>
+			<string>icon_track</string>
 			<key>title</key>
-			<string>Biocontrol Projects</string>
+			<string>Add Track</string>
 			<key>url</key>
 			<string></string>
 			<key>view</key>
-			<string>hub_projects</string>
+			<string>add_track</string>
 		</dict>
 		<dict>
 			<key>icon</key>
 			<string>icon_all_records</string>
 			<key>title</key>
-			<string>Data</string>
-			<key>url</key>
-			<string></string>
-			<key>view</key>
-			<string>hub_all_records</string>
-		</dict>
-		<dict>
-			<key>icon</key>
-			<string>icon_all_records</string>
-			<key>title</key>
-			<string>My Data</string>
+			<string>Review Tracks</string>
 			<key>url</key>
 			<string></string>
 			<key>view</key>
 			<string>my_hub_records</string>
 		</dict>
-		<dict>
-			<key>icon</key>
-			<string>icon_location</string>
-			<key>title</key>
-			<string>Explore Species</string>
-			<key>url</key>
-			<string></string>
-			<key>view</key>
-			<string>hub_explore</string>
-		</dict>
-		<dict>
-			<key>icon</key>
-			<string></string>
-			<key>title</key>
-			<string>What is Biological Control?</string>
-			<key>url</key>
-			<string>/biocontrolhub/staticPage/index?page=what_is_biocontrol&amp;mobile=true</string>
-			<key>view</key>
-			<string>web_url</string>
-		</dict>
+        <dict>
+            <key>icon</key>
+            <string>icon_location</string>
+            <key>title</key>
+            <string>Explore Species</string>
+            <key>url</key>
+            <string></string>
+            <key>view</key>
+            <string>hub_explore</string>
+        </dict>
 		<dict>
 			<key>icon</key>
 			<string></string>
 			<key>title</key>
-			<string>Sharing and using data</string>
+			<string>Partners</string>
 			<key>url</key>
-			<string>/biocontrolhub/staticPage/index?page=get_involved&amp;mobile=true</string>
+			<string>/trackshub/staticPage/index?page=Partners&amp;mobile=true</string>
 			<key>view</key>
 			<string>web_url</string>
 		</dict>
@@ -82,9 +74,9 @@
 			<key>icon</key>
 			<string></string>
 			<key>title</key>
-			<string>Additional Resources</string>
+			<string>Help</string>
 			<key>url</key>
-			<string>/biocontrolhub/staticPage/index?page=materials&amp;mobile=true</string>
+			<string>/trackshub/staticPage/index?page=Tracker%20Help&amp;mobile=true</string>
 			<key>view</key>
 			<string>web_url</string>
 		</dict>
@@ -94,9 +86,19 @@
 			<key>title</key>
 			<string>About</string>
 			<key>url</key>
-			<string>/biocontrolhub/staticPage/index?page=identify_biocontrol_agents&amp;mobile=true</string>
+			<string>/trackshub/staticPage/index?page=About&amp;mobile=true</string>
 			<key>view</key>
 			<string>web_url</string>
+		</dict>
+		<dict>
+			<key>icon</key>
+			<string>icon_settings</string>
+			<key>title</key>
+			<string>Settings</string>
+			<key>url</key>
+			<string></string>
+			<key>view</key>
+			<string>tracker_settings</string>
 		</dict>
 		<dict>
 			<key>icon</key>
@@ -109,18 +111,10 @@
 			<string>version</string>
 		</dict>
 	</array>
-	<key>Bio_Project_Activity_ID</key>
-	<string>e61eb018-02a9-4e3b-a4b3-9d6be33d9cbb</string>
-	<key>Bio_Project_ID</key>
-	<string>f813c99c-1a1d-4096-8eeb-cbc40e321101</string>
-	<key>Bio_Project_Name</key>
-	<string>ALA species sightings and OzAtlas</string>
-	<key>Bio_Theme</key>
-	<string>#F15A24</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Bio Control Hub</string>
+	<string>Tracker</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIcons</key>
@@ -136,11 +130,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1</string>
+	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>02</string>
+	<string>01</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -149,7 +143,7 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>App uses camera to capture species photo.</string>
+	<string>App uses camera to capture species photo</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Your current location is required to determine species coordinates.</string>
 	<key>NSLocationUsageDescription</key>
@@ -157,7 +151,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Your current location is required to determine species coordinates.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>$(PRODUCT_NAME) uses camera to capture species photo.</string>
+	<string>$(PRODUCT_NAME) uses Camera</string>
 	<key>UILaunchImages</key>
 	<array>
 		<dict>
