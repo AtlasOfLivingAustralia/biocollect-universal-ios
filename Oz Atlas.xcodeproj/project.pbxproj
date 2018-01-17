@@ -1811,14 +1811,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		87B700091DC2E46C0066C236 /* Sync */ = {
+		87B700091DC2E46C0066C236 /* Drafts */ = {
 			isa = PBXGroup;
 			children = (
 				87B7000F1DC2E5520066C236 /* SyncTableViewController.h */,
 				87B700101DC2E5520066C236 /* SyncTableViewController.m */,
 				87B700111DC2E5520066C236 /* SyncTableViewController.xib */,
 			);
-			name = Sync;
+			name = Drafts;
 			sourceTree = "<group>";
 		};
 		B83825D71A0C666B00690383 /* MRActivityUI */ = {
@@ -1884,9 +1884,9 @@
 			isa = PBXGroup;
 			children = (
 				E2BA83F81F5588A0008BE68F /* WKWebView */,
-				E2A6BE891F0C916100F1A57E /* Explore */,
+				E2A6BE891F0C916100F1A57E /* ExploreSpecies */,
 				E27B8F371EF4E68900B01FAB /* MapSearch */,
-				87B700091DC2E46C0066C236 /* Sync */,
+				87B700091DC2E46C0066C236 /* Drafts */,
 				B87373E31DB702280057027E /* Record */,
 				B83984761DB063FD00551C67 /* OzHome */,
 				B839846E1DA5F49D00551C67 /* Sightings */,
@@ -1895,7 +1895,7 @@
 				E24E0B251CE40378006ECE0E /* Contact */,
 				E2A4A4EF19664F8E006CAC22 /* EULA */,
 				E29A3543196678F3003D025D /* About */,
-				E2F471C01C86816D00594DAB /* Home */,
+				E2F471C01C86816D00594DAB /* Projects */,
 				E2E3AABB18F4D8A10005BB9E /* Login */,
 			);
 			name = Controller;
@@ -2374,7 +2374,7 @@
 			name = EULA;
 			sourceTree = "<group>";
 		};
-		E2A6BE891F0C916100F1A57E /* Explore */ = {
+		E2A6BE891F0C916100F1A57E /* ExploreSpecies */ = {
 			isa = PBXGroup;
 			children = (
 				E2A6BE8A1F0C91A600F1A57E /* SpeciesGroupTableViewController.h */,
@@ -2384,7 +2384,7 @@
 				E2A6BED41F0CE04C00F1A57E /* SGDetailViewTableViewController.m */,
 				E2A6BED71F0CE06800F1A57E /* SGDetailViewTableViewController.xib */,
 			);
-			name = Explore;
+			name = ExploreSpecies;
 			sourceTree = "<group>";
 		};
 		E2A6BE991F0CCFB200F1A57E /* species */ = {
@@ -2687,7 +2687,7 @@
 			name = theedgeoftheworld;
 			sourceTree = "<group>";
 		};
-		E2F471C01C86816D00594DAB /* Home */ = {
+		E2F471C01C86816D00594DAB /* Projects */ = {
 			isa = PBXGroup;
 			children = (
 				E20284951C87D56400E8203F /* HomeTableViewController.h */,
@@ -2705,7 +2705,7 @@
 				E23AF5201C9187E3002501F3 /* RecordWebView.m */,
 				E23AF5221C918862002501F3 /* RecordWebView.xib */,
 			);
-			name = Home;
+			name = Projects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

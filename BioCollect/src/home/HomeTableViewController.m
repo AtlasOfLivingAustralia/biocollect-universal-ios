@@ -11,6 +11,7 @@
 #import "HomeCustomCell.h"
 #import "HomeWebView.h"
 #import "MRProgressOverlayView.h"
+#import "GASettingsConstant.h"
 
 @interface HomeTableViewController()
 @property (strong, nonatomic) JGActionSheet *menu;
@@ -145,6 +146,15 @@
         NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         [cell.imageView sd_setImageWithURL:[NSURL URLWithString:escapedUrlString] placeholderImage:[UIImage imageNamed:@"noImage85.jpg"]];
     }
+    
+    UIImage *image = [UIImage imageNamed:@"icon_about_square"];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    CGRect frame = CGRectMake(320.0 - 44.0, 0.0, 50, 50);
+    button.frame = frame;
+    [button setBackgroundImage:image forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(accessoryButtonTapped:event:)  forControlEvents:UIControlEventTouchUpInside];
+    button.backgroundColor = [UIColor clearColor];
+    cell.accessoryView = button;
 
     return cell;
 }
@@ -152,6 +162,26 @@
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
     return NO;
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+    GAProject *project = [self.bioProjects objectAtIndex:indexPath.row];
+    NSString *url = [[NSString alloc] initWithFormat:@"%@/project/index/%@?mobile=true",BIOCOLLECT_SERVER, project.projectId];
+    NSString *encoded =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress: encoded];
+    webViewController.title = [[NSString alloc] initWithFormat:project.projectName];
+    webViewController.webViewDelegate = self;
+    [self presentViewController: webViewController animated:YES completion: nil];
+}
+
+-(void) accessoryButtonTapped:(id)sender event:(id)event {
+    NSSet *touches = [event allTouches];
+    UITouch *touch = [touches anyObject];
+    CGPoint currentTouchPosition = [touch locationInView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:currentTouchPosition];
+    if (indexPath != nil) {
+        [self tableView: self.tableView accessoryButtonTappedForRowWithIndexPath:indexPath];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath {

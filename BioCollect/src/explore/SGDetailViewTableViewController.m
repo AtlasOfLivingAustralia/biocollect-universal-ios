@@ -103,7 +103,7 @@
     
     UIImage *image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"icon_about_square"]];
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    CGRect frame = CGRectMake(320.0 - 44.0, 0.0, 44, 44);
+    CGRect frame = CGRectMake(320.0 - 44.0, 0.0, 50, 50);
     button.frame = frame;
     [button setBackgroundImage:image forState:UIControlStateNormal];
     [button addTarget:self action:@selector(accessoryButtonTapped:event:)  forControlEvents:UIControlEventTouchUpInside];
