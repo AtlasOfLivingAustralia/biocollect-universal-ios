@@ -256,9 +256,9 @@
         
         NSString *description = [[NSString alloc] initWithFormat:@"%@, %@, %@", activity.activityOwnerName, lastUpdated, activity.activityName];
         cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@", description];
-
-        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:activity.thumbnailUrl]
-                          placeholderImage:[UIImage imageNamed:@"noImage85.jpg"]];
+        NSString *url = [[NSString alloc] initWithFormat: @"%@", activity.thumbnailUrl];
+        //NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"noImage85.jpg"]];
        
         if(activity.showCrud) {
             UIImage *image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"edit_icon"]];

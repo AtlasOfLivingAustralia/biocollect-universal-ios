@@ -143,7 +143,9 @@
         GAProject *project = [self.bioProjects objectAtIndex:indexPath.row];
         cell.textLabel.text = project.projectName;
         cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@", project.description];
-        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:project.urlImage] placeholderImage:[UIImage imageNamed:@"noImage85.jpg"]];
+        NSString *url = [[NSString alloc] initWithFormat: @"%@", project.urlImage];
+        //NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"noImage85.jpg"]];
     }
     
     UIImage *image = [UIImage imageNamed:@"icon_about_square"];
