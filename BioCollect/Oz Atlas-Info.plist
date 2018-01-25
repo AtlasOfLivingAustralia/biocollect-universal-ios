@@ -2,18 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Bio_AppType</key>
-	<string>custom</string>
-	<key>Bio_Project_Activity_ID</key>
-	<string>e61eb018-02a9-4e3b-a4b3-9d6be33d9cbb</string>
-	<key>Bio_Project_ID</key>
-	<string>f813c99c-1a1d-4096-8eeb-cbc40e321101</string>
-	<key>Bio_Project_Name</key>
-	<string>ALA species sightings and OzAtlas</string>
-    <key>Bio_HubName</key>
-    <string></string>
 	<key>Bio_About_Url</key>
 	<string>https://www.ala.org.au/who-we-are/</string>
+	<key>Bio_AppType</key>
+	<string>custom</string>
 	<key>Bio_Contact_Url</key>
 	<string>https://www.ala.org.au/about-the-atlas/contact-us/</string>
 	<key>Bio_Home_Login_Image_Logo</key>
@@ -22,6 +14,14 @@
 	<string>oz_iPad.jpg</string>
 	<key>Bio_Home_Login_Image_iPhone</key>
 	<string>oz_iPhone.jpg</string>
+	<key>Bio_HubName</key>
+	<string></string>
+	<key>Bio_Project_Activity_ID</key>
+	<string>e61eb018-02a9-4e3b-a4b3-9d6be33d9cbb</string>
+	<key>Bio_Project_ID</key>
+	<string>f813c99c-1a1d-4096-8eeb-cbc40e321101</string>
+	<key>Bio_Project_Name</key>
+	<string>ALA species sightings and OzAtlas</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -41,7 +41,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.5.1</string>
+	<string>1.6.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>

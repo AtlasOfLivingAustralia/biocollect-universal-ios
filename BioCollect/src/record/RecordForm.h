@@ -12,6 +12,7 @@
 @interface RecordForm : NSObject <FXForm, NSCoding>
 
 @property (nonatomic, copy) NSString *activityId;
+@property (nonatomic, copy) NSString *siteId; 
 @property (nonatomic, copy) NSString *speciesDisplayName;
 @property (nonatomic, copy) NSString *scientificName;
 @property (nonatomic, copy) NSString *commonName;
@@ -46,6 +47,8 @@
 - (NSDictionary *) toDictionary;
 - (NSString *) toJSON;
 - (NSData *) toJSONData;
+- (NSString *) toSiteJSON;
+- (NSData *) toSiteJSONData;
 - (void) updateImageSettings: (NSMutableDictionary *) data;
 - (NSString *) getSubtitle;
 - (void)setScientificName:(NSString *)sn commonName:(NSString *)cn guid:(NSString *)guid;

@@ -20,6 +20,7 @@
     self.propertyKey = @{
                          @"displayKey": @"speciesDisplayName",
                          @"activityIdKey":@"activityId",
+                         @"siteIdKey":@"siteId",
                          @"scientificNameKey": @"scientificName",
                          @"commonNameKey": @"commonName",
                          @"guidKey": @"guid",
@@ -54,6 +55,7 @@
     
     self.speciesDisplayName = [aDecoder decodeObjectForKey: propertyKey[@"displayKey"]];
     self.activityId = [aDecoder decodeObjectForKey: propertyKey[@"activityIdKey"]];
+    self.siteId = [aDecoder decodeObjectForKey: propertyKey[@"siteIdKey"]];
     self.scientificName = [aDecoder decodeObjectForKey: propertyKey[@"scientificNameKey"]];
     self.commonName = [aDecoder decodeObjectForKey: propertyKey[@"commonNameKey"]];
     self.guid = [aDecoder decodeObjectForKey: propertyKey[@"guidKey"]];
@@ -84,6 +86,7 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder{
     [aCoder encodeObject:self.speciesDisplayName forKey:propertyKey[@"displayKey"]];
     [aCoder encodeObject:self.activityId forKey: propertyKey[@"activityIdKey"]];
+    [aCoder encodeObject:self.siteId forKey: propertyKey[@"siteIdKey"]];
     [aCoder encodeObject:self.scientificName forKey: propertyKey[@"scientificNameKey"]];
     [aCoder encodeObject:self.commonName forKey: propertyKey[@"commonNameKey"]];
     [aCoder encodeObject:self.guid forKey: propertyKey[@"guidKey"]];
@@ -287,14 +290,14 @@
 /**
  *
  */
-- (NSDictionary *) toBiocollectFormat{
+- (NSDictionary *) toBiocollectFormat {
     return @{
              @"activityId":self.activityId ?:@"",
              @"projectStage":@"",
              @"mainTheme":@"",
              @"type":PROJECT_NAME,
              @"projectId": [GASettings appProjectID],
-             @"siteId":@"",
+             @"siteId":self.siteId ?:@"",
              @"outputs":@[@{
                      @"name":PROJECT_ACTIVITY_NAME,
                      @"outputId":@"",
@@ -304,6 +307,35 @@
              };
 }
 
+- (NSDictionary *) toSightingsSiteFormat {
+    int areaKmSq = 0;
+    return @{
+        @"pActivityId":[GASettings appProjectActivityID],
+        @"site":@{
+            @"name":@"Private site for survey: Individual sighting",
+            @"visibility":@"private",
+            @"projects":@[
+                        [GASettings appProjectID]
+                        ],
+            @"extent":@{
+                @"geometry":@{
+                    @"centre":@[
+                              [NSNumber numberWithDouble:self.location.coordinate.longitude]?:[NSNull null],
+                              [NSNumber numberWithDouble:self.location.coordinate.latitude]?:[NSNull null]
+                              ],
+                    @"type":@"Point",
+                    @"areaKmSq": [NSNumber numberWithInt:areaKmSq],
+                    @"coordinates":@[
+                            [NSNumber numberWithDouble:self.location.coordinate.longitude]?:[NSNull null],
+                            [NSNumber numberWithDouble:self.location.coordinate.latitude]?:[NSNull null]
+                            ]
+                },
+                @"source":@"Point"
+            },
+            @"asyncUpdate":@(YES)
+        }
+        };
+}
 
 /**
  * combine related photo fields to a dictionary
@@ -340,6 +372,19 @@
 
 - (NSData *) toJSONData {
     NSDictionary *data = [self toBiocollectFormat];
+    NSError *e;
+    return [NSJSONSerialization dataWithJSONObject:data options:NSJSONWritingPrettyPrinted error:&e];
+}
+
+- (NSString *) toSiteJSON{
+    NSDictionary *data = [self toSightingsSiteFormat];
+    NSError *e;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:data options:NSJSONWritingPrettyPrinted error:&e];
+    return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+}
+
+- (NSData *) toSiteJSONData {
+    NSDictionary *data = [self toSightingsSiteFormat];
     NSError *e;
     return [NSJSONSerialization dataWithJSONObject:data options:NSJSONWritingPrettyPrinted error:&e];
 }

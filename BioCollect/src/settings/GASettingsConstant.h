@@ -37,9 +37,10 @@
 #define PROJECT_ACTIVITY_NAME @"Single Sighting - Advanced"
 
 //Sightings Prod config
-#define CREATE_RECORD @"/ws/bioactivity/save?pActivityId=" // e61eb018-02a9-4e3b-a4b3-9d6be33d9cbb
-#define SIGHTINGS_PROJECT_ID @"" // f813c99c-1a1d-4096-8eeb-cbc40e321101
-#define SIGHTINGS_PROJECT_NAME_FACET @"fq=projectNameFacet:" // ALA species sightings and OzAtlas
+#define CREATE_RECORD @"/ws/bioactivity/save?pActivityId="
+#define SIGHTINGS_PROJECT_ID @""
+#define SIGHTINGS_PROJECT_NAME_FACET @"fq=projectNameFacet:" 
+#define CREATE_SITE @"/site/ajaxUpdate"
 
 // Species Proxy URL:
 #define PROXY_SERVER @"http://ozatlas-proxy.ala.org.au"
