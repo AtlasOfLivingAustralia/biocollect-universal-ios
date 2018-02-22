@@ -1478,7 +1478,7 @@
 		E25D8EFC1EE5813200ED4D0F /* icon_my_records@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_my_records@2x.png"; path = "src/images/icon_my_records@2x.png"; sourceTree = "<group>"; };
 		E25D8F051EE5820100ED4D0F /* icon_location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_location@2x.png"; path = "src/images/icon_location@2x.png"; sourceTree = "<group>"; };
 		E261475B20072F9300B1104E /* Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E261475C20072F9400B1104E /* Tracker-info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Tracker-info.plist"; path = "/Users/sat01a/All/sat01a_git/release-ozatlas/Tracker-info.plist"; sourceTree = "<absolute>"; };
+		E261475C20072F9400B1104E /* Tracker-info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Tracker-info.plist";  sourceTree = "<group>"; };
 		E2636DD21CF2E57C00000371 /* about_filled-25@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "about_filled-25@2x.png"; path = "src/images/about_filled-25@2x.png"; sourceTree = "<group>"; };
 		E2636DD31CF2E57C00000371 /* box_filled-25@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "box_filled-25@2x.png"; path = "src/images/box_filled-25@2x.png"; sourceTree = "<group>"; };
 		E2636DD41CF2E57C00000371 /* brief_filled-25@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "brief_filled-25@2x.png"; path = "src/images/brief_filled-25@2x.png"; sourceTree = "<group>"; };
@@ -4241,7 +4241,7 @@
 					"DEBUG=0",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/Tracker-info.plist";
+				INFOPLIST_FILE = "Tracker-info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4269,7 +4269,7 @@
 				ENABLE_NS_ASSERTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BioCollect/Oz Atlas-Prefix.pch";
-				INFOPLIST_FILE = "$(SRCROOT)/Tracker-info.plist";
+				INFOPLIST_FILE = "Tracker-info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
