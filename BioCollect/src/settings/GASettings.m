@@ -218,4 +218,13 @@
     }
     return value;
 }
+
++(NSString*) appLoadSpeciesListUrl {
+    NSString *value = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_List_Url"];
+    if (value == (id)[NSNull null] || value.length == 0 ) {
+        value = @"";
+    }
+    return value;
+}
+
 @end

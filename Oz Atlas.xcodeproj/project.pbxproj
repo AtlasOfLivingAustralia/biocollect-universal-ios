@@ -1016,6 +1016,21 @@
 		E2E3AAE018F514470005BB9E /* GAActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E3AADF18F514470005BB9E /* GAActivity.m */; };
 		E2E3AAE318F515410005BB9E /* GAProject.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E3AAE218F515410005BB9E /* GAProject.m */; };
 		E2E43395190FAE5700A3FAB2 /* cancelled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E43394190FAE5700A3FAB2 /* cancelled@2x.png */; };
+		E2E479CE204BF8290082CCA4 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
+		E2E479CF204BF8290082CCA4 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
+		E2E479D0204BF8290082CCA4 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
+		E2E479D1204BF8290082CCA4 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
+		E2E479D2204BF8290082CCA4 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
+		E2E479D4204BF9B10082CCA4 /* SpeciesJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479D3204BF9B10082CCA4 /* SpeciesJSON.m */; };
+		E2E479D5204BF9B10082CCA4 /* SpeciesJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479D3204BF9B10082CCA4 /* SpeciesJSON.m */; };
+		E2E479D6204BF9B10082CCA4 /* SpeciesJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479D3204BF9B10082CCA4 /* SpeciesJSON.m */; };
+		E2E479D7204BF9B10082CCA4 /* SpeciesJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479D3204BF9B10082CCA4 /* SpeciesJSON.m */; };
+		E2E479D8204BF9B10082CCA4 /* SpeciesJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479D3204BF9B10082CCA4 /* SpeciesJSON.m */; };
+		E2E479DD204C0B8C0082CCA4 /* SpeciesListService.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479DC204C0B8C0082CCA4 /* SpeciesListService.m */; };
+		E2E479DE204C0B8C0082CCA4 /* SpeciesListService.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479DC204C0B8C0082CCA4 /* SpeciesListService.m */; };
+		E2E479DF204C0B8C0082CCA4 /* SpeciesListService.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479DC204C0B8C0082CCA4 /* SpeciesListService.m */; };
+		E2E479E0204C0B8C0082CCA4 /* SpeciesListService.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479DC204C0B8C0082CCA4 /* SpeciesListService.m */; };
+		E2E479E1204C0B8C0082CCA4 /* SpeciesListService.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479DC204C0B8C0082CCA4 /* SpeciesListService.m */; };
 		E2E56A7C192084D2007AC38C /* GASite.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E56A7B192084D2007AC38C /* GASite.m */; };
 		E2E56A7F1920857C007AC38C /* GASiteJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E56A7E1920857C007AC38C /* GASiteJSON.m */; };
 		E2E56A941921F4D9007AC38C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E56A931921F4D9007AC38C /* CoreLocation.framework */; };
@@ -1478,7 +1493,7 @@
 		E25D8EFC1EE5813200ED4D0F /* icon_my_records@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_my_records@2x.png"; path = "src/images/icon_my_records@2x.png"; sourceTree = "<group>"; };
 		E25D8F051EE5820100ED4D0F /* icon_location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_location@2x.png"; path = "src/images/icon_location@2x.png"; sourceTree = "<group>"; };
 		E261475B20072F9300B1104E /* Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E261475C20072F9400B1104E /* Tracker-info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Tracker-info.plist";  sourceTree = "<group>"; };
+		E261475C20072F9400B1104E /* Tracker-info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tracker-info.plist"; sourceTree = "<group>"; };
 		E2636DD21CF2E57C00000371 /* about_filled-25@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "about_filled-25@2x.png"; path = "src/images/about_filled-25@2x.png"; sourceTree = "<group>"; };
 		E2636DD31CF2E57C00000371 /* box_filled-25@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "box_filled-25@2x.png"; path = "src/images/box_filled-25@2x.png"; sourceTree = "<group>"; };
 		E2636DD41CF2E57C00000371 /* brief_filled-25@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "brief_filled-25@2x.png"; path = "src/images/brief_filled-25@2x.png"; sourceTree = "<group>"; };
@@ -1682,6 +1697,12 @@
 		E2E3AAE118F515410005BB9E /* GAProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAProject.h; path = src/model/GAProject.h; sourceTree = "<group>"; };
 		E2E3AAE218F515410005BB9E /* GAProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAProject.m; path = src/model/GAProject.m; sourceTree = "<group>"; };
 		E2E43394190FAE5700A3FAB2 /* cancelled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cancelled@2x.png"; path = "src/images/cancelled@2x.png"; sourceTree = "<group>"; };
+		E2E479CC204BF8290082CCA4 /* Species.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Species.h; path = src/model/Species.h; sourceTree = "<group>"; };
+		E2E479CD204BF8290082CCA4 /* Species.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Species.m; path = src/model/Species.m; sourceTree = "<group>"; };
+		E2E479D3204BF9B10082CCA4 /* SpeciesJSON.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SpeciesJSON.m; path = src/model/SpeciesJSON.m; sourceTree = "<group>"; };
+		E2E479D9204BF9DA0082CCA4 /* SpeciesJSON.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SpeciesJSON.h; path = src/model/SpeciesJSON.h; sourceTree = "<group>"; };
+		E2E479DB204C0B700082CCA4 /* SpeciesListService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SpeciesListService.h; path = src/Service/SpeciesListService.h; sourceTree = "<group>"; };
+		E2E479DC204C0B8C0082CCA4 /* SpeciesListService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SpeciesListService.m; path = src/Service/SpeciesListService.m; sourceTree = "<group>"; };
 		E2E56A7A192084D2007AC38C /* GASite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GASite.h; path = src/model/GASite.h; sourceTree = "<group>"; };
 		E2E56A7B192084D2007AC38C /* GASite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GASite.m; path = src/model/GASite.m; sourceTree = "<group>"; };
 		E2E56A7D1920857C007AC38C /* GASiteJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GASiteJSON.h; path = src/model/GASiteJSON.h; sourceTree = "<group>"; };
@@ -1904,6 +1925,8 @@
 		B839846D1DA5F00900551C67 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				E2E479CC204BF8290082CCA4 /* Species.h */,
+				E2E479CD204BF8290082CCA4 /* Species.m */,
 				E2E3AADE18F514470005BB9E /* GAActivity.h */,
 				E2E3AADF18F514470005BB9E /* GAActivity.m */,
 				E2E3AAE118F515410005BB9E /* GAProject.h */,
@@ -2327,6 +2350,7 @@
 		E27BDFB718F7895C001EE2F8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E2E479DA204C0B0C0082CCA4 /* SpeciesList */,
 				E20189831C891E390031435D /* bioReST */,
 				E27BDFB818F7896F001EE2F8 /* ReST */,
 			);
@@ -2631,8 +2655,19 @@
 				E2E56A7E1920857C007AC38C /* GASiteJSON.m */,
 				E23AF5111C910F3E002501F3 /* ProjectActivitiesJSON.h */,
 				E23AF5121C910F93002501F3 /* ProjectActivitiesJSON.m */,
+				E2E479D9204BF9DA0082CCA4 /* SpeciesJSON.h */,
+				E2E479D3204BF9B10082CCA4 /* SpeciesJSON.m */,
 			);
 			name = JSON;
+			sourceTree = "<group>";
+		};
+		E2E479DA204C0B0C0082CCA4 /* SpeciesList */ = {
+			isa = PBXGroup;
+			children = (
+				E2E479DB204C0B700082CCA4 /* SpeciesListService.h */,
+				E2E479DC204C0B8C0082CCA4 /* SpeciesListService.m */,
+			);
+			name = SpeciesList;
 			sourceTree = "<group>";
 		};
 		E2E56A8619209128007AC38C /* ThirdParty */ = {
@@ -3660,6 +3695,7 @@
 				E26146A820072F9300B1104E /* GASite.m in Sources */,
 				E26146A920072F9300B1104E /* SDWebImageDownloader.m in Sources */,
 				E26146AA20072F9300B1104E /* MRNavigationBarProgressView.m in Sources */,
+				E2E479D8204BF9B10082CCA4 /* SpeciesJSON.m in Sources */,
 				E26146AB20072F9300B1104E /* OzHomeVCDelegate.m in Sources */,
 				E26146AC20072F9300B1104E /* UIColor+REUIKitAdditions.m in Sources */,
 				E26146AD20072F9300B1104E /* AFHTTPRequestOperation.m in Sources */,
@@ -3670,6 +3706,7 @@
 				E26146B220072F9300B1104E /* ContactVC.m in Sources */,
 				E26146B320072F9300B1104E /* main.m in Sources */,
 				E26146B420072F9300B1104E /* BookmarksViewController.m in Sources */,
+				E2E479E1204C0B8C0082CCA4 /* SpeciesListService.m in Sources */,
 				E26146B520072F9300B1104E /* HomeViewController.m in Sources */,
 				E26146B620072F9300B1104E /* MRProgressView.m in Sources */,
 				E26146B720072F9300B1104E /* SDWebImageDownloaderOperation.m in Sources */,
@@ -3685,6 +3722,7 @@
 				E26146C120072F9300B1104E /* SpeciesService.m in Sources */,
 				E26146C220072F9300B1104E /* RecordsTableViewController.m in Sources */,
 				E26146C320072F9300B1104E /* HomeTableViewController.m in Sources */,
+				E2E479D2204BF8290082CCA4 /* Species.m in Sources */,
 				E26146C420072F9300B1104E /* GAProject.m in Sources */,
 				E26146C520072F9300B1104E /* GAProjectsUtil.m in Sources */,
 				E26146C620072F9300B1104E /* SGDetailViewTableViewController.m in Sources */,
@@ -3778,6 +3816,7 @@
 				E26638B41F52EB9B00F1F1CE /* GASite.m in Sources */,
 				E26638B51F52EB9B00F1F1CE /* SDWebImageDownloader.m in Sources */,
 				E26638B61F52EB9B00F1F1CE /* MRNavigationBarProgressView.m in Sources */,
+				E2E479D6204BF9B10082CCA4 /* SpeciesJSON.m in Sources */,
 				E26638B71F52EB9B00F1F1CE /* OzHomeVCDelegate.m in Sources */,
 				E26638B81F52EB9B00F1F1CE /* UIColor+REUIKitAdditions.m in Sources */,
 				E26638B91F52EB9B00F1F1CE /* AFHTTPRequestOperation.m in Sources */,
@@ -3788,6 +3827,7 @@
 				E26638BE1F52EB9B00F1F1CE /* ContactVC.m in Sources */,
 				E26638BF1F52EB9B00F1F1CE /* main.m in Sources */,
 				E26638C01F52EB9B00F1F1CE /* BookmarksViewController.m in Sources */,
+				E2E479DF204C0B8C0082CCA4 /* SpeciesListService.m in Sources */,
 				E26638C11F52EB9B00F1F1CE /* HomeViewController.m in Sources */,
 				E26638C21F52EB9B00F1F1CE /* MRProgressView.m in Sources */,
 				E26638C31F52EB9B00F1F1CE /* SDWebImageDownloaderOperation.m in Sources */,
@@ -3803,6 +3843,7 @@
 				E26638CD1F52EB9B00F1F1CE /* SpeciesService.m in Sources */,
 				E26638CE1F52EB9B00F1F1CE /* RecordsTableViewController.m in Sources */,
 				E26638CF1F52EB9B00F1F1CE /* HomeTableViewController.m in Sources */,
+				E2E479D0204BF8290082CCA4 /* Species.m in Sources */,
 				E26638D01F52EB9B00F1F1CE /* GAProject.m in Sources */,
 				E26638D11F52EB9B00F1F1CE /* GAProjectsUtil.m in Sources */,
 				E26638D21F52EB9B00F1F1CE /* SGDetailViewTableViewController.m in Sources */,
@@ -3896,6 +3937,7 @@
 				E2AECF1B1E73D3010035DF28 /* GASite.m in Sources */,
 				E2AECF1C1E73D3010035DF28 /* SDWebImageDownloader.m in Sources */,
 				E2AECF1D1E73D3010035DF28 /* MRNavigationBarProgressView.m in Sources */,
+				E2E479D5204BF9B10082CCA4 /* SpeciesJSON.m in Sources */,
 				E2AECF1E1E73D3010035DF28 /* OzHomeVCDelegate.m in Sources */,
 				E27B8F2B1EF4E5FE00B01FAB /* UIColor+REUIKitAdditions.m in Sources */,
 				E27B8F191EF4E5FE00B01FAB /* AFHTTPRequestOperation.m in Sources */,
@@ -3906,6 +3948,7 @@
 				E2AECF221E73D3010035DF28 /* ContactVC.m in Sources */,
 				E2AECF231E73D3010035DF28 /* main.m in Sources */,
 				E27B8F471EF4E68900B01FAB /* BookmarksViewController.m in Sources */,
+				E2E479DE204C0B8C0082CCA4 /* SpeciesListService.m in Sources */,
 				E27B8F4B1EF4E68A00B01FAB /* HomeViewController.m in Sources */,
 				E2AECF241E73D3010035DF28 /* MRProgressView.m in Sources */,
 				E2AECF251E73D3010035DF28 /* SDWebImageDownloaderOperation.m in Sources */,
@@ -3921,6 +3964,7 @@
 				E2A6BE941F0C9DAE00F1A57E /* SpeciesService.m in Sources */,
 				E2AECF2D1E73D3010035DF28 /* RecordsTableViewController.m in Sources */,
 				E2AECF2E1E73D3010035DF28 /* HomeTableViewController.m in Sources */,
+				E2E479CF204BF8290082CCA4 /* Species.m in Sources */,
 				E2AECF2F1E73D3010035DF28 /* GAProject.m in Sources */,
 				E2AECF301E73D3010035DF28 /* GAProjectsUtil.m in Sources */,
 				E2A6BED61F0CE04C00F1A57E /* SGDetailViewTableViewController.m in Sources */,
@@ -4014,6 +4058,7 @@
 				E2E56A7C192084D2007AC38C /* GASite.m in Sources */,
 				E2636E3B1CF43C4100000371 /* SDWebImageDownloader.m in Sources */,
 				B83825FB1A0C666B00690383 /* MRNavigationBarProgressView.m in Sources */,
+				E2E479D4204BF9B10082CCA4 /* SpeciesJSON.m in Sources */,
 				B87373AE1DB08CF90057027E /* OzHomeVCDelegate.m in Sources */,
 				E27B8F2A1EF4E5FE00B01FAB /* UIColor+REUIKitAdditions.m in Sources */,
 				E27B8F181EF4E5FE00B01FAB /* AFHTTPRequestOperation.m in Sources */,
@@ -4024,6 +4069,7 @@
 				E24E0B281CE40402006ECE0E /* ContactVC.m in Sources */,
 				E2E3AA9918F4D2940005BB9E /* main.m in Sources */,
 				E27B8F461EF4E68900B01FAB /* BookmarksViewController.m in Sources */,
+				E2E479DD204C0B8C0082CCA4 /* SpeciesListService.m in Sources */,
 				E27B8F4A1EF4E68A00B01FAB /* HomeViewController.m in Sources */,
 				B83825FD1A0C666B00690383 /* MRProgressView.m in Sources */,
 				E2636E3C1CF43C4100000371 /* SDWebImageDownloaderOperation.m in Sources */,
@@ -4039,6 +4085,7 @@
 				E2A6BE931F0C9DAE00F1A57E /* SpeciesService.m in Sources */,
 				E23AF5161C911C69002501F3 /* RecordsTableViewController.m in Sources */,
 				E20284971C87D59300E8203F /* HomeTableViewController.m in Sources */,
+				E2E479CE204BF8290082CCA4 /* Species.m in Sources */,
 				E2E3AAE318F515410005BB9E /* GAProject.m in Sources */,
 				B89441FB18FA38F500BB5928 /* GAProjectsUtil.m in Sources */,
 				E2A6BED51F0CE04C00F1A57E /* SGDetailViewTableViewController.m in Sources */,
@@ -4142,6 +4189,7 @@
 				E2F19DF8200584AC0033DC24 /* GASite.m in Sources */,
 				E2F19DF9200584AC0033DC24 /* SDWebImageDownloader.m in Sources */,
 				E2F19DFA200584AC0033DC24 /* MRNavigationBarProgressView.m in Sources */,
+				E2E479D7204BF9B10082CCA4 /* SpeciesJSON.m in Sources */,
 				E2F19DFB200584AC0033DC24 /* OzHomeVCDelegate.m in Sources */,
 				E2F19DFC200584AC0033DC24 /* UIColor+REUIKitAdditions.m in Sources */,
 				E2F19DFD200584AC0033DC24 /* AFHTTPRequestOperation.m in Sources */,
@@ -4152,6 +4200,7 @@
 				E2F19E02200584AC0033DC24 /* ContactVC.m in Sources */,
 				E2F19E03200584AC0033DC24 /* main.m in Sources */,
 				E2F19E04200584AC0033DC24 /* BookmarksViewController.m in Sources */,
+				E2E479E0204C0B8C0082CCA4 /* SpeciesListService.m in Sources */,
 				E2F19E05200584AC0033DC24 /* HomeViewController.m in Sources */,
 				E2F19E06200584AC0033DC24 /* MRProgressView.m in Sources */,
 				E2F19E07200584AC0033DC24 /* SDWebImageDownloaderOperation.m in Sources */,
@@ -4167,6 +4216,7 @@
 				E2F19E11200584AC0033DC24 /* SpeciesService.m in Sources */,
 				E2F19E12200584AC0033DC24 /* RecordsTableViewController.m in Sources */,
 				E2F19E13200584AC0033DC24 /* HomeTableViewController.m in Sources */,
+				E2E479D1204BF8290082CCA4 /* Species.m in Sources */,
 				E2F19E14200584AC0033DC24 /* GAProject.m in Sources */,
 				E2F19E15200584AC0033DC24 /* GAProjectsUtil.m in Sources */,
 				E2F19E16200584AC0033DC24 /* SGDetailViewTableViewController.m in Sources */,

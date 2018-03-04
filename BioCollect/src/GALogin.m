@@ -92,7 +92,6 @@
                 self.usernameTextField.text = @"";
                 //Dismiss the login modal
                 [appDelegate.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
-                
                 NSString *appType = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_AppType"];
                 [UIView transitionWithView:appDelegate.window
                                   duration:0.5

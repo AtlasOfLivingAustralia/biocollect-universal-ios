@@ -28,7 +28,9 @@
 	<string>ALA species sightings and OzAtlas</string>
 	<key>Bio_Theme</key>
 	<string>#F15A24</string>
-	<key>Bio_Menu</key>
+    <key>Bio_List_Url</key>
+    <string>/ws/speciesListItems/dr8016?includeKVP=true</string>
+    <key>Bio_Menu</key>
 	<array>
 		<dict>
 			<key>icon</key>

@@ -17,6 +17,7 @@
 #import "MRProgressOverlayView.h"
 #import "ContactVC.h"
 #import "RecordForm.h"
+#import "SpeciesListService.h"
 
 #define IDIOM    UI_USER_INTERFACE_IDIOM()
 #define IPAD     UIUserInterfaceIdiomPad
@@ -32,10 +33,11 @@
 @property (nonatomic, retain) GAActivity *updatedActivity;
 
 @property (nonatomic, retain) NSMutableArray *projects;
+
 @end
 @implementation GAAppDelegate
 
-@synthesize splitViewController, projects,masterProjectVC, detailVC, restCall, sqlLite, loginViewController, eulaVC, homeVC, recordsVC, myProjectsVC, myRecordsVC, bioProjectService,tabBarController,ozHomeNC, speciesService, alaWKWebView;
+@synthesize splitViewController, projects,masterProjectVC, detailVC, restCall, sqlLite, loginViewController, eulaVC, homeVC, recordsVC, myProjectsVC, myRecordsVC, bioProjectService,tabBarController,ozHomeNC, speciesService, alaWKWebView, speciesListService;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -53,6 +55,7 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     self.projects = [[NSMutableArray alloc] init];
+    
     _records = [[NSMutableArray alloc] init];
 
     //Singleton instantiation.
@@ -60,6 +63,7 @@
     sqlLite = [[GASqlLiteDatabase alloc] init];
     bioProjectService = [[BioProjectService alloc] init];
     speciesService = [[SpeciesService alloc] init];
+    speciesListService = [[SpeciesListService alloc] init];
     
     [self addSplitViewtoRoot];
     

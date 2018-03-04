@@ -43,5 +43,6 @@
 +(NSString*) appProjectName;
 +(NSString*) appAboutUrl;
 +(NSString*) appContactUrl;
++(NSString*) appLoadSpeciesListUrl;
 
 @end
