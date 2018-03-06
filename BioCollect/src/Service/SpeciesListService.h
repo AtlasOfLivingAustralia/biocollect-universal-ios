@@ -4,7 +4,6 @@
 //
 
 @interface SpeciesListService : NSObject
-@property (nonatomic, retain) NSMutableArray *speciesList;
 - (void) getSpeciesFromList : (NSError**) error;
-- (void) loadSpeciesList;
+- (NSMutableArray *) loadSpeciesList;
 @end

@@ -743,6 +743,16 @@
 		E2A3C84D200612B100BC90D0 /* BioCollect-info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2A3C84C200612B100BC90D0 /* BioCollect-info.plist */; };
 		E2A4A4F819665009006CAC22 /* GAEULAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A4A4F619665009006CAC22 /* GAEULAViewController.m */; };
 		E2A4A4F919665009006CAC22 /* GAEULAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2A4A4F719665009006CAC22 /* GAEULAViewController.xib */; };
+		E2A53724204D44970085D1BE /* SpeciesListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A53723204D44970085D1BE /* SpeciesListVC.m */; };
+		E2A53725204D44970085D1BE /* SpeciesListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A53723204D44970085D1BE /* SpeciesListVC.m */; };
+		E2A53726204D44970085D1BE /* SpeciesListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A53723204D44970085D1BE /* SpeciesListVC.m */; };
+		E2A53727204D44970085D1BE /* SpeciesListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A53723204D44970085D1BE /* SpeciesListVC.m */; };
+		E2A53728204D44970085D1BE /* SpeciesListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A53723204D44970085D1BE /* SpeciesListVC.m */; };
+		E2A5372A204D49540085D1BE /* SpeciesListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2A53729204D49540085D1BE /* SpeciesListVC.xib */; };
+		E2A5372B204D49540085D1BE /* SpeciesListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2A53729204D49540085D1BE /* SpeciesListVC.xib */; };
+		E2A5372C204D49540085D1BE /* SpeciesListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2A53729204D49540085D1BE /* SpeciesListVC.xib */; };
+		E2A5372D204D49540085D1BE /* SpeciesListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2A53729204D49540085D1BE /* SpeciesListVC.xib */; };
+		E2A5372E204D49540085D1BE /* SpeciesListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2A53729204D49540085D1BE /* SpeciesListVC.xib */; };
 		E2A6BE8C1F0C91C500F1A57E /* SpeciesGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A6BE8B1F0C91C500F1A57E /* SpeciesGroupTableViewController.m */; };
 		E2A6BE8D1F0C91C500F1A57E /* SpeciesGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A6BE8B1F0C91C500F1A57E /* SpeciesGroupTableViewController.m */; };
 		E2A6BE8F1F0C922D00F1A57E /* SpeciesGroupTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BE8E1F0C922D00F1A57E /* SpeciesGroupTableViewController.xib */; };
@@ -1614,6 +1624,9 @@
 		E2A4A4F519665009006CAC22 /* GAEULAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAEULAViewController.h; path = src/eula/GAEULAViewController.h; sourceTree = "<group>"; };
 		E2A4A4F619665009006CAC22 /* GAEULAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAEULAViewController.m; path = src/eula/GAEULAViewController.m; sourceTree = "<group>"; };
 		E2A4A4F719665009006CAC22 /* GAEULAViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GAEULAViewController.xib; path = src/eula/GAEULAViewController.xib; sourceTree = "<group>"; };
+		E2A53722204D44770085D1BE /* SpeciesListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SpeciesListVC.h; path = src/Controller/SpeciesListVC.h; sourceTree = "<group>"; };
+		E2A53723204D44970085D1BE /* SpeciesListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SpeciesListVC.m; path = src/Controller/SpeciesListVC.m; sourceTree = "<group>"; };
+		E2A53729204D49540085D1BE /* SpeciesListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SpeciesListVC.xib; path = src/Controller/SpeciesListVC.xib; sourceTree = "<group>"; };
 		E2A6BE8A1F0C91A600F1A57E /* SpeciesGroupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpeciesGroupTableViewController.h; path = src/explore/SpeciesGroupTableViewController.h; sourceTree = "<group>"; };
 		E2A6BE8B1F0C91C500F1A57E /* SpeciesGroupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpeciesGroupTableViewController.m; path = src/explore/SpeciesGroupTableViewController.m; sourceTree = "<group>"; };
 		E2A6BE8E1F0C922D00F1A57E /* SpeciesGroupTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SpeciesGroupTableViewController.xib; path = src/explore/SpeciesGroupTableViewController.xib; sourceTree = "<group>"; };
@@ -1904,6 +1917,7 @@
 		B839846B1DA5EFCA00551C67 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E2A53721204D442B0085D1BE /* Tracks */,
 				E2BA83F81F5588A0008BE68F /* WKWebView */,
 				E2A6BE891F0C916100F1A57E /* ExploreSpecies */,
 				E27B8F371EF4E68900B01FAB /* MapSearch */,
@@ -2396,6 +2410,16 @@
 				E25185FB1CD9E13F0068B4E0 /* EULAiPhoneViewController.xib */,
 			);
 			name = EULA;
+			sourceTree = "<group>";
+		};
+		E2A53721204D442B0085D1BE /* Tracks */ = {
+			isa = PBXGroup;
+			children = (
+				E2A53722204D44770085D1BE /* SpeciesListVC.h */,
+				E2A53723204D44970085D1BE /* SpeciesListVC.m */,
+				E2A53729204D49540085D1BE /* SpeciesListVC.xib */,
+			);
+			name = Tracks;
 			sourceTree = "<group>";
 		};
 		E2A6BE891F0C916100F1A57E /* ExploreSpecies */ = {
@@ -3022,6 +3046,7 @@
 				E261473C20072F9300B1104E /* lock_filled-25@2x.png in Resources */,
 				E261473D20072F9300B1104E /* ajax_loader.gif in Resources */,
 				E261473E20072F9300B1104E /* LaunchScreen.storyboard in Resources */,
+				E2A5372E204D49540085D1BE /* SpeciesListVC.xib in Resources */,
 				E261473F20072F9300B1104E /* ala_logo1.png in Resources */,
 				E212E84F20081B1900268AD1 /* icon_settings@2x.png in Resources */,
 				E261474020072F9300B1104E /* SVWebViewControllerActivitySafari-iPad.png in Resources */,
@@ -3068,6 +3093,7 @@
 				E26638F01F52EB9B00F1F1CE /* loc1_changed@2x.png in Resources */,
 				E27497252006FFB200876D5C /* biocontrol_hub_home_login_iPad.jpg in Resources */,
 				E26638F11F52EB9B00F1F1CE /* biocollect_logo_1.png in Resources */,
+				E2A5372C204D49540085D1BE /* SpeciesListVC.xib in Resources */,
 				E26638F21F52EB9B00F1F1CE /* sync-25@2x.png in Resources */,
 				E26638F31F52EB9B00F1F1CE /* SVWebViewControllerActivityChrome-iPad@2x.png in Resources */,
 				E26638F41F52EB9B00F1F1CE /* RecordWebView.xib in Resources */,
@@ -3269,6 +3295,7 @@
 				E27B3F991EF62BB500DBB47D /* icon_street_view@2x.png in Resources */,
 				E2AECF741E73D3010035DF28 /* InfoPlist.strings in Resources */,
 				E27497212006FA5E00876D5C /* icon_about_square@2x.png in Resources */,
+				E2A5372B204D49540085D1BE /* SpeciesListVC.xib in Resources */,
 				E2AECF751E73D3010035DF28 /* table-place-holder.png in Resources */,
 				E2A6BEBF1F0CCFC000F1A57E /* Fungi.jpg in Resources */,
 				E2AECF761E73D3010035DF28 /* home_filled-25@2x.png in Resources */,
@@ -3336,6 +3363,7 @@
 				E20D1B561CDC145100A3607B /* AboutiPhoneView.xib in Resources */,
 				B87373DB1DB6DFE90057027E /* SVWebViewControllerActivitySafari-iPad@2x.png in Resources */,
 				E2A6BEC61F0CCFC000F1A57E /* Molluscs.jpg in Resources */,
+				E2A5372A204D49540085D1BE /* SpeciesListVC.xib in Resources */,
 				E2A6BEC81F0CCFC000F1A57E /* Monocots.jpg in Resources */,
 				E22045C4192D7D0B00531116 /* help_filled-25@2x.png in Resources */,
 				8709E9B31DB5A0FF00D04585 /* SpeciesSearchTableViewController.xib in Resources */,
@@ -3582,6 +3610,7 @@
 				E2F19E8C200584AC0033DC24 /* ajax_loader.gif in Resources */,
 				E2F19E8D200584AC0033DC24 /* LaunchScreen.storyboard in Resources */,
 				E2F19E8E200584AC0033DC24 /* ala_logo1.png in Resources */,
+				E2A5372D204D49540085D1BE /* SpeciesListVC.xib in Resources */,
 				E2F19E8F200584AC0033DC24 /* SVWebViewControllerActivitySafari-iPad.png in Resources */,
 				E212E84E20081B1900268AD1 /* icon_settings@2x.png in Resources */,
 				E2F19E90200584AC0033DC24 /* Images.xcassets in Resources */,
@@ -3675,6 +3704,7 @@
 				E261469420072F9300B1104E /* OzHomeVC.m in Sources */,
 				E261469520072F9300B1104E /* SettingsViewController.m in Sources */,
 				E261469620072F9300B1104E /* SyncTableViewController.m in Sources */,
+				E2A53728204D44970085D1BE /* SpeciesListVC.m in Sources */,
 				E261469720072F9300B1104E /* SVWebViewControllerActivityChrome.m in Sources */,
 				E261469820072F9300B1104E /* GAAppDelegate.m in Sources */,
 				E261469920072F9300B1104E /* ProjectActivitiesJSON.m in Sources */,
@@ -3796,6 +3826,7 @@
 				E26638A01F52EB9B00F1F1CE /* OzHomeVC.m in Sources */,
 				E26638A11F52EB9B00F1F1CE /* SettingsViewController.m in Sources */,
 				E26638A21F52EB9B00F1F1CE /* SyncTableViewController.m in Sources */,
+				E2A53726204D44970085D1BE /* SpeciesListVC.m in Sources */,
 				E26638A31F52EB9B00F1F1CE /* SVWebViewControllerActivityChrome.m in Sources */,
 				E26638A41F52EB9B00F1F1CE /* GAAppDelegate.m in Sources */,
 				E26638A51F52EB9B00F1F1CE /* ProjectActivitiesJSON.m in Sources */,
@@ -3917,6 +3948,7 @@
 				E2AECF0A1E73D3010035DF28 /* OzHomeVC.m in Sources */,
 				E27B8F4D1EF4E68A00B01FAB /* SettingsViewController.m in Sources */,
 				E2AECF0B1E73D3010035DF28 /* SyncTableViewController.m in Sources */,
+				E2A53725204D44970085D1BE /* SpeciesListVC.m in Sources */,
 				E2AECF0C1E73D3010035DF28 /* SVWebViewControllerActivityChrome.m in Sources */,
 				E2AECF0D1E73D3010035DF28 /* GAAppDelegate.m in Sources */,
 				E2AECF0E1E73D3010035DF28 /* ProjectActivitiesJSON.m in Sources */,
@@ -4038,6 +4070,7 @@
 				B87373AB1DB089110057027E /* OzHomeVC.m in Sources */,
 				E27B8F4C1EF4E68A00B01FAB /* SettingsViewController.m in Sources */,
 				87B700121DC2E5520066C236 /* SyncTableViewController.m in Sources */,
+				E2A53724204D44970085D1BE /* SpeciesListVC.m in Sources */,
 				B87373D81DB6DFE90057027E /* SVWebViewControllerActivityChrome.m in Sources */,
 				E2E3AA9D18F4D2940005BB9E /* GAAppDelegate.m in Sources */,
 				E23AF5131C910F93002501F3 /* ProjectActivitiesJSON.m in Sources */,
@@ -4169,6 +4202,7 @@
 				E2F19DE4200584AC0033DC24 /* OzHomeVC.m in Sources */,
 				E2F19DE5200584AC0033DC24 /* SettingsViewController.m in Sources */,
 				E2F19DE6200584AC0033DC24 /* SyncTableViewController.m in Sources */,
+				E2A53727204D44970085D1BE /* SpeciesListVC.m in Sources */,
 				E2F19DE7200584AC0033DC24 /* SVWebViewControllerActivityChrome.m in Sources */,
 				E2F19DE8200584AC0033DC24 /* GAAppDelegate.m in Sources */,
 				E2F19DE9200584AC0033DC24 /* ProjectActivitiesJSON.m in Sources */,

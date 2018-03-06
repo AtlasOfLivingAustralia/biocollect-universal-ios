@@ -56,11 +56,11 @@
             <key>icon</key>
             <string>icon_location</string>
             <key>title</key>
-            <string>Explore Species</string>
+            <string>Species List</string>
             <key>url</key>
             <string></string>
             <key>view</key>
-            <string>hub_explore</string>
+            <string>species_list</string>
         </dict>
 		<dict>
 			<key>icon</key>
@@ -78,7 +78,7 @@
 			<key>title</key>
 			<string>Help</string>
 			<key>url</key>
-			<string>/trackshub/staticPage/index?page=Tracker%20Help&amp;mobile=true</string>
+			<string>/trackshub/staticPage/index?page=Tracker_Help&amp;mobile=true</string>
 			<key>view</key>
 			<string>web_url</string>
 		</dict>

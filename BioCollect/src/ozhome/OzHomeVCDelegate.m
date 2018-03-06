@@ -20,6 +20,7 @@
 #import "GASettings.h"
 #import "HomeTableViewController.h"
 #import "RecordsTableViewController.h"
+#import "SpeciesListVC.h"
 
 @interface OzHomeVCDelegate()
     @property (nonatomic, strong) RecordsTableViewController *recordsTableView;
@@ -231,6 +232,7 @@
     // SVModalWebViewController === myrecords
     // SyncTableViewController == hub_drafts
     // HomeViewController == hub_explore
+    // SpeciesListVC == species_list
     // == add_track
     // == tracker_settings
     
@@ -306,6 +308,9 @@
             [RKDropdownAlert title:@"Under development" message:@"" backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
         } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"tracker_settings"]) {
             [RKDropdownAlert title:@"Under development" message:@"" backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+        } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"species_list"]) {
+            SpeciesListVC *speciesListVC = [[SpeciesListVC alloc] initWithNibName:@"SpeciesListVC" bundle:nil];
+            [spotyViewController.navigationController pushViewController: speciesListVC animated:TRUE];
         } else {
             DebugLog(@"ERROR",@"Unsupported hub view.")
         }
