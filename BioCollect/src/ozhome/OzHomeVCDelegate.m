@@ -18,6 +18,7 @@
 #import "RecordsTableViewController.h"
 #import "SpeciesListVC.h"
 #import "HubProjects.h"
+#import "TrackViewController.h"
 
 @interface OzHomeVCDelegate()
     @property (nonatomic, strong) RecordsTableViewController *recordsTableView;
@@ -302,7 +303,8 @@
             }
             
         } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"add_track"]) {
-            [RKDropdownAlert title:@"Under development" message:@"" backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+            TrackViewController *homeVC = [[TrackViewController alloc] initWithNibName:@"TrackViewController" bundle:nil];
+            [spotyViewController.navigationController pushViewController: homeVC animated:TRUE];
         } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"tracker_settings"]) {
             HubProjects *hubProjectsVC = [[HubProjects alloc] initWithNibName:@"HubProjects" bundle:nil];
             [spotyViewController.navigationController pushViewController: hubProjectsVC animated:TRUE];
