@@ -17,6 +17,7 @@
 #import "ALAWKWebView.h"
 #import "SpeciesListService.h"
 #import "ProjectService.h"
+#import "Locale.h"
 
 @interface GAAppDelegate : UIResponder <UIApplicationDelegate, UIAlertViewDelegate>
 
@@ -40,6 +41,7 @@
 @property (nonatomic, strong, readonly) NSMutableArray *records;
 @property (nonatomic, strong, readonly) NSURL *recordArchivePath;
 @property (nonatomic, assign) BOOL projectsModified;
+@property (nonatomic, retain) Locale *locale;
 
 -(void) updateTableModelsAndViews : (NSMutableArray *) p;
 -(void) displaySigninPage;

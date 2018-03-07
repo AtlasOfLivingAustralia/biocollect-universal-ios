@@ -36,7 +36,7 @@
 			<key>icon</key>
 			<string>icon_track</string>
 			<key>title</key>
-			<string>Add Track</string>
+			<string>Add a track</string>
 			<key>url</key>
 			<string></string>
 			<key>view</key>
@@ -46,7 +46,7 @@
 			<key>icon</key>
 			<string>icon_all_records</string>
 			<key>title</key>
-			<string>Review Tracks</string>
+			<string>List tracks</string>
 			<key>url</key>
 			<string></string>
 			<key>view</key>
@@ -62,6 +62,16 @@
             <key>view</key>
             <string>species_list</string>
         </dict>
+		<dict>
+			<key>icon</key>
+			<string>icon_location</string>
+			<key>title</key>
+			<string>Explore Species</string>
+			<key>url</key>
+			<string></string>
+			<key>view</key>
+			<string>hub_explore</string>
+		</dict>
 		<dict>
 			<key>icon</key>
 			<string></string>

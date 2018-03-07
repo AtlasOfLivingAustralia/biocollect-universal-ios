@@ -3116,10 +3116,10 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
     {
         textViewFrame.origin.y = self.textLabel.frame.origin.y;
     }
-    self.textView.frame = textViewFrame;
     
     textViewFrame.origin.x += 5;
     textViewFrame.size.width -= 5;
+    self.textView.frame = textViewFrame;
     self.detailTextLabel.frame = textViewFrame;
     
     CGRect contentViewFrame = self.contentView.frame;
