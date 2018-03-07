@@ -1368,8 +1368,8 @@
 		8709E9B51DB5A11700D04585 /* Record.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Record.m; path = src/Record.m; sourceTree = "<group>"; };
 		87165E17203F867B0094633E /* TrackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TrackViewController.h; path = BioCollect/src/Tracker/TrackViewController.h; sourceTree = SOURCE_ROOT; };
 		87165E18203F867B0094633E /* TrackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TrackViewController.m; path = BioCollect/src/Tracker/TrackViewController.m; sourceTree = SOURCE_ROOT; };
-		87165E1F2043A7020094633E /* Locale.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Locale.m; sourceTree = "<group>"; };
-		87165E212043A72D0094633E /* Locale.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Locale.h; sourceTree = "<group>"; };
+		87165E1F2043A7020094633E /* Locale.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Locale.m; path = src/Tracker/Locale.m; sourceTree = "<group>"; };
+		87165E212043A72D0094633E /* Locale.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Locale.h; path = src/Tracker/Locale.h; sourceTree = "<group>"; };
 		87165E222043DACF0094633E /* TrackMetadataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TrackMetadataViewController.h; path = BioCollect/src/Tracker/TrackMetadataViewController.h; sourceTree = SOURCE_ROOT; };
 		87165E232043DACF0094633E /* TrackMetadataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TrackMetadataViewController.m; path = BioCollect/src/Tracker/TrackMetadataViewController.m; sourceTree = SOURCE_ROOT; };
 		87165E332045856A0094633E /* MetadataForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MetadataForm.h; path = BioCollect/src/Tracker/MetadataForm.h; sourceTree = SOURCE_ROOT; };
