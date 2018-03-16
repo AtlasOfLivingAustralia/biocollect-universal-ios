@@ -15,7 +15,7 @@
 @end
 
 @implementation HubProjects
-@synthesize  tableView, hubProjects, isSearching;
+@synthesize  tableView, hubProjects, isSearching, searchBar, searchBarController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *) nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -73,17 +73,19 @@
     
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil) {
-        cell = [[HomeCustomCell alloc] initWithStyle: UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }
+    cell = [[HomeCustomCell alloc] initWithStyle: UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    cell.accessoryType = UITableViewCellAccessoryNone;
+
     if([self.hubProjects count] > indexPath.row) {
         Project *project = [self.hubProjects objectAtIndex:indexPath.row];;
         cell.textLabel.text = project.name;
         NSString *url = [[NSString alloc] initWithFormat: @"%@", project.urlImage];
         NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         [cell.imageView sd_setImageWithURL:[NSURL URLWithString: project.urlImage] placeholderImage:[UIImage imageNamed:@"ajax_loader.gif"] options:SDWebImageRefreshCached ];
+        self.selectedProject = [self.appDelegate.projectService loadSelectedProject];
+        if(self.selectedProject && [self.selectedProject.projectId isEqualToString: project.projectId]) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
     }
 
     return cell;
@@ -96,19 +98,21 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath {
-    
-    if(indexPath.section == 0){
-        //GAProject *project =  [self.bioProjects objectAtIndex:indexPath.row];
+    if(indexPath.section == 0 && [self.hubProjects count] >= indexPath.row){
+        Project *project =  [self.hubProjects objectAtIndex:indexPath.row];
+        [self.appDelegate.projectService storeSelectedProject:project];
+        self.selectedProject = [self.appDelegate.projectService loadSelectedProject];
+        if(self.isSearching){
+            [self.searchBarController setActive:false];
+        }
+        [self.tableView reloadData];
     }
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    
 }
 
 - (void) load {
     [self.hubProjects removeAllObjects];
     self.hubProjects = [self.appDelegate.projectService loadProjects];
+    self.selectedProject = [self.appDelegate.projectService loadSelectedProject];
     [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 }
 
@@ -189,10 +193,8 @@
 }
 
 - (void) searchIndicator: (BOOL) searching {
-    
     if(searching) {
         self.spinner.center = self.view.center;
-        //[self.searchDisplayController.searchResultsTableView addSubview : spinner];
         [self.spinner startAnimating];
     } else{
         [self.spinner stopAnimating];

@@ -11,13 +11,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HubProjects">
             <connections>
+                <outlet property="searchBar" destination="eqe-Uv-rhw" id="mr3-20-zTG"/>
+                <outlet property="searchBarController" destination="czY-Mq-XZm" id="Y6A-hh-4u9"/>
                 <outlet property="searchDisplayController" destination="czY-Mq-XZm" id="iBb-Ca-leZ"/>
                 <outlet property="tableView" destination="4Ze-lZ-1JP" id="sKF-c6-76c"/>
                 <outlet property="view" destination="4Ze-lZ-1JP" id="u1p-kr-dGW"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4Ze-lZ-1JP" userLabel="HubProjects">
+        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4Ze-lZ-1JP" userLabel="HubProjects">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

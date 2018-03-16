@@ -3,18 +3,18 @@
 #import "ProjectService.h"
 #import "GASettingsConstant.h"
 #import "GAProjectJSON.h"
-#import "Project.h"
 #import "GASettings.h"
 
 @interface ProjectService ()
 @property (nonatomic, strong) NSURL *projectsFileUrlPath;
 @property (nonatomic, retain) NSMutableArray *projects;
+@property (nonatomic, strong) NSURL *selectedProjectUrlPath;
 @end
 
 @implementation ProjectService
 #define kProjectsHubStorageLocation @"TRACKS_PROJECTS_HUB"
+#define kSelectedProjectLocation @"TRACKS_SELECTED_PROJECTS"
 #define kHubProjects @"/ws/project/search?sort=nameSort&fq=isExternal:F&initiator=biocollect&max=150&offset=0&mobile=true"
-
 @synthesize projects;
 
 -(id) init {
@@ -22,6 +22,7 @@
     NSArray<NSURL *> *urls = [NSFileManager.defaultManager URLsForDirectory:NSDocumentDirectory inDomains: NSUserDomainMask];
     if([urls count] > 0){
         self.projectsFileUrlPath = [urls[0] URLByAppendingPathComponent:kProjectsHubStorageLocation];
+        self.selectedProjectUrlPath = [urls[0] URLByAppendingPathComponent:kSelectedProjectLocation];
     }
     NSError *error;
     [self wsGetProjects:&error];
@@ -52,11 +53,13 @@
             [projects addObject:projectObj];
         }
         
-        [self storeHubProjects];
+        if([self.projects count] > 0) {
+            [self storeHubProjects];
+        }
     }
 }
 
--(BOOL) storeHubProjects{
+-(BOOL) storeHubProjects {
     BOOL archived = [NSKeyedArchiver archiveRootObject: self.projects toFile: self.projectsFileUrlPath.path];
     if (!archived) {
         NSLog(@"Failed to load to project list from local storage.");
@@ -73,7 +76,21 @@
         NSError *error;
         [self wsGetProjects:&error];
     }
+    
     return [self projects];
+}
+
+-(BOOL) storeSelectedProject : (Project *) project{
+    BOOL archived = [NSKeyedArchiver archiveRootObject: project toFile: self.selectedProjectUrlPath.path];
+    if (!archived) {
+        NSLog(@"Failed to load to project list from local storage.");
+    }
+    return archived;
+}
+
+- (Project *) loadSelectedProject {
+    Project *projectObj = [NSKeyedUnarchiver unarchiveObjectWithFile: self.selectedProjectUrlPath.path];
+    return projectObj;
 }
 
 @end
