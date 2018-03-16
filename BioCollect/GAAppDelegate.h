@@ -16,6 +16,7 @@
 #import "SpeciesService.h"
 #import "ALAWKWebView.h"
 #import "SpeciesListService.h"
+#import "ProjectService.h"
 
 @interface GAAppDelegate : UIResponder <UIApplicationDelegate, UIAlertViewDelegate>
 
@@ -32,6 +33,7 @@
 @property (nonatomic, retain) BioProjectService *bioProjectService;
 @property (nonatomic, retain) GASqlLiteDatabase *sqlLite;
 @property (nonatomic, retain) SpeciesListService *speciesListService;
+@property (nonatomic, retain) ProjectService *projectService;
 
 @property (nonatomic, retain) GALogin *loginViewController;
 @property (nonatomic, retain) GAEULAViewController * eulaVC;

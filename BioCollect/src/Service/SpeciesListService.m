@@ -62,11 +62,11 @@
             speciesObj.kvpValues = speciesJSON.kvpValues;
             [speciesList addObject:speciesObj];
         }
-        [self storeSpeciesList: nsData];
+        [self storeSpeciesList];
     }
 }
 
--(BOOL) storeSpeciesList : (NSData *) jsonData {
+-(BOOL) storeSpeciesList {
     [self updateDisplayName];
     BOOL archived = [NSKeyedArchiver archiveRootObject: self.speciesList toFile: self.speciesFileUrlPath.path];
     if (!archived) {

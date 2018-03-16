@@ -753,6 +753,16 @@
 		E2A5372C204D49540085D1BE /* SpeciesListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2A53729204D49540085D1BE /* SpeciesListVC.xib */; };
 		E2A5372D204D49540085D1BE /* SpeciesListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2A53729204D49540085D1BE /* SpeciesListVC.xib */; };
 		E2A5372E204D49540085D1BE /* SpeciesListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2A53729204D49540085D1BE /* SpeciesListVC.xib */; };
+		E2A53731204E2D310085D1BE /* HubProjects.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A53730204E2D310085D1BE /* HubProjects.m */; };
+		E2A53732204E2D310085D1BE /* HubProjects.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A53730204E2D310085D1BE /* HubProjects.m */; };
+		E2A53733204E2D310085D1BE /* HubProjects.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A53730204E2D310085D1BE /* HubProjects.m */; };
+		E2A53734204E2D310085D1BE /* HubProjects.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A53730204E2D310085D1BE /* HubProjects.m */; };
+		E2A53735204E2D310085D1BE /* HubProjects.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A53730204E2D310085D1BE /* HubProjects.m */; };
+		E2A53737204E2DA70085D1BE /* HubProjects.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2A53736204E2DA70085D1BE /* HubProjects.xib */; };
+		E2A53738204E2DA70085D1BE /* HubProjects.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2A53736204E2DA70085D1BE /* HubProjects.xib */; };
+		E2A53739204E2DA70085D1BE /* HubProjects.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2A53736204E2DA70085D1BE /* HubProjects.xib */; };
+		E2A5373A204E2DA70085D1BE /* HubProjects.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2A53736204E2DA70085D1BE /* HubProjects.xib */; };
+		E2A5373B204E2DA70085D1BE /* HubProjects.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2A53736204E2DA70085D1BE /* HubProjects.xib */; };
 		E2A6BE8C1F0C91C500F1A57E /* SpeciesGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A6BE8B1F0C91C500F1A57E /* SpeciesGroupTableViewController.m */; };
 		E2A6BE8D1F0C91C500F1A57E /* SpeciesGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A6BE8B1F0C91C500F1A57E /* SpeciesGroupTableViewController.m */; };
 		E2A6BE8F1F0C922D00F1A57E /* SpeciesGroupTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BE8E1F0C922D00F1A57E /* SpeciesGroupTableViewController.xib */; };
@@ -1000,6 +1010,11 @@
 		E2C544471ECDCA8C00641951 /* edit_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C544461ECDCA8C00641951 /* edit_icon@2x.png */; };
 		E2C544481ECDCA8C00641951 /* edit_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C544461ECDCA8C00641951 /* edit_icon@2x.png */; };
 		E2CCED01190F82E6003655B7 /* planned@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2CCECFC190F82E6003655B7 /* planned@2x.png */; };
+		E2D90EC42057E22B0016F293 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D90EC32057E22B0016F293 /* Project.m */; };
+		E2D90EC52057E22B0016F293 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D90EC32057E22B0016F293 /* Project.m */; };
+		E2D90EC62057E22B0016F293 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D90EC32057E22B0016F293 /* Project.m */; };
+		E2D90EC72057E22B0016F293 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D90EC32057E22B0016F293 /* Project.m */; };
+		E2D90EC82057E22B0016F293 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D90EC32057E22B0016F293 /* Project.m */; };
 		E2DCF1ED1CF68D8B008D438C /* Default-568h.png in Resources */ = {isa = PBXBuildFile; fileRef = E2DCF1EB1CF68D8B008D438C /* Default-568h.png */; };
 		E2DCF1EE1CF68D8B008D438C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2DCF1EC1CF68D8B008D438C /* Default-568h@2x.png */; };
 		E2DCF1F01CF6A19C008D438C /* Default-568.png in Resources */ = {isa = PBXBuildFile; fileRef = E2DCF1EF1CF6A19C008D438C /* Default-568.png */; };
@@ -1306,6 +1321,11 @@
 		E2F471C41C86827B00594DAB /* HomeTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2F471C31C86827B00594DAB /* HomeTableViewController.xib */; };
 		E2F674BE1F18FD5D0040C704 /* ALA-logo-inline.png in Resources */ = {isa = PBXBuildFile; fileRef = E2F674BD1F18FD5D0040C704 /* ALA-logo-inline.png */; };
 		E2F674BF1F18FD5D0040C704 /* ALA-logo-inline.png in Resources */ = {isa = PBXBuildFile; fileRef = E2F674BD1F18FD5D0040C704 /* ALA-logo-inline.png */; };
+		E2FF3E6E2052018700439195 /* ProjectService.m in Sources */ = {isa = PBXBuildFile; fileRef = E2FF3E6D2052018700439195 /* ProjectService.m */; };
+		E2FF3E6F2052018700439195 /* ProjectService.m in Sources */ = {isa = PBXBuildFile; fileRef = E2FF3E6D2052018700439195 /* ProjectService.m */; };
+		E2FF3E702052018700439195 /* ProjectService.m in Sources */ = {isa = PBXBuildFile; fileRef = E2FF3E6D2052018700439195 /* ProjectService.m */; };
+		E2FF3E712052018700439195 /* ProjectService.m in Sources */ = {isa = PBXBuildFile; fileRef = E2FF3E6D2052018700439195 /* ProjectService.m */; };
+		E2FF3E722052018700439195 /* ProjectService.m in Sources */ = {isa = PBXBuildFile; fileRef = E2FF3E6D2052018700439195 /* ProjectService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1627,6 +1647,9 @@
 		E2A53722204D44770085D1BE /* SpeciesListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SpeciesListVC.h; path = src/Controller/SpeciesListVC.h; sourceTree = "<group>"; };
 		E2A53723204D44970085D1BE /* SpeciesListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SpeciesListVC.m; path = src/Controller/SpeciesListVC.m; sourceTree = "<group>"; };
 		E2A53729204D49540085D1BE /* SpeciesListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SpeciesListVC.xib; path = src/Controller/SpeciesListVC.xib; sourceTree = "<group>"; };
+		E2A5372F204E2CF30085D1BE /* HubProjects.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HubProjects.h; path = src/Controller/HubProjects.h; sourceTree = "<group>"; };
+		E2A53730204E2D310085D1BE /* HubProjects.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HubProjects.m; path = src/Controller/HubProjects.m; sourceTree = "<group>"; };
+		E2A53736204E2DA70085D1BE /* HubProjects.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HubProjects.xib; path = src/Controller/HubProjects.xib; sourceTree = "<group>"; };
 		E2A6BE8A1F0C91A600F1A57E /* SpeciesGroupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpeciesGroupTableViewController.h; path = src/explore/SpeciesGroupTableViewController.h; sourceTree = "<group>"; };
 		E2A6BE8B1F0C91C500F1A57E /* SpeciesGroupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpeciesGroupTableViewController.m; path = src/explore/SpeciesGroupTableViewController.m; sourceTree = "<group>"; };
 		E2A6BE8E1F0C922D00F1A57E /* SpeciesGroupTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SpeciesGroupTableViewController.xib; path = src/explore/SpeciesGroupTableViewController.xib; sourceTree = "<group>"; };
@@ -1675,6 +1698,8 @@
 		E2C00BC71F17464600443DBD /* icon_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_logo@2x.png"; path = "src/images/icon_logo@2x.png"; sourceTree = "<group>"; };
 		E2C544461ECDCA8C00641951 /* edit_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "edit_icon@2x.png"; path = "src/images/edit_icon@2x.png"; sourceTree = "<group>"; };
 		E2CCECFC190F82E6003655B7 /* planned@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "planned@2x.png"; path = "src/images/planned@2x.png"; sourceTree = "<group>"; };
+		E2D90EC22057E2020016F293 /* Project.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Project.h; path = src/model/Project.h; sourceTree = "<group>"; };
+		E2D90EC32057E22B0016F293 /* Project.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Project.m; path = src/model/Project.m; sourceTree = "<group>"; };
 		E2DCF1EB1CF68D8B008D438C /* Default-568h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h.png"; sourceTree = "<group>"; };
 		E2DCF1EC1CF68D8B008D438C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		E2DCF1EF1CF6A19C008D438C /* Default-568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568.png"; sourceTree = "<group>"; };
@@ -1739,6 +1764,8 @@
 		E2F19EB82005B8130033DC24 /* edge_of_the_world_home_bk_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "edge_of_the_world_home_bk_small@2x.png"; path = "src/images/theedgeoftheworld/edge_of_the_world_home_bk_small@2x.png"; sourceTree = "<group>"; };
 		E2F471C31C86827B00594DAB /* HomeTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeTableViewController.xib; path = src/home/HomeTableViewController.xib; sourceTree = "<group>"; };
 		E2F674BD1F18FD5D0040C704 /* ALA-logo-inline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ALA-logo-inline.png"; path = "src/images/ALA-logo-inline.png"; sourceTree = "<group>"; };
+		E2FF3E6C2052016B00439195 /* ProjectService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ProjectService.h; path = src/Service/ProjectService.h; sourceTree = "<group>"; };
+		E2FF3E6D2052018700439195 /* ProjectService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ProjectService.m; path = src/Service/ProjectService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1939,6 +1966,8 @@
 		B839846D1DA5F00900551C67 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				E2D90EC22057E2020016F293 /* Project.h */,
+				E2D90EC32057E22B0016F293 /* Project.m */,
 				E2E479CC204BF8290082CCA4 /* Species.h */,
 				E2E479CD204BF8290082CCA4 /* Species.m */,
 				E2E3AADE18F514470005BB9E /* GAActivity.h */,
@@ -2364,6 +2393,7 @@
 		E27BDFB718F7895C001EE2F8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E2FF3E6B2051FFFB00439195 /* ProjectService */,
 				E2E479DA204C0B0C0082CCA4 /* SpeciesList */,
 				E20189831C891E390031435D /* bioReST */,
 				E27BDFB818F7896F001EE2F8 /* ReST */,
@@ -2418,6 +2448,9 @@
 				E2A53722204D44770085D1BE /* SpeciesListVC.h */,
 				E2A53723204D44970085D1BE /* SpeciesListVC.m */,
 				E2A53729204D49540085D1BE /* SpeciesListVC.xib */,
+				E2A5372F204E2CF30085D1BE /* HubProjects.h */,
+				E2A53730204E2D310085D1BE /* HubProjects.m */,
+				E2A53736204E2DA70085D1BE /* HubProjects.xib */,
 			);
 			name = Tracks;
 			sourceTree = "<group>";
@@ -2588,13 +2621,13 @@
 		E2E3AA9218F4D2940005BB9E /* OzAtlas */ = {
 			isa = PBXGroup;
 			children = (
+				E27BDFB718F7895C001EE2F8 /* Services */,
 				B839846D1DA5F00900551C67 /* Domain */,
 				B839846B1DA5EFCA00551C67 /* Controller */,
 				E2E56A8619209128007AC38C /* ThirdParty */,
 				E23586D818FCFE3900EE6D13 /* WebView */,
 				E23586D318FBB27900EE6D13 /* Persistence */,
 				B8D551DF18F98B7800EDD006 /* Images */,
-				E27BDFB718F7895C001EE2F8 /* Services */,
 				E27BDFD218F78D6D001EE2F8 /* Settings */,
 				E2E3AA9B18F4D2940005BB9E /* GAAppDelegate.h */,
 				E2E3AA9C18F4D2940005BB9E /* GAAppDelegate.m */,
@@ -2765,6 +2798,15 @@
 				E23AF5221C918862002501F3 /* RecordWebView.xib */,
 			);
 			name = Projects;
+			sourceTree = "<group>";
+		};
+		E2FF3E6B2051FFFB00439195 /* ProjectService */ = {
+			isa = PBXGroup;
+			children = (
+				E2FF3E6C2052016B00439195 /* ProjectService.h */,
+				E2FF3E6D2052018700439195 /* ProjectService.m */,
+			);
+			name = ProjectService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2968,6 +3010,7 @@
 				E26146F320072F9300B1104E /* menu-25@2x.png in Resources */,
 				E212E85320081F8200268AD1 /* tracker_home_bk_small.png in Resources */,
 				E26146F420072F9300B1104E /* icon_about@2x.png in Resources */,
+				E2A5373B204E2DA70085D1BE /* HubProjects.xib in Resources */,
 				E26146F520072F9300B1104E /* csiro-logo.png in Resources */,
 				E26146F620072F9300B1104E /* icon_about_square@2x.png in Resources */,
 				E26146F720072F9300B1104E /* briefcase_filled-25@2x.png in Resources */,
@@ -3177,6 +3220,7 @@
 				E266393B1F52EB9B00F1F1CE /* Dicots.jpg in Resources */,
 				E266393C1F52EB9B00F1F1CE /* ala_logo.png in Resources */,
 				E266393D1F52EB9B00F1F1CE /* StaticWebPages in Resources */,
+				E2A53739204E2DA70085D1BE /* HubProjects.xib in Resources */,
 				E266393E1F52EB9B00F1F1CE /* MapViewController.xib in Resources */,
 				E266393F1F52EB9B00F1F1CE /* Mammals.jpg in Resources */,
 				E2E1C5212006116200CACBB6 /* BioControlHub-Info.plist in Resources */,
@@ -3315,6 +3359,7 @@
 				E25D8EFE1EE5813200ED4D0F /* icon_all_records@2x.png in Resources */,
 				E2AECF841E73D3010035DF28 /* index.html in Resources */,
 				E2AECF851E73D3010035DF28 /* ala_logo.png in Resources */,
+				E2A53738204E2DA70085D1BE /* HubProjects.xib in Resources */,
 				E2A6BEB91F0CCFC000F1A57E /* Dicots.jpg in Resources */,
 				E2AECF861E73D3010035DF28 /* StaticWebPages in Resources */,
 				E2AECF871E73D3010035DF28 /* MapViewController.xib in Resources */,
@@ -3428,6 +3473,7 @@
 				E2424C401F0F624300E4E13F /* bk_iPhone.png in Resources */,
 				E2E3AA9718F4D2940005BB9E /* InfoPlist.strings in Resources */,
 				E2E24AC21CED4DDF00F6D4CA /* table-place-holder.png in Resources */,
+				E2A53737204E2DA70085D1BE /* HubProjects.xib in Resources */,
 				E2636DDD1CF2E68500000371 /* home_filled-25@2x.png in Resources */,
 				E2BA84081F583B2A008BE68F /* icon_briefcase@2x.png in Resources */,
 				E241C687196A33B6002302D7 /* js in Resources */,
@@ -3532,6 +3578,7 @@
 				E2F19E43200584AC0033DC24 /* menu-25@2x.png in Resources */,
 				E2F19E44200584AC0033DC24 /* icon_about@2x.png in Resources */,
 				E2F19E45200584AC0033DC24 /* csiro-logo.png in Resources */,
+				E2A5373A204E2DA70085D1BE /* HubProjects.xib in Resources */,
 				E2F19E46200584AC0033DC24 /* briefcase_filled-25@2x.png in Resources */,
 				E2F19E47200584AC0033DC24 /* pad-1@2x.png in Resources */,
 				E2F19E48200584AC0033DC24 /* edit_icon@2x.png in Resources */,
@@ -3648,6 +3695,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E261465E20072F9300B1104E /* UIImageView+REUIKitAdditions.m in Sources */,
+				E2D90EC82057E22B0016F293 /* Project.m in Sources */,
+				E2FF3E722052018700439195 /* ProjectService.m in Sources */,
 				E261465F20072F9300B1104E /* AFURLConnectionOperation.m in Sources */,
 				E261466020072F9300B1104E /* RecordViewController.m in Sources */,
 				E261466120072F9300B1104E /* AFNetworkActivityIndicatorManager.m in Sources */,
@@ -3680,6 +3729,7 @@
 				E261467C20072F9300B1104E /* DetailsViewController.m in Sources */,
 				E261467D20072F9300B1104E /* JGActionSheet.m in Sources */,
 				E261467E20072F9300B1104E /* HomeCustomCell.m in Sources */,
+				E2A53735204E2D310085D1BE /* HubProjects.m in Sources */,
 				E261467F20072F9300B1104E /* AFXMLRequestOperation.m in Sources */,
 				E261468020072F9300B1104E /* UIControl+REUIKitAdditions.m in Sources */,
 				E261468120072F9300B1104E /* RecordForm.m in Sources */,
@@ -3770,6 +3820,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E266386B1F52EB9B00F1F1CE /* UIImageView+REUIKitAdditions.m in Sources */,
+				E2D90EC62057E22B0016F293 /* Project.m in Sources */,
+				E2FF3E702052018700439195 /* ProjectService.m in Sources */,
 				E266386C1F52EB9B00F1F1CE /* AFURLConnectionOperation.m in Sources */,
 				E266386D1F52EB9B00F1F1CE /* RecordViewController.m in Sources */,
 				E266386E1F52EB9B00F1F1CE /* AFNetworkActivityIndicatorManager.m in Sources */,
@@ -3802,6 +3854,7 @@
 				E26638881F52EB9B00F1F1CE /* DetailsViewController.m in Sources */,
 				E26638891F52EB9B00F1F1CE /* JGActionSheet.m in Sources */,
 				E266388A1F52EB9B00F1F1CE /* HomeCustomCell.m in Sources */,
+				E2A53733204E2D310085D1BE /* HubProjects.m in Sources */,
 				E266388B1F52EB9B00F1F1CE /* AFXMLRequestOperation.m in Sources */,
 				E266388C1F52EB9B00F1F1CE /* UIControl+REUIKitAdditions.m in Sources */,
 				E266388D1F52EB9B00F1F1CE /* RecordForm.m in Sources */,
@@ -3892,6 +3945,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E27B8F311EF4E5FE00B01FAB /* UIImageView+REUIKitAdditions.m in Sources */,
+				E2D90EC52057E22B0016F293 /* Project.m in Sources */,
+				E2FF3E6F2052018700439195 /* ProjectService.m in Sources */,
 				E27B8F231EF4E5FE00B01FAB /* AFURLConnectionOperation.m in Sources */,
 				E2AECEE21E73D3010035DF28 /* RecordViewController.m in Sources */,
 				E27B8F1F1EF4E5FE00B01FAB /* AFNetworkActivityIndicatorManager.m in Sources */,
@@ -3924,6 +3979,7 @@
 				E27B8F491EF4E68900B01FAB /* DetailsViewController.m in Sources */,
 				E2AECEF91E73D3010035DF28 /* JGActionSheet.m in Sources */,
 				E2AECEFA1E73D3010035DF28 /* HomeCustomCell.m in Sources */,
+				E2A53732204E2D310085D1BE /* HubProjects.m in Sources */,
 				E27B8F251EF4E5FE00B01FAB /* AFXMLRequestOperation.m in Sources */,
 				E27B8F2D1EF4E5FE00B01FAB /* UIControl+REUIKitAdditions.m in Sources */,
 				E2AECEFB1E73D3010035DF28 /* RecordForm.m in Sources */,
@@ -4014,6 +4070,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E27B8F301EF4E5FE00B01FAB /* UIImageView+REUIKitAdditions.m in Sources */,
+				E2D90EC42057E22B0016F293 /* Project.m in Sources */,
+				E2FF3E6E2052018700439195 /* ProjectService.m in Sources */,
 				E27B8F221EF4E5FE00B01FAB /* AFURLConnectionOperation.m in Sources */,
 				B87373E51DB7027F0057027E /* RecordViewController.m in Sources */,
 				E27B8F1E1EF4E5FE00B01FAB /* AFNetworkActivityIndicatorManager.m in Sources */,
@@ -4046,6 +4104,7 @@
 				E27B8F481EF4E68900B01FAB /* DetailsViewController.m in Sources */,
 				E21CD1831CEAF8E10021536B /* JGActionSheet.m in Sources */,
 				E2B4BEEE1C896E270054F117 /* HomeCustomCell.m in Sources */,
+				E2A53731204E2D310085D1BE /* HubProjects.m in Sources */,
 				E27B8F241EF4E5FE00B01FAB /* AFXMLRequestOperation.m in Sources */,
 				E27B8F2C1EF4E5FE00B01FAB /* UIControl+REUIKitAdditions.m in Sources */,
 				B87373E91DB703280057027E /* RecordForm.m in Sources */,
@@ -4146,6 +4205,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2F19DAE200584AC0033DC24 /* UIImageView+REUIKitAdditions.m in Sources */,
+				E2D90EC72057E22B0016F293 /* Project.m in Sources */,
+				E2FF3E712052018700439195 /* ProjectService.m in Sources */,
 				E2F19DAF200584AC0033DC24 /* AFURLConnectionOperation.m in Sources */,
 				E2F19DB0200584AC0033DC24 /* RecordViewController.m in Sources */,
 				E2F19DB1200584AC0033DC24 /* AFNetworkActivityIndicatorManager.m in Sources */,
@@ -4178,6 +4239,7 @@
 				E2F19DCC200584AC0033DC24 /* DetailsViewController.m in Sources */,
 				E2F19DCD200584AC0033DC24 /* JGActionSheet.m in Sources */,
 				E2F19DCE200584AC0033DC24 /* HomeCustomCell.m in Sources */,
+				E2A53734204E2D310085D1BE /* HubProjects.m in Sources */,
 				E2F19DCF200584AC0033DC24 /* AFXMLRequestOperation.m in Sources */,
 				E2F19DD0200584AC0033DC24 /* UIControl+REUIKitAdditions.m in Sources */,
 				E2F19DD1200584AC0033DC24 /* RecordForm.m in Sources */,

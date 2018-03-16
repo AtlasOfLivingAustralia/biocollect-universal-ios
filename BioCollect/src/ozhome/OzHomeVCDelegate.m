@@ -1,10 +1,6 @@
 //
 //  OzHomeDelegate.m
 //  Oz Atlas
-//
-//  Created by Sathish Babu Sathyamoorthy on 14/10/16.
-//  Copyright © 2016 Sathya Moorthy, Sathish (CSIRO IM&T, Clayton). All rights reserved.
-//
 
 #import "OzHomeVCDelegate.h"
 #import "MGSpotyViewController.h"
@@ -21,6 +17,7 @@
 #import "HomeTableViewController.h"
 #import "RecordsTableViewController.h"
 #import "SpeciesListVC.h"
+#import "HubProjects.h"
 
 @interface OzHomeVCDelegate()
     @property (nonatomic, strong) RecordsTableViewController *recordsTableView;
@@ -309,8 +306,10 @@
         } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"tracker_settings"]) {
             [RKDropdownAlert title:@"Under development" message:@"" backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
         } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"species_list"]) {
-            SpeciesListVC *speciesListVC = [[SpeciesListVC alloc] initWithNibName:@"SpeciesListVC" bundle:nil];
-            [spotyViewController.navigationController pushViewController: speciesListVC animated:TRUE];
+            //SpeciesListVC *speciesListVC = [[SpeciesListVC alloc] initWithNibName:@"SpeciesListVC" bundle:nil];
+            //[spotyViewController.navigationController pushViewController: speciesListVC animated:TRUE];
+            HubProjects *hubProjectsVC = [[HubProjects alloc] initWithNibName:@"HubProjects" bundle:nil];
+            [spotyViewController.navigationController pushViewController: hubProjectsVC animated:TRUE];
         } else {
             DebugLog(@"ERROR",@"Unsupported hub view.")
         }
