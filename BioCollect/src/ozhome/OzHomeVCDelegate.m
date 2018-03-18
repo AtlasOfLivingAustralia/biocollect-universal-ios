@@ -304,12 +304,11 @@
         } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"add_track"]) {
             [RKDropdownAlert title:@"Under development" message:@"" backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
         } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"tracker_settings"]) {
-            [RKDropdownAlert title:@"Under development" message:@"" backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
-        } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"species_list"]) {
-            //SpeciesListVC *speciesListVC = [[SpeciesListVC alloc] initWithNibName:@"SpeciesListVC" bundle:nil];
-            //[spotyViewController.navigationController pushViewController: speciesListVC animated:TRUE];
             HubProjects *hubProjectsVC = [[HubProjects alloc] initWithNibName:@"HubProjects" bundle:nil];
             [spotyViewController.navigationController pushViewController: hubProjectsVC animated:TRUE];
+        } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"species_list"]) {
+            SpeciesListVC *speciesListVC = [[SpeciesListVC alloc] initWithNibName:@"SpeciesListVC" bundle:nil];
+            [spotyViewController.navigationController pushViewController: speciesListVC animated:TRUE];
         } else {
             DebugLog(@"ERROR",@"Unsupported hub view.")
         }

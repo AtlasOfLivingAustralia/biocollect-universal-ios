@@ -8,10 +8,12 @@
 #import "MRProgressOverlayView.h"
 #import "GASettingsConstant.h"
 #import "Project.h"
+#import "RKDropdownAlert.h"
 
 @interface HubProjects()
 @property (strong, nonatomic) GAAppDelegate *appDelegate;
 @property (strong, nonatomic) Project *selectedProject;
+@property (nonatomic, assign) BOOL isSearching;
 @end
 
 @implementation HubProjects
@@ -23,6 +25,11 @@
         [self initialise];
         self.navigationItem.title = @"Ranger Groups";
     }
+    
+    UIBarButtonItem *btnDone = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneBtnPressed)];
+    self.navigationItem.rightBarButtonItem = btnDone;
+    btnDone.enabled=TRUE;
+    
     return self;
 }
 
@@ -35,8 +42,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.tableView.rowHeight = 60;
     [self load];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -206,6 +215,14 @@
             UILabel *lbl = (UILabel*)subview;
             lbl.text = searching ? @"Searching..." : @"No Results";
         }
+    }
+}
+
+-(void) doneBtnPressed {
+    if(self.selectedProject) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        [RKDropdownAlert title:@"Error" message:@"Please select the organisation" backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
     }
 }
 @end

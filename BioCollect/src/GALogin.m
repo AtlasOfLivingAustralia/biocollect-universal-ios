@@ -19,7 +19,7 @@
 
 @implementation GALogin
 
-@synthesize loginButton, usernameTextField, passwordTextField,registerButton, logoImageView;
+@synthesize loginButton, usernameTextField, passwordTextField, registerButton, logoImageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

@@ -2574,7 +2574,7 @@
 				E2DCF1EB1CF68D8B008D438C /* Default-568h.png */,
 				E2DCF1EF1CF6A19C008D438C /* Default-568.png */,
 				E2DCF1EC1CF68D8B008D438C /* Default-568h@2x.png */,
-				E2E3AA9218F4D2940005BB9E /* OzAtlas */,
+				E2E3AA9218F4D2940005BB9E /* BioCollect */,
 				E2E3AAAB18F4D2940005BB9E /* BioCollectTests */,
 				E2E3AA8B18F4D2940005BB9E /* Frameworks */,
 				E2E3AA8A18F4D2940005BB9E /* Products */,
@@ -2618,7 +2618,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E2E3AA9218F4D2940005BB9E /* OzAtlas */ = {
+		E2E3AA9218F4D2940005BB9E /* BioCollect */ = {
 			isa = PBXGroup;
 			children = (
 				E27BDFB718F7895C001EE2F8 /* Services */,
@@ -2636,7 +2636,6 @@
 				E20D1B571CDC570800A3607B /* LaunchScreen.storyboard */,
 				E21CD17E1CEAF7E80021536B /* Images-2.xcassets */,
 			);
-			name = OzAtlas;
 			path = BioCollect;
 			sourceTree = "<group>";
 		};
@@ -2945,7 +2944,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E2E3AA8418F4D2940005BB9E /* Build configuration list for PBXProject "Oz Atlas" */;
+			buildConfigurationList = E2E3AA8418F4D2940005BB9E /* Build configuration list for PBXProject "BioCollect" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -4827,7 +4826,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E2E3AA8418F4D2940005BB9E /* Build configuration list for PBXProject "Oz Atlas" */ = {
+		E2E3AA8418F4D2940005BB9E /* Build configuration list for PBXProject "BioCollect" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E2E3AAB318F4D2940005BB9E /* Debug */,

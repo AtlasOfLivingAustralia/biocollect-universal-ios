@@ -1,17 +1,11 @@
 
 #import <UIKit/UIKit.h>
-
-@interface SpeciesListVC : UITableViewController<UITableViewDelegate, UISearchBarDelegate>
-{
-    NSMutableArray *displayItems;
-    NSDictionary *selectedSpecies;
-}
-@property (strong, nonatomic) IBOutlet UITableView *speciesTableView;
-@property (strong, nonatomic) NSMutableArray *displayItems;
-@property (strong, nonatomic) NSMutableArray *sortedDisplayItems;
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (strong, nonatomic) NSDictionary *selectedSpecies;
-@property (strong, nonatomic) UIImage *noImage;
-
--(void)updateDisplayItems: (NSMutableArray *)data totalRecords: (int) total;
+#import "Species.h"
+@interface SpeciesListVC : UITableViewController<UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate, UIAlertViewDelegate>
+    @property (strong, nonatomic) IBOutlet UITableView *speciesTableView;
+    @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+    @property (weak, nonatomic) IBOutlet UISearchDisplayController *searchBarController;
+    @property (nonatomic, strong) UIActivityIndicatorView *spinner;
+    @property (nonatomic, strong) NSMutableArray * displayItems;
+    @property (strong, nonatomic) UIImage *noImage;
 @end

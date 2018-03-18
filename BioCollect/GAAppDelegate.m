@@ -170,9 +170,9 @@
     //ozHome page
     OzHomeVC *ozHomeVC = [[OzHomeVC alloc] initWithMainImage:[UIImage imageNamed:[GASettings appHomeBkBig]]];
     ozHomeNC = [[UINavigationController alloc] initWithRootViewController: ozHomeVC];
-    ozHomeNC.tabBarItem.title = @"Oz Atlas";
+    ozHomeNC.tabBarItem.title = @"Home";
     ozHomeNC.tabBarItem.image = [UIImage imageNamed:@"home_filled-25"];
-    ozHomeNC.navigationBar.topItem.title = @"Oz Atlas";
+    ozHomeNC.navigationBar.topItem.title = @"Home";
     
     //Webview home
     /*

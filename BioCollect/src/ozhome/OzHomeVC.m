@@ -1,18 +1,6 @@
 //
 //  OzHomeVC.m
 //  Oz Atlas
-//
-//  Created by Sathish Babu Sathyamoorthy on 14/10/16.
-//  Copyright © 2016 Sathya Moorthy, Sathish (CSIRO IM&T, Clayton). All rights reserved.
-//
-
-//
-//  MGViewController.m
-//  MGSpotyView
-//
-//  Created by Matteo Gobbi on 25/06/2014.
-//  Copyright (c) 2014 Matteo Gobbi. All rights reserved.
-//
 
 #import "OzHomeVC.h"
 #import "MGSpotyViewControllerDelegate.h"

@@ -1,10 +1,7 @@
 //
 //  SpeciesCell.m
 //  Oz Atlas
-//
-//  Created by Varghese, Temi (PI, Black Mountain) on 25/10/16.
-//  Copyright © 2016 Sathya Moorthy, Sathish (CSIRO IM&T, Clayton). All rights reserved.
-//
+
 // http://www.wrichards.com/blog/2011/11/sdwebimage-fixed-width-cell-images/
 
 #import "SpeciesCell.h"
