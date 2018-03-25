@@ -63,6 +63,12 @@
     [super didReceiveMemoryWarning];
 }
 
+- (void) dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {
+    [super dismissViewControllerAnimated:flag completion:completion];
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"SPECIES-SEARCH-CLOSING" object: self.selectedSpecies];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -139,9 +145,11 @@
     if(indexPath.section == 0 && [self.displayItems count] >= indexPath.row){
         Species *species =  [self.displayItems objectAtIndex:indexPath.row];
         self.selectedSpecies = species;
+        self.field.value = self.selectedSpecies;
         if(self.isSearching){
             [self.searchBarController setActive:false];
         }
+        
         [self.tableView reloadData];
     }
 }

@@ -28,9 +28,9 @@
 	<string>ALA species sightings and OzAtlas</string>
 	<key>Bio_Theme</key>
 	<string>#F15A24</string>
-    <key>Bio_List_Url</key>
-    <string>/ws/speciesListItems/dr8016?includeKVP=true</string>
-    <key>Bio_Menu</key>
+	<key>Bio_List_Url</key>
+	<string>/ws/speciesListItems/dr8016?includeKVP=true</string>
+	<key>Bio_Menu</key>
 	<array>
 		<dict>
 			<key>icon</key>
@@ -50,7 +50,7 @@
 			<key>url</key>
 			<string></string>
 			<key>view</key>
-			<string>my_hub_records</string>
+			<string>saved_tracks</string>
 		</dict>
         <dict>
             <key>icon</key>
@@ -71,6 +71,16 @@
 			<string></string>
 			<key>view</key>
 			<string>hub_explore</string>
+		</dict>
+		<dict>
+			<key>icon</key>
+			<string>icon_location</string>
+			<key>title</key>
+			<string>Species List</string>
+			<key>url</key>
+			<string></string>
+			<key>view</key>
+			<string>species_list</string>
 		</dict>
 		<dict>
 			<key>icon</key>

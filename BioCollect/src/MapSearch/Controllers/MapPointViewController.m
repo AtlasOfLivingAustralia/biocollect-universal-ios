@@ -35,6 +35,8 @@
     _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height -  44)];
     _mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _mapView.delegate = self;
+    _mapView.showsUserLocation = YES;
+    _mapView.mapType = MKMapTypeHybrid;
     [self.view addSubview:_mapView];
     
     _toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 44, self.view.frame.size.width, 44)];
@@ -44,7 +46,7 @@
     UIBarButtonItem *mapButtonItem = [[UIBarButtonItem alloc] initWithImage:image style:Nil target:self action:@selector(updatePinLocation)];
     UIBarButtonItem *spacing = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"Standard", @"Satellite", @"Hybrid"]];
-    segmentedControl.selectedSegmentIndex = 0;
+    segmentedControl.selectedSegmentIndex = 2;
     segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
     [segmentedControl addTarget:self
                          action:@selector(segmentedControlChanged:)

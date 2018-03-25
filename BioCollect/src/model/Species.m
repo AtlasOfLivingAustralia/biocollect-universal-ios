@@ -33,4 +33,27 @@
     return otherObject.displayName > self.displayName;
 }
 
+- (NSString *) getImageUrl {
+    NSArray *kvp = kvpValues;
+    NSString *thumbnail = nil;
+    for(int i = 0; i < [kvp count]; i++) {
+        NSDictionary *item =  kvp[i];
+        if([item[@"key"] isEqualToString: @"Image"]) {
+            thumbnail = item[@"value"];
+            break;
+        }
+    }
+
+    return thumbnail;
+}
+
+- (NSString*) getSubTitle {
+    NSString * cn = commonName;
+    if (commonName == (id)[NSNull null] || commonName.length == 0 ) {
+        cn = @"N/A";
+    }
+    
+    return [[NSString alloc] initWithFormat:@"%@, %@", cn, scientificName];
+}
+
 @end

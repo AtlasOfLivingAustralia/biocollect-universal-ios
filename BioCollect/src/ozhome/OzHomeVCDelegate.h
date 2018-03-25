@@ -11,4 +11,5 @@
 @property (nonatomic, strong) CLLocationManager *locationManager;
 //Location details [lat, lng, radius]
 @property (strong, nonatomic) CLLocation *curentLocation;
+@property (strong, nonatomic) MGSpotyViewController* spotyViewController;
 @end

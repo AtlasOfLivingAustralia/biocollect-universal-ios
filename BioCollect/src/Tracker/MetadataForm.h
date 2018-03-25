@@ -6,33 +6,45 @@
 //  Copyright © 2018 Sathya Moorthy, Sathish (CSIRO IM&T, Clayton). All rights reserved.
 //
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 #import "FXForms.h"
 
-@interface MetadataForm: NSObject<FXForm>
+@interface MetadataForm: NSObject<FXForm, CLLocationManagerDelegate, NSCoding> {
+    CLLocationManager * _locationManager;
+}
 // Tracker details
-@property (nonatomic, copy) NSString *organisationName;
-@property (nonatomic, copy) NSString *leadTracker;
-@property (nonatomic, copy) NSString *otherTrackers;
-@property (nonatomic, copy) NSString *comments;
+@property (nonatomic, strong) NSString *organisationName;
+@property (nonatomic, strong) NSString *leadTracker;
+@property (nonatomic, strong) NSString *otherTrackers;
+@property (nonatomic, strong) NSString *comments;
 
 // Tracking details
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, strong) NSDate *startTime;
 @property (nonatomic, strong) NSDate *endTime;
-@property (nonatomic, copy) NSString *surveyType;
-@property (nonatomic, copy) NSString *surveyChoice;
+@property (nonatomic, strong) NSString *surveyType;
+@property (nonatomic, strong) NSString *surveyChoice;
 
 // Country
-@property (nonatomic, copy) NSString *countryName;
-@property (nonatomic, copy) NSString *countryType;
-@property (nonatomic, copy) NSString *vegetationType;
-@property (nonatomic, copy) NSArray *foodPlant;
-@property (nonatomic, copy) NSString *timeSinceFire;
+@property (nonatomic, strong) NSString *countryName;
+@property (nonatomic, strong) NSString *countryType;
+@property (nonatomic, strong) NSString *vegetationType;
+@property (nonatomic, strong) NSArray *foodPlant;
+@property (nonatomic, strong) NSString *timeSinceFire;
 @property (nonatomic, strong) UIImage *countryPhoto;
 
 // Trackability
-@property (nonatomic, copy) NSString *clearGround;
-@property (nonatomic, copy) NSString *disturbance;
-@property (nonatomic, copy) NSString *groundSoftness;
-@property (nonatomic, copy) NSString *weather;
+@property (nonatomic, strong) NSString *clearGround;
+@property (nonatomic, strong) NSString *disturbance;
+@property (nonatomic, strong) NSString *groundSoftness;
+@property (nonatomic, strong) NSString *weather;
+
+// Animals
+@property (nonatomic, strong) NSMutableArray *animals;
+
+// Route
+@property (nonatomic, strong) NSMutableArray<CLLocation *> *route;
+
+- (void) startRecordingLocation;
+- (void) stopRecordingLocation;
 @end
