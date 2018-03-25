@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "FXForms.h"
+#import "MetadataForm.h"
 
-@interface TrackMetadataViewController : FXFormViewController
-
+@interface TrackMetadataViewController : FXFormViewController{
+    BOOL showModal;
+}
+- (instancetype) initWithForm: (MetadataForm*) form;
 @end

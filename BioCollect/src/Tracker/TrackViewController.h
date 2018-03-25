@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MetadataForm.h"
+#import "SightingListViewController.h"
+#import "RouteViewController.h"
 
-@interface TrackViewController : UITabBarController
+@interface TrackViewController : UITabBarController<UIImagePickerControllerDelegate, UITabBarControllerDelegate>
+@property (nonatomic, strong) MetadataForm* trackForm;
+@property (nonatomic, strong) SightingListViewController *sighingtListViewController;
+@property (nonatomic, strong) RouteViewController *route;
 
+- (instancetype) initWithForm: (MetadataForm*) form;
 @end

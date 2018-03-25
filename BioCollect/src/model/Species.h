@@ -20,5 +20,8 @@
 @property (nonatomic, strong) NSString * scientificName;
 @property (nonatomic, strong) NSString * lsid;
 @property (nonatomic, strong) NSArray  * kvpValues;
+
 - (NSComparisonResult)sortByDisplayName:(Species *)otherObject;
+- (NSString *) getImageUrl;
+- (NSString *) getSubTitle;
 @end

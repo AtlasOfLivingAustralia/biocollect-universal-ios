@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "FXForms.h"
+#import "SightingForm.h"
 
 @interface SightingViewController : FXFormViewController
-
+@property (strong) CLLocationManager *locationManager;
+- (instancetype) initWithForm: (SightingForm *) form;
 @end
