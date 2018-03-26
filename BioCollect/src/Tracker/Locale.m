@@ -24,6 +24,7 @@
                             @"trackmetadata.leadTracker": @"Lead tracker",
                             @"trackmetadata.otherTrackers": @"Other trackers",
                             @"trackmetadata.comments": @"Comments",
+                            @"trackmetadata.save": @"Done",
                             
                             @"trackmetadata.trackinginfo": @"2. Tracking details",
                             @"trackmetadata.eventdate": @"Trek Date",
@@ -54,6 +55,7 @@
                             @"sighting.age": @"How old is the animal?",
                             @"sighting.notfound": @"No animals spotted",
                             @"sighting.notfound.helptext": @"To add an animal, touch the '+' button above.",
+                            @"sighting.save": @"Done",
                             
                             @"tracklist.notfound": @"No tracks found",
                             @"tracklist.notfound.helptext": @"To add a track, go back to the main menu and select 'Add a track' menu item.",
@@ -61,9 +63,7 @@
                             @"trackmetadata.modal.title": @"Do you want to continue tracking?",
                             @"trackmetadata.modal.content": @"If you want the system to continue recording your location, click 'Yes'. Otherwise, to review data click 'Review'",
                             @"trackmetadata.modal.record": @"Yes",
-                            @"trackmetadata.modal.cancel": @"Review",
-                            
-                            @"trackmetadata.save": @"Done"
+                            @"trackmetadata.modal.cancel": @"Review"
                             }
                     };
     return self;
