@@ -72,7 +72,10 @@
 
 - (void) viewDidLoad {
     [super viewDidLoad];
-    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithTitle:@"Save"
+    
+    GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+    Locale* locale = appDelegate.locale;
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithTitle: [locale get: @"sighting.save"]
                                                                   style:UIBarButtonItemStylePlain target:self action:@selector(save)];
     self.navigationItem.rightBarButtonItem = barButton;
 
