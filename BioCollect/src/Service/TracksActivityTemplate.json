@@ -1,0 +1,108 @@
+
+{
+    "activityId":"",
+    "projectStage":"",
+    "mainTheme":"",
+    "type":"CLC 2Ha Track Plot",
+    "projectId":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "siteId":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "outputs":[
+               {
+               "name":"CLC 2Ha Track Plot",
+               "outputId":"",
+               "data":{
+               "organisationName":"Test",
+               "recordedBy":"John Appleseed",
+               "additionalTrackers":"Test",
+               "eventComments":"Test",
+               "surveyType":"Incidental",
+               "locationAccuracy":50,
+               "location":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+               "locationLatitude":null,
+               "locationLongitude":null,
+               "locationCentroidLatitude":0,
+               "locationCentroidLongitude":0,
+               "surveyDate":"2018-03-26T10:54:15+1100",
+               "surveyStartTime":"02:54 PM",
+               "surveyFinishTime":"10:57 AM",
+               "habitatType":"Calcrete/Limestone rise",
+               "siteChoice":"Targeted",
+               "disturbance":"Wind",
+               "fireHistory":"Recent fire",
+               "visibility":"Bright sun",
+               "surfaceTrackability":"Bit hard for little animal tracks",
+               "trackingSurfaceContinuity":"Lots of clear ground",
+               "locationImage":[
+                                {
+                                "dateTaken":"2018-03-25T23:54:33Z",
+                                "contentType":"image/png",
+                                "url":"https://biocollect-test.ala.org.au/image?id=Screen_Shot_2018-03-26_at_10.53.42_am.png",
+                                "filesize":97521,
+                                "thumbnailUrl":"https://biocollect-test.ala.org.au/image?id=Screen_Shot_2018-03-26_at_10.53.42_am-thumb.png",
+                                "filename":"Screen_Shot_2018-03-26_at_10.53.42_am.png",
+                                "attribution":"",
+                                "licence":"CC BY 3.0",
+                                "notes":"",
+                                "name":"Screen_Shot_2018-03-26_at_10.53.42_am.png",
+                                "formattedSize":"97.52 KB",
+                                "staged":true,
+                                "documentId":"",
+                                "status":"active"
+                                }
+                                ],
+               "countryName":"Test",
+               "vegetationType":"Open grassland",
+               "foodPlants":[
+                             "Grass seeds",
+                             "Yakirra grass",
+                             "Witchetty grub shrubs",
+                             "Bush fruits",
+                             "Bush onions",
+                             "Yams and potatoes"
+                             ],
+               "sightingEvidenceTable":[
+                                        {
+                                        "species":{
+                                        "name":"Sathon albicoxus",
+                                        "guid":"urn:lsid:biodiversity.org.au:afd.taxon:a206468e-e7fd-4613-9b98-0e1bb409cd68",
+                                        "scientificName":"Sathon albicoxus",
+                                        "commonName":null
+                                        },
+                                        "typeOfSign":"Animal",
+                                        "evidenceAgeClass":"Older (3 days to 1 week)",
+                                        "ageClassOfAnimal":"Big adult",
+                                        "imageOfSign":[
+                                                       {
+                                                       "dateTaken":"2018-03-25T23:58:34Z",
+                                                       "contentType":"image/png",
+                                                       "url":"https://biocollect-test.ala.org.au/image?id=0_Screen_Shot_2018-03-26_at_10.53.42_am.png",
+                                                       "filesize":97521,
+                                                       "thumbnailUrl":"https://biocollect-test.ala.org.au/image?id=0_Screen_Shot_2018-03-26_at_10.53.42_am-thumb.png",
+                                                       "filename":"0_Screen_Shot_2018-03-26_at_10.53.42_am.png",
+                                                       "attribution":"",
+                                                       "licence":"CC BY 3.0",
+                                                       "notes":"",
+                                                       "name":"0_Screen_Shot_2018-03-26_at_10.53.42_am.png",
+                                                       "formattedSize":"97.52 KB",
+                                                       "staged":true,
+                                                       "documentId":"",
+                                                       "status":"active"
+                                                       }
+                                                       ],
+                                        "observationLatitude":0,
+                                        "observationLongitude":0
+                                        }
+                                        ]
+               },
+               "outputNotCompleted":false,
+               "selectFromSitesOnly":false,
+               "checkMapInfo":{
+               "validation":true
+               },
+               "appendTableRows":true,
+               "_callbacks":{
+               
+               }
+               }
+               ]
+}

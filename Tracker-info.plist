@@ -42,26 +42,26 @@
 			<key>view</key>
 			<string>add_track</string>
 		</dict>
+        <dict>
+            <key>icon</key>
+            <string>icon_all_records</string>
+            <key>title</key>
+            <string>Review Tracks</string>
+            <key>url</key>
+            <string></string>
+            <key>view</key>
+            <string>my_hub_records</string>
+        </dict>
 		<dict>
 			<key>icon</key>
 			<string>icon_all_records</string>
 			<key>title</key>
-			<string>Review Tracks</string>
+			<string>My Tracks</string>
 			<key>url</key>
 			<string></string>
 			<key>view</key>
 			<string>my_hub_records</string>
 		</dict>
-        <dict>
-            <key>icon</key>
-            <string>icon_location</string>
-            <key>title</key>
-            <string>Species List</string>
-            <key>url</key>
-            <string></string>
-            <key>view</key>
-            <string>species_list</string>
-        </dict>
 		<dict>
 			<key>icon</key>
 			<string></string>

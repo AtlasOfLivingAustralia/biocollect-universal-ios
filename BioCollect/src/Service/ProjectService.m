@@ -4,6 +4,8 @@
 #import "GASettingsConstant.h"
 #import "GAProjectJSON.h"
 #import "GASettings.h"
+#import "ProjectActivitiesJSON.h"
+#import "ProjectActivity.h"
 
 @interface ProjectService ()
 @property (nonatomic, strong) NSURL *projectsFileUrlPath;
@@ -50,6 +52,7 @@
             projectObj.projectId = projectJSON.projectId;
             projectObj.name = projectJSON.projectName;
             projectObj.urlImage = projectJSON.urlImage;
+            projectObj.projectActivityId = [self getProjectActivityId: projectObj.projectId];
             [projects addObject:projectObj];
         }
         
@@ -91,6 +94,35 @@
 - (Project *) loadSelectedProject {
     Project *projectObj = [NSKeyedUnarchiver unarchiveObjectWithFile: self.selectedProjectUrlPath.path];
     return projectObj;
+}
+
+-(NSString *) getProjectActivityId : (NSString *) projectId {
+    NSString *pActivityId = nil;
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    NSString *url = [[NSString alloc] initWithFormat: @"%@%@/%@", BIOCOLLECT_SERVER, LIST_PROJECT_ACTIVITIES, projectId];
+    NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [request setURL:[NSURL URLWithString:escapedUrlString]];
+    [request setHTTPMethod:@"GET"];
+    NSURLResponse *response;
+    NSError *error = nil;
+    NSData *GETReply = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    
+    if(error == nil) {
+        ProjectActivitiesJSON  *pActivitiesJSON = [[ProjectActivitiesJSON alloc] initWithData:GETReply];
+        while([pActivitiesJSON hasNext]) {
+            [pActivitiesJSON nextProjectActivity];
+            ProjectActivity *pActivity = [[ProjectActivity alloc] init];
+            pActivity.projectActivityId = pActivitiesJSON.projectActivityId;
+            pActivity.published = pActivitiesJSON.published;
+            BOOL published = [pActivity.published boolValue];
+            if(published){
+                pActivityId = pActivity.projectActivityId;
+            }
+            if(pActivityId) break;
+        }
+    }
+    
+    return pActivityId;
 }
 
 @end

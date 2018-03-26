@@ -986,6 +986,21 @@
 		E2B3342A1F2AC93200B71E77 /* ala_logo_3.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B334281F2AC93200B71E77 /* ala_logo_3.png */; };
 		E2B3342C1F2ACA8400B71E77 /* ala_large_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B3342B1F2ACA8400B71E77 /* ala_large_logo.png */; };
 		E2B3342D1F2ACA8400B71E77 /* ala_large_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B3342B1F2ACA8400B71E77 /* ala_large_logo.png */; };
+		E2B42D7120686828009943A4 /* TracksUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B42D7020686828009943A4 /* TracksUpload.m */; };
+		E2B42D7220686828009943A4 /* TracksUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B42D7020686828009943A4 /* TracksUpload.m */; };
+		E2B42D7320686828009943A4 /* TracksUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B42D7020686828009943A4 /* TracksUpload.m */; };
+		E2B42D7420686828009943A4 /* TracksUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B42D7020686828009943A4 /* TracksUpload.m */; };
+		E2B42D7520686828009943A4 /* TracksUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B42D7020686828009943A4 /* TracksUpload.m */; };
+		E2B42D7820686D29009943A4 /* TracksSiteTemplate.json in Resources */ = {isa = PBXBuildFile; fileRef = E2B42D7720686D29009943A4 /* TracksSiteTemplate.json */; };
+		E2B42D7920686D29009943A4 /* TracksSiteTemplate.json in Resources */ = {isa = PBXBuildFile; fileRef = E2B42D7720686D29009943A4 /* TracksSiteTemplate.json */; };
+		E2B42D7A20686D29009943A4 /* TracksSiteTemplate.json in Resources */ = {isa = PBXBuildFile; fileRef = E2B42D7720686D29009943A4 /* TracksSiteTemplate.json */; };
+		E2B42D7B20686D29009943A4 /* TracksSiteTemplate.json in Resources */ = {isa = PBXBuildFile; fileRef = E2B42D7720686D29009943A4 /* TracksSiteTemplate.json */; };
+		E2B42D7C20686D29009943A4 /* TracksSiteTemplate.json in Resources */ = {isa = PBXBuildFile; fileRef = E2B42D7720686D29009943A4 /* TracksSiteTemplate.json */; };
+		E2B42D7E20686DFC009943A4 /* TracksActivityTemplate.json in Resources */ = {isa = PBXBuildFile; fileRef = E2B42D7D20686DFC009943A4 /* TracksActivityTemplate.json */; };
+		E2B42D7F20686DFC009943A4 /* TracksActivityTemplate.json in Resources */ = {isa = PBXBuildFile; fileRef = E2B42D7D20686DFC009943A4 /* TracksActivityTemplate.json */; };
+		E2B42D8020686DFC009943A4 /* TracksActivityTemplate.json in Resources */ = {isa = PBXBuildFile; fileRef = E2B42D7D20686DFC009943A4 /* TracksActivityTemplate.json */; };
+		E2B42D8120686DFC009943A4 /* TracksActivityTemplate.json in Resources */ = {isa = PBXBuildFile; fileRef = E2B42D7D20686DFC009943A4 /* TracksActivityTemplate.json */; };
+		E2B42D8220686DFC009943A4 /* TracksActivityTemplate.json in Resources */ = {isa = PBXBuildFile; fileRef = E2B42D7D20686DFC009943A4 /* TracksActivityTemplate.json */; };
 		E2B4BEEE1C896E270054F117 /* HomeCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B4BEED1C896E270054F117 /* HomeCustomCell.m */; };
 		E2B6274F1CE40F8800A89179 /* BioCollect-text.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B6274E1CE40F8800A89179 /* BioCollect-text.png */; };
 		E2B627511CE4119A00A89179 /* BioCollect-text-small.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B627501CE4119A00A89179 /* BioCollect-text-small.png */; };
@@ -1681,6 +1696,10 @@
 		E2B334251F2AC67800B71E77 /* ala_logo_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ala_logo_2.png; path = src/images/ala_logo_2.png; sourceTree = "<group>"; };
 		E2B334281F2AC93200B71E77 /* ala_logo_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ala_logo_3.png; path = src/images/ala_logo_3.png; sourceTree = "<group>"; };
 		E2B3342B1F2ACA8400B71E77 /* ala_large_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ala_large_logo.png; path = src/images/ala_large_logo.png; sourceTree = "<group>"; };
+		E2B42D7020686828009943A4 /* TracksUpload.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TracksUpload.m; path = src/Service/TracksUpload.m; sourceTree = "<group>"; };
+		E2B42D762068684D009943A4 /* TracksUpload.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TracksUpload.h; path = src/Service/TracksUpload.h; sourceTree = "<group>"; };
+		E2B42D7720686D29009943A4 /* TracksSiteTemplate.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = TracksSiteTemplate.json; path = src/Service/TracksSiteTemplate.json; sourceTree = "<group>"; };
+		E2B42D7D20686DFC009943A4 /* TracksActivityTemplate.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = TracksActivityTemplate.json; path = src/Service/TracksActivityTemplate.json; sourceTree = "<group>"; };
 		E2B4BEEC1C896DFB0054F117 /* HomeCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeCustomCell.h; path = src/home/HomeCustomCell.h; sourceTree = "<group>"; };
 		E2B4BEED1C896E270054F117 /* HomeCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeCustomCell.m; path = src/home/HomeCustomCell.m; sourceTree = "<group>"; };
 		E2B6274E1CE40F8800A89179 /* BioCollect-text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BioCollect-text.png"; path = "src/images/BioCollect-text.png"; sourceTree = "<group>"; };
@@ -2393,6 +2412,7 @@
 		E27BDFB718F7895C001EE2F8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E2B42D6F206867F5009943A4 /* TracksUpload */,
 				E2FF3E6B2051FFFB00439195 /* ProjectService */,
 				E2E479DA204C0B0C0082CCA4 /* SpeciesList */,
 				E20189831C891E390031435D /* bioReST */,
@@ -2491,6 +2511,17 @@
 				E2A6BEAB1F0CCFC000F1A57E /* Reptiles.jpg */,
 			);
 			name = species;
+			sourceTree = "<group>";
+		};
+		E2B42D6F206867F5009943A4 /* TracksUpload */ = {
+			isa = PBXGroup;
+			children = (
+				E2B42D762068684D009943A4 /* TracksUpload.h */,
+				E2B42D7020686828009943A4 /* TracksUpload.m */,
+				E2B42D7720686D29009943A4 /* TracksSiteTemplate.json */,
+				E2B42D7D20686DFC009943A4 /* TracksActivityTemplate.json */,
+			);
+			name = TracksUpload;
 			sourceTree = "<group>";
 		};
 		E2BA83F81F5588A0008BE68F /* WKWebView */ = {
@@ -3020,6 +3051,7 @@
 				E212E83D200737D400268AD1 /* tracker_home_bk.jpg in Resources */,
 				E26146FC20072F9300B1104E /* ala_logo_3.png in Resources */,
 				E26146FD20072F9300B1104E /* changed@2x.png in Resources */,
+				E2B42D7C20686D29009943A4 /* TracksSiteTemplate.json in Resources */,
 				E26146FE20072F9300B1104E /* Gymnosperms.jpg in Resources */,
 				E26146FF20072F9300B1104E /* css in Resources */,
 				E261470020072F9300B1104E /* oz_iPhone.jpg in Resources */,
@@ -3077,6 +3109,7 @@
 				E261473120072F9300B1104E /* icon_address@2x.png in Resources */,
 				E261473220072F9300B1104E /* Dicots.jpg in Resources */,
 				E261473320072F9300B1104E /* ala_logo.png in Resources */,
+				E2B42D8220686DFC009943A4 /* TracksActivityTemplate.json in Resources */,
 				E261473420072F9300B1104E /* StaticWebPages in Resources */,
 				E261473520072F9300B1104E /* MapViewController.xib in Resources */,
 				E261473620072F9300B1104E /* Mammals.jpg in Resources */,
@@ -3136,6 +3169,7 @@
 				E27497252006FFB200876D5C /* biocontrol_hub_home_login_iPad.jpg in Resources */,
 				E26638F11F52EB9B00F1F1CE /* biocollect_logo_1.png in Resources */,
 				E2A5372C204D49540085D1BE /* SpeciesListVC.xib in Resources */,
+				E2B42D7A20686D29009943A4 /* TracksSiteTemplate.json in Resources */,
 				E26638F21F52EB9B00F1F1CE /* sync-25@2x.png in Resources */,
 				E26638F31F52EB9B00F1F1CE /* SVWebViewControllerActivityChrome-iPad@2x.png in Resources */,
 				E26638F41F52EB9B00F1F1CE /* RecordWebView.xib in Resources */,
@@ -3256,6 +3290,7 @@
 				E266395C1F52EB9B00F1F1CE /* BioCollect-text-small.png in Resources */,
 				E266395D1F52EB9B00F1F1CE /* search_bk_red@2x.png in Resources */,
 				E266395E1F52EB9B00F1F1CE /* bk_iPad.png in Resources */,
+				E2B42D8020686DFC009943A4 /* TracksActivityTemplate.json in Resources */,
 				E266395F1F52EB9B00F1F1CE /* Default-568.png in Resources */,
 				E26639601F52EB9B00F1F1CE /* icon_my_records@2x.png in Resources */,
 			);
@@ -3297,6 +3332,7 @@
 				E2AECF571E73D3010035DF28 /* menu-25@2x.png in Resources */,
 				E25D8F001EE5813200ED4D0F /* icon_camera@2x.png in Resources */,
 				E2AECF581E73D3010035DF28 /* csiro-logo.png in Resources */,
+				E2B42D7920686D29009943A4 /* TracksSiteTemplate.json in Resources */,
 				E2AECF591E73D3010035DF28 /* briefcase_filled-25@2x.png in Resources */,
 				E2AECF5B1E73D3010035DF28 /* pad-1@2x.png in Resources */,
 				E2B3342A1F2AC93200B71E77 /* ala_logo_3.png in Resources */,
@@ -3334,6 +3370,7 @@
 				E2A6BECF1F0CCFC000F1A57E /* Reptiles.jpg in Resources */,
 				E2AECF711E73D3010035DF28 /* site_map@2x.png in Resources */,
 				E2AECF721E73D3010035DF28 /* img in Resources */,
+				E2B42D7F20686DFC009943A4 /* TracksActivityTemplate.json in Resources */,
 				E2BA84091F583B2A008BE68F /* icon_briefcase@2x.png in Resources */,
 				E27B3F991EF62BB500DBB47D /* icon_street_view@2x.png in Resources */,
 				E2AECF741E73D3010035DF28 /* InfoPlist.strings in Resources */,
@@ -3491,6 +3528,7 @@
 				E22045C6192D7DA500531116 /* info_filled-25@2x.png in Resources */,
 				E2636DD71CF2E57C00000371 /* about_filled-25@2x.png in Resources */,
 				B87373D21DB6DFE90057027E /* SVWebViewController.strings in Resources */,
+				E2B42D7820686D29009943A4 /* TracksSiteTemplate.json in Resources */,
 				E29402941EBC061D00CCFEE7 /* header-logo@2x.png in Resources */,
 				E241C688196A33B6002302D7 /* index.html in Resources */,
 				E27B3F961EF62BB500DBB47D /* icon_address@2x.png in Resources */,
@@ -3525,6 +3563,7 @@
 				E25D8EFD1EE5813200ED4D0F /* icon_all_records@2x.png in Resources */,
 				E2C00BC51F173A3A00443DBD /* icon_version@2x.png in Resources */,
 				87B700131DC2E5520066C236 /* SyncTableViewController.xib in Resources */,
+				E2B42D7E20686DFC009943A4 /* TracksActivityTemplate.json in Resources */,
 				E2F471C41C86827B00594DAB /* HomeTableViewController.xib in Resources */,
 				E21CD17F1CEAF7E80021536B /* Images-2.xcassets in Resources */,
 				E2A6BEB21F0CCFC000F1A57E /* Birds.jpg in Resources */,
@@ -3588,6 +3627,7 @@
 				E2F19E4D200584AC0033DC24 /* Gymnosperms.jpg in Resources */,
 				E2F19E4E200584AC0033DC24 /* css in Resources */,
 				E2F19E4F200584AC0033DC24 /* oz_iPhone.jpg in Resources */,
+				E2B42D7B20686D29009943A4 /* TracksSiteTemplate.json in Resources */,
 				E2F19E50200584AC0033DC24 /* LoginiPhoneView.xib in Resources */,
 				E2F19E51200584AC0033DC24 /* noImage85.jpg in Resources */,
 				E2F19E52200584AC0033DC24 /* contact_filled-25@2x.png in Resources */,
@@ -3645,6 +3685,7 @@
 				E2F19E82200584AC0033DC24 /* ala_logo.png in Resources */,
 				E2F19E83200584AC0033DC24 /* StaticWebPages in Resources */,
 				E2F19E84200584AC0033DC24 /* MapViewController.xib in Resources */,
+				E2B42D8120686DFC009943A4 /* TracksActivityTemplate.json in Resources */,
 				E2F19E85200584AC0033DC24 /* Mammals.jpg in Resources */,
 				E2F19E86200584AC0033DC24 /* ala_logo_1.png in Resources */,
 				E2F19E87200584AC0033DC24 /* Crustaceans.jpg in Resources */,
@@ -3762,6 +3803,7 @@
 				E261469C20072F9300B1104E /* EasyJSWebView.m in Sources */,
 				E261469D20072F9300B1104E /* RecordWebView.m in Sources */,
 				E261469E20072F9300B1104E /* UIButton+WebCache.m in Sources */,
+				E2B42D7520686828009943A4 /* TracksUpload.m in Sources */,
 				E261469F20072F9300B1104E /* MGSpotyViewController.m in Sources */,
 				E26146A020072F9300B1104E /* SDWebImageCompat.m in Sources */,
 				E26146A120072F9300B1104E /* MRActivityIndicatorView.m in Sources */,
@@ -3887,6 +3929,7 @@
 				E26638A81F52EB9B00F1F1CE /* EasyJSWebView.m in Sources */,
 				E26638A91F52EB9B00F1F1CE /* RecordWebView.m in Sources */,
 				E26638AA1F52EB9B00F1F1CE /* UIButton+WebCache.m in Sources */,
+				E2B42D7320686828009943A4 /* TracksUpload.m in Sources */,
 				E26638AB1F52EB9B00F1F1CE /* MGSpotyViewController.m in Sources */,
 				E26638AC1F52EB9B00F1F1CE /* SDWebImageCompat.m in Sources */,
 				E26638AD1F52EB9B00F1F1CE /* MRActivityIndicatorView.m in Sources */,
@@ -4012,6 +4055,7 @@
 				E2AECF101E73D3010035DF28 /* EasyJSWebView.m in Sources */,
 				E2AECF111E73D3010035DF28 /* RecordWebView.m in Sources */,
 				E2AECF121E73D3010035DF28 /* UIButton+WebCache.m in Sources */,
+				E2B42D7220686828009943A4 /* TracksUpload.m in Sources */,
 				E2AECF131E73D3010035DF28 /* MGSpotyViewController.m in Sources */,
 				E2AECF141E73D3010035DF28 /* SDWebImageCompat.m in Sources */,
 				E2AECF151E73D3010035DF28 /* MRActivityIndicatorView.m in Sources */,
@@ -4137,6 +4181,7 @@
 				E23586E318FCFED600EE6D13 /* EasyJSWebView.m in Sources */,
 				E23AF5211C9187E3002501F3 /* RecordWebView.m in Sources */,
 				E2636E3F1CF43C4100000371 /* UIButton+WebCache.m in Sources */,
+				E2B42D7120686828009943A4 /* TracksUpload.m in Sources */,
 				B87373A81DB085540057027E /* MGSpotyViewController.m in Sources */,
 				E2636E391CF43C4100000371 /* SDWebImageCompat.m in Sources */,
 				B83825F81A0C666B00690383 /* MRActivityIndicatorView.m in Sources */,
@@ -4272,6 +4317,7 @@
 				E2F19DEC200584AC0033DC24 /* EasyJSWebView.m in Sources */,
 				E2F19DED200584AC0033DC24 /* RecordWebView.m in Sources */,
 				E2F19DEE200584AC0033DC24 /* UIButton+WebCache.m in Sources */,
+				E2B42D7420686828009943A4 /* TracksUpload.m in Sources */,
 				E2F19DEF200584AC0033DC24 /* MGSpotyViewController.m in Sources */,
 				E2F19DF0200584AC0033DC24 /* SDWebImageCompat.m in Sources */,
 				E2F19DF1200584AC0033DC24 /* MRActivityIndicatorView.m in Sources */,
