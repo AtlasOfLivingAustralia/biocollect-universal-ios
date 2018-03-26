@@ -20,6 +20,8 @@
     self.tableView.allowsMultipleSelectionDuringEditing = NO;
     self.tableView.separatorStyle = UITableViewStylePlain;
     self.tableView.tableFooterView = [UIView new];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sightingSaved:) name:@"SPECIES-SIGHTING-SAVED" object:nil];
 }
 
 #pragma mark - Table view data source
@@ -74,15 +76,11 @@
         SightingForm *form = _animals[indexPath.row];
         SightingViewController *vc = [[SightingViewController alloc] initWithForm:form];
         [self.navigationController pushViewController:vc animated:YES];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sightingSaved:) name:@"SPECIES-SIGHTING-SAVED" object:nil];
     }
 }
 
 - (void) sightingSaved: (NSNotification *) notice {
     [self.tableView reloadData];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SPECIES-SIGHTING-SAVED" object:nil];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

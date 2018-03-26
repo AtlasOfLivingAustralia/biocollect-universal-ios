@@ -69,12 +69,12 @@
 
 #pragma mark - event handlers
 - (void) addAnimal {
-    SpeciesListVC *speciesVC = [SpeciesListVC new];
-    [self presentViewController:speciesVC animated:YES completion:nil];
+    SpeciesListVC *speciesVC = [[SpeciesListVC alloc] initWithNibName:@"SpeciesListVC" bundle:nil];
+    [self.navigationController pushViewController:speciesVC animated:YES];
     
-//    // Set self to listen for the message "SecondViewControllerDismissed"
-//    // and run a method when this message is detected
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(speciesSelected:) name:@"SPECIES-SEARCH-CLOSING" object:nil];
+    // Set self to listen for the message "SecondViewControllerDismissed"
+    // and run a method when this message is detected
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(speciesSelected:) name:@"SPECIES_SEARCH_SELECTED" object:nil];
 }
 
 - (void) speciesSelected: (NSNotification *) notice {
@@ -92,7 +92,7 @@
 
 - (void) addSighting: (NSNotification *) notice {
     // remove previous notification registration
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SPECIES-SEARCH-CLOSING" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SPECIES_SEARCH_SELECTED" object:nil];
 
     SightingForm *form = (SightingForm *)notice.object;
     

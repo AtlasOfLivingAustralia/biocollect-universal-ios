@@ -30,13 +30,12 @@
     }
 
     UIBarButtonItem *btnDone = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneBtnPressed)];
-    self.navigationItem.rightBarButtonItem = btnDone;
     btnDone.enabled=TRUE;
     
     UIBarButtonItem *plusButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(newAnimal)];
-    self.navigationItem.leftBarButtonItem = plusButton;
     plusButton.enabled=TRUE;
-
+    
+    self.navigationItem.rightBarButtonItems = @[btnDone, plusButton];
     self.animalView = [[UIAlertView alloc]initWithTitle:@"Animal name" message:@"Enter the animal name that are not in animal list" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
     self.animalView.alertViewStyle = UIAlertViewStylePlainTextInput;
     [self.animalView textFieldAtIndex:0].delegate = self;
@@ -46,6 +45,12 @@
     displayItems = [[NSMutableArray alloc] initWithCapacity:0];
     
     return  self;
+}
+
+- (instancetype) init {
+    self = [super init];
+    self = [self initWithNibName:@"SpeciesListVC" bundle: nil];
+    return self;
 }
 
 #pragma mark - standard functions
@@ -257,8 +262,8 @@
 #pragma mark - Navigation controller
 -(void) doneBtnPressed {
     if(self.selectedSpecies) {
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"SPECIES_SEARCH_SELECTED" object: self.selectedSpecies];
         [self.navigationController popViewControllerAnimated:YES];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"SPECIES_SEARCH_SELECTED" object: self.selectedSpecies];
     } else {
         [RKDropdownAlert title:@"Error" message:@"Please select the animal" backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
     }
@@ -276,8 +281,8 @@
         newAnimal.name = [self.animalView textFieldAtIndex: 0].text;
         newAnimal.lsid = @"";
         self.selectedSpecies = newAnimal;
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"SPECIES_SEARCH_SELECTED" object: self.selectedSpecies];
         [self.navigationController popViewControllerAnimated:YES];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"SPECIES_SEARCH_SELECTED" object: self.selectedSpecies];
     }
 }
 

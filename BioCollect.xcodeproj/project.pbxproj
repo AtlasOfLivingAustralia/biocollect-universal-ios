@@ -31,7 +31,6 @@
 		87165E3E2048126E0094633E /* SightingForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 87165E36204785680094633E /* SightingForm.m */; };
 		87165E412048C1720094633E /* MapPointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87165E402048C1720094633E /* MapPointViewController.m */; };
 		87165E44204EB64F0094633E /* FXFormExtendedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87165E43204EB64F0094633E /* FXFormExtendedViewController.m */; };
-		8718FE5E20579675000CB6BF /* trek to black mountain.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 8718FE5D20579674000CB6BF /* trek to black mountain.gpx */; };
 		8718FE612057D49C000CB6BF /* RouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8718FE602057D49C000CB6BF /* RouteViewController.m */; };
 		8718FE622057D5C0000CB6BF /* RouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8718FE602057D49C000CB6BF /* RouteViewController.m */; };
 		8718FE65205A4507000CB6BF /* SpeciesAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8718FE64205A4507000CB6BF /* SpeciesAnnotation.m */; };
@@ -49,6 +48,10 @@
 		874B4F4320636B0400892966 /* TrackListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 874B4F3F20636B0400892966 /* TrackListViewController.m */; };
 		874B4F4420636B0400892966 /* TrackListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 874B4F3F20636B0400892966 /* TrackListViewController.m */; };
 		874B4F4520636B0400892966 /* TrackListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 874B4F3F20636B0400892966 /* TrackListViewController.m */; };
+		87898E3120689E7C00CB2ED0 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
+		87898E3220689E7E00CB2ED0 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
+		87898E3320689E7F00CB2ED0 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
+		87898E3420689E7F00CB2ED0 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
 		87B0962F204FAF3A00DA1395 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
 		87B09634204FB94300DA1395 /* SightingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87B09633204FB94300DA1395 /* SightingListViewController.m */; };
 		87B09635204FBD4700DA1395 /* SightingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87B09633204FB94300DA1395 /* SightingListViewController.m */; };
@@ -1412,7 +1415,6 @@
 		87165E402048C1720094633E /* MapPointViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapPointViewController.m; sourceTree = "<group>"; };
 		87165E42204EB5870094633E /* FXFormExtendedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FXFormExtendedViewController.h; path = BioCollect/src/Tracker/FXFormExtendedViewController.h; sourceTree = SOURCE_ROOT; };
 		87165E43204EB64F0094633E /* FXFormExtendedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FXFormExtendedViewController.m; path = BioCollect/src/Tracker/FXFormExtendedViewController.m; sourceTree = SOURCE_ROOT; };
-		8718FE5D20579674000CB6BF /* trek to black mountain.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "trek to black mountain.gpx"; sourceTree = "<group>"; };
 		8718FE5F2057D2D9000CB6BF /* RouteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RouteViewController.h; path = BioCollect/src/Tracker/RouteViewController.h; sourceTree = SOURCE_ROOT; };
 		8718FE602057D49C000CB6BF /* RouteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RouteViewController.m; path = BioCollect/src/Tracker/RouteViewController.m; sourceTree = SOURCE_ROOT; };
 		8718FE63205A44F2000CB6BF /* SpeciesAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpeciesAnnotation.h; sourceTree = "<group>"; };
@@ -2688,7 +2690,6 @@
 		E2E3AA8018F4D2940005BB9E = {
 			isa = PBXGroup;
 			children = (
-				8718FE5D20579674000CB6BF /* trek to black mountain.gpx */,
 				E2DCF1EB1CF68D8B008D438C /* Default-568h.png */,
 				E2DCF1EF1CF6A19C008D438C /* Default-568.png */,
 				E2DCF1EC1CF68D8B008D438C /* Default-568h@2x.png */,
@@ -3529,7 +3530,6 @@
 			files = (
 				E23AF5181C911E45002501F3 /* RecordsTableViewController.xib in Resources */,
 				E20D1B561CDC145100A3607B /* AboutiPhoneView.xib in Resources */,
-				8718FE5E20579675000CB6BF /* trek to black mountain.gpx in Resources */,
 				B87373DB1DB6DFE90057027E /* SVWebViewControllerActivitySafari-iPad@2x.png in Resources */,
 				E2A6BEC61F0CCFC000F1A57E /* Molluscs.jpg in Resources */,
 				E2A5372A204D49540085D1BE /* SpeciesListVC.xib in Resources */,
@@ -4008,6 +4008,7 @@
 				E26638921F52EB9B00F1F1CE /* MGSpotyView.m in Sources */,
 				E26638931F52EB9B00F1F1CE /* GAActivitiesJSON.m in Sources */,
 				E26638941F52EB9B00F1F1CE /* GASettings.m in Sources */,
+				87898E3320689E7F00CB2ED0 /* Species.m in Sources */,
 				E26638951F52EB9B00F1F1CE /* GASiteJSON.m in Sources */,
 				E26638961F52EB9B00F1F1CE /* SVWebViewControllerActivity.m in Sources */,
 				E26638971F52EB9B00F1F1CE /* MKAnnotationView+WebCache.m in Sources */,
@@ -4136,6 +4137,7 @@
 				E2AECEFE1E73D3010035DF28 /* MGSpotyView.m in Sources */,
 				E2AECEFF1E73D3010035DF28 /* GAActivitiesJSON.m in Sources */,
 				E2AECF001E73D3010035DF28 /* GASettings.m in Sources */,
+				87898E3220689E7E00CB2ED0 /* Species.m in Sources */,
 				E2AECF011E73D3010035DF28 /* GASiteJSON.m in Sources */,
 				E2AECF021E73D3010035DF28 /* SVWebViewControllerActivity.m in Sources */,
 				E2AECF031E73D3010035DF28 /* MKAnnotationView+WebCache.m in Sources */,
@@ -4292,6 +4294,7 @@
 				E2636E3F1CF43C4100000371 /* UIButton+WebCache.m in Sources */,
 				E2B42D7120686828009943A4 /* TracksUpload.m in Sources */,
 				B87373A81DB085540057027E /* MGSpotyViewController.m in Sources */,
+				87898E3120689E7C00CB2ED0 /* Species.m in Sources */,
 				E2636E391CF43C4100000371 /* SDWebImageCompat.m in Sources */,
 				B83825F81A0C666B00690383 /* MRActivityIndicatorView.m in Sources */,
 				E27BDFB618F78221001EE2F8 /* GAProjectJSON.m in Sources */,
@@ -4334,7 +4337,6 @@
 				E2A6BE931F0C9DAE00F1A57E /* SpeciesService.m in Sources */,
 				E23AF5161C911C69002501F3 /* RecordsTableViewController.m in Sources */,
 				E20284971C87D59300E8203F /* HomeTableViewController.m in Sources */,
-				E2E479CE204BF8290082CCA4 /* Species.m in Sources */,
 				87165E31204571F20094633E /* TrackViewController.m in Sources */,
 				E2E3AAE318F515410005BB9E /* GAProject.m in Sources */,
 				87165E322045721A0094633E /* TrackMetadataViewController.m in Sources */,
@@ -4414,6 +4416,7 @@
 				E2F19DD6200584AC0033DC24 /* MGSpotyView.m in Sources */,
 				E2F19DD7200584AC0033DC24 /* GAActivitiesJSON.m in Sources */,
 				E2F19DD8200584AC0033DC24 /* GASettings.m in Sources */,
+				87898E3420689E7F00CB2ED0 /* Species.m in Sources */,
 				E2F19DD9200584AC0033DC24 /* GASiteJSON.m in Sources */,
 				E2F19DDA200584AC0033DC24 /* SVWebViewControllerActivity.m in Sources */,
 				E2F19DDB200584AC0033DC24 /* MKAnnotationView+WebCache.m in Sources */,
