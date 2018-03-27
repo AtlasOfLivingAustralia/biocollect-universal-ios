@@ -64,46 +64,6 @@
 		</dict>
 		<dict>
 			<key>icon</key>
-			<string>icon_location</string>
-			<key>title</key>
-			<string>Explore Species</string>
-			<key>url</key>
-			<string></string>
-			<key>view</key>
-			<string>hub_explore</string>
-		</dict>
-		<dict>
-			<key>icon</key>
-			<string>icon_location</string>
-			<key>title</key>
-			<string>Species List</string>
-			<key>url</key>
-			<string></string>
-			<key>view</key>
-			<string>species_list</string>
-		</dict>
-		<dict>
-			<key>icon</key>
-			<string>icon_location</string>
-			<key>title</key>
-			<string>Explore Species</string>
-			<key>url</key>
-			<string></string>
-			<key>view</key>
-			<string>hub_explore</string>
-		</dict>
-		<dict>
-			<key>icon</key>
-			<string>icon_location</string>
-			<key>title</key>
-			<string>Species List</string>
-			<key>url</key>
-			<string></string>
-			<key>view</key>
-			<string>species_list</string>
-		</dict>
-		<dict>
-			<key>icon</key>
 			<string></string>
 			<key>title</key>
 			<string>Partners</string>
