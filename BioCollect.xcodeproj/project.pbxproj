@@ -111,7 +111,6 @@
 		E211B04A1CE18A3E00DBC1AF /* biocollect_logo_1.png in Resources */ = {isa = PBXBuildFile; fileRef = E211B0491CE18A3E00DBC1AF /* biocollect_logo_1.png */; };
 		E211B04C1CE18BC500DBC1AF /* BioCollect-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E211B04B1CE18BC500DBC1AF /* BioCollect-logo.png */; };
 		E212E83D200737D400268AD1 /* tracker_home_bk.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E212E83C200737D400268AD1 /* tracker_home_bk.jpg */; };
-		E212E83F20073A1A00268AD1 /* tracker_home_login_iPad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E212E83E20073A1A00268AD1 /* tracker_home_login_iPad.jpg */; };
 		E212E84120073A8600268AD1 /* tracker_home_login_iPhone.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E212E84020073A8600268AD1 /* tracker_home_login_iPhone.jpg */; };
 		E212E8432008080100268AD1 /* tracker_login_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E212E8422008080100268AD1 /* tracker_login_logo.png */; };
 		E212E845200817EA00268AD1 /* icon_track@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E212E844200817EA00268AD1 /* icon_track@2x.png */; };
@@ -1525,7 +1524,6 @@
 		E211B0491CE18A3E00DBC1AF /* biocollect_logo_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = biocollect_logo_1.png; path = src/images/biocollect_logo_1.png; sourceTree = "<group>"; };
 		E211B04B1CE18BC500DBC1AF /* BioCollect-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BioCollect-logo.png"; path = "src/images/BioCollect-logo.png"; sourceTree = "<group>"; };
 		E212E83C200737D400268AD1 /* tracker_home_bk.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = tracker_home_bk.jpg; path = src/images/tracker/tracker_home_bk.jpg; sourceTree = "<group>"; };
-		E212E83E20073A1A00268AD1 /* tracker_home_login_iPad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = tracker_home_login_iPad.jpg; path = src/images/tracker/tracker_home_login_iPad.jpg; sourceTree = "<group>"; };
 		E212E84020073A8600268AD1 /* tracker_home_login_iPhone.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = tracker_home_login_iPhone.jpg; path = src/images/tracker/tracker_home_login_iPhone.jpg; sourceTree = "<group>"; };
 		E212E8422008080100268AD1 /* tracker_login_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tracker_login_logo.png; path = src/images/tracker/tracker_login_logo.png; sourceTree = "<group>"; };
 		E212E844200817EA00268AD1 /* icon_track@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_track@2x.png"; path = "src/images/icon_track@2x.png"; sourceTree = "<group>"; };
@@ -2286,7 +2284,6 @@
 				E212E85220081F8200268AD1 /* tracker_home_bk_small.png */,
 				E212E8422008080100268AD1 /* tracker_login_logo.png */,
 				E212E84020073A8600268AD1 /* tracker_home_login_iPhone.jpg */,
-				E212E83E20073A1A00268AD1 /* tracker_home_login_iPad.jpg */,
 				E212E83C200737D400268AD1 /* tracker_home_bk.jpg */,
 			);
 			name = tracker;
@@ -3191,7 +3188,6 @@
 				E261472C20072F9300B1104E /* info_filled-25@2x.png in Resources */,
 				E261472D20072F9300B1104E /* about_filled-25@2x.png in Resources */,
 				E261472E20072F9300B1104E /* SVWebViewController.strings in Resources */,
-				E212E83F20073A1A00268AD1 /* tracker_home_login_iPad.jpg in Resources */,
 				E261472F20072F9300B1104E /* header-logo@2x.png in Resources */,
 				E261473020072F9300B1104E /* index.html in Resources */,
 				E261473120072F9300B1104E /* icon_address@2x.png in Resources */,

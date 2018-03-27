@@ -15,7 +15,7 @@
 	<key>Bio_Home_Login_Image_Logo</key>
 	<string>tracker_login_logo.png</string>
 	<key>Bio_Home_Login_Image_iPad</key>
-	<string>tracker_home_login_iPad.jpg</string>
+	<string>tracker_home_login_iPhone.jpg</string>
 	<key>Bio_Home_Login_Image_iPhone</key>
 	<string>tracker_home_login_iPhone.jpg</string>
 	<key>Bio_HubName</key>
@@ -42,16 +42,16 @@
 			<key>view</key>
 			<string>add_track</string>
 		</dict>
-        <dict>
-            <key>icon</key>
-            <string>icon_all_records</string>
-            <key>title</key>
-            <string>Review Tracks</string>
-            <key>url</key>
-            <string></string>
-            <key>view</key>
-            <string>saved_tracks</string>
-        </dict>
+		<dict>
+			<key>icon</key>
+			<string>icon_all_records</string>
+			<key>title</key>
+			<string>Review Tracks</string>
+			<key>url</key>
+			<string></string>
+			<key>view</key>
+			<string>saved_tracks</string>
+		</dict>
 		<dict>
 			<key>icon</key>
 			<string>icon_all_records</string>
