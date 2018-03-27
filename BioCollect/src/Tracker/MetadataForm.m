@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "MetadataForm.h"
 #import "GAAppDelegate.h"
+#import "GASettings.h"
 #define colour @"#F1582B"
 #define MIN_DISTANCE_BETWEEN_LOCATION 40
 
@@ -111,11 +112,17 @@
     GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
     Locale* locale = appDelegate.locale;
     UIColor* uiColour = [self colorFromHexString: colour];
+    NSString* fullName = [GASettings getFullName];
+    Project* project = [appDelegate.projectService loadSelectedProject];
+    NSString* organisationName = @"";
+    if (project != nil){
+        organisationName = project.name;
+    }
     
     return @[
              // Tracker information
-             @{@"textLabel.color": uiColour, FXFormFieldKey:@"organisationName", FXFormFieldTitle:[locale get: @"trackmetadata.organisationname"], FXFormFieldHeader: [locale get: @"trackmetadata.trackerinfo"]},
-             @{@"textLabel.color": uiColour, FXFormFieldKey:@"leadTracker", FXFormFieldTitle:[locale get: @"trackmetadata.leadTracker"]},
+             @{@"textLabel.color": uiColour, FXFormFieldKey:@"organisationName", FXFormFieldTitle:[locale get: @"trackmetadata.organisationname"], FXFormFieldHeader: [locale get: @"trackmetadata.trackerinfo"], FXFormFieldDefaultValue: organisationName},
+             @{@"textLabel.color": uiColour, FXFormFieldKey:@"leadTracker", FXFormFieldTitle:[locale get: @"trackmetadata.leadTracker"], FXFormFieldDefaultValue: fullName},
              @{@"textLabel.color": uiColour, FXFormFieldKey:@"otherTrackers", FXFormFieldTitle:[locale get: @"trackmetadata.otherTrackers"], FXFormFieldType: FXFormFieldTypeLongText},
              @{@"textLabel.color": uiColour, FXFormFieldKey:@"comments", FXFormFieldTitle: [locale get: @"trackmetadata.comments"], FXFormFieldType: FXFormFieldTypeLongText},
              
