@@ -18,6 +18,9 @@
 #import "ContactVC.h"
 #import "RecordForm.h"
 #import "SpeciesListService.h"
+#import "Locale.h"
+#import "TrackerService.h"
+#import "ProjectService.h"
 
 #define IDIOM    UI_USER_INTERFACE_IDIOM()
 #define IPAD     UIUserInterfaceIdiomPad
@@ -37,7 +40,8 @@
 @end
 @implementation GAAppDelegate
 
-@synthesize splitViewController, projects,masterProjectVC, detailVC, restCall, sqlLite, loginViewController, eulaVC, homeVC, recordsVC, myProjectsVC, myRecordsVC, bioProjectService,tabBarController,ozHomeNC, speciesService, alaWKWebView, speciesListService, projectService;
+
+@synthesize splitViewController, projects,masterProjectVC, detailVC, restCall, sqlLite, loginViewController, eulaVC, homeVC, recordsVC, myProjectsVC, myRecordsVC, bioProjectService,tabBarController,ozHomeNC, speciesService, alaWKWebView, locale, speciesListService, trackerService, projectService;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -65,6 +69,8 @@
     speciesService = [[SpeciesService alloc] init];
     speciesListService = [[SpeciesListService alloc] init];
     projectService = [[ProjectService alloc] init];
+    locale = [[Locale alloc] init];
+    trackerService = [[TrackerService alloc] init];
     
     [self addSplitViewtoRoot];
     

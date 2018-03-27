@@ -13,7 +13,48 @@
 		8709E9B21DB5A0FF00D04585 /* SpeciesSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8709E9AE1DB5A0FF00D04585 /* SpeciesSearchTableViewController.m */; };
 		8709E9B31DB5A0FF00D04585 /* SpeciesSearchTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8709E9AF1DB5A0FF00D04585 /* SpeciesSearchTableViewController.xib */; };
 		8709E9B61DB5A11700D04585 /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = 8709E9B51DB5A11700D04585 /* Record.m */; };
+		87165E1A203F867B0094633E /* TrackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87165E18203F867B0094633E /* TrackViewController.m */; };
+		87165E202043A7020094633E /* Locale.m in Sources */ = {isa = PBXBuildFile; fileRef = 87165E1F2043A7020094633E /* Locale.m */; };
+		87165E252043DACF0094633E /* TrackMetadataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87165E232043DACF0094633E /* TrackMetadataViewController.m */; };
+		87165E2C204571840094633E /* Locale.m in Sources */ = {isa = PBXBuildFile; fileRef = 87165E1F2043A7020094633E /* Locale.m */; };
+		87165E2D2045719E0094633E /* Locale.m in Sources */ = {isa = PBXBuildFile; fileRef = 87165E1F2043A7020094633E /* Locale.m */; };
+		87165E2E204571A40094633E /* Locale.m in Sources */ = {isa = PBXBuildFile; fileRef = 87165E1F2043A7020094633E /* Locale.m */; };
+		87165E2F204571A50094633E /* Locale.m in Sources */ = {isa = PBXBuildFile; fileRef = 87165E1F2043A7020094633E /* Locale.m */; };
+		87165E30204571A50094633E /* Locale.m in Sources */ = {isa = PBXBuildFile; fileRef = 87165E1F2043A7020094633E /* Locale.m */; };
+		87165E31204571F20094633E /* TrackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87165E18203F867B0094633E /* TrackViewController.m */; };
+		87165E322045721A0094633E /* TrackMetadataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87165E232043DACF0094633E /* TrackMetadataViewController.m */; };
+		87165E35204586650094633E /* MetadataForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 87165E34204586640094633E /* MetadataForm.m */; };
+		87165E37204785680094633E /* SightingForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 87165E36204785680094633E /* SightingForm.m */; };
+		87165E3B2047ADAA0094633E /* SightingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87165E3A2047ADAA0094633E /* SightingViewController.m */; };
+		87165E3C2048124A0094633E /* MetadataForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 87165E34204586640094633E /* MetadataForm.m */; };
+		87165E3D204812500094633E /* SightingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87165E3A2047ADAA0094633E /* SightingViewController.m */; };
+		87165E3E2048126E0094633E /* SightingForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 87165E36204785680094633E /* SightingForm.m */; };
+		87165E412048C1720094633E /* MapPointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87165E402048C1720094633E /* MapPointViewController.m */; };
+		87165E44204EB64F0094633E /* FXFormExtendedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87165E43204EB64F0094633E /* FXFormExtendedViewController.m */; };
+		8718FE612057D49C000CB6BF /* RouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8718FE602057D49C000CB6BF /* RouteViewController.m */; };
+		8718FE622057D5C0000CB6BF /* RouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8718FE602057D49C000CB6BF /* RouteViewController.m */; };
+		8718FE65205A4507000CB6BF /* SpeciesAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8718FE64205A4507000CB6BF /* SpeciesAnnotation.m */; };
+		8718FE66205A4507000CB6BF /* SpeciesAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8718FE64205A4507000CB6BF /* SpeciesAnnotation.m */; };
 		872EFB041DBF7DC1006EB9BF /* SpeciesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 872EFB031DBF7DC1006EB9BF /* SpeciesCell.m */; };
+		874B4F38206354EB00892966 /* TrackerService.m in Sources */ = {isa = PBXBuildFile; fileRef = 874B4F37206354EB00892966 /* TrackerService.m */; };
+		874B4F39206354EB00892966 /* TrackerService.m in Sources */ = {isa = PBXBuildFile; fileRef = 874B4F37206354EB00892966 /* TrackerService.m */; };
+		874B4F3A206354EB00892966 /* TrackerService.m in Sources */ = {isa = PBXBuildFile; fileRef = 874B4F37206354EB00892966 /* TrackerService.m */; };
+		874B4F3B206354EB00892966 /* TrackerService.m in Sources */ = {isa = PBXBuildFile; fileRef = 874B4F37206354EB00892966 /* TrackerService.m */; };
+		874B4F3C206354EB00892966 /* TrackerService.m in Sources */ = {isa = PBXBuildFile; fileRef = 874B4F37206354EB00892966 /* TrackerService.m */; };
+		874B4F3D206354EB00892966 /* TrackerService.m in Sources */ = {isa = PBXBuildFile; fileRef = 874B4F37206354EB00892966 /* TrackerService.m */; };
+		874B4F4020636B0400892966 /* TrackListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 874B4F3F20636B0400892966 /* TrackListViewController.m */; };
+		874B4F4120636B0400892966 /* TrackListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 874B4F3F20636B0400892966 /* TrackListViewController.m */; };
+		874B4F4220636B0400892966 /* TrackListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 874B4F3F20636B0400892966 /* TrackListViewController.m */; };
+		874B4F4320636B0400892966 /* TrackListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 874B4F3F20636B0400892966 /* TrackListViewController.m */; };
+		874B4F4420636B0400892966 /* TrackListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 874B4F3F20636B0400892966 /* TrackListViewController.m */; };
+		874B4F4520636B0400892966 /* TrackListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 874B4F3F20636B0400892966 /* TrackListViewController.m */; };
+		87898E3120689E7C00CB2ED0 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
+		87898E3220689E7E00CB2ED0 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
+		87898E3320689E7F00CB2ED0 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
+		87898E3420689E7F00CB2ED0 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
+		87B0962F204FAF3A00DA1395 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
+		87B09634204FB94300DA1395 /* SightingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87B09633204FB94300DA1395 /* SightingListViewController.m */; };
+		87B09635204FBD4700DA1395 /* SightingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87B09633204FB94300DA1395 /* SightingListViewController.m */; };
 		87B700121DC2E5520066C236 /* SyncTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87B700101DC2E5520066C236 /* SyncTableViewController.m */; };
 		87B700131DC2E5520066C236 /* SyncTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87B700111DC2E5520066C236 /* SyncTableViewController.xib */; };
 		B83825F61A0C666B00690383 /* MRBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = B83825DA1A0C666B00690383 /* MRBlurView.m */; };
@@ -1056,11 +1097,6 @@
 		E2E3AAE018F514470005BB9E /* GAActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E3AADF18F514470005BB9E /* GAActivity.m */; };
 		E2E3AAE318F515410005BB9E /* GAProject.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E3AAE218F515410005BB9E /* GAProject.m */; };
 		E2E43395190FAE5700A3FAB2 /* cancelled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E43394190FAE5700A3FAB2 /* cancelled@2x.png */; };
-		E2E479CE204BF8290082CCA4 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
-		E2E479CF204BF8290082CCA4 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
-		E2E479D0204BF8290082CCA4 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
-		E2E479D1204BF8290082CCA4 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
-		E2E479D2204BF8290082CCA4 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
 		E2E479D4204BF9B10082CCA4 /* SpeciesJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479D3204BF9B10082CCA4 /* SpeciesJSON.m */; };
 		E2E479D5204BF9B10082CCA4 /* SpeciesJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479D3204BF9B10082CCA4 /* SpeciesJSON.m */; };
 		E2E479D6204BF9B10082CCA4 /* SpeciesJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479D3204BF9B10082CCA4 /* SpeciesJSON.m */; };
@@ -1363,8 +1399,34 @@
 		8709E9AF1DB5A0FF00D04585 /* SpeciesSearchTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SpeciesSearchTableViewController.xib; path = src/SpeciesSearchTableViewController.xib; sourceTree = "<group>"; };
 		8709E9B41DB5A11700D04585 /* Record.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Record.h; path = src/Record.h; sourceTree = "<group>"; };
 		8709E9B51DB5A11700D04585 /* Record.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Record.m; path = src/Record.m; sourceTree = "<group>"; };
+		87165E17203F867B0094633E /* TrackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TrackViewController.h; path = BioCollect/src/Tracker/TrackViewController.h; sourceTree = SOURCE_ROOT; };
+		87165E18203F867B0094633E /* TrackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TrackViewController.m; path = BioCollect/src/Tracker/TrackViewController.m; sourceTree = SOURCE_ROOT; };
+		87165E1F2043A7020094633E /* Locale.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Locale.m; path = src/Tracker/Locale.m; sourceTree = "<group>"; };
+		87165E212043A72D0094633E /* Locale.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Locale.h; path = src/Tracker/Locale.h; sourceTree = "<group>"; };
+		87165E222043DACF0094633E /* TrackMetadataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TrackMetadataViewController.h; path = BioCollect/src/Tracker/TrackMetadataViewController.h; sourceTree = SOURCE_ROOT; };
+		87165E232043DACF0094633E /* TrackMetadataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TrackMetadataViewController.m; path = BioCollect/src/Tracker/TrackMetadataViewController.m; sourceTree = SOURCE_ROOT; };
+		87165E332045856A0094633E /* MetadataForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MetadataForm.h; path = BioCollect/src/Tracker/MetadataForm.h; sourceTree = SOURCE_ROOT; };
+		87165E34204586640094633E /* MetadataForm.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MetadataForm.m; path = BioCollect/src/Tracker/MetadataForm.m; sourceTree = SOURCE_ROOT; };
+		87165E36204785680094633E /* SightingForm.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SightingForm.m; path = BioCollect/src/Tracker/SightingForm.m; sourceTree = SOURCE_ROOT; };
+		87165E382047857D0094633E /* SightingForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SightingForm.h; path = BioCollect/src/Tracker/SightingForm.h; sourceTree = SOURCE_ROOT; };
+		87165E392047AD4B0094633E /* SightingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SightingViewController.h; path = BioCollect/src/Tracker/SightingViewController.h; sourceTree = SOURCE_ROOT; };
+		87165E3A2047ADAA0094633E /* SightingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SightingViewController.m; path = BioCollect/src/Tracker/SightingViewController.m; sourceTree = SOURCE_ROOT; };
+		87165E3F2048BFAB0094633E /* MapPointViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapPointViewController.h; sourceTree = "<group>"; };
+		87165E402048C1720094633E /* MapPointViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapPointViewController.m; sourceTree = "<group>"; };
+		87165E42204EB5870094633E /* FXFormExtendedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FXFormExtendedViewController.h; path = BioCollect/src/Tracker/FXFormExtendedViewController.h; sourceTree = SOURCE_ROOT; };
+		87165E43204EB64F0094633E /* FXFormExtendedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FXFormExtendedViewController.m; path = BioCollect/src/Tracker/FXFormExtendedViewController.m; sourceTree = SOURCE_ROOT; };
+		8718FE5F2057D2D9000CB6BF /* RouteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RouteViewController.h; path = BioCollect/src/Tracker/RouteViewController.h; sourceTree = SOURCE_ROOT; };
+		8718FE602057D49C000CB6BF /* RouteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RouteViewController.m; path = BioCollect/src/Tracker/RouteViewController.m; sourceTree = SOURCE_ROOT; };
+		8718FE63205A44F2000CB6BF /* SpeciesAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpeciesAnnotation.h; sourceTree = "<group>"; };
+		8718FE64205A4507000CB6BF /* SpeciesAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpeciesAnnotation.m; sourceTree = "<group>"; };
 		872EFB021DBF7DC1006EB9BF /* SpeciesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpeciesCell.h; path = src/Sightings/SpeciesCell.h; sourceTree = "<group>"; };
 		872EFB031DBF7DC1006EB9BF /* SpeciesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpeciesCell.m; path = src/Sightings/SpeciesCell.m; sourceTree = "<group>"; };
+		874B4F36206353FD00892966 /* TrackerService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TrackerService.h; path = src/Service/TrackerService.h; sourceTree = "<group>"; };
+		874B4F37206354EB00892966 /* TrackerService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TrackerService.m; path = src/Service/TrackerService.m; sourceTree = "<group>"; };
+		874B4F3E206369CB00892966 /* TrackListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TrackListViewController.h; path = src/Controller/TrackListViewController.h; sourceTree = "<group>"; };
+		874B4F3F20636B0400892966 /* TrackListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TrackListViewController.m; path = src/Controller/TrackListViewController.m; sourceTree = "<group>"; };
+		87B09632204FB85E00DA1395 /* SightingListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SightingListViewController.h; path = src/Controller/SightingListViewController.h; sourceTree = "<group>"; };
+		87B09633204FB94300DA1395 /* SightingListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SightingListViewController.m; path = src/Controller/SightingListViewController.m; sourceTree = "<group>"; };
 		87B7000F1DC2E5520066C236 /* SyncTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SyncTableViewController.h; path = src/Sync/SyncTableViewController.h; sourceTree = "<group>"; };
 		87B700101DC2E5520066C236 /* SyncTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SyncTableViewController.m; path = src/Sync/SyncTableViewController.m; sourceTree = "<group>"; };
 		87B700111DC2E5520066C236 /* SyncTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SyncTableViewController.xib; path = src/Sync/SyncTableViewController.xib; sourceTree = "<group>"; };
@@ -2127,6 +2189,22 @@
 				8709D1C51DB9926700E49C7E /* MapViewController.h */,
 				8709D1C61DB9926700E49C7E /* MapViewController.m */,
 				8709D1C71DB9926700E49C7E /* MapViewController.xib */,
+				87165E17203F867B0094633E /* TrackViewController.h */,
+				87165E18203F867B0094633E /* TrackViewController.m */,
+				87165E222043DACF0094633E /* TrackMetadataViewController.h */,
+				87165E232043DACF0094633E /* TrackMetadataViewController.m */,
+				87165E332045856A0094633E /* MetadataForm.h */,
+				87165E34204586640094633E /* MetadataForm.m */,
+				87165E36204785680094633E /* SightingForm.m */,
+				87165E382047857D0094633E /* SightingForm.h */,
+				87165E392047AD4B0094633E /* SightingViewController.h */,
+				87165E3A2047ADAA0094633E /* SightingViewController.m */,
+				87165E42204EB5870094633E /* FXFormExtendedViewController.h */,
+				87165E43204EB64F0094633E /* FXFormExtendedViewController.m */,
+				87B09632204FB85E00DA1395 /* SightingListViewController.h */,
+				87B09633204FB94300DA1395 /* SightingListViewController.m */,
+				874B4F3E206369CB00892966 /* TrackListViewController.h */,
+				874B4F3F20636B0400892966 /* TrackListViewController.m */,
 			);
 			name = Record;
 			sourceTree = "<group>";
@@ -2156,6 +2234,8 @@
 				E20189881C8922DD0031435D /* BioProjectService.m */,
 				E2A6BE911F0C9CC600F1A57E /* SpeciesService.h */,
 				E2A6BE921F0C9DAE00F1A57E /* SpeciesService.m */,
+				874B4F36206353FD00892966 /* TrackerService.h */,
+				874B4F37206354EB00892966 /* TrackerService.m */,
 			);
 			name = bioReST;
 			sourceTree = "<group>";
@@ -2394,6 +2474,10 @@
 				E27B8F3E1EF4E68900B01FAB /* HomeViewController.m */,
 				E27B8F3F1EF4E68900B01FAB /* SettingsViewController.h */,
 				E27B8F401EF4E68900B01FAB /* SettingsViewController.m */,
+				87165E3F2048BFAB0094633E /* MapPointViewController.h */,
+				87165E402048C1720094633E /* MapPointViewController.m */,
+				8718FE5F2057D2D9000CB6BF /* RouteViewController.h */,
+				8718FE602057D49C000CB6BF /* RouteViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -2405,6 +2489,8 @@
 				E27B8F431EF4E68900B01FAB /* Annotation.m */,
 				E27B8F441EF4E68900B01FAB /* Storage.h */,
 				E27B8F451EF4E68900B01FAB /* Storage.m */,
+				8718FE63205A44F2000CB6BF /* SpeciesAnnotation.h */,
+				8718FE64205A4507000CB6BF /* SpeciesAnnotation.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -2436,6 +2522,8 @@
 				E27BDFD318F78D97001EE2F8 /* GASettings.h */,
 				E27BDFD418F78D97001EE2F8 /* GASettings.m */,
 				E27BDFD618F78DC7001EE2F8 /* GASettingsConstant.h */,
+				87165E1F2043A7020094633E /* Locale.m */,
+				87165E212043A72D0094633E /* Locale.h */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -3740,10 +3828,12 @@
 				E261465F20072F9300B1104E /* AFURLConnectionOperation.m in Sources */,
 				E261466020072F9300B1104E /* RecordViewController.m in Sources */,
 				E261466120072F9300B1104E /* AFNetworkActivityIndicatorManager.m in Sources */,
+				874B4F4520636B0400892966 /* TrackListViewController.m in Sources */,
 				E261466220072F9300B1104E /* SDWebImageDecoder.m in Sources */,
 				E261466320072F9300B1104E /* SDWebImagePrefetcher.m in Sources */,
 				E261466420072F9300B1104E /* GAMasterProjectTableViewController.m in Sources */,
 				E261466520072F9300B1104E /* UIImageView+HighlightedWebCache.m in Sources */,
+				87165E202043A7020094633E /* Locale.m in Sources */,
 				E261466620072F9300B1104E /* MRMethodCopier.m in Sources */,
 				E261466720072F9300B1104E /* OzHomeVCDataSource.m in Sources */,
 				E261466820072F9300B1104E /* GASqlLiteDatabase.m in Sources */,
@@ -3757,10 +3847,12 @@
 				E261467020072F9300B1104E /* MRIconView.m in Sources */,
 				E261467120072F9300B1104E /* MRBlurView.m in Sources */,
 				E261467220072F9300B1104E /* GACreateSiteModalViewController.m in Sources */,
+				87165E35204586650094633E /* MetadataForm.m in Sources */,
 				E261467320072F9300B1104E /* SVWebViewControllerActivitySafari.m in Sources */,
 				E261467420072F9300B1104E /* SVModalWebViewController.m in Sources */,
 				E261467520072F9300B1104E /* ALAWKWebView.m in Sources */,
 				E261467620072F9300B1104E /* UIImageView+WebCache.m in Sources */,
+				8718FE622057D5C0000CB6BF /* RouteViewController.m in Sources */,
 				E261467720072F9300B1104E /* GAAboutVC.m in Sources */,
 				E261467820072F9300B1104E /* SDWebImageManager.m in Sources */,
 				E261467920072F9300B1104E /* NSData+ImageContentType.m in Sources */,
@@ -3773,6 +3865,7 @@
 				E261467F20072F9300B1104E /* AFXMLRequestOperation.m in Sources */,
 				E261468020072F9300B1104E /* UIControl+REUIKitAdditions.m in Sources */,
 				E261468120072F9300B1104E /* RecordForm.m in Sources */,
+				87165E37204785680094633E /* SightingForm.m in Sources */,
 				E261468220072F9300B1104E /* UIView+REUIKitAdditions.m in Sources */,
 				E261468320072F9300B1104E /* RKDropdownAlert.m in Sources */,
 				E261468420072F9300B1104E /* UIImageView+AFNetworking.m in Sources */,
@@ -3781,12 +3874,14 @@
 				E261468720072F9300B1104E /* GAActivitiesJSON.m in Sources */,
 				E261468820072F9300B1104E /* GASettings.m in Sources */,
 				E261468920072F9300B1104E /* GASiteJSON.m in Sources */,
+				87B0962F204FAF3A00DA1395 /* Species.m in Sources */,
 				E261468A20072F9300B1104E /* SVWebViewControllerActivity.m in Sources */,
 				E261468B20072F9300B1104E /* MKAnnotationView+WebCache.m in Sources */,
 				E261468C20072F9300B1104E /* FXForms.m in Sources */,
 				E261468D20072F9300B1104E /* UIImage+ImageEffects.m in Sources */,
 				E261468E20072F9300B1104E /* Annotation.m in Sources */,
 				E261468F20072F9300B1104E /* AFPropertyListRequestOperation.m in Sources */,
+				874B4F3D206354EB00892966 /* TrackerService.m in Sources */,
 				E261469020072F9300B1104E /* GAFormJSInterface.m in Sources */,
 				E261469120072F9300B1104E /* HomeWebView.m in Sources */,
 				E261469220072F9300B1104E /* MRStopButton.m in Sources */,
@@ -3800,6 +3895,7 @@
 				E261469920072F9300B1104E /* ProjectActivitiesJSON.m in Sources */,
 				E261469A20072F9300B1104E /* AFHTTPClient.m in Sources */,
 				E261469B20072F9300B1104E /* GADetailActivitiesTableViewController.m in Sources */,
+				87165E412048C1720094633E /* MapPointViewController.m in Sources */,
 				E261469C20072F9300B1104E /* EasyJSWebView.m in Sources */,
 				E261469D20072F9300B1104E /* RecordWebView.m in Sources */,
 				E261469E20072F9300B1104E /* UIButton+WebCache.m in Sources */,
@@ -3821,6 +3917,7 @@
 				E26146AC20072F9300B1104E /* UIColor+REUIKitAdditions.m in Sources */,
 				E26146AD20072F9300B1104E /* AFHTTPRequestOperation.m in Sources */,
 				E26146AE20072F9300B1104E /* UIImageView+LBBlurredImage.m in Sources */,
+				8718FE66205A4507000CB6BF /* SpeciesAnnotation.m in Sources */,
 				E26146AF20072F9300B1104E /* NSObject+REUIKitAdditions.m in Sources */,
 				E26146B020072F9300B1104E /* easyjs-inject.js in Sources */,
 				E26146B120072F9300B1104E /* UIImage+GIF.m in Sources */,
@@ -3828,11 +3925,13 @@
 				E26146B320072F9300B1104E /* main.m in Sources */,
 				E26146B420072F9300B1104E /* BookmarksViewController.m in Sources */,
 				E2E479E1204C0B8C0082CCA4 /* SpeciesListService.m in Sources */,
+				87B09635204FBD4700DA1395 /* SightingListViewController.m in Sources */,
 				E26146B520072F9300B1104E /* HomeViewController.m in Sources */,
 				E26146B620072F9300B1104E /* MRProgressView.m in Sources */,
 				E26146B720072F9300B1104E /* SDWebImageDownloaderOperation.m in Sources */,
 				E26146B820072F9300B1104E /* MRCircularProgressView.m in Sources */,
 				E26146B920072F9300B1104E /* UIImage+MultiFormat.m in Sources */,
+				87165E3B2047ADAA0094633E /* SightingViewController.m in Sources */,
 				E26146BA20072F9300B1104E /* UIView+WebCacheOperation.m in Sources */,
 				E26146BB20072F9300B1104E /* EasyJSDataFunction.m in Sources */,
 				E26146BC20072F9300B1104E /* SVWebViewController.m in Sources */,
@@ -3841,10 +3940,12 @@
 				E26146BF20072F9300B1104E /* GAEULAViewController.m in Sources */,
 				E26146C020072F9300B1104E /* UIImage+REUIKitAdditions.m in Sources */,
 				E26146C120072F9300B1104E /* SpeciesService.m in Sources */,
+				87165E1A203F867B0094633E /* TrackViewController.m in Sources */,
 				E26146C220072F9300B1104E /* RecordsTableViewController.m in Sources */,
+				87165E44204EB64F0094633E /* FXFormExtendedViewController.m in Sources */,
 				E26146C320072F9300B1104E /* HomeTableViewController.m in Sources */,
-				E2E479D2204BF8290082CCA4 /* Species.m in Sources */,
 				E26146C420072F9300B1104E /* GAProject.m in Sources */,
+				87165E252043DACF0094633E /* TrackMetadataViewController.m in Sources */,
 				E26146C520072F9300B1104E /* GAProjectsUtil.m in Sources */,
 				E26146C620072F9300B1104E /* SGDetailViewTableViewController.m in Sources */,
 				E26146C720072F9300B1104E /* SpeciesCell.m in Sources */,
@@ -3881,6 +3982,7 @@
 				E266387B1F52EB9B00F1F1CE /* SpeciesGroupTableViewController.m in Sources */,
 				E266387C1F52EB9B00F1F1CE /* MRMessageInterceptor.m in Sources */,
 				E266387D1F52EB9B00F1F1CE /* MRIconView.m in Sources */,
+				87165E2F204571A50094633E /* Locale.m in Sources */,
 				E266387E1F52EB9B00F1F1CE /* MRBlurView.m in Sources */,
 				E266387F1F52EB9B00F1F1CE /* GACreateSiteModalViewController.m in Sources */,
 				E26638801F52EB9B00F1F1CE /* SVWebViewControllerActivitySafari.m in Sources */,
@@ -3906,6 +4008,7 @@
 				E26638921F52EB9B00F1F1CE /* MGSpotyView.m in Sources */,
 				E26638931F52EB9B00F1F1CE /* GAActivitiesJSON.m in Sources */,
 				E26638941F52EB9B00F1F1CE /* GASettings.m in Sources */,
+				87898E3320689E7F00CB2ED0 /* Species.m in Sources */,
 				E26638951F52EB9B00F1F1CE /* GASiteJSON.m in Sources */,
 				E26638961F52EB9B00F1F1CE /* SVWebViewControllerActivity.m in Sources */,
 				E26638971F52EB9B00F1F1CE /* MKAnnotationView+WebCache.m in Sources */,
@@ -3934,6 +4037,7 @@
 				E26638AC1F52EB9B00F1F1CE /* SDWebImageCompat.m in Sources */,
 				E26638AD1F52EB9B00F1F1CE /* MRActivityIndicatorView.m in Sources */,
 				E26638AE1F52EB9B00F1F1CE /* GAProjectJSON.m in Sources */,
+				874B4F4320636B0400892966 /* TrackListViewController.m in Sources */,
 				E26638AF1F52EB9B00F1F1CE /* AFImageRequestOperation.m in Sources */,
 				E26638B01F52EB9B00F1F1CE /* Record.m in Sources */,
 				E26638B11F52EB9B00F1F1CE /* GADetailFormVIewController.m in Sources */,
@@ -3955,6 +4059,7 @@
 				E26638C01F52EB9B00F1F1CE /* BookmarksViewController.m in Sources */,
 				E2E479DF204C0B8C0082CCA4 /* SpeciesListService.m in Sources */,
 				E26638C11F52EB9B00F1F1CE /* HomeViewController.m in Sources */,
+				874B4F3B206354EB00892966 /* TrackerService.m in Sources */,
 				E26638C21F52EB9B00F1F1CE /* MRProgressView.m in Sources */,
 				E26638C31F52EB9B00F1F1CE /* SDWebImageDownloaderOperation.m in Sources */,
 				E26638C41F52EB9B00F1F1CE /* MRCircularProgressView.m in Sources */,
@@ -3969,7 +4074,6 @@
 				E26638CD1F52EB9B00F1F1CE /* SpeciesService.m in Sources */,
 				E26638CE1F52EB9B00F1F1CE /* RecordsTableViewController.m in Sources */,
 				E26638CF1F52EB9B00F1F1CE /* HomeTableViewController.m in Sources */,
-				E2E479D0204BF8290082CCA4 /* Species.m in Sources */,
 				E26638D01F52EB9B00F1F1CE /* GAProject.m in Sources */,
 				E26638D11F52EB9B00F1F1CE /* GAProjectsUtil.m in Sources */,
 				E26638D21F52EB9B00F1F1CE /* SGDetailViewTableViewController.m in Sources */,
@@ -4007,6 +4111,7 @@
 				E2A6BE8D1F0C91C500F1A57E /* SpeciesGroupTableViewController.m in Sources */,
 				E2AECEEE1E73D3010035DF28 /* MRMessageInterceptor.m in Sources */,
 				E2AECEEF1E73D3010035DF28 /* MRIconView.m in Sources */,
+				87165E2E204571A40094633E /* Locale.m in Sources */,
 				E2AECEF01E73D3010035DF28 /* MRBlurView.m in Sources */,
 				E2AECEF11E73D3010035DF28 /* GACreateSiteModalViewController.m in Sources */,
 				E2AECEF21E73D3010035DF28 /* SVWebViewControllerActivitySafari.m in Sources */,
@@ -4032,6 +4137,7 @@
 				E2AECEFE1E73D3010035DF28 /* MGSpotyView.m in Sources */,
 				E2AECEFF1E73D3010035DF28 /* GAActivitiesJSON.m in Sources */,
 				E2AECF001E73D3010035DF28 /* GASettings.m in Sources */,
+				87898E3220689E7E00CB2ED0 /* Species.m in Sources */,
 				E2AECF011E73D3010035DF28 /* GASiteJSON.m in Sources */,
 				E2AECF021E73D3010035DF28 /* SVWebViewControllerActivity.m in Sources */,
 				E2AECF031E73D3010035DF28 /* MKAnnotationView+WebCache.m in Sources */,
@@ -4060,6 +4166,7 @@
 				E2AECF141E73D3010035DF28 /* SDWebImageCompat.m in Sources */,
 				E2AECF151E73D3010035DF28 /* MRActivityIndicatorView.m in Sources */,
 				E2AECF161E73D3010035DF28 /* GAProjectJSON.m in Sources */,
+				874B4F4220636B0400892966 /* TrackListViewController.m in Sources */,
 				E27B8F1B1EF4E5FE00B01FAB /* AFImageRequestOperation.m in Sources */,
 				E2AECF171E73D3010035DF28 /* Record.m in Sources */,
 				E2AECF181E73D3010035DF28 /* GADetailFormVIewController.m in Sources */,
@@ -4081,6 +4188,7 @@
 				E27B8F471EF4E68900B01FAB /* BookmarksViewController.m in Sources */,
 				E2E479DE204C0B8C0082CCA4 /* SpeciesListService.m in Sources */,
 				E27B8F4B1EF4E68A00B01FAB /* HomeViewController.m in Sources */,
+				874B4F3A206354EB00892966 /* TrackerService.m in Sources */,
 				E2AECF241E73D3010035DF28 /* MRProgressView.m in Sources */,
 				E2AECF251E73D3010035DF28 /* SDWebImageDownloaderOperation.m in Sources */,
 				E2AECF261E73D3010035DF28 /* MRCircularProgressView.m in Sources */,
@@ -4095,7 +4203,6 @@
 				E2A6BE941F0C9DAE00F1A57E /* SpeciesService.m in Sources */,
 				E2AECF2D1E73D3010035DF28 /* RecordsTableViewController.m in Sources */,
 				E2AECF2E1E73D3010035DF28 /* HomeTableViewController.m in Sources */,
-				E2E479CF204BF8290082CCA4 /* Species.m in Sources */,
 				E2AECF2F1E73D3010035DF28 /* GAProject.m in Sources */,
 				E2AECF301E73D3010035DF28 /* GAProjectsUtil.m in Sources */,
 				E2A6BED61F0CE04C00F1A57E /* SGDetailViewTableViewController.m in Sources */,
@@ -4118,6 +4225,7 @@
 				E27B8F221EF4E5FE00B01FAB /* AFURLConnectionOperation.m in Sources */,
 				B87373E51DB7027F0057027E /* RecordViewController.m in Sources */,
 				E27B8F1E1EF4E5FE00B01FAB /* AFNetworkActivityIndicatorManager.m in Sources */,
+				87B09634204FB94300DA1395 /* SightingListViewController.m in Sources */,
 				E2636E3A1CF43C4100000371 /* SDWebImageDecoder.m in Sources */,
 				E2636E3E1CF43C4100000371 /* SDWebImagePrefetcher.m in Sources */,
 				E2E3AAC818F4E1FA0005BB9E /* GAMasterProjectTableViewController.m in Sources */,
@@ -4133,6 +4241,7 @@
 				E2A6BE8C1F0C91C500F1A57E /* SpeciesGroupTableViewController.m in Sources */,
 				B83825FF1A0C666B00690383 /* MRMessageInterceptor.m in Sources */,
 				B83825FA1A0C666B00690383 /* MRIconView.m in Sources */,
+				87165E2C204571840094633E /* Locale.m in Sources */,
 				B83825F61A0C666B00690383 /* MRBlurView.m in Sources */,
 				E2E56B2C1925CB7F007AC38C /* GACreateSiteModalViewController.m in Sources */,
 				B87373DC1DB6DFE90057027E /* SVWebViewControllerActivitySafari.m in Sources */,
@@ -4148,10 +4257,12 @@
 				E21CD1831CEAF8E10021536B /* JGActionSheet.m in Sources */,
 				E2B4BEEE1C896E270054F117 /* HomeCustomCell.m in Sources */,
 				E2A53731204E2D310085D1BE /* HubProjects.m in Sources */,
+				874B4F4020636B0400892966 /* TrackListViewController.m in Sources */,
 				E27B8F241EF4E5FE00B01FAB /* AFXMLRequestOperation.m in Sources */,
 				E27B8F2C1EF4E5FE00B01FAB /* UIControl+REUIKitAdditions.m in Sources */,
 				B87373E91DB703280057027E /* RecordForm.m in Sources */,
 				E27B8F341EF4E5FE00B01FAB /* UIView+REUIKitAdditions.m in Sources */,
+				87165E3E2048126E0094633E /* SightingForm.m in Sources */,
 				E2EF6E621E678A4F00279A55 /* RKDropdownAlert.m in Sources */,
 				E27B8F261EF4E5FE00B01FAB /* UIImageView+AFNetworking.m in Sources */,
 				8709D1C81DB9926700E49C7E /* MapViewController.m in Sources */,
@@ -4183,6 +4294,7 @@
 				E2636E3F1CF43C4100000371 /* UIButton+WebCache.m in Sources */,
 				E2B42D7120686828009943A4 /* TracksUpload.m in Sources */,
 				B87373A81DB085540057027E /* MGSpotyViewController.m in Sources */,
+				87898E3120689E7C00CB2ED0 /* Species.m in Sources */,
 				E2636E391CF43C4100000371 /* SDWebImageCompat.m in Sources */,
 				B83825F81A0C666B00690383 /* MRActivityIndicatorView.m in Sources */,
 				E27BDFB618F78221001EE2F8 /* GAProjectJSON.m in Sources */,
@@ -4199,6 +4311,7 @@
 				E27B8F2A1EF4E5FE00B01FAB /* UIColor+REUIKitAdditions.m in Sources */,
 				E27B8F181EF4E5FE00B01FAB /* AFHTTPRequestOperation.m in Sources */,
 				B87373A61DB085540057027E /* UIImageView+LBBlurredImage.m in Sources */,
+				8718FE65205A4507000CB6BF /* SpeciesAnnotation.m in Sources */,
 				E27B8F281EF4E5FE00B01FAB /* NSObject+REUIKitAdditions.m in Sources */,
 				E23586E118FCFED600EE6D13 /* easyjs-inject.js in Sources */,
 				E2636E401CF43C4100000371 /* UIImage+GIF.m in Sources */,
@@ -4207,6 +4320,7 @@
 				E27B8F461EF4E68900B01FAB /* BookmarksViewController.m in Sources */,
 				E2E479DD204C0B8C0082CCA4 /* SpeciesListService.m in Sources */,
 				E27B8F4A1EF4E68A00B01FAB /* HomeViewController.m in Sources */,
+				8718FE612057D49C000CB6BF /* RouteViewController.m in Sources */,
 				B83825FD1A0C666B00690383 /* MRProgressView.m in Sources */,
 				E2636E3C1CF43C4100000371 /* SDWebImageDownloaderOperation.m in Sources */,
 				B83825F91A0C666B00690383 /* MRCircularProgressView.m in Sources */,
@@ -4215,14 +4329,18 @@
 				E23586E218FCFED600EE6D13 /* EasyJSDataFunction.m in Sources */,
 				B87373D51DB6DFE90057027E /* SVWebViewController.m in Sources */,
 				B83825F71A0C666B00690383 /* UIImage+MRImageEffects.m in Sources */,
+				87165E3C2048124A0094633E /* MetadataForm.m in Sources */,
 				E27B8F321EF4E5FE00B01FAB /* UIScreen+REUIKitAdditions.m in Sources */,
 				E2A4A4F819665009006CAC22 /* GAEULAViewController.m in Sources */,
 				E27B8F2E1EF4E5FE00B01FAB /* UIImage+REUIKitAdditions.m in Sources */,
+				874B4F38206354EB00892966 /* TrackerService.m in Sources */,
 				E2A6BE931F0C9DAE00F1A57E /* SpeciesService.m in Sources */,
 				E23AF5161C911C69002501F3 /* RecordsTableViewController.m in Sources */,
 				E20284971C87D59300E8203F /* HomeTableViewController.m in Sources */,
-				E2E479CE204BF8290082CCA4 /* Species.m in Sources */,
+				87165E31204571F20094633E /* TrackViewController.m in Sources */,
 				E2E3AAE318F515410005BB9E /* GAProject.m in Sources */,
+				87165E322045721A0094633E /* TrackMetadataViewController.m in Sources */,
+				87165E3D204812500094633E /* SightingViewController.m in Sources */,
 				B89441FB18FA38F500BB5928 /* GAProjectsUtil.m in Sources */,
 				E2A6BED51F0CE04C00F1A57E /* SGDetailViewTableViewController.m in Sources */,
 				872EFB041DBF7DC1006EB9BF /* SpeciesCell.m in Sources */,
@@ -4240,7 +4358,10 @@
 			files = (
 				E20284981C87D59300E8203F /* HomeTableViewController.m in Sources */,
 				E201898A1C8922DD0031435D /* BioProjectService.m in Sources */,
+				874B4F4120636B0400892966 /* TrackListViewController.m in Sources */,
 				E2E3AAB218F4D2940005BB9E /* GreenArmyTests.m in Sources */,
+				874B4F39206354EB00892966 /* TrackerService.m in Sources */,
+				87165E2D2045719E0094633E /* Locale.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4269,6 +4390,7 @@
 				E2F19DBE200584AC0033DC24 /* SpeciesGroupTableViewController.m in Sources */,
 				E2F19DBF200584AC0033DC24 /* MRMessageInterceptor.m in Sources */,
 				E2F19DC0200584AC0033DC24 /* MRIconView.m in Sources */,
+				87165E30204571A50094633E /* Locale.m in Sources */,
 				E2F19DC1200584AC0033DC24 /* MRBlurView.m in Sources */,
 				E2F19DC2200584AC0033DC24 /* GACreateSiteModalViewController.m in Sources */,
 				E2F19DC3200584AC0033DC24 /* SVWebViewControllerActivitySafari.m in Sources */,
@@ -4294,6 +4416,7 @@
 				E2F19DD6200584AC0033DC24 /* MGSpotyView.m in Sources */,
 				E2F19DD7200584AC0033DC24 /* GAActivitiesJSON.m in Sources */,
 				E2F19DD8200584AC0033DC24 /* GASettings.m in Sources */,
+				87898E3420689E7F00CB2ED0 /* Species.m in Sources */,
 				E2F19DD9200584AC0033DC24 /* GASiteJSON.m in Sources */,
 				E2F19DDA200584AC0033DC24 /* SVWebViewControllerActivity.m in Sources */,
 				E2F19DDB200584AC0033DC24 /* MKAnnotationView+WebCache.m in Sources */,
@@ -4322,6 +4445,7 @@
 				E2F19DF0200584AC0033DC24 /* SDWebImageCompat.m in Sources */,
 				E2F19DF1200584AC0033DC24 /* MRActivityIndicatorView.m in Sources */,
 				E2F19DF2200584AC0033DC24 /* GAProjectJSON.m in Sources */,
+				874B4F4420636B0400892966 /* TrackListViewController.m in Sources */,
 				E2F19DF3200584AC0033DC24 /* AFImageRequestOperation.m in Sources */,
 				E2F19DF4200584AC0033DC24 /* Record.m in Sources */,
 				E2F19DF5200584AC0033DC24 /* GADetailFormVIewController.m in Sources */,
@@ -4343,6 +4467,7 @@
 				E2F19E04200584AC0033DC24 /* BookmarksViewController.m in Sources */,
 				E2E479E0204C0B8C0082CCA4 /* SpeciesListService.m in Sources */,
 				E2F19E05200584AC0033DC24 /* HomeViewController.m in Sources */,
+				874B4F3C206354EB00892966 /* TrackerService.m in Sources */,
 				E2F19E06200584AC0033DC24 /* MRProgressView.m in Sources */,
 				E2F19E07200584AC0033DC24 /* SDWebImageDownloaderOperation.m in Sources */,
 				E2F19E08200584AC0033DC24 /* MRCircularProgressView.m in Sources */,
@@ -4357,7 +4482,6 @@
 				E2F19E11200584AC0033DC24 /* SpeciesService.m in Sources */,
 				E2F19E12200584AC0033DC24 /* RecordsTableViewController.m in Sources */,
 				E2F19E13200584AC0033DC24 /* HomeTableViewController.m in Sources */,
-				E2E479D1204BF8290082CCA4 /* Species.m in Sources */,
 				E2F19E14200584AC0033DC24 /* GAProject.m in Sources */,
 				E2F19E15200584AC0033DC24 /* GAProjectsUtil.m in Sources */,
 				E2F19E16200584AC0033DC24 /* SGDetailViewTableViewController.m in Sources */,

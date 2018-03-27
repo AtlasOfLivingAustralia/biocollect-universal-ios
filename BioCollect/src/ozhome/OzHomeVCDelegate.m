@@ -18,6 +18,8 @@
 #import "RecordsTableViewController.h"
 #import "SpeciesListVC.h"
 #import "HubProjects.h"
+#import "TrackViewController.h"
+#import "TrackListViewController.h"
 
 @interface OzHomeVCDelegate()
     @property (nonatomic, strong) RecordsTableViewController *recordsTableView;
@@ -118,6 +120,7 @@
 #pragma view based controller
 - (void)ozAtlasViewController:(MGSpotyViewController *)spotyViewController didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
  
+    self.spotyViewController = spotyViewController;
     GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
     if (indexPath.row == 0) {
         [self.locationManager startUpdatingLocation];
@@ -232,7 +235,7 @@
     // SpeciesListVC == species_list
     // == add_track
     // == tracker_settings
-    
+    self.spotyViewController = spotyViewController;
     GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
     NSArray *menuItems = [[NSBundle mainBundle] objectForInfoDictionaryKey: APP_MENU];
 
@@ -302,7 +305,11 @@
             }
             
         } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"add_track"]) {
-            [RKDropdownAlert title:@"Under development" message:@"" backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+            TrackViewController *homeVC = [[TrackViewController alloc] init];
+            [spotyViewController.navigationController pushViewController: homeVC animated:TRUE];
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadTrackListViewController) name:@"TRACK-SAVED" object:nil];
+        } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"saved_tracks"]){
+            [self loadTrackListViewController];
         } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"tracker_settings"]) {
             HubProjects *hubProjectsVC = [[HubProjects alloc] initWithNibName:@"HubProjects" bundle:nil];
             [spotyViewController.navigationController pushViewController: hubProjectsVC animated:TRUE];
@@ -315,4 +322,10 @@
     }
 }
 
+#pragma mark - helper functions
+- (void) loadTrackListViewController {
+    TrackListViewController *trackList = [[TrackListViewController alloc] init];
+    [self.spotyViewController.navigationController pushViewController: trackList animated: NO];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"TRACK-SAVED" object:nil];
+}
 @end
