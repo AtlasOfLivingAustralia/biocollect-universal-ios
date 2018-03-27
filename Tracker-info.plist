@@ -50,21 +50,17 @@
             <key>url</key>
             <string></string>
             <key>view</key>
-            <string>my_hub_records</string>
+            <string>saved_tracks</string>
         </dict>
 		<dict>
 			<key>icon</key>
 			<string>icon_all_records</string>
 			<key>title</key>
-<<<<<<< HEAD
 			<string>My Tracks</string>
-=======
-			<string>List tracks</string>
->>>>>>> Added Tacker form, Animal form and Location map
 			<key>url</key>
 			<string></string>
 			<key>view</key>
-			<string>saved_tracks</string>
+			<string>my_hub_records</string>
 		</dict>
 		<dict>
 			<key>icon</key>
