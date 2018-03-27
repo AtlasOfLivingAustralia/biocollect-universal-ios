@@ -41,7 +41,7 @@
 @implementation GAAppDelegate
 
 
-@synthesize splitViewController, projects,masterProjectVC, detailVC, restCall, sqlLite, loginViewController, eulaVC, homeVC, recordsVC, myProjectsVC, myRecordsVC, bioProjectService,tabBarController,ozHomeNC, speciesService, alaWKWebView, locale, speciesListService, trackerService, projectService;
+@synthesize splitViewController, projects,masterProjectVC, detailVC, restCall, sqlLite, loginViewController, eulaVC, homeVC, recordsVC, myProjectsVC, myRecordsVC, bioProjectService,tabBarController,ozHomeNC, speciesService, alaWKWebView, locale, speciesListService, trackerService, projectService, tracksUpload;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -71,6 +71,7 @@
     projectService = [[ProjectService alloc] init];
     locale = [[Locale alloc] init];
     trackerService = [[TrackerService alloc] init];
+    tracksUpload = [[TracksUpload alloc] init];
     
     [self addSplitViewtoRoot];
     

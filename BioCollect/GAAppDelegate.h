@@ -19,6 +19,7 @@
 #import "ProjectService.h"
 #import "Locale.h"
 #import "TrackerService.h"
+#import "TracksUpload.h"
 
 @interface GAAppDelegate : UIResponder <UIApplicationDelegate, UIAlertViewDelegate>
 
@@ -36,7 +37,8 @@
 @property (nonatomic, retain) GASqlLiteDatabase *sqlLite;
 @property (nonatomic, retain) SpeciesListService *speciesListService;
 @property (nonatomic, retain) ProjectService *projectService;
-@property (nonatomic, retain) TrackerService *trackerService;
+@property (nonatomic, strong) TrackerService *trackerService;
+@property (nonatomic, strong) TracksUpload *tracksUpload;
 
 @property (nonatomic, retain) GALogin *loginViewController;
 @property (nonatomic, retain) GAEULAViewController * eulaVC;

@@ -15,8 +15,8 @@
 - (instancetype) init {
     self = [super init];
     
-    GAAppDelegate* appDelegate = (GAAppDelegate *) [[UIApplication sharedApplication] delegate];
-    self.service = appDelegate.trackerService;
+    self.appDelegate = (GAAppDelegate *) [[UIApplication sharedApplication] delegate];
+    [self.appDelegate.trackerService loadTracks];
     
     return self;
 }
@@ -24,10 +24,13 @@
 #pragma mark - view
 - (void) viewDidLoad {
     [super viewDidLoad];
+    self.service = [self.appDelegate trackerService];
     
     self.tableView.allowsMultipleSelectionDuringEditing = NO;
     self.tableView.separatorStyle = UITableViewStylePlain;
     self.tableView.tableFooterView = [UIView new];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Upload" style:UIBarButtonItemStylePlain target:self action:@selector(uploadData)];
 }
 
 #pragma mark - Data source
@@ -112,5 +115,11 @@
         [alert addAction:cancelAction];
         [self presentViewController:alert animated:YES completion:nil];
     }
+}
+
+# pragma mark - selector
+- (void) uploadData {
+    GAAppDelegate* appDelegate = (GAAppDelegate*) [[UIApplication sharedApplication] delegate];
+    [appDelegate.tracksUpload uploadTracks:self.service.tracks andUpdateError:nil];
 }
 @end

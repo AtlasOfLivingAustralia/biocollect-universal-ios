@@ -109,7 +109,7 @@
 }
 
 - (NSArray*) fields {
-    GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+    GAAppDelegate *appDelegate = (GAAppDelegate *) [[UIApplication sharedApplication] delegate];
     Locale* locale = appDelegate.locale;
     UIColor* uiColour = [self colorFromHexString: colour];
     NSString* fullName = [GASettings getFullName];
@@ -162,4 +162,41 @@
         [self.route addObject:newLocation];
     }
 }
+
+#pragma mark - helper functions
+- (BOOL) isValid {
+    return YES;
+}
+
+- (NSDictionary *)JSONFromFile: (NSString *) file {
+    NSString *path = [[NSBundle mainBundle] pathForResource:file ofType:@"json"];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    return [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+}
+
+
+- (NSMutableDictionary*) transformDataToUploadableFormat {
+    NSMutableDictionary *item = [[NSMutableDictionary alloc] init];
+    item[@"ready"] = @"1";
+    item[@"uploadedStatus"] = @"0";
+    item[@"activity"] = [self JSONFromFile : @"TracksActivityTemplate"];
+    
+    // Populate site data - projectId and projectActivityId
+    GAAppDelegate *appDelegate = (GAAppDelegate *) [[UIApplication sharedApplication] delegate];
+    Project *project = [appDelegate.projectService loadSelectedProject];
+    NSDictionary *dict = [self JSONFromFile : @"TracksSiteTemplate"];
+    [dict setValue:project.projectActivityId forKey:@"pActivityId"];
+    NSMutableArray *projects = [[NSMutableArray alloc] init];
+    [projects addObject:project.projectId];
+    [dict[@"site"] setValue:projects forKey:@"projects"];
+    item[@"site"] = dict;
+    
+    item[@"countryImage"] = [UIImage imageNamed:@"noImage85.jpg"];
+    item[@"speciesImages"] = [[NSMutableArray alloc] init];
+    [item[@"speciesImages"] addObject: [UIImage imageNamed:@"noImage85.jpg"]];
+    [item[@"speciesImages"] addObject: @""]; // Empty entry for species without any image.
+    [item[@"speciesImages"] addObject: [UIImage imageNamed:@"noImage85.jpg"]];
+    return item;
+}
+
 @end

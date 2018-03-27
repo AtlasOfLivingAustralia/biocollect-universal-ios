@@ -47,4 +47,6 @@
 
 - (void) startRecordingLocation;
 - (void) stopRecordingLocation;
+- (BOOL) isValid;
+- (NSMutableDictionary *) transformDataToUploadableFormat;
 @end

@@ -4,6 +4,7 @@
 #import "GASettingsConstant.h"
 #import "GAAppDelegate.h"
 #import "GASettings.h"
+#import "MetadataForm.h"
 
 @interface TracksUpload ()
 @property (strong, nonatomic) GAAppDelegate *appDelegate;
@@ -23,7 +24,7 @@
 }
 
 // Caller should handle ProjectNotSelected exception
-- (void) uploadTracks:(NSError **) error {
+- (void) uploadTracks: (NSMutableArray<MetadataForm*>*) uploadItems andUpdateError: (NSError **) error {
     Project *project = [self.appDelegate.projectService loadSelectedProject];
     if(project == nil) {
         @throw [NSException exceptionWithName:kProjectNotSelected
@@ -31,11 +32,11 @@
                                      userInfo:nil];
     }
     
-    NSMutableArray *uploadItems = [[NSMutableArray alloc] init];
-    [self populateTestData : uploadItems];
-
+    NSMutableArray* uploadedTracks = [[NSMutableArray alloc] init];
+    
     for(int i = 0; i < [uploadItems count]; i++) {
-        NSMutableDictionary *item = [uploadItems objectAtIndex:i];
+        MetadataForm* form = [uploadItems objectAtIndex:i];
+        NSMutableDictionary *item = [form transformDataToUploadableFormat];
         @try {
             // Upload site and images.
             NSString *siteId = nil;
@@ -63,6 +64,8 @@
             
             // Flag the object as uploaded.
             item[@"uploadedStatus"] = @"1";
+            [uploadedTracks addObject:item];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"UPLOADED-TRACK" object:item];
         }
         @catch (NSException *exception) {
             if([exception.name isEqualToString:kSiteUploadException]) {
@@ -79,6 +82,7 @@
         }
     }
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"TRACK-UPLOADING-COMPLETE" object:uploadedTracks];
     // [[NSNotificationCenter defaultCenter]postNotificationName:@"SPECIES_SEARCH_SELECTED" object: self.selectedSpecies];
     // TODO - Remove items from the local array that are successfully submitted to the server.
 }

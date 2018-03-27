@@ -21,8 +21,7 @@
     if([urls count] > 0){
         self.tracksSavedUrl = [urls[0] URLByAppendingPathComponent:kTracksStorageLocation];
     }
-    
-    [self loadTracks];
+
     return self;
 }
 
