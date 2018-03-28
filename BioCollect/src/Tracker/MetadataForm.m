@@ -11,6 +11,8 @@
 #import "MetadataForm.h"
 #import "GAAppDelegate.h"
 #import "GASettings.h"
+#import "Species.h"
+#import "SightingForm.h"
 #define colour @"#F1582B"
 #define MIN_DISTANCE_BETWEEN_LOCATION 40
 
@@ -165,6 +167,33 @@
 
 #pragma mark - helper functions
 - (BOOL) isValid {
+    if(_organisationName == @"" || _organisationName == nil){
+        return NO;
+    }
+    
+    if(_leadTracker == @"" || _leadTracker == nil){
+        return NO;
+    }
+    
+    if(_date == nil){
+        return NO;
+    }
+    
+    if(_startTime == nil){
+        return NO;
+    }
+    
+    if((_animals == nil) || ([_animals count] == 0)){
+        return NO;
+    } else {
+        for (int i = 0; i < [_animals count];  i++) {
+            Species * animal = [_animals objectAtIndex:i];
+            if ( (animal.displayName == nil) && (animal.displayName == nil)) {
+                return NO;
+            }
+        }
+    }
+
     return YES;
 }
 
@@ -179,24 +208,140 @@
     NSMutableDictionary *item = [[NSMutableDictionary alloc] init];
     item[@"ready"] = @"1";
     item[@"uploadedStatus"] = @"0";
-    item[@"activity"] = [self JSONFromFile : @"TracksActivityTemplate"];
+    item[@"activity"] = [self getActivityObject];
+    item[@"site"] = [self getSiteObject];
+    item[@"countryImage"] = [self countryPhoto];
+    item[@"speciesImages"] = [self getAnimalImageList];
+    return item;
+}
+
+- (NSDictionary*) getSiteObject {
+    GAAppDelegate *appDelegate = (GAAppDelegate *) [[UIApplication sharedApplication] delegate];
+    Project *project = [appDelegate.projectService loadSelectedProject];
+
+    NSMutableDictionary* obj = [[NSMutableDictionary alloc] init];
+    NSMutableArray* route = [[NSMutableArray alloc] initWithCapacity:[_route count]];
     
+    for (int i = 0; i < [_route count]; i++) {
+        CLLocation* loc = _route[i];
+        NSArray* location = @[@(loc.coordinate.longitude), @(loc.coordinate.latitude)];
+        route[i] = location;
+    }
+    
+    NSArray* line = [route copy];
+    NSArray* centre = @[];
+    
+    if ([line count] > 0) {
+        centre = line[0];
+    }
+    
+    obj[@"site"] = @{
+        @"name":@"Private site for survey Tracsks Hub",
+        @"visibility":@"private",
+        @"projects":@[
+                    project.projectId
+                 ],
+        @"extent":@{
+         @"geometry":@{
+             @"centre":centre,
+             @"type":@"LineString",
+             @"areaKmSq":@0,
+             @"coordinates":line
+         },
+         @"source":@"drawn"
+        },
+        @"asyncUpdate":@YES
+    };
+    
+    obj[@"pActivityId"] = project.projectActivityId ? project.projectActivityId : @"";
+    
+    return [obj copy];
+}
+
+- (NSArray*) getAnimalImageList {
+    NSMutableArray* images = [[NSMutableArray alloc] initWithCapacity:[_animals count]];
+    
+    for (int i = 0; i < [_animals count]; i++) {
+        SightingForm* animal = _animals[i];
+        if (animal.photo != nil) {
+            [images addObject:animal.photo];
+        } else {
+            [images addObject:@""];
+        }
+    }
+    
+    return [images copy];
+}
+
+- (NSMutableDictionary*) getActivityObject {
     // Populate site data - projectId and projectActivityId
     GAAppDelegate *appDelegate = (GAAppDelegate *) [[UIApplication sharedApplication] delegate];
     Project *project = [appDelegate.projectService loadSelectedProject];
-    NSDictionary *dict = [self JSONFromFile : @"TracksSiteTemplate"];
-    [dict setValue:project.projectActivityId forKey:@"pActivityId"];
-    NSMutableArray *projects = [[NSMutableArray alloc] init];
-    [projects addObject:project.projectId];
-    [dict[@"site"] setValue:projects forKey:@"projects"];
-    item[@"site"] = dict;
     
-    item[@"countryImage"] = [UIImage imageNamed:@"noImage85.jpg"];
-    item[@"speciesImages"] = [[NSMutableArray alloc] init];
-    [item[@"speciesImages"] addObject: [UIImage imageNamed:@"noImage85.jpg"]];
-    [item[@"speciesImages"] addObject: @""]; // Empty entry for species without any image.
-    [item[@"speciesImages"] addObject: [UIImage imageNamed:@"noImage85.jpg"]];
-    return item;
+    NSMutableDictionary* activity = [[NSMutableDictionary alloc] initWithDictionary: @{
+        @"activityId": @"",
+        @"projectStage": @"",
+        @"mainTheme": @"",
+        @"type": @"CLC 2Ha Track Plot",
+        @"projectId": project.projectId ? project.projectId : @"",
+        @"siteId": @"",
+        @"outputs": @[[self getOutput]]
+    }];
+
+    return activity;
+}
+
+- (NSMutableDictionary *) getOutput {
+    NSMutableArray* animals = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < [_animals count]; i++) {
+        SightingForm* animal = _animals[i];
+        [animals addObject: [animal getOutput]];
+    }
+    
+    NSMutableDictionary* output = [[NSMutableDictionary alloc] initWithDictionary: @{
+     @"name": @"CLC 2Ha Track Plot",
+     @"outputId": @"",
+     @"data": @{
+        @"organisationName": self.organisationName ? self.organisationName : @"",
+        @"recordedBy": self.leadTracker ? self.leadTracker : @"",
+        @"additionalTrackers": self.otherTrackers ? self.otherTrackers : @"",
+        @"eventComments": self.comments ? self.comments : @"",
+        @"surveyType": self.surveyType ? self.surveyType : @"",
+        @"locationAccuracy": @50,
+        @"location": @"",
+        @"locationLatitude": @"",
+        @"locationLongitude": @"",
+        @"locationCentroidLatitude": @0,
+        @"locationCentroidLongitude": @0,
+        // TODO: Convert to ISO format
+        @"surveyDate": self.date ? self.date : @"",
+        // convert to time string format
+        @"surveyStartTime": self.startTime ? self.startTime : @"",
+        // convert to time string format
+        @"surveyFinishTime": self.endTime ? self.endTime : @"",
+        @"habitatType": self.countryType ? self.countryType : @"",
+        @"siteChoice": self.surveyChoice ? self.surveyChoice : @"",
+        @"disturbance": self.disturbance ? self.disturbance : @"",
+        @"fireHistory": self.timeSinceFire ? self.timeSinceFire : @"",
+        @"visibility": self.weather ? self.weather : @"",
+        @"surfaceTrackability": self.groundSoftness ? self.groundSoftness : @"",
+        @"trackingSurfaceContinuity": self.clearGround ? self.clearGround : @"",
+        @"locationImage": @"",
+        @"countryName": self.countryName ? self.countryName : @"",
+        @"vegetationType": self.vegetationType ? self.vegetationType : @"",
+        @"foodPlants": self.foodPlant ? self.foodPlant : @[],
+        @"sightingEvidenceTable": animals
+        },
+     @"outputNotCompleted":@(NO),
+     @"selectFromSitesOnly":@(NO),
+     @"checkMapInfo":@{
+        @"validation":@(YES)
+    },
+     @"appendTableRows":@(YES)
+     }];
+    
+    return output;
 }
 
 @end

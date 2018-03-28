@@ -56,4 +56,15 @@
     return [[NSString alloc] initWithFormat:@"%@, %@", cn, scientificName];
 }
 
+- (NSDictionary*) getOutput {
+    NSDictionary* dict = @{
+                           @"name":self.name ? self.name : @"",
+        @"guid":self.lsid ? self.lsid : @"",
+        @"scientificName":self.scientificName ? self.scientificName : @"",
+        @"commonName":self.commonName ? self.commonName : @""
+        };
+    
+    return dict;
+}
+
 @end

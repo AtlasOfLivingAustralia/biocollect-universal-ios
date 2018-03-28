@@ -24,4 +24,5 @@
 - (NSComparisonResult)sortByDisplayName:(Species *)otherObject;
 - (NSString *) getImageUrl;
 - (NSString *) getSubTitle;
+- (NSDictionary*) getOutput;
 @end

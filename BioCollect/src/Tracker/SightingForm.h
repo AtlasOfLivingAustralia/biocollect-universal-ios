@@ -20,4 +20,5 @@
 @property (nonatomic, strong) NSString *age;
 
 - (UIImage *) getImage;
+- (NSMutableDictionary*) getOutput;
 @end

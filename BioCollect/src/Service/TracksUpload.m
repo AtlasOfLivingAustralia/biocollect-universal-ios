@@ -37,6 +37,7 @@
     for(int i = 0; i < [uploadItems count]; i++) {
         MetadataForm* form = [uploadItems objectAtIndex:i];
         NSMutableDictionary *item = [form transformDataToUploadableFormat];
+        NSLog(@"%@", item);
         @try {
             // Upload site and images.
             NSString *siteId = nil;
