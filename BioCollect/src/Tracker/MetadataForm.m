@@ -121,6 +121,8 @@
         organisationName = project.name;
     }
     
+    NSDate* currentDate = [NSDate date];
+    
     return @[
              // Tracker information
              @{@"textLabel.color": uiColour, FXFormFieldKey:@"organisationName", FXFormFieldTitle:[locale get: @"trackmetadata.organisationname"], FXFormFieldHeader: [locale get: @"trackmetadata.trackerinfo"], FXFormFieldDefaultValue: organisationName},
@@ -129,8 +131,8 @@
              @{@"textLabel.color": uiColour, FXFormFieldKey:@"comments", FXFormFieldTitle: [locale get: @"trackmetadata.comments"], FXFormFieldType: FXFormFieldTypeLongText},
              
              // Tracking information
-             @{@"textLabel.color": uiColour, FXFormFieldKey:@"date", FXFormFieldTitle:[locale get: @"trackmetadata.eventdate"], FXFormFieldHeader: [locale get: @"trackmetadata.trackinginfo"]},
-             @{@"textLabel.color": uiColour, FXFormFieldKey:@"startTime", FXFormFieldTitle:[locale get: @"trackmetadata.eventstarttime"], FXFormFieldType: FXFormFieldTypeTime},
+             @{@"textLabel.color": uiColour, FXFormFieldKey:@"date", FXFormFieldTitle:[locale get: @"trackmetadata.eventdate"], FXFormFieldHeader: [locale get: @"trackmetadata.trackinginfo"], FXFormFieldDefaultValue: currentDate},
+             @{@"textLabel.color": uiColour, FXFormFieldKey:@"startTime", FXFormFieldTitle:[locale get: @"trackmetadata.eventstarttime"], FXFormFieldType: FXFormFieldTypeTime, FXFormFieldDefaultValue: currentDate},
              @{@"textLabel.color": uiColour, FXFormFieldKey:@"endTime", FXFormFieldTitle:[locale get: @"trackmetadata.eventendtime"], FXFormFieldType: FXFormFieldTypeTime},
              @{@"textLabel.color": uiColour,FXFormFieldTitle: [locale get: @"trackmetadata.surveytype"], FXFormFieldKey: @"surveyType", FXFormFieldOptions: @[@"Incidental", @"KJ Mankarr Survey", @"Road", @"Trackplot 2ha 100m x 200m"], FXFormFieldViewController: @"FXFormExtendedViewController"},
              @{@"textLabel.color": uiColour,FXFormFieldTitle: [locale get: @"trackmetadata.surveychoice"], FXFormFieldKey: @"surveyChoice", FXFormFieldOptions: @[@"Anywhere", @"Targeted"], FXFormFieldViewController: @"FXFormExtendedViewController"},
@@ -224,7 +226,7 @@
     
     for (int i = 0; i < [_route count]; i++) {
         CLLocation* loc = _route[i];
-        NSArray* location = @[@(loc.coordinate.longitude), @(loc.coordinate.latitude)];
+        NSArray* location = @[[NSNumber numberWithDouble: loc.coordinate.longitude], [NSNumber numberWithDouble: loc.coordinate.latitude]    ];
         route[i] = location;
     }
     
@@ -314,12 +316,9 @@
         @"locationLongitude": @"",
         @"locationCentroidLatitude": @0,
         @"locationCentroidLongitude": @0,
-        // TODO: Convert to ISO format
-        @"surveyDate": self.date ? self.date : @"",
-        // convert to time string format
-        @"surveyStartTime": self.startTime ? self.startTime : @"",
-        // convert to time string format
-        @"surveyFinishTime": self.endTime ? self.endTime : @"",
+        @"surveyDate": self.date ? [MetadataForm dateToString: self.date] : @"",
+        @"surveyStartTime": self.startTime ? [MetadataForm getTimeFromDate: self.startTime] : @"",
+        @"surveyFinishTime": self.endTime ? [MetadataForm getTimeFromDate: self.endTime] : @"",
         @"habitatType": self.countryType ? self.countryType : @"",
         @"siteChoice": self.surveyChoice ? self.surveyChoice : @"",
         @"disturbance": self.disturbance ? self.disturbance : @"",
@@ -333,15 +332,39 @@
         @"foodPlants": self.foodPlant ? self.foodPlant : @[],
         @"sightingEvidenceTable": animals
         },
-     @"outputNotCompleted":@(NO),
-     @"selectFromSitesOnly":@(NO),
+     @"outputNotCompleted":@NO,
+     @"selectFromSitesOnly":@NO,
      @"checkMapInfo":@{
-        @"validation":@(YES)
+        @"validation":@YES
     },
-     @"appendTableRows":@(YES)
+     @"appendTableRows":@YES
      }];
     
     return output;
+}
+
+
+#pragma mark - static methods
+/*
+ * http://stackoverflow.com/questions/16254575/how-do-i-get-iso-8601-date-in-ios
+ */
++ (NSString *) dateToString: (NSDate *) date {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSLocale *enUSPOSIXLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
+    [dateFormatter setLocale:enUSPOSIXLocale];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+    
+    NSString *iso8601String = [dateFormatter stringFromDate:date];
+    return [iso8601String stringByAppendingString:@"Z"];
+}
+
++ (NSString *) getTimeFromDate: (NSDate *) date {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSLocale *enUSPOSIXLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
+    [dateFormatter setLocale:enUSPOSIXLocale];
+    [dateFormatter setDateFormat:@"hh:mm a"];
+    
+    return [dateFormatter stringFromDate:date];
 }
 
 @end
