@@ -307,7 +307,6 @@
         } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"add_track"]) {
             TrackViewController *homeVC = [[TrackViewController alloc] init];
             [spotyViewController.navigationController pushViewController: homeVC animated:TRUE];
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadTrackListViewController) name:@"TRACK-SAVED" object:nil];
         } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"saved_tracks"]){
             [self loadTrackListViewController];
         } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"tracker_settings"]) {
@@ -326,6 +325,5 @@
 - (void) loadTrackListViewController {
     TrackListViewController *trackList = [[TrackListViewController alloc] init];
     [self.spotyViewController.navigationController pushViewController: trackList animated: NO];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"TRACK-SAVED" object:nil];
 }
 @end

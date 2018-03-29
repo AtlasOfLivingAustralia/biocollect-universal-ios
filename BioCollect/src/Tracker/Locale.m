@@ -63,7 +63,10 @@
                             @"trackmetadata.modal.title": @"Do you want to continue tracking?",
                             @"trackmetadata.modal.content": @"If you want the system to continue recording your location, click 'Yes'. Otherwise, to review data click 'Review'",
                             @"trackmetadata.modal.record": @"Yes",
-                            @"trackmetadata.modal.cancel": @"Review"
+                            @"trackmetadata.modal.cancel": @"Review",
+                            
+                            @"uploading.message": @"Uploading tracks...",
+                            @"uploaded.message": @"Uploaded %d of %d",
                             }
                     };
     return self;

@@ -9,6 +9,7 @@
 #import "TrackListViewController.h"
 #import "GAAppDelegate.h"
 #import "TrackViewController.h"
+#import "MRProgressOverlayView.h"
 
 @implementation TrackListViewController
 
@@ -17,6 +18,9 @@
     
     self.appDelegate = (GAAppDelegate *) [[UIApplication sharedApplication] delegate];
     [self.appDelegate.trackerService loadTracks];
+    
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(uploadProgressing) name: @"UPLOADED-TRACK" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(uploadComplete:) name: @"TRACK-UPLOADING-COMPLETE" object:nil];
     
     return self;
 }
@@ -120,6 +124,43 @@
 # pragma mark - selector
 - (void) uploadData {
     GAAppDelegate* appDelegate = (GAAppDelegate*) [[UIApplication sharedApplication] delegate];
-    [appDelegate.tracksUpload uploadTracks:self.service.tracks andUpdateError:nil];
+    totalTracksToUpload = [self.service.tracks count];
+    totalTracksUploaded = 0;
+    [self updateMessage];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [appDelegate.tracksUpload uploadTracks:self.service.tracks andUpdateError:nil];
+    });
+}
+
+- (void) uploadProgressing {
+    totalTracksUploaded +=1;
+    [self updateMessage];
+//    [overlay performSelectorOnMainThread:@selector(updateMessage) withObject:self waitUntilDone:YES];
+}
+
+- (void) updateMessage {
+    GAAppDelegate* appDelegate = (GAAppDelegate*) [[UIApplication sharedApplication] delegate];
+    Locale* locale = appDelegate.locale;
+    NSString* message = [locale get: @"uploaded.message"];
+    message = [NSString stringWithFormat:message, totalTracksUploaded, totalTracksToUpload];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (overlay != nil) {
+            [overlay setTitleLabelText:message];
+        } else {
+            overlay = [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view title:message mode:MRProgressOverlayViewModeIndeterminateSmall animated:YES];
+        }
+    });
+}
+
+- (void) uploadComplete: (NSNotification *) notification {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSArray* uploadedObjects = notification.object;
+        [self.service removeTracks:uploadedObjects];
+        [self.tableView reloadData];
+        
+        [MRProgressOverlayView dismissOverlayForView:self.navigationController.view animated:YES];
+        overlay = nil;
+    });
 }
 @end

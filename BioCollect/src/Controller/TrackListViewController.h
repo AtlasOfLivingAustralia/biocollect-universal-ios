@@ -9,8 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "TrackerService.h"
 #import "GAAppDelegate.h"
+#import "MRProgressOverlayView.h"
 
-@interface TrackListViewController: UITableViewController<UITableViewDelegate>
+@interface TrackListViewController: UITableViewController<UITableViewDelegate> {
+    NSInteger totalTracksToUpload;
+    NSInteger totalTracksUploaded;
+    MRProgressOverlayView* overlay;
+}
 
 @property (nonatomic, strong) TrackerService* service;
 @property (nonatomic, strong) GAAppDelegate* appDelegate;

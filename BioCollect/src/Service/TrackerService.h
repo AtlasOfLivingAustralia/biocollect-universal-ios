@@ -16,4 +16,5 @@
 -(NSMutableArray*) loadTracks;
 -(BOOL) addTrack: (MetadataForm*) track;
 -(BOOL) removeTrack: (MetadataForm*) track;
+-(BOOL) removeTracks: (MetadataForm*) tracks;
 @end

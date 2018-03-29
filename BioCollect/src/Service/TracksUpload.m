@@ -44,7 +44,7 @@
             NSMutableDictionary *countryMetadata = nil;
             [self uploadSite : item[@"site"] siteId: siteId];
             [self uploadImage : item[@"countryImage"] imageMetadata:countryMetadata];
-            
+
             // Upload species images.
             NSMutableArray *images = item[@"speciesImages"];
             NSMutableArray *speciesImages = [[NSMutableArray alloc] init];
@@ -58,15 +58,15 @@
                     [speciesImages addObject:@""];
                 }
             }
-            
+
             // Upload activity.
             // TODO : Update item[@"activity"] with siteId, locationId & image metadata
             [self uploadActivity:item[@"activity"] pActivityId: project.projectActivityId];
             
             // Flag the object as uploaded.
             item[@"uploadedStatus"] = @"1";
-            [uploadedTracks addObject:item];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"UPLOADED-TRACK" object:item];
+            [uploadedTracks addObject:form];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"UPLOADED-TRACK" object:form];
         }
         @catch (NSException *exception) {
             if([exception.name isEqualToString:kSiteUploadException]) {

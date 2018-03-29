@@ -63,4 +63,13 @@
     
     return NO;
 }
+
+- (BOOL) removeTracks: (NSArray<MetadataForm*>*) tracks {
+    if (tracks != nil) {
+        [self.tracks removeObjectsInArray: tracks];
+        return [self saveTracks];
+    }
+    
+    return NO;
+}
 @end
