@@ -44,6 +44,16 @@
 		</dict>
 		<dict>
 			<key>icon</key>
+			<string>icon_track</string>
+			<key>title</key>
+			<string>Practise tracking</string>
+			<key>url</key>
+			<string></string>
+			<key>view</key>
+			<string>try_track</string>
+		</dict>
+		<dict>
+			<key>icon</key>
 			<string>icon_all_records</string>
 			<key>title</key>
 			<string>Review Tracks</string>

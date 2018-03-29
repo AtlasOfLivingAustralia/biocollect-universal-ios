@@ -307,6 +307,9 @@
         } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"add_track"]) {
             TrackViewController *homeVC = [[TrackViewController alloc] init];
             [spotyViewController.navigationController pushViewController: homeVC animated:TRUE];
+        } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"try_track"]) {
+            TrackViewController *homeVC = [[TrackViewController alloc] initWithSaveDisabled];
+            [spotyViewController.navigationController pushViewController: homeVC animated:TRUE];
         } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"saved_tracks"]){
             [self loadTrackListViewController];
         } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"tracker_settings"]) {

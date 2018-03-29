@@ -20,6 +20,7 @@
 @implementation TrackViewController
 - (instancetype) init {
     _trackForm = [MetadataForm new];
+    disableSaveButton = NO;
     self = [super init];
     [_trackForm startRecordingLocation];
     return self;
@@ -27,7 +28,14 @@
 
 - (instancetype) initWithForm:(MetadataForm*) form {
     _trackForm = form;
+    disableSaveButton = NO;
     self = [super init];
+    return self;
+}
+
+- (instancetype) initWithSaveDisabled {
+    disableSaveButton = YES;
+    self = [self init];
     return self;
 }
 
@@ -55,6 +63,10 @@
     UIBarButtonItem *save = [[UIBarButtonItem alloc] initWithTitle:[locale get: @"trackmetadata.save"] style:UIBarButtonItemStylePlain target:self action:@selector(save)];
         UIImage *image = [UIImage imageNamed: @"icon_camera"];
     UIBarButtonItem *camera = [[UIBarButtonItem alloc] initWithImage: image style:nil target:self action:@selector(takePhoto:) ];
+    
+    if (disableSaveButton) {
+        [save setEnabled:NO];
+    }
     
     self.navigationItem.rightBarButtonItems = @[save, camera, addAnimal];
     
