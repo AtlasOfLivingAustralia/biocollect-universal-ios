@@ -189,11 +189,16 @@
         return NO;
     } else {
         for (int i = 0; i < [_animals count];  i++) {
-            Species * animal = [_animals objectAtIndex:i];
-            if ( (animal.displayName == nil) && (animal.displayName == nil)) {
+            SightingForm* form = [_animals objectAtIndex:i];
+            Species * animal = form.animal;
+            if ( animal && (animal.displayName == nil) && (animal.displayName == nil)) {
                 return NO;
             }
         }
+    }
+    
+    if ((_route == nil) || ([_route count] < 2)) {
+        return NO;
     }
 
     return YES;

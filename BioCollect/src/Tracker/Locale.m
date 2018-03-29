@@ -24,7 +24,7 @@
                             @"trackmetadata.leadTracker": @"Lead tracker *",
                             @"trackmetadata.otherTrackers": @"Other trackers",
                             @"trackmetadata.comments": @"Comments",
-                            @"trackmetadata.save": @"Done",
+                            @"trackmetadata.save": @"Save",
                             
                             @"trackmetadata.trackinginfo": @"2. Tracking details",
                             @"trackmetadata.eventdate": @"Trek Date *",
@@ -67,6 +67,7 @@
                             
                             @"uploading.message": @"Uploading tracks...",
                             @"uploaded.message": @"Uploaded %d of %d",
+                            @"uploadfinish.message": @"Uploaded %d tracks"
                             }
                     };
     return self;

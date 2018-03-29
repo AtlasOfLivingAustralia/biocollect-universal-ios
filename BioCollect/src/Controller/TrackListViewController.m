@@ -10,6 +10,8 @@
 #import "GAAppDelegate.h"
 #import "TrackViewController.h"
 #import "MRProgressOverlayView.h"
+#import "RKDropdownAlert.h"
+#define backgroundColour "#f2dede"
 
 @implementation TrackListViewController
 
@@ -21,6 +23,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(uploadProgressing) name: @"UPLOADED-TRACK" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(uploadComplete:) name: @"TRACK-UPLOADING-COMPLETE" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver: self.tableView selector: @selector(reloadData) name: @"TRACK-SAVED" object:nil];
     
     return self;
 }
@@ -73,7 +76,15 @@
         cell.textLabel.text = form.organisationName;
         cell.detailTextLabel.text = form.leadTracker;
         cell.imageView.image = form.countryPhoto;
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+
+        if ([form isValid]) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            cell.backgroundColor = [UIColor whiteColor];
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.backgroundColor = [self colorFromHexString: @backgroundColour];
+        }
+        
     }
     
     return cell;
@@ -128,14 +139,22 @@
     totalTracksUploaded = 0;
     [self updateMessage];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [appDelegate.tracksUpload uploadTracks:self.service.tracks andUpdateError:nil];
+        NSMutableArray* validForms = [[NSMutableArray alloc] init];
+        for( int i = 0; i < totalTracksToUpload; i++) {
+            MetadataForm* form = [self.service.tracks objectAtIndex:i];
+            
+            if ([form isValid]) {
+                [validForms addObject:form];
+            }
+        }
+        
+        [appDelegate.tracksUpload uploadTracks:validForms andUpdateError:nil];
     });
 }
 
 - (void) uploadProgressing {
     totalTracksUploaded +=1;
     [self updateMessage];
-//    [overlay performSelectorOnMainThread:@selector(updateMessage) withObject:self waitUntilDone:YES];
 }
 
 - (void) updateMessage {
@@ -155,12 +174,28 @@
 
 - (void) uploadComplete: (NSNotification *) notification {
     dispatch_async(dispatch_get_main_queue(), ^{
+        GAAppDelegate* appDelegate = (GAAppDelegate*) [[UIApplication sharedApplication] delegate];
+        Locale* locale = appDelegate.locale;
+
         NSArray* uploadedObjects = notification.object;
         [self.service removeTracks:uploadedObjects];
         [self.tableView reloadData];
         
         [MRProgressOverlayView dismissOverlayForView:self.navigationController.view animated:YES];
         overlay = nil;
+        
+        NSString* message = [NSString stringWithFormat:[locale get: @"uploadfinish.message"], totalTracksUploaded];
+        [RKDropdownAlert title:message message:@"" backgroundColor: [self colorFromHexString:@"#4cbc4c"] textColor: [UIColor whiteColor] time:5];
     });
 }
+
+#pragma mark - helper function
+-(UIColor *)colorFromHexString:(NSString *)hexString {
+    unsigned rgbValue = 0;
+    NSScanner *scanner = [NSScanner scannerWithString:hexString];
+    [scanner setScanLocation:1]; // bypass '#' character
+    [scanner scanHexInt:&rgbValue];
+    return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
+}
+
 @end
