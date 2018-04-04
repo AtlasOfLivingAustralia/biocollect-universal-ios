@@ -67,7 +67,9 @@
                             
                             @"uploading.message": @"Uploading tracks...",
                             @"uploaded.message": @"Uploaded %d of %d",
-                            @"uploadfinish.message": @"Uploaded %d tracks"
+                            @"uploadfinish.message": @"Uploaded %d tracks",
+                            
+                            @"tracklistviewcontroller.title": @"Review tracks"
                             }
                     };
     return self;

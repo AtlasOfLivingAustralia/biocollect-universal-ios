@@ -33,6 +33,8 @@
     [super viewDidLoad];
     self.service = [self.appDelegate trackerService];
     
+    self.title = [self.appDelegate.locale get: @"tracklistviewcontroller.title"];
+    
     self.tableView.allowsMultipleSelectionDuringEditing = NO;
     self.tableView.separatorStyle = UITableViewStylePlain;
     self.tableView.tableFooterView = [UIView new];
@@ -135,9 +137,6 @@
 # pragma mark - selector
 - (void) uploadData {
     GAAppDelegate* appDelegate = (GAAppDelegate*) [[UIApplication sharedApplication] delegate];
-    totalTracksToUpload = [self.service.tracks count];
-    totalTracksUploaded = 0;
-    [self updateMessage];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSMutableArray* validForms = [[NSMutableArray alloc] init];
         for( int i = 0; i < totalTracksToUpload; i++) {
@@ -147,6 +146,12 @@
                 [validForms addObject:form];
             }
         }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            totalTracksToUpload = [validForms count];
+            totalTracksUploaded = 0;
+            [self updateMessage];
+        });
         
         [appDelegate.tracksUpload uploadTracks:validForms andUpdateError:nil];
     });
