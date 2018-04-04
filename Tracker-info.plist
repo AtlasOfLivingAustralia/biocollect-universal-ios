@@ -156,6 +156,8 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>App uses camera to capture species photo</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>App uses camera to capture photo and saves it to photo library</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Your current location is required to determine species coordinates.</string>
 	<key>NSLocationUsageDescription</key>

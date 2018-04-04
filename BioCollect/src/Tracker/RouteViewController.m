@@ -86,8 +86,8 @@
     SpeciesAnnotation *speciesAnnotation = annotation;
     if ( [speciesAnnotation.forms count] > 0 ) {
         annotationView.leftCalloutAccessoryView = [[UIImageView alloc] initWithImage:[speciesAnnotation.forms[0] getImage]];
-        annotationView.leftCalloutAccessoryView.contentMode = UIViewContentModeRedraw;
-        annotationView.leftCalloutAccessoryView.autoresizesSubviews = YES;
+        annotationView.leftCalloutAccessoryView.contentMode = UIViewContentModeScaleAspectFit;
+        annotationView.leftCalloutAccessoryView.frame = CGRectMake(0, 0, 40, annotationView.frame.size.height);
     }
     
     return annotationView;
@@ -149,10 +149,10 @@
     region.span.latitudeDelta = (maxLatitude - minLatitude);
     region.span.longitudeDelta = (maxLongitude - minLongitude);
     
-    if (region.span.latitudeDelta < 0.019863)
+    if ((region.span.latitudeDelta < 0.019863) || ([_route count] < 8))
         region.span.latitudeDelta = 0.019863;
     
-    if (region.span.longitudeDelta < 0.019863)
+    if ((region.span.longitudeDelta < 0.019863) || ([_route count] < 8))
         region.span.longitudeDelta = 0.019863;
     
     return region;
@@ -184,8 +184,10 @@
             annotation.title = sighting.animal.displayName;
             annotation.subtitle = [sighting.animal getSubTitle];
             MKAnnotationView *annotationView = [self.mapView viewForAnnotation:annotation];
-            UIImageView *imageView = annotationView.leftCalloutAccessoryView;
-            imageView.image = [annotation.forms[0] getImage];
+            UIImageView *imageView = [[UIImageView alloc] initWithImage:[annotation.forms[0] getImage]];
+            imageView.frame = CGRectMake(0, 0, 40, annotationView.frame.size.height);
+            imageView.contentMode = UIViewContentModeScaleAspectFit;
+            annotationView.leftCalloutAccessoryView = imageView;
         }
         
         [self.mapView addAnnotations: _annotations];

@@ -20,7 +20,10 @@
 @implementation TrackViewController
 - (instancetype) init {
     _trackForm = [MetadataForm new];
-    disableSaveButton = NO;
+    if (disableSaveButton == nil) {
+        disableSaveButton = NO;
+    }
+    
     self = [super init];
     [_trackForm startRecordingLocation];
     return self;
@@ -28,7 +31,10 @@
 
 - (instancetype) initWithForm:(MetadataForm*) form {
     _trackForm = form;
-    disableSaveButton = NO;
+    if (disableSaveButton == nil) {
+        disableSaveButton = NO;
+    }
+    
     self = [super init];
     return self;
 }
@@ -48,14 +54,29 @@
     
     TrackMetadataViewController *meta = [[TrackMetadataViewController alloc] initWithForm:self.trackForm];
     meta.title = [locale get: @"trackmetadataviewcontroller.title"];
+    meta.tabBarItem.image = [UIImage imageNamed:@"icon_page_edit"];
+    [meta.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                            [UIFont fontWithName:@"Helvetica" size:15.0], NSFontAttributeName, nil]
+                                  forState:UIControlStateNormal];
+    
     self.trackForm = meta.formController.form;
     
     _sighingtListViewController = [SightingListViewController new];
     _sighingtListViewController.animals = self.trackForm.animals;
     _sighingtListViewController.title = [locale get: @"sighting.title"];
+    _sighingtListViewController.tabBarItem.image = [UIImage imageNamed:@"icon_dog"];
+    [_sighingtListViewController.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                             [UIFont fontWithName:@"Helvetica" size:15.0], NSFontAttributeName, nil]
+                                   forState:UIControlStateNormal];
+
     
     _route = [[RouteViewController alloc] initWithRoute: self.trackForm.route andAnimals: self.trackForm.animals];
-    _route.title = [locale get: @"map.title"];
+    _route.tabBarItem.title = [locale get: @"map.title"];
+    _route.tabBarItem.image = [UIImage imageNamed: @"icon_track"];
+    [_route.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                             [UIFont fontWithName:@"Helvetica" size:15.0], NSFontAttributeName, nil]
+                                   forState:UIControlStateNormal];
+
     
     [self setViewControllers: @[meta, _sighingtListViewController, _route]];
     
@@ -72,6 +93,13 @@
     
     // register events
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeSighting:) name:@"SPECIES-REMOVED" object: nil];
+}
+
+- (void) willMoveToParentViewController:(UIViewController *)parent {
+    [super willMoveToParentViewController:parent];
+    if (!parent) {
+        [_route stopTimerNotification];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -126,11 +154,29 @@
 
 - (void) save {
     GAAppDelegate * appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate.trackerService addTrack: self.trackForm];
-    [self.navigationController popViewControllerAnimated:YES];
-    [_trackForm stopRecordingLocation];
-    [_route stopTimerNotification];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"TRACK-SAVED" object: nil];
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle: @"Save track?"
+                                                                   message: @"Do you want to save and continue working on this track?"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* saveAndContinue = [UIAlertAction actionWithTitle: @"Save & continue" style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * action) {
+                                                             [appDelegate.trackerService addTrack: self.trackForm];
+                                                             [[NSNotificationCenter defaultCenter] postNotificationName:@"TRACK-SAVED" object: nil];
+                                                         }];
+    
+    UIAlertAction* saveAndExit = [UIAlertAction actionWithTitle: @"Save & exit" style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * action) {
+                                                             [appDelegate.trackerService addTrack: self.trackForm];
+                                                             [self.navigationController popViewControllerAnimated:YES];
+                                                             [_trackForm stopRecordingLocation];
+                                                             [_route stopTimerNotification];
+                                                             [[NSNotificationCenter defaultCenter] postNotificationName:@"TRACK-SAVED" object: nil];
+                                                         }];
+    
+    [alert addAction:saveAndContinue];
+    [alert addAction:saveAndExit];
+    [self presentViewController:alert animated:YES completion:nil];
+
 }
 
 - (IBAction)takePhoto:(UIButton *)sender {
@@ -152,6 +198,14 @@
         
         [self presentViewController:picker animated:YES completion:NULL];
     }
+}
+
+// For responding to the user accepting a newly-captured picture or movie
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    UIImage *img = info[UIImagePickerControllerEditedImage];
+    UIImageWriteToSavedPhotosAlbum(img, nil, nil, nil);
+    [picker dismissViewControllerAnimated:YES completion:nil];
+
 }
 
 #pragma mark - helper functions

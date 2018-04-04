@@ -57,6 +57,8 @@
 		87B09635204FBD4700DA1395 /* SightingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87B09633204FB94300DA1395 /* SightingListViewController.m */; };
 		87B700121DC2E5520066C236 /* SyncTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87B700101DC2E5520066C236 /* SyncTableViewController.m */; };
 		87B700131DC2E5520066C236 /* SyncTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87B700111DC2E5520066C236 /* SyncTableViewController.xib */; };
+		87D1D1852074601900B8B663 /* icon_page_edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87D1D1832074601900B8B663 /* icon_page_edit@2x.png */; };
+		87D1D1862074601900B8B663 /* icon_dog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87D1D1842074601900B8B663 /* icon_dog@2x.png */; };
 		B83825F61A0C666B00690383 /* MRBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = B83825DA1A0C666B00690383 /* MRBlurView.m */; };
 		B83825F71A0C666B00690383 /* UIImage+MRImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = B83825DC1A0C666B00690383 /* UIImage+MRImageEffects.m */; };
 		B83825F81A0C666B00690383 /* MRActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = B83825DF1A0C666B00690383 /* MRActivityIndicatorView.m */; };
@@ -1429,6 +1431,8 @@
 		87B7000F1DC2E5520066C236 /* SyncTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SyncTableViewController.h; path = src/Sync/SyncTableViewController.h; sourceTree = "<group>"; };
 		87B700101DC2E5520066C236 /* SyncTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SyncTableViewController.m; path = src/Sync/SyncTableViewController.m; sourceTree = "<group>"; };
 		87B700111DC2E5520066C236 /* SyncTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SyncTableViewController.xib; path = src/Sync/SyncTableViewController.xib; sourceTree = "<group>"; };
+		87D1D1832074601900B8B663 /* icon_page_edit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_page_edit@2x.png"; sourceTree = "<group>"; };
+		87D1D1842074601900B8B663 /* icon_dog@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_dog@2x.png"; sourceTree = "<group>"; };
 		B83825D91A0C666B00690383 /* MRBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRBlurView.h; sourceTree = "<group>"; };
 		B83825DA1A0C666B00690383 /* MRBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRBlurView.m; sourceTree = "<group>"; };
 		B83825DB1A0C666B00690383 /* UIImage+MRImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MRImageEffects.h"; sourceTree = "<group>"; };
@@ -2341,6 +2345,8 @@
 		E2424C3D1F0F60D600E4E13F /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				87D1D1842074601900B8B663 /* icon_dog@2x.png */,
+				87D1D1832074601900B8B663 /* icon_page_edit@2x.png */,
 				E212E84A20081B1900268AD1 /* icon_settings@2x.png */,
 				E212E844200817EA00268AD1 /* icon_track@2x.png */,
 				E274971F2006FA5E00876D5C /* icon_about_square@2x.png */,
@@ -3096,6 +3102,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87D1D1852074601900B8B663 /* icon_page_edit@2x.png in Resources */,
 				E26146DA20072F9300B1104E /* RecordsTableViewController.xib in Resources */,
 				E26146DB20072F9300B1104E /* AboutiPhoneView.xib in Resources */,
 				E26146DC20072F9300B1104E /* SVWebViewControllerActivitySafari-iPad@2x.png in Resources */,
@@ -3201,6 +3208,7 @@
 				E261473820072F9300B1104E /* Crustaceans.jpg in Resources */,
 				E261473920072F9300B1104E /* Default-568h.png in Resources */,
 				E261473A20072F9300B1104E /* profile@2x.png in Resources */,
+				87D1D1862074601900B8B663 /* icon_dog@2x.png in Resources */,
 				E261473B20072F9300B1104E /* ala_name.png in Resources */,
 				E261473C20072F9300B1104E /* lock_filled-25@2x.png in Resources */,
 				E261473D20072F9300B1104E /* ajax_loader.gif in Resources */,
