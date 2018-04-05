@@ -56,7 +56,7 @@
 			<key>icon</key>
 			<string>icon_tracks_review</string>
 			<key>title</key>
-			<string>Review Tracks</string>
+			<string>Review tracks</string>
 			<key>url</key>
 			<string></string>
 			<key>view</key>
@@ -66,7 +66,7 @@
 			<key>icon</key>
 			<string>icon_tracks_mytracks</string>
 			<key>title</key>
-			<string>My Tracks</string>
+			<string>My tracks</string>
 			<key>url</key>
 			<string></string>
 			<key>view</key>
