@@ -235,6 +235,7 @@
 		E260DBD72075A256000824F3 /* icon_tracks_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E260DBD42075A256000824F3 /* icon_tracks_logo@2x.png */; };
 		E260DBD82075A256000824F3 /* icon_tracks_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E260DBD42075A256000824F3 /* icon_tracks_logo@2x.png */; };
 		E260DBD92075A256000824F3 /* icon_tracks_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E260DBD42075A256000824F3 /* icon_tracks_logo@2x.png */; };
+		E260DBDB2075A557000824F3 /* tracks_logo_transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = E260DBDA2075A557000824F3 /* tracks_logo_transparent.png */; };
 		E261465E20072F9300B1104E /* UIImageView+REUIKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E27B8F111EF4E5FE00B01FAB /* UIImageView+REUIKitAdditions.m */; };
 		E261465F20072F9300B1104E /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E27B8F001EF4E5FE00B01FAB /* AFURLConnectionOperation.m */; };
 		E261466020072F9300B1104E /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B87373E41DB7027F0057027E /* RecordViewController.m */; };
@@ -1655,6 +1656,7 @@
 		E260DBAA2075A17E000824F3 /* icon_tracks_partners@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_tracks_partners@2x.png"; path = "src/images/tracks_icon/icon_tracks_partners@2x.png"; sourceTree = "<group>"; };
 		E260DBAB2075A17F000824F3 /* icon_tracks_settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_tracks_settings@2x.png"; path = "src/images/tracks_icon/icon_tracks_settings@2x.png"; sourceTree = "<group>"; };
 		E260DBD42075A256000824F3 /* icon_tracks_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_tracks_logo@2x.png"; path = "src/images/tracks_icon/icon_tracks_logo@2x.png"; sourceTree = "<group>"; };
+		E260DBDA2075A557000824F3 /* tracks_logo_transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tracks_logo_transparent.png; path = src/images/tracker/tracks_logo_transparent.png; sourceTree = "<group>"; };
 		E261475B20072F9300B1104E /* Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E261475C20072F9400B1104E /* Tracker-info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tracker-info.plist"; sourceTree = "<group>"; };
 		E2636DD21CF2E57C00000371 /* about_filled-25@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "about_filled-25@2x.png"; path = "src/images/about_filled-25@2x.png"; sourceTree = "<group>"; };
@@ -2339,6 +2341,7 @@
 		E212E839200736D800268AD1 /* tracker */ = {
 			isa = PBXGroup;
 			children = (
+				E260DBDA2075A557000824F3 /* tracks_logo_transparent.png */,
 				E212E85220081F8200268AD1 /* tracker_home_bk_small.png */,
 				E212E8422008080100268AD1 /* tracker_login_logo.png */,
 				E212E84020073A8600268AD1 /* tracker_home_login_iPhone.jpg */,
@@ -3320,6 +3323,7 @@
 				E261475520072F9300B1104E /* bk_iPad.png in Resources */,
 				E261475620072F9300B1104E /* Default-568.png in Resources */,
 				E261475720072F9300B1104E /* icon_my_records@2x.png in Resources */,
+				E260DBDB2075A557000824F3 /* tracks_logo_transparent.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

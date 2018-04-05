@@ -13,7 +13,7 @@
 	<key>Bio_Home_BK_Small</key>
 	<string>tracker_home_bk_small</string>
 	<key>Bio_Home_Login_Image_Logo</key>
-	<string>tracker_login_logo.png</string>
+	<string>tracks_logo_transparent.png</string>
 	<key>Bio_Home_Login_Image_iPad</key>
 	<string>tracker_home_login_iPhone.jpg</string>
 	<key>Bio_Home_Login_Image_iPhone</key>
@@ -118,7 +118,7 @@
 			<key>na</key>
 			<string>na</string>
 			<key>title</key>
-			<string>App version</string>
+			<string>The Tracks App - Version</string>
 			<key>view</key>
 			<string>version</string>
 		</dict>
