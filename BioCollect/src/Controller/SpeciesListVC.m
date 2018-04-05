@@ -109,8 +109,13 @@
             commonName = @"N/A";
         }
         
+        NSString *walpiriName = [self.appDelegate.speciesListService getWarlpiriName:species];
+        if (walpiriName == (id)[NSNull null] || walpiriName.length == 0 ) {
+            walpiriName = @"N/A";
+        }
+        
         cell.textLabel.text = species.displayName;
-        cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@, %@",commonName,species.scientificName];
+        cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@, %@, %@",commonName,species.scientificName,walpiriName];
         
         if(self.noImage == nil){
             self.noImage = [UIImage imageNamed:@"noImage85.jpg"];

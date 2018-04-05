@@ -104,5 +104,16 @@
         }
     }
 }
+-(NSString *) getWarlpiriName : (Species *) species {
+    NSString *name = nil;
+    for(int j=0; j < [species.kvpValues count]; j++){
+        NSDictionary *kvp = species.kvpValues[j];
+        if([kvp[@"key"] isEqualToString:@"Warlpiri name"]) {
+            name = kvp[@"value"];
+            break;
+        }
+    }
+    return name;
+}
 
 @end
