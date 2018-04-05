@@ -34,7 +34,7 @@
 	<array>
 		<dict>
 			<key>icon</key>
-			<string>icon_track</string>
+			<string>icon_tracks_add_track</string>
 			<key>title</key>
 			<string>Add a track</string>
 			<key>url</key>
@@ -44,7 +44,7 @@
 		</dict>
 		<dict>
 			<key>icon</key>
-			<string>icon_track</string>
+			<string>icon_tracks_practice</string>
 			<key>title</key>
 			<string>Practise tracking</string>
 			<key>url</key>
@@ -54,7 +54,7 @@
 		</dict>
 		<dict>
 			<key>icon</key>
-			<string>icon_all_records</string>
+			<string>icon_tracks_review</string>
 			<key>title</key>
 			<string>Review Tracks</string>
 			<key>url</key>
@@ -64,7 +64,7 @@
 		</dict>
 		<dict>
 			<key>icon</key>
-			<string>icon_all_records</string>
+			<string>icon_tracks_mytracks</string>
 			<key>title</key>
 			<string>My Tracks</string>
 			<key>url</key>
@@ -74,7 +74,7 @@
 		</dict>
 		<dict>
 			<key>icon</key>
-			<string></string>
+			<string>icon_tracks_partners</string>
 			<key>title</key>
 			<string>Partners</string>
 			<key>url</key>
@@ -84,7 +84,7 @@
 		</dict>
 		<dict>
 			<key>icon</key>
-			<string></string>
+			<string>icon_tracks_help</string>
 			<key>title</key>
 			<string>Help</string>
 			<key>url</key>
@@ -94,7 +94,7 @@
 		</dict>
 		<dict>
 			<key>icon</key>
-			<string></string>
+			<string>icon_tracks_info</string>
 			<key>title</key>
 			<string>About</string>
 			<key>url</key>
@@ -104,7 +104,7 @@
 		</dict>
 		<dict>
 			<key>icon</key>
-			<string>icon_settings</string>
+			<string>icon_tracks_settings</string>
 			<key>title</key>
 			<string>Settings</string>
 			<key>url</key>
@@ -114,7 +114,7 @@
 		</dict>
 		<dict>
 			<key>icon</key>
-			<string>icon_logo</string>
+			<string>icon_tracks_logo</string>
 			<key>na</key>
 			<string>na</string>
 			<key>title</key>
