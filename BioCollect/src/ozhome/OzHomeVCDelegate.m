@@ -327,6 +327,6 @@
 #pragma mark - helper functions
 - (void) loadTrackListViewController {
     TrackListViewController *trackList = [[TrackListViewController alloc] init];
-    [self.spotyViewController.navigationController pushViewController: trackList animated: NO];
+    [self.spotyViewController.navigationController pushViewController: trackList animated: YES];
 }
 @end

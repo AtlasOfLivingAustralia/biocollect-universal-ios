@@ -17,7 +17,7 @@
     GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
     Locale* locale = appDelegate.locale;
     
-    self.title = [locale get:@"sighting.title"];
+    self.title = [locale get:@"sighting.viewcontroller.title"];
     
     SightingForm *form = [[SightingForm alloc] init];
     self.formController.form = form;
@@ -32,7 +32,7 @@
     GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
     Locale* locale = appDelegate.locale;
     
-    self.title = [locale get:@"sighting.title"];
+    self.title = [locale get:@"sighting.viewcontroller.title"];
     self.formController.form = form;
     
     [self initLocationManager];
