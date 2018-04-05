@@ -77,16 +77,13 @@
         MetadataForm *form = (MetadataForm *) self.service.tracks[indexPath.row];
         cell.textLabel.text = form.organisationName;
         cell.detailTextLabel.text = form.leadTracker;
-        cell.imageView.image = form.countryPhoto;
-
+        //cell.imageView.image = form.countryPhoto;
         if ([form isValid]) {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-            cell.backgroundColor = [UIColor whiteColor];
+            cell.imageView.image = [UIImage imageNamed:@"yes"];
         } else {
             cell.accessoryType = UITableViewCellAccessoryNone;
-            cell.backgroundColor = [self colorFromHexString: @backgroundColour];
+            cell.imageView.image = [UIImage imageNamed:@"no"];
         }
-        
     }
     
     return cell;
