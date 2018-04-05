@@ -109,6 +109,8 @@
 
 #pragma mark - event handlers
 - (void) addAnimal {
+    _sightingVC = [SightingViewController new];
+    [self.navigationController pushViewController:_sightingVC animated:YES];
     SpeciesListVC *speciesVC = [[SpeciesListVC alloc] initWithNibName:@"SpeciesListVC" bundle:nil];
     [self.navigationController pushViewController:speciesVC animated:YES];
     
@@ -118,15 +120,15 @@
 }
 
 - (void) speciesSelected: (NSNotification *) notice {
-    SightingViewController *sighting = [SightingViewController new];
-    SightingForm *form = sighting.formController.form;
+    
+    SightingForm *form = _sightingVC.formController.form;
     form.animal = (Species *)notice.object;
+    [_sightingVC.formController.tableView reloadData];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SPECIES-SIGHTING-SAVED" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addSighting:) name:@"SPECIES-SIGHTING-SAVED" object:nil];
     
     [self setSelectedIndex:1];
-    [self.navigationController pushViewController:sighting animated:NO];
 }
 
 
@@ -205,7 +207,6 @@
     UIImage *img = info[UIImagePickerControllerEditedImage];
     UIImageWriteToSavedPhotosAlbum(img, nil, nil, nil);
     [picker dismissViewControllerAnimated:YES completion:nil];
-
 }
 
 #pragma mark - helper functions

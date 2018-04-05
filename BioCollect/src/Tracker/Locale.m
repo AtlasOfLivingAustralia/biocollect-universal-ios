@@ -47,7 +47,7 @@
                             @"trackmetadata.groundsoftness": @"How soft is the ground for leaving tracks?",
                             @"trackmetadata.weather": @"Weather?",
                             
-                            @"sighting.title": @"Add an animal *",
+                            @"sighting.viewcontroller.title": @"Add an animal *",
                             @"sighting.animal": @"Animal *",
                             @"sighting.photo": @"Photo",
                             @"sighting.visiblesign": @"What sign did you see?",

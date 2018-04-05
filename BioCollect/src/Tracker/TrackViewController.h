@@ -10,9 +10,11 @@
 #import "MetadataForm.h"
 #import "SightingListViewController.h"
 #import "RouteViewController.h"
+#import "SightingViewController.h"
 
 @interface TrackViewController : UITabBarController<UIImagePickerControllerDelegate, UITabBarControllerDelegate> {
     BOOL disableSaveButton;
+    SightingViewController* _sightingVC;
 }
 
 @property (nonatomic, strong) MetadataForm* trackForm;
