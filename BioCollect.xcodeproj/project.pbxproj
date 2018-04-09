@@ -52,7 +52,6 @@
 		87898E3220689E7E00CB2ED0 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
 		87898E3320689E7F00CB2ED0 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
 		87898E3420689E7F00CB2ED0 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
-		878AFE5B207AFEC800BDFC2A /* icon_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 878AFE5A207AFEC800BDFC2A /* icon_refresh@2x.png */; };
 		87B0962F204FAF3A00DA1395 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
 		87B09634204FB94300DA1395 /* SightingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87B09633204FB94300DA1395 /* SightingListViewController.m */; };
 		87B09635204FBD4700DA1395 /* SightingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87B09633204FB94300DA1395 /* SightingListViewController.m */; };
@@ -157,6 +156,11 @@
 		E23AF5181C911E45002501F3 /* RecordsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E23AF5171C911E45002501F3 /* RecordsTableViewController.xib */; };
 		E23AF5211C9187E3002501F3 /* RecordWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = E23AF5201C9187E3002501F3 /* RecordWebView.m */; };
 		E23AF5231C918862002501F3 /* RecordWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E23AF5221C918862002501F3 /* RecordWebView.xib */; };
+		E23FFBB4207B313100902E76 /* icon_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E23FFBB3207B313100902E76 /* icon_refresh@2x.png */; };
+		E23FFBB5207B313100902E76 /* icon_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E23FFBB3207B313100902E76 /* icon_refresh@2x.png */; };
+		E23FFBB6207B313100902E76 /* icon_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E23FFBB3207B313100902E76 /* icon_refresh@2x.png */; };
+		E23FFBB7207B313100902E76 /* icon_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E23FFBB3207B313100902E76 /* icon_refresh@2x.png */; };
+		E23FFBB8207B313100902E76 /* icon_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E23FFBB3207B313100902E76 /* icon_refresh@2x.png */; };
 		E241C680196A3061002302D7 /* pad-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E241C67F196A3061002302D7 /* pad-1@2x.png */; };
 		E241C685196A33B6002302D7 /* css in Resources */ = {isa = PBXBuildFile; fileRef = E241C681196A33B6002302D7 /* css */; };
 		E241C686196A33B6002302D7 /* img in Resources */ = {isa = PBXBuildFile; fileRef = E241C682196A33B6002302D7 /* img */; };
@@ -1483,7 +1487,6 @@
 		874B4F37206354EB00892966 /* TrackerService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TrackerService.m; path = src/Service/TrackerService.m; sourceTree = "<group>"; };
 		874B4F3E206369CB00892966 /* TrackListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TrackListViewController.h; path = src/Controller/TrackListViewController.h; sourceTree = "<group>"; };
 		874B4F3F20636B0400892966 /* TrackListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TrackListViewController.m; path = src/Controller/TrackListViewController.m; sourceTree = "<group>"; };
-		878AFE5A207AFEC800BDFC2A /* icon_refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_refresh@2x.png"; path = "../../../Downloads/icon_refresh@2x.png"; sourceTree = "<group>"; };
 		87B09632204FB85E00DA1395 /* SightingListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SightingListViewController.h; path = src/Controller/SightingListViewController.h; sourceTree = "<group>"; };
 		87B09633204FB94300DA1395 /* SightingListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SightingListViewController.m; path = src/Controller/SightingListViewController.m; sourceTree = "<group>"; };
 		87B7000F1DC2E5520066C236 /* SyncTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SyncTableViewController.h; path = src/Sync/SyncTableViewController.h; sourceTree = "<group>"; };
@@ -1633,6 +1636,7 @@
 		E23AF51F1C9187A8002501F3 /* RecordWebVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecordWebVIew.h; path = src/home/RecordWebVIew.h; sourceTree = "<group>"; };
 		E23AF5201C9187E3002501F3 /* RecordWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecordWebView.m; path = src/home/RecordWebView.m; sourceTree = "<group>"; };
 		E23AF5221C918862002501F3 /* RecordWebView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RecordWebView.xib; path = src/home/RecordWebView.xib; sourceTree = "<group>"; };
+		E23FFBB3207B313100902E76 /* icon_refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_refresh@2x.png"; path = "src/images/icon_refresh@2x.png"; sourceTree = "<group>"; };
 		E241C67F196A3061002302D7 /* pad-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pad-1@2x.png"; path = "src/images/pad-1@2x.png"; sourceTree = "<group>"; };
 		E241C681196A33B6002302D7 /* css */ = {isa = PBXFileReference; lastKnownFileType = folder; name = css; path = src/help/css; sourceTree = "<group>"; };
 		E241C682196A33B6002302D7 /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; name = img; path = src/help/img; sourceTree = "<group>"; };
@@ -2418,13 +2422,13 @@
 		E2424C3D1F0F60D600E4E13F /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				E23FFBB3207B313100902E76 /* icon_refresh@2x.png */,
 				E260DBA32075A16E000824F3 /* tracks */,
 				87D1D1842074601900B8B663 /* icon_dog@2x.png */,
 				87D1D1832074601900B8B663 /* icon_page_edit@2x.png */,
 				E212E84A20081B1900268AD1 /* icon_settings@2x.png */,
 				E212E844200817EA00268AD1 /* icon_track@2x.png */,
 				E274971F2006FA5E00876D5C /* icon_about_square@2x.png */,
-				878AFE5A207AFEC800BDFC2A /* icon_refresh@2x.png */,
 				E2BA84071F583B2A008BE68F /* icon_briefcase@2x.png */,
 				E2C00BC71F17464600443DBD /* icon_logo@2x.png */,
 				E2C00BC41F173A3A00443DBD /* icon_version@2x.png */,
@@ -3219,6 +3223,7 @@
 				E260DBCE2075A17F000824F3 /* icon_tracks_partners@2x.png in Resources */,
 				E26146EE20072F9300B1104E /* icon_logo@2x.png in Resources */,
 				E26146EF20072F9300B1104E /* BioCollect-logo.png in Resources */,
+				E23FFBB8207B313100902E76 /* icon_refresh@2x.png in Resources */,
 				E26146F020072F9300B1104E /* SGDetailViewTableViewController.xib in Resources */,
 				E26146F120072F9300B1104E /* BioCollect-text.png in Resources */,
 				E26146F220072F9300B1104E /* icon_location@2x.png in Resources */,
@@ -3328,7 +3333,6 @@
 				E261474720072F9300B1104E /* box_filled-25@2x.png in Resources */,
 				E261474820072F9300B1104E /* cancelled@2x.png in Resources */,
 				E261474920072F9300B1104E /* ALA-logo-inline.png in Resources */,
-				878AFE5B207AFEC800BDFC2A /* icon_refresh@2x.png in Resources */,
 				E261474A20072F9300B1104E /* camera_icon.png in Resources */,
 				E261474B20072F9300B1104E /* planned@2x.png in Resources */,
 				E261474C20072F9300B1104E /* searchbar_bk@2x.png in Resources */,
@@ -3419,6 +3423,7 @@
 				E266391A1F52EB9B00F1F1CE /* SVWebViewControllerActivityChrome-iPad.png in Resources */,
 				E266391B1F52EB9B00F1F1CE /* GAMasterProjectTableViewController.xib in Resources */,
 				E2BA84011F558BA4008BE68F /* ALAWKWebView.xib in Resources */,
+				E23FFBB6207B313100902E76 /* icon_refresh@2x.png in Resources */,
 				E266391C1F52EB9B00F1F1CE /* Insects.jpg in Resources */,
 				E266391D1F52EB9B00F1F1CE /* icon_street_view@2x.png in Resources */,
 				E266391E1F52EB9B00F1F1CE /* GADetailFormVIewController.xib in Resources */,
@@ -3590,6 +3595,7 @@
 				E2AECF741E73D3010035DF28 /* InfoPlist.strings in Resources */,
 				E27497212006FA5E00876D5C /* icon_about_square@2x.png in Resources */,
 				E2A5372B204D49540085D1BE /* SpeciesListVC.xib in Resources */,
+				E23FFBB5207B313100902E76 /* icon_refresh@2x.png in Resources */,
 				E2AECF751E73D3010035DF28 /* table-place-holder.png in Resources */,
 				E2A6BEBF1F0CCFC000F1A57E /* Fungi.jpg in Resources */,
 				E2AECF761E73D3010035DF28 /* home_filled-25@2x.png in Resources */,
@@ -3684,6 +3690,7 @@
 				E2636DD91CF2E57C00000371 /* brief_filled-25@2x.png in Resources */,
 				E2E3AAC318F4D9070005BB9E /* GALogin.xib in Resources */,
 				B87373DD1DB6DFE90057027E /* SVWebViewControllerActivitySafari@2x.png in Resources */,
+				E23FFBB4207B313100902E76 /* icon_refresh@2x.png in Resources */,
 				E2C00BC81F17464600443DBD /* icon_logo@2x.png in Resources */,
 				E211B04C1CE18BC500DBC1AF /* BioCollect-logo.png in Resources */,
 				E2A6BED81F0CE06800F1A57E /* SGDetailViewTableViewController.xib in Resources */,
@@ -3860,6 +3867,7 @@
 				E2F19E4C200584AC0033DC24 /* changed@2x.png in Resources */,
 				E2F19E4D200584AC0033DC24 /* Gymnosperms.jpg in Resources */,
 				E2F19E4E200584AC0033DC24 /* css in Resources */,
+				E23FFBB7207B313100902E76 /* icon_refresh@2x.png in Resources */,
 				E2F19E4F200584AC0033DC24 /* oz_iPhone.jpg in Resources */,
 				E2B42D7B20686D29009943A4 /* TracksSiteTemplate.json in Resources */,
 				E2F19E50200584AC0033DC24 /* LoginiPhoneView.xib in Resources */,
