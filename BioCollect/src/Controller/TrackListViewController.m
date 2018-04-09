@@ -139,7 +139,7 @@
         GAAppDelegate* appDelegate = (GAAppDelegate*) [[UIApplication sharedApplication] delegate];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             NSMutableArray* validForms = [[NSMutableArray alloc] init];
-            for( int i = 0; i < totalTracksToUpload; i++) {
+            for( int i = 0; i < [self.service.tracks count]; i++) {
                 MetadataForm* form = [self.service.tracks objectAtIndex:i];
                 
                 if ([form isValid]) {

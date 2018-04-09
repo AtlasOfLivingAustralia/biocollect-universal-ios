@@ -263,7 +263,7 @@
     
     obj[@"pActivityId"] = project.projectActivityId ? project.projectActivityId : @"";
     
-    return [obj copy];
+    return [obj[@"site"] copy];
 }
 
 - (NSArray*) getAnimalImageList {
