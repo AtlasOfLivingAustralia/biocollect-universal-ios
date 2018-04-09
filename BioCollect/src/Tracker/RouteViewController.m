@@ -1,4 +1,4 @@
-//
+    //
 //  RouteViewController.m
 //  Oz Atlas
 //
@@ -32,8 +32,9 @@
     [self addAnnotations];
     
     [self updateMap];
+    [self zoomToRoute];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addAnnotations) name:@"SPECIES-SIGHTING-SAVED" object:nil];
-    _timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(updateMap) userInfo:nil repeats:YES];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateMap) name:@"ROUTE-UPDATED" object:nil];
 }
 
 - (void) updateMap {
@@ -56,7 +57,10 @@
     // create a polyline with all cooridnates
     _polyline = [MKPolyline polylineWithCoordinates:coordinates count: count];
     [_mapView addOverlay: _polyline];
-    MKCoordinateRegion adjustedRegion = [self.mapView regionThatFits:[self zoomToAnnotationsBounds]];
+}
+
+- (void) zoomToRoute {
+    MKCoordinateRegion adjustedRegion = [self.mapView regionThatFits:[self getRouteBounds]];
     [_mapView setRegion: adjustedRegion animated:YES];
 }
 
@@ -105,7 +109,7 @@
 }
 
 # pragma mark - helper function
-- (MKCoordinateRegion)zoomToAnnotationsBounds
+- (MKCoordinateRegion)getRouteBounds
 {
     CLLocationDegrees minLatitude = DBL_MAX;
     CLLocationDegrees maxLatitude = -DBL_MAX;
@@ -122,32 +126,11 @@
         maxLongitude = fmax(annotationLong, maxLongitude);
     }
     
-    // If your markers were 40 in height and 20 in width, this would zoom the map to fit them perfectly. Note that there is a bug in mkmapview's set region which means it will snap the map to the nearest whole zoom level, so you will rarely get a perfect fit. But this will ensure a minimum padding.
-    UIEdgeInsets mapPadding = UIEdgeInsetsMake(40.0, 10.0, 40.0, 10.0);
-    CLLocationCoordinate2D relativeFromCoord = [self.mapView convertPoint:CGPointMake(0, 0) toCoordinateFromView:self.mapView];
-    
-    // Calculate the additional lat/long required at the current zoom level to add the padding
-    CLLocationCoordinate2D topCoord = [self.mapView convertPoint:CGPointMake(0, mapPadding.top) toCoordinateFromView:self.mapView];
-    CLLocationCoordinate2D rightCoord = [self.mapView convertPoint:CGPointMake(0, mapPadding.right) toCoordinateFromView:self.mapView];
-    CLLocationCoordinate2D bottomCoord = [self.mapView convertPoint:CGPointMake(0, mapPadding.bottom) toCoordinateFromView:self.mapView];
-    CLLocationCoordinate2D leftCoord = [self.mapView convertPoint:CGPointMake(0, mapPadding.left) toCoordinateFromView:self.mapView];
-    
-    double latitudeSpanToBeAddedToTop = relativeFromCoord.latitude - topCoord.latitude;
-    double longitudeSpanToBeAddedToRight = relativeFromCoord.longitude - rightCoord.longitude;
-    double latitudeSpanToBeAddedToBottom = relativeFromCoord.latitude - bottomCoord.latitude;
-    double longitudeSpanToBeAddedToLeft = relativeFromCoord.longitude - leftCoord.longitude;
-    
-    maxLatitude = maxLatitude + latitudeSpanToBeAddedToTop;
-    minLatitude = minLatitude - latitudeSpanToBeAddedToBottom;
-    
-    maxLongitude = maxLongitude + longitudeSpanToBeAddedToRight;
-    minLongitude = minLongitude - longitudeSpanToBeAddedToLeft;
-    
     MKCoordinateRegion region;
     region.center.latitude = (minLatitude + maxLatitude) / 2;
     region.center.longitude = (minLongitude + maxLongitude) / 2;
-    region.span.latitudeDelta = (maxLatitude - minLatitude);
-    region.span.longitudeDelta = (maxLongitude - minLongitude);
+    region.span.latitudeDelta = (maxLatitude - minLatitude)*1.1;
+    region.span.longitudeDelta = (maxLongitude - minLongitude)*1.1;
     
     if ((region.span.latitudeDelta < 0.019863) || ([_route count] < 8))
         region.span.latitudeDelta = 0.019863;
@@ -203,7 +186,8 @@
     }
 }
 
-- (void) stopTimerNotification {
-    [_timer invalidate];
+- (void) stopNotification {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SPECIES-SIGHTING-SAVED" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ROUTE-UPDATED" object:nil];
 }
 @end

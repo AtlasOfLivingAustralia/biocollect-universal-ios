@@ -11,15 +11,18 @@
 #import "SightingListViewController.h"
 #import "RouteViewController.h"
 #import "SightingViewController.h"
+#import "TrackMetadataViewController.h"
 
 @interface TrackViewController : UITabBarController<UIImagePickerControllerDelegate, UITabBarControllerDelegate> {
-    BOOL disableSaveButton;
+    BOOL isPractise;
     SightingViewController* _sightingVC;
+    UIBarButtonItem* centreMap;
 }
 
 @property (nonatomic, strong) MetadataForm* trackForm;
 @property (nonatomic, strong) SightingListViewController *sighingtListViewController;
 @property (nonatomic, strong) RouteViewController *route;
+@property (nonatomic, strong) TrackMetadataViewController* trackMetadataViewController;
 
 - (instancetype) initWithForm: (MetadataForm*) form;
 - (instancetype) initWithSaveDisabled;

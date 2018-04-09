@@ -78,6 +78,10 @@
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithTitle: [locale get: @"sighting.save"]
                                                                   style:UIBarButtonItemStylePlain target:self action:@selector(save)];
     self.navigationItem.rightBarButtonItem = barButton;
+    
+    UIBarButtonItem* back = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButton)];
+    self.navigationItem.leftBarButtonItem = back;
+
 
 }
 
@@ -85,4 +89,9 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"SPECIES-SIGHTING-SAVED" object:self.formController.form];
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (void) cancelButton {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 @end

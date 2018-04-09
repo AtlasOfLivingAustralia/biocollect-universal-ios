@@ -11,6 +11,8 @@
 #import "TrackViewController.h"
 #import "MRProgressOverlayView.h"
 #import "RKDropdownAlert.h"
+#import "Reachability.h"
+#import <SystemConfiguration/SystemConfiguration.h>
 #define backgroundColour "#f2dede"
 
 @implementation TrackListViewController
@@ -19,7 +21,6 @@
     self = [super init];
     
     self.appDelegate = (GAAppDelegate *) [[UIApplication sharedApplication] delegate];
-    [self.appDelegate.trackerService loadTracks];
     
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(uploadProgressing) name: @"UPLOADED-TRACK" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(uploadComplete:) name: @"TRACK-UPLOADING-COMPLETE" object:nil];
@@ -117,7 +118,8 @@
                                                                 preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction* recordAction = [UIAlertAction actionWithTitle: [locale get: @"trackmetadata.modal.record"] style:UIAlertActionStyleDefault
                                                              handler:^(UIAlertAction * action) {
-
+                                                                 form.endTime = nil;
+                                                                 [vc.trackMetadataViewController.formController.tableView reloadData];
                                                                  [form startRecordingLocation];
                                                              }];
         
@@ -133,25 +135,29 @@
 
 # pragma mark - selector
 - (void) uploadData {
-    GAAppDelegate* appDelegate = (GAAppDelegate*) [[UIApplication sharedApplication] delegate];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSMutableArray* validForms = [[NSMutableArray alloc] init];
-        for( int i = 0; i < totalTracksToUpload; i++) {
-            MetadataForm* form = [self.service.tracks objectAtIndex:i];
-            
-            if ([form isValid]) {
-                [validForms addObject:form];
+    if ([self isInternet]) {
+        GAAppDelegate* appDelegate = (GAAppDelegate*) [[UIApplication sharedApplication] delegate];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            NSMutableArray* validForms = [[NSMutableArray alloc] init];
+            for( int i = 0; i < totalTracksToUpload; i++) {
+                MetadataForm* form = [self.service.tracks objectAtIndex:i];
+                
+                if ([form isValid]) {
+                    [validForms addObject:form];
+                }
             }
-        }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            totalTracksToUpload = [validForms count];
-            totalTracksUploaded = 0;
-            [self updateMessage];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                totalTracksToUpload = [validForms count];
+                totalTracksUploaded = 0;
+                [self updateMessage];
+            });
+            
+            [appDelegate.tracksUpload uploadTracks:validForms andUpdateError:nil];
         });
-        
-        [appDelegate.tracksUpload uploadTracks:validForms andUpdateError:nil];
-    });
+    } else {
+        [self displayNoInternetAlert];
+    }
 }
 
 - (void) uploadProgressing {
@@ -198,6 +204,27 @@
     [scanner setScanLocation:1]; // bypass '#' character
     [scanner scanHexInt:&rgbValue];
     return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
+}
+
+- (BOOL) isInternet {
+    Reachability* reach = [Reachability reachabilityForInternetConnection];
+    NetworkStatus status = [reach currentReachabilityStatus];
+    return status != NotReachable;
+}
+
+- (void) displayNoInternetAlert {
+    GAAppDelegate* appDelegate = (GAAppDelegate*) [[UIApplication sharedApplication] delegate];
+    Locale* locale = appDelegate.locale;
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle: [locale get: @"nointernetconnectivity.title"]
+                                                                   message: [locale get: @"nointernetconnectivity.message"]
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* ok = [UIAlertAction actionWithTitle: [locale get: @"nointernetconnectivity.ok"] style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * action) {
+                                                         }];
+    
+    [alert addAction:ok];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 @end

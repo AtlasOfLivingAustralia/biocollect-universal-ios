@@ -22,5 +22,6 @@
 - (instancetype) initWithRoute: (NSMutableArray *) route andAnimals: (NSMutableArray *) animals;
 - (void) removeAnnotation: (SightingForm *) sighting;
 - (void) addAnnotations;
-- (void) stopTimerNotification;
+- (void) stopNotification;
+- (void) zoomToRoute;
 @end

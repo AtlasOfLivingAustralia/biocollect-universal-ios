@@ -69,7 +69,25 @@
                             @"uploaded.message": @"Uploaded %d of %d",
                             @"uploadfinish.message": @"Uploaded %d tracks",
                             
-                            @"tracklistviewcontroller.title": @"Review tracks"
+                            @"tracklistviewcontroller.title": @"Review tracks",
+                            
+                            @"trackmetadata.confirmexit.title": @"Exit without saving?",
+                            @"trackmetadata.confirmexit.message": @"This track has not been saved. Click 'No' to cancel exit action. Otherwise, click 'Yes' to exit without saving.",
+                            @"trackmetadata.confirmexit.no": @"No",
+                            @"trackmetadata.confirmexit.yes": @"Yes",
+                            
+                            @"camera.error.title": @"Error",
+                            @"camera.error.message": @"Device has no camera",
+                            @"camera.error.ok": @"Ok",
+                            
+                            @"trackmetadata.confirmsave.title": @"Save track?",
+                            @"trackmetadata.confirmsave.message": @"Do you want to save and continue working on this track?",
+                            @"trackmetadata.confirmsave.continue": @"Save & continue",
+                            @"trackmetadata.confirmsave.exit": @"Save & exit",
+
+                            @"nointernetconnectivity.title": @"No internet connectivity",
+                            @"nointernetconnectivity.message": @"Cannot upload tracks due to no internet connectivity. Try again later.",
+                            @"nointernetconnectivity.ok": @"Ok"
                             }
                     };
     return self;

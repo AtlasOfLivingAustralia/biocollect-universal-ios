@@ -73,6 +73,10 @@
     trackerService = [[TrackerService alloc] init];
     tracksUpload = [[TracksUpload alloc] init];
     
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [trackerService loadTracks];
+    });
+    
     [self addSplitViewtoRoot];
     
     //[[UITabBar appearance] setTintColor: [UIColor colorWithRed:200.0/255.0 green:77.0/255.0 blue:47.0/255.0 alpha:1]];

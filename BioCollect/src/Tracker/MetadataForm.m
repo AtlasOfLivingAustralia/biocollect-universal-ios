@@ -164,6 +164,7 @@
     
     if ( (dist >= MIN_DISTANCE_BETWEEN_LOCATION) || ( [_route count] == 0 ) ) {
         [self.route addObject:newLocation];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ROUTE-UPDATED" object:nil];
     }
 }
 

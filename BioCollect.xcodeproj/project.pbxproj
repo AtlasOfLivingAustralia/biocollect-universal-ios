@@ -52,6 +52,7 @@
 		87898E3220689E7E00CB2ED0 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
 		87898E3320689E7F00CB2ED0 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
 		87898E3420689E7F00CB2ED0 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
+		878AFE5B207AFEC800BDFC2A /* icon_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 878AFE5A207AFEC800BDFC2A /* icon_refresh@2x.png */; };
 		87B0962F204FAF3A00DA1395 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
 		87B09634204FB94300DA1395 /* SightingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87B09633204FB94300DA1395 /* SightingListViewController.m */; };
 		87B09635204FBD4700DA1395 /* SightingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87B09633204FB94300DA1395 /* SightingListViewController.m */; };
@@ -1482,6 +1483,7 @@
 		874B4F37206354EB00892966 /* TrackerService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TrackerService.m; path = src/Service/TrackerService.m; sourceTree = "<group>"; };
 		874B4F3E206369CB00892966 /* TrackListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TrackListViewController.h; path = src/Controller/TrackListViewController.h; sourceTree = "<group>"; };
 		874B4F3F20636B0400892966 /* TrackListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TrackListViewController.m; path = src/Controller/TrackListViewController.m; sourceTree = "<group>"; };
+		878AFE5A207AFEC800BDFC2A /* icon_refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_refresh@2x.png"; path = "../../../Downloads/icon_refresh@2x.png"; sourceTree = "<group>"; };
 		87B09632204FB85E00DA1395 /* SightingListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SightingListViewController.h; path = src/Controller/SightingListViewController.h; sourceTree = "<group>"; };
 		87B09633204FB94300DA1395 /* SightingListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SightingListViewController.m; path = src/Controller/SightingListViewController.m; sourceTree = "<group>"; };
 		87B7000F1DC2E5520066C236 /* SyncTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SyncTableViewController.h; path = src/Sync/SyncTableViewController.h; sourceTree = "<group>"; };
@@ -2422,6 +2424,7 @@
 				E212E84A20081B1900268AD1 /* icon_settings@2x.png */,
 				E212E844200817EA00268AD1 /* icon_track@2x.png */,
 				E274971F2006FA5E00876D5C /* icon_about_square@2x.png */,
+				878AFE5A207AFEC800BDFC2A /* icon_refresh@2x.png */,
 				E2BA84071F583B2A008BE68F /* icon_briefcase@2x.png */,
 				E2C00BC71F17464600443DBD /* icon_logo@2x.png */,
 				E2C00BC41F173A3A00443DBD /* icon_version@2x.png */,
@@ -3325,6 +3328,7 @@
 				E261474720072F9300B1104E /* box_filled-25@2x.png in Resources */,
 				E261474820072F9300B1104E /* cancelled@2x.png in Resources */,
 				E261474920072F9300B1104E /* ALA-logo-inline.png in Resources */,
+				878AFE5B207AFEC800BDFC2A /* icon_refresh@2x.png in Resources */,
 				E261474A20072F9300B1104E /* camera_icon.png in Resources */,
 				E261474B20072F9300B1104E /* planned@2x.png in Resources */,
 				E261474C20072F9300B1104E /* searchbar_bk@2x.png in Resources */,

@@ -36,7 +36,7 @@
 - (BOOL) saveTracks {
     BOOL archived = [NSKeyedArchiver archiveRootObject: self.tracks toFile: self.tracksSavedUrl.path];
     if (!archived) {
-        NSLog(@"Failed to load to species list from local storage.");
+        NSLog(@"Failed to save to species list from local storage.");
     }
     
     return archived;
