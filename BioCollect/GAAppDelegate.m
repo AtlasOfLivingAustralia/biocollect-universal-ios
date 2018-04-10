@@ -21,6 +21,7 @@
 #import "Locale.h"
 #import "TrackerService.h"
 #import "ProjectService.h"
+#import "UtilService.h"
 
 #define IDIOM    UI_USER_INTERFACE_IDIOM()
 #define IPAD     UIUserInterfaceIdiomPad
@@ -41,7 +42,7 @@
 @implementation GAAppDelegate
 
 
-@synthesize splitViewController, projects,masterProjectVC, detailVC, restCall, sqlLite, loginViewController, eulaVC, homeVC, recordsVC, myProjectsVC, myRecordsVC, bioProjectService,tabBarController,ozHomeNC, speciesService, alaWKWebView, locale, speciesListService, trackerService, projectService, tracksUpload;
+@synthesize splitViewController, projects,masterProjectVC, detailVC, restCall, sqlLite, loginViewController, eulaVC, homeVC, recordsVC, myProjectsVC, myRecordsVC, bioProjectService,tabBarController,ozHomeNC, speciesService, alaWKWebView, locale, speciesListService, trackerService, projectService, tracksUpload, utilService;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -72,6 +73,7 @@
     locale = [[Locale alloc] init];
     trackerService = [[TrackerService alloc] init];
     tracksUpload = [[TracksUpload alloc] init];
+    utilService = [[UtilService alloc] init];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [trackerService loadTracks];

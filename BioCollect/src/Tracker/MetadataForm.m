@@ -50,7 +50,7 @@
     
     self.countryName = [aDecoder decodeObjectForKey: @"countryName"];
     self.countryType = [aDecoder decodeObjectForKey: @"countryType"];
-    self.countryPhoto = [aDecoder decodeObjectForKey: @"countryPhoto"];
+    self.countryPhotoLocation = [aDecoder decodeObjectForKey: @"countryPhotoLocation"];
     self.vegetationType = [aDecoder decodeObjectForKey: @"vegetationType"];
     self.foodPlant = [aDecoder decodeObjectForKey: @"foodPlant"];
     self.timeSinceFire = [aDecoder decodeObjectForKey: @"timeSinceFire"];
@@ -79,7 +79,7 @@
     
     [aCoder encodeObject:self.countryName forKey: @"countryName"];
     [aCoder encodeObject:self.countryType forKey: @"countryType"];
-    [aCoder encodeObject:self.countryPhoto forKey: @"countryPhoto"];
+    [aCoder encodeObject:_countryPhotoLocation forKey: @"countryPhotoLocation"];
     [aCoder encodeObject:self.vegetationType forKey: @"vegetationType"];
     [aCoder encodeObject:self.foodPlant forKey: @"foodPlant"];
     [aCoder encodeObject:self.timeSinceFire forKey: @"timeSinceFire"];
@@ -91,6 +91,20 @@
     
     [aCoder encodeObject:self.animals forKey: @"animals"];
     [aCoder encodeObject:self.route forKey: @"route"];
+}
+
+#pragma mark - location manager delegate functions
+- (void)locationManager: (CLLocationManager *)manager didUpdateLocations:(nonnull NSArray<CLLocation *> *)locations {
+    CLLocation *newLocation = [locations lastObject];
+    
+    CLLocation *lastLocation = [_route lastObject];
+    
+    CLLocationDistance dist = [newLocation distanceFromLocation:lastLocation];
+    
+    if ( (dist >= MIN_DISTANCE_BETWEEN_LOCATION) || ( [_route count] == 0 ) ) {
+        [self.route addObject:newLocation];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ROUTE-UPDATED" object:nil];
+    }
 }
 
 # pragma mark - Helper functions
@@ -153,22 +167,6 @@
              ];
 }
 
-
-#pragma mark - location manager delegate functions
-- (void)locationManager: (CLLocationManager *)manager didUpdateLocations:(nonnull NSArray<CLLocation *> *)locations {
-    CLLocation *newLocation = [locations lastObject];
-    
-    CLLocation *lastLocation = [_route lastObject];
-    
-    CLLocationDistance dist = [newLocation distanceFromLocation:lastLocation];
-    
-    if ( (dist >= MIN_DISTANCE_BETWEEN_LOCATION) || ( [_route count] == 0 ) ) {
-        [self.route addObject:newLocation];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"ROUTE-UPDATED" object:nil];
-    }
-}
-
-#pragma mark - helper functions
 - (BOOL) isValid {
     if(_organisationName == @"" || _organisationName == nil){
         return NO;
@@ -356,6 +354,70 @@
     return output;
 }
 
+- (void) saveImages {
+    if (self.countryPhoto) {
+        if (self.countryPhotoLocation == nil) {
+            GAAppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
+            self.countryPhotoLocation = [appDelegate.utilService generateFileName: nil];
+        }
+        
+        NSData *data = UIImageJPEGRepresentation(self.countryPhoto, 1.0);
+        [data writeToFile:self.countryPhotoLocation atomically:NO];
+        self.countryPhoto = nil;
+    }
+    
+    for(int i = 0; i < [self.animals count]; i ++ ) {
+        SightingForm* animal = self.animals[i];
+        [animal saveImages];
+    }
+}
+
+- (void) loadImages {
+    if (self.countryPhotoLocation) {
+        self.countryPhoto = [UIImage imageWithContentsOfFile:self.countryPhotoLocation];
+    }
+    
+    for(int i = 0; i < [self.animals count]; i ++ ) {
+        SightingForm* animal = self.animals[i];
+        [animal loadImages];
+    }
+}
+
+- (void) deleteImages {
+    BOOL status;
+    if (self.countryPhotoLocation) {
+         status = [[NSFileManager defaultManager] removeItemAtPath: self.countryPhotoLocation error:nil];
+    }
+    
+    for(int i = 0; i < [self.animals count]; i ++ ) {
+        SightingForm* animal = self.animals[i];
+        [animal deleteImages];
+    }
+}
+
+- (NSString*) getCountryPhotoLocation {
+    if (_countryPhotoLocation) {
+        NSArray<NSURL *>* paths = [NSFileManager.defaultManager URLsForDirectory:NSDocumentDirectory inDomains: NSUserDomainMask];
+        NSString* path = [paths[0] URLByAppendingPathComponent:_countryPhotoLocation].path;
+        return path;
+    }
+    
+    return nil;
+}
+
+- (void) completeRoute {
+    if ([self.route count] == 1) {
+        GAAppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
+        CLLocation* location = self.route[0];
+        CLLocation* loc2 = [appDelegate.utilService locationWithBearing:1.57 distance:MIN_DISTANCE_BETWEEN_LOCATION fromLocation:location.coordinate];
+        [self.route addObject:loc2];
+    }
+}
+
+- (void) save {
+    [self completeRoute];
+    [self saveImages];
+}
 
 #pragma mark - static methods
 /*

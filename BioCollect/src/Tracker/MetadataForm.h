@@ -32,6 +32,7 @@
 @property (nonatomic, strong) NSArray *foodPlant;
 @property (nonatomic, strong) NSString *timeSinceFire;
 @property (nonatomic, strong) UIImage *countryPhoto;
+@property (nonatomic, strong, getter=getCountryPhotoLocation) NSString *countryPhotoLocation;
 
 // Trackability
 @property (nonatomic, strong) NSString *clearGround;
@@ -45,8 +46,13 @@
 // Route
 @property (nonatomic, strong) NSMutableArray<CLLocation *> *route;
 
+- (NSString*) getCountryPhotoLocation;
 - (void) startRecordingLocation;
 - (void) stopRecordingLocation;
 - (BOOL) isValid;
 - (NSMutableDictionary *) transformDataToUploadableFormat;
+- (void) saveImages;
+- (void) loadImages;
+- (void) deleteImages;
+- (void) save;
 @end

@@ -132,10 +132,10 @@
     region.span.latitudeDelta = (maxLatitude - minLatitude)*1.1;
     region.span.longitudeDelta = (maxLongitude - minLongitude)*1.1;
     
-    if ((region.span.latitudeDelta < 0.019863) || ([_route count] < 8))
+    if ((region.span.latitudeDelta < 0.019863))
         region.span.latitudeDelta = 0.019863;
     
-    if ((region.span.longitudeDelta < 0.019863) || ([_route count] < 8))
+    if ((region.span.longitudeDelta < 0.019863))
         region.span.longitudeDelta = 0.019863;
     
     return region;

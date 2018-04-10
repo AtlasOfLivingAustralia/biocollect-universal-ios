@@ -21,7 +21,7 @@
     
     self.animal = [aDecoder decodeObjectForKey: @"animal"];
     self.location = [aDecoder decodeObjectForKey: @"location"];
-    self.photo = [aDecoder decodeObjectForKey: @"photo"];
+    self.photoLocation = [aDecoder decodeObjectForKey: @"photoLocation"];
     self.visibleSign = [aDecoder decodeObjectForKey: @"visibleSign"];
     self.durationSign = [aDecoder decodeObjectForKey: @"durationSign"];
     self.age = [aDecoder decodeObjectForKey: @"age"];
@@ -32,7 +32,7 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder{
     [aCoder encodeObject:self.animal forKey: @"animal"];
     [aCoder encodeObject:self.location forKey: @"location"];
-    [aCoder encodeObject:self.photo forKey: @"photo"];
+    [aCoder encodeObject:_photoLocation forKey: @"photoLocation"];
     [aCoder encodeObject:self.visibleSign forKey: @"visibleSign"];
     [aCoder encodeObject:self.durationSign forKey: @"durationSign"];
     [aCoder encodeObject:self.age forKey: @"age"];
@@ -74,6 +74,41 @@
     }
     
     return displayStr;
+}
+
+- (void) saveImages {
+    if (self.photo) {
+        if (self.photoLocation == nil) {
+            GAAppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
+            self.photoLocation = [appDelegate.utilService generateFileName: nil];
+        }
+        
+        NSData *data = UIImageJPEGRepresentation(self.photo, 1.0);
+        [data writeToFile:self.photoLocation atomically:NO];
+        self.photo = nil;
+    }
+}
+
+- (void) loadImages {
+    if (self.photoLocation) {
+        self.photo = [UIImage imageWithContentsOfFile:self.photoLocation];
+    }
+}
+
+- (void) deleteImages {
+    if (self.photoLocation) {
+         [[NSFileManager defaultManager] removeItemAtPath: self.photoLocation error:nil];
+    }
+}
+
+- (NSString*) getPhotoLocation {
+    if (_photoLocation) {
+        NSArray<NSURL *>* paths = [NSFileManager.defaultManager URLsForDirectory:NSDocumentDirectory inDomains: NSUserDomainMask];
+        NSString* path = [paths[0] URLByAppendingPathComponent:_photoLocation].path;
+        return path;
+    }
+    
+    return nil;
 }
 
 #pragma mark - Helper functions

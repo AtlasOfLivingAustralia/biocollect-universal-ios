@@ -90,6 +90,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         SightingForm * animal = _animals[indexPath.row];
+        [animal deleteImages];
         [_animals removeObjectAtIndex:indexPath.row];
         [self.tableView reloadData];
         

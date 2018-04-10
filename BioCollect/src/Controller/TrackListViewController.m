@@ -97,6 +97,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         MetadataForm* form = self.service.tracks[indexPath.row];
+        [form deleteImages];
         [self.service removeTrack:form];
         [self.tableView reloadData];
         
@@ -185,7 +186,11 @@
         GAAppDelegate* appDelegate = (GAAppDelegate*) [[UIApplication sharedApplication] delegate];
         Locale* locale = appDelegate.locale;
 
-        NSArray* uploadedObjects = notification.object;
+        NSArray<MetadataForm*>* uploadedObjects = notification.object;
+        for(int i = 0; i < [uploadedObjects count]; i ++ ) {
+            [uploadedObjects[i] deleteImages];
+        }
+
         [self.service removeTracks:uploadedObjects];
         [self.tableView reloadData];
         

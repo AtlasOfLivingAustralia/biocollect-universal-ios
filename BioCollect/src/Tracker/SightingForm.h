@@ -14,11 +14,16 @@
 // Animal
 @property (nonatomic, strong) Species *animal;
 @property (nonatomic, strong) UIImage *photo;
+@property (nonatomic, strong, getter=getPhotoLocation) NSString *photoLocation;
 @property (nonatomic, strong) CLLocation *location;
 @property (nonatomic, strong) NSString *visibleSign;
 @property (nonatomic, strong) NSString *durationSign;
 @property (nonatomic, strong) NSString *age;
 
+- (NSString*) getPhotoLocation;
 - (UIImage *) getImage;
 - (NSMutableDictionary*) getOutput;
+- (void) saveImages;
+- (void) loadImages;
+- (void) deleteImages;
 @end

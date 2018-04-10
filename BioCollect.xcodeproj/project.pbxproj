@@ -52,6 +52,13 @@
 		87898E3220689E7E00CB2ED0 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
 		87898E3320689E7F00CB2ED0 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
 		87898E3420689E7F00CB2ED0 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
+		878AFE5B207AFEC800BDFC2A /* icon_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 878AFE5A207AFEC800BDFC2A /* icon_refresh@2x.png */; };
+		878AFE5E207B465700BDFC2A /* UtilService.m in Sources */ = {isa = PBXBuildFile; fileRef = 878AFE5D207B465700BDFC2A /* UtilService.m */; };
+		878AFE5F207B465700BDFC2A /* UtilService.m in Sources */ = {isa = PBXBuildFile; fileRef = 878AFE5D207B465700BDFC2A /* UtilService.m */; };
+		878AFE60207B465700BDFC2A /* UtilService.m in Sources */ = {isa = PBXBuildFile; fileRef = 878AFE5D207B465700BDFC2A /* UtilService.m */; };
+		878AFE61207B465700BDFC2A /* UtilService.m in Sources */ = {isa = PBXBuildFile; fileRef = 878AFE5D207B465700BDFC2A /* UtilService.m */; };
+		878AFE62207B465700BDFC2A /* UtilService.m in Sources */ = {isa = PBXBuildFile; fileRef = 878AFE5D207B465700BDFC2A /* UtilService.m */; };
+		878AFE63207B4D7A00BDFC2A /* UtilService.m in Sources */ = {isa = PBXBuildFile; fileRef = 878AFE5D207B465700BDFC2A /* UtilService.m */; };
 		87B0962F204FAF3A00DA1395 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
 		87B09634204FB94300DA1395 /* SightingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87B09633204FB94300DA1395 /* SightingListViewController.m */; };
 		87B09635204FBD4700DA1395 /* SightingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87B09633204FB94300DA1395 /* SightingListViewController.m */; };
@@ -1487,6 +1494,9 @@
 		874B4F37206354EB00892966 /* TrackerService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TrackerService.m; path = src/Service/TrackerService.m; sourceTree = "<group>"; };
 		874B4F3E206369CB00892966 /* TrackListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TrackListViewController.h; path = src/Controller/TrackListViewController.h; sourceTree = "<group>"; };
 		874B4F3F20636B0400892966 /* TrackListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TrackListViewController.m; path = src/Controller/TrackListViewController.m; sourceTree = "<group>"; };
+		878AFE5A207AFEC800BDFC2A /* icon_refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_refresh@2x.png"; path = "../../../Downloads/icon_refresh@2x.png"; sourceTree = "<group>"; };
+		878AFE5C207B462B00BDFC2A /* UtilService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UtilService.h; path = src/Service/UtilService.h; sourceTree = "<group>"; };
+		878AFE5D207B465700BDFC2A /* UtilService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = UtilService.m; path = src/Service/UtilService.m; sourceTree = "<group>"; };
 		87B09632204FB85E00DA1395 /* SightingListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SightingListViewController.h; path = src/Controller/SightingListViewController.h; sourceTree = "<group>"; };
 		87B09633204FB94300DA1395 /* SightingListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SightingListViewController.m; path = src/Controller/SightingListViewController.m; sourceTree = "<group>"; };
 		87B7000F1DC2E5520066C236 /* SyncTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SyncTableViewController.h; path = src/Sync/SyncTableViewController.h; sourceTree = "<group>"; };
@@ -2706,6 +2716,8 @@
 				E2B42D7020686828009943A4 /* TracksUpload.m */,
 				E2B42D7720686D29009943A4 /* TracksSiteTemplate.json */,
 				E2B42D7D20686DFC009943A4 /* TracksActivityTemplate.json */,
+				878AFE5C207B462B00BDFC2A /* UtilService.h */,
+				878AFE5D207B465700BDFC2A /* UtilService.m */,
 			);
 			name = TracksUpload;
 			sourceTree = "<group>";
@@ -4113,6 +4125,7 @@
 				E26146C920072F9300B1104E /* EasyJSWebViewProxyDelegate.m in Sources */,
 				E26146CA20072F9300B1104E /* SpeciesSearchTableViewController.m in Sources */,
 				E26146CB20072F9300B1104E /* SDImageCache.m in Sources */,
+				878AFE63207B4D7A00BDFC2A /* UtilService.m in Sources */,
 				E26146CC20072F9300B1104E /* Storage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4185,6 +4198,7 @@
 				E26638A21F52EB9B00F1F1CE /* SyncTableViewController.m in Sources */,
 				E2A53726204D44970085D1BE /* SpeciesListVC.m in Sources */,
 				E26638A31F52EB9B00F1F1CE /* SVWebViewControllerActivityChrome.m in Sources */,
+				878AFE61207B465700BDFC2A /* UtilService.m in Sources */,
 				E26638A41F52EB9B00F1F1CE /* GAAppDelegate.m in Sources */,
 				E26638A51F52EB9B00F1F1CE /* ProjectActivitiesJSON.m in Sources */,
 				E26638A61F52EB9B00F1F1CE /* AFHTTPClient.m in Sources */,
@@ -4314,6 +4328,7 @@
 				E2AECF0B1E73D3010035DF28 /* SyncTableViewController.m in Sources */,
 				E2A53725204D44970085D1BE /* SpeciesListVC.m in Sources */,
 				E2AECF0C1E73D3010035DF28 /* SVWebViewControllerActivityChrome.m in Sources */,
+				878AFE60207B465700BDFC2A /* UtilService.m in Sources */,
 				E2AECF0D1E73D3010035DF28 /* GAAppDelegate.m in Sources */,
 				E2AECF0E1E73D3010035DF28 /* ProjectActivitiesJSON.m in Sources */,
 				E27B8F171EF4E5FE00B01FAB /* AFHTTPClient.m in Sources */,
@@ -4381,6 +4396,7 @@
 			files = (
 				E27B8F301EF4E5FE00B01FAB /* UIImageView+REUIKitAdditions.m in Sources */,
 				E2D90EC42057E22B0016F293 /* Project.m in Sources */,
+				878AFE5E207B465700BDFC2A /* UtilService.m in Sources */,
 				E2FF3E6E2052018700439195 /* ProjectService.m in Sources */,
 				E27B8F221EF4E5FE00B01FAB /* AFURLConnectionOperation.m in Sources */,
 				B87373E51DB7027F0057027E /* RecordViewController.m in Sources */,
@@ -4521,6 +4537,7 @@
 				874B4F4120636B0400892966 /* TrackListViewController.m in Sources */,
 				E2E3AAB218F4D2940005BB9E /* GreenArmyTests.m in Sources */,
 				874B4F39206354EB00892966 /* TrackerService.m in Sources */,
+				878AFE5F207B465700BDFC2A /* UtilService.m in Sources */,
 				87165E2D2045719E0094633E /* Locale.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4593,6 +4610,7 @@
 				E2F19DE6200584AC0033DC24 /* SyncTableViewController.m in Sources */,
 				E2A53727204D44970085D1BE /* SpeciesListVC.m in Sources */,
 				E2F19DE7200584AC0033DC24 /* SVWebViewControllerActivityChrome.m in Sources */,
+				878AFE62207B465700BDFC2A /* UtilService.m in Sources */,
 				E2F19DE8200584AC0033DC24 /* GAAppDelegate.m in Sources */,
 				E2F19DE9200584AC0033DC24 /* ProjectActivitiesJSON.m in Sources */,
 				E2F19DEA200584AC0033DC24 /* AFHTTPClient.m in Sources */,

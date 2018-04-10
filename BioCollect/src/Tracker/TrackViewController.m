@@ -20,6 +20,7 @@
 @implementation TrackViewController
 - (instancetype) init {
     _trackForm = [MetadataForm new];
+    [_trackForm loadImages];
     if (isPractise == nil) {
         isPractise = NO;
     }
@@ -32,6 +33,7 @@
 
 - (instancetype) initWithForm:(MetadataForm*) form {
     _trackForm = form;
+    [_trackForm loadImages];
     if (isPractise == nil) {
         isPractise = NO;
     }
@@ -203,8 +205,11 @@
                                                             preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction* saveAndContinue = [UIAlertAction actionWithTitle: [locale get: @"trackmetadata.confirmsave.continue"] style:UIAlertActionStyleDefault
                                                          handler:^(UIAlertAction * action) {
-                                                             [appDelegate.trackerService addTrack: self.trackForm];
                                                              [[NSNotificationCenter defaultCenter] postNotificationName:@"TRACK-SAVED" object: nil];
+
+                                                             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                                                                [appDelegate.trackerService addTrack: self.trackForm];
+                                                             });
                                                          }];
     
     UIAlertAction* saveAndExit = [UIAlertAction actionWithTitle: [locale get: @"trackmetadata.confirmsave.exit"] style:UIAlertActionStyleDefault
@@ -215,9 +220,13 @@
 
                                                              [_trackForm stopRecordingLocation];
                                                              [_route stopNotification];
-                                                             [appDelegate.trackerService addTrack: self.trackForm];
                                                              [[NSNotificationCenter defaultCenter] postNotificationName:@"TRACK-SAVED" object: nil];
                                                              [self.navigationController popViewControllerAnimated:YES];
+
+                                                             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                                                                 [_trackForm save];
+                                                                 [appDelegate.trackerService addTrack: self.trackForm];
+                                                             });
                                                          }];
     
     [alert addAction:saveAndContinue];
