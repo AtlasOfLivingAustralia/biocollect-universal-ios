@@ -211,6 +211,8 @@
 
 
 - (NSMutableDictionary*) transformDataToUploadableFormat {
+    [self loadImages];
+    
     NSMutableDictionary *item = [[NSMutableDictionary alloc] init];
     item[@"ready"] = @"1";
     item[@"uploadedStatus"] = @"0";
