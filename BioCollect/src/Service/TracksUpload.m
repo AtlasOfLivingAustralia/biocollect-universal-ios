@@ -41,7 +41,6 @@
         item[@"uploadedStatus"] = @"0";
         
         @try {
-            
             // Upload site and images.
             NSString *siteId = [self uploadSite:item[@"site"]];
             NSMutableDictionary *countryMetadata = item[@"countryImage"] != nil ? [self uploadImage : item[@"countryImage"]] : nil;
@@ -110,7 +109,8 @@
         }
     }
     if(uploadError) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"ERROR-TRACK-UPLOADING" object:uploadedTracks];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"TRACK-UPLOADING-COMPLETE" object:uploadedTracks];
+        //[[NSNotificationCenter defaultCenter] postNotificationName:@"ERROR-TRACK-UPLOADING" object:uploadedTracks];
     } else {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"TRACK-UPLOADING-COMPLETE" object:uploadedTracks];
     }
@@ -142,7 +142,7 @@
         }
     }
     
-    if(error == nil || respDict == nil){
+    if(error != nil  || (respDict != nil && ![[NSNumber numberWithInt:200] isEqual: respDict[@"statusCode"]])){
         @throw [NSException exceptionWithName:kActivityUploadException
                                        reason:@"Error, submitting tracks, please try again later."
                                      userInfo:nil];
