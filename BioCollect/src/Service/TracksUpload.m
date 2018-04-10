@@ -17,6 +17,7 @@
 #define kImageUploadException @"ImageUploadException"
 #define kActivityUploadException @"ActivityUploadException"
 #define kProjectNotSelected @"ProjectNotSelected"
+#define kAuthorizationError @"kAuthorizationError"
 
 -(id) init {
     self.appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -33,11 +34,14 @@
     }
     
     NSMutableArray* uploadedTracks = [[NSMutableArray alloc] init];
-    
+    int uploadError = 0;
     for(int i = 0; i < [uploadItems count]; i++) {
         MetadataForm* form = [uploadItems objectAtIndex:i];
         NSMutableDictionary *item = [form transformDataToUploadableFormat];
+        item[@"uploadedStatus"] = @"0";
+        
         @try {
+            
             // Upload site and images.
             NSString *siteId = [self uploadSite:item[@"site"]];
             NSMutableDictionary *countryMetadata = item[@"countryImage"] != nil ? [self uploadImage : item[@"countryImage"]] : nil;
@@ -74,8 +78,8 @@
                     if([image isKindOfClass: [NSDictionary class]]) {
                         NSMutableDictionary *row = [tempOutput[@"data"][@"sightingEvidenceTable"] objectAtIndex:index];
                         row[@"imageOfSign"] = [[NSMutableArray alloc] init];
-                        //TODO: Check file exists.
-                        [row[@"imageOfSign"] addObject: speciesImages[index][@"files"]];
+                        NSDictionary *files = speciesImages[index];
+                        [row[@"imageOfSign"] addObject: files[@"files"]];
                     }
                 }
             }
@@ -85,25 +89,34 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:@"UPLOADED-TRACK" object:form];
         }
         @catch (NSException *exception) {
-            if([exception.name isEqualToString:kSiteUploadException]) {
+            item[@"uploadedStatus"] = @"0";
+            uploadError = 1;
+            if([exception.name isEqualToString:kAuthorizationError]) {
                 NSLog(@"%@", exception.reason);
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"ERROR-NOT-AUTHORIZED" object:form];
+                break;
+            } else if([exception.name isEqualToString:kSiteUploadException]) {
+                NSLog(@"%@", exception.reason);
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"ERROR-SITE-UPLOAD" object:form];
             } else if([exception.name isEqualToString:kImageUploadException]) {
                 NSLog(@"%@", exception.reason);
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"ERROR-IMAGE-UPLOAD" object:form];
             } else if([exception.name isEqualToString:kActivityUploadException]) {
                NSLog(@"%@", exception.reason);
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"ERROR-ACTIVITY-UPLOAD" object:form];
             }
-            item[@"uploadedStatus"] = @"0";
         }
         @finally {
         }
     }
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"TRACK-UPLOADING-COMPLETE" object:uploadedTracks];
-    // [[NSNotificationCenter defaultCenter]postNotificationName:@"SPECIES_SEARCH_SELECTED" object: self.selectedSpecies];
-    // TODO - Remove items from the local array that are successfully submitted to the server.
+    if(uploadError) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ERROR-TRACK-UPLOADING" object:uploadedTracks];
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"TRACK-UPLOADING-COMPLETE" object:uploadedTracks];
+    }
 }
 
-- (NSString *) uploadActivity: (NSDictionary *) activity pActivityId: (NSString *) pActivityId {
+- (void) uploadActivity: (NSDictionary *) activity pActivityId: (NSString *) pActivityId {
     NSString *activityJson = [self dictionaryToString: activity];
     NSString *url = [NSString stringWithFormat:@"%@%@%@", BIOCOLLECT_SERVER, CREATE_RECORD, pActivityId];
     NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[activityJson length]];
@@ -119,19 +132,21 @@
     NSURLResponse *response;
     NSData *POSTReply = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     NSDictionary *respDict = nil;
-    NSString *activityId = nil;
+    
     if(error == nil) {
         respDict =  [NSJSONSerialization JSONObjectWithData:POSTReply options:kNilOptions error:&error];
-        activityId = error == nil && respDict != nil ? respDict[@"activityId"] : nil;
+        if(respDict != nil && [[NSNumber numberWithInt:401] isEqual: respDict[@"statusCode"]]){
+            @throw [NSException exceptionWithName:kAuthorizationError
+                                           reason:@"Access denied"
+                                         userInfo:nil];
+        }
     }
     
-    if(error == nil || respDict == nil || activityId == nil){
+    if(error == nil || respDict == nil){
         @throw [NSException exceptionWithName:kActivityUploadException
                                        reason:@"Error, submitting tracks, please try again later."
                                      userInfo:nil];
     }
-    
-    return activityId;
 }
              
 - (NSMutableDictionary *) uploadImage: (UIImage *) image{
