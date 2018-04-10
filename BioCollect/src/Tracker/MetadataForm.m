@@ -227,6 +227,7 @@
     GAAppDelegate *appDelegate = (GAAppDelegate *) [[UIApplication sharedApplication] delegate];
     Project *project = [appDelegate.projectService loadSelectedProject];
 
+    NSMutableDictionary* site = [[NSMutableDictionary alloc] init];
     NSMutableDictionary* obj = [[NSMutableDictionary alloc] init];
     NSMutableArray* route = [[NSMutableArray alloc] initWithCapacity:[_route count]];
     
@@ -261,9 +262,14 @@
         @"asyncUpdate":@YES
     };
     
+    site[@"site"] = @{
+             @"pActivityId": project.projectActivityId,
+             @"site": obj[@"site"]
+             };
+    
     obj[@"pActivityId"] = project.projectActivityId ? project.projectActivityId : @"";
     
-    return [obj[@"site"] copy];
+    return [site[@"site"] copy];
 }
 
 - (NSArray*) getAnimalImageList {
@@ -307,37 +313,38 @@
         [animals addObject: [animal getOutput]];
     }
     
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithDictionary: @{
+             @"organisationName": self.organisationName ? self.organisationName : @"",
+             @"recordedBy": self.leadTracker ? self.leadTracker : @"",
+             @"additionalTrackers": self.otherTrackers ? self.otherTrackers : @"",
+             @"eventComments": self.comments ? self.comments : @"",
+             @"surveyType": self.surveyType ? self.surveyType : @"",
+             @"locationAccuracy": @50,
+             @"location": @"",
+             @"locationLatitude": @"",
+             @"locationLongitude": @"",
+             @"locationCentroidLatitude": @0,
+             @"locationCentroidLongitude": @0,
+             @"surveyDate": self.date ? [MetadataForm dateToString: self.date] : @"",
+             @"surveyStartTime": self.startTime ? [MetadataForm getTimeFromDate: self.startTime] : @"",
+             @"surveyFinishTime": self.endTime ? [MetadataForm getTimeFromDate: self.endTime] : @"",
+             @"habitatType": self.countryType ? self.countryType : @"",
+             @"siteChoice": self.surveyChoice ? self.surveyChoice : @"",
+             @"disturbance": self.disturbance ? self.disturbance : @"",
+             @"fireHistory": self.timeSinceFire ? self.timeSinceFire : @"",
+             @"visibility": self.weather ? self.weather : @"",
+             @"surfaceTrackability": self.groundSoftness ? self.groundSoftness : @"",
+             @"trackingSurfaceContinuity": self.clearGround ? self.clearGround : @"",
+             @"locationImage": @"",
+             @"countryName": self.countryName ? self.countryName : @"",
+             @"vegetationType": self.vegetationType ? self.vegetationType : @"",
+             @"foodPlants": self.foodPlant ? self.foodPlant : @[],
+             @"sightingEvidenceTable": animals
+             }];
     NSMutableDictionary* output = [[NSMutableDictionary alloc] initWithDictionary: @{
      @"name": @"CLC 2Ha Track Plot",
      @"outputId": @"",
-     @"data": @{
-        @"organisationName": self.organisationName ? self.organisationName : @"",
-        @"recordedBy": self.leadTracker ? self.leadTracker : @"",
-        @"additionalTrackers": self.otherTrackers ? self.otherTrackers : @"",
-        @"eventComments": self.comments ? self.comments : @"",
-        @"surveyType": self.surveyType ? self.surveyType : @"",
-        @"locationAccuracy": @50,
-        @"location": @"",
-        @"locationLatitude": @"",
-        @"locationLongitude": @"",
-        @"locationCentroidLatitude": @0,
-        @"locationCentroidLongitude": @0,
-        @"surveyDate": self.date ? [MetadataForm dateToString: self.date] : @"",
-        @"surveyStartTime": self.startTime ? [MetadataForm getTimeFromDate: self.startTime] : @"",
-        @"surveyFinishTime": self.endTime ? [MetadataForm getTimeFromDate: self.endTime] : @"",
-        @"habitatType": self.countryType ? self.countryType : @"",
-        @"siteChoice": self.surveyChoice ? self.surveyChoice : @"",
-        @"disturbance": self.disturbance ? self.disturbance : @"",
-        @"fireHistory": self.timeSinceFire ? self.timeSinceFire : @"",
-        @"visibility": self.weather ? self.weather : @"",
-        @"surfaceTrackability": self.groundSoftness ? self.groundSoftness : @"",
-        @"trackingSurfaceContinuity": self.clearGround ? self.clearGround : @"",
-        @"locationImage": @"",
-        @"countryName": self.countryName ? self.countryName : @"",
-        @"vegetationType": self.vegetationType ? self.vegetationType : @"",
-        @"foodPlants": self.foodPlant ? self.foodPlant : @[],
-        @"sightingEvidenceTable": animals
-        },
+     @"data": data,
      @"outputNotCompleted":@NO,
      @"selectFromSitesOnly":@NO,
      @"checkMapInfo":@{

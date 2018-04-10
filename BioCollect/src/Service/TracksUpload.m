@@ -37,33 +37,49 @@
     for(int i = 0; i < [uploadItems count]; i++) {
         MetadataForm* form = [uploadItems objectAtIndex:i];
         NSMutableDictionary *item = [form transformDataToUploadableFormat];
-        NSLog(@"%@", item);
         @try {
             // Upload site and images.
-            NSString *siteId = nil;
-            NSMutableDictionary *countryMetadata = nil;
-            [self uploadSite : item[@"site"] siteId: siteId];
-            [self uploadImage : item[@"countryImage"] imageMetadata:countryMetadata];
-
+            NSString *siteId = [self uploadSite:item[@"site"]];
+            NSMutableDictionary *countryMetadata = item[@"countryImage"] != nil ? [self uploadImage : item[@"countryImage"]] : nil;
             // Upload species images.
             NSMutableArray *images = item[@"speciesImages"];
             NSMutableArray *speciesImages = [[NSMutableArray alloc] init];
             for(int j = 0; j < [images count]; j++) {
                 NSObject *image = [images objectAtIndex:j];
                 if([image isKindOfClass: [UIImage class]]) {
-                    NSMutableDictionary *metadata = nil;
-                    [self uploadImage : (UIImage *)image imageMetadata:metadata];
+                    NSMutableDictionary *metadata = [self uploadImage : (UIImage *)image];
                     [speciesImages addObject:metadata];
                 } else {
                     [speciesImages addObject:@""];
                 }
             }
-
-            // Upload activity.
-            // TODO : Update item[@"activity"] with siteId, locationId & image metadata
-            [self uploadActivity:item[@"activity"] pActivityId: project.projectActivityId];
             
-            // Flag the object as uploaded.
+            // Update siteId.
+            NSDictionary *tempOutput = [item[@"activity"][@"outputs"] objectAtIndex:0];
+            NSDictionary *data = tempOutput[@"data"];
+            if(siteId != nil) {
+                item[@"activity"][@"siteId"] = siteId;
+                [data objectForKey:@"location"] ? [data setValue:siteId forKey:@"location"] : nil;
+            }
+            
+            // Update countryImage
+            if(countryMetadata[@"files"] != nil) {
+                tempOutput[@"data"][@"locationImage"] = countryMetadata[@"files"];
+            }
+            
+            // Update species images.
+            if([speciesImages count] == [tempOutput[@"data"][@"sightingEvidenceTable"] count] ) {
+                for (int index = 0 ; index < [tempOutput[@"data"][@"sightingEvidenceTable"] count]; index++){
+                    NSObject *image = speciesImages[index];
+                    if([image isKindOfClass: [NSDictionary class]]) {
+                        NSMutableDictionary *row = [tempOutput[@"data"][@"sightingEvidenceTable"] objectAtIndex:index];
+                        row[@"imageOfSign"] = [[NSMutableArray alloc] init];
+                        //TODO: Check file exists.
+                        [row[@"imageOfSign"] addObject: speciesImages[index][@"files"]];
+                    }
+                }
+            }
+            [self uploadActivity:item[@"activity"] pActivityId: project.projectActivityId];
             item[@"uploadedStatus"] = @"1";
             [uploadedTracks addObject:form];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"UPLOADED-TRACK" object:form];
@@ -79,7 +95,6 @@
             item[@"uploadedStatus"] = @"0";
         }
         @finally {
-            // TODO: Handle exception...
         }
     }
     
@@ -88,7 +103,7 @@
     // TODO - Remove items from the local array that are successfully submitted to the server.
 }
 
-- (void) uploadActivity: (NSDictionary *) activity pActivityId: (NSString *) pActivityId {
+- (NSString *) uploadActivity: (NSDictionary *) activity pActivityId: (NSString *) pActivityId {
     NSString *activityJson = [self dictionaryToString: activity];
     NSString *url = [NSString stringWithFormat:@"%@%@%@", BIOCOLLECT_SERVER, CREATE_RECORD, pActivityId];
     NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[activityJson length]];
@@ -107,7 +122,7 @@
     NSString *activityId = nil;
     if(error == nil) {
         respDict =  [NSJSONSerialization JSONObjectWithData:POSTReply options:kNilOptions error:&error];
-        activityId = error == nil && respDict != nil ? respDict[@"id"] : nil;
+        activityId = error == nil && respDict != nil ? respDict[@"activityId"] : nil;
     }
     
     if(error == nil || respDict == nil || activityId == nil){
@@ -115,10 +130,14 @@
                                        reason:@"Error, submitting tracks, please try again later."
                                      userInfo:nil];
     }
+    
+    return activityId;
 }
              
-- (void) uploadImage: (UIImage *) image imageMetadata: (NSMutableDictionary *) dict {
+- (NSMutableDictionary *) uploadImage: (UIImage *) image{
+    NSMutableDictionary *dict = nil;
     NSMutableDictionary *result = [self.appDelegate.restCall uploadImage:image];
+    
     if((result == nil) || [[NSNumber numberWithInt:200] isEqual: result[@"statusCode"]]){
         dict = result[@"resp"];
     }
@@ -128,9 +147,10 @@
                                        reason:@"Error, uploading species image, please try again later."
                                      userInfo:nil];
     }
+    return dict;
 }
 
-- (void) uploadSite: (NSDictionary *) site siteId: (NSString *) siteId {
+- (NSString *) uploadSite: (NSDictionary *) site {
     NSString *siteJson = [self dictionaryToString: site];
     NSString *url = [NSString stringWithFormat:@"%@%@", BIOCOLLECT_SERVER, CREATE_SITE];
     NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[siteJson length]];
@@ -145,15 +165,18 @@
     NSError *error;
     NSURLResponse *response;
     NSData *POSTReply = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    NSString *siteId = nil;
     if(error == nil) {
         NSDictionary *respDict =  [NSJSONSerialization JSONObjectWithData:POSTReply options:kNilOptions error:&error];
         //{"status":"created","id":"2628a2a2-2f27-4863-bcb3-f491ed9989aa"}
-        siteId = error == nil && respDict != nil ? respDict[@"id"] : nil;
+        siteId = (error == nil && respDict != nil) ? respDict[@"id"] : nil;
     } else {
         @throw [NSException exceptionWithName:kSiteUploadException
                                        reason:@"Error, uploading tracks coordinates."
                                         userInfo:nil];
     }
+    
+    return siteId;
 }
 - (NSString *) dictionaryToString : (NSDictionary *) dictionary {
     NSDictionary *data = dictionary;
