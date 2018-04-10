@@ -78,9 +78,9 @@
                     NSObject *image = speciesImages[index];
                     if([image isKindOfClass: [NSDictionary class]]) {
                         NSMutableDictionary *row = [tempOutput[@"data"][@"sightingEvidenceTable"] objectAtIndex:index];
-                        //row[@"imageOfSign"] = [[NSMutableArray alloc] init];
                         NSDictionary *files = speciesImages[index];
-                        [row[@"imageOfSign"] addObject: files[@"files"]];
+                        NSMutableArray *imageOfSign = files[@"files"] ? files[@"files"] : [[NSMutableArray alloc] init];
+                        row[@"imageOfSign"] = imageOfSign;
                     }
                 }
             }
