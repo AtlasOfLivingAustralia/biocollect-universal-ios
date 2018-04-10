@@ -28,9 +28,12 @@
 - (void) uploadTracks: (NSMutableArray<MetadataForm*>*) uploadItems andUpdateError: (NSError **) error {
     Project *project = [self.appDelegate.projectService loadSelectedProject];
     if(project == nil) {
-        @throw [NSException exceptionWithName:kProjectNotSelected
+        /*@throw [NSException exceptionWithName:kProjectNotSelected
                                        reason:@"Error, please go to settings and select ranger group."
                                      userInfo:nil];
+       */
+      [[NSNotificationCenter defaultCenter] postNotificationName:@"ERROR-PROJECT-NOT-SELECTED" object:nil];
+      return;
     }
     
     NSMutableArray* uploadedTracks = [[NSMutableArray alloc] init];
