@@ -28,10 +28,6 @@
 - (void) uploadTracks: (NSMutableArray<MetadataForm*>*) uploadItems andUpdateError: (NSError **) error {
     Project *project = [self.appDelegate.projectService loadSelectedProject];
     if(project == nil) {
-        /*@throw [NSException exceptionWithName:kProjectNotSelected
-                                       reason:@"Error, please go to settings and select ranger group."
-                                     userInfo:nil];
-       */
       [[NSNotificationCenter defaultCenter] postNotificationName:@"ERROR-PROJECT-NOT-SELECTED" object:nil];
       return;
     }
@@ -100,25 +96,26 @@
             uploadError = 1;
             if([exception.name isEqualToString:kAuthorizationError]) {
                 NSLog(@"%@", exception.reason);
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"ERROR-NOT-AUTHORIZED" object:form];
+                uploadError = 2;
                 break;
             } else if([exception.name isEqualToString:kSiteUploadException]) {
                 NSLog(@"%@", exception.reason);
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"ERROR-SITE-UPLOAD" object:form];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"UPLOADING-ERROR" object:form];
             } else if([exception.name isEqualToString:kImageUploadException]) {
                 NSLog(@"%@", exception.reason);
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"ERROR-IMAGE-UPLOAD" object:form];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"UPLOADING-ERROR" object:form];
             } else if([exception.name isEqualToString:kActivityUploadException]) {
                NSLog(@"%@", exception.reason);
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"ERROR-ACTIVITY-UPLOAD" object:form];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"UPLOADING-ERROR" object:form];
             }
         }
         @finally {
         }
     }
-    if(uploadError) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"TRACK-UPLOADING-COMPLETE" object:uploadedTracks];
-        //[[NSNotificationCenter defaultCenter] postNotificationName:@"ERROR-TRACK-UPLOADING" object:uploadedTracks];
+    if(uploadError == 1) {
+      [[NSNotificationCenter defaultCenter] postNotificationName:@"UPLOADING-ERROR-COMPLETE" object:uploadedTracks];
+    } else if(uploadError == 2) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"UPLOADING-ERROR-NOT-AUTHORIZED" object:nil];
     } else {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"TRACK-UPLOADING-COMPLETE" object:uploadedTracks];
     }
@@ -143,17 +140,18 @@
     
     if(error == nil) {
         respDict =  [NSJSONSerialization JSONObjectWithData:POSTReply options:kNilOptions error:&error];
-        if(respDict != nil && [[NSNumber numberWithInt:401] isEqual: respDict[@"statusCode"]]){
-            @throw [NSException exceptionWithName:kAuthorizationError
-                                           reason:@"Access denied"
-                                         userInfo:nil];
-        }
     }
     
     if(error != nil  || (respDict != nil && ![[NSNumber numberWithInt:200] isEqual: respDict[@"statusCode"]])){
-        @throw [NSException exceptionWithName:kActivityUploadException
-                                       reason:@"Error, submitting tracks, please try again later."
-                                     userInfo:nil];
+        if(error.code == NSURLErrorUserCancelledAuthentication) {
+            @throw [NSException exceptionWithName:kAuthorizationError
+                                           reason:@"Access denied"
+                                         userInfo:nil];
+        } else {
+            @throw [NSException exceptionWithName:kActivityUploadException
+                                           reason:@"Error, submitting tracks, please try again later."
+                                         userInfo:nil];
+        }
     }
 }
              

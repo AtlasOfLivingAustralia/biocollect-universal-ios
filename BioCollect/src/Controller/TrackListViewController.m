@@ -24,6 +24,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(uploadProgressing) name: @"UPLOADED-TRACK" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(uploadComplete:) name: @"TRACK-UPLOADING-COMPLETE" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(uploadErrorNotAuthorized:) name: @"UPLOADING-ERROR-NOT-AUTHORIZED" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(uploadCompleteWithError:) name: @"UPLOADING-ERROR-COMPLETE" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver: self.tableView selector: @selector(reloadData) name: @"TRACK-SAVED" object:nil];
     
     return self;
@@ -149,12 +151,21 @@
             }
             
             dispatch_async(dispatch_get_main_queue(), ^{
+                GAAppDelegate* appDelegate = (GAAppDelegate*) [[UIApplication sharedApplication] delegate];
+                Locale* locale = appDelegate.locale;
+                
                 totalTracksToUpload = [validForms count];
                 totalTracksUploaded = 0;
-                [self updateMessage];
+                if(totalTracksToUpload == 0) {
+                        [RKDropdownAlert title:[locale get: @"uploaded.noTracksToUpload"] message:@"" backgroundColor: [self colorFromHexString:@"#F1582B"] textColor: [UIColor whiteColor] time:5];
+                } else {
+                    [self updateMessage];
+                }
             });
             
-            [appDelegate.tracksUpload uploadTracks:validForms andUpdateError:nil];
+            if ([validForms count] > 0) {
+                [appDelegate.tracksUpload uploadTracks:validForms andUpdateError:nil];
+            }
         });
     } else {
         [self displayNoInternetAlert];
@@ -201,6 +212,45 @@
         [RKDropdownAlert title:message message:@"" backgroundColor: [self colorFromHexString:@"#4cbc4c"] textColor: [UIColor whiteColor] time:5];
     });
 }
+
+- (void) uploadCompleteWithError: (NSNotification *) notification {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        GAAppDelegate* appDelegate = (GAAppDelegate*) [[UIApplication sharedApplication] delegate];
+        Locale* locale = appDelegate.locale;
+        
+        NSArray<MetadataForm*>* uploadedObjects = notification.object;
+        for(int i = 0; i < [uploadedObjects count]; i ++ ) {
+            [uploadedObjects[i] deleteImages];
+        }
+        
+        [self.service removeTracks:uploadedObjects];
+        [self.tableView reloadData];
+        
+        [MRProgressOverlayView dismissOverlayForView:self.navigationController.view animated:YES];
+        overlay = nil;
+        [[[UIAlertView alloc] initWithTitle:@"ERROR"
+                                    message:[locale get: @"upload.error"]
+                                   delegate: nil
+                          cancelButtonTitle:nil
+                          otherButtonTitles:@"OK", nil] show];
+    });
+}
+
+- (void) uploadErrorNotAuthorized: (NSNotification *) notification {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        GAAppDelegate* appDelegate = (GAAppDelegate*) [[UIApplication sharedApplication] delegate];
+        Locale* locale = appDelegate.locale;
+        [MRProgressOverlayView dismissOverlayForView:self.navigationController.view animated:YES];
+        overlay = nil;
+        [[[UIAlertView alloc] initWithTitle:@"ERROR"
+                                    message:[locale get: @"upload.accessDenied"]
+                                   delegate: nil
+                          cancelButtonTitle:nil
+                          otherButtonTitles:@"OK", nil] show];
+    });
+}
+
+
 
 #pragma mark - helper function
 -(UIColor *)colorFromHexString:(NSString *)hexString {
