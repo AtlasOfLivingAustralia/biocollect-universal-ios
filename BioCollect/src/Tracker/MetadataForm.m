@@ -409,7 +409,7 @@
     if ([self.route count] == 1) {
         GAAppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
         CLLocation* location = self.route[0];
-        CLLocation* loc2 = [appDelegate.utilService locationWithBearing:1.57 distance:MIN_DISTANCE_BETWEEN_LOCATION fromLocation:location.coordinate];
+        CLLocation* loc2 = [appDelegate.utilService locationWithBearing:1.57 distance:10 fromLocation:location.coordinate];
         [self.route addObject:loc2];
     }
 }
