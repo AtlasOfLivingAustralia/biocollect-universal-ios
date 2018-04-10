@@ -44,6 +44,7 @@
             // Upload site and images.
             NSString *siteId = [self uploadSite:item[@"site"]];
             NSMutableDictionary *countryMetadata = item[@"countryImage"] != nil ? [self uploadImage : item[@"countryImage"]] : [[NSMutableDictionary alloc] init];
+            
             // Upload species images.
             NSMutableArray *images = item[@"speciesImages"];
             NSMutableArray *speciesImages = [[NSMutableArray alloc] init];
@@ -76,11 +77,13 @@
             if([speciesImages count] == [tempOutput[@"data"][@"sightingEvidenceTable"] count] ) {
                 for (int index = 0 ; index < [tempOutput[@"data"][@"sightingEvidenceTable"] count]; index++){
                     NSObject *image = speciesImages[index];
+                    NSMutableDictionary *row = [tempOutput[@"data"][@"sightingEvidenceTable"] objectAtIndex:index];
                     if([image isKindOfClass: [NSDictionary class]]) {
-                        NSMutableDictionary *row = [tempOutput[@"data"][@"sightingEvidenceTable"] objectAtIndex:index];
                         NSDictionary *files = speciesImages[index];
                         NSMutableArray *imageOfSign = files[@"files"] ? files[@"files"] : [[NSMutableArray alloc] init];
                         row[@"imageOfSign"] = imageOfSign;
+                    } else {
+                        row[@"imageOfSign"] = [[NSMutableArray alloc] init];
                     }
                 }
             }
