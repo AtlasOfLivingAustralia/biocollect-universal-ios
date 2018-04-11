@@ -71,14 +71,21 @@
         speciesObj.lsid = @"noAnimalFound";
         speciesObj.kvpValues = [[NSArray alloc]init];
         [speciesList addObject:speciesObj];
-
+        
         [self storeSpeciesList];
     }
 }
 
 -(BOOL) storeSpeciesList {
     [self updateDisplayName];
-    BOOL archived = [NSKeyedArchiver archiveRootObject: self.speciesList toFile: self.speciesFileUrlPath.path];
+    
+    //Sort by display name
+    NSSortDescriptor *sortDescriptor;
+    sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"displayName"
+                                                 ascending:YES];
+    NSArray *sortedArray = [self.speciesList sortedArrayUsingDescriptors:@[sortDescriptor]];
+    
+    BOOL archived = [NSKeyedArchiver archiveRootObject: sortedArray toFile: self.speciesFileUrlPath.path];
     if (!archived) {
         NSLog(@"Failed to load to species list from local storage.");
     }
@@ -94,7 +101,7 @@
         NSError *error;
         [self getSpeciesFromList:&error];
     }
-    //[self.speciesList sortUsingSelector:@selector(sortByDisplayName:)];
+    
     return [self speciesList];
 }
 
