@@ -17,4 +17,6 @@
 -(BOOL) addTrack: (MetadataForm*) track;
 -(BOOL) removeTrack: (MetadataForm*) track;
 -(BOOL) removeTracks: (MetadataForm*) tracks;
+-(BOOL) removeAllTracks;
+-(void) updateOrganisationOfAllTracks: (NSNotification*) notification;
 @end

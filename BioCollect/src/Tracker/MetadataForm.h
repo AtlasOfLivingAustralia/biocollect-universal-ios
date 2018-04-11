@@ -45,6 +45,7 @@
 
 // Route
 @property (nonatomic, strong) NSMutableArray<CLLocation *> *route;
+@property (nonatomic, readonly) double distanceTravelled;
 
 - (NSString*) getCountryPhotoLocation;
 - (void) startRecordingLocation;
@@ -55,4 +56,6 @@
 - (void) loadImages;
 - (void) deleteImages;
 - (void) save;
+- (NSString*) getDisplayTime;
+- (NSString*) getSummary;
 @end

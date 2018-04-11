@@ -262,6 +262,7 @@ static const NSInteger kARRMaxCacheAge = 60 * 60 * 24 * 365 * 2; // 1 day * 365 
     [self.recordsVC resetRecords];
     [GASettings resetAllFields];
     [self.sqlLite deleteAllTables];
+    [self.trackerService removeAllTracks];
     [self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
     [UIView transitionWithView:self.window
                       duration:0.5

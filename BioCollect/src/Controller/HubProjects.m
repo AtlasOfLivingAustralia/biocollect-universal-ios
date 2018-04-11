@@ -217,6 +217,7 @@
 
 -(void) doneBtnPressed {
     if(self.selectedProject) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"PROJECT-UPDATED" object:self.selectedProject.name];
         [self.navigationController popViewControllerAnimated:YES];
     } else {
         [RKDropdownAlert title:@"Error" message:@"Please select the organisation" backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];

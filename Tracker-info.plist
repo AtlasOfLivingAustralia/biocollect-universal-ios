@@ -36,7 +36,7 @@
 			<key>icon</key>
 			<string>icon_tracks_add_track</string>
 			<key>title</key>
-			<string>Add a track</string>
+			<string>Create a new track</string>
 			<key>url</key>
 			<string></string>
 			<key>view</key>
@@ -44,19 +44,9 @@
 		</dict>
 		<dict>
 			<key>icon</key>
-			<string>icon_tracks_practice</string>
-			<key>title</key>
-			<string>Practise tracking</string>
-			<key>url</key>
-			<string></string>
-			<key>view</key>
-			<string>try_track</string>
-		</dict>
-		<dict>
-			<key>icon</key>
 			<string>icon_tracks_review</string>
 			<key>title</key>
-			<string>Review tracks</string>
+			<string>My saved tracks</string>
 			<key>url</key>
 			<string></string>
 			<key>view</key>
@@ -66,11 +56,21 @@
 			<key>icon</key>
 			<string>icon_tracks_mytracks</string>
 			<key>title</key>
-			<string>My tracks</string>
+			<string>My uploaded tracks</string>
 			<key>url</key>
 			<string></string>
 			<key>view</key>
 			<string>my_hub_records</string>
+		</dict>
+		<dict>
+			<key>icon</key>
+			<string>icon_tracks_practice</string>
+			<key>title</key>
+			<string>Practise creating a track</string>
+			<key>url</key>
+			<string></string>
+			<key>view</key>
+			<string>try_track</string>
 		</dict>
 		<dict>
 			<key>icon</key>

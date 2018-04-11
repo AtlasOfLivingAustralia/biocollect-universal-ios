@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "TrackerService.h"
 #import "MetadataForm.h"
-
+#import "GAAppDelegate.h"
 #define kTracksStorageLocation @"TRACKS_SAVED"
 
 @implementation TrackerService
@@ -21,7 +21,8 @@
     if([urls count] > 0){
         self.tracksSavedUrl = [urls[0] URLByAppendingPathComponent:kTracksStorageLocation];
     }
-
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateOrganisationOfAllTracks:) name:@"PROJECT-UPDATED" object:nil];
     return self;
 }
 
@@ -57,6 +58,8 @@
 
 - (BOOL) removeTrack: (MetadataForm*) track {
     if (track != nil) {
+        [track deleteImages];
+        
         [self.tracks removeObject: track];
         return [self saveTracks];
     }
@@ -66,10 +69,38 @@
 
 - (BOOL) removeTracks: (NSArray<MetadataForm*>*) tracks {
     if (tracks != nil) {
+        for( int i=0; i < [tracks count]; i++) {
+            MetadataForm* form = tracks[i];
+            [form deleteImages];
+        }
+
         [self.tracks removeObjectsInArray: tracks];
         return [self saveTracks];
     }
     
     return NO;
 }
+
+- (BOOL) removeAllTracks {
+    for( int i=0; i < [self.tracks count]; i++) {
+        MetadataForm* form = self.tracks[i];
+        [form deleteImages];
+    }
+    
+    self.tracks = [NSMutableArray new];
+    return [self saveTracks];
+}
+
+- (void) updateOrganisationOfAllTracks: (NSNotification*) notification {
+    NSString* organisationName = notification.object;
+    if (organisationName) {
+        for (int i=0; i < [self.tracks count]; i++) {
+            MetadataForm* form = self.tracks[i];
+            form.organisationName = organisationName;
+        }
+        
+        [self saveTracks];
+    }
+}
+
 @end

@@ -29,7 +29,7 @@
                             @"trackmetadata.trackinginfo": @"2. Tracking details",
                             @"trackmetadata.eventdate": @"Trek Date *",
                             @"trackmetadata.eventstarttime": @"Start time *",
-                            @"trackmetadata.eventendtime": @"End time",
+                            @"trackmetadata.eventendtime": @"End time *",
                             @"trackmetadata.surveytype": @"Survey type",
                             @"trackmetadata.surveychoice": @"Survey choice",
                             
@@ -60,8 +60,8 @@
                             @"tracklist.notfound": @"No tracks found",
                             @"tracklist.notfound.helptext": @"To add a track, go back to the main menu and select 'Add a track' menu item.",
                             
-                            @"trackmetadata.modal.title": @"Do you want to continue tracking?",
-                            @"trackmetadata.modal.content": @"If you want the system to continue recording your location, click 'Yes'. Otherwise, to review data click 'Review'",
+                            @"trackmetadata.modal.title": @"Continue tracking?",
+                            @"trackmetadata.modal.content": @"If you want the system to continue recording your location, click 'Yes'. Otherwise, to review submitted information click 'Review'",
                             @"trackmetadata.modal.record": @"Yes",
                             @"trackmetadata.modal.cancel": @"Review",
                             
@@ -73,7 +73,7 @@
                             @"upload.error": @"Some of the tracks are not submitted, please try again later.",
                             @"upload.accessDenied": @"You are not authorised to submit tracks, please contact our support team at biocollect-support@ala.org.au",
                             
-                            @"tracklistviewcontroller.title": @"Review tracks",
+                            @"tracklistviewcontroller.title": @"My saved tracks",
                             
                             @"trackmetadata.confirmexit.title": @"Exit without saving?",
                             @"trackmetadata.confirmexit.message": @"This track has not been saved. Click 'No' to cancel exit action. Otherwise, click 'Yes' to exit without saving.",
@@ -91,7 +91,11 @@
 
                             @"nointernetconnectivity.title": @"No internet connectivity",
                             @"nointernetconnectivity.message": @"Cannot upload tracks due to no internet connectivity. Try again later.",
-                            @"nointernetconnectivity.ok": @"Ok"
+                            @"nointernetconnectivity.ok": @"Ok",
+                            
+                            @"animalFormat": @"Animals - %d;",
+                            @"durationFormat": @"Duration - %@;",
+                            @"distanceTravlledFormat": @"Distance travelled - %@;",
                             }
                     };
     return self;

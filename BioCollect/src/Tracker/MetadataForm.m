@@ -23,6 +23,7 @@
     
     _animals = [NSMutableArray new];
     _route = [NSMutableArray new];
+    _distanceTravelled = 0.0;
     
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.distanceFilter = kCLDistanceFilterNone; // whenever we move
@@ -62,6 +63,8 @@
     
     self.animals = [aDecoder decodeObjectForKey: @"animals"];
     self.route = [aDecoder decodeObjectForKey: @"route"];
+    NSNumber* dist = [aDecoder decodeObjectForKey: @"distanceTravelled"];
+    _distanceTravelled = [dist doubleValue];
     return self;
 }
 
@@ -91,6 +94,7 @@
     
     [aCoder encodeObject:self.animals forKey: @"animals"];
     [aCoder encodeObject:self.route forKey: @"route"];
+    [aCoder encodeObject:[NSNumber numberWithDouble:self.distanceTravelled] forKey: @"distanceTravelled"];
 }
 
 #pragma mark - location manager delegate functions
@@ -102,6 +106,7 @@
     CLLocationDistance dist = [newLocation distanceFromLocation:lastLocation];
     
     if ( (dist >= MIN_DISTANCE_BETWEEN_LOCATION) || ( [_route count] == 0 ) ) {
+        _distanceTravelled += dist;
         [self.route addObject:newLocation];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"ROUTE-UPDATED" object:nil];
     }
@@ -139,7 +144,7 @@
     
     return @[
              // Tracker information
-             @{@"textLabel.color": uiColour, FXFormFieldKey:@"organisationName", FXFormFieldTitle:[locale get: @"trackmetadata.organisationname"], FXFormFieldHeader: [locale get: @"trackmetadata.trackerinfo"], FXFormFieldDefaultValue: organisationName},
+             @{@"textLabel.color": uiColour, FXFormFieldKey:@"organisationName", FXFormFieldTitle:[locale get: @"trackmetadata.organisationname"], FXFormFieldHeader: [locale get: @"trackmetadata.trackerinfo"], FXFormFieldDefaultValue: organisationName, FXFormFieldType: FXFormFieldTypeLabel},
              @{@"textLabel.color": uiColour, FXFormFieldKey:@"leadTracker", FXFormFieldTitle:[locale get: @"trackmetadata.leadTracker"], FXFormFieldDefaultValue: fullName},
              @{@"textLabel.color": uiColour, FXFormFieldKey:@"otherTrackers", FXFormFieldTitle:[locale get: @"trackmetadata.otherTrackers"], FXFormFieldType: FXFormFieldTypeLongText},
              @{@"textLabel.color": uiColour, FXFormFieldKey:@"comments", FXFormFieldTitle: [locale get: @"trackmetadata.comments"], FXFormFieldType: FXFormFieldTypeLongText},
@@ -411,7 +416,7 @@
     if ([self.route count] == 1) {
         GAAppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
         CLLocation* location = self.route[0];
-        CLLocation* loc2 = [appDelegate.utilService locationWithBearing:1.57 distance:10 fromLocation:location.coordinate];
+        CLLocation* loc2 = [appDelegate.utilService locationWithBearing:1.57 distance: MIN_DISTANCE_BETWEEN_LOCATION / 2 fromLocation:location.coordinate];
         [self.route addObject:loc2];
     }
 }
@@ -421,6 +426,61 @@
     [self saveImages];
 }
 
+- (NSString*) getDisplayTime {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSLocale *enUSPOSIXLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
+    [dateFormatter setLocale:enUSPOSIXLocale];
+    [dateFormatter setDateFormat:@"dd MMMM yyyy"];
+    NSString* date = [dateFormatter stringFromDate:_startTime];
+    [dateFormatter setDateFormat:@"hh:mm a"];
+    NSString* startTime = [dateFormatter stringFromDate:_startTime];
+    NSString* endTime = [dateFormatter stringFromDate:_endTime];
+    
+    return [NSString stringWithFormat:@"%@ ( %@ - %@ );", date, startTime, endTime];
+}
+
+- (NSString*) getDuration {
+    if (_endTime) {
+        NSTimeInterval time = [_endTime timeIntervalSinceDate:_startTime];
+        NSInteger timeInteger = (NSInteger) time;
+        NSInteger hours = timeInteger / 3600;
+        NSInteger minutes = (timeInteger % 3600) / 60;
+        return [NSString stringWithFormat:@"%02d:%02d", hours, minutes];
+    }
+    
+    return @"";
+}
+
+- (NSString*) getDistanceTravelledString {
+    double distanceTravelled = self.distanceTravelled;
+    NSString* unit = @"m";
+    if( self.distanceTravelled > 1000){
+        distanceTravelled = self.distanceTravelled / 1000;
+        unit = @"km";
+    }
+    
+    return [NSString stringWithFormat:@"%@ %@", self.distanceTravelled, unit];
+}
+
+- (NSString*) getSummary {
+    GAAppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
+    Locale* locale = appDelegate.locale;
+    NSInteger* numberOfAnimals = [_animals count];
+    NSString* animalFormat = [locale get: @"animalFormat"];
+    NSString* animal = [NSString stringWithFormat:animalFormat, numberOfAnimals];
+    
+    NSString* duration = [self getDuration];
+    NSString* durationString = @"";
+    NSString* time = [self getDisplayTime];
+    
+    NSString* distanceTravelledString = [NSString stringWithFormat: [locale get: @"distanceTravlledFormat"], [self getDistanceTravelledString]];
+    
+    if (duration) {
+        durationString = [NSString stringWithFormat:[locale get: @"durationFormat"], duration];
+    }
+    
+    return [NSString stringWithFormat:@"%@ %@ %@ %@", time, durationString, distanceTravelledString, animal];
+}
 #pragma mark - static methods
 /*
  * http://stackoverflow.com/questions/16254575/how-do-i-get-iso-8601-date-in-ios

@@ -115,7 +115,7 @@
 
 -(void) logout {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Confirm"
-                                                    message:@"Are you sure you want to logout?"
+                                                    message:@"Are you sure you want to logout? All saved data will be lost."
                                                    delegate:self
                                           cancelButtonTitle:@"No"
                                           otherButtonTitles:@"Yes",nil];
