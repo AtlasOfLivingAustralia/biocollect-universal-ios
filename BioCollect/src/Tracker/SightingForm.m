@@ -130,7 +130,7 @@
         
         if(![thumbnail isEqualToString:@""]) {
             UIImageView *imageView = [[UIImageView alloc] init];
-            [imageView sd_setImageWithURL:[NSURL URLWithString: thumbnail] placeholderImage:[UIImage imageNamed:@"ajax_loader.gif"] options:SDWebImageRefreshCached];
+            [imageView sd_setImageWithURL:[NSURL URLWithString: thumbnail] placeholderImage:[UIImage imageNamed:@"noImage85.jpg"] options:SDWebImageRefreshCached];
             image = imageView.image;
         } else {
             image = [UIImage imageNamed:@"noImage85.jpg"];
