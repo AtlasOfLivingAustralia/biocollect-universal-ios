@@ -1,4 +1,3 @@
-//
 //  HomeTableViewController.m
 #import <Foundation/Foundation.h>
 #import "UIImageView+WebCache.h"
@@ -88,9 +87,7 @@
     if([self.hubProjects count] > indexPath.row) {
         Project *project = [self.hubProjects objectAtIndex:indexPath.row];;
         cell.textLabel.text = project.name;
-        NSString *url = [[NSString alloc] initWithFormat: @"%@", project.urlImage];
-        NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        [cell.imageView sd_setImageWithURL:[NSURL URLWithString: project.urlImage] placeholderImage:[UIImage imageNamed:@"ajax_loader.gif"] options:SDWebImageRefreshCached ];
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString: project.urlImage] placeholderImage:[UIImage imageNamed:@"noImage85.jpg"] options:SDWebImageRefreshCached ];
         self.selectedProject = [self.appDelegate.projectService loadSelectedProject];
         if(self.selectedProject && [self.selectedProject.projectId isEqualToString: project.projectId]) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
