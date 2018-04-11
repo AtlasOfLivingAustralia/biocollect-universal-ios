@@ -25,6 +25,7 @@
 
 #define IDIOM    UI_USER_INTERFACE_IDIOM()
 #define IPAD     UIUserInterfaceIdiomPad
+static const NSInteger kARRMaxCacheAge = 60 * 60 * 24 * 365 * 2; // 1 day * 365 days * 2 years
 
 @interface GAAppDelegate ()
 @property (strong, nonatomic) GAMasterProjectTableViewController *masterProjectVC;
@@ -74,6 +75,9 @@
     trackerService = [[TrackerService alloc] init];
     tracksUpload = [[TracksUpload alloc] init];
     utilService = [[UtilService alloc] init];
+    
+    //Set up image cache.
+    [self setupSDWebImageCache];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [trackerService loadTracks];
@@ -318,4 +322,9 @@
         [self saveRecords];
     }
 }
+
+- (void)setupSDWebImageCache {
+     [[SDImageCache sharedImageCache] setMaxCacheAge:kARRMaxCacheAge];
+}
+
 @end
