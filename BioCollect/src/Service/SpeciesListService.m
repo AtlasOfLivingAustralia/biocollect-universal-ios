@@ -62,6 +62,16 @@
             speciesObj.kvpValues = speciesJSON.kvpValues;
             [speciesList addObject:speciesObj];
         }
+        // No Animal Found
+        Species *speciesObj = [[Species alloc] init];
+        speciesObj.speciesListId = @"noAnimalFound";
+        speciesObj.name = @"No Animal Found";
+        speciesObj.commonName = @"";
+        speciesObj.scientificName = @"";
+        speciesObj.lsid = @"noAnimalFound";
+        speciesObj.kvpValues = [[NSArray alloc]init];
+        [speciesList addObject:speciesObj];
+
         [self storeSpeciesList];
     }
 }
@@ -92,6 +102,7 @@
     NSString *language = kEnglish;
     for(int i = 0; i<  [self.speciesList count]; i++) {
         Species *species = self.speciesList[i];
+        species.displayName = @"No Animal Found";
         for(int j=0; j < [species.kvpValues count]; j++){
             NSDictionary *kvp = species.kvpValues[j];
             if([language isEqualToString:kEnglish] && [kvp[@"key"] isEqualToString:@"vernacular name"]) {
