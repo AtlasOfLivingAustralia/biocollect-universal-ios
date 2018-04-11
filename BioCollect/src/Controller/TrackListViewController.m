@@ -42,7 +42,7 @@
     self.tableView.separatorStyle = UITableViewStylePlain;
     self.tableView.tableFooterView = [UIView new];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Upload" style:UIBarButtonItemStylePlain target:self action:@selector(uploadData)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:[self.appDelegate.locale get: @"tracks.upload"] style:UIBarButtonItemStylePlain target:self action:@selector(uploadData)];
 }
 
 #pragma mark - Data source

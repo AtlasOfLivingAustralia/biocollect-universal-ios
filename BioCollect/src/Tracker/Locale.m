@@ -15,9 +15,9 @@
     translation = @{
                     @"en" : @{
                             @"trackviewcontroller.title" : @"Track",
-                            @"trackmetadataviewcontroller.title" : @"Track details",
-                            @"sighting.title" : @"Animals spotted",
-                            @"map.title" : @"Journey",
+                            @"trackmetadataviewcontroller.title" : @"1. Track details",
+                            @"sighting.title" : @"2. Animal signs",
+                            @"map.title" : @"3. Walked route",
                             
                             @"trackmetadata.trackerinfo": @"1. Tracker details",
                             @"trackmetadata.organisationname": @"Organisation name *",
@@ -47,23 +47,23 @@
                             @"trackmetadata.groundsoftness": @"How soft is the ground for leaving tracks?",
                             @"trackmetadata.weather": @"Weather?",
                             
-                            @"sighting.viewcontroller.title": @"Add an animal *",
-                            @"sighting.animal": @"Animal *",
+                            @"sighting.viewcontroller.title": @"Add an animal sign *",
+                            @"sighting.animal": @"Which animal did you see? *",
                             @"sighting.photo": @"Photo",
                             @"sighting.visiblesign": @"What sign did you see?",
                             @"sighting.durationsign": @"How old is the sign?",
                             @"sighting.age": @"How old is the animal?",
-                            @"sighting.notfound": @"No animals spotted",
-                            @"sighting.notfound.helptext": @"To add an animal, touch the '+' button above. You must add atleast one animal with a track.",
+                            @"sighting.notfound": @"To add an animal sign, touch the '+' button above.",
+                            @"sighting.notfound.helptext": @"You must add at least one animal sign. If no animal signs were found, use the 'No animal found' selection.",
                             @"sighting.save": @"Done",
                             
                             @"tracklist.notfound": @"No tracks found",
                             @"tracklist.notfound.helptext": @"To add a track, go back to the main menu and select 'Add a track' menu item.",
                             
-                            @"trackmetadata.modal.title": @"Continue tracking?",
-                            @"trackmetadata.modal.content": @"If you want the system to continue recording your location, click 'Yes'. Otherwise, to review submitted information click 'Review'",
+                            @"trackmetadata.modal.title": @"Continue your journey?",
+                            @"trackmetadata.modal.content": @"Click 'Yes' if you want to continue recording your journey. Otherwise, click 'No' to edit submitted information.",
                             @"trackmetadata.modal.record": @"Yes",
-                            @"trackmetadata.modal.cancel": @"Review",
+                            @"trackmetadata.modal.cancel": @"No",
                             
                             @"uploading.message": @"Uploading tracks...",
                             @"uploaded.message": @"Uploaded %d of %d",
@@ -73,19 +73,21 @@
                             @"upload.error": @"Some of the tracks are not submitted, please try again later.",
                             @"upload.accessDenied": @"You are not authorised to submit tracks, please contact our support team at biocollect-support@ala.org.au",
                             
-                            @"tracklistviewcontroller.title": @"My saved tracks",
+                            @"tracklistviewcontroller.title": @"Upload or edit saved tracks",
                             
-                            @"trackmetadata.confirmexit.title": @"Exit without saving?",
-                            @"trackmetadata.confirmexit.message": @"This track has not been saved. Click 'No' to cancel exit action. Otherwise, click 'Yes' to exit without saving.",
+                            @"trackmetadata.confirmexit.title": @"Go back without saving?",
+                            @"trackmetadata.confirmexit.message": @"Click 'No' to continue recording your journey. Click 'Save & exit' to save and go back to previous page. Otherwise, click 'Yes' to delete this track and go back to previous page.",
+                            @"trackmetadata.confirmexitwithoutdelete.message": @"Click 'No' to continue on this page. Click 'Save & exit' to save and go back to previous page.",
                             @"trackmetadata.confirmexit.no": @"No",
                             @"trackmetadata.confirmexit.yes": @"Yes",
+                            @"trackmetadata.confirmexit.exit": @"Save & exit",
                             
                             @"camera.error.title": @"Error",
                             @"camera.error.message": @"Device has no camera",
                             @"camera.error.ok": @"Ok",
                             
-                            @"trackmetadata.confirmsave.title": @"Save track?",
-                            @"trackmetadata.confirmsave.message": @"Do you want to save and continue working on this track?",
+                            @"trackmetadata.confirmsave.title": @"Save your track to disk?",
+                            @"trackmetadata.confirmsave.message": @"Click 'Save & continue' to save to disk and continue your journey. Click 'Save & exit' to save your track to disk and go back to previous page.",
                             @"trackmetadata.confirmsave.continue": @"Save & continue",
                             @"trackmetadata.confirmsave.exit": @"Save & exit",
 
@@ -96,6 +98,8 @@
                             @"animalFormat": @"Animals - %d;",
                             @"durationFormat": @"Duration - %@;",
                             @"distanceTravlledFormat": @"Distance travelled - %@;",
+                            
+                            @"tracks.upload": @"Upload all"
                             }
                     };
     return self;

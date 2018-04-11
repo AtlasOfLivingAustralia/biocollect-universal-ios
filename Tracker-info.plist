@@ -46,7 +46,7 @@
 			<key>icon</key>
 			<string>icon_tracks_review</string>
 			<key>title</key>
-			<string>My saved tracks</string>
+			<string>Upload or edit saved tracks</string>
 			<key>url</key>
 			<string></string>
 			<key>view</key>

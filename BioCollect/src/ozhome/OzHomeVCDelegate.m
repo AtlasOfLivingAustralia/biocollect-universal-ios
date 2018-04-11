@@ -307,6 +307,10 @@
         } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"add_track"]) {
             TrackViewController *homeVC = [[TrackViewController alloc] init];
             [spotyViewController.navigationController pushViewController: homeVC animated:TRUE];
+            if ([appDelegate.projectService loadSelectedProject] == nil)  {
+                HubProjects *hubProjectsVC = [[HubProjects alloc] initWithNibName:@"HubProjects" bundle:nil];
+                [spotyViewController.navigationController pushViewController: hubProjectsVC animated:TRUE];
+            }
         } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"try_track"]) {
             TrackViewController *homeVC = [[TrackViewController alloc] initWithSaveDisabled];
             [spotyViewController.navigationController pushViewController: homeVC animated:TRUE];

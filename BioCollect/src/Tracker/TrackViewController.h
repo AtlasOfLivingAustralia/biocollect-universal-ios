@@ -15,6 +15,7 @@
 
 @interface TrackViewController : UITabBarController<UIImagePickerControllerDelegate, UITabBarControllerDelegate> {
     BOOL isPractise;
+    BOOL isTrackCreatedFromLocalStorage;
     SightingViewController* _sightingVC;
     UIBarButtonItem* centreMap;
 }

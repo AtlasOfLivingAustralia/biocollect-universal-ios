@@ -21,6 +21,7 @@
 - (instancetype) init {
     _trackForm = [MetadataForm new];
     [_trackForm loadImages];
+    isTrackCreatedFromLocalStorage = NO;
     if (isPractise == nil) {
         isPractise = NO;
     }
@@ -28,19 +29,21 @@
     self = [super init];
     self.delegate = self;
     [_trackForm startRecordingLocation];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatedProject:) name:@"PROJECT-UPDATED" object:nil];
     return self;
 }
 
 - (instancetype) initWithForm:(MetadataForm*) form {
     _trackForm = form;
     [_trackForm loadImages];
+    isTrackCreatedFromLocalStorage = YES;
     if (isPractise == nil) {
         isPractise = NO;
     }
     
     self = [super init];
     self.delegate = self;
-    [_trackForm startRecordingLocation];
+    [_trackForm stopRecordingLocation];
     
     return self;
 }
@@ -124,26 +127,66 @@
 - (void) cancelButton {
     
     if (!isPractise) {
-        GAAppDelegate * appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
-        Locale* locale = appDelegate.locale;
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle: [locale get: @"trackmetadata.confirmexit.title"]
-                                                                       message: [locale get: @"trackmetadata.confirmexit.message"]
-                                                                preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction* no = [UIAlertAction actionWithTitle: [locale get: @"trackmetadata.confirmexit.no"] style:UIAlertActionStyleDefault
-                                                                handler:^(UIAlertAction * action) {
-                                                                }];
-        
-        UIAlertAction* yes = [UIAlertAction actionWithTitle: [locale get: @"trackmetadata.confirmexit.yes"] style:UIAlertActionStyleDefault
-                                                            handler:^(UIAlertAction * action) {
-                                                                [self.navigationController popViewControllerAnimated:YES];
-                                                            }];
-        
-        [alert addAction:no];
-        [alert addAction:yes];
-        [self presentViewController:alert animated:YES completion:nil];
+        if(isTrackCreatedFromLocalStorage){
+            [self showExitAlertWithoutDeleteOption];
+        } else {
+            [self showExitAlertWithDeleteOption];
+        }
     } else {
          [self.navigationController popViewControllerAnimated:YES];
     }
+}
+
+- (void) showExitAlertWithDeleteOption {
+    GAAppDelegate * appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+    Locale* locale = appDelegate.locale;
+
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle: [locale get: @"trackmetadata.confirmexit.title"]
+                                                                   message: [locale get: @"trackmetadata.confirmexit.message"]
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* no = [UIAlertAction actionWithTitle: [locale get: @"trackmetadata.confirmexit.no"] style:UIAlertActionStyleDefault
+                                               handler:^(UIAlertAction * action) {
+                                               }];
+    
+    UIAlertAction* yes = [UIAlertAction actionWithTitle: [locale get: @"trackmetadata.confirmexit.yes"] style:UIAlertActionStyleDefault
+                                                handler:^(UIAlertAction * action) {
+                                                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                                                        [appDelegate.trackerService removeTrack: self.trackForm];
+                                                    });
+                                                    [self.navigationController popViewControllerAnimated:YES];
+                                                }];
+    UIAlertAction* saveAndExit = [UIAlertAction actionWithTitle: [locale get: @"trackmetadata.confirmexit.exit"] style:UIAlertActionStyleDefault
+                                                        handler:^(UIAlertAction * action) {
+                                                            [self saveAndExitAction];
+                                                        }];
+    
+    
+    [alert addAction:no];
+    [alert addAction:saveAndExit];
+    [alert addAction:yes];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void) showExitAlertWithoutDeleteOption {
+    GAAppDelegate * appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+    Locale* locale = appDelegate.locale;
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle: [locale get: @"trackmetadata.confirmexit.title"]
+                                                                   message: [locale get: @"trackmetadata.confirmexitwithoutdelete.message"]
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* no = [UIAlertAction actionWithTitle: [locale get: @"trackmetadata.confirmexit.no"] style:UIAlertActionStyleDefault
+                                               handler:^(UIAlertAction * action) {
+                                               }];
+    
+    UIAlertAction* saveAndExit = [UIAlertAction actionWithTitle: [locale get: @"trackmetadata.confirmexit.exit"] style:UIAlertActionStyleDefault
+                                                        handler:^(UIAlertAction * action) {
+                                                            [self saveAndExitAction];
+                                                        }];
+    
+    
+    [alert addAction:no];
+    [alert addAction:saveAndExit];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (void) addAnimal {
@@ -214,19 +257,7 @@
     
     UIAlertAction* saveAndExit = [UIAlertAction actionWithTitle: [locale get: @"trackmetadata.confirmsave.exit"] style:UIAlertActionStyleDefault
                                                          handler:^(UIAlertAction * action) {
-                                                             if (self.trackForm.endTime == nil) {
-                                                                 self.trackForm.endTime = [NSDate date];
-                                                             }
-
-                                                             [_trackForm stopRecordingLocation];
-                                                             [_route stopNotification];
-                                                             [[NSNotificationCenter defaultCenter] postNotificationName:@"TRACK-SAVED" object: nil];
-                                                             [self.navigationController popViewControllerAnimated:YES];
-
-                                                             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-                                                                 [_trackForm save];
-                                                                 [appDelegate.trackerService addTrack: self.trackForm];
-                                                             });
+                                                             [self saveAndExitAction];
                                                          }];
     
     [alert addAction:saveAndContinue];
@@ -234,6 +265,25 @@
     [self presentViewController:alert animated:YES completion:nil];
 
 }
+
+- (void) saveAndExitAction {
+    GAAppDelegate * appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+
+    if (self.trackForm.endTime == nil) {
+        self.trackForm.endTime = [NSDate date];
+    }
+    
+    [_trackForm stopRecordingLocation];
+    [_route stopNotification];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"TRACK-SAVED" object: nil];
+    [self.navigationController popViewControllerAnimated:YES];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        [_trackForm save];
+        [appDelegate.trackerService addTrack: self.trackForm];
+    });
+}
+
 
 - (IBAction)takePhoto:(UIButton *)sender {
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
@@ -256,6 +306,11 @@
         
         [self presentViewController:picker animated:YES completion:NULL];
     }
+}
+
+- (void) updatedProject: (NSNotification *) notification {
+    _trackForm.organisationName = notification.object;
+    [_trackMetadataViewController.tableView reloadData];
 }
 
 // For responding to the user accepting a newly-captured picture or movie

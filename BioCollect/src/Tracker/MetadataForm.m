@@ -103,7 +103,7 @@
     
     CLLocation *lastLocation = [_route lastObject];
     
-    CLLocationDistance dist = [newLocation distanceFromLocation:lastLocation];
+    double dist = fabs([newLocation distanceFromLocation:lastLocation]);
     
     if ( (dist >= MIN_DISTANCE_BETWEEN_LOCATION) || ( [_route count] == 0 ) ) {
         _distanceTravelled += dist;
@@ -417,6 +417,8 @@
         GAAppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
         CLLocation* location = self.route[0];
         CLLocation* loc2 = [appDelegate.utilService locationWithBearing:1.57 distance: MIN_DISTANCE_BETWEEN_LOCATION / 2 fromLocation:location.coordinate];
+        CLLocationDistance dist = [location distanceFromLocation:loc2];
+        _distanceTravelled += fabs(dist);
         [self.route addObject:loc2];
     }
 }
@@ -459,7 +461,7 @@
         unit = @"km";
     }
     
-    return [NSString stringWithFormat:@"%@ %@", self.distanceTravelled, unit];
+    return [NSString stringWithFormat:@"%1.2f %@", distanceTravelled, unit];
 }
 
 - (NSString*) getSummary {
