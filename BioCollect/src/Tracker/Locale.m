@@ -67,7 +67,11 @@
                             
                             @"uploading.message": @"Uploading tracks...",
                             @"uploaded.message": @"Uploaded %d of %d",
-                            @"uploadfinish.message": @"Uploaded %d tracks",
+                            @"uploaded.noTracksToUpload": @"No valid tracks to upload",
+                            @"uploadfinish.message": @"Successfully uploaded %d tracks",
+                            
+                            @"upload.error": @"Some of the tracks are not submitted, please try again later.",
+                            @"upload.accessDenied": @"You are not authorised to submit tracks, please contact our support team at biocollect-support@ala.org.au",
                             
                             @"tracklistviewcontroller.title": @"Review tracks",
                             
