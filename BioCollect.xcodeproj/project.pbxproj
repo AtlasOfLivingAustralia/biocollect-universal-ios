@@ -63,8 +63,6 @@
 		87B09635204FBD4700DA1395 /* SightingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87B09633204FB94300DA1395 /* SightingListViewController.m */; };
 		87B700121DC2E5520066C236 /* SyncTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87B700101DC2E5520066C236 /* SyncTableViewController.m */; };
 		87B700131DC2E5520066C236 /* SyncTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87B700111DC2E5520066C236 /* SyncTableViewController.xib */; };
-		87D1D1852074601900B8B663 /* icon_page_edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87D1D1832074601900B8B663 /* icon_page_edit@2x.png */; };
-		87D1D1862074601900B8B663 /* icon_dog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87D1D1842074601900B8B663 /* icon_dog@2x.png */; };
 		B83825F61A0C666B00690383 /* MRBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = B83825DA1A0C666B00690383 /* MRBlurView.m */; };
 		B83825F71A0C666B00690383 /* UIImage+MRImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = B83825DC1A0C666B00690383 /* UIImage+MRImageEffects.m */; };
 		B83825F81A0C666B00690383 /* MRActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = B83825DF1A0C666B00690383 /* MRActivityIndicatorView.m */; };
@@ -1183,6 +1181,21 @@
 		E2E56B2C1925CB7F007AC38C /* GACreateSiteModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E56B2A1925CB7F007AC38C /* GACreateSiteModalViewController.m */; };
 		E2E56B2D1925CB7F007AC38C /* GACreateSiteModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E56B2B1925CB7F007AC38C /* GACreateSiteModalViewController.xib */; };
 		E2E56B2F1925D84E007AC38C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E56B2E1925D84E007AC38C /* MapKit.framework */; };
+		E2E7D250207DB2BF00542C76 /* icon_page_edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7D24D207DB2BF00542C76 /* icon_page_edit@2x.png */; };
+		E2E7D251207DB2BF00542C76 /* icon_page_edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7D24D207DB2BF00542C76 /* icon_page_edit@2x.png */; };
+		E2E7D252207DB2BF00542C76 /* icon_page_edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7D24D207DB2BF00542C76 /* icon_page_edit@2x.png */; };
+		E2E7D253207DB2BF00542C76 /* icon_page_edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7D24D207DB2BF00542C76 /* icon_page_edit@2x.png */; };
+		E2E7D254207DB2BF00542C76 /* icon_page_edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7D24D207DB2BF00542C76 /* icon_page_edit@2x.png */; };
+		E2E7D255207DB2BF00542C76 /* icon_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7D24E207DB2BF00542C76 /* icon_refresh@2x.png */; };
+		E2E7D256207DB2BF00542C76 /* icon_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7D24E207DB2BF00542C76 /* icon_refresh@2x.png */; };
+		E2E7D257207DB2BF00542C76 /* icon_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7D24E207DB2BF00542C76 /* icon_refresh@2x.png */; };
+		E2E7D258207DB2BF00542C76 /* icon_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7D24E207DB2BF00542C76 /* icon_refresh@2x.png */; };
+		E2E7D259207DB2BF00542C76 /* icon_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7D24E207DB2BF00542C76 /* icon_refresh@2x.png */; };
+		E2E7D25A207DB2BF00542C76 /* icon_dog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7D24F207DB2BF00542C76 /* icon_dog@2x.png */; };
+		E2E7D25B207DB2BF00542C76 /* icon_dog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7D24F207DB2BF00542C76 /* icon_dog@2x.png */; };
+		E2E7D25C207DB2BF00542C76 /* icon_dog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7D24F207DB2BF00542C76 /* icon_dog@2x.png */; };
+		E2E7D25D207DB2BF00542C76 /* icon_dog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7D24F207DB2BF00542C76 /* icon_dog@2x.png */; };
+		E2E7D25E207DB2BF00542C76 /* icon_dog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7D24F207DB2BF00542C76 /* icon_dog@2x.png */; };
 		E2E8F744192245E60029574B /* loc1_nochange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E8F743192245E60029574B /* loc1_nochange@2x.png */; };
 		E2EF6E621E678A4F00279A55 /* RKDropdownAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EF6E611E678A4F00279A55 /* RKDropdownAlert.m */; };
 		E2F19DAE200584AC0033DC24 /* UIImageView+REUIKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E27B8F111EF4E5FE00B01FAB /* UIImageView+REUIKitAdditions.m */; };
@@ -1500,8 +1513,6 @@
 		87B7000F1DC2E5520066C236 /* SyncTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SyncTableViewController.h; path = src/Sync/SyncTableViewController.h; sourceTree = "<group>"; };
 		87B700101DC2E5520066C236 /* SyncTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SyncTableViewController.m; path = src/Sync/SyncTableViewController.m; sourceTree = "<group>"; };
 		87B700111DC2E5520066C236 /* SyncTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SyncTableViewController.xib; path = src/Sync/SyncTableViewController.xib; sourceTree = "<group>"; };
-		87D1D1832074601900B8B663 /* icon_page_edit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_page_edit@2x.png"; sourceTree = "<group>"; };
-		87D1D1842074601900B8B663 /* icon_dog@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_dog@2x.png"; sourceTree = "<group>"; };
 		B83825D91A0C666B00690383 /* MRBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRBlurView.h; sourceTree = "<group>"; };
 		B83825DA1A0C666B00690383 /* MRBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRBlurView.m; sourceTree = "<group>"; };
 		B83825DB1A0C666B00690383 /* UIImage+MRImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MRImageEffects.h"; sourceTree = "<group>"; };
@@ -1917,6 +1928,9 @@
 		E2E56B2A1925CB7F007AC38C /* GACreateSiteModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GACreateSiteModalViewController.m; path = src/model/GACreateSiteModalViewController.m; sourceTree = "<group>"; };
 		E2E56B2B1925CB7F007AC38C /* GACreateSiteModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GACreateSiteModalViewController.xib; path = src/model/GACreateSiteModalViewController.xib; sourceTree = "<group>"; };
 		E2E56B2E1925D84E007AC38C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		E2E7D24D207DB2BF00542C76 /* icon_page_edit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_page_edit@2x.png"; path = "src/images/tracks_icon/icon_page_edit@2x.png"; sourceTree = "<group>"; };
+		E2E7D24E207DB2BF00542C76 /* icon_refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_refresh@2x.png"; path = "src/images/tracks_icon/icon_refresh@2x.png"; sourceTree = "<group>"; };
+		E2E7D24F207DB2BF00542C76 /* icon_dog@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_dog@2x.png"; path = "src/images/tracks_icon/icon_dog@2x.png"; sourceTree = "<group>"; };
 		E2E8F743192245E60029574B /* loc1_nochange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "loc1_nochange@2x.png"; path = "src/images/loc1_nochange@2x.png"; sourceTree = "<group>"; };
 		E2EF6E601E678A4F00279A55 /* RKDropdownAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKDropdownAlert.h; sourceTree = "<group>"; };
 		E2EF6E611E678A4F00279A55 /* RKDropdownAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKDropdownAlert.m; sourceTree = "<group>"; };
@@ -2432,8 +2446,6 @@
 			children = (
 				E23FFBB3207B313100902E76 /* icon_refresh@2x.png */,
 				E260DBA32075A16E000824F3 /* tracks */,
-				87D1D1842074601900B8B663 /* icon_dog@2x.png */,
-				87D1D1832074601900B8B663 /* icon_page_edit@2x.png */,
 				E212E84A20081B1900268AD1 /* icon_settings@2x.png */,
 				E212E844200817EA00268AD1 /* icon_track@2x.png */,
 				E274971F2006FA5E00876D5C /* icon_about_square@2x.png */,
@@ -2481,6 +2493,9 @@
 		E260DBA32075A16E000824F3 /* tracks */ = {
 			isa = PBXGroup;
 			children = (
+				E2E7D24F207DB2BF00542C76 /* icon_dog@2x.png */,
+				E2E7D24D207DB2BF00542C76 /* icon_page_edit@2x.png */,
+				E2E7D24E207DB2BF00542C76 /* icon_refresh@2x.png */,
 				E260DBD42075A256000824F3 /* icon_tracks_logo@2x.png */,
 				E260DBA82075A17E000824F3 /* icon_tracks_add_track@2x.png */,
 				E260DBA52075A17E000824F3 /* icon_tracks_help@2x.png */,
@@ -3207,7 +3222,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87D1D1852074601900B8B663 /* icon_page_edit@2x.png in Resources */,
 				E26146DA20072F9300B1104E /* RecordsTableViewController.xib in Resources */,
 				E26146DB20072F9300B1104E /* AboutiPhoneView.xib in Resources */,
 				E26146DC20072F9300B1104E /* SVWebViewControllerActivitySafari-iPad@2x.png in Resources */,
@@ -3288,6 +3302,7 @@
 				E261471820072F9300B1104E /* Reptiles.jpg in Resources */,
 				E261471920072F9300B1104E /* ala_large_logo.png in Resources */,
 				E261471A20072F9300B1104E /* bk_iPhone.png in Resources */,
+				E2E7D254207DB2BF00542C76 /* icon_page_edit@2x.png in Resources */,
 				E261471B20072F9300B1104E /* InfoPlist.strings in Resources */,
 				E261471C20072F9300B1104E /* table-place-holder.png in Resources */,
 				E261471D20072F9300B1104E /* home_filled-25@2x.png in Resources */,
@@ -3324,7 +3339,6 @@
 				E261473820072F9300B1104E /* Crustaceans.jpg in Resources */,
 				E261473920072F9300B1104E /* Default-568h.png in Resources */,
 				E261473A20072F9300B1104E /* profile@2x.png in Resources */,
-				87D1D1862074601900B8B663 /* icon_dog@2x.png in Resources */,
 				E261473B20072F9300B1104E /* ala_name.png in Resources */,
 				E261473C20072F9300B1104E /* lock_filled-25@2x.png in Resources */,
 				E261473D20072F9300B1104E /* ajax_loader.gif in Resources */,
@@ -3342,7 +3356,9 @@
 				E261474620072F9300B1104E /* FernsAndAllies.jpg in Resources */,
 				E261474720072F9300B1104E /* box_filled-25@2x.png in Resources */,
 				E261474820072F9300B1104E /* cancelled@2x.png in Resources */,
+				E2E7D25E207DB2BF00542C76 /* icon_dog@2x.png in Resources */,
 				E261474920072F9300B1104E /* ALA-logo-inline.png in Resources */,
+				E2E7D259207DB2BF00542C76 /* icon_refresh@2x.png in Resources */,
 				E261474A20072F9300B1104E /* camera_icon.png in Resources */,
 				E261474B20072F9300B1104E /* planned@2x.png in Resources */,
 				E261474C20072F9300B1104E /* searchbar_bk@2x.png in Resources */,
@@ -3377,8 +3393,10 @@
 				E26638EF1F52EB9B00F1F1CE /* ContactVC.xib in Resources */,
 				E26638F01F52EB9B00F1F1CE /* loc1_changed@2x.png in Resources */,
 				E260DBC22075A17F000824F3 /* icon_tracks_add_track@2x.png in Resources */,
+				E2E7D252207DB2BF00542C76 /* icon_page_edit@2x.png in Resources */,
 				E27497252006FFB200876D5C /* biocontrol_hub_home_login_iPad.jpg in Resources */,
 				E26638F11F52EB9B00F1F1CE /* biocollect_logo_1.png in Resources */,
+				E2E7D257207DB2BF00542C76 /* icon_refresh@2x.png in Resources */,
 				E2A5372C204D49540085D1BE /* SpeciesListVC.xib in Resources */,
 				E2B42D7A20686D29009943A4 /* TracksSiteTemplate.json in Resources */,
 				E26638F21F52EB9B00F1F1CE /* sync-25@2x.png in Resources */,
@@ -3438,6 +3456,7 @@
 				E266391D1F52EB9B00F1F1CE /* icon_street_view@2x.png in Resources */,
 				E266391E1F52EB9B00F1F1CE /* GADetailFormVIewController.xib in Resources */,
 				E266391F1F52EB9B00F1F1CE /* site_map@2x.png in Resources */,
+				E2E7D25C207DB2BF00542C76 /* icon_dog@2x.png in Resources */,
 				E26639201F52EB9B00F1F1CE /* img in Resources */,
 				E26639211F52EB9B00F1F1CE /* Fish.jpg in Resources */,
 				E26639221F52EB9B00F1F1CE /* Reptiles.jpg in Resources */,
@@ -3542,6 +3561,7 @@
 				E2424C461F0F634F00E4E13F /* oz_iPad.jpg in Resources */,
 				E2AECF4C1E73D3010035DF28 /* biocollect_logo_1.png in Resources */,
 				E27B8F5A1EF526C200B01FAB /* ala_logo_transparent.png in Resources */,
+				E2E7D251207DB2BF00542C76 /* icon_page_edit@2x.png in Resources */,
 				E260DBDF2075B2D2000824F3 /* yes@2x.png in Resources */,
 				E2AECF4D1E73D3010035DF28 /* sync-25@2x.png in Resources */,
 				E2AECF4E1E73D3010035DF28 /* SVWebViewControllerActivityChrome-iPad@2x.png in Resources */,
@@ -3566,6 +3586,7 @@
 				E2AECF5E1E73D3010035DF28 /* changed@2x.png in Resources */,
 				E2A6BEC11F0CCFC000F1A57E /* Gymnosperms.jpg in Resources */,
 				E2AECF5F1E73D3010035DF28 /* css in Resources */,
+				E2E7D256207DB2BF00542C76 /* icon_refresh@2x.png in Resources */,
 				E2424C481F0F634F00E4E13F /* oz_iPhone.jpg in Resources */,
 				E2A6BECB1F0CCFC000F1A57E /* noImage85.jpg in Resources */,
 				E24690EF1EF5F19B00F2F8B8 /* icon_about@2x.png in Resources */,
@@ -3630,6 +3651,7 @@
 				E2A53738204E2DA70085D1BE /* HubProjects.xib in Resources */,
 				E2A6BEB91F0CCFC000F1A57E /* Dicots.jpg in Resources */,
 				E2AECF861E73D3010035DF28 /* StaticWebPages in Resources */,
+				E2E7D25B207DB2BF00542C76 /* icon_dog@2x.png in Resources */,
 				E2AECF871E73D3010035DF28 /* MapViewController.xib in Resources */,
 				E2A6BEC51F0CCFC000F1A57E /* Mammals.jpg in Resources */,
 				E2C544481ECDCA8C00641951 /* edit_icon@2x.png in Resources */,
@@ -3680,6 +3702,7 @@
 				B87373DB1DB6DFE90057027E /* SVWebViewControllerActivitySafari-iPad@2x.png in Resources */,
 				E2A6BEC61F0CCFC000F1A57E /* Molluscs.jpg in Resources */,
 				E260DBB12075A17F000824F3 /* icon_tracks_help@2x.png in Resources */,
+				E2E7D25A207DB2BF00542C76 /* icon_dog@2x.png in Resources */,
 				E2A5372A204D49540085D1BE /* SpeciesListVC.xib in Resources */,
 				E2A6BEC81F0CCFC000F1A57E /* Monocots.jpg in Resources */,
 				E22045C4192D7D0B00531116 /* help_filled-25@2x.png in Resources */,
@@ -3735,6 +3758,7 @@
 				E21BCB7E1CEAA1A200FFFE5F /* ContactiPhoneVC.xib in Resources */,
 				E22045C8192D7E5900531116 /* pad@2x.png in Resources */,
 				E2B334261F2AC67800B71E77 /* ala_logo_2.png in Resources */,
+				E2E7D255207DB2BF00542C76 /* icon_refresh@2x.png in Resources */,
 				E25185FC1CD9E13F0068B4E0 /* EULAiPhoneViewController.xib in Resources */,
 				B87373D61DB6DFE90057027E /* SVWebViewControllerActivityChrome-iPad.png in Resources */,
 				E260DBC52075A17F000824F3 /* icon_tracks_mytracks@2x.png in Resources */,
@@ -3784,6 +3808,7 @@
 				E2A6BEC41F0CCFC000F1A57E /* Mammals.jpg in Resources */,
 				E27B8F531EF5187A00B01FAB /* ala_logo_1.png in Resources */,
 				E2A6BEB61F0CCFC000F1A57E /* Crustaceans.jpg in Resources */,
+				E2E7D250207DB2BF00542C76 /* icon_page_edit@2x.png in Resources */,
 				E2DCF1ED1CF68D8B008D438C /* Default-568h.png in Resources */,
 				E22045CA192D7EDD00531116 /* profile@2x.png in Resources */,
 				E27B8F561EF51DA600B01FAB /* ala_name.png in Resources */,
@@ -3913,6 +3938,7 @@
 				E2F19E6B200584AC0033DC24 /* table-place-holder.png in Resources */,
 				E2F19E6C200584AC0033DC24 /* home_filled-25@2x.png in Resources */,
 				E2F19E6D200584AC0033DC24 /* icon_briefcase@2x.png in Resources */,
+				E2E7D253207DB2BF00542C76 /* icon_page_edit@2x.png in Resources */,
 				E260DBC82075A17F000824F3 /* icon_tracks_mytracks@2x.png in Resources */,
 				E2F19E6E200584AC0033DC24 /* js in Resources */,
 				E2F19E6F200584AC0033DC24 /* icon_camera@2x.png in Resources */,
@@ -3966,7 +3992,9 @@
 				E2F19E95200584AC0033DC24 /* FernsAndAllies.jpg in Resources */,
 				E2F19E96200584AC0033DC24 /* box_filled-25@2x.png in Resources */,
 				E2F19E97200584AC0033DC24 /* cancelled@2x.png in Resources */,
+				E2E7D25D207DB2BF00542C76 /* icon_dog@2x.png in Resources */,
 				E2F19E98200584AC0033DC24 /* ALA-logo-inline.png in Resources */,
+				E2E7D258207DB2BF00542C76 /* icon_refresh@2x.png in Resources */,
 				E2F19E99200584AC0033DC24 /* camera_icon.png in Resources */,
 				E2F19E9A200584AC0033DC24 /* planned@2x.png in Resources */,
 				E2F19E9B200584AC0033DC24 /* searchbar_bk@2x.png in Resources */,
