@@ -52,7 +52,6 @@
 		87898E3220689E7E00CB2ED0 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
 		87898E3320689E7F00CB2ED0 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
 		87898E3420689E7F00CB2ED0 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
-		878AFE5B207AFEC800BDFC2A /* icon_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 878AFE5A207AFEC800BDFC2A /* icon_refresh@2x.png */; };
 		878AFE5E207B465700BDFC2A /* UtilService.m in Sources */ = {isa = PBXBuildFile; fileRef = 878AFE5D207B465700BDFC2A /* UtilService.m */; };
 		878AFE5F207B465700BDFC2A /* UtilService.m in Sources */ = {isa = PBXBuildFile; fileRef = 878AFE5D207B465700BDFC2A /* UtilService.m */; };
 		878AFE60207B465700BDFC2A /* UtilService.m in Sources */ = {isa = PBXBuildFile; fileRef = 878AFE5D207B465700BDFC2A /* UtilService.m */; };
@@ -1494,7 +1493,6 @@
 		874B4F37206354EB00892966 /* TrackerService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TrackerService.m; path = src/Service/TrackerService.m; sourceTree = "<group>"; };
 		874B4F3E206369CB00892966 /* TrackListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TrackListViewController.h; path = src/Controller/TrackListViewController.h; sourceTree = "<group>"; };
 		874B4F3F20636B0400892966 /* TrackListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TrackListViewController.m; path = src/Controller/TrackListViewController.m; sourceTree = "<group>"; };
-		878AFE5A207AFEC800BDFC2A /* icon_refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_refresh@2x.png"; path = "../../../Downloads/icon_refresh@2x.png"; sourceTree = "<group>"; };
 		878AFE5C207B462B00BDFC2A /* UtilService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UtilService.h; path = src/Service/UtilService.h; sourceTree = "<group>"; };
 		878AFE5D207B465700BDFC2A /* UtilService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = UtilService.m; path = src/Service/UtilService.m; sourceTree = "<group>"; };
 		87B09632204FB85E00DA1395 /* SightingListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SightingListViewController.h; path = src/Controller/SightingListViewController.h; sourceTree = "<group>"; };
@@ -4771,8 +4769,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.tracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ae287aa7-a066-42ab-9527-900ff5ce85d1";
-				PROVISIONING_PROFILE_SPECIFIER = "ALA-OzAtlas-Prod-Existing-App";
+				PROVISIONING_PROFILE = "47e96044-6342-4c77-b2c4-bf56d26b3c14";
+				PROVISIONING_PROFILE_SPECIFIER = ProdTheTracksApp;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
