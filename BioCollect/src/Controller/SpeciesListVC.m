@@ -35,7 +35,10 @@
     UIBarButtonItem *plusButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(newAnimal)];
     plusButton.enabled=TRUE;
     
-    self.navigationItem.rightBarButtonItems = @[btnDone, plusButton];
+    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(downloadSpeciesImage)];
+    plusButton.enabled=TRUE;
+    
+    self.navigationItem.rightBarButtonItems = @[btnDone, plusButton, refreshButton];
     self.animalView = [[UIAlertView alloc]initWithTitle:@"Animal name" message:@"Enter the animal name that are not in animal list" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
     self.animalView.alertViewStyle = UIAlertViewStylePlainTextInput;
     [self.animalView textFieldAtIndex:0].delegate = self;
@@ -43,7 +46,6 @@
     self.appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
     self.isSearching = NO;
     displayItems = [[NSMutableArray alloc] initWithCapacity:0];
-    
     return  self;
 }
 
@@ -131,7 +133,7 @@
         for(int i = 0; i < [kvp count]; i++) {
             NSDictionary *item =  kvp[i];
             if([item[@"key"] isEqualToString: @"Image"]) {
-                thumbnail = item[@"value"];
+                thumbnail = [[NSString alloc] initWithFormat:@"%@",item[@"value"]];
                 break;
             }
         }
@@ -287,12 +289,16 @@
 - (void)alertView:(UIAlertView *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if( buttonIndex != 0 ) {
         Species *newAnimal = [[Species alloc] init];
-        newAnimal.displayName = [self.animalView textFieldAtIndex: 0].text;
-        newAnimal.name = [self.animalView textFieldAtIndex: 0].text;
+        NSString *input = [self.animalView textFieldAtIndex: 0].text;
+        if (input == (id)[NSNull null] || [input isEqualToString:@""] || input.length == 0 ) {
+            input = @"No Animal Found";
+        }
+        newAnimal.displayName = input;
+        newAnimal.name = input;
         newAnimal.lsid = @"";
         self.selectedSpecies = newAnimal;
-        [self.navigationController popViewControllerAnimated:YES];
         [[NSNotificationCenter defaultCenter]postNotificationName:@"SPECIES_SEARCH_SELECTED" object: self.selectedSpecies];
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
@@ -302,4 +308,21 @@
     self.selectedSpecies = field.value;
 }
 
+-(void) downloadSpeciesImage {
+    if([[self.appDelegate restCall] notReachable]) {
+        [RKDropdownAlert title:@"Device offline" message:@"Error downloading species images" backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+    } else {
+        for (Species *species in self.displayItems) {
+            NSArray *kvp = species.kvpValues;
+            for(int i = 0; i < [kvp count]; i++) {
+                NSDictionary *item =  kvp[i];
+                if([item[@"key"] isEqualToString: @"Image"]) {
+                    [[SDImageCache sharedImageCache] removeImageForKey:item[@"value"] fromDisk:YES];
+                }
+            }
+        }
+        [self.tableView reloadData];
+        [RKDropdownAlert title:@"Updated animal images" message:@"" backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+    }
+}
 @end
