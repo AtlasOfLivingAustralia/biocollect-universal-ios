@@ -99,6 +99,11 @@ static const NSInteger kARRMaxCacheAge = 60 * 60 * 24 * 365 * 2; // 1 day * 365 
     
     [self loadRecords];
     
+    // For Tracks app keep the display on.
+    if([[GASettings appHubName] isEqualToString:@"trackshub"]) {
+        [UIApplication sharedApplication].idleTimerDisabled = YES;
+    }
+
     return YES;
 }
 

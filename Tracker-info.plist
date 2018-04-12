@@ -20,14 +20,6 @@
 	<string>tracker_home_login_iPhone.jpg</string>
 	<key>Bio_HubName</key>
 	<string>trackshub</string>
-	<key>Bio_Project_Activity_ID</key>
-	<string>e61eb018-02a9-4e3b-a4b3-9d6be33d9cbb</string>
-	<key>Bio_Project_ID</key>
-	<string>f813c99c-1a1d-4096-8eeb-cbc40e321101</string>
-	<key>Bio_Project_Name</key>
-	<string>ALA species sightings and OzAtlas</string>
-	<key>Bio_Theme</key>
-	<string>#F15A24</string>
 	<key>Bio_List_Url</key>
 	<string>/ws/speciesListItems/dr8016?includeKVP=true</string>
 	<key>Bio_Menu</key>
@@ -123,6 +115,14 @@
 			<string>version</string>
 		</dict>
 	</array>
+	<key>Bio_Project_Activity_ID</key>
+	<string>e61eb018-02a9-4e3b-a4b3-9d6be33d9cbb</string>
+	<key>Bio_Project_ID</key>
+	<string>f813c99c-1a1d-4096-8eeb-cbc40e321101</string>
+	<key>Bio_Project_Name</key>
+	<string>ALA species sightings and OzAtlas</string>
+	<key>Bio_Theme</key>
+	<string>#F15A24</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -146,7 +146,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>01</string>
+	<string>03</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -156,14 +156,14 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>App uses camera to capture species photo</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>App uses camera to capture photo and saves it to photo library</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Your current location is required to determine species coordinates.</string>
 	<key>NSLocationUsageDescription</key>
 	<string>Your current location is required to determine species coordinates.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Your current location is required to determine species coordinates.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>App uses camera to capture photo and saves it to photo library</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>$(PRODUCT_NAME) uses Camera</string>
 	<key>UILaunchImages</key>
