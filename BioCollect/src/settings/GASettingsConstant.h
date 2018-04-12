@@ -32,18 +32,16 @@
 // https://biocollect-test.ala.org.au/ws/project/search?sort=nameSort&hub=trackshub&fq=isExternal:F&initiator=biocollect&max=50&offset=0&mobile=true
 // Get list of activities associated wit the project. >>  https://biocollect-test.ala.org.au/ws/survey/list/2f4eed05-5be1-417d-a4ab-174f5b24d22a
 
-// Get Species lists:
-// https://lists.ala.org.au/ws/speciesListItems/dr8016?includeKVP=true
-
 #define UNIQUE_SPECIES_ID @"/ws/species/uniqueId"
 #define DOCUMENT_UPLOAD_URL @"/ws/attachment/upload"
 #define PROJECT_NAME @"OzAtlas Sightings"
 #define PROJECT_ACTIVITY_NAME @"Single Sighting - Advanced"
 
 //Sightings Prod config
-#define CREATE_RECORD @"/ws/bioactivity/save?pActivityId=" // e61eb018-02a9-4e3b-a4b3-9d6be33d9cbb
-#define SIGHTINGS_PROJECT_ID @"" // f813c99c-1a1d-4096-8eeb-cbc40e321101
-#define SIGHTINGS_PROJECT_NAME_FACET @"fq=projectNameFacet:" // ALA species sightings and OzAtlas
+#define CREATE_RECORD @"/ws/bioactivity/save?pActivityId="
+#define SIGHTINGS_PROJECT_ID @""
+#define SIGHTINGS_PROJECT_NAME_FACET @"fq=projectNameFacet:" 
+#define CREATE_SITE @"/site/ajaxUpdate"
 
 // Species Proxy URL:
 #define PROXY_SERVER @"http://ozatlas-proxy.ala.org.au"

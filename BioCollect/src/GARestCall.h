@@ -22,5 +22,6 @@
 -(NSMutableDictionary * )createRecord: RecordForm;
 -(Boolean) notReachable;
 -(void)saveRecordToDisk: (RecordForm *) record;
+-(NSMutableDictionary *) uploadImage: (UIImage *) image;
 @end
     

@@ -1,0 +1,40 @@
+{
+    "pActivityId":"xxxxxxx",
+    "site":{
+        "name":"Private site for survey Tracsks Hub",
+        "visibility":"private",
+        "projects":[
+                    "xxxxxxxxx"
+                    ],
+        "extent":{
+            "geometry":{
+                "centre":[
+                          129.55230675637722,
+                          -30.256694798480332
+                          ],
+                "type":"LineString",
+                "areaKmSq":0,
+                "coordinates":[
+                               [
+                                129.55230675637722,
+                                -30.256694798480332
+                                ],
+                               [
+                                131.83746300637722,
+                                -29.034559265325612
+                                ],
+                               [
+                                133.77105675637722,
+                                -28.03077347989913
+                                ],
+                               [
+                                136.23199425637722,
+                                -28.49524700856669
+                                ]
+                               ]
+            },
+            "source":"drawn"
+        },
+        "asyncUpdate":true
+    }
+}

@@ -375,10 +375,16 @@
  * create a record on server
  */
 - (NSMutableDictionary * )createRecord: (RecordForm *) record {
+    
     // first get unique id for species
-    if(record.uniqueId == nil){
+    if(record.uniqueId == nil) {
         NSString *uniqueId = [self getSpeciesUniqueId];
         record.uniqueId = uniqueId;
+    }
+    
+    // Upload site
+    if(record.siteId == nil) {
+        [self createSite:record];
     }
     
     // now save record if unique id was generated
@@ -387,7 +393,7 @@
                                                                                     @"message":[NSNull null],
                                                                                     @"activityId": [NSNull null]
                                                                                     }];
-    if(record.uniqueId != nil) {
+    if(record.uniqueId != nil && record.siteId != nil) {
         // check if photo is attached. then upload photo.
         NSMutableDictionary *photoStatus = [self uploadImage:record.speciesPhoto];
         
@@ -574,6 +580,32 @@
     
     return [UIImage imageWithData:imageData];
     
+}
+
+- (void) createSite: (RecordForm *) recordForm {
+    NSString *siteJson = [recordForm toSiteJSON];
+    NSString *url = [NSString stringWithFormat:@"%@%@", BIOCOLLECT_SERVER, CREATE_SITE];
+    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[siteJson length]];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:url]];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:JSON_CONTENT_TYPE_VALUE forHTTPHeaderField:JSON_CONTENT_TYPE_KEY];
+    [request setValue:[GASettings getEmailAddress] forHTTPHeaderField: @"userName"];
+    [request setValue:[GASettings getAuthKey] forHTTPHeaderField: @"authKey"];
+    [request setHTTPBody:[recordForm toSiteJSONData]];
+    [request setHTTPMethod:@"POST"];
+    NSLog(@"%@", siteJson);
+    NSError *error;
+    NSURLResponse *response;
+    NSData *POSTReply = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    if(error == nil) {
+        NSDictionary *respDict =  [NSJSONSerialization JSONObjectWithData:POSTReply options:kNilOptions error:&error];
+        recordForm.siteId = error == nil && respDict != nil ? respDict[@"id"] : nil;
+        NSLog(@"%@", recordForm.siteId);
+    } else {
+         NSLog(@"Error creating a site");
+    }
 }
 
 -(Boolean) notReachable {

@@ -17,9 +17,15 @@
 #import "MRProgressOverlayView.h"
 #import "ContactVC.h"
 #import "RecordForm.h"
+#import "SpeciesListService.h"
+#import "Locale.h"
+#import "TrackerService.h"
+#import "ProjectService.h"
+#import "UtilService.h"
 
 #define IDIOM    UI_USER_INTERFACE_IDIOM()
 #define IPAD     UIUserInterfaceIdiomPad
+static const NSInteger kARRMaxCacheAge = 60 * 60 * 24 * 365 * 2; // 1 day * 365 days * 2 years
 
 @interface GAAppDelegate ()
 @property (strong, nonatomic) GAMasterProjectTableViewController *masterProjectVC;
@@ -32,10 +38,12 @@
 @property (nonatomic, retain) GAActivity *updatedActivity;
 
 @property (nonatomic, retain) NSMutableArray *projects;
+
 @end
 @implementation GAAppDelegate
 
-@synthesize splitViewController, projects,masterProjectVC, detailVC, restCall, sqlLite, loginViewController, eulaVC, homeVC, recordsVC, myProjectsVC, myRecordsVC, bioProjectService,tabBarController,ozHomeNC, speciesService, alaWKWebView;
+
+@synthesize splitViewController, projects,masterProjectVC, detailVC, restCall, sqlLite, loginViewController, eulaVC, homeVC, recordsVC, myProjectsVC, myRecordsVC, bioProjectService,tabBarController,ozHomeNC, speciesService, alaWKWebView, locale, speciesListService, trackerService, projectService, tracksUpload, utilService;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -53,6 +61,7 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     self.projects = [[NSMutableArray alloc] init];
+    
     _records = [[NSMutableArray alloc] init];
 
     //Singleton instantiation.
@@ -60,6 +69,19 @@
     sqlLite = [[GASqlLiteDatabase alloc] init];
     bioProjectService = [[BioProjectService alloc] init];
     speciesService = [[SpeciesService alloc] init];
+    speciesListService = [[SpeciesListService alloc] init];
+    projectService = [[ProjectService alloc] init];
+    locale = [[Locale alloc] init];
+    trackerService = [[TrackerService alloc] init];
+    tracksUpload = [[TracksUpload alloc] init];
+    utilService = [[UtilService alloc] init];
+    
+    //Set up image cache.
+    [self setupSDWebImageCache];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [trackerService loadTracks];
+    });
     
     [self addSplitViewtoRoot];
     
@@ -77,6 +99,11 @@
     
     [self loadRecords];
     
+    // For Tracks app keep the display on.
+    if([[GASettings appHubName] isEqualToString:@"trackshub"]) {
+        [UIApplication sharedApplication].idleTimerDisabled = YES;
+    }
+
     return YES;
 }
 
@@ -165,9 +192,9 @@
     //ozHome page
     OzHomeVC *ozHomeVC = [[OzHomeVC alloc] initWithMainImage:[UIImage imageNamed:[GASettings appHomeBkBig]]];
     ozHomeNC = [[UINavigationController alloc] initWithRootViewController: ozHomeVC];
-    ozHomeNC.tabBarItem.title = @"Oz Atlas";
+    ozHomeNC.tabBarItem.title = @"Home";
     ozHomeNC.tabBarItem.image = [UIImage imageNamed:@"home_filled-25"];
-    ozHomeNC.navigationBar.topItem.title = @"Oz Atlas";
+    ozHomeNC.navigationBar.topItem.title = @"Home";
     
     //Webview home
     /*
@@ -240,6 +267,7 @@
     [self.recordsVC resetRecords];
     [GASettings resetAllFields];
     [self.sqlLite deleteAllTables];
+    [self.trackerService removeAllTracks];
     [self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
     [UIView transitionWithView:self.window
                       duration:0.5
@@ -300,4 +328,9 @@
         [self saveRecords];
     }
 }
+
+- (void)setupSDWebImageCache {
+     [[SDImageCache sharedImageCache] setMaxCacheAge:kARRMaxCacheAge];
+}
+
 @end

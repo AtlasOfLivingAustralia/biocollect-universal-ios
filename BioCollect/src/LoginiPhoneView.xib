@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,13 +26,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="hlV-Gb-9q7">
-                    <rect key="frame" x="8" y="48" width="359" height="276"/>
+                    <rect key="frame" x="16" y="60" width="343" height="276"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="iZp-4d-3ke">
-                            <rect key="frame" x="0.0" y="0.0" width="359" height="115"/>
+                            <rect key="frame" x="0.0" y="0.0" width="343" height="115"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ALA-logo-inline.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Zl-Cf-HZ3">
-                                    <rect key="frame" x="0.0" y="0.0" width="359" height="115"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="115"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="115" id="bPP-dc-ndI"/>
                                     </constraints>
@@ -39,10 +40,10 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="IyF-Hi-twi">
-                            <rect key="frame" x="0.0" y="127" width="359" height="149"/>
+                            <rect key="frame" x="0.0" y="127" width="343" height="149"/>
                             <subviews>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="228" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Mr-es-5Kr">
-                                    <rect key="frame" x="0.0" y="0.0" width="359" height="35"/>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="228" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Mr-es-5Kr">
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="35"/>
                                     <color key="backgroundColor" red="0.98958333333333337" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="35" id="4lU-i8-BvR"/>
@@ -55,7 +56,7 @@
                                     </connections>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fNj-KQ-8ms">
-                                    <rect key="frame" x="0.0" y="40" width="359" height="35"/>
+                                    <rect key="frame" x="0.0" y="40" width="343" height="35"/>
                                     <color key="backgroundColor" red="0.98958333330000003" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="35" id="l3Y-XR-HMw"/>
@@ -68,13 +69,13 @@
                                     </connections>
                                 </textField>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Xvu-ej-yPe">
-                                    <rect key="frame" x="0.0" y="80" width="359" height="35"/>
+                                    <rect key="frame" x="0.0" y="80" width="343" height="35"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="IdA-ZH-7NL">
-                                            <rect key="frame" x="0.0" y="0.0" width="359" height="35"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="35"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NHI-xz-TYg">
-                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="35"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="35"/>
                                                     <color key="backgroundColor" red="0.94630175828933716" green="0.34607410430908203" blue="0.169730544090271" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="93R-9i-pEp"/>
@@ -97,7 +98,7 @@
                                     </subviews>
                                 </stackView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SeR-qP-PGa">
-                                    <rect key="frame" x="0.0" y="120" width="359" height="29"/>
+                                    <rect key="frame" x="0.0" y="120" width="343" height="29"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <state key="normal" title="Not registered?">
                                         <color key="titleColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>

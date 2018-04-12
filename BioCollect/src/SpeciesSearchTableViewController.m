@@ -1,10 +1,6 @@
 //
 //  SpeciesSearchTableViewController.m
 //  Oz Atlas
-//
-//  Created by Varghese, Temi (PI, Black Mountain) on 17/10/16.
-//  Copyright © 2016 Sathya Moorthy, Sathish (CSIRO IM&T, Clayton). All rights reserved.
-//
 
 #import "SpeciesSearchTableViewController.h"
 #import "GAAppDelegate.h"
@@ -117,7 +113,7 @@
     
     thumbnail = (([species objectForKey:@"thumbnailUrl"] != nil) && (species[@"thumbnailUrl"] != [NSNull null]))? species[@"thumbnailUrl"] :@"";
     if(![thumbnail isEqualToString:@""]){
-        [cell.imageView sd_setImageWithURL:[NSURL URLWithString: thumbnail] placeholderImage:[UIImage imageNamed:@"ajax_loader.gif"] options:SDWebImageRefreshCached ];
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString: thumbnail] placeholderImage:[UIImage imageNamed:@"noImage85.jpg"] options:SDWebImageRefreshCached ];
     } else {
         cell.imageView.image = self.noImage;
     }

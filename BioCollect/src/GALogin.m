@@ -19,7 +19,7 @@
 
 @implementation GALogin
 
-@synthesize loginButton, usernameTextField, passwordTextField,registerButton, logoImageView;
+@synthesize loginButton, usernameTextField, passwordTextField, registerButton, logoImageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -60,18 +60,13 @@
 -(void) authenticate {
     // Processing UI indicator on the main thread.
     GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSString *userName = self.usernameTextField.text;
+    NSString *password = self.passwordTextField.text;
     [MRProgressOverlayView showOverlayAddedTo:appDelegate.window title:@"Processing.." mode:MRProgressOverlayViewModeIndeterminateSmall animated:YES];
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        // Time consuming processing on the seperate task
-        GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
-        NSError *error = nil;
-        NSMutableArray *p = nil;
-        NSString *userName = self.usernameTextField.text;
-        NSString *password = self.passwordTextField.text;
-        
-        [appDelegate.restCall  authenticate:userName password:password error:&error];
 
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSError *error = nil;
+        [appDelegate.restCall  authenticate:userName password:password error:&error];
         dispatch_async(dispatch_get_main_queue(), ^{
             //Dismiss the ui indicator modal
             [MRProgressOverlayView dismissOverlayForView:appDelegate.window animated:YES];
@@ -92,7 +87,6 @@
                 self.usernameTextField.text = @"";
                 //Dismiss the login modal
                 [appDelegate.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
-                
                 NSString *appType = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_AppType"];
                 [UIView transitionWithView:appDelegate.window
                                   duration:0.5
@@ -121,7 +115,7 @@
 
 -(void) logout {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Confirm"
-                                                    message:@"Are you sure you want to logout?"
+                                                    message:@"Are you sure you want to logout? All saved data will be lost."
                                                    delegate:self
                                           cancelButtonTitle:@"No"
                                           otherButtonTitles:@"Yes",nil];

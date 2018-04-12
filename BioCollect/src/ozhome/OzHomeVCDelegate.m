@@ -1,10 +1,6 @@
 //
 //  OzHomeDelegate.m
 //  Oz Atlas
-//
-//  Created by Sathish Babu Sathyamoorthy on 14/10/16.
-//  Copyright © 2016 Sathya Moorthy, Sathish (CSIRO IM&T, Clayton). All rights reserved.
-//
 
 #import "OzHomeVCDelegate.h"
 #import "MGSpotyViewController.h"
@@ -20,6 +16,10 @@
 #import "GASettings.h"
 #import "HomeTableViewController.h"
 #import "RecordsTableViewController.h"
+#import "SpeciesListVC.h"
+#import "HubProjects.h"
+#import "TrackViewController.h"
+#import "TrackListViewController.h"
 
 @interface OzHomeVCDelegate()
     @property (nonatomic, strong) RecordsTableViewController *recordsTableView;
@@ -120,6 +120,7 @@
 #pragma view based controller
 - (void)ozAtlasViewController:(MGSpotyViewController *)spotyViewController didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
  
+    self.spotyViewController = spotyViewController;
     GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
     if (indexPath.row == 0) {
         [self.locationManager startUpdatingLocation];
@@ -231,9 +232,10 @@
     // SVModalWebViewController === myrecords
     // SyncTableViewController == hub_drafts
     // HomeViewController == hub_explore
+    // SpeciesListVC == species_list
     // == add_track
     // == tracker_settings
-    
+    self.spotyViewController = spotyViewController;
     GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
     NSArray *menuItems = [[NSBundle mainBundle] objectForInfoDictionaryKey: APP_MENU];
 
@@ -307,13 +309,32 @@
             }
             
         } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"add_track"]) {
-            [RKDropdownAlert title:@"Under development" message:@"" backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+            TrackViewController *homeVC = [[TrackViewController alloc] init];
+            [spotyViewController.navigationController pushViewController: homeVC animated:TRUE];
+            if ([appDelegate.projectService loadSelectedProject] == nil)  {
+                HubProjects *hubProjectsVC = [[HubProjects alloc] initWithNibName:@"HubProjects" bundle:nil];
+                [spotyViewController.navigationController pushViewController: hubProjectsVC animated:TRUE];
+            }
+        } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"try_track"]) {
+            TrackViewController *homeVC = [[TrackViewController alloc] initWithSaveDisabled];
+            [spotyViewController.navigationController pushViewController: homeVC animated:TRUE];
+        } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"saved_tracks"]){
+            [self loadTrackListViewController];
         } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"tracker_settings"]) {
-            [RKDropdownAlert title:@"Under development" message:@"" backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+            HubProjects *hubProjectsVC = [[HubProjects alloc] initWithNibName:@"HubProjects" bundle:nil];
+            [spotyViewController.navigationController pushViewController: hubProjectsVC animated:TRUE];
+        } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"species_list"]) {
+            SpeciesListVC *speciesListVC = [[SpeciesListVC alloc] initWithNibName:@"SpeciesListVC" bundle:nil];
+            [spotyViewController.navigationController pushViewController: speciesListVC animated:TRUE];
         } else {
             DebugLog(@"ERROR",@"Unsupported hub view.")
         }
     }
 }
 
+#pragma mark - helper functions
+- (void) loadTrackListViewController {
+    TrackListViewController *trackList = [[TrackListViewController alloc] init];
+    [self.spotyViewController.navigationController pushViewController: trackList animated: YES];
+}
 @end

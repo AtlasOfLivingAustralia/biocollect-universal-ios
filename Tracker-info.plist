@@ -13,28 +13,22 @@
 	<key>Bio_Home_BK_Small</key>
 	<string>tracker_home_bk_small</string>
 	<key>Bio_Home_Login_Image_Logo</key>
-	<string>tracker_login_logo.png</string>
+	<string>tracks_logo_transparent.png</string>
 	<key>Bio_Home_Login_Image_iPad</key>
-	<string>tracker_home_login_iPad.jpg</string>
+	<string>tracker_home_login_iPhone.jpg</string>
 	<key>Bio_Home_Login_Image_iPhone</key>
 	<string>tracker_home_login_iPhone.jpg</string>
 	<key>Bio_HubName</key>
 	<string>trackshub</string>
-	<key>Bio_Project_Activity_ID</key>
-	<string>e61eb018-02a9-4e3b-a4b3-9d6be33d9cbb</string>
-	<key>Bio_Project_ID</key>
-	<string>f813c99c-1a1d-4096-8eeb-cbc40e321101</string>
-	<key>Bio_Project_Name</key>
-	<string>ALA species sightings and OzAtlas</string>
-	<key>Bio_Theme</key>
-	<string>#F15A24</string>
+	<key>Bio_List_Url</key>
+	<string>/ws/speciesListItems/dr8016?includeKVP=true</string>
 	<key>Bio_Menu</key>
 	<array>
 		<dict>
 			<key>icon</key>
-			<string>icon_track</string>
+			<string>icon_tracks_add_track</string>
 			<key>title</key>
-			<string>Add Track</string>
+			<string>Create a new track</string>
 			<key>url</key>
 			<string></string>
 			<key>view</key>
@@ -42,27 +36,37 @@
 		</dict>
 		<dict>
 			<key>icon</key>
-			<string>icon_all_records</string>
+			<string>icon_tracks_review</string>
 			<key>title</key>
-			<string>Review Tracks</string>
+			<string>Upload or edit saved tracks</string>
+			<key>url</key>
+			<string></string>
+			<key>view</key>
+			<string>saved_tracks</string>
+		</dict>
+		<dict>
+			<key>icon</key>
+			<string>icon_tracks_mytracks</string>
+			<key>title</key>
+			<string>My uploaded tracks</string>
 			<key>url</key>
 			<string></string>
 			<key>view</key>
 			<string>my_hub_records</string>
 		</dict>
-        <dict>
-            <key>icon</key>
-            <string>icon_location</string>
-            <key>title</key>
-            <string>Explore Species</string>
-            <key>url</key>
-            <string></string>
-            <key>view</key>
-            <string>hub_explore</string>
-        </dict>
 		<dict>
 			<key>icon</key>
+			<string>icon_tracks_practice</string>
+			<key>title</key>
+			<string>Practise creating a track</string>
+			<key>url</key>
 			<string></string>
+			<key>view</key>
+			<string>try_track</string>
+		</dict>
+		<dict>
+			<key>icon</key>
+			<string>icon_tracks_partners</string>
 			<key>title</key>
 			<string>Partners</string>
 			<key>url</key>
@@ -72,17 +76,17 @@
 		</dict>
 		<dict>
 			<key>icon</key>
-			<string></string>
+			<string>icon_tracks_help</string>
 			<key>title</key>
 			<string>Help</string>
 			<key>url</key>
-			<string>/trackshub/staticPage/index?page=Tracker%20Help&amp;mobile=true</string>
+			<string>/trackshub/staticPage/index?page=Tracker_Help&amp;mobile=true</string>
 			<key>view</key>
 			<string>web_url</string>
 		</dict>
 		<dict>
 			<key>icon</key>
-			<string></string>
+			<string>icon_tracks_info</string>
 			<key>title</key>
 			<string>About</string>
 			<key>url</key>
@@ -92,7 +96,7 @@
 		</dict>
 		<dict>
 			<key>icon</key>
-			<string>icon_settings</string>
+			<string>icon_tracks_settings</string>
 			<key>title</key>
 			<string>Settings</string>
 			<key>url</key>
@@ -102,19 +106,27 @@
 		</dict>
 		<dict>
 			<key>icon</key>
-			<string>icon_logo</string>
+			<string>icon_tracks_logo</string>
 			<key>na</key>
 			<string>na</string>
 			<key>title</key>
-			<string>App version</string>
+			<string>The Tracks App - Version</string>
 			<key>view</key>
 			<string>version</string>
 		</dict>
 	</array>
+	<key>Bio_Project_Activity_ID</key>
+	<string>e61eb018-02a9-4e3b-a4b3-9d6be33d9cbb</string>
+	<key>Bio_Project_ID</key>
+	<string>f813c99c-1a1d-4096-8eeb-cbc40e321101</string>
+	<key>Bio_Project_Name</key>
+	<string>ALA species sightings and OzAtlas</string>
+	<key>Bio_Theme</key>
+	<string>#F15A24</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Tracker</string>
+	<string>The Tracks App</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIcons</key>
@@ -134,7 +146,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>01</string>
+	<string>04</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -150,6 +162,8 @@
 	<string>Your current location is required to determine species coordinates.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Your current location is required to determine species coordinates.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>App uses camera to capture photo and saves it to photo library</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>$(PRODUCT_NAME) uses Camera</string>
 	<key>UILaunchImages</key>
