@@ -58,7 +58,7 @@
                             @"sighting.save": @"Done",
                             @"sighting.unknown": @"Unknown animal",
                             @"sighting.details.sign": @"Sign - %@",
-                                : @"Age - %@",
+                            @"sighting.details.age": @"Age - %@",
                             
                             @"tracklist.notfound": @"No saved tracks",
                             @"tracklist.notfound.helptext": @"To add a track, go back to the main menu and select 'Create a new track'.",
