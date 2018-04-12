@@ -11,8 +11,8 @@
 #define DEFAULT_TIMEOUT 10
 
 #define REST_SERVER @"https://fieldcapture.ala.org.au"
-#define ECODATA_SERVER @"https://ecodata-test.ala.org.au"
-#define BIOCOLLECT_SERVER @"https://biocollect-test.ala.org.au"
+#define ECODATA_SERVER @"https://ecodata.ala.org.au"
+#define BIOCOLLECT_SERVER @"https://biocollect.ala.org.au"
 #define LISTS_SERVER @"https://lists.ala.org.au"
 
 #define LIST_PROJECT_ACTIVITIES @"/ws/survey/list"
