@@ -58,6 +58,7 @@
 		878AFE61207B465700BDFC2A /* UtilService.m in Sources */ = {isa = PBXBuildFile; fileRef = 878AFE5D207B465700BDFC2A /* UtilService.m */; };
 		878AFE62207B465700BDFC2A /* UtilService.m in Sources */ = {isa = PBXBuildFile; fileRef = 878AFE5D207B465700BDFC2A /* UtilService.m */; };
 		878AFE63207B4D7A00BDFC2A /* UtilService.m in Sources */ = {isa = PBXBuildFile; fileRef = 878AFE5D207B465700BDFC2A /* UtilService.m */; };
+		878AFE65207F358400BDFC2A /* icon_lizards@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 878AFE64207F358300BDFC2A /* icon_lizards@2x.png */; };
 		87B0962F204FAF3A00DA1395 /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E479CD204BF8290082CCA4 /* Species.m */; };
 		87B09634204FB94300DA1395 /* SightingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87B09633204FB94300DA1395 /* SightingListViewController.m */; };
 		87B09635204FBD4700DA1395 /* SightingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87B09633204FB94300DA1395 /* SightingListViewController.m */; };
@@ -1503,6 +1504,7 @@
 		874B4F3F20636B0400892966 /* TrackListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TrackListViewController.m; path = src/Controller/TrackListViewController.m; sourceTree = "<group>"; };
 		878AFE5C207B462B00BDFC2A /* UtilService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UtilService.h; path = src/Service/UtilService.h; sourceTree = "<group>"; };
 		878AFE5D207B465700BDFC2A /* UtilService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = UtilService.m; path = src/Service/UtilService.m; sourceTree = "<group>"; };
+		878AFE64207F358300BDFC2A /* icon_lizards@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_lizards@2x.png"; path = "src/images/tracks_icon/icon_lizards@2x.png"; sourceTree = "<group>"; };
 		87B09632204FB85E00DA1395 /* SightingListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SightingListViewController.h; path = src/Controller/SightingListViewController.h; sourceTree = "<group>"; };
 		87B09633204FB94300DA1395 /* SightingListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SightingListViewController.m; path = src/Controller/SightingListViewController.m; sourceTree = "<group>"; };
 		87B7000F1DC2E5520066C236 /* SyncTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SyncTableViewController.h; path = src/Sync/SyncTableViewController.h; sourceTree = "<group>"; };
@@ -2377,6 +2379,7 @@
 		E212E839200736D800268AD1 /* tracker */ = {
 			isa = PBXGroup;
 			children = (
+				878AFE64207F358300BDFC2A /* icon_lizards@2x.png */,
 				E260DBDA2075A557000824F3 /* tracks_logo_transparent.png */,
 				E212E85220081F8200268AD1 /* tracker_home_bk_small.png */,
 				E212E8422008080100268AD1 /* tracker_login_logo.png */,
@@ -3304,6 +3307,7 @@
 				E261472020072F9300B1104E /* icon_camera@2x.png in Resources */,
 				E261472120072F9300B1104E /* Fungi.jpg in Resources */,
 				E212E849200817EA00268AD1 /* icon_track@2x.png in Resources */,
+				878AFE65207F358400BDFC2A /* icon_lizards@2x.png in Resources */,
 				E261472220072F9300B1104E /* ala_logo_transparent.png in Resources */,
 				E261472320072F9300B1104E /* SpeciesGroupTableViewController.xib in Resources */,
 				E261472420072F9300B1104E /* Default-568h@2x.png in Resources */,

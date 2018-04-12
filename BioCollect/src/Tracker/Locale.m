@@ -48,7 +48,7 @@
                             @"trackmetadata.weather": @"Weather?",
                             
                             @"sighting.viewcontroller.title": @"Add an animal sign *",
-                            @"sighting.animal": @"Which animal's sign is it? *",
+                            @"sighting.animal": @"Which animal made the sign? *",
                             @"sighting.photo": @"Photo",
                             @"sighting.visiblesign": @"What sign did you see?",
                             @"sighting.durationsign": @"How old is the sign?",
