@@ -6,11 +6,13 @@
 #import "GASettings.h"
 #import "ProjectActivitiesJSON.h"
 #import "ProjectActivity.h"
+#import "GAAppDelegate.h"
 
 @interface ProjectService ()
 @property (nonatomic, strong) NSURL *projectsFileUrlPath;
 @property (nonatomic, retain) NSMutableArray *projects;
 @property (nonatomic, strong) NSURL *selectedProjectUrlPath;
+@property (strong, nonatomic) GAAppDelegate *appDelegate;
 @end
 
 @implementation ProjectService
@@ -27,11 +29,15 @@
         self.selectedProjectUrlPath = [urls[0] URLByAppendingPathComponent:kSelectedProjectLocation];
     }
     NSError *error;
-    [self wsGetProjects:&error];
+    self.appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+    if(![[self.appDelegate restCall] notReachable]) {
+        [self wsGetProjects:&error];
+    }
     return self;
 }
 
 - (void) wsGetProjects : (NSError**) error {
+
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     NSString *url = [[NSString alloc] initWithFormat: @"%@%@&hub=%@", BIOCOLLECT_SERVER, kHubProjects,[GASettings appHubName]];
     NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
