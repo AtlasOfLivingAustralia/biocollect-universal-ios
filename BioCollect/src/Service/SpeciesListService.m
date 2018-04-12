@@ -8,10 +8,12 @@
 #import "SpeciesJSON.h"
 #import "Species.h"
 #import "GASettings.h"
+#import "GAAppDelegate.h"
 
 @interface SpeciesListService ()
 @property (nonatomic, strong) NSURL *speciesFileUrlPath;
 @property (nonatomic, retain) NSMutableArray *speciesList;
+@property (strong, nonatomic) GAAppDelegate *appDelegate;
 @end
 
 @implementation SpeciesListService
@@ -29,7 +31,11 @@
         self.speciesFileUrlPath = [urls[0] URLByAppendingPathComponent:kTracksSpeciesStorageLocation];
     }
     NSError *error;
-    [self getSpeciesFromList:&error];
+    self.appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+    if(![[self.appDelegate restCall] notReachable]) {
+        [self getSpeciesFromList:&error];
+    }
+    
     return self;
 }
 
