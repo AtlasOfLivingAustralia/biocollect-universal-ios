@@ -10,5 +10,7 @@
     @property (nonatomic, strong) UIActivityIndicatorView *spinner;
     @property (nonatomic, strong) NSMutableArray * displayItems;
     @property (strong, nonatomic) UIImage *noImage;
-    @property (nonatomic, strong) FXFormField *field;
+    @property (nonatomic, strong, setter=setField:) FXFormField *field;
+
+- (void) setField: (FXFormField*) field;
 @end

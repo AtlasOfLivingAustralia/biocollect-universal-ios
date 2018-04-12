@@ -48,20 +48,23 @@
                             @"trackmetadata.weather": @"Weather?",
                             
                             @"sighting.viewcontroller.title": @"Add an animal sign *",
-                            @"sighting.animal": @"Which animal did you see? *",
+                            @"sighting.animal": @"Which animal's sign is it? *",
                             @"sighting.photo": @"Photo",
                             @"sighting.visiblesign": @"What sign did you see?",
                             @"sighting.durationsign": @"How old is the sign?",
                             @"sighting.age": @"How old is the animal?",
                             @"sighting.notfound": @"To add an animal sign, touch the '+' button above.",
-                            @"sighting.notfound.helptext": @"You must add at least one animal sign. If no animal signs were found, use the 'No animal found' selection.",
+                            @"sighting.notfound.helptext": @"You must add at least one animal sign. If no animal sign is found, use the 'No animal found' selection.",
                             @"sighting.save": @"Done",
+                            @"sighting.unknown": @"Unknown animal",
+                            @"sighting.details.sign": @"Sign - %@",
+                                : @"Age - %@",
                             
-                            @"tracklist.notfound": @"No tracks found",
-                            @"tracklist.notfound.helptext": @"To add a track, go back to the main menu and select 'Add a track' menu item.",
+                            @"tracklist.notfound": @"No saved tracks",
+                            @"tracklist.notfound.helptext": @"To add a track, go back to the main menu and select 'Create a new track'.",
                             
                             @"trackmetadata.modal.title": @"Continue your journey?",
-                            @"trackmetadata.modal.content": @"Click 'Yes' if you want to continue recording your journey. Otherwise, click 'No' to edit submitted information.",
+                            @"trackmetadata.modal.content": @"Click 'Yes' if you want to continue recording your journey. Otherwise, click 'No' to edit saved information.",
                             @"trackmetadata.modal.record": @"Yes",
                             @"trackmetadata.modal.cancel": @"No",
                             
@@ -74,13 +77,18 @@
                             @"upload.accessDenied": @"You are not authorised to submit tracks, please contact our support team at biocollect-support@ala.org.au",
                             
                             @"tracklistviewcontroller.title": @"Upload or edit saved tracks",
+                            @"trackviewcontroller.button.back": @"Back",
                             
                             @"trackmetadata.confirmexit.title": @"Go back without saving?",
                             @"trackmetadata.confirmexit.message": @"Click 'No' to continue recording your journey. Click 'Save & exit' to save and go back to previous page. Otherwise, click 'Yes' to delete this track and go back to previous page.",
-                            @"trackmetadata.confirmexitwithoutdelete.message": @"Click 'No' to continue on this page. Click 'Save & exit' to save and go back to previous page.",
                             @"trackmetadata.confirmexit.no": @"No",
                             @"trackmetadata.confirmexit.yes": @"Yes",
                             @"trackmetadata.confirmexit.exit": @"Save & exit",
+                            
+                            @"trackmetadata.confirmexitwithoutdelete.title": @"Go back?",
+                            @"trackmetadata.confirmexitwithoutdelete.message": @"Click 'No' to continue on this page. Click 'Yes' to save and go back to previous page.",
+                            @"trackmetadata.confirmexitwithoutdelete.no": @"No",
+                            @"trackmetadata.confirmexitwithoutdelete.yes": @"Yes",
                             
                             @"camera.error.title": @"Error",
                             @"camera.error.message": @"Device has no camera",

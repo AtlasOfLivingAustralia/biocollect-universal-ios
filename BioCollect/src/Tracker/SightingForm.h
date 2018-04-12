@@ -26,4 +26,6 @@
 - (void) saveImages;
 - (void) loadImages;
 - (void) deleteImages;
+- (NSString*) getSummary;
+- (NSString*) getTitle;
 @end

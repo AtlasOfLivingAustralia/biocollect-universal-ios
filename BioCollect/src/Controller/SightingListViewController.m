@@ -62,8 +62,8 @@
             commonName = @"N/A";
         }
         
-        cell.textLabel.text = species.displayName;
-        cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@, %@",commonName,species.scientificName];
+        cell.textLabel.text = [form getTitle];
+        cell.detailTextLabel.text = [form getSummary];
         cell.imageView.image = [form getImage];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }

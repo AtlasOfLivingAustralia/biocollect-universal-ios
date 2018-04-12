@@ -25,4 +25,5 @@
 - (NSString *) getImageUrl;
 - (NSString *) getSubTitle;
 - (NSDictionary*) getOutput;
+- (NSString *) getDisplayName;
 @end

@@ -51,6 +51,7 @@
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations
 {
+    NSLog(@"updating animal location");
     CLLocation *newLocation = [locations lastObject];
     if (newLocation == nil) {
         //can happen if still waiting for user permission
@@ -65,8 +66,9 @@
     if (form && form.location == nil) {
         form.location = newLocation;
         [self.formController.tableView  reloadData];
-        [_locationManager stopUpdatingLocation];
     }
+    
+    [_locationManager stopUpdatingLocation];
 }
 
 
@@ -78,20 +80,10 @@
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithTitle: [locale get: @"sighting.save"]
                                                                   style:UIBarButtonItemStylePlain target:self action:@selector(save)];
     self.navigationItem.rightBarButtonItem = barButton;
-    
-    UIBarButtonItem* back = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButton)];
-    self.navigationItem.leftBarButtonItem = back;
-
-
 }
 
 - (void) save {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"SPECIES-SIGHTING-SAVED" object:self.formController.form];
     [self.navigationController popViewControllerAnimated:YES];
 }
-
-- (void) cancelButton {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 @end

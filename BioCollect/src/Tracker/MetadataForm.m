@@ -189,13 +189,17 @@
         return NO;
     }
     
+    if(_endTime == nil){
+        return NO;
+    }
+    
     if((_animals == nil) || ([_animals count] == 0)){
         return NO;
     } else {
         for (int i = 0; i < [_animals count];  i++) {
             SightingForm* form = [_animals objectAtIndex:i];
             Species * animal = form.animal;
-            if ( animal && (animal.displayName == nil) && (animal.displayName == nil)) {
+            if ((animal == nil) || (animal.displayName == nil)) {
                 return NO;
             }
         }
@@ -438,11 +442,18 @@
     NSString* startTime = [dateFormatter stringFromDate:_startTime];
     NSString* endTime = [dateFormatter stringFromDate:_endTime];
     
-    return [NSString stringWithFormat:@"%@ ( %@ - %@ );", date, startTime, endTime];
+    if (_startTime && _endTime) {
+        return [NSString stringWithFormat:@"%@ ( %@ - %@ );", date, startTime, endTime];
+    } else if (_endTime) {
+        return [NSString stringWithFormat:@"%@ ( %@ - DNF );", date, startTime];
+    } else {
+        return @"";
+    }
+
 }
 
 - (NSString*) getDuration {
-    if (_endTime) {
+    if (_startTime && _endTime) {
         NSTimeInterval time = [_endTime timeIntervalSinceDate:_startTime];
         NSInteger timeInteger = (NSInteger) time;
         NSInteger hours = timeInteger / 3600;
@@ -454,34 +465,43 @@
 }
 
 - (NSString*) getDistanceTravelledString {
-    double distanceTravelled = self.distanceTravelled;
-    NSString* unit = @"m";
-    if( self.distanceTravelled > 1000){
-        distanceTravelled = self.distanceTravelled / 1000;
-        unit = @"km";
+    if (self.distanceTravelled >= 0) {
+        double distanceTravelled = self.distanceTravelled;
+        NSString* unit = @"m";
+        if( self.distanceTravelled > 1000){
+            distanceTravelled = self.distanceTravelled / 1000;
+            unit = @"km";
+        }
+        
+        return [NSString stringWithFormat:@"%1.2f %@", distanceTravelled, unit];
     }
     
-    return [NSString stringWithFormat:@"%1.2f %@", distanceTravelled, unit];
+    return @"";
 }
 
 - (NSString*) getSummary {
-    GAAppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
-    Locale* locale = appDelegate.locale;
-    NSInteger* numberOfAnimals = [_animals count];
-    NSString* animalFormat = [locale get: @"animalFormat"];
-    NSString* animal = [NSString stringWithFormat:animalFormat, numberOfAnimals];
-    
-    NSString* duration = [self getDuration];
-    NSString* durationString = @"";
-    NSString* time = [self getDisplayTime];
-    
-    NSString* distanceTravelledString = [NSString stringWithFormat: [locale get: @"distanceTravlledFormat"], [self getDistanceTravelledString]];
-    
-    if (duration) {
-        durationString = [NSString stringWithFormat:[locale get: @"durationFormat"], duration];
+    @try {
+        GAAppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
+        Locale* locale = appDelegate.locale;
+        NSInteger* numberOfAnimals = [_animals count];
+        NSString* animalFormat = [locale get: @"animalFormat"];
+        NSString* animal = [NSString stringWithFormat:animalFormat, numberOfAnimals];
+        
+        NSString* duration = [self getDuration];
+        NSString* durationString = @"";
+        NSString* time = [self getDisplayTime];
+        
+        NSString* distanceTravelledString = [NSString stringWithFormat: [locale get: @"distanceTravlledFormat"], [self getDistanceTravelledString]];
+        
+        if (duration) {
+            durationString = [NSString stringWithFormat:[locale get: @"durationFormat"], duration];
+        }
+        
+        return [NSString stringWithFormat:@"%@ %@ %@ %@", time, durationString, distanceTravelledString, animal];
     }
-    
-    return [NSString stringWithFormat:@"%@ %@ %@ %@", time, durationString, distanceTravelledString, animal];
+    @catch (NSException* exp) {
+        return @"";
+    }
 }
 #pragma mark - static methods
 /*

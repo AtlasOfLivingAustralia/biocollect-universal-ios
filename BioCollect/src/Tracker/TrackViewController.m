@@ -103,7 +103,7 @@
     self.navigationItem.rightBarButtonItems = @[save, camera, addAnimal, centreMap];
 
     if(!isPractise){
-        UIBarButtonItem* back = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButton)];
+        UIBarButtonItem* back = [[UIBarButtonItem alloc] initWithTitle:[locale get:@"trackviewcontroller.button.back"] style:UIBarButtonItemStylePlain target:self action:@selector(cancelButton)];
         self.navigationItem.leftBarButtonItem = back;
     }
     
@@ -171,14 +171,14 @@
     GAAppDelegate * appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
     Locale* locale = appDelegate.locale;
     
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle: [locale get: @"trackmetadata.confirmexit.title"]
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle: [locale get: @"trackmetadata.confirmexitwithoutdelete.title"]
                                                                    message: [locale get: @"trackmetadata.confirmexitwithoutdelete.message"]
                                                             preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction* no = [UIAlertAction actionWithTitle: [locale get: @"trackmetadata.confirmexit.no"] style:UIAlertActionStyleDefault
+    UIAlertAction* no = [UIAlertAction actionWithTitle: [locale get: @"trackmetadata.confirmexitwithoutdelete.no"] style:UIAlertActionStyleDefault
                                                handler:^(UIAlertAction * action) {
                                                }];
     
-    UIAlertAction* saveAndExit = [UIAlertAction actionWithTitle: [locale get: @"trackmetadata.confirmexit.exit"] style:UIAlertActionStyleDefault
+    UIAlertAction* saveAndExit = [UIAlertAction actionWithTitle: [locale get: @"trackmetadata.confirmexitwithoutdelete.yes"] style:UIAlertActionStyleDefault
                                                         handler:^(UIAlertAction * action) {
                                                             [self saveAndExitAction];
                                                         }];
@@ -192,12 +192,8 @@
 - (void) addAnimal {
     _sightingVC = [SightingViewController new];
     [self.navigationController pushViewController:_sightingVC animated:YES];
-    SpeciesListVC *speciesVC = [[SpeciesListVC alloc] initWithNibName:@"SpeciesListVC" bundle:nil];
-    [self.navigationController pushViewController:speciesVC animated:YES];
     
-    // Set self to listen for the message "SecondViewControllerDismissed"
-    // and run a method when this message is detected
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(speciesSelected:) name:@"SPECIES_SEARCH_SELECTED" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addSighting:) name:@"SPECIES-SIGHTING-SAVED" object:nil];
 }
 
 - (void) speciesSelected: (NSNotification *) notice {
@@ -215,7 +211,8 @@
 
 - (void) addSighting: (NSNotification *) notice {
     // remove previous notification registration
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SPECIES_SEARCH_SELECTED" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SPECIES-SIGHTING-SAVED" object:nil];
+    [self setSelectedIndex:1];
 
     SightingForm *form = (SightingForm *)notice.object;
     

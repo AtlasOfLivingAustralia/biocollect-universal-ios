@@ -296,4 +296,10 @@
     }
 }
 
+#pragma mark - class functions
+- (void) setField:(FXFormField *)field {
+    _field = field;
+    self.selectedSpecies = field.value;
+}
+
 @end

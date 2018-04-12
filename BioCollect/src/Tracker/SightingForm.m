@@ -152,4 +152,46 @@
     
     return output;
 }
+
+- (NSString*) getTitle {
+    GAAppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
+    Locale* locale = appDelegate.locale;
+    NSString* title = [locale get: @"sighting.unknown"];
+    if (self.animal) {
+        title = self.animal.displayName;
+    }
+    
+    return title;
+}
+
+- (NSString*) getSummary {
+    GAAppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
+    Locale* locale = appDelegate.locale;
+    NSMutableArray* summray = [NSMutableArray new];
+    NSMutableArray* signs = [NSMutableArray new];
+    NSString* sign = @"";
+    NSString* name = @"";
+    if (self.animal) {
+        [summray addObject:[self.animal getSubTitle]];
+    }
+    
+    if (self.visibleSign) {
+        [signs addObject:self.visibleSign];
+    }
+    
+    if (self.durationSign) {
+        [signs addObject:self.durationSign];
+    }
+    
+    if ([signs count] > 0) {
+        sign = [signs componentsJoinedByString:@", "];
+        [summray addObject: [NSString stringWithFormat:[locale get: @"sighting.details.sign"], sign]];
+    }
+    
+    if (self.age) {
+        [summray addObject: [NSString stringWithFormat:[locale get: @"sighting.details.age"], self.age]];
+    }
+    
+    return [summray componentsJoinedByString:@"; "];
+}
 @end
