@@ -156,16 +156,6 @@
     [button addTarget:self action:@selector(accessoryButtonTapped:event:)  forControlEvents:UIControlEventTouchUpInside];
     button.backgroundColor = [UIColor clearColor];
     cell.accessoryView = button;
-
-    UIImage *image = [UIImage imageNamed:@"icon_about"];
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    CGRect frame = CGRectMake(44.0, 44.0, image.size.width, image.size.height);
-    button.frame = frame;
-    [button setBackgroundImage:image forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(accessoryButtonTapped:event:)  forControlEvents:UIControlEventTouchUpInside];
-    button.backgroundColor = [UIColor clearColor];
-    cell.accessoryView = button;
-    
     
     return cell;
 }

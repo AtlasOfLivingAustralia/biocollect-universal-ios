@@ -74,7 +74,7 @@
     _sighingtListViewController = [SightingListViewController new];
     _sighingtListViewController.animals = self.trackForm.animals;
     _sighingtListViewController.title = [locale get: @"sighting.title"];
-    _sighingtListViewController.tabBarItem.image = [UIImage imageNamed:@"icon_dog"];
+    _sighingtListViewController.tabBarItem.image = [UIImage imageNamed:@"icon_lizards"];
     [_sighingtListViewController.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                              [UIFont fontWithName:@"Helvetica" size:15.0], NSFontAttributeName, nil]
                                    forState:UIControlStateNormal];
