@@ -144,8 +144,8 @@
     NSMutableDictionary* output = [[NSMutableDictionary alloc] initWithDictionary: @{
         @"species": [self.animal getOutput],
         @"typeOfSign": self.visibleSign ? self.visibleSign : @"",
-        @"evidenceAgeClass": self.age ? self.age : @"",
-        @"ageClassOfAnimal": self.durationSign ? self.durationSign : @"",
+        @"evidenceAgeClass": self.durationSign ? self.durationSign : @"",
+        @"ageClassOfAnimal": self.age ? self.age : @"",
         @"observationLatitude": self.location.coordinate.latitude ? @(self.location.coordinate.latitude) : @"",
         @"observationLongitude": self.location.coordinate.longitude ? @(self.location.coordinate.longitude) : @""
     }];

@@ -56,7 +56,7 @@
                             @"sighting.notfound": @"To add an animal sign, touch the '+' button above.",
                             @"sighting.notfound.helptext": @"You must add at least one animal sign. If no animal sign is found, use the 'No animal found' selection.",
                             @"sighting.save": @"Done",
-                            @"sighting.unknown": @"Unknown animal",
+                            @"sighting.unknown": @"Please select an animal. Use 'No animal found' if you found none. *",
                             @"sighting.details.sign": @"Sign - %@",
                             @"sighting.details.age": @"Age - %@",
                             
@@ -71,7 +71,7 @@
                             @"uploading.message": @"Uploading tracks...",
                             @"uploaded.message": @"Uploaded %d of %d",
                             @"uploaded.noTracksToUpload": @"No valid tracks to upload",
-                            @"uploadfinish.message": @"Successfully uploaded %d tracks",
+                            @"uploadfinish.message": @"Successfully uploaded %d track(s)",
                             
                             @"upload.error": @"Some of the tracks are not submitted, please try again later.",
                             @"upload.accessDenied": @"You are not authorised to submit tracks, please contact our support team at biocollect-support@ala.org.au",
@@ -80,13 +80,13 @@
                             @"trackviewcontroller.button.back": @"Back",
                             
                             @"trackmetadata.confirmexit.title": @"Go back without saving?",
-                            @"trackmetadata.confirmexit.message": @"Click 'No' to continue recording your journey. Click 'Save & exit' to save and go back to previous page. Otherwise, click 'Yes' to delete this track and go back to previous page.",
+                            @"trackmetadata.confirmexit.message": @"Click 'No' to remain on this page. Click 'Save & go back' to save and go back to previous page. Otherwise, click 'Yes' to delete this track and go back to previous page.",
                             @"trackmetadata.confirmexit.no": @"No",
                             @"trackmetadata.confirmexit.yes": @"Yes",
-                            @"trackmetadata.confirmexit.exit": @"Save & exit",
+                            @"trackmetadata.confirmexit.exit": @"Save & go back",
                             
                             @"trackmetadata.confirmexitwithoutdelete.title": @"Go back?",
-                            @"trackmetadata.confirmexitwithoutdelete.message": @"Click 'No' to continue on this page. Click 'Yes' to save and go back to previous page.",
+                            @"trackmetadata.confirmexitwithoutdelete.message": @"Click 'No' to remain on this page. Click 'Yes' to save and go back to previous page.",
                             @"trackmetadata.confirmexitwithoutdelete.no": @"No",
                             @"trackmetadata.confirmexitwithoutdelete.yes": @"Yes",
                             
@@ -95,12 +95,12 @@
                             @"camera.error.ok": @"Ok",
                             
                             @"trackmetadata.confirmsave.title": @"Save your track to disk?",
-                            @"trackmetadata.confirmsave.message": @"Click 'Save & continue' to save to disk and continue your journey. Click 'Save & exit' to save your track to disk and go back to previous page.",
-                            @"trackmetadata.confirmsave.continue": @"Save & continue",
-                            @"trackmetadata.confirmsave.exit": @"Save & exit",
+                            @"trackmetadata.confirmsave.message": @"Click 'Save' to save to disk and remain on this page. Click 'Save & go back' to save your track to disk and go back to previous page.",
+                            @"trackmetadata.confirmsave.continue": @"Save",
+                            @"trackmetadata.confirmsave.exit": @"Save & go back",
 
-                            @"nointernetconnectivity.title": @"No internet connectivity",
-                            @"nointernetconnectivity.message": @"Cannot upload tracks due to no internet connectivity. Try again later.",
+                            @"nointernetconnectivity.title": @"No internet connection",
+                            @"nointernetconnectivity.message": @"Cannot upload tracks since there is no internet connection. Try again later.",
                             @"nointernetconnectivity.ok": @"Ok",
                             
                             @"animalFormat": @"Animals - %d;",
