@@ -14,7 +14,7 @@
 @interface SpeciesListVC ()
 @property (nonatomic, assign) BOOL isSearching;
 @property (strong, nonatomic) GAAppDelegate *appDelegate;
-@property (strong, nonatomic) Species *selectedSpecies;
+@property (strong, nonatomic, setter=setSelectedSpecies:) Species *selectedSpecies;
 @property (nonatomic, strong) UIAlertView *animalView;
 @end
 
@@ -296,6 +296,7 @@
         newAnimal.displayName = input;
         newAnimal.name = input;
         newAnimal.lsid = @"";
+
         self.selectedSpecies = newAnimal;
         [[NSNotificationCenter defaultCenter]postNotificationName:@"SPECIES_SEARCH_SELECTED" object: self.selectedSpecies];
         [self.navigationController popViewControllerAnimated:YES];
@@ -306,6 +307,11 @@
 - (void) setField:(FXFormField *)field {
     _field = field;
     self.selectedSpecies = field.value;
+}
+
+- (void) setSelectedSpecies: (Species*) species {
+    _field.value = species;
+    selectedSpecies = species;
 }
 
 -(void) downloadSpeciesImage {

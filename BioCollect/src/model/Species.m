@@ -49,11 +49,16 @@
 
 - (NSString*) getSubTitle {
     NSString * cn = commonName;
+    NSString* sn = scientificName;
     if (commonName == (id)[NSNull null] || commonName.length == 0 ) {
         cn = @"N/A";
     }
     
-    return [[NSString alloc] initWithFormat:@"%@, %@", cn, scientificName];
+    if (scientificName == (id)[NSNull null] || scientificName.length == 0 ) {
+        sn = @"N/A";
+    }
+    
+    return [[NSString alloc] initWithFormat:@"%@, %@", cn, sn];
 }
 
 - (NSDictionary*) getOutput {

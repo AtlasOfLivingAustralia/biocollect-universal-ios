@@ -13,4 +13,5 @@
     @property (nonatomic, strong, setter=setField:) FXFormField *field;
 
 - (void) setField: (FXFormField*) field;
+- (void) setSelectedSpecies: (Species*) species;
 @end
