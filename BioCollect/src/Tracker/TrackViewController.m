@@ -16,6 +16,7 @@
 #import "SpeciesListVC.h"
 #import "Species.h"
 #import "SightingForm.h"
+#import "TrackListViewController.h"
 
 @implementation TrackViewController
 - (instancetype) init {
@@ -59,7 +60,7 @@
     
     GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
     Locale* locale = appDelegate.locale;
-    self.title = [locale get: @"trackviewcontroller.title"];
+    self.title = [locale get: @"trackmetadataviewcontroller.title"];
     
     TrackMetadataViewController *meta = [[TrackMetadataViewController alloc] initWithForm:self.trackForm];
     meta.title = [locale get: @"trackmetadataviewcontroller.title"];
@@ -91,21 +92,26 @@
     [self setViewControllers: @[meta, _sighingtListViewController, _route]];
     
     UIBarButtonItem *addAnimal = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAnimal)];
-    UIBarButtonItem *save = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(save)];
+    next = [[UIBarButtonItem alloc] initWithTitle:[locale get:@"trackmetadata.save"] style:UIBarButtonItemStylePlain target:self action:@selector(nextButtonAction)];
     UIBarButtonItem *camera = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(takePhoto:) ];
     centreMap = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_refresh"] style:UIBarButtonItemStylePlain target:self action:@selector(centreMap:)];
     [centreMap setEnabled:NO];
     
-    if (isPractise) {
-        [save setEnabled:NO];
-    }
-    
-    self.navigationItem.rightBarButtonItems = @[save, camera, addAnimal, centreMap];
+    self.navigationItem.rightBarButtonItems = @[next, camera, addAnimal, centreMap];
 
-    if(!isPractise){
-        UIBarButtonItem* back = [[UIBarButtonItem alloc] initWithTitle:[locale get:@"trackviewcontroller.button.back"] style:UIBarButtonItemStylePlain target:self action:@selector(cancelButton)];
-        self.navigationItem.leftBarButtonItem = back;
-    }
+    back = [[UIBarButtonItem alloc] initWithTitle:[locale get:@"trackviewcontroller.button.back"] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonAction)];
+    self.navigationItem.leftBarButtonItem = back;
+    
+    // gesture
+    UISwipeGestureRecognizer *leftToRightGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leftToRightSwipeDidFire)];
+    leftToRightGesture.direction = UISwipeGestureRecognizerDirectionRight;
+    [leftToRightGesture setNumberOfTouchesRequired:1];
+    [self.view addGestureRecognizer:leftToRightGesture];
+    
+    UISwipeGestureRecognizer *rightToLeftGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(rightToLeftSwipeDidFire)];
+    rightToLeftGesture.direction = UISwipeGestureRecognizerDirectionLeft;
+    [rightToLeftGesture setNumberOfTouchesRequired:1];
+    [self.view addGestureRecognizer:rightToLeftGesture];
     
     // register events
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeSighting:) name:@"SPECIES-REMOVED" object: nil];
@@ -124,11 +130,19 @@
 }
 
 #pragma mark - event handlers
+- (void)leftToRightSwipeDidFire {
+    [self selectPreviousViewController];
+}
+
+- (void)rightToLeftSwipeDidFire {
+    [self selectNextViewController];
+}
+
 - (void) cancelButton {
     
     if (!isPractise) {
         if(isTrackCreatedFromLocalStorage){
-            [self showExitAlertWithoutDeleteOption];
+            [self saveAndExitAction];
         } else {
             [self showExitAlertWithDeleteOption];
         }
@@ -155,37 +169,10 @@
                                                     });
                                                     [self.navigationController popViewControllerAnimated:YES];
                                                 }];
-    UIAlertAction* saveAndExit = [UIAlertAction actionWithTitle: [locale get: @"trackmetadata.confirmexit.exit"] style:UIAlertActionStyleDefault
-                                                        handler:^(UIAlertAction * action) {
-                                                            [self saveAndExitAction];
-                                                        }];
     
-    
-    [alert addAction:no];
-    [alert addAction:saveAndExit];
     [alert addAction:yes];
-    [self presentViewController:alert animated:YES completion:nil];
-}
-
-- (void) showExitAlertWithoutDeleteOption {
-    GAAppDelegate * appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
-    Locale* locale = appDelegate.locale;
-    
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle: [locale get: @"trackmetadata.confirmexitwithoutdelete.title"]
-                                                                   message: [locale get: @"trackmetadata.confirmexitwithoutdelete.message"]
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction* no = [UIAlertAction actionWithTitle: [locale get: @"trackmetadata.confirmexitwithoutdelete.no"] style:UIAlertActionStyleDefault
-                                               handler:^(UIAlertAction * action) {
-                                               }];
-    
-    UIAlertAction* saveAndExit = [UIAlertAction actionWithTitle: [locale get: @"trackmetadata.confirmexitwithoutdelete.yes"] style:UIAlertActionStyleDefault
-                                                        handler:^(UIAlertAction * action) {
-                                                            [self saveAndExitAction];
-                                                        }];
-    
-    
     [alert addAction:no];
-    [alert addAction:saveAndExit];
+    
     [self presentViewController:alert animated:YES completion:nil];
 }
 
@@ -196,23 +183,12 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addSighting:) name:@"SPECIES-SIGHTING-SAVED" object:nil];
 }
 
-- (void) speciesSelected: (NSNotification *) notice {
-    
-    SightingForm *form = _sightingVC.formController.form;
-    form.animal = (Species *)notice.object;
-    [_sightingVC.formController.tableView reloadData];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SPECIES-SIGHTING-SAVED" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addSighting:) name:@"SPECIES-SIGHTING-SAVED" object:nil];
-    
-    [self setSelectedIndex:1];
-}
-
 
 - (void) addSighting: (NSNotification *) notice {
     // remove previous notification registration
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SPECIES-SIGHTING-SAVED" object:nil];
     [self setSelectedIndex:1];
+    [self updateTabControllerUI];
 
     SightingForm *form = (SightingForm *)notice.object;
     
@@ -245,7 +221,7 @@
                                                             preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction* saveAndContinue = [UIAlertAction actionWithTitle: [locale get: @"trackmetadata.confirmsave.continue"] style:UIAlertActionStyleDefault
                                                          handler:^(UIAlertAction * action) {
-                                                             [[NSNotificationCenter defaultCenter] postNotificationName:@"TRACK-SAVED" object: nil];
+                                                             [[NSNotificationCenter defaultCenter] postNotificationName:@"TRACK-SAVED" object: self];
 
                                                              dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
                                                                 [appDelegate.trackerService addTrack: self.trackForm];
@@ -272,8 +248,6 @@
     
     [_trackForm stopRecordingLocation];
     [_route stopNotification];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"TRACK-SAVED" object: nil];
-    [self.navigationController popViewControllerAnimated:YES];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         [_trackForm save];
@@ -317,13 +291,137 @@
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma mark - helper functions
+- (void) nextButtonAction {
+    if ([self canSelectNextViewController]) {
+        [self selectNextViewController];
+    } else {
+        [self saveAndExitAction];
+        [self sentClosingNotification];
+        [self popFromNavigationContorller];
+    }
+}
+
+- (void) backButtonAction {
+    if ([self canSelectPreviousViewController]) {
+        [self selectPreviousViewController];
+    } else {
+        [self cancelButton];
+        [self popFromNavigationContorller];
+    }
+}
+
+#pragma mark - tab controller delegate
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
-    self.title = viewController.title;
-    if(viewController == _route){
+    [self updateTabControllerUI];
+}
+
+#pragma mark - object functions
+- (void) updateTabControllerUI {
+    [self updateTabControllerTitle];
+    [self enableRefreshButton];
+    [self updateNextButtonState];
+    [self updateTitleOnButtons];
+}
+
+- (void) updateTitleOnButtons {
+    GAAppDelegate * appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+    Locale* locale = appDelegate.locale;
+    NSString* nextTitle = [locale get:@"trackmetadata.save"];
+    
+    if ( self.selectedIndex == 2 ) {
+        nextTitle = [locale get:@"trackmetadata.done"];
+    }
+    
+    next.title = nextTitle;
+}
+
+- (void) enableRefreshButton {
+    if(self.selectedViewController == _route){
         [centreMap setEnabled: YES];
     } else {
         [centreMap setEnabled: NO];
+    }
+}
+
+- (void) updateNextButtonState {
+    if((self.selectedIndex == 2) && isPractise){
+        [next setEnabled: NO];
+    } else {
+        [next setEnabled: YES];
+    }
+}
+
+- (void) updateTabControllerTitle {
+    self.title = self.selectedViewController.title;
+}
+
+- (void) selectNextViewController {
+    if ([self canSelectNextViewController]) {
+        NSUInteger* index = self.selectedIndex + 1;
+        // Get views. controllerIndex is passed in as the controller we want to go to.
+        UIView * fromView = self.selectedViewController.view;
+        UIView * toView = [self.viewControllers objectAtIndex:index].view;
+        
+        // Transition using a page curl.
+        [UIView transitionFromView:fromView
+                            toView:toView
+                          duration:0.5
+                           options: UIViewAnimationOptionTransitionCrossDissolve
+                        completion:^(BOOL finished) {
+                            if (finished) {
+                                self.selectedIndex = index;
+                                [self updateTabControllerUI];
+                            }
+                        }];
+    }
+}
+
+- (BOOL) canSelectNextViewController {
+    if ((self.selectedIndex + 1) < [self.viewControllers count]) {
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (void) selectPreviousViewController {
+    if ([self canSelectPreviousViewController]) {
+        NSUInteger* index  = self.selectedIndex - 1;
+        // Get views. controllerIndex is passed in as the controller we want to go to.
+        UIView * fromView = self.selectedViewController.view;
+        UIView * toView = [self.viewControllers objectAtIndex:index].view;
+        
+        // Transition using a page curl.
+        [UIView transitionFromView:fromView
+                            toView:toView
+                          duration:0.5
+                           options: UIViewAnimationOptionTransitionCrossDissolve
+                        completion:^(BOOL finished) {
+                            if (finished) {
+                                self.selectedIndex = index;
+                                [self updateTabControllerUI];
+                            }
+                        }];
+    }
+}
+
+- (BOOL) canSelectPreviousViewController {
+    if (self.selectedIndex > 0) {
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (void) sentClosingNotification {
+    if (!isTrackCreatedFromLocalStorage) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"TRACK-SAVED" object: self];
+    }
+}
+
+- (void) popFromNavigationContorller {
+    if (isTrackCreatedFromLocalStorage) {
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 @end

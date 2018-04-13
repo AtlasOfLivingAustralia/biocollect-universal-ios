@@ -10,7 +10,10 @@
 #import "FXForms.h"
 #import "SightingForm.h"
 
-@interface SightingViewController : FXFormViewController
+@interface SightingViewController : FXFormViewController {
+    BOOL isUpdate;
+}
+
 @property (strong, nonatomic) CLLocationManager *locationManager;
 - (instancetype) initWithForm: (SightingForm *) form;
 @end

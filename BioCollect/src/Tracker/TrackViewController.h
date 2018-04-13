@@ -18,6 +18,8 @@
     BOOL isTrackCreatedFromLocalStorage;
     SightingViewController* _sightingVC;
     UIBarButtonItem* centreMap;
+    UIBarButtonItem* back;
+    UIBarButtonItem* next;
 }
 
 @property (nonatomic, strong) MetadataForm* trackForm;

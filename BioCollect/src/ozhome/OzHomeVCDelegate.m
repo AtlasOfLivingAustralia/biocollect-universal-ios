@@ -46,6 +46,9 @@
         // Location services denied"
         // Alert the user and send them to the settings to turn on location
     }
+    
+    // register for events
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showUploadViewController:) name:@"TRACK-SAVED" object:nil];
 
     return self;
 }
@@ -332,5 +335,25 @@
 - (void) loadTrackListViewController {
     TrackListViewController *trackList = [[TrackListViewController alloc] init];
     [self.spotyViewController.navigationController pushViewController: trackList animated: YES];
+}
+
+- (void) showUploadViewController: (NSNotification*) notification {
+    TrackViewController *from = notification.object;
+    TrackListViewController* list = [[TrackListViewController alloc] init];
+    
+    // Transition using a page curl.
+    UIView * fromView = from.view;
+    UIView * toView = list.view;
+    
+    [UIView transitionFromView:fromView
+                        toView:toView
+                      duration:0.5
+                       options: UIViewAnimationOptionTransitionCrossDissolve
+                    completion:^(BOOL finished) {
+                        if (finished) {
+                            [self.spotyViewController.navigationController popViewControllerAnimated:NO];
+                            [self.spotyViewController.navigationController pushViewController:list animated:NO];
+                        }
+                    }];
 }
 @end

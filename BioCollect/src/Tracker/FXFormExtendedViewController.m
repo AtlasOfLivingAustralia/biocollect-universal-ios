@@ -26,8 +26,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(self.field.value != nil){
+    if (self.field.value != nil) {
         self.navigationItem.rightBarButtonItem.enabled = YES;
+    }
+    
+    if ([self.field.value isKindOfClass:[NSString class]]) {
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 @end
