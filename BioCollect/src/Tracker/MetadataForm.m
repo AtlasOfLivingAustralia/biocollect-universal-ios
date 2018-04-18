@@ -444,7 +444,7 @@
     
     if (_startTime && _endTime) {
         return [NSString stringWithFormat:@"%@ ( %@ - %@ );", date, startTime, endTime];
-    } else if (_endTime) {
+    } else if (_endTime == nil) {
         return [NSString stringWithFormat:@"%@ ( %@ - DNF );", date, startTime];
     } else {
         return @"";
@@ -493,7 +493,7 @@
         
         NSString* distanceTravelledString = [NSString stringWithFormat: [locale get: @"distanceTravlledFormat"], [self getDistanceTravelledString]];
         
-        if (duration) {
+        if ([duration length] != 0) {
             durationString = [NSString stringWithFormat:[locale get: @"durationFormat"], duration];
         }
         

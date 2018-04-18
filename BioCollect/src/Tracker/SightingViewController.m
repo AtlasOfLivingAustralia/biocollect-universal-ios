@@ -17,6 +17,11 @@
     GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
     Locale* locale = appDelegate.locale;
     
+    if(!isUpdate) {
+        isUpdate = NO;
+    }
+
+    
     self.title = [locale get:@"sighting.viewcontroller.title"];
     
     SightingForm *form = [[SightingForm alloc] init];
@@ -32,6 +37,7 @@
     GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
     Locale* locale = appDelegate.locale;
     
+    isUpdate = YES;
     self.title = [locale get:@"sighting.viewcontroller.title"];
     self.formController.form = form;
     
@@ -77,7 +83,14 @@
     
     GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
     Locale* locale = appDelegate.locale;
-    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithTitle: [locale get: @"sighting.save"]
+    
+    NSString* title = [locale get: @"sighting.save"];
+    
+    if (isUpdate) {
+        title = [locale get: @"sighting.update"];
+    }
+    
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithTitle: title
                                                                   style:UIBarButtonItemStylePlain target:self action:@selector(save)];
     self.navigationItem.rightBarButtonItem = barButton;
 }
