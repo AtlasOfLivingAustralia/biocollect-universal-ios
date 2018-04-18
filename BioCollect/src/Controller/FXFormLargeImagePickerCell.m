@@ -72,4 +72,15 @@ static const CGFloat FXFormFieldImageHeight = 400;
 {
     return (UIImageView *) imagePickerView;
 }
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage* image = info[UIImagePickerControllerEditedImage] ?: info[UIImagePickerControllerOriginalImage];
+    NSData* dataJPEG = UIImageJPEGRepresentation(image, 1.0);
+    image = [UIImage imageWithData:dataJPEG];
+    self.field.value = image;
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    if (self.field.action) self.field.action(self);
+    [self update];
+}
 @end
