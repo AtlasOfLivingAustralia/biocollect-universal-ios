@@ -289,6 +289,7 @@
     self.route = nil;
     self.trackMetadataViewController = nil;
     self.trackForm = nil;
+    self.delegate = nil;
 }
 
 - (IBAction)takePhoto:(UIButton *)sender {
@@ -307,7 +308,7 @@
     } else {
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.delegate = self;
-        picker.allowsEditing = YES;
+        picker.allowsEditing = NO;
         picker.sourceType = UIImagePickerControllerSourceTypeCamera;
         
         [self presentViewController:picker animated:YES completion:NULL];
@@ -321,7 +322,7 @@
 
 // For responding to the user accepting a newly-captured picture or movie
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    UIImage *img = info[UIImagePickerControllerEditedImage];
+    UIImage *img = info[UIImagePickerControllerOriginalImage];
     UIImageWriteToSavedPhotosAlbum(img, nil, nil, nil);
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
