@@ -173,11 +173,11 @@
 }
 
 - (BOOL) isValid {
-    if(_organisationName == @"" || _organisationName == nil){
+    if ([_organisationName length] == 0) {
         return NO;
     }
     
-    if(_leadTracker == @"" || _leadTracker == nil){
+    if ([_leadTracker length] == 0) {
         return NO;
     }
     
@@ -458,7 +458,7 @@
         NSInteger timeInteger = (NSInteger) time;
         NSInteger hours = timeInteger / 3600;
         NSInteger minutes = (timeInteger % 3600) / 60;
-        return [NSString stringWithFormat:@"%02d:%02d", hours, minutes];
+        return [NSString stringWithFormat:@"%02ld:%02ld", (long)hours, (long)minutes];
     }
     
     return @"";
@@ -483,7 +483,7 @@
     @try {
         GAAppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
         Locale* locale = appDelegate.locale;
-        NSInteger* numberOfAnimals = [_animals count];
+        NSUInteger numberOfAnimals = [_animals count];
         NSString* animalFormat = [locale get: @"animalFormat"];
         NSString* animal = [NSString stringWithFormat:animalFormat, numberOfAnimals];
         
