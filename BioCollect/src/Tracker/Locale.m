@@ -89,8 +89,9 @@
                             @"camera.error.message": @"Device has no camera",
                             @"camera.error.ok": @"Ok",
                             
-                            @"trackmetadata.confirmsave.title": @"Save your track to disk?",
-                            @"trackmetadata.confirmsave.message": @"Click 'Save' to save to disk and remain on this page. Click 'Save & go back' to save your track to disk and go back to previous page.",
+                            @"trackmetadata.confirmsave.title": @"",
+                            @"trackmetadata.confirmsave.message": @"Click 'Save' to save track to device and continue working on it. Otherwise, Click 'Save & go back' to save this track to device and go back to main menu.",
+                            @"trackmetadata.confirmsave.message.gotolist": @"Click 'Save' to save track to device and continue working on it. Otherwise, Click 'Save & go back' to save this track to device and go back to page showing list of saved tracks.",
                             @"trackmetadata.confirmsave.continue": @"Save",
                             @"trackmetadata.confirmsave.exit": @"Save & go back",
 

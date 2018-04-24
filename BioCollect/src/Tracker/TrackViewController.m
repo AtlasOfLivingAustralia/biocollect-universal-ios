@@ -231,8 +231,9 @@
     GAAppDelegate * appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
     Locale* locale = appDelegate.locale;
     
+    NSString* message = isTrackCreatedFromLocalStorage ? [locale get: @"trackmetadata.confirmsave.message.gotolist"] : [locale get: @"trackmetadata.confirmsave.message"];
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:  [locale get: @"trackmetadata.confirmsave.title"]
-                                                                   message: [locale get: @"trackmetadata.confirmsave.message"]
+                                                                   message: message
                                                             preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction* saveAndContinue = [UIAlertAction actionWithTitle: [locale get: @"trackmetadata.confirmsave.continue"] style:UIAlertActionStyleDefault
                                                          handler:^(UIAlertAction * action) {
