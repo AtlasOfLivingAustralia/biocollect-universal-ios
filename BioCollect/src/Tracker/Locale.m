@@ -27,7 +27,7 @@
                             @"trackmetadata.save": @"Save",
                             
                             @"trackmetadata.trackinginfo": @"2. Tracking details",
-                            @"trackmetadata.eventdate": @"Trek Date *",
+                            @"trackmetadata.eventdate": @"Track Date *",
                             @"trackmetadata.eventstarttime": @"Start time *",
                             @"trackmetadata.eventendtime": @"End time *",
                             @"trackmetadata.surveytype": @"Survey type",
@@ -37,7 +37,7 @@
                             @"trackmetadata.countryname" : @"Country name",
                             @"trackmetadata.countrytype" : @"Country type",
                             @"trackmetadata.vegetationtype" : @"Vegetation type",
-                            @"trackmetadata.foodplant" : @"Food plant",
+                            @"trackmetadata.foodplant" : @"Food plants",
                             @"trackmetadata.timesincefire" : @"How long since fire?",
                             @"trackmetadata.countryphoto" : @"Country photo",
                             
