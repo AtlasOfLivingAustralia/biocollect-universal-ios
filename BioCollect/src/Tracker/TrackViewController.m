@@ -105,7 +105,20 @@
     if(!isPractise){
         UIBarButtonItem* back = [[UIBarButtonItem alloc] initWithTitle:[locale get:@"trackviewcontroller.button.back"] style:UIBarButtonItemStylePlain target:self action:@selector(cancelButton)];
         self.navigationItem.leftBarButtonItem = back;
+        
+        [self startTimer];
     }
+    
+    // gesture
+    UISwipeGestureRecognizer *leftToRightGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leftToRightSwipe)];
+    leftToRightGesture.direction = UISwipeGestureRecognizerDirectionRight;
+    [leftToRightGesture setNumberOfTouchesRequired:1];
+    [self.view addGestureRecognizer:leftToRightGesture];
+    
+    UISwipeGestureRecognizer *rightToLeftGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(rightToLeftSwipe)];
+    rightToLeftGesture.direction = UISwipeGestureRecognizerDirectionLeft;
+    [rightToLeftGesture setNumberOfTouchesRequired:1];
+    [self.view addGestureRecognizer:rightToLeftGesture];
     
     // register events
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeSighting:) name:@"SPECIES-REMOVED" object: nil];
@@ -128,7 +141,7 @@
     
     if (!isPractise) {
         if(isTrackCreatedFromLocalStorage){
-            [self showExitAlertWithoutDeleteOption];
+            [self saveAndExitAction];
         } else {
             [self showExitAlertWithDeleteOption];
         }
@@ -145,48 +158,26 @@
                                                                    message: [locale get: @"trackmetadata.confirmexit.message"]
                                                             preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction* no = [UIAlertAction actionWithTitle: [locale get: @"trackmetadata.confirmexit.no"] style:UIAlertActionStyleDefault
-                                               handler:^(UIAlertAction * action) {
-                                               }];
+                                               handler:nil];
     
     UIAlertAction* yes = [UIAlertAction actionWithTitle: [locale get: @"trackmetadata.confirmexit.yes"] style:UIAlertActionStyleDefault
                                                 handler:^(UIAlertAction * action) {
-                                                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-                                                        [appDelegate.trackerService removeTrack: self.trackForm];
-                                                    });
+                                                    [self performBeforeExitRoutine];
+                                                    [self deleteTrack];
                                                     [self.navigationController popViewControllerAnimated:YES];
                                                 }];
-    UIAlertAction* saveAndExit = [UIAlertAction actionWithTitle: [locale get: @"trackmetadata.confirmexit.exit"] style:UIAlertActionStyleDefault
-                                                        handler:^(UIAlertAction * action) {
-                                                            [self saveAndExitAction];
-                                                        }];
     
-    
-    [alert addAction:no];
-    [alert addAction:saveAndExit];
     [alert addAction:yes];
+    [alert addAction:no];
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-- (void) showExitAlertWithoutDeleteOption {
-    GAAppDelegate * appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
-    Locale* locale = appDelegate.locale;
-    
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle: [locale get: @"trackmetadata.confirmexitwithoutdelete.title"]
-                                                                   message: [locale get: @"trackmetadata.confirmexitwithoutdelete.message"]
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction* no = [UIAlertAction actionWithTitle: [locale get: @"trackmetadata.confirmexitwithoutdelete.no"] style:UIAlertActionStyleDefault
-                                               handler:^(UIAlertAction * action) {
-                                               }];
-    
-    UIAlertAction* saveAndExit = [UIAlertAction actionWithTitle: [locale get: @"trackmetadata.confirmexitwithoutdelete.yes"] style:UIAlertActionStyleDefault
-                                                        handler:^(UIAlertAction * action) {
-                                                            [self saveAndExitAction];
-                                                        }];
-    
-    
-    [alert addAction:no];
-    [alert addAction:saveAndExit];
-    [self presentViewController:alert animated:YES completion:nil];
+- (void) deleteTrack {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        GAAppDelegate * appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+        [appDelegate.trackerService removeTrack: self.trackForm];
+        [self performCleanUp];
+    });
 }
 
 - (void) addAnimal {
@@ -240,16 +231,13 @@
     GAAppDelegate * appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
     Locale* locale = appDelegate.locale;
     
+    NSString* message = isTrackCreatedFromLocalStorage ? [locale get: @"trackmetadata.confirmsave.message.gotolist"] : [locale get: @"trackmetadata.confirmsave.message"];
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:  [locale get: @"trackmetadata.confirmsave.title"]
-                                                                   message: [locale get: @"trackmetadata.confirmsave.message"]
+                                                                   message: message
                                                             preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction* saveAndContinue = [UIAlertAction actionWithTitle: [locale get: @"trackmetadata.confirmsave.continue"] style:UIAlertActionStyleDefault
                                                          handler:^(UIAlertAction * action) {
-                                                             [[NSNotificationCenter defaultCenter] postNotificationName:@"TRACK-SAVED" object: nil];
-
-                                                             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-                                                                [appDelegate.trackerService addTrack: self.trackForm];
-                                                             });
+                                                             [self saveAndContinue];
                                                          }];
     
     UIAlertAction* saveAndExit = [UIAlertAction actionWithTitle: [locale get: @"trackmetadata.confirmsave.exit"] style:UIAlertActionStyleDefault
@@ -263,24 +251,47 @@
 
 }
 
-- (void) saveAndExitAction {
-    GAAppDelegate * appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
-
-    if (self.trackForm.endTime == nil) {
-        self.trackForm.endTime = [NSDate date];
-    }
-    
-    [_trackForm stopRecordingLocation];
-    [_route stopNotification];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"TRACK-SAVED" object: nil];
-    [self.navigationController popViewControllerAnimated:YES];
-    
+- (void) saveAndContinue {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        [_trackForm save];
+        GAAppDelegate * appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
         [appDelegate.trackerService addTrack: self.trackForm];
     });
 }
 
+- (void) saveAndExitAction {
+    GAAppDelegate * appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+    [self performBeforeExitRoutine];
+    [self fillEndTime];
+    [self.navigationController popViewControllerAnimated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"TRACK-SAVED" object: nil];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        [_trackForm save];
+        [appDelegate.trackerService addTrack: self.trackForm];
+        [self performCleanUp];
+    });
+}
+
+- (void) fillEndTime {
+    if (self.trackForm.endTime == nil) {
+        self.trackForm.endTime = [NSDate date];
+    }
+}
+
+- (void) performBeforeExitRoutine {
+    [self stopTimer];
+    [_trackForm stopRecordingLocation];
+    [_route stopNotification];
+}
+
+- (void) performCleanUp {
+    _sightingVC = nil;
+    self.sighingtListViewController = nil;
+    self.route = nil;
+    self.trackMetadataViewController = nil;
+    self.trackForm = nil;
+    self.delegate = nil;
+}
 
 - (IBAction)takePhoto:(UIButton *)sender {
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
@@ -298,7 +309,7 @@
     } else {
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.delegate = self;
-        picker.allowsEditing = YES;
+        picker.allowsEditing = NO;
         picker.sourceType = UIImagePickerControllerSourceTypeCamera;
         
         [self presentViewController:picker animated:YES completion:NULL];
@@ -312,18 +323,99 @@
 
 // For responding to the user accepting a newly-captured picture or movie
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    UIImage *img = info[UIImagePickerControllerEditedImage];
+    UIImage *img = info[UIImagePickerControllerOriginalImage];
     UIImageWriteToSavedPhotosAlbum(img, nil, nil, nil);
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
+// gesture handlers
+- (void) leftToRightSwipe {
+    [self selectPreviousViewController];
+}
+
+- (void) rightToLeftSwipe {
+    [self selectNextViewController];
+}
+
 #pragma mark - helper functions
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
-    self.title = viewController.title;
-    if(viewController == _route){
+    [self updateTabControllerUI];
+}
+
+- (void) updateTabControllerUI {
+    self.title = self.selectedViewController.title;
+    if(self.selectedViewController == _route){
         [centreMap setEnabled: YES];
     } else {
         [centreMap setEnabled: NO];
     }
 }
+
+- (void) selectNextViewController {
+    if ([self canSelectNextViewController]) {
+        NSUInteger index = self.selectedIndex + 1;
+        // Get views. controllerIndex is passed in as the controller we want to go to.
+        UIView * fromView = self.selectedViewController.view;
+        UIView * toView = [self.viewControllers objectAtIndex:index].view;
+        
+        // Transition using a page curl.
+        [UIView transitionFromView:fromView
+                            toView:toView
+                          duration:0.5
+                           options: UIViewAnimationOptionTransitionCrossDissolve
+                        completion:^(BOOL finished) {
+                            if (finished) {
+                                self.selectedIndex = index;
+                                [self updateTabControllerUI];
+                            }
+                        }];
+    }
+}
+
+- (BOOL) canSelectNextViewController {
+    if ((self.selectedIndex + 1) < [self.viewControllers count]) {
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (void) selectPreviousViewController {
+    if ([self canSelectPreviousViewController]) {
+        NSUInteger index  = self.selectedIndex - 1;
+        // Get views. controllerIndex is passed in as the controller we want to go to.
+        UIView * fromView = self.selectedViewController.view;
+        UIView * toView = [self.viewControllers objectAtIndex:index].view;
+        
+        // Transition using a page curl.
+        [UIView transitionFromView:fromView
+                            toView:toView
+                          duration:0.5
+                           options: UIViewAnimationOptionTransitionCrossDissolve
+                        completion:^(BOOL finished) {
+                            if (finished) {
+                                self.selectedIndex = index;
+                                [self updateTabControllerUI];
+                            }
+                        }];
+    }
+}
+
+- (BOOL) canSelectPreviousViewController {
+    if (self.selectedIndex > 0) {
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (void) stopTimer {
+    [timer invalidate];
+    timer = nil;
+}
+
+- (void) startTimer {
+    timer = [NSTimer scheduledTimerWithTimeInterval:300 target:self selector:@selector(saveAndContinue) userInfo:nil repeats:YES];
+}
+
 @end

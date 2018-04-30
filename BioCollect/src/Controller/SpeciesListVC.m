@@ -168,6 +168,7 @@
         }
         
         [self.tableView reloadData];
+        [self doneBtnPressed];
     }
 }
 

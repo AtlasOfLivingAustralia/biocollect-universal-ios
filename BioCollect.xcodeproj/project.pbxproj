@@ -35,6 +35,14 @@
 		8718FE622057D5C0000CB6BF /* RouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8718FE602057D49C000CB6BF /* RouteViewController.m */; };
 		8718FE65205A4507000CB6BF /* SpeciesAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8718FE64205A4507000CB6BF /* SpeciesAnnotation.m */; };
 		8718FE66205A4507000CB6BF /* SpeciesAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8718FE64205A4507000CB6BF /* SpeciesAnnotation.m */; };
+		872B4EA720856B180077866A /* FXFormLargeImagePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 872B4EA620856B180077866A /* FXFormLargeImagePickerCell.m */; };
+		872B4EA820856B180077866A /* FXFormLargeImagePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 872B4EA620856B180077866A /* FXFormLargeImagePickerCell.m */; };
+		872B4EA920856B180077866A /* FXFormLargeImagePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 872B4EA620856B180077866A /* FXFormLargeImagePickerCell.m */; };
+		872B4EAA20856B180077866A /* FXFormLargeImagePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 872B4EA620856B180077866A /* FXFormLargeImagePickerCell.m */; };
+		872B4EAB20856B180077866A /* FXFormLargeImagePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 872B4EA620856B180077866A /* FXFormLargeImagePickerCell.m */; };
+		872B4EAC20856B180077866A /* FXFormLargeImagePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 872B4EA620856B180077866A /* FXFormLargeImagePickerCell.m */; };
+		872B4EAF2085D1E60077866A /* animalsignphoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 872B4EAD2085D1E50077866A /* animalsignphoto.png */; };
+		872B4EB02085D1E60077866A /* countryphoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 872B4EAE2085D1E60077866A /* countryphoto.png */; };
 		872EFB041DBF7DC1006EB9BF /* SpeciesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 872EFB031DBF7DC1006EB9BF /* SpeciesCell.m */; };
 		874B4F38206354EB00892966 /* TrackerService.m in Sources */ = {isa = PBXBuildFile; fileRef = 874B4F37206354EB00892966 /* TrackerService.m */; };
 		874B4F39206354EB00892966 /* TrackerService.m in Sources */ = {isa = PBXBuildFile; fileRef = 874B4F37206354EB00892966 /* TrackerService.m */; };
@@ -1496,6 +1504,10 @@
 		8718FE602057D49C000CB6BF /* RouteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RouteViewController.m; path = BioCollect/src/Tracker/RouteViewController.m; sourceTree = SOURCE_ROOT; };
 		8718FE63205A44F2000CB6BF /* SpeciesAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpeciesAnnotation.h; sourceTree = "<group>"; };
 		8718FE64205A4507000CB6BF /* SpeciesAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpeciesAnnotation.m; sourceTree = "<group>"; };
+		872B4EA520856ABA0077866A /* FXFormLargeImagePickerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FXFormLargeImagePickerCell.h; path = src/Controller/FXFormLargeImagePickerCell.h; sourceTree = "<group>"; };
+		872B4EA620856B180077866A /* FXFormLargeImagePickerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FXFormLargeImagePickerCell.m; path = src/Controller/FXFormLargeImagePickerCell.m; sourceTree = "<group>"; };
+		872B4EAD2085D1E50077866A /* animalsignphoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = animalsignphoto.png; path = src/images/tracker/animalsignphoto.png; sourceTree = "<group>"; };
+		872B4EAE2085D1E60077866A /* countryphoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = countryphoto.png; path = src/images/tracker/countryphoto.png; sourceTree = "<group>"; };
 		872EFB021DBF7DC1006EB9BF /* SpeciesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpeciesCell.h; path = src/Sightings/SpeciesCell.h; sourceTree = "<group>"; };
 		872EFB031DBF7DC1006EB9BF /* SpeciesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpeciesCell.m; path = src/Sightings/SpeciesCell.m; sourceTree = "<group>"; };
 		874B4F36206353FD00892966 /* TrackerService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TrackerService.h; path = src/Service/TrackerService.h; sourceTree = "<group>"; };
@@ -2299,6 +2311,8 @@
 				87B09633204FB94300DA1395 /* SightingListViewController.m */,
 				874B4F3E206369CB00892966 /* TrackListViewController.h */,
 				874B4F3F20636B0400892966 /* TrackListViewController.m */,
+				872B4EA520856ABA0077866A /* FXFormLargeImagePickerCell.h */,
+				872B4EA620856B180077866A /* FXFormLargeImagePickerCell.m */,
 			);
 			name = Record;
 			sourceTree = "<group>";
@@ -2379,6 +2393,8 @@
 		E212E839200736D800268AD1 /* tracker */ = {
 			isa = PBXGroup;
 			children = (
+				872B4EAD2085D1E50077866A /* animalsignphoto.png */,
+				872B4EAE2085D1E60077866A /* countryphoto.png */,
 				878AFE64207F358300BDFC2A /* icon_lizards@2x.png */,
 				E260DBDA2075A557000824F3 /* tracks_logo_transparent.png */,
 				E212E85220081F8200268AD1 /* tracker_home_bk_small.png */,
@@ -3229,6 +3245,7 @@
 				E26146E220072F9300B1104E /* icon_search_plus@2x.png in Resources */,
 				E26146E320072F9300B1104E /* ContactVC.xib in Resources */,
 				E260DBC42075A17F000824F3 /* icon_tracks_add_track@2x.png in Resources */,
+				872B4EAF2085D1E60077866A /* animalsignphoto.png in Resources */,
 				E26146E420072F9300B1104E /* loc1_changed@2x.png in Resources */,
 				E26146E520072F9300B1104E /* biocollect_logo_1.png in Resources */,
 				E26146E620072F9300B1104E /* sync-25@2x.png in Resources */,
@@ -3358,6 +3375,7 @@
 				E261474A20072F9300B1104E /* camera_icon.png in Resources */,
 				E261474B20072F9300B1104E /* planned@2x.png in Resources */,
 				E261474C20072F9300B1104E /* searchbar_bk@2x.png in Resources */,
+				872B4EB02085D1E60077866A /* countryphoto.png in Resources */,
 				E261474D20072F9300B1104E /* icon_all_records@2x.png in Resources */,
 				E261474E20072F9300B1104E /* icon_version@2x.png in Resources */,
 				E261474F20072F9300B1104E /* SyncTableViewController.xib in Resources */,
@@ -4121,6 +4139,7 @@
 				E26146B720072F9300B1104E /* SDWebImageDownloaderOperation.m in Sources */,
 				E26146B820072F9300B1104E /* MRCircularProgressView.m in Sources */,
 				E26146B920072F9300B1104E /* UIImage+MultiFormat.m in Sources */,
+				872B4EAC20856B180077866A /* FXFormLargeImagePickerCell.m in Sources */,
 				87165E3B2047ADAA0094633E /* SightingViewController.m in Sources */,
 				E26146BA20072F9300B1104E /* UIView+WebCacheOperation.m in Sources */,
 				E26146BB20072F9300B1104E /* EasyJSDataFunction.m in Sources */,
@@ -4189,6 +4208,7 @@
 				E26638891F52EB9B00F1F1CE /* JGActionSheet.m in Sources */,
 				E266388A1F52EB9B00F1F1CE /* HomeCustomCell.m in Sources */,
 				E2A53733204E2D310085D1BE /* HubProjects.m in Sources */,
+				872B4EAA20856B180077866A /* FXFormLargeImagePickerCell.m in Sources */,
 				E266388B1F52EB9B00F1F1CE /* AFXMLRequestOperation.m in Sources */,
 				E266388C1F52EB9B00F1F1CE /* UIControl+REUIKitAdditions.m in Sources */,
 				E266388D1F52EB9B00F1F1CE /* RecordForm.m in Sources */,
@@ -4319,6 +4339,7 @@
 				E2AECEF91E73D3010035DF28 /* JGActionSheet.m in Sources */,
 				E2AECEFA1E73D3010035DF28 /* HomeCustomCell.m in Sources */,
 				E2A53732204E2D310085D1BE /* HubProjects.m in Sources */,
+				872B4EA920856B180077866A /* FXFormLargeImagePickerCell.m in Sources */,
 				E27B8F251EF4E5FE00B01FAB /* AFXMLRequestOperation.m in Sources */,
 				E27B8F2D1EF4E5FE00B01FAB /* UIControl+REUIKitAdditions.m in Sources */,
 				E2AECEFB1E73D3010035DF28 /* RecordForm.m in Sources */,
@@ -4449,6 +4470,7 @@
 				B8D551DE18F952DF00EDD006 /* GARestCall.m in Sources */,
 				E27B8F481EF4E68900B01FAB /* DetailsViewController.m in Sources */,
 				E21CD1831CEAF8E10021536B /* JGActionSheet.m in Sources */,
+				872B4EA720856B180077866A /* FXFormLargeImagePickerCell.m in Sources */,
 				E2B4BEEE1C896E270054F117 /* HomeCustomCell.m in Sources */,
 				E2A53731204E2D310085D1BE /* HubProjects.m in Sources */,
 				874B4F4020636B0400892966 /* TrackListViewController.m in Sources */,
@@ -4555,6 +4577,7 @@
 				874B4F4120636B0400892966 /* TrackListViewController.m in Sources */,
 				E2E3AAB218F4D2940005BB9E /* GreenArmyTests.m in Sources */,
 				874B4F39206354EB00892966 /* TrackerService.m in Sources */,
+				872B4EA820856B180077866A /* FXFormLargeImagePickerCell.m in Sources */,
 				878AFE5F207B465700BDFC2A /* UtilService.m in Sources */,
 				87165E2D2045719E0094633E /* Locale.m in Sources */,
 			);
@@ -4601,6 +4624,7 @@
 				E2F19DCD200584AC0033DC24 /* JGActionSheet.m in Sources */,
 				E2F19DCE200584AC0033DC24 /* HomeCustomCell.m in Sources */,
 				E2A53734204E2D310085D1BE /* HubProjects.m in Sources */,
+				872B4EAB20856B180077866A /* FXFormLargeImagePickerCell.m in Sources */,
 				E2F19DCF200584AC0033DC24 /* AFXMLRequestOperation.m in Sources */,
 				E2F19DD0200584AC0033DC24 /* UIControl+REUIKitAdditions.m in Sources */,
 				E2F19DD1200584AC0033DC24 /* RecordForm.m in Sources */,

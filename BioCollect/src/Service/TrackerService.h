@@ -8,7 +8,9 @@
 #import <Foundation/Foundation.h>
 #import "MetadataForm.h"
 
-@interface TrackerService : NSObject
+@interface TrackerService : NSObject {
+    BOOL isSaving;
+}
 @property (nonatomic, strong) NSMutableArray *tracks;
 @property (nonatomic, strong) NSURL *tracksSavedUrl;
 

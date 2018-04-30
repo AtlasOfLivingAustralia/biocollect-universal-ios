@@ -159,7 +159,7 @@
              // Country
              @{@"textLabel.color": uiColour, FXFormFieldKey: @"countryName", FXFormFieldTitle:[locale get: @"trackmetadata.countryname"], FXFormFieldHeader: [locale get: @"trackmetadata.country"]},
              @{@"textLabel.color": uiColour, FXFormFieldKey:@"countryType", FXFormFieldTitle: [locale get: @"trackmetadata.countrytype"], FXFormFieldOptions: @[@"Calcrete/Limestone rise",  @"Claypan", @"Creek line", @"Drainage line", @"Laterite (red rocks)", @"Rocky range",  @"Salt lake", @"Sand dune", @"Sand plain", @"Waterhole", @"Other"], FXFormFieldViewController: @"FXFormExtendedViewController"},
-             @{@"textLabel.color": uiColour, FXFormFieldKey:@"countryPhoto", FXFormFieldTitle: [locale get: @"trackmetadata.countryphoto"]},
+             @{@"textLabel.color": uiColour, FXFormFieldKey:@"countryPhoto", FXFormFieldTitle: [locale get: @"trackmetadata.countryphoto"], FXFormFieldCell: @"FXFormLargeImagePickerCell", FXFormFieldPlaceholder: [UIImage imageNamed:@"countryphoto"]},
              @{@"textLabel.color": uiColour, FXFormFieldKey:@"vegetationType", FXFormFieldTitle: [locale get: @"trackmetadata.vegetationtype"], FXFormFieldOptions: @[@"Buffel grassland", @"Dense woodland", @"Open grassland", @"Open woodland",  @"Shrubland", @"Spinifex grassland",  @"Other"], FXFormFieldViewController: @"FXFormExtendedViewController"},
              @{@"textLabel.color": uiColour, FXFormFieldKey:@"foodPlant", FXFormFieldTitle: [locale get: @"trackmetadata.foodplant"], FXFormFieldOptions: @[@"Bush fruits", @"Bush onions", @"Grass seeds", @"Witchetty grub shrubs", @"Yakirra grass", @"Yams and potatoes"], FXFormFieldViewController: @"FXFormExtendedViewController"},
              @{@"textLabel.color": uiColour, FXFormFieldKey:@"timeSinceFire", FXFormFieldTitle: [locale get: @"trackmetadata.timesincefire"], FXFormFieldOptions: @[@"Fresh shoots and plants growing", @"Long unburnt", @"Mature herbs with small grasses", @"Old enough to burn", @"Recent fire"], FXFormFieldViewController: @"FXFormExtendedViewController"},
@@ -173,11 +173,11 @@
 }
 
 - (BOOL) isValid {
-    if(_organisationName == @"" || _organisationName == nil){
+    if ([_organisationName length] == 0) {
         return NO;
     }
     
-    if(_leadTracker == @"" || _leadTracker == nil){
+    if ([_leadTracker length] == 0) {
         return NO;
     }
     
@@ -444,7 +444,7 @@
     
     if (_startTime && _endTime) {
         return [NSString stringWithFormat:@"%@ ( %@ - %@ );", date, startTime, endTime];
-    } else if (_endTime) {
+    } else if (_endTime == nil) {
         return [NSString stringWithFormat:@"%@ ( %@ - DNF );", date, startTime];
     } else {
         return @"";
@@ -458,7 +458,7 @@
         NSInteger timeInteger = (NSInteger) time;
         NSInteger hours = timeInteger / 3600;
         NSInteger minutes = (timeInteger % 3600) / 60;
-        return [NSString stringWithFormat:@"%02d:%02d", hours, minutes];
+        return [NSString stringWithFormat:@"%02ld:%02ld", (long)hours, (long)minutes];
     }
     
     return @"";
@@ -483,7 +483,7 @@
     @try {
         GAAppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
         Locale* locale = appDelegate.locale;
-        NSInteger* numberOfAnimals = [_animals count];
+        NSUInteger numberOfAnimals = [_animals count];
         NSString* animalFormat = [locale get: @"animalFormat"];
         NSString* animal = [NSString stringWithFormat:animalFormat, numberOfAnimals];
         
@@ -493,7 +493,7 @@
         
         NSString* distanceTravelledString = [NSString stringWithFormat: [locale get: @"distanceTravlledFormat"], [self getDistanceTravelledString]];
         
-        if (duration) {
+        if ([duration length] != 0) {
             durationString = [NSString stringWithFormat:[locale get: @"durationFormat"], duration];
         }
         
