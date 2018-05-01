@@ -27,7 +27,7 @@
                             @"trackmetadata.save": @"Save",
                             
                             @"trackmetadata.trackinginfo": @"2. Tracking details",
-                            @"trackmetadata.eventdate": @"Trek Date *",
+                            @"trackmetadata.eventdate": @"Track Date *",
                             @"trackmetadata.eventstarttime": @"Start time *",
                             @"trackmetadata.eventendtime": @"End time *",
                             @"trackmetadata.surveytype": @"Survey type",
@@ -37,7 +37,7 @@
                             @"trackmetadata.countryname" : @"Country name",
                             @"trackmetadata.countrytype" : @"Country type",
                             @"trackmetadata.vegetationtype" : @"Vegetation type",
-                            @"trackmetadata.foodplant" : @"Food plant",
+                            @"trackmetadata.foodplant" : @"Food plants",
                             @"trackmetadata.timesincefire" : @"How long since fire?",
                             @"trackmetadata.countryphoto" : @"Country photo",
                             
@@ -55,18 +55,19 @@
                             @"sighting.age": @"How old is the animal?",
                             @"sighting.notfound": @"To add an animal sign, touch the '+' button above.",
                             @"sighting.notfound.helptext": @"You must add at least one animal sign. If no animal sign is found, use the 'No animal found' selection.",
-                            @"sighting.save": @"Done",
-                            @"sighting.unknown": @"Please select an animal. Use 'No animal found' if you found none. *",
+                            @"sighting.save": @"Add",
+                            @"sighting.update": @"Update",
+                            @"sighting.unknown": @"Please select an animal. This field is mandatory. *",
                             @"sighting.details.sign": @"Sign - %@",
                             @"sighting.details.age": @"Age - %@",
                             
                             @"tracklist.notfound": @"No saved tracks",
                             @"tracklist.notfound.helptext": @"To add a track, go back to the main menu and select 'Create a new track'.",
                             
-                            @"trackmetadata.modal.title": @"Continue your journey?",
-                            @"trackmetadata.modal.content": @"Click 'Yes' if you want to continue recording your journey. Otherwise, click 'No' to edit saved information.",
-                            @"trackmetadata.modal.record": @"Yes",
-                            @"trackmetadata.modal.cancel": @"No",
+                            @"trackmetadata.modal.title": @"",
+                            @"trackmetadata.modal.content": @"Click 'Record my route' if you want to continue tracking. Otherwise, click 'Edit track data' to edit track information you submitted.",
+                            @"trackmetadata.modal.record": @"Record my route",
+                            @"trackmetadata.modal.cancel": @"Edit track data",
                             
                             @"uploading.message": @"Uploading tracks...",
                             @"uploaded.message": @"Uploaded %d of %d",
@@ -79,23 +80,18 @@
                             @"tracklistviewcontroller.title": @"Upload or edit saved tracks",
                             @"trackviewcontroller.button.back": @"Back",
                             
-                            @"trackmetadata.confirmexit.title": @"Go back without saving?",
-                            @"trackmetadata.confirmexit.message": @"Click 'No' to remain on this page. Click 'Save & go back' to save and go back to previous page. Otherwise, click 'Yes' to delete this track and go back to previous page.",
+                            @"trackmetadata.confirmexit.title": @"Delete this track?",
+                            @"trackmetadata.confirmexit.message": @"Click 'Yes' to delete this track and go to main menu. Otherwise, click 'No' to remain on this page.",
                             @"trackmetadata.confirmexit.no": @"No",
                             @"trackmetadata.confirmexit.yes": @"Yes",
-                            @"trackmetadata.confirmexit.exit": @"Save & go back",
-                            
-                            @"trackmetadata.confirmexitwithoutdelete.title": @"Go back?",
-                            @"trackmetadata.confirmexitwithoutdelete.message": @"Click 'No' to remain on this page. Click 'Yes' to save and go back to previous page.",
-                            @"trackmetadata.confirmexitwithoutdelete.no": @"No",
-                            @"trackmetadata.confirmexitwithoutdelete.yes": @"Yes",
                             
                             @"camera.error.title": @"Error",
                             @"camera.error.message": @"Device has no camera",
                             @"camera.error.ok": @"Ok",
                             
-                            @"trackmetadata.confirmsave.title": @"Save your track to disk?",
-                            @"trackmetadata.confirmsave.message": @"Click 'Save' to save to disk and remain on this page. Click 'Save & go back' to save your track to disk and go back to previous page.",
+                            @"trackmetadata.confirmsave.title": @"",
+                            @"trackmetadata.confirmsave.message": @"Click 'Save' to save track to device and continue working on it. Otherwise, Click 'Save & go back' to save this track to device and go back to main menu.",
+                            @"trackmetadata.confirmsave.message.gotolist": @"Click 'Save' to save track to device and continue working on it. Otherwise, Click 'Save & go back' to save this track to device and go back to page showing list of saved tracks.",
                             @"trackmetadata.confirmsave.continue": @"Save",
                             @"trackmetadata.confirmsave.exit": @"Save & go back",
 

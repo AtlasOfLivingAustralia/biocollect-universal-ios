@@ -155,21 +155,6 @@
     }
 }
              
-- (NSMutableDictionary *) uploadImage: (UIImage *) image{
-    NSMutableDictionary *dict = nil;
-    NSMutableDictionary *result = [self.appDelegate.restCall uploadImage:image];
-    
-    if((result == nil) || [[NSNumber numberWithInt:200] isEqual: result[@"statusCode"]]){
-        dict = result[@"resp"];
-    }
-    
-    if(dict == nil) {
-        @throw [NSException exceptionWithName:kImageUploadException
-                                       reason:@"Error, uploading species image, please try again later."
-                                     userInfo:nil];
-    }
-    return dict;
-}
 
 - (NSString *) uploadSite: (NSDictionary *) site {
     NSString *siteJson = [self dictionaryToString: site];
@@ -186,19 +171,46 @@
     NSError *error;
     NSURLResponse *response;
     NSData *POSTReply = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    
+    NSDictionary *respDict = nil;
     NSString *siteId = nil;
+    
     if(error == nil) {
-        NSDictionary *respDict =  [NSJSONSerialization JSONObjectWithData:POSTReply options:kNilOptions error:&error];
-        //{"status":"created","id":"2628a2a2-2f27-4863-bcb3-f491ed9989aa"}
+        respDict =  [NSJSONSerialization JSONObjectWithData:POSTReply options:kNilOptions error:&error];
         siteId = (error == nil && respDict != nil) ? respDict[@"id"] : nil;
-    } else {
-        @throw [NSException exceptionWithName:kSiteUploadException
-                                       reason:@"Error, uploading tracks coordinates."
-                                        userInfo:nil];
     }
     
+    if(error != nil  || (respDict != nil && ![[NSNumber numberWithInt:200] isEqual: respDict[@"statusCode"]])){
+        if(error.code == NSURLErrorUserCancelledAuthentication) {
+            @throw [NSException exceptionWithName:kAuthorizationError
+                                           reason:@"Access denied"
+                                         userInfo:nil];
+        } else if (siteId == (id)[NSNull null] || siteId == nil || siteId.length == 0 ) {
+            @throw [NSException exceptionWithName:kSiteUploadException
+                                           reason:@"Error, uploading tracks coordinates."
+                                         userInfo:nil];
+        }
+    }
+   
     return siteId;
 }
+
+- (NSMutableDictionary *) uploadImage: (UIImage *) image{
+    NSMutableDictionary *dict = nil;
+    NSMutableDictionary *result = [self.appDelegate.restCall uploadImage:image];
+    
+    if((result == nil) || [[NSNumber numberWithInt:200] isEqual: result[@"statusCode"]]){
+        dict = result[@"resp"];
+    }
+    
+    if(dict == nil) {
+        @throw [NSException exceptionWithName:kImageUploadException
+                                       reason:@"Error, uploading species image, please try again later."
+                                     userInfo:nil];
+    }
+    return dict;
+}
+
 - (NSString *) dictionaryToString : (NSDictionary *) dictionary {
     NSDictionary *data = dictionary;
     NSError *e;

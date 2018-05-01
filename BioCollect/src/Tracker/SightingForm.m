@@ -46,11 +46,11 @@
     
     return @[
              // Tracker information
-             @{@"textLabel.color": uiColour, FXFormFieldKey:@"visibleSign", FXFormFieldTitle:[locale get: @"sighting.visiblesign"], FXFormFieldOptions: @[@"Animal", @"Body part", @"Burrow/Nest/Cave/Resting place",  @"Digging", @"Digging for ants/termites", @"Digging into roots for grubs", @"Scat", @"Track"], FXFormFieldViewController: @"FXFormExtendedViewController"},
-             @{@"textLabel.color": uiColour, FXFormFieldKey:@"durationSign", FXFormFieldTitle:[locale get: @"sighting.durationsign"], FXFormFieldOptions: @[@"Fresh (1-2days)", @"Older (3 days to 1 week)", @"Really old (> 1 week)"], FXFormFieldViewController: @"FXFormExtendedViewController"},
-             @{@"textLabel.color": uiColour, FXFormFieldKey:@"photo", FXFormFieldTitle:[locale get: @"sighting.photo"]},
              @{@"textLabel.color": uiColour, FXFormFieldKey:@"animal", FXFormFieldTitle:[locale get: @"sighting.animal"], FXFormFieldViewController: @"SpeciesListVC", FXFormFieldTypeImage:[UIImage imageNamed:@"icon_lizards"]},
+             @{@"textLabel.color": uiColour, FXFormFieldKey:@"visibleSign", FXFormFieldTitle:[locale get: @"sighting.visiblesign"], FXFormFieldOptions: @[@"Animal", @"Track", @"Scat", @"Burrow/Nest/Cave/Resting place", @"Body part",   @"Digging", @"Digging into roots for grubs", @"Digging for ants/termites"], FXFormFieldViewController: @"FXFormExtendedViewController"},
+             @{@"textLabel.color": uiColour, FXFormFieldKey:@"durationSign", FXFormFieldTitle:[locale get: @"sighting.durationsign"], FXFormFieldOptions: @[@"Fresh (1-2days)", @"Older (3 days to 1 week)", @"Really old (> 1 week)"], FXFormFieldViewController: @"FXFormExtendedViewController"},
              @{@"textLabel.color": uiColour, FXFormFieldKey:@"age", FXFormFieldTitle:[locale get: @"sighting.age"], FXFormFieldOptions: @[@"Big adult", @"Small adult", @"Young"], FXFormFieldViewController: @"FXFormExtendedViewController"},
+             @{@"textLabel.color": uiColour, FXFormFieldKey:@"photo", FXFormFieldTitle:[locale get: @"sighting.photo"], FXFormFieldCell: @"FXFormLargeImagePickerCell", FXFormFieldPlaceholder: [UIImage imageNamed: @"animalsignphoto"]},
              @{@"textLabel.color": uiColour, FXFormFieldKey: @"location", FXFormFieldTitle:@"Location", FXFormFieldPlaceholder: @"", FXFormFieldViewController: @"MapPointViewController"}
            ];
 }

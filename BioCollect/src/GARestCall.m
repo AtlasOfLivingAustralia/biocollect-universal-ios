@@ -21,6 +21,7 @@
 #import "Reachability.h"
 
 @interface GARestCall()
+@property (nonatomic, retain) GAAppDelegate *appDelegate;
 @property (nonatomic, retain) NSMutableArray *projects;
 @property (nonatomic, retain) NSString *urlId;
 @property (nonatomic, assign) int restRequestCounter;
@@ -33,13 +34,14 @@
 #define UNMATCHED_TAXON @"unmatched taxon"
 #define NORANK_TAXON @"no rank"
 
-@synthesize projects,  urlId, restRequestCounter, restResponseCounter;
+@synthesize projects,  urlId, restRequestCounter, restResponseCounter, appDelegate;
 
 -(id) init {
     self.projects = [[NSMutableArray alloc]init];
     self.urlId = @"1493";
     self.restRequestCounter = 0;
     self.restResponseCounter = 0;
+    appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
     return self;
 }
 
@@ -426,8 +428,6 @@
                     result[@"message"] = @"Record saved";
                     result[@"activityId"] = respDict[@"resp"][@"activityId"];
                     
-                    //GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
-                    //[appDelegate removeRecords:@[record]];
                     record.uploaded = TRUE;
                 } else {
                     DebugLog(@"[ERROR] Server error %@",[*e localizedDescription]);
@@ -462,8 +462,7 @@
 
 -(void)saveRecordToDisk: (RecordForm *) record{
     // save record for sync later
-    GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate addRecord:record];
+    [self.appDelegate addRecord:record];
 }
 
 /**
@@ -512,7 +511,7 @@
         // create body of request
         NSMutableData *body = [NSMutableData data];
         [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=files; filename=%@.jpg\r\n", @"Animage"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=files; filename=%@\r\n", [appDelegate.utilService generateFileName:@"jpg"]] dataUsingEncoding:NSUTF8StringEncoding]];
         [body appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
         [body appendData:imageData];
         [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];

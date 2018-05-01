@@ -153,31 +153,31 @@
              @{@"textLabel.color": uiColour, FXFormFieldKey:@"date", FXFormFieldTitle:[locale get: @"trackmetadata.eventdate"], FXFormFieldHeader: [locale get: @"trackmetadata.trackinginfo"], FXFormFieldDefaultValue: currentDate},
              @{@"textLabel.color": uiColour, FXFormFieldKey:@"startTime", FXFormFieldTitle:[locale get: @"trackmetadata.eventstarttime"], FXFormFieldType: FXFormFieldTypeTime, FXFormFieldDefaultValue: currentDate},
              @{@"textLabel.color": uiColour, FXFormFieldKey:@"endTime", FXFormFieldTitle:[locale get: @"trackmetadata.eventendtime"], FXFormFieldType: FXFormFieldTypeTime},
-             @{@"textLabel.color": uiColour,FXFormFieldTitle: [locale get: @"trackmetadata.surveytype"], FXFormFieldKey: @"surveyType", FXFormFieldOptions: @[@"Incidental", @"KJ Mankarr Survey", @"Road", @"Trackplot 2ha 100m x 200m"], FXFormFieldViewController: @"FXFormExtendedViewController"},
-             @{@"textLabel.color": uiColour,FXFormFieldTitle: [locale get: @"trackmetadata.surveychoice"], FXFormFieldKey: @"surveyChoice", FXFormFieldOptions: @[@"Anywhere", @"Targeted"], FXFormFieldViewController: @"FXFormExtendedViewController"},
+             @{@"textLabel.color": uiColour,FXFormFieldTitle: [locale get: @"trackmetadata.surveytype"], FXFormFieldKey: @"surveyType", FXFormFieldOptions: @[@"Trackplot 2ha 100m x 200m", @"Incidental", @"Road", @"KJ Mankarr Survey"], FXFormFieldViewController: @"FXFormExtendedViewController"},
+             @{@"textLabel.color": uiColour,FXFormFieldTitle: [locale get: @"trackmetadata.surveychoice"], FXFormFieldKey: @"surveyChoice", FXFormFieldOptions: @[@"Targeted", @"Anywhere"], FXFormFieldViewController: @"FXFormExtendedViewController"},
              
              // Country
              @{@"textLabel.color": uiColour, FXFormFieldKey: @"countryName", FXFormFieldTitle:[locale get: @"trackmetadata.countryname"], FXFormFieldHeader: [locale get: @"trackmetadata.country"]},
-             @{@"textLabel.color": uiColour, FXFormFieldKey:@"countryType", FXFormFieldTitle: [locale get: @"trackmetadata.countrytype"], FXFormFieldOptions: @[@"Calcrete/Limestone rise",  @"Claypan", @"Creek line", @"Drainage line", @"Laterite (red rocks)", @"Rocky range",  @"Salt lake", @"Sand dune", @"Sand plain", @"Waterhole", @"Other"], FXFormFieldViewController: @"FXFormExtendedViewController"},
-             @{@"textLabel.color": uiColour, FXFormFieldKey:@"countryPhoto", FXFormFieldTitle: [locale get: @"trackmetadata.countryphoto"]},
-             @{@"textLabel.color": uiColour, FXFormFieldKey:@"vegetationType", FXFormFieldTitle: [locale get: @"trackmetadata.vegetationtype"], FXFormFieldOptions: @[@"Buffel grassland", @"Dense woodland", @"Open grassland", @"Open woodland",  @"Shrubland", @"Spinifex grassland",  @"Other"], FXFormFieldViewController: @"FXFormExtendedViewController"},
-             @{@"textLabel.color": uiColour, FXFormFieldKey:@"foodPlant", FXFormFieldTitle: [locale get: @"trackmetadata.foodplant"], FXFormFieldOptions: @[@"Bush fruits", @"Bush onions", @"Grass seeds", @"Witchetty grub shrubs", @"Yakirra grass", @"Yams and potatoes"], FXFormFieldViewController: @"FXFormExtendedViewController"},
-             @{@"textLabel.color": uiColour, FXFormFieldKey:@"timeSinceFire", FXFormFieldTitle: [locale get: @"trackmetadata.timesincefire"], FXFormFieldOptions: @[@"Fresh shoots and plants growing", @"Long unburnt", @"Mature herbs with small grasses", @"Old enough to burn", @"Recent fire"], FXFormFieldViewController: @"FXFormExtendedViewController"},
+             @{@"textLabel.color": uiColour, FXFormFieldKey:@"countryType", FXFormFieldTitle: [locale get: @"trackmetadata.countrytype"], FXFormFieldOptions:@[@"Sand dune", @"Sand plain", @"Laterite (red rocks)", @"Calcrete/Limestone rise", @"Rocky range", @"Creek line", @"Drainage line", @"Salt lake", @"Waterhole", @"Claypan", @"Other"], FXFormFieldViewController: @"FXFormExtendedViewController"},
+             @{@"textLabel.color": uiColour, FXFormFieldKey:@"countryPhoto", FXFormFieldTitle: [locale get: @"trackmetadata.countryphoto"], FXFormFieldCell: @"FXFormLargeImagePickerCell", FXFormFieldPlaceholder: [UIImage imageNamed:@"countryphoto"]},
+             @{@"textLabel.color": uiColour, FXFormFieldKey:@"vegetationType", FXFormFieldTitle: [locale get: @"trackmetadata.vegetationtype"], FXFormFieldOptions: @[@"Spinifex grassland", @"Open grassland", @"Buffel grassland", @"Shrubland", @"Open woodland", @"Dense woodland", @"Other"], FXFormFieldViewController: @"FXFormExtendedViewController"},
+             @{@"textLabel.color": uiColour, FXFormFieldKey:@"foodPlant", FXFormFieldTitle: [locale get: @"trackmetadata.foodplant"], FXFormFieldOptions: @[@"Grass seeds", @"Yakirra grass", @"Witchetty grub shrubs", @"Bush fruits", @"Bush onions", @"Yams and potatoes"], FXFormFieldViewController: @"FXFormExtendedViewController"},
+             @{@"textLabel.color": uiColour, FXFormFieldKey:@"timeSinceFire", FXFormFieldTitle: [locale get: @"trackmetadata.timesincefire"], FXFormFieldOptions: @[@"Recent fire", @"Fresh shoots and plants growing", @"Mature herbs with small grasses", @"Old enough to burn", @"Long unburnt"], FXFormFieldViewController: @"FXFormExtendedViewController"},
              
              // Trackability
-             @{@"textLabel.color": uiColour, FXFormFieldKey: @"clearGround", FXFormFieldTitle:[locale get: @"trackmetadata.clearground"], FXFormFieldHeader: [locale get: @"trackmetadata.trackability"], FXFormFieldOptions: @[@"Little or no clear ground", @"Lots of clear ground", @"Some clear ground"], FXFormFieldViewController: @"FXFormExtendedViewController"},
-             @{@"textLabel.color": uiColour, FXFormFieldKey:@"disturbance", FXFormFieldTitle: [locale get: @"trackmetadata.disturbance"], FXFormFieldOptions: @[@"Car", @"No recent disturbance", @"Rain", @"Wind"], FXFormFieldViewController: @"FXFormExtendedViewController"},
-             @{@"textLabel.color": uiColour, FXFormFieldKey:@"groundSoftness", FXFormFieldTitle: [locale get: @"trackmetadata.groundsoftness"], FXFormFieldOptions: @[@"Bit hard for little animal tracks", @"Hard (only tracks of big animals)", @"Soft (lots of little tracks)"], FXFormFieldViewController: @"FXFormExtendedViewController"},
-             @{@"textLabel.color": uiColour, FXFormFieldKey:@"weather", FXFormFieldTitle: [locale get: @"trackmetadata.weather"], FXFormFieldOptions: @[@"Bright sun", @"Calm", @"Cloudy", @"Windy"], FXFormFieldViewController: @"FXFormExtendedViewController"}
+             @{@"textLabel.color": uiColour, FXFormFieldKey: @"clearGround", FXFormFieldTitle:[locale get: @"trackmetadata.clearground"], FXFormFieldHeader: [locale get: @"trackmetadata.trackability"], FXFormFieldOptions: @[@"Lots of clear ground", @"Some clear ground", @"Little or no clear ground"], FXFormFieldViewController: @"FXFormExtendedViewController"},
+             @{@"textLabel.color": uiColour, FXFormFieldKey:@"disturbance", FXFormFieldTitle: [locale get: @"trackmetadata.disturbance"], FXFormFieldOptions: @[@"Wind", @"Rain", @"Car", @"No recent disturbance"], FXFormFieldViewController: @"FXFormExtendedViewController"},
+             @{@"textLabel.color": uiColour, FXFormFieldKey:@"groundSoftness", FXFormFieldTitle: [locale get: @"trackmetadata.groundsoftness"], FXFormFieldOptions: @[@"Soft (lots of little tracks)", @"Bit hard for little animal tracks", @"Hard (only tracks of big animals)"], FXFormFieldViewController: @"FXFormExtendedViewController"},
+             @{@"textLabel.color": uiColour, FXFormFieldKey:@"weather", FXFormFieldTitle: [locale get: @"trackmetadata.weather"], FXFormFieldOptions: @[@"Cloudy", @"Bright sun", @"Windy", @"Calm"], FXFormFieldViewController: @"FXFormExtendedViewController"}
              ];
 }
 
 - (BOOL) isValid {
-    if(_organisationName == @"" || _organisationName == nil){
+    if ([_organisationName length] == 0) {
         return NO;
     }
     
-    if(_leadTracker == @"" || _leadTracker == nil){
+    if ([_leadTracker length] == 0) {
         return NO;
     }
     
@@ -254,7 +254,7 @@
     }
     
     obj[@"site"] = @{
-        @"name":@"Private site for survey Tracsks Hub",
+        @"name":@"Private site for survey Tracks Hub",
         @"visibility":@"private",
         @"projects":@[
                     project.projectId
@@ -444,7 +444,7 @@
     
     if (_startTime && _endTime) {
         return [NSString stringWithFormat:@"%@ ( %@ - %@ );", date, startTime, endTime];
-    } else if (_endTime) {
+    } else if (_endTime == nil) {
         return [NSString stringWithFormat:@"%@ ( %@ - DNF );", date, startTime];
     } else {
         return @"";
@@ -458,7 +458,7 @@
         NSInteger timeInteger = (NSInteger) time;
         NSInteger hours = timeInteger / 3600;
         NSInteger minutes = (timeInteger % 3600) / 60;
-        return [NSString stringWithFormat:@"%02d:%02d", hours, minutes];
+        return [NSString stringWithFormat:@"%02ld:%02ld", (long)hours, (long)minutes];
     }
     
     return @"";
@@ -483,7 +483,7 @@
     @try {
         GAAppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
         Locale* locale = appDelegate.locale;
-        NSInteger* numberOfAnimals = [_animals count];
+        NSUInteger numberOfAnimals = [_animals count];
         NSString* animalFormat = [locale get: @"animalFormat"];
         NSString* animal = [NSString stringWithFormat:animalFormat, numberOfAnimals];
         
@@ -493,7 +493,7 @@
         
         NSString* distanceTravelledString = [NSString stringWithFormat: [locale get: @"distanceTravlledFormat"], [self getDistanceTravelledString]];
         
-        if (duration) {
+        if ([duration length] != 0) {
             durationString = [NSString stringWithFormat:[locale get: @"durationFormat"], duration];
         }
         

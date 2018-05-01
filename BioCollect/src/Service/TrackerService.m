@@ -16,6 +16,7 @@
 - (instancetype) init {
     self = [super init];
     
+    isSaving = NO;
     self.tracks = [NSMutableArray new];
     NSArray<NSURL *> *urls = [NSFileManager.defaultManager URLsForDirectory:NSDocumentDirectory inDomains: NSUserDomainMask];
     if([urls count] > 0){
@@ -35,12 +36,20 @@
 }
 
 - (BOOL) saveTracks {
-    BOOL archived = [NSKeyedArchiver archiveRootObject: self.tracks toFile: self.tracksSavedUrl.path];
-    if (!archived) {
-        NSLog(@"Failed to save to species list from local storage.");
+    if (!isSaving){
+        isSaving = YES;
+        BOOL archived = [NSKeyedArchiver archiveRootObject: self.tracks toFile: self.tracksSavedUrl.path];
+        if (!archived) {
+            NSLog(@"Failed to save to species list from local storage.");
+        }
+        
+        isSaving = NO;
+        return archived;
+    } else {
+        NSLog(@"Saving failed since it is being used by another thread.");
     }
     
-    return archived;
+    return NO;
 }
 
 - (BOOL) addTrack: (MetadataForm*) track {

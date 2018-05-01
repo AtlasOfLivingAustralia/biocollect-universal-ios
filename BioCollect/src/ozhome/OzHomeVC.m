@@ -140,9 +140,9 @@
     NSString *firstname = [GASettings getFirstName];
     NSString *displayName = nil;
     if([firstname length] > 14) {
-        displayName = [[NSString alloc]initWithFormat:@"G'Day %@...",[firstname substringToIndex: MIN(14, [firstname length])]];
+        displayName = [[NSString alloc]initWithFormat:@"Hello %@...",[firstname substringToIndex: MIN(14, [firstname length])]];
     } else if ([firstname length] > 0) {
-        displayName = [[NSString alloc]initWithFormat:@"G'Day %@",firstname];
+        displayName = [[NSString alloc]initWithFormat:@"Hello %@",firstname];
     } else {
         NSString *value = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleDisplayName"];
         displayName = [[NSString alloc]initWithFormat:@"Welcome to %@",value];
