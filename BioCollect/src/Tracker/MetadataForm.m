@@ -254,7 +254,7 @@
     }
     
     obj[@"site"] = @{
-        @"name":@"Private site for survey Tracsks Hub",
+        @"name":@"Private site for survey Tracks Hub",
         @"visibility":@"private",
         @"projects":@[
                     project.projectId
