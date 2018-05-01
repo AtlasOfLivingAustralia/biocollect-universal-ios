@@ -155,21 +155,6 @@
     }
 }
              
-- (NSMutableDictionary *) uploadImage: (UIImage *) image{
-    NSMutableDictionary *dict = nil;
-    NSMutableDictionary *result = [self.appDelegate.restCall uploadImage:image];
-    
-    if((result == nil) || [[NSNumber numberWithInt:200] isEqual: result[@"statusCode"]]){
-        dict = result[@"resp"];
-    }
-    
-    if(dict == nil) {
-        @throw [NSException exceptionWithName:kImageUploadException
-                                       reason:@"Error, uploading species image, please try again later."
-                                     userInfo:nil];
-    }
-    return dict;
-}
 
 - (NSString *) uploadSite: (NSDictionary *) site {
     NSString *siteJson = [self dictionaryToString: site];
@@ -200,7 +185,7 @@
             @throw [NSException exceptionWithName:kAuthorizationError
                                            reason:@"Access denied"
                                          userInfo:nil];
-        } else {
+        } else if (siteId == (id)[NSNull null] || siteId == nil || siteId.length == 0 ) {
             @throw [NSException exceptionWithName:kSiteUploadException
                                            reason:@"Error, uploading tracks coordinates."
                                          userInfo:nil];
@@ -209,6 +194,23 @@
    
     return siteId;
 }
+
+- (NSMutableDictionary *) uploadImage: (UIImage *) image{
+    NSMutableDictionary *dict = nil;
+    NSMutableDictionary *result = [self.appDelegate.restCall uploadImage:image];
+    
+    if((result == nil) || [[NSNumber numberWithInt:200] isEqual: result[@"statusCode"]]){
+        dict = result[@"resp"];
+    }
+    
+    if(dict == nil) {
+        @throw [NSException exceptionWithName:kImageUploadException
+                                       reason:@"Error, uploading species image, please try again later."
+                                     userInfo:nil];
+    }
+    return dict;
+}
+
 - (NSString *) dictionaryToString : (NSDictionary *) dictionary {
     NSDictionary *data = dictionary;
     NSError *e;
