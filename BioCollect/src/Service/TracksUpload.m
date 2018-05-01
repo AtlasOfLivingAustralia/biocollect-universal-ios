@@ -186,17 +186,27 @@
     NSError *error;
     NSURLResponse *response;
     NSData *POSTReply = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    
+    NSDictionary *respDict = nil;
     NSString *siteId = nil;
+    
     if(error == nil) {
-        NSDictionary *respDict =  [NSJSONSerialization JSONObjectWithData:POSTReply options:kNilOptions error:&error];
-        //{"status":"created","id":"2628a2a2-2f27-4863-bcb3-f491ed9989aa"}
+        respDict =  [NSJSONSerialization JSONObjectWithData:POSTReply options:kNilOptions error:&error];
         siteId = (error == nil && respDict != nil) ? respDict[@"id"] : nil;
-    } else {
-        @throw [NSException exceptionWithName:kSiteUploadException
-                                       reason:@"Error, uploading tracks coordinates."
-                                        userInfo:nil];
     }
     
+    if(error != nil  || (respDict != nil && ![[NSNumber numberWithInt:200] isEqual: respDict[@"statusCode"]])){
+        if(error.code == NSURLErrorUserCancelledAuthentication) {
+            @throw [NSException exceptionWithName:kAuthorizationError
+                                           reason:@"Access denied"
+                                         userInfo:nil];
+        } else {
+            @throw [NSException exceptionWithName:kSiteUploadException
+                                           reason:@"Error, uploading tracks coordinates."
+                                         userInfo:nil];
+        }
+    }
+   
     return siteId;
 }
 - (NSString *) dictionaryToString : (NSDictionary *) dictionary {
