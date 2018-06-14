@@ -326,6 +326,8 @@
         } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"species_list"]) {
             SpeciesListVC *speciesListVC = [[SpeciesListVC alloc] initWithNibName:@"SpeciesListVC" bundle:nil];
             [spotyViewController.navigationController pushViewController: speciesListVC animated:TRUE];
+        } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"logout_view"]) {
+            [appDelegate.loginViewController logout];
         } else {
             DebugLog(@"ERROR",@"Unsupported hub view.")
         }

@@ -115,7 +115,7 @@
 
 -(void) logout {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Confirm"
-                                                    message:@"Are you sure you want to logout? All saved data will be lost."
+                                                    message:@"Are you sure you want to logout? \n\n1.You will not be able to log back in [if] you are out of internet connection \n\n2.Tracks that are not uploaded will be lost."
                                                    delegate:self
                                           cancelButtonTitle:@"No"
                                           otherButtonTitles:@"Yes",nil];

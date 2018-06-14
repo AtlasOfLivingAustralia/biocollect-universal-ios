@@ -9,6 +9,7 @@
 #import "OzHomeVCDelegate.h"
 #import "OzHomeVCDataSource.h"
 #import "RecordViewController.h"
+#import "RKDropdownAlert.h"
 
 @interface OzHomeVC ()
 @property(strong, nonatomic) UILabel *lblTitle;
@@ -114,7 +115,7 @@
     //Add an example button
     UIButton *btContact = [UIButton buttonWithType:UIButtonTypeCustom];
     btContact.translatesAutoresizingMaskIntoConstraints = NO;
-    [btContact setTitle:@"Logout" forState:UIControlStateNormal];
+    [btContact setTitle:@"Version" forState:UIControlStateNormal];
     [btContact addTarget:self action:@selector(actionContact:) forControlEvents:UIControlEventTouchUpInside];
     btContact.backgroundColor = [UIColor colorWithRed:200.0/255.0 green:77.0/255.0 blue:47.0/255.0 alpha:1];
     btContact.titleLabel.font = [UIFont fontWithName:@"Verdana" size:12.0];
@@ -160,8 +161,9 @@
 
 - (void)actionContact:(id)sender
 {
-    GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate.loginViewController logout];
+    //GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+    //[appDelegate.loginViewController logout];
+    [RKDropdownAlert title:[[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleDisplayName"] message:[GASettings appVersion] backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
 }
 
 

@@ -189,6 +189,11 @@
 		E24690EF1EF5F19B00F2F8B8 /* icon_about@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E24690ED1EF5F19B00F2F8B8 /* icon_about@2x.png */; };
 		E247DD6F1EC33C5900A1C0A5 /* BioCollect-Name-Only.png in Resources */ = {isa = PBXBuildFile; fileRef = E247DD6E1EC33C5900A1C0A5 /* BioCollect-Name-Only.png */; };
 		E247DD701EC33C5900A1C0A5 /* BioCollect-Name-Only.png in Resources */ = {isa = PBXBuildFile; fileRef = E247DD6E1EC33C5900A1C0A5 /* BioCollect-Name-Only.png */; };
+		E248246D20D2053900A12532 /* icon_right_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E248246C20D2053900A12532 /* icon_right_1@2x.png */; };
+		E248246E20D2053900A12532 /* icon_right_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E248246C20D2053900A12532 /* icon_right_1@2x.png */; };
+		E248246F20D2053900A12532 /* icon_right_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E248246C20D2053900A12532 /* icon_right_1@2x.png */; };
+		E248247020D2053900A12532 /* icon_right_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E248246C20D2053900A12532 /* icon_right_1@2x.png */; };
+		E248247120D2053900A12532 /* icon_right_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E248246C20D2053900A12532 /* icon_right_1@2x.png */; };
 		E24D527918F57662002A4F64 /* GADetailFormVIewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E24D527718F57662002A4F64 /* GADetailFormVIewController.m */; };
 		E24D527A18F57662002A4F64 /* GADetailFormVIewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E24D527818F57662002A4F64 /* GADetailFormVIewController.xib */; };
 		E24E0B281CE40402006ECE0E /* ContactVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E24E0B271CE40402006ECE0E /* ContactVC.m */; };
@@ -1675,6 +1680,7 @@
 		E2424C441F0F634F00E4E13F /* oz_iPhone.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = oz_iPhone.jpg; path = src/images/bk/oz_iPhone.jpg; sourceTree = "<group>"; };
 		E24690ED1EF5F19B00F2F8B8 /* icon_about@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_about@2x.png"; path = "src/images/icon_about@2x.png"; sourceTree = "<group>"; };
 		E247DD6E1EC33C5900A1C0A5 /* BioCollect-Name-Only.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BioCollect-Name-Only.png"; path = "src/images/BioCollect-Name-Only.png"; sourceTree = "<group>"; };
+		E248246C20D2053900A12532 /* icon_right_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_right_1@2x.png"; path = "src/images/icon_right_1@2x.png"; sourceTree = "<group>"; };
 		E24D527618F57662002A4F64 /* GADetailFormVIewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADetailFormVIewController.h; path = src/GADetailFormVIewController.h; sourceTree = "<group>"; };
 		E24D527718F57662002A4F64 /* GADetailFormVIewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = GADetailFormVIewController.m; path = src/GADetailFormVIewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E24D527818F57662002A4F64 /* GADetailFormVIewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GADetailFormVIewController.xib; path = src/GADetailFormVIewController.xib; sourceTree = "<group>"; };
@@ -2461,6 +2467,7 @@
 				E212E84A20081B1900268AD1 /* icon_settings@2x.png */,
 				E212E844200817EA00268AD1 /* icon_track@2x.png */,
 				E274971F2006FA5E00876D5C /* icon_about_square@2x.png */,
+				E248246C20D2053900A12532 /* icon_right_1@2x.png */,
 				E2BA84071F583B2A008BE68F /* icon_briefcase@2x.png */,
 				E2C00BC71F17464600443DBD /* icon_logo@2x.png */,
 				E2C00BC41F173A3A00443DBD /* icon_version@2x.png */,
@@ -3324,6 +3331,7 @@
 				E261472020072F9300B1104E /* icon_camera@2x.png in Resources */,
 				E261472120072F9300B1104E /* Fungi.jpg in Resources */,
 				E212E849200817EA00268AD1 /* icon_track@2x.png in Resources */,
+				E248247120D2053900A12532 /* icon_right_1@2x.png in Resources */,
 				878AFE65207F358400BDFC2A /* icon_lizards@2x.png in Resources */,
 				E261472220072F9300B1104E /* ala_logo_transparent.png in Resources */,
 				E261472320072F9300B1104E /* SpeciesGroupTableViewController.xib in Resources */,
@@ -3514,6 +3522,7 @@
 				E26639421F52EB9B00F1F1CE /* Default-568h.png in Resources */,
 				E26639431F52EB9B00F1F1CE /* profile@2x.png in Resources */,
 				E26639441F52EB9B00F1F1CE /* ala_name.png in Resources */,
+				E248246F20D2053900A12532 /* icon_right_1@2x.png in Resources */,
 				E26639451F52EB9B00F1F1CE /* lock_filled-25@2x.png in Resources */,
 				E26639461F52EB9B00F1F1CE /* ajax_loader.gif in Resources */,
 				E26639471F52EB9B00F1F1CE /* LaunchScreen.storyboard in Resources */,
@@ -3620,6 +3629,7 @@
 				E2AECF6B1E73D3010035DF28 /* EULAiPhoneViewController.xib in Resources */,
 				E2A6BEC31F0CCFC000F1A57E /* Insects.jpg in Resources */,
 				E2AECF6C1E73D3010035DF28 /* SVWebViewControllerActivityChrome-iPad.png in Resources */,
+				E248246E20D2053900A12532 /* icon_right_1@2x.png in Resources */,
 				E260DBB72075A17F000824F3 /* icon_tracks_info@2x.png in Resources */,
 				E2AECF6E1E73D3010035DF28 /* GAMasterProjectTableViewController.xib in Resources */,
 				E2AECF6F1E73D3010035DF28 /* GADetailFormVIewController.xib in Resources */,
@@ -3806,6 +3816,7 @@
 				E25D8F011EE5813200ED4D0F /* icon_draft@2x.png in Resources */,
 				E22045C6192D7DA500531116 /* info_filled-25@2x.png in Resources */,
 				E2636DD71CF2E57C00000371 /* about_filled-25@2x.png in Resources */,
+				E248246D20D2053900A12532 /* icon_right_1@2x.png in Resources */,
 				E260DBC02075A17F000824F3 /* icon_tracks_add_track@2x.png in Resources */,
 				B87373D21DB6DFE90057027E /* SVWebViewController.strings in Resources */,
 				E2B42D7820686D29009943A4 /* TracksSiteTemplate.json in Resources */,
@@ -3987,6 +3998,7 @@
 				E2F19E8A200584AC0033DC24 /* ala_name.png in Resources */,
 				E2F19E8B200584AC0033DC24 /* lock_filled-25@2x.png in Resources */,
 				E2F19E8C200584AC0033DC24 /* ajax_loader.gif in Resources */,
+				E248247020D2053900A12532 /* icon_right_1@2x.png in Resources */,
 				E260DBAF2075A17F000824F3 /* icon_tracks_practice@2x.png in Resources */,
 				E2F19E8D200584AC0033DC24 /* LaunchScreen.storyboard in Resources */,
 				E2F19E8E200584AC0033DC24 /* ala_logo1.png in Resources */,
