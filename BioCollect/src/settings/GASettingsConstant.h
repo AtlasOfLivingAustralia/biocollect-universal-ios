@@ -1,11 +1,3 @@
-//
-//  GASettingsConstant.h
-//  GreenArmy
-//
-//  Created by Sathya Moorthy, Sathish (Atlas of Living Australia) on 11/04/2014.
-//  Copyright (c) 2014 Sathya Moorthy, Sathish (Atlas of Living Australia). All rights reserved.
-//
-
 #ifndef GASettingsConstant.h
 #define GASettingsConstant.h
 #define DEFAULT_TIMEOUT 10

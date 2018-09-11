@@ -1,11 +1,3 @@
-//
-//  GASqlLiteDatabase.m
-//  GreenArmy
-//
-//  Created by Sathya Moorthy, Sathish (Atlas of Living Australia) on 14/04/2014.
-//  Copyright (c) 2014 Sathya Moorthy, Sathish (Atlas of Living Australia). All rights reserved.
-//
-
 #import "GASqlLiteDatabase.h"
 #import "GAAppDelegate.h"
 #import "GASettingsConstant.h"
