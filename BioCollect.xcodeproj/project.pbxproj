@@ -481,7 +481,6 @@
 		E261473120072F9300B1104E /* icon_address@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E27B3F941EF62BB500DBB47D /* icon_address@2x.png */; };
 		E261473220072F9300B1104E /* Dicots.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA01F0CCFC000F1A57E /* Dicots.jpg */; };
 		E261473320072F9300B1104E /* ala_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A2FFCA1C8546F0008B63A8 /* ala_logo.png */; };
-		E261473420072F9300B1104E /* StaticWebPages in Resources */ = {isa = PBXBuildFile; fileRef = E2E56B2719259D0B007AC38C /* StaticWebPages */; };
 		E261473520072F9300B1104E /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8709D1C71DB9926700E49C7E /* MapViewController.xib */; };
 		E261473620072F9300B1104E /* Mammals.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA61F0CCFC000F1A57E /* Mammals.jpg */; };
 		E261473720072F9300B1104E /* ala_logo_1.png in Resources */ = {isa = PBXBuildFile; fileRef = E27B8F521EF5187A00B01FAB /* ala_logo_1.png */; };
@@ -747,7 +746,6 @@
 		E266393A1F52EB9B00F1F1CE /* icon_address@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E27B3F941EF62BB500DBB47D /* icon_address@2x.png */; };
 		E266393B1F52EB9B00F1F1CE /* Dicots.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA01F0CCFC000F1A57E /* Dicots.jpg */; };
 		E266393C1F52EB9B00F1F1CE /* ala_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A2FFCA1C8546F0008B63A8 /* ala_logo.png */; };
-		E266393D1F52EB9B00F1F1CE /* StaticWebPages in Resources */ = {isa = PBXBuildFile; fileRef = E2E56B2719259D0B007AC38C /* StaticWebPages */; };
 		E266393E1F52EB9B00F1F1CE /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8709D1C71DB9926700E49C7E /* MapViewController.xib */; };
 		E266393F1F52EB9B00F1F1CE /* Mammals.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA61F0CCFC000F1A57E /* Mammals.jpg */; };
 		E26639401F52EB9B00F1F1CE /* ala_logo_1.png in Resources */ = {isa = PBXBuildFile; fileRef = E27B8F521EF5187A00B01FAB /* ala_logo_1.png */; };
@@ -1078,7 +1076,6 @@
 		E2AECF821E73D3010035DF28 /* SVWebViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = B87373B31DB6DFE90057027E /* SVWebViewController.strings */; };
 		E2AECF841E73D3010035DF28 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = E241C684196A33B6002302D7 /* index.html */; };
 		E2AECF851E73D3010035DF28 /* ala_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A2FFCA1C8546F0008B63A8 /* ala_logo.png */; };
-		E2AECF861E73D3010035DF28 /* StaticWebPages in Resources */ = {isa = PBXBuildFile; fileRef = E2E56B2719259D0B007AC38C /* StaticWebPages */; };
 		E2AECF871E73D3010035DF28 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8709D1C71DB9926700E49C7E /* MapViewController.xib */; };
 		E2AECF891E73D3010035DF28 /* Default-568h.png in Resources */ = {isa = PBXBuildFile; fileRef = E2DCF1EB1CF68D8B008D438C /* Default-568h.png */; };
 		E2AECF8B1E73D3010035DF28 /* profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E22045C9192D7EDD00531116 /* profile@2x.png */; };
@@ -1191,7 +1188,6 @@
 		E2E56A7F1920857C007AC38C /* GASiteJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E56A7E1920857C007AC38C /* GASiteJSON.m */; };
 		E2E56A941921F4D9007AC38C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E56A931921F4D9007AC38C /* CoreLocation.framework */; };
 		E2E56A971922E6D6007AC38C /* changed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E56A951922E6D6007AC38C /* changed@2x.png */; };
-		E2E56B2819259D0B007AC38C /* StaticWebPages in Resources */ = {isa = PBXBuildFile; fileRef = E2E56B2719259D0B007AC38C /* StaticWebPages */; };
 		E2E56B2C1925CB7F007AC38C /* GACreateSiteModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E56B2A1925CB7F007AC38C /* GACreateSiteModalViewController.m */; };
 		E2E56B2D1925CB7F007AC38C /* GACreateSiteModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E56B2B1925CB7F007AC38C /* GACreateSiteModalViewController.xib */; };
 		E2E56B2F1925D84E007AC38C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E56B2E1925D84E007AC38C /* MapKit.framework */; };
@@ -1418,7 +1414,6 @@
 		E2F19E80200584AC0033DC24 /* icon_address@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E27B3F941EF62BB500DBB47D /* icon_address@2x.png */; };
 		E2F19E81200584AC0033DC24 /* Dicots.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA01F0CCFC000F1A57E /* Dicots.jpg */; };
 		E2F19E82200584AC0033DC24 /* ala_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A2FFCA1C8546F0008B63A8 /* ala_logo.png */; };
-		E2F19E83200584AC0033DC24 /* StaticWebPages in Resources */ = {isa = PBXBuildFile; fileRef = E2E56B2719259D0B007AC38C /* StaticWebPages */; };
 		E2F19E84200584AC0033DC24 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8709D1C71DB9926700E49C7E /* MapViewController.xib */; };
 		E2F19E85200584AC0033DC24 /* Mammals.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA61F0CCFC000F1A57E /* Mammals.jpg */; };
 		E2F19E86200584AC0033DC24 /* ala_logo_1.png in Resources */ = {isa = PBXBuildFile; fileRef = E27B8F521EF5187A00B01FAB /* ala_logo_1.png */; };
@@ -1938,7 +1933,6 @@
 		E2E56A7E1920857C007AC38C /* GASiteJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GASiteJSON.m; path = src/model/GASiteJSON.m; sourceTree = "<group>"; };
 		E2E56A931921F4D9007AC38C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E2E56A951922E6D6007AC38C /* changed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "changed@2x.png"; path = "src/images/changed@2x.png"; sourceTree = "<group>"; };
-		E2E56B2719259D0B007AC38C /* StaticWebPages */ = {isa = PBXFileReference; lastKnownFileType = folder; name = StaticWebPages; path = src/webView/StaticWebPages; sourceTree = "<group>"; };
 		E2E56B291925CB7F007AC38C /* GACreateSiteModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GACreateSiteModalViewController.h; path = src/model/GACreateSiteModalViewController.h; sourceTree = "<group>"; };
 		E2E56B2A1925CB7F007AC38C /* GACreateSiteModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GACreateSiteModalViewController.m; path = src/model/GACreateSiteModalViewController.m; sourceTree = "<group>"; };
 		E2E56B2B1925CB7F007AC38C /* GACreateSiteModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GACreateSiteModalViewController.xib; path = src/model/GACreateSiteModalViewController.xib; sourceTree = "<group>"; };
@@ -2440,7 +2434,6 @@
 		E23586D818FCFE3900EE6D13 /* WebView */ = {
 			isa = PBXGroup;
 			children = (
-				E2E56B2719259D0B007AC38C /* StaticWebPages */,
 				E23586D918FCFE4600EE6D13 /* EasyJSWebView */,
 			);
 			name = WebView;
@@ -3354,7 +3347,6 @@
 				E261473320072F9300B1104E /* ala_logo.png in Resources */,
 				E2B42D8220686DFC009943A4 /* TracksActivityTemplate.json in Resources */,
 				E260DBD92075A256000824F3 /* icon_tracks_logo@2x.png in Resources */,
-				E261473420072F9300B1104E /* StaticWebPages in Resources */,
 				E261473520072F9300B1104E /* MapViewController.xib in Resources */,
 				E261473620072F9300B1104E /* Mammals.jpg in Resources */,
 				E261473720072F9300B1104E /* ala_logo_1.png in Resources */,
@@ -3510,7 +3502,6 @@
 				E266393A1F52EB9B00F1F1CE /* icon_address@2x.png in Resources */,
 				E266393B1F52EB9B00F1F1CE /* Dicots.jpg in Resources */,
 				E266393C1F52EB9B00F1F1CE /* ala_logo.png in Resources */,
-				E266393D1F52EB9B00F1F1CE /* StaticWebPages in Resources */,
 				E2A53739204E2DA70085D1BE /* HubProjects.xib in Resources */,
 				E260DBD72075A256000824F3 /* icon_tracks_logo@2x.png in Resources */,
 				E266393E1F52EB9B00F1F1CE /* MapViewController.xib in Resources */,
@@ -3672,7 +3663,6 @@
 				E2AECF851E73D3010035DF28 /* ala_logo.png in Resources */,
 				E2A53738204E2DA70085D1BE /* HubProjects.xib in Resources */,
 				E2A6BEB91F0CCFC000F1A57E /* Dicots.jpg in Resources */,
-				E2AECF861E73D3010035DF28 /* StaticWebPages in Resources */,
 				E2E7D25B207DB2BF00542C76 /* icon_dog@2x.png in Resources */,
 				E2AECF871E73D3010035DF28 /* MapViewController.xib in Resources */,
 				E2A6BEC51F0CCFC000F1A57E /* Mammals.jpg in Resources */,
@@ -3825,7 +3815,6 @@
 				E27B3F961EF62BB500DBB47D /* icon_address@2x.png in Resources */,
 				E2A6BEB81F0CCFC000F1A57E /* Dicots.jpg in Resources */,
 				E2A2FFCB1C8546F0008B63A8 /* ala_logo.png in Resources */,
-				E2E56B2819259D0B007AC38C /* StaticWebPages in Resources */,
 				8709D1C91DB9926700E49C7E /* MapViewController.xib in Resources */,
 				E2A6BEC41F0CCFC000F1A57E /* Mammals.jpg in Resources */,
 				E27B8F531EF5187A00B01FAB /* ala_logo_1.png in Resources */,
@@ -3986,7 +3975,6 @@
 				E2F19E80200584AC0033DC24 /* icon_address@2x.png in Resources */,
 				E2F19E81200584AC0033DC24 /* Dicots.jpg in Resources */,
 				E2F19E82200584AC0033DC24 /* ala_logo.png in Resources */,
-				E2F19E83200584AC0033DC24 /* StaticWebPages in Resources */,
 				E2F19E84200584AC0033DC24 /* MapViewController.xib in Resources */,
 				E2B42D8120686DFC009943A4 /* TracksActivityTemplate.json in Resources */,
 				E2F19E85200584AC0033DC24 /* Mammals.jpg in Resources */,
