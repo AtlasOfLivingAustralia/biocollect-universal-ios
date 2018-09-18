@@ -6,8 +6,9 @@
 
 #import "MGSpotyViewControllerDelegate.h"
 #import <MapKit/MapKit.h>
+#import "JGActionSheet.h"
 
-@interface OzHomeVCDelegate : NSObject <MGSpotyViewControllerDelegate, CLLocationManagerDelegate>
+@interface OzHomeVCDelegate : NSObject <JGActionSheetDelegate, MGSpotyViewControllerDelegate, CLLocationManagerDelegate>
 @property (nonatomic, strong) CLLocationManager *locationManager;
 //Location details [lat, lng, radius]
 @property (strong, nonatomic) CLLocation *curentLocation;

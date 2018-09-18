@@ -24,11 +24,13 @@
 @interface OzHomeVCDelegate()
     @property (nonatomic, strong) RecordsTableViewController *recordsTableView;
     @property (nonatomic, strong) SyncTableViewController *syncViewController;
+
+    @property (strong, nonatomic) JGActionSheet *languageSelectionMenu;
 @end
 
 @implementation OzHomeVCDelegate
 
--(id) init{
+-(id) init {
     // location manager
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
@@ -51,8 +53,6 @@
 }
 
 #pragma mark - MGSpotyViewControllerDelegate
-
-
 - (CGFloat)spotyViewController:(MGSpotyViewController *)spotyViewController
        heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -235,8 +235,9 @@
     // SpeciesListVC == species_list
     // == add_track
     // == tracker_settings
-    self.spotyViewController = spotyViewController;
+    
     GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.spotyViewController = spotyViewController;
     NSArray *menuItems = [[NSBundle mainBundle] objectForInfoDictionaryKey: APP_MENU];
 
     if([menuItems count] > indexPath.row) {
@@ -328,11 +329,58 @@
             [spotyViewController.navigationController pushViewController: speciesListVC animated:TRUE];
         } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"logout_view"]) {
             [appDelegate.loginViewController logout];
+        } else if([[menuAttributes objectForKey:@"view"] isEqualToString:@"tracker_language"]) {
+          
+            JGActionSheetSection *menuGroup = [JGActionSheetSection sectionWithTitle:nil message:@"Select language" buttonTitles:@[@"English", @"Walpiri", @"Warumungu"] buttonStyle:JGActionSheetButtonStyleDefault];
+            
+            int index = 0;
+            [menuGroup setButtonStyle:JGActionSheetButtonStyleGreen forButtonAtIndex:index];
+            [menuGroup setButtonStyle:JGActionSheetButtonStyleGreen forButtonAtIndex:++index];
+            [menuGroup setButtonStyle:JGActionSheetButtonStyleGreen forButtonAtIndex:++index];
+            
+            JGActionSheetSection *cancelGroup = [JGActionSheetSection sectionWithTitle:nil
+                                                              message:nil
+                                                         buttonTitles:@[@"Cancel"]
+                                                          buttonStyle:JGActionSheetButtonStyleRed];
+            [cancelGroup setButtonStyle:JGActionSheetButtonStyleRed forButtonAtIndex:0];
+            
+            NSArray *sections = @[menuGroup,  cancelGroup];
+
+            self.languageSelectionMenu = [JGActionSheet actionSheetWithSections: sections];
+            [self.languageSelectionMenu setDelegate:self];
+            [self.languageSelectionMenu showInView:[[[UIApplication sharedApplication] delegate] window] animated:YES];
+            
         } else {
             DebugLog(@"ERROR",@"Unsupported hub view.")
         }
     }
 }
+
+- (void)actionSheet:(JGActionSheet *)actionSheet pressedButtonAtIndexPath:(NSIndexPath *)indexPath {
+    GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    switch(indexPath.section) {
+        case 0:
+            if(indexPath.row == 0) {
+                [appDelegate.locale setLanguage:@"en"];
+            }
+            else if(indexPath.row == 1) {
+                [appDelegate.locale setLanguage:@"walpiri"];
+            }
+            else if(indexPath.row == 2) {
+                [appDelegate.locale setLanguage:@"warumungu"];
+            }
+            break;
+        case 1:
+        default:
+            break;
+    }
+    
+    [self.spotyViewController.tableView reloadData];
+    [actionSheet dismissAnimated:YES];
+    self.languageSelectionMenu = nil;
+}
+
 
 #pragma mark - helper functions
 - (void) loadTrackListViewController {

@@ -54,9 +54,13 @@
     }
     
     NSArray *menuItems = [[NSBundle mainBundle] objectForInfoDictionaryKey: APP_MENU];
+    
+    GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+    Locale *locale = appDelegate.locale;
     if([menuItems count] > indexPath.row) {
         NSDictionary *menuAttributes = menuItems [indexPath.row];
-        cell.textLabel.text  = [menuAttributes objectForKey:@"title"];
+        NSString *code = [menuAttributes objectForKey:@"code"];
+        cell.textLabel.text  = code ? [locale get:code] : [menuAttributes objectForKey:@"title"];
         NSString *icon = [menuAttributes objectForKey:@"icon"];
         if (icon == (id)[NSNull null] || icon.length == 0 ) {
             [cell.imageView setImage:[UIImage imageNamed:@"icon_about"]];
@@ -68,7 +72,6 @@
     
     return cell;
 }
-
 
 - (UITableViewCell *) ozAtlasView : (MGSpotyViewController *)spotyViewController
                          tableView:(UITableView *)tableView
