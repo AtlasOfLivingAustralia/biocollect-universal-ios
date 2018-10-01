@@ -30,10 +30,10 @@
                             @"sighting.title" : @"2. Animal signs",
                             @"map.title" : @"3. Walked route",
                             
-                            @"trackmetadata.trackerinfo": @"1. Tracker details",
+                            @"trackmetadata.trackerinfo": @"1. Ngana patu",
                             @"trackmetadata.organisationname": @"Organisation name *",
-                            @"trackmetadata.leadTracker": @"Lead tracker *",
-                            @"trackmetadata.otherTrackers": @"Other trackers",
+                            @"trackmetadata.leadTracker": @"Ngana *",
+                            @"trackmetadata.otherTrackers": @"Ngana patu",
                             @"trackmetadata.comments": @"Comments",
                             @"trackmetadata.save": @"Save",
                             
@@ -132,7 +132,7 @@
                             @"trackviewcontroller.title" : @"Track",
                             @"trackmetadataviewcontroller.title" : @"1. Track details",
                             @"sighting.title" : @"2. Animal signs",
-                            @"map.title" : @"3. Walked route",
+                            @"map.title" : @"3. Nyarrpararla",
                             
                             @"trackmetadata.trackerinfo": @"1. Tracker details",
                             @"trackmetadata.organisationname": @"Organisation name *",
@@ -148,10 +148,10 @@
                             @"trackmetadata.surveytype": @"Survey type",
                             @"trackmetadata.surveychoice": @"Survey choice",
                             
-                            @"trackmetadata.country": @"3. Country",
+                            @"trackmetadata.country": @"3. Ngururra",
                             @"trackmetadata.countryname" : @"Country name",
-                            @"trackmetadata.countrytype" : @"Country type",
-                            @"trackmetadata.vegetationtype" : @"Vegetation type",
+                            @"trackmetadata.countrytype" : @"Walya kari walya kari",
+                            @"trackmetadata.vegetationtype" : @"Watiya manu marna nyiya kanti kanti",
                             @"trackmetadata.foodplant" : @"Food plants",
                             @"trackmetadata.timesincefire" : @"How long since fire?",
                             @"trackmetadata.countryphoto" : @"Country photo",
@@ -235,12 +235,12 @@
                             @"trackviewcontroller.title" : @"Track",
                             @"trackmetadataviewcontroller.title" : @"1. Track details",
                             @"sighting.title" : @"2. Animal signs",
-                            @"map.title" : @"3. Walked route",
+                            @"map.title" : @"3. Wanyantta",
                             
-                            @"trackmetadata.trackerinfo": @"1. Tracker details",
-                            @"trackmetadata.organisationname": @"Organisation name *",
-                            @"trackmetadata.leadTracker": @"Lead tracker *",
-                            @"trackmetadata.otherTrackers": @"Other trackers",
+                            @"trackmetadata.trackerinfo": @"1. Nyayinjji nyirrinyi",
+                            @"trackmetadata.organisationname": @"Nyayinjjirti *",
+                            @"trackmetadata.leadTracker": @"Warakul munjjarl nyayinjji *",
+                            @"trackmetadata.otherTrackers": @"Nyayi jarttu ngini",
                             @"trackmetadata.comments": @"Comments",
                             @"trackmetadata.save": @"Save",
                             
@@ -251,8 +251,8 @@
                             @"trackmetadata.surveytype": @"Survey type",
                             @"trackmetadata.surveychoice": @"Survey choice",
                             
-                            @"trackmetadata.country": @"3. Country",
-                            @"trackmetadata.countryname" : @"Country name",
+                            @"trackmetadata.country": @"3. Manu",
+                            @"trackmetadata.countryname" : @"Manu kari wini",
                             @"trackmetadata.countrytype" : @"Country type",
                             @"trackmetadata.vegetationtype" : @"Vegetation type",
                             @"trackmetadata.foodplant" : @"Food plants",
@@ -334,6 +334,4 @@
 - (NSString *)get:(NSString *) label {
     return translation[language][label];
 }
-
-
 @end
