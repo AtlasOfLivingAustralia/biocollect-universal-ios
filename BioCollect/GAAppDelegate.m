@@ -65,13 +65,13 @@ static const NSInteger kARRMaxCacheAge = 60 * 60 * 24 * 365 * 2; // 1 day * 365 
     _records = [[NSMutableArray alloc] init];
 
     //Singleton instantiation.
+    locale = [[Locale alloc] init];
     restCall = [[GARestCall alloc]init];
     sqlLite = [[GASqlLiteDatabase alloc] init];
     bioProjectService = [[BioProjectService alloc] init];
     speciesService = [[SpeciesService alloc] init];
     speciesListService = [[SpeciesListService alloc] init];
     projectService = [[ProjectService alloc] init];
-    locale = [[Locale alloc] init];
     trackerService = [[TrackerService alloc] init];
     tracksUpload = [[TracksUpload alloc] init];
     utilService = [[UtilService alloc] init];
@@ -195,17 +195,7 @@ static const NSInteger kARRMaxCacheAge = 60 * 60 * 24 * 365 * 2; // 1 day * 365 
     ozHomeNC.tabBarItem.title = @"Home";
     ozHomeNC.tabBarItem.image = [UIImage imageNamed:@"home_filled-25"];
     ozHomeNC.navigationBar.topItem.title = @"Home";
-    
-    //Webview home
-    /*
-    self.alaWKWebView = [[ALAWKWebView alloc] initWithNibName:@"ALAWKWebView" bundle:nil];
-    UINavigationController *alaWKWebViewNC = [[UINavigationController alloc] initWithRootViewController: self.alaWKWebView];
-    alaWKWebViewNC.tabBarItem.title = @"Home";
-    alaWKWebViewNC.tabBarItem.image = [UIImage imageNamed:@"home_filled-25"];
-    alaWKWebViewNC.navigationBar.topItem.title = @"Welcome";
-    [alaWKWebViewNC.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName]];
-    */
-    
+ 
     //Tab bars
     NSArray* controllers = nil;
     NSString *appType = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_AppType"];
