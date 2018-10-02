@@ -10,6 +10,7 @@
     NSDictionary* translation;
     NSString* language;
 }
+-(NSString * ) getLanguage;
 -(void) setLanguage : (NSString *) language;
 -(NSString*) get : (NSString *) label;
 @end

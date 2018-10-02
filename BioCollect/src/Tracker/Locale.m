@@ -331,6 +331,9 @@
 - (void ) setLanguage : (NSString *) lan {
     language = lan;
 }
+- (NSString * ) getLanguage{
+    return language;
+}
 - (NSString *)get:(NSString *) label {
     return translation[language][label];
 }
