@@ -370,6 +370,7 @@
             else if(indexPath.row == 2) {
                 [appDelegate.locale setLanguage:@"warumungu"];
             }
+            [appDelegate.speciesListService storeSpeciesList];
             break;
         case 1:
         default:
