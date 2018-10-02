@@ -115,14 +115,8 @@
         if (scientificName == (id)[NSNull null] || scientificName.length == 0 ) {
             scientificName = @"N/A";
         }
-        
-        NSString *walpiriName = [self.appDelegate.speciesListService getWarlpiriName:species];
-        if (walpiriName == (id)[NSNull null] || walpiriName.length == 0 ) {
-            walpiriName = @"N/A";
-        }
-        
         cell.textLabel.text = species.displayName;
-        cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@, %@, %@",commonName,scientificName,walpiriName];
+        cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@, %@",commonName,scientificName];
         
         if(self.noImage == nil){
             self.noImage = [UIImage imageNamed:@"noImage85.jpg"];
