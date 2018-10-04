@@ -22,13 +22,13 @@
 	<string>trackshub</string>
 	<key>Bio_List_Url</key>
 	<string>/ws/speciesListItems/dr8016?includeKVP=true</string>
-    <key>Bio_Menu</key>
+	<key>Bio_Menu</key>
 	<array>
 		<dict>
+			<key>code</key>
+			<string>menu.newTrack</string>
 			<key>icon</key>
 			<string>icon_tracks_add_track</string>
-            <key>code</key>
-            <string>menu.newTrack</string>
 			<key>title</key>
 			<string>Create a new track</string>
 			<key>url</key>
@@ -37,10 +37,10 @@
 			<string>add_track</string>
 		</dict>
 		<dict>
+			<key>code</key>
+			<string>menu.editTracks</string>
 			<key>icon</key>
 			<string>icon_tracks_review</string>
-            <key>code</key>
-            <string>menu.editTracks</string>
 			<key>title</key>
 			<string>Upload or edit saved tracks</string>
 			<key>url</key>
@@ -49,10 +49,10 @@
 			<string>saved_tracks</string>
 		</dict>
 		<dict>
+			<key>code</key>
+			<string>menu.uploadedTracks</string>
 			<key>icon</key>
 			<string>icon_tracks_mytracks</string>
-            <key>code</key>
-            <string>menu.uploadedTracks</string>
 			<key>title</key>
 			<string>My uploaded tracks</string>
 			<key>url</key>
@@ -61,10 +61,10 @@
 			<string>my_hub_records</string>
 		</dict>
 		<dict>
+			<key>code</key>
+			<string>menu.practice</string>
 			<key>icon</key>
 			<string>icon_tracks_practice</string>
-            <key>code</key>
-            <string>menu.practice</string>
 			<key>title</key>
 			<string>Practice creating a track</string>
 			<key>url</key>
@@ -73,10 +73,10 @@
 			<string>try_track</string>
 		</dict>
 		<dict>
+			<key>code</key>
+			<string>menu.partners</string>
 			<key>icon</key>
 			<string>icon_tracks_partners</string>
-            <key>code</key>
-            <string>menu.partners</string>
 			<key>title</key>
 			<string>Partners</string>
 			<key>url</key>
@@ -85,10 +85,10 @@
 			<string>web_url</string>
 		</dict>
 		<dict>
+			<key>code</key>
+			<string>menu.help</string>
 			<key>icon</key>
 			<string>icon_tracks_help</string>
-            <key>code</key>
-            <string>menu.help</string>
 			<key>title</key>
 			<string>Help</string>
 			<key>url</key>
@@ -97,10 +97,10 @@
 			<string>web_url</string>
 		</dict>
 		<dict>
+			<key>code</key>
+			<string>menu.about</string>
 			<key>icon</key>
 			<string>icon_tracks_info</string>
-            <key>code</key>
-            <string>menu.about</string>
 			<key>title</key>
 			<string>About</string>
 			<key>url</key>
@@ -109,10 +109,10 @@
 			<string>web_url</string>
 		</dict>
 		<dict>
+			<key>code</key>
+			<string>menu.settings</string>
 			<key>icon</key>
 			<string>icon_tracks_settings</string>
-            <key>code</key>
-            <string>menu.settings</string>
 			<key>title</key>
 			<string>Settings</string>
 			<key>url</key>
@@ -120,24 +120,24 @@
 			<key>view</key>
 			<string>tracker_settings</string>
 		</dict>
-        <dict>
-            <key>icon</key>
-            <string>icon_tracks_logo</string>
-            <key>code</key>
-            <string>menu.language</string>
-            <key>title</key>
-            <string>Language</string>
-            <key>url</key>
-            <string></string>
-            <key>view</key>
-            <string>tracker_language</string>
-        </dict>
 		<dict>
+			<key>code</key>
+			<string>menu.language</string>
 			<key>icon</key>
 			<string>icon_tracks_logo</string>
-            <key>code</key>
-            <string>menu.logout</string>
-            <key>na</key>
+			<key>title</key>
+			<string>Language</string>
+			<key>url</key>
+			<string></string>
+			<key>view</key>
+			<string>tracker_language</string>
+		</dict>
+		<dict>
+			<key>code</key>
+			<string>menu.logout</string>
+			<key>icon</key>
+			<string>icon_tracks_logo</string>
+			<key>na</key>
 			<string>na</string>
 			<key>title</key>
 			<string>Logout</string>
@@ -172,11 +172,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>12</string>
+	<string>01</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>

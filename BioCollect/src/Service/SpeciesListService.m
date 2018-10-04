@@ -19,8 +19,6 @@
 @implementation SpeciesListService
 #define kSpeciesListKey @"SpeciesListKey"
 #define kTracksSpeciesStorageLocation @"TRACKS_SPECIES_LIST_1"
-#define kEnglish @"ENGLISH"
-#define kWarlpiri @"WARLPIRI"
 
 @synthesize speciesList;
 
@@ -38,7 +36,6 @@
     
     return self;
 }
-
 
 - (void) getSpeciesFromList : (NSError**) error {
     NSString *listUrl = [GASettings appLoadSpeciesListUrl];
@@ -93,7 +90,7 @@
     
     BOOL archived = [NSKeyedArchiver archiveRootObject: sortedArray toFile: self.speciesFileUrlPath.path];
     if (!archived) {
-        NSLog(@"Failed to load to species list from local storage.");
+        NSLog(@"Failed to load species from local storage.");
     }
     return archived;
 }
@@ -112,32 +109,25 @@
 }
 
 -(void) updateDisplayName {
-    NSString *language = kEnglish;
+    NSString *language = [self.appDelegate.locale getLanguage];
     for(int i = 0; i<  [self.speciesList count]; i++) {
         Species *species = self.speciesList[i];
         species.displayName = @"No Animal Found";
-        for(int j=0; j < [species.kvpValues count]; j++){
+        
+        for(int j = 0; j < [species.kvpValues count]; j++) {
             NSDictionary *kvp = species.kvpValues[j];
-            if([language isEqualToString:kEnglish] && [kvp[@"key"] isEqualToString:@"vernacular name"]) {
+            if([language isEqualToString:@"en"] && [kvp[@"key"] isEqualToString:@"vernacular name"]) {
                 species.displayName = kvp[@"value"];
                 break;
-            } else if([language isEqualToString:kWarlpiri] && [kvp[@"key"] isEqualToString:@"Warlpiri name"]) {
+            } else if([language isEqualToString:@"walpiri"] && [kvp[@"key"] isEqualToString:@"Warlpiri name"]) {
+                species.displayName = kvp[@"value"];
+                break;
+            } else if([language isEqualToString:@"warumungu"] && [kvp[@"key"] isEqualToString:@"Waramungu"]) {
                 species.displayName = kvp[@"value"];
                 break;
             }
         }
     }
-}
--(NSString *) getWarlpiriName : (Species *) species {
-    NSString *name = nil;
-    for(int j=0; j < [species.kvpValues count]; j++){
-        NSDictionary *kvp = species.kvpValues[j];
-        if([kvp[@"key"] isEqualToString:@"Warlpiri name"]) {
-            name = kvp[@"value"];
-            break;
-        }
-    }
-    return name;
 }
 
 @end

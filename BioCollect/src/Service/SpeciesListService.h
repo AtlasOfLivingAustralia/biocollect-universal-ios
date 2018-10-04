@@ -7,5 +7,5 @@
 @interface SpeciesListService : NSObject
 - (void) getSpeciesFromList : (NSError**) error;
 - (NSMutableArray *) loadSpeciesList;
-- (NSString *) getWarlpiriName : (Species *) species;
+- (BOOL) storeSpeciesList;
 @end

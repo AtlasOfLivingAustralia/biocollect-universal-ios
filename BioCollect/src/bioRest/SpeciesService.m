@@ -41,7 +41,7 @@
         
         if((e == nil) && (data != nil)){
             results = [NSJSONSerialization JSONObjectWithData: data options:NSJSONReadingMutableContainers error:nil];
-            // Remoev ALL SPECIES entry
+            // Remove ALL SPECIES entry
             [results count] > 0 ? [results removeObjectAtIndex:0] : nil;
             total = (int)[results count];
         }
