@@ -1,7 +1,6 @@
 //
 //  GALogin.m
-//  GreenArmy
-//
+
 //  Created by Sathya Moorthy, Sathish (Atlas of Living Australia) on 9/04/2014.
 //  Copyright (c) 2014 Sathya Moorthy, Sathish (Atlas of Living Australia). All rights reserved.
 //
@@ -13,17 +12,20 @@
 #import "GASettingsConstant.h"
 #import "MRProgressOverlayView.h"
 #import "SVModalWebViewController.h"
-@interface GALogin ()
+#import "RKDropdownAlert.h"
 
+@interface GALogin ()
+@property (nonatomic, strong) GAAppDelegate* appDelegate;
 @end
 
 @implementation GALogin
 
-@synthesize loginButton, usernameTextField, passwordTextField, registerButton, logoImageView;
+@synthesize loginButton, usernameTextField, passwordTextField, registerButton, logoImageView, appDelegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self.appDelegate = (GAAppDelegate *) [[UIApplication sharedApplication] delegate];
     if (self) {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:[GASettings appLoginImage]]]];
     }
@@ -59,7 +61,6 @@
 
 -(void) authenticate {
     // Processing UI indicator on the main thread.
-    GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
     NSString *userName = self.usernameTextField.text;
     NSString *password = self.passwordTextField.text;
     [MRProgressOverlayView showOverlayAddedTo:appDelegate.window title:@"Processing.." mode:MRProgressOverlayViewModeIndeterminateSmall animated:YES];
@@ -114,19 +115,31 @@
 }
 
 -(void) logout {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Confirm"
-                                                    message:@"Are you sure you want to logout? \n\n1. You will not be able to log back in [if] you are out of internet connection \n\n2. Tracks that are not uploaded will be lost."
-                                                   delegate:self
-                                          cancelButtonTitle:@"No"
-                                          otherButtonTitles:@"Yes",nil];
+    UIAlertView *alert = nil;
+    NSString *msg = nil;
+    if([[GASettings appHubName] isEqualToString:@"trackshub"]) {
+        NSInteger size = [[appDelegate trackerService].tracks count];
+        if(size > 0) {
+            [RKDropdownAlert title:@"Logout Cancelled" message:@"Please upload all pending tracks before logging out" backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+            return;
+        }
+        msg = @"Are you sure you want to logout? \n\n You will not be able to log back in [if] you are out of internet connection.";
+        
+    } else {
+        msg = @"Are you sure you want to logout? \n\n You will not be able to log back in [if] you are out of internet connection";
+    }
+    
+    alert = [[UIAlertView alloc] initWithTitle:@"Confirm"
+                                       message:msg
+                                      delegate:self
+                             cancelButtonTitle:@"No"
+                             otherButtonTitles:@"Yes",nil];
     [alert show];
 }
 
 #pragma mark - UIAlert view delegate.
 
 - (void)alertView:(UIAlertView *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    
-    GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
     if( buttonIndex != 0 ) {
         [appDelegate displaySigninPage];
     }
