@@ -111,7 +111,6 @@
 		B8BFD2C61919C3AC0063DA78 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8BFD2C51919C3AC0063DA78 /* QuartzCore.framework */; };
 		B8BFD2C81919C3BC0063DA78 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8BFD2C71919C3BC0063DA78 /* Accelerate.framework */; };
 		B8D551DE18F952DF00EDD006 /* GARestCall.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D551DD18F952DF00EDD006 /* GARestCall.m */; };
-		E20026391C926F250045C130 /* csiro-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E20026381C926F250045C130 /* csiro-logo.png */; };
 		E20189891C8922DD0031435D /* BioProjectService.m in Sources */ = {isa = PBXBuildFile; fileRef = E20189881C8922DD0031435D /* BioProjectService.m */; };
 		E201898A1C8922DD0031435D /* BioProjectService.m in Sources */ = {isa = PBXBuildFile; fileRef = E20189881C8922DD0031435D /* BioProjectService.m */; };
 		E20189931C895EEC0031435D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E20189921C895EEC0031435D /* ImageIO.framework */; };
@@ -187,8 +186,6 @@
 		E2424C481F0F634F00E4E13F /* oz_iPhone.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2424C441F0F634F00E4E13F /* oz_iPhone.jpg */; };
 		E24690EE1EF5F19B00F2F8B8 /* icon_about@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E24690ED1EF5F19B00F2F8B8 /* icon_about@2x.png */; };
 		E24690EF1EF5F19B00F2F8B8 /* icon_about@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E24690ED1EF5F19B00F2F8B8 /* icon_about@2x.png */; };
-		E247DD6F1EC33C5900A1C0A5 /* BioCollect-Name-Only.png in Resources */ = {isa = PBXBuildFile; fileRef = E247DD6E1EC33C5900A1C0A5 /* BioCollect-Name-Only.png */; };
-		E247DD701EC33C5900A1C0A5 /* BioCollect-Name-Only.png in Resources */ = {isa = PBXBuildFile; fileRef = E247DD6E1EC33C5900A1C0A5 /* BioCollect-Name-Only.png */; };
 		E248246D20D2053900A12532 /* icon_right_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E248246C20D2053900A12532 /* icon_right_1@2x.png */; };
 		E248246E20D2053900A12532 /* icon_right_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E248246C20D2053900A12532 /* icon_right_1@2x.png */; };
 		E248246F20D2053900A12532 /* icon_right_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E248246C20D2053900A12532 /* icon_right_1@2x.png */; };
@@ -407,7 +404,6 @@
 		E26146E720072F9300B1104E /* SVWebViewControllerActivityChrome-iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B87373C41DB6DFE90057027E /* SVWebViewControllerActivityChrome-iPad@2x.png */; };
 		E26146E820072F9300B1104E /* RecordWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E23AF5221C918862002501F3 /* RecordWebView.xib */; };
 		E26146E920072F9300B1104E /* oz_iPad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2424C431F0F634F00E4E13F /* oz_iPad.jpg */; };
-		E26146EA20072F9300B1104E /* BioCollect-Name-Only.png in Resources */ = {isa = PBXBuildFile; fileRef = E247DD6E1EC33C5900A1C0A5 /* BioCollect-Name-Only.png */; };
 		E26146EB20072F9300B1104E /* brief_filled-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2636DD41CF2E57C00000371 /* brief_filled-25@2x.png */; };
 		E26146EC20072F9300B1104E /* GALogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E3AAC118F4D9070005BB9E /* GALogin.xib */; };
 		E26146ED20072F9300B1104E /* SVWebViewControllerActivitySafari@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B87373CD1DB6DFE90057027E /* SVWebViewControllerActivitySafari@2x.png */; };
@@ -418,7 +414,6 @@
 		E26146F220072F9300B1104E /* icon_location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E25D8F051EE5820100ED4D0F /* icon_location@2x.png */; };
 		E26146F320072F9300B1104E /* menu-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E227E3A1192CD57D00E22DC7 /* menu-25@2x.png */; };
 		E26146F420072F9300B1104E /* icon_about@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E24690ED1EF5F19B00F2F8B8 /* icon_about@2x.png */; };
-		E26146F520072F9300B1104E /* csiro-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E20026381C926F250045C130 /* csiro-logo.png */; };
 		E26146F620072F9300B1104E /* icon_about_square@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E274971F2006FA5E00876D5C /* icon_about_square@2x.png */; };
 		E26146F720072F9300B1104E /* briefcase_filled-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2636DD51CF2E57C00000371 /* briefcase_filled-25@2x.png */; };
 		E26146F820072F9300B1104E /* pad-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E241C67F196A3061002302D7 /* pad-1@2x.png */; };
@@ -463,10 +458,8 @@
 		E261471F20072F9300B1104E /* js in Resources */ = {isa = PBXBuildFile; fileRef = E241C683196A33B6002302D7 /* js */; };
 		E261472020072F9300B1104E /* icon_camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E25D8EFA1EE5813200ED4D0F /* icon_camera@2x.png */; };
 		E261472120072F9300B1104E /* Fungi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA31F0CCFC000F1A57E /* Fungi.jpg */; };
-		E261472220072F9300B1104E /* ala_logo_transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = E27B8F581EF526C200B01FAB /* ala_logo_transparent.png */; };
 		E261472320072F9300B1104E /* SpeciesGroupTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BE8E1F0C922D00F1A57E /* SpeciesGroupTableViewController.xib */; };
 		E261472420072F9300B1104E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2DCF1EC1CF68D8B008D438C /* Default-568h@2x.png */; };
-		E261472520072F9300B1104E /* logo_transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = E29A6E341EF3640E00D891CC /* logo_transparent.png */; };
 		E261472620072F9300B1104E /* icon_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BED01F0CDD6700F1A57E /* icon_right@2x.png */; };
 		E261472720072F9300B1104E /* Algae.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BE9A1F0CCFC000F1A57E /* Algae.jpg */; };
 		E261472820072F9300B1104E /* loc1_nochange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E8F743192245E60029574B /* loc1_nochange@2x.png */; };
@@ -480,14 +473,11 @@
 		E261473020072F9300B1104E /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = E241C684196A33B6002302D7 /* index.html */; };
 		E261473120072F9300B1104E /* icon_address@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E27B3F941EF62BB500DBB47D /* icon_address@2x.png */; };
 		E261473220072F9300B1104E /* Dicots.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA01F0CCFC000F1A57E /* Dicots.jpg */; };
-		E261473320072F9300B1104E /* ala_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A2FFCA1C8546F0008B63A8 /* ala_logo.png */; };
 		E261473520072F9300B1104E /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8709D1C71DB9926700E49C7E /* MapViewController.xib */; };
 		E261473620072F9300B1104E /* Mammals.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA61F0CCFC000F1A57E /* Mammals.jpg */; };
-		E261473720072F9300B1104E /* ala_logo_1.png in Resources */ = {isa = PBXBuildFile; fileRef = E27B8F521EF5187A00B01FAB /* ala_logo_1.png */; };
 		E261473820072F9300B1104E /* Crustaceans.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BE9F1F0CCFC000F1A57E /* Crustaceans.jpg */; };
 		E261473920072F9300B1104E /* Default-568h.png in Resources */ = {isa = PBXBuildFile; fileRef = E2DCF1EB1CF68D8B008D438C /* Default-568h.png */; };
 		E261473A20072F9300B1104E /* profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E22045C9192D7EDD00531116 /* profile@2x.png */; };
-		E261473B20072F9300B1104E /* ala_name.png in Resources */ = {isa = PBXBuildFile; fileRef = E27B8F551EF51DA600B01FAB /* ala_name.png */; };
 		E261473C20072F9300B1104E /* lock_filled-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E227E39B192CD30D00E22DC7 /* lock_filled-25@2x.png */; };
 		E261473D20072F9300B1104E /* ajax_loader.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8705B92F1DC041770015E171 /* ajax_loader.gif */; };
 		E261473E20072F9300B1104E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E20D1B571CDC570800A3607B /* LaunchScreen.storyboard */; };
@@ -674,7 +664,6 @@
 		E26638F31F52EB9B00F1F1CE /* SVWebViewControllerActivityChrome-iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B87373C41DB6DFE90057027E /* SVWebViewControllerActivityChrome-iPad@2x.png */; };
 		E26638F41F52EB9B00F1F1CE /* RecordWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E23AF5221C918862002501F3 /* RecordWebView.xib */; };
 		E26638F51F52EB9B00F1F1CE /* oz_iPad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2424C431F0F634F00E4E13F /* oz_iPad.jpg */; };
-		E26638F61F52EB9B00F1F1CE /* BioCollect-Name-Only.png in Resources */ = {isa = PBXBuildFile; fileRef = E247DD6E1EC33C5900A1C0A5 /* BioCollect-Name-Only.png */; };
 		E26638F71F52EB9B00F1F1CE /* brief_filled-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2636DD41CF2E57C00000371 /* brief_filled-25@2x.png */; };
 		E26638F81F52EB9B00F1F1CE /* GALogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E3AAC118F4D9070005BB9E /* GALogin.xib */; };
 		E26638F91F52EB9B00F1F1CE /* SVWebViewControllerActivitySafari@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B87373CD1DB6DFE90057027E /* SVWebViewControllerActivitySafari@2x.png */; };
@@ -685,7 +674,6 @@
 		E26638FE1F52EB9B00F1F1CE /* icon_location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E25D8F051EE5820100ED4D0F /* icon_location@2x.png */; };
 		E26638FF1F52EB9B00F1F1CE /* menu-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E227E3A1192CD57D00E22DC7 /* menu-25@2x.png */; };
 		E26639001F52EB9B00F1F1CE /* icon_about@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E24690ED1EF5F19B00F2F8B8 /* icon_about@2x.png */; };
-		E26639011F52EB9B00F1F1CE /* csiro-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E20026381C926F250045C130 /* csiro-logo.png */; };
 		E26639021F52EB9B00F1F1CE /* briefcase_filled-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2636DD51CF2E57C00000371 /* briefcase_filled-25@2x.png */; };
 		E26639031F52EB9B00F1F1CE /* pad-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E241C67F196A3061002302D7 /* pad-1@2x.png */; };
 		E26639041F52EB9B00F1F1CE /* edit_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C544461ECDCA8C00641951 /* edit_icon@2x.png */; };
@@ -727,10 +715,8 @@
 		E26639281F52EB9B00F1F1CE /* js in Resources */ = {isa = PBXBuildFile; fileRef = E241C683196A33B6002302D7 /* js */; };
 		E26639291F52EB9B00F1F1CE /* icon_camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E25D8EFA1EE5813200ED4D0F /* icon_camera@2x.png */; };
 		E266392A1F52EB9B00F1F1CE /* Fungi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA31F0CCFC000F1A57E /* Fungi.jpg */; };
-		E266392B1F52EB9B00F1F1CE /* ala_logo_transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = E27B8F581EF526C200B01FAB /* ala_logo_transparent.png */; };
 		E266392C1F52EB9B00F1F1CE /* SpeciesGroupTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BE8E1F0C922D00F1A57E /* SpeciesGroupTableViewController.xib */; };
 		E266392D1F52EB9B00F1F1CE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2DCF1EC1CF68D8B008D438C /* Default-568h@2x.png */; };
-		E266392E1F52EB9B00F1F1CE /* logo_transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = E29A6E341EF3640E00D891CC /* logo_transparent.png */; };
 		E266392F1F52EB9B00F1F1CE /* icon_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BED01F0CDD6700F1A57E /* icon_right@2x.png */; };
 		E26639301F52EB9B00F1F1CE /* Algae.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BE9A1F0CCFC000F1A57E /* Algae.jpg */; };
 		E26639311F52EB9B00F1F1CE /* loc1_nochange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E8F743192245E60029574B /* loc1_nochange@2x.png */; };
@@ -744,14 +730,11 @@
 		E26639391F52EB9B00F1F1CE /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = E241C684196A33B6002302D7 /* index.html */; };
 		E266393A1F52EB9B00F1F1CE /* icon_address@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E27B3F941EF62BB500DBB47D /* icon_address@2x.png */; };
 		E266393B1F52EB9B00F1F1CE /* Dicots.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA01F0CCFC000F1A57E /* Dicots.jpg */; };
-		E266393C1F52EB9B00F1F1CE /* ala_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A2FFCA1C8546F0008B63A8 /* ala_logo.png */; };
 		E266393E1F52EB9B00F1F1CE /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8709D1C71DB9926700E49C7E /* MapViewController.xib */; };
 		E266393F1F52EB9B00F1F1CE /* Mammals.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA61F0CCFC000F1A57E /* Mammals.jpg */; };
-		E26639401F52EB9B00F1F1CE /* ala_logo_1.png in Resources */ = {isa = PBXBuildFile; fileRef = E27B8F521EF5187A00B01FAB /* ala_logo_1.png */; };
 		E26639411F52EB9B00F1F1CE /* Crustaceans.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BE9F1F0CCFC000F1A57E /* Crustaceans.jpg */; };
 		E26639421F52EB9B00F1F1CE /* Default-568h.png in Resources */ = {isa = PBXBuildFile; fileRef = E2DCF1EB1CF68D8B008D438C /* Default-568h.png */; };
 		E26639431F52EB9B00F1F1CE /* profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E22045C9192D7EDD00531116 /* profile@2x.png */; };
-		E26639441F52EB9B00F1F1CE /* ala_name.png in Resources */ = {isa = PBXBuildFile; fileRef = E27B8F551EF51DA600B01FAB /* ala_name.png */; };
 		E26639451F52EB9B00F1F1CE /* lock_filled-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E227E39B192CD30D00E22DC7 /* lock_filled-25@2x.png */; };
 		E26639461F52EB9B00F1F1CE /* ajax_loader.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8705B92F1DC041770015E171 /* ajax_loader.gif */; };
 		E26639471F52EB9B00F1F1CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E20D1B571CDC570800A3607B /* LaunchScreen.storyboard */; };
@@ -834,12 +817,6 @@
 		E27B8F4F1EF4E68A00B01FAB /* Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E27B8F431EF4E68900B01FAB /* Annotation.m */; };
 		E27B8F501EF4E68A00B01FAB /* Storage.m in Sources */ = {isa = PBXBuildFile; fileRef = E27B8F451EF4E68900B01FAB /* Storage.m */; };
 		E27B8F511EF4E68A00B01FAB /* Storage.m in Sources */ = {isa = PBXBuildFile; fileRef = E27B8F451EF4E68900B01FAB /* Storage.m */; };
-		E27B8F531EF5187A00B01FAB /* ala_logo_1.png in Resources */ = {isa = PBXBuildFile; fileRef = E27B8F521EF5187A00B01FAB /* ala_logo_1.png */; };
-		E27B8F541EF5187A00B01FAB /* ala_logo_1.png in Resources */ = {isa = PBXBuildFile; fileRef = E27B8F521EF5187A00B01FAB /* ala_logo_1.png */; };
-		E27B8F561EF51DA600B01FAB /* ala_name.png in Resources */ = {isa = PBXBuildFile; fileRef = E27B8F551EF51DA600B01FAB /* ala_name.png */; };
-		E27B8F571EF51DA600B01FAB /* ala_name.png in Resources */ = {isa = PBXBuildFile; fileRef = E27B8F551EF51DA600B01FAB /* ala_name.png */; };
-		E27B8F591EF526C200B01FAB /* ala_logo_transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = E27B8F581EF526C200B01FAB /* ala_logo_transparent.png */; };
-		E27B8F5A1EF526C200B01FAB /* ala_logo_transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = E27B8F581EF526C200B01FAB /* ala_logo_transparent.png */; };
 		E27BDFB618F78221001EE2F8 /* GAProjectJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E27BDFB518F78221001EE2F8 /* GAProjectJSON.m */; };
 		E27BDFD518F78D97001EE2F8 /* GASettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E27BDFD418F78D97001EE2F8 /* GASettings.m */; };
 		E27BDFD918F7AA07001EE2F8 /* GAActivitiesJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E27BDFD818F7AA07001EE2F8 /* GAActivitiesJSON.m */; };
@@ -853,9 +830,6 @@
 		E29A35421966781C003D025D /* searchbar_bk@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E29A35411966781C003D025D /* searchbar_bk@2x.png */; };
 		E29A354719667925003D025D /* GAAboutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E29A354519667925003D025D /* GAAboutVC.m */; };
 		E29A354819667925003D025D /* GAAboutVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E29A354619667925003D025D /* GAAboutVC.xib */; };
-		E29A6E351EF3640E00D891CC /* logo_transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = E29A6E341EF3640E00D891CC /* logo_transparent.png */; };
-		E29A6E361EF3640E00D891CC /* logo_transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = E29A6E341EF3640E00D891CC /* logo_transparent.png */; };
-		E2A2FFCB1C8546F0008B63A8 /* ala_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A2FFCA1C8546F0008B63A8 /* ala_logo.png */; };
 		E2A2FFCD1C8547A5008B63A8 /* ala_logo1.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A2FFCC1C8547A5008B63A8 /* ala_logo1.png */; };
 		E2A3C84D200612B100BC90D0 /* BioCollect-info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2A3C84C200612B100BC90D0 /* BioCollect-info.plist */; };
 		E2A4A4F819665009006CAC22 /* GAEULAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A4A4F619665009006CAC22 /* GAEULAViewController.m */; };
@@ -1041,7 +1015,6 @@
 		E2AECF551E73D3010035DF28 /* BioCollect-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E211B04B1CE18BC500DBC1AF /* BioCollect-logo.png */; };
 		E2AECF561E73D3010035DF28 /* BioCollect-text.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B6274E1CE40F8800A89179 /* BioCollect-text.png */; };
 		E2AECF571E73D3010035DF28 /* menu-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E227E3A1192CD57D00E22DC7 /* menu-25@2x.png */; };
-		E2AECF581E73D3010035DF28 /* csiro-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E20026381C926F250045C130 /* csiro-logo.png */; };
 		E2AECF591E73D3010035DF28 /* briefcase_filled-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2636DD51CF2E57C00000371 /* briefcase_filled-25@2x.png */; };
 		E2AECF5B1E73D3010035DF28 /* pad-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E241C67F196A3061002302D7 /* pad-1@2x.png */; };
 		E2AECF5C1E73D3010035DF28 /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -1073,7 +1046,6 @@
 		E2AECF801E73D3010035DF28 /* about_filled-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2636DD21CF2E57C00000371 /* about_filled-25@2x.png */; };
 		E2AECF821E73D3010035DF28 /* SVWebViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = B87373B31DB6DFE90057027E /* SVWebViewController.strings */; };
 		E2AECF841E73D3010035DF28 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = E241C684196A33B6002302D7 /* index.html */; };
-		E2AECF851E73D3010035DF28 /* ala_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A2FFCA1C8546F0008B63A8 /* ala_logo.png */; };
 		E2AECF871E73D3010035DF28 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8709D1C71DB9926700E49C7E /* MapViewController.xib */; };
 		E2AECF891E73D3010035DF28 /* Default-568h.png in Resources */ = {isa = PBXBuildFile; fileRef = E2DCF1EB1CF68D8B008D438C /* Default-568h.png */; };
 		E2AECF8B1E73D3010035DF28 /* profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E22045C9192D7EDD00531116 /* profile@2x.png */; };
@@ -1332,7 +1304,6 @@
 		E2F19E37200584AC0033DC24 /* SVWebViewControllerActivityChrome-iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B87373C41DB6DFE90057027E /* SVWebViewControllerActivityChrome-iPad@2x.png */; };
 		E2F19E38200584AC0033DC24 /* RecordWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E23AF5221C918862002501F3 /* RecordWebView.xib */; };
 		E2F19E39200584AC0033DC24 /* oz_iPad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2424C431F0F634F00E4E13F /* oz_iPad.jpg */; };
-		E2F19E3A200584AC0033DC24 /* BioCollect-Name-Only.png in Resources */ = {isa = PBXBuildFile; fileRef = E247DD6E1EC33C5900A1C0A5 /* BioCollect-Name-Only.png */; };
 		E2F19E3B200584AC0033DC24 /* brief_filled-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2636DD41CF2E57C00000371 /* brief_filled-25@2x.png */; };
 		E2F19E3C200584AC0033DC24 /* GALogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E3AAC118F4D9070005BB9E /* GALogin.xib */; };
 		E2F19E3D200584AC0033DC24 /* SVWebViewControllerActivitySafari@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B87373CD1DB6DFE90057027E /* SVWebViewControllerActivitySafari@2x.png */; };
@@ -1343,7 +1314,6 @@
 		E2F19E42200584AC0033DC24 /* icon_location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E25D8F051EE5820100ED4D0F /* icon_location@2x.png */; };
 		E2F19E43200584AC0033DC24 /* menu-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E227E3A1192CD57D00E22DC7 /* menu-25@2x.png */; };
 		E2F19E44200584AC0033DC24 /* icon_about@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E24690ED1EF5F19B00F2F8B8 /* icon_about@2x.png */; };
-		E2F19E45200584AC0033DC24 /* csiro-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E20026381C926F250045C130 /* csiro-logo.png */; };
 		E2F19E46200584AC0033DC24 /* briefcase_filled-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2636DD51CF2E57C00000371 /* briefcase_filled-25@2x.png */; };
 		E2F19E47200584AC0033DC24 /* pad-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E241C67F196A3061002302D7 /* pad-1@2x.png */; };
 		E2F19E48200584AC0033DC24 /* edit_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C544461ECDCA8C00641951 /* edit_icon@2x.png */; };
@@ -1387,10 +1357,8 @@
 		E2F19E6E200584AC0033DC24 /* js in Resources */ = {isa = PBXBuildFile; fileRef = E241C683196A33B6002302D7 /* js */; };
 		E2F19E6F200584AC0033DC24 /* icon_camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E25D8EFA1EE5813200ED4D0F /* icon_camera@2x.png */; };
 		E2F19E70200584AC0033DC24 /* Fungi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA31F0CCFC000F1A57E /* Fungi.jpg */; };
-		E2F19E71200584AC0033DC24 /* ala_logo_transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = E27B8F581EF526C200B01FAB /* ala_logo_transparent.png */; };
 		E2F19E72200584AC0033DC24 /* SpeciesGroupTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BE8E1F0C922D00F1A57E /* SpeciesGroupTableViewController.xib */; };
 		E2F19E73200584AC0033DC24 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2DCF1EC1CF68D8B008D438C /* Default-568h@2x.png */; };
-		E2F19E74200584AC0033DC24 /* logo_transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = E29A6E341EF3640E00D891CC /* logo_transparent.png */; };
 		E2F19E75200584AC0033DC24 /* icon_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BED01F0CDD6700F1A57E /* icon_right@2x.png */; };
 		E2F19E76200584AC0033DC24 /* Algae.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BE9A1F0CCFC000F1A57E /* Algae.jpg */; };
 		E2F19E77200584AC0033DC24 /* loc1_nochange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E8F743192245E60029574B /* loc1_nochange@2x.png */; };
@@ -1404,14 +1372,11 @@
 		E2F19E7F200584AC0033DC24 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = E241C684196A33B6002302D7 /* index.html */; };
 		E2F19E80200584AC0033DC24 /* icon_address@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E27B3F941EF62BB500DBB47D /* icon_address@2x.png */; };
 		E2F19E81200584AC0033DC24 /* Dicots.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA01F0CCFC000F1A57E /* Dicots.jpg */; };
-		E2F19E82200584AC0033DC24 /* ala_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A2FFCA1C8546F0008B63A8 /* ala_logo.png */; };
 		E2F19E84200584AC0033DC24 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8709D1C71DB9926700E49C7E /* MapViewController.xib */; };
 		E2F19E85200584AC0033DC24 /* Mammals.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BEA61F0CCFC000F1A57E /* Mammals.jpg */; };
-		E2F19E86200584AC0033DC24 /* ala_logo_1.png in Resources */ = {isa = PBXBuildFile; fileRef = E27B8F521EF5187A00B01FAB /* ala_logo_1.png */; };
 		E2F19E87200584AC0033DC24 /* Crustaceans.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A6BE9F1F0CCFC000F1A57E /* Crustaceans.jpg */; };
 		E2F19E88200584AC0033DC24 /* Default-568h.png in Resources */ = {isa = PBXBuildFile; fileRef = E2DCF1EB1CF68D8B008D438C /* Default-568h.png */; };
 		E2F19E89200584AC0033DC24 /* profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E22045C9192D7EDD00531116 /* profile@2x.png */; };
-		E2F19E8A200584AC0033DC24 /* ala_name.png in Resources */ = {isa = PBXBuildFile; fileRef = E27B8F551EF51DA600B01FAB /* ala_name.png */; };
 		E2F19E8B200584AC0033DC24 /* lock_filled-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E227E39B192CD30D00E22DC7 /* lock_filled-25@2x.png */; };
 		E2F19E8C200584AC0033DC24 /* ajax_loader.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8705B92F1DC041770015E171 /* ajax_loader.gif */; };
 		E2F19E8D200584AC0033DC24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E20D1B571CDC570800A3607B /* LaunchScreen.storyboard */; };
@@ -1594,7 +1559,6 @@
 		B8BFD2C71919C3BC0063DA78 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		B8D551DC18F952DF00EDD006 /* GARestCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GARestCall.h; path = src/GARestCall.h; sourceTree = "<group>"; };
 		B8D551DD18F952DF00EDD006 /* GARestCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = GARestCall.m; path = src/GARestCall.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		E20026381C926F250045C130 /* csiro-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "csiro-logo.png"; path = "src/images/csiro-logo.png"; sourceTree = "<group>"; };
 		E20189871C8922C90031435D /* BioProjectService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BioProjectService.h; path = src/bioRest/BioProjectService.h; sourceTree = "<group>"; };
 		E20189881C8922DD0031435D /* BioProjectService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BioProjectService.m; path = src/bioRest/BioProjectService.m; sourceTree = "<group>"; };
 		E20189921C895EEC0031435D /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -1664,7 +1628,6 @@
 		E2424C431F0F634F00E4E13F /* oz_iPad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = oz_iPad.jpg; path = src/images/bk/oz_iPad.jpg; sourceTree = "<group>"; };
 		E2424C441F0F634F00E4E13F /* oz_iPhone.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = oz_iPhone.jpg; path = src/images/bk/oz_iPhone.jpg; sourceTree = "<group>"; };
 		E24690ED1EF5F19B00F2F8B8 /* icon_about@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_about@2x.png"; path = "src/images/icon_about@2x.png"; sourceTree = "<group>"; };
-		E247DD6E1EC33C5900A1C0A5 /* BioCollect-Name-Only.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BioCollect-Name-Only.png"; path = "src/images/BioCollect-Name-Only.png"; sourceTree = "<group>"; };
 		E248246C20D2053900A12532 /* icon_right_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_right_1@2x.png"; path = "src/images/icon_right_1@2x.png"; sourceTree = "<group>"; };
 		E24D527618F57662002A4F64 /* GADetailFormVIewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADetailFormVIewController.h; path = src/GADetailFormVIewController.h; sourceTree = "<group>"; };
 		E24D527718F57662002A4F64 /* GADetailFormVIewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = GADetailFormVIewController.m; path = src/GADetailFormVIewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -1789,9 +1752,6 @@
 		E27B8F431EF4E68900B01FAB /* Annotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Annotation.m; sourceTree = "<group>"; };
 		E27B8F441EF4E68900B01FAB /* Storage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Storage.h; sourceTree = "<group>"; };
 		E27B8F451EF4E68900B01FAB /* Storage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Storage.m; sourceTree = "<group>"; };
-		E27B8F521EF5187A00B01FAB /* ala_logo_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ala_logo_1.png; path = src/images/ala_logo_1.png; sourceTree = "<group>"; };
-		E27B8F551EF51DA600B01FAB /* ala_name.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ala_name.png; path = src/images/ala_name.png; sourceTree = "<group>"; };
-		E27B8F581EF526C200B01FAB /* ala_logo_transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ala_logo_transparent.png; path = src/images/ala_logo_transparent.png; sourceTree = "<group>"; };
 		E27BDFB418F78221001EE2F8 /* GAProjectJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAProjectJSON.h; path = src/model/GAProjectJSON.h; sourceTree = "<group>"; };
 		E27BDFB518F78221001EE2F8 /* GAProjectJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAProjectJSON.m; path = src/model/GAProjectJSON.m; sourceTree = "<group>"; };
 		E27BDFD318F78D97001EE2F8 /* GASettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GASettings.h; path = src/settings/GASettings.h; sourceTree = "<group>"; };
@@ -1809,8 +1769,6 @@
 		E29A354419667925003D025D /* GAAboutVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAAboutVC.h; path = src/about/GAAboutVC.h; sourceTree = "<group>"; };
 		E29A354519667925003D025D /* GAAboutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAAboutVC.m; path = src/about/GAAboutVC.m; sourceTree = "<group>"; };
 		E29A354619667925003D025D /* GAAboutVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GAAboutVC.xib; path = src/about/GAAboutVC.xib; sourceTree = "<group>"; };
-		E29A6E341EF3640E00D891CC /* logo_transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_transparent.png; sourceTree = "<group>"; };
-		E2A2FFCA1C8546F0008B63A8 /* ala_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ala_logo.png; path = src/images/ala_logo.png; sourceTree = "<group>"; };
 		E2A2FFCC1C8547A5008B63A8 /* ala_logo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ala_logo1.png; path = src/images/ala_logo1.png; sourceTree = "<group>"; };
 		E2A3C84C200612B100BC90D0 /* BioCollect-info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BioCollect-info.plist"; sourceTree = "<group>"; };
 		E2A4A4F519665009006CAC22 /* GAEULAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAEULAViewController.h; path = src/eula/GAEULAViewController.h; sourceTree = "<group>"; };
@@ -2470,10 +2428,6 @@
 			isa = PBXGroup;
 			children = (
 				E2F674BD1F18FD5D0040C704 /* ALA-logo-inline.png */,
-				E27B8F581EF526C200B01FAB /* ala_logo_transparent.png */,
-				E27B8F551EF51DA600B01FAB /* ala_name.png */,
-				E29A6E341EF3640E00D891CC /* logo_transparent.png */,
-				E27B8F521EF5187A00B01FAB /* ala_logo_1.png */,
 			);
 			name = logo;
 			sourceTree = "<group>";
@@ -2771,7 +2725,6 @@
 			children = (
 				E25D8EF61EE57E8600ED4D0F /* camera_icon.png */,
 				E2C544461ECDCA8C00641951 /* edit_icon@2x.png */,
-				E247DD6E1EC33C5900A1C0A5 /* BioCollect-Name-Only.png */,
 				E29402931EBC061D00CCFEE7 /* header-logo@2x.png */,
 				E2636DDC1CF2E68500000371 /* home_filled-25@2x.png */,
 				E2636DD21CF2E57C00000371 /* about_filled-25@2x.png */,
@@ -2780,9 +2733,7 @@
 				E2636DD51CF2E57C00000371 /* briefcase_filled-25@2x.png */,
 				E2636DD61CF2E57C00000371 /* contact_filled-25@2x.png */,
 				E2E24AC11CED4DDF00F6D4CA /* table-place-holder.png */,
-				E20026381C926F250045C130 /* csiro-logo.png */,
 				E2A2FFCC1C8547A5008B63A8 /* ala_logo1.png */,
-				E2A2FFCA1C8546F0008B63A8 /* ala_logo.png */,
 				E241C67F196A3061002302D7 /* pad-1@2x.png */,
 				E22045CF192D9EEC00531116 /* action-25@2x.png */,
 				E22045D0192D9EEC00531116 /* sync-25@2x.png */,
@@ -3239,7 +3190,6 @@
 				E26146E720072F9300B1104E /* SVWebViewControllerActivityChrome-iPad@2x.png in Resources */,
 				E26146E820072F9300B1104E /* RecordWebView.xib in Resources */,
 				E26146E920072F9300B1104E /* oz_iPad.jpg in Resources */,
-				E26146EA20072F9300B1104E /* BioCollect-Name-Only.png in Resources */,
 				E26146EB20072F9300B1104E /* brief_filled-25@2x.png in Resources */,
 				E26146EC20072F9300B1104E /* GALogin.xib in Resources */,
 				E26146ED20072F9300B1104E /* SVWebViewControllerActivitySafari@2x.png in Resources */,
@@ -3254,7 +3204,6 @@
 				E212E85320081F8200268AD1 /* tracker_home_bk_small.png in Resources */,
 				E26146F420072F9300B1104E /* icon_about@2x.png in Resources */,
 				E2A5373B204E2DA70085D1BE /* HubProjects.xib in Resources */,
-				E26146F520072F9300B1104E /* csiro-logo.png in Resources */,
 				E26146F620072F9300B1104E /* icon_about_square@2x.png in Resources */,
 				E26146F720072F9300B1104E /* briefcase_filled-25@2x.png in Resources */,
 				E26146F820072F9300B1104E /* pad-1@2x.png in Resources */,
@@ -3312,10 +3261,8 @@
 				E212E849200817EA00268AD1 /* icon_track@2x.png in Resources */,
 				E248247120D2053900A12532 /* icon_right_1@2x.png in Resources */,
 				878AFE65207F358400BDFC2A /* icon_lizards@2x.png in Resources */,
-				E261472220072F9300B1104E /* ala_logo_transparent.png in Resources */,
 				E261472320072F9300B1104E /* SpeciesGroupTableViewController.xib in Resources */,
 				E261472420072F9300B1104E /* Default-568h@2x.png in Resources */,
-				E261472520072F9300B1104E /* logo_transparent.png in Resources */,
 				E261472620072F9300B1104E /* icon_right@2x.png in Resources */,
 				E261472720072F9300B1104E /* Algae.jpg in Resources */,
 				E261472820072F9300B1104E /* loc1_nochange@2x.png in Resources */,
@@ -3330,16 +3277,13 @@
 				E261473020072F9300B1104E /* index.html in Resources */,
 				E261473120072F9300B1104E /* icon_address@2x.png in Resources */,
 				E261473220072F9300B1104E /* Dicots.jpg in Resources */,
-				E261473320072F9300B1104E /* ala_logo.png in Resources */,
 				E2B42D8220686DFC009943A4 /* TracksActivityTemplate.json in Resources */,
 				E260DBD92075A256000824F3 /* icon_tracks_logo@2x.png in Resources */,
 				E261473520072F9300B1104E /* MapViewController.xib in Resources */,
 				E261473620072F9300B1104E /* Mammals.jpg in Resources */,
-				E261473720072F9300B1104E /* ala_logo_1.png in Resources */,
 				E261473820072F9300B1104E /* Crustaceans.jpg in Resources */,
 				E261473920072F9300B1104E /* Default-568h.png in Resources */,
 				E261473A20072F9300B1104E /* profile@2x.png in Resources */,
-				E261473B20072F9300B1104E /* ala_name.png in Resources */,
 				E261473C20072F9300B1104E /* lock_filled-25@2x.png in Resources */,
 				E261473D20072F9300B1104E /* ajax_loader.gif in Resources */,
 				E261473E20072F9300B1104E /* LaunchScreen.storyboard in Resources */,
@@ -3400,7 +3344,6 @@
 				E26638F31F52EB9B00F1F1CE /* SVWebViewControllerActivityChrome-iPad@2x.png in Resources */,
 				E26638F41F52EB9B00F1F1CE /* RecordWebView.xib in Resources */,
 				E26638F51F52EB9B00F1F1CE /* oz_iPad.jpg in Resources */,
-				E26638F61F52EB9B00F1F1CE /* BioCollect-Name-Only.png in Resources */,
 				E26638F71F52EB9B00F1F1CE /* brief_filled-25@2x.png in Resources */,
 				E26638F81F52EB9B00F1F1CE /* GALogin.xib in Resources */,
 				E260DBCC2075A17F000824F3 /* icon_tracks_partners@2x.png in Resources */,
@@ -3412,7 +3355,6 @@
 				E26638FE1F52EB9B00F1F1CE /* icon_location@2x.png in Resources */,
 				E26638FF1F52EB9B00F1F1CE /* menu-25@2x.png in Resources */,
 				E26639001F52EB9B00F1F1CE /* icon_about@2x.png in Resources */,
-				E26639011F52EB9B00F1F1CE /* csiro-logo.png in Resources */,
 				E26639021F52EB9B00F1F1CE /* briefcase_filled-25@2x.png in Resources */,
 				E26639031F52EB9B00F1F1CE /* pad-1@2x.png in Resources */,
 				E27497272007032800876D5C /* biocontrol_hub_home_login_iPhone.jpg in Resources */,
@@ -3464,10 +3406,8 @@
 				E26639281F52EB9B00F1F1CE /* js in Resources */,
 				E26639291F52EB9B00F1F1CE /* icon_camera@2x.png in Resources */,
 				E266392A1F52EB9B00F1F1CE /* Fungi.jpg in Resources */,
-				E266392B1F52EB9B00F1F1CE /* ala_logo_transparent.png in Resources */,
 				E266392C1F52EB9B00F1F1CE /* SpeciesGroupTableViewController.xib in Resources */,
 				E266392D1F52EB9B00F1F1CE /* Default-568h@2x.png in Resources */,
-				E266392E1F52EB9B00F1F1CE /* logo_transparent.png in Resources */,
 				E2BA84041F582DC1008BE68F /* biocontrolhub_home_bk.jpg in Resources */,
 				E266392F1F52EB9B00F1F1CE /* icon_right@2x.png in Resources */,
 				E26639301F52EB9B00F1F1CE /* Algae.jpg in Resources */,
@@ -3484,18 +3424,15 @@
 				E26639391F52EB9B00F1F1CE /* index.html in Resources */,
 				E266393A1F52EB9B00F1F1CE /* icon_address@2x.png in Resources */,
 				E266393B1F52EB9B00F1F1CE /* Dicots.jpg in Resources */,
-				E266393C1F52EB9B00F1F1CE /* ala_logo.png in Resources */,
 				E2A53739204E2DA70085D1BE /* HubProjects.xib in Resources */,
 				E260DBD72075A256000824F3 /* icon_tracks_logo@2x.png in Resources */,
 				E266393E1F52EB9B00F1F1CE /* MapViewController.xib in Resources */,
 				E260DBE02075B2D2000824F3 /* yes@2x.png in Resources */,
 				E266393F1F52EB9B00F1F1CE /* Mammals.jpg in Resources */,
 				E2E1C5212006116200CACBB6 /* BioControlHub-Info.plist in Resources */,
-				E26639401F52EB9B00F1F1CE /* ala_logo_1.png in Resources */,
 				E26639411F52EB9B00F1F1CE /* Crustaceans.jpg in Resources */,
 				E26639421F52EB9B00F1F1CE /* Default-568h.png in Resources */,
 				E26639431F52EB9B00F1F1CE /* profile@2x.png in Resources */,
-				E26639441F52EB9B00F1F1CE /* ala_name.png in Resources */,
 				E248246F20D2053900A12532 /* icon_right_1@2x.png in Resources */,
 				E26639451F52EB9B00F1F1CE /* lock_filled-25@2x.png in Resources */,
 				E26639461F52EB9B00F1F1CE /* ajax_loader.gif in Resources */,
@@ -3555,7 +3492,6 @@
 				E25D8F021EE5813200ED4D0F /* icon_draft@2x.png in Resources */,
 				E2424C461F0F634F00E4E13F /* oz_iPad.jpg in Resources */,
 				E2AECF4C1E73D3010035DF28 /* biocollect_logo_1.png in Resources */,
-				E27B8F5A1EF526C200B01FAB /* ala_logo_transparent.png in Resources */,
 				E2E7D251207DB2BF00542C76 /* icon_page_edit@2x.png in Resources */,
 				E260DBDF2075B2D2000824F3 /* yes@2x.png in Resources */,
 				E2AECF4D1E73D3010035DF28 /* sync-25@2x.png in Resources */,
@@ -3571,7 +3507,6 @@
 				E2AECF571E73D3010035DF28 /* menu-25@2x.png in Resources */,
 				E25D8F001EE5813200ED4D0F /* icon_camera@2x.png in Resources */,
 				E260DBBC2075A17F000824F3 /* icon_tracks_review@2x.png in Resources */,
-				E2AECF581E73D3010035DF28 /* csiro-logo.png in Resources */,
 				E2B42D7920686D29009943A4 /* TracksSiteTemplate.json in Resources */,
 				E2AECF591E73D3010035DF28 /* briefcase_filled-25@2x.png in Resources */,
 				E2AECF5B1E73D3010035DF28 /* pad-1@2x.png in Resources */,
@@ -3589,7 +3524,6 @@
 				E2AECF631E73D3010035DF28 /* HomeWebView.xib in Resources */,
 				E2A6BEAF1F0CCFC000F1A57E /* Amphibians.jpg in Resources */,
 				E2AECF651E73D3010035DF28 /* GADetailActivitiesTableViewController.xib in Resources */,
-				E29A6E361EF3640E00D891CC /* logo_transparent.png in Resources */,
 				E2A6BEB51F0CCFC000F1A57E /* Bryophytes.jpg in Resources */,
 				E27B3F971EF62BB500DBB47D /* icon_address@2x.png in Resources */,
 				E2B334271F2AC67800B71E77 /* ala_logo_2.png in Resources */,
@@ -3630,7 +3564,6 @@
 				E2AECF7B1E73D3010035DF28 /* Default-568h@2x.png in Resources */,
 				E2A6BED21F0CDD6700F1A57E /* icon_right@2x.png in Resources */,
 				E2A6BEAD1F0CCFC000F1A57E /* Algae.jpg in Resources */,
-				E27B8F571EF51DA600B01FAB /* ala_name.png in Resources */,
 				E2A6BEB11F0CCFC000F1A57E /* Angiosperms.jpg in Resources */,
 				E28AF9BB1EC4310A007042C4 /* bk_iPad.png in Resources */,
 				E2AECF7D1E73D3010035DF28 /* loc1_nochange@2x.png in Resources */,
@@ -3642,7 +3575,6 @@
 				E2AECF821E73D3010035DF28 /* SVWebViewController.strings in Resources */,
 				E25D8EFE1EE5813200ED4D0F /* icon_all_records@2x.png in Resources */,
 				E2AECF841E73D3010035DF28 /* index.html in Resources */,
-				E2AECF851E73D3010035DF28 /* ala_logo.png in Resources */,
 				E2A53738204E2DA70085D1BE /* HubProjects.xib in Resources */,
 				E2A6BEB91F0CCFC000F1A57E /* Dicots.jpg in Resources */,
 				E2AECF871E73D3010035DF28 /* MapViewController.xib in Resources */,
@@ -3655,14 +3587,12 @@
 				E2AECF8E1E73D3010035DF28 /* ajax_loader.gif in Resources */,
 				E29402951EBC061D00CCFEE7 /* header-logo@2x.png in Resources */,
 				E2AECF8F1E73D3010035DF28 /* LaunchScreen.storyboard in Resources */,
-				E27B8F541EF5187A00B01FAB /* ala_logo_1.png in Resources */,
 				E2AECF901E73D3010035DF28 /* ala_logo1.png in Resources */,
 				E2AECF911E73D3010035DF28 /* SVWebViewControllerActivitySafari-iPad.png in Resources */,
 				E2A6BECD1F0CCFC000F1A57E /* Plants.jpg in Resources */,
 				E260DBD02075A17F000824F3 /* icon_tracks_settings@2x.png in Resources */,
 				E2AECF921E73D3010035DF28 /* Images.xcassets in Resources */,
 				E2AECF931E73D3010035DF28 /* GAHelpVC.xib in Resources */,
-				E247DD701EC33C5900A1C0A5 /* BioCollect-Name-Only.png in Resources */,
 				E2A6BEBB1F0CCFC000F1A57E /* FernsAndAllies.jpg in Resources */,
 				E25D8F071EE5820100ED4D0F /* icon_location@2x.png in Resources */,
 				E260DBC62075A17F000824F3 /* icon_tracks_mytracks@2x.png in Resources */,
@@ -3710,7 +3640,6 @@
 				E260DBAC2075A17F000824F3 /* icon_tracks_practice@2x.png in Resources */,
 				E23AF5231C918862002501F3 /* RecordWebView.xib in Resources */,
 				E2424C451F0F634F00E4E13F /* oz_iPad.jpg in Resources */,
-				E247DD6F1EC33C5900A1C0A5 /* BioCollect-Name-Only.png in Resources */,
 				E2636DD91CF2E57C00000371 /* brief_filled-25@2x.png in Resources */,
 				E2E3AAC318F4D9070005BB9E /* GALogin.xib in Resources */,
 				B87373DD1DB6DFE90057027E /* SVWebViewControllerActivitySafari@2x.png in Resources */,
@@ -3722,7 +3651,6 @@
 				E25D8F061EE5820100ED4D0F /* icon_location@2x.png in Resources */,
 				E227E3A2192CD57D00E22DC7 /* menu-25@2x.png in Resources */,
 				E24690EE1EF5F19B00F2F8B8 /* icon_about@2x.png in Resources */,
-				E20026391C926F250045C130 /* csiro-logo.png in Resources */,
 				E27497202006FA5E00876D5C /* icon_about_square@2x.png in Resources */,
 				E2636DDA1CF2E57C00000371 /* briefcase_filled-25@2x.png in Resources */,
 				E241C680196A3061002302D7 /* pad-1@2x.png in Resources */,
@@ -3773,10 +3701,8 @@
 				E241C687196A33B6002302D7 /* js in Resources */,
 				E25D8EFF1EE5813200ED4D0F /* icon_camera@2x.png in Resources */,
 				E2A6BEBE1F0CCFC000F1A57E /* Fungi.jpg in Resources */,
-				E27B8F591EF526C200B01FAB /* ala_logo_transparent.png in Resources */,
 				E2A6BE8F1F0C922D00F1A57E /* SpeciesGroupTableViewController.xib in Resources */,
 				E2DCF1EE1CF68D8B008D438C /* Default-568h@2x.png in Resources */,
-				E29A6E351EF3640E00D891CC /* logo_transparent.png in Resources */,
 				E2A6BED11F0CDD6700F1A57E /* icon_right@2x.png in Resources */,
 				E2A6BEAC1F0CCFC000F1A57E /* Algae.jpg in Resources */,
 				E2E8F744192245E60029574B /* loc1_nochange@2x.png in Resources */,
@@ -3793,15 +3719,12 @@
 				E241C688196A33B6002302D7 /* index.html in Resources */,
 				E27B3F961EF62BB500DBB47D /* icon_address@2x.png in Resources */,
 				E2A6BEB81F0CCFC000F1A57E /* Dicots.jpg in Resources */,
-				E2A2FFCB1C8546F0008B63A8 /* ala_logo.png in Resources */,
 				8709D1C91DB9926700E49C7E /* MapViewController.xib in Resources */,
 				E2A6BEC41F0CCFC000F1A57E /* Mammals.jpg in Resources */,
-				E27B8F531EF5187A00B01FAB /* ala_logo_1.png in Resources */,
 				E2A6BEB61F0CCFC000F1A57E /* Crustaceans.jpg in Resources */,
 				E2E7D250207DB2BF00542C76 /* icon_page_edit@2x.png in Resources */,
 				E2DCF1ED1CF68D8B008D438C /* Default-568h.png in Resources */,
 				E22045CA192D7EDD00531116 /* profile@2x.png in Resources */,
-				E27B8F561EF51DA600B01FAB /* ala_name.png in Resources */,
 				E227E39C192CD30D00E22DC7 /* lock_filled-25@2x.png in Resources */,
 				8705B9301DC041770015E171 /* ajax_loader.gif in Resources */,
 				E20D1B581CDC570800A3607B /* LaunchScreen.storyboard in Resources */,
@@ -3868,7 +3791,6 @@
 				E2F19E37200584AC0033DC24 /* SVWebViewControllerActivityChrome-iPad@2x.png in Resources */,
 				E2F19E38200584AC0033DC24 /* RecordWebView.xib in Resources */,
 				E2F19E39200584AC0033DC24 /* oz_iPad.jpg in Resources */,
-				E2F19E3A200584AC0033DC24 /* BioCollect-Name-Only.png in Resources */,
 				E2F19E3B200584AC0033DC24 /* brief_filled-25@2x.png in Resources */,
 				E2F19E3C200584AC0033DC24 /* GALogin.xib in Resources */,
 				E2F19E3D200584AC0033DC24 /* SVWebViewControllerActivitySafari@2x.png in Resources */,
@@ -3880,7 +3802,6 @@
 				E260DBE12075B2D2000824F3 /* yes@2x.png in Resources */,
 				E2F19E43200584AC0033DC24 /* menu-25@2x.png in Resources */,
 				E2F19E44200584AC0033DC24 /* icon_about@2x.png in Resources */,
-				E2F19E45200584AC0033DC24 /* csiro-logo.png in Resources */,
 				E2A5373A204E2DA70085D1BE /* HubProjects.xib in Resources */,
 				E2F19E46200584AC0033DC24 /* briefcase_filled-25@2x.png in Resources */,
 				E2F19E47200584AC0033DC24 /* pad-1@2x.png in Resources */,
@@ -3933,11 +3854,9 @@
 				E2F19E6F200584AC0033DC24 /* icon_camera@2x.png in Resources */,
 				E260DBB92075A17F000824F3 /* icon_tracks_info@2x.png in Resources */,
 				E2F19E70200584AC0033DC24 /* Fungi.jpg in Resources */,
-				E2F19E71200584AC0033DC24 /* ala_logo_transparent.png in Resources */,
 				E212E848200817EA00268AD1 /* icon_track@2x.png in Resources */,
 				E2F19E72200584AC0033DC24 /* SpeciesGroupTableViewController.xib in Resources */,
 				E2F19E73200584AC0033DC24 /* Default-568h@2x.png in Resources */,
-				E2F19E74200584AC0033DC24 /* logo_transparent.png in Resources */,
 				E2F19E75200584AC0033DC24 /* icon_right@2x.png in Resources */,
 				E2F19E76200584AC0033DC24 /* Algae.jpg in Resources */,
 				E2F19E77200584AC0033DC24 /* loc1_nochange@2x.png in Resources */,
@@ -3952,16 +3871,13 @@
 				E2F19EB52005AF600033DC24 /* edge_home_login_iPad.jpg in Resources */,
 				E2F19E80200584AC0033DC24 /* icon_address@2x.png in Resources */,
 				E2F19E81200584AC0033DC24 /* Dicots.jpg in Resources */,
-				E2F19E82200584AC0033DC24 /* ala_logo.png in Resources */,
 				E2F19E84200584AC0033DC24 /* MapViewController.xib in Resources */,
 				E2B42D8120686DFC009943A4 /* TracksActivityTemplate.json in Resources */,
 				E2F19E85200584AC0033DC24 /* Mammals.jpg in Resources */,
-				E2F19E86200584AC0033DC24 /* ala_logo_1.png in Resources */,
 				E2F19E87200584AC0033DC24 /* Crustaceans.jpg in Resources */,
 				E2F19E88200584AC0033DC24 /* Default-568h.png in Resources */,
 				E2F19EB42005AF600033DC24 /* edge_home_login_iPhone.jpg in Resources */,
 				E2F19E89200584AC0033DC24 /* profile@2x.png in Resources */,
-				E2F19E8A200584AC0033DC24 /* ala_name.png in Resources */,
 				E2F19E8B200584AC0033DC24 /* lock_filled-25@2x.png in Resources */,
 				E2F19E8C200584AC0033DC24 /* ajax_loader.gif in Resources */,
 				E248247020D2053900A12532 /* icon_right_1@2x.png in Resources */,

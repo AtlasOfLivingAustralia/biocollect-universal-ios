@@ -119,17 +119,18 @@
         }
         [cell.imageView setImage:[UIImage imageNamed:@"icon_draft"]];
     } else if(indexPath.row == 5) {
-        cell.textLabel.text = @"About";
-        cell.detailTextLabel.text = @"";
-        [cell.imageView setImage:[UIImage imageNamed:@"icon_about"]];
-    } else if(indexPath.row == 6) {
         cell.textLabel.text = @"Contact";
         cell.detailTextLabel.text = @"";
         [cell.imageView setImage:[UIImage imageNamed:@"icon_address"]];
-    } else if(indexPath.row == 7) {
-        cell.textLabel.text = [GASettings appVersion];
+    } else if(indexPath.row == 6) {
+        cell.textLabel.text = @"Logout";
         cell.detailTextLabel.text = @"";
         [cell.imageView setImage:[UIImage imageNamed:@"icon_logo"]];
+    } else if(indexPath.row == 7) {
+        cell.textLabel.text = @"About";
+        cell.detailTextLabel.text = [GASettings appVersion];
+        [cell.imageView setImage:[UIImage imageNamed:@"icon_about"]];
+        
     } else {
         cell.textLabel.text = @"About";
         cell.detailTextLabel.text = @"";

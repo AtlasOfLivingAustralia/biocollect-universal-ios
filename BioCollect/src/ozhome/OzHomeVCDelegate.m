@@ -195,23 +195,23 @@
             [RKDropdownAlert title:@"Device offline" message:@"Please try later!" backgroundColor:[UIColor colorWithRed:243.0/255.0 green:156.0/255.0 blue:18.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
             return;
         }
-        NSString *url = [[NSString alloc] initWithFormat:[GASettings appAboutUrl]];
-        SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress: url];
-        webViewController.title = @"About";
-        GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
-        [appDelegate.ozHomeNC presentViewController:webViewController animated:YES completion:NULL];
-    } else if(indexPath.row == 6) {
-        if([[appDelegate restCall] notReachable]) {
-            [RKDropdownAlert title:@"Device offline" message:@"Please try later!" backgroundColor:[UIColor colorWithRed:243.0/255.0 green:156.0/255.0 blue:18.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
-            return;
-        }
         NSString *url = [[NSString alloc] initWithFormat:[GASettings appContactUrl]];
         SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress: url];
         webViewController.title = @"Contact";
         GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
         [appDelegate.ozHomeNC presentViewController:webViewController animated:YES completion:NULL];
+    } else if(indexPath.row == 6) {
+        [appDelegate.loginViewController logout];
     } else if(indexPath.row == 7) {
-        [RKDropdownAlert title:@"Oz Atlas" message:[GASettings appVersion] backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+        if([[appDelegate restCall] notReachable]) {
+            [RKDropdownAlert title:@"Device offline" message:@"Please try later!" backgroundColor:[UIColor colorWithRed:243.0/255.0 green:156.0/255.0 blue:18.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+            return;
+        }
+        NSString *url = [[NSString alloc] initWithFormat:[GASettings appAboutUrl]];
+        SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress: url];
+        webViewController.title = @"About";
+        GAAppDelegate *appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+        [appDelegate.ozHomeNC presentViewController:webViewController animated:YES completion:NULL];
     } else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
                                                         message:@"Invalid selection."
