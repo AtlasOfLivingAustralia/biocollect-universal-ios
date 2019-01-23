@@ -13,9 +13,6 @@
 #define AUTH_REGISTER @"/userdetails/registration/createAccount"
 #define AUTH_USERDETAILS @"/userdetails/userDetails/getUserDetails?userName="
 
-// Tracker app:
-#define GET_SPECIES_LIST @"/ws/speciesListItems/dr8016?includeKVP=true"
-
 #define UNIQUE_SPECIES_ID @"/ws/species/uniqueId"
 #define DOCUMENT_UPLOAD_URL @"/ws/attachment/upload"
 #define PROJECT_NAME @"OzAtlas Sightings"

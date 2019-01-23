@@ -37,33 +37,36 @@
 }
 
 - (void) wsGetProjects : (NSError**) error {
-
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    NSString *url = [[NSString alloc] initWithFormat: @"%@%@&hub=%@", BIOCOLLECT_SERVER, kHubProjects,[GASettings appHubName]];
-    NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    [request setURL:[NSURL URLWithString:escapedUrlString]];
-    [request setHTTPMethod:@"GET"];
-    NSURLResponse *response;
     
-    NSData *nsData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&*error];
-    if(*error == nil) {
-        self.projects = [[NSMutableArray alloc] init];
-        NSDictionary *resultDictionary = [[NSDictionary alloc] init];
-        NSError *jsonError = nil;
-        resultDictionary = [NSJSONSerialization JSONObjectWithData:nsData options: 0 error:&jsonError];
-        GAProjectJSON  *projectJSON = [[GAProjectJSON alloc] initWithArray:resultDictionary[@"projects"]];
-        while([projectJSON hasNext]) {
-            [projectJSON nextProject];
-            Project *projectObj = [[Project alloc] init];
-            projectObj.projectId = projectJSON.projectId;
-            projectObj.name = projectJSON.projectName;
-            projectObj.urlImage = projectJSON.urlImage;
-            projectObj.projectActivityId = [self getProjectActivityId: projectObj.projectId];
-            [projects addObject:projectObj];
-        }
+    // Needed only for tracksApp
+    if([[GASettings appHubName] isEqualToString: @"trackshub"]) {
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+        NSString *url = [[NSString alloc] initWithFormat: @"%@%@&hub=%@", BIOCOLLECT_SERVER, kHubProjects,[GASettings appHubName]];
+        NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        [request setURL:[NSURL URLWithString:escapedUrlString]];
+        [request setHTTPMethod:@"GET"];
+        NSURLResponse *response;
         
-        if([self.projects count] > 0) {
-            [self storeHubProjects];
+        NSData *nsData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&*error];
+        if(*error == nil) {
+            self.projects = [[NSMutableArray alloc] init];
+            NSDictionary *resultDictionary = [[NSDictionary alloc] init];
+            NSError *jsonError = nil;
+            resultDictionary = [NSJSONSerialization JSONObjectWithData:nsData options: 0 error:&jsonError];
+            GAProjectJSON  *projectJSON = [[GAProjectJSON alloc] initWithArray:resultDictionary[@"projects"]];
+            while([projectJSON hasNext]) {
+                [projectJSON nextProject];
+                Project *projectObj = [[Project alloc] init];
+                projectObj.projectId = projectJSON.projectId;
+                projectObj.name = projectJSON.projectName;
+                projectObj.urlImage = projectJSON.urlImage;
+                projectObj.projectActivityId = [self getProjectActivityId: projectObj.projectId];
+                [projects addObject:projectObj];
+            }
+            
+            if([self.projects count] > 0) {
+                [self storeHubProjects];
+            }
         }
     }
 }
