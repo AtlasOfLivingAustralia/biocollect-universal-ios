@@ -1,15 +1,11 @@
 #ifndef GASettingsConstant.h
 #define GASettingsConstant.h
-#define DEFAULT_TIMEOUT 10
+#define DEFAULT_TIMEOUT 15
 
 #define REST_SERVER @"https://fieldcapture.ala.org.au"
 #define ECODATA_SERVER @"https://ecodata.ala.org.au"
 #define BIOCOLLECT_SERVER @"https://biocollect.ala.org.au"
 #define LISTS_SERVER @"https://lists.ala.org.au"
-
-
-//#define ECODATA_SERVER @"http://devt.ala.org.au:8080/ecodata"
-//#define BIOCOLLECT_SERVER @"http://devt.ala.org.au:8087/biocollect"
 
 #define LIST_PROJECT_ACTIVITIES @"/ws/survey/list"
 #define AUTOCOMPLETE_URL @"http://bie.ala.org.au/ws/search.json?sort=scientificName&fq=taxonomicStatus:accepted&q="
@@ -19,10 +15,6 @@
 
 // Tracker app:
 #define GET_SPECIES_LIST @"/ws/speciesListItems/dr8016?includeKVP=true"
-
-// Get list of projects associated to the hub:
-// https://biocollect-test.ala.org.au/ws/project/search?sort=nameSort&hub=trackshub&fq=isExternal:F&initiator=biocollect&max=50&offset=0&mobile=true
-// Get list of activities associated wit the project. >>  https://biocollect-test.ala.org.au/ws/survey/list/2f4eed05-5be1-417d-a4ab-174f5b24d22a
 
 #define UNIQUE_SPECIES_ID @"/ws/species/uniqueId"
 #define DOCUMENT_UPLOAD_URL @"/ws/attachment/upload"
@@ -51,18 +43,3 @@
 #define HUB_VIEW @"hubview"
 
 #endif
-
-/*
-Test Configuration
-------------------
-Sightings Test config
-#define CREATE_RECORD @"/ws/bioactivity/save?pActivityId=d57961a1-517d-42f2-8446-c373c0c59579"
-#define SIGHTINGS_PROJECT_ID @"b3d8e243-1137-4d26-9e15-c5a6f90815eb"
-#define SIGHTINGS_PROJECT_NAME_FACET @"fq=projectNameFacet:ALA species sightings and OzAtlas"
- 
-// Test : ALA species sightings and OzAtlas
-// id : b3d8e243-1137-4d26-9e15-c5a6f90815eb
- 
-// Prod : fq=projectNameFacet:ALA species sightings - OzAtlas
-// id   : f813c99c-1a1d-4096-8eeb-cbc40e321101
-*/
