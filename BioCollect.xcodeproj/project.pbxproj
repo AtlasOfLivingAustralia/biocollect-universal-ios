@@ -1066,6 +1066,14 @@
 		E2C544471ECDCA8C00641951 /* edit_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C544461ECDCA8C00641951 /* edit_icon@2x.png */; };
 		E2C544481ECDCA8C00641951 /* edit_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C544461ECDCA8C00641951 /* edit_icon@2x.png */; };
 		E2CCED01190F82E6003655B7 /* planned@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2CCECFC190F82E6003655B7 /* planned@2x.png */; };
+		E2D619A921F84DAB0004A5D9 /* TrackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87165E18203F867B0094633E /* TrackViewController.m */; };
+		E2D619AA21F84DFB0004A5D9 /* RouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8718FE602057D49C000CB6BF /* RouteViewController.m */; };
+		E2D619AB21F84E1E0004A5D9 /* TrackMetadataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87165E232043DACF0094633E /* TrackMetadataViewController.m */; };
+		E2D619AC21F84E3F0004A5D9 /* SightingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87B09633204FB94300DA1395 /* SightingListViewController.m */; };
+		E2D619AD21F84E7A0004A5D9 /* SpeciesAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8718FE64205A4507000CB6BF /* SpeciesAnnotation.m */; };
+		E2D619AE21F84E810004A5D9 /* MetadataForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 87165E34204586640094633E /* MetadataForm.m */; };
+		E2D619AF21F84E900004A5D9 /* SightingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87165E3A2047ADAA0094633E /* SightingViewController.m */; };
+		E2D619B021F84EB20004A5D9 /* SightingForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 87165E36204785680094633E /* SightingForm.m */; };
 		E2D90EC42057E22B0016F293 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D90EC32057E22B0016F293 /* Project.m */; };
 		E2D90EC52057E22B0016F293 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D90EC32057E22B0016F293 /* Project.m */; };
 		E2D90EC62057E22B0016F293 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D90EC32057E22B0016F293 /* Project.m */; };
@@ -1591,7 +1599,6 @@
 		E2E8F743192245E60029574B /* loc1_nochange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "loc1_nochange@2x.png"; path = "src/images/loc1_nochange@2x.png"; sourceTree = "<group>"; };
 		E2EF6E601E678A4F00279A55 /* RKDropdownAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKDropdownAlert.h; sourceTree = "<group>"; };
 		E2EF6E611E678A4F00279A55 /* RKDropdownAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKDropdownAlert.m; sourceTree = "<group>"; };
-		E2F19EAC200584AC0033DC24 /* TheEdgeOfTheWorld.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = TheEdgeOfTheWorld.plist; path = "/Users/sat01a/All/sat01a_git/release-ozatlas/TheEdgeOfTheWorld.plist"; sourceTree = "<absolute>"; };
 		E2F471C31C86827B00594DAB /* HomeTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeTableViewController.xib; path = src/home/HomeTableViewController.xib; sourceTree = "<group>"; };
 		E2F674BD1F18FD5D0040C704 /* ALA-logo-inline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ALA-logo-inline.png"; path = "src/images/ALA-logo-inline.png"; sourceTree = "<group>"; };
 		E2FF3E6C2052016B00439195 /* ProjectService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ProjectService.h; path = src/Service/ProjectService.h; sourceTree = "<group>"; };
@@ -2448,7 +2455,6 @@
 				E2E3AA8A18F4D2940005BB9E /* Products */,
 				E2E1C5202006116200CACBB6 /* BioControlHub-Info.plist */,
 				E2A3C84C200612B100BC90D0 /* BioCollect-info.plist */,
-				E2F19EAC200584AC0033DC24 /* TheEdgeOfTheWorld.plist */,
 				E261475C20072F9400B1104E /* Tracker-info.plist */,
 			);
 			sourceTree = "<group>";
@@ -3669,6 +3675,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2D619B021F84EB20004A5D9 /* SightingForm.m in Sources */,
+				E2D619AF21F84E900004A5D9 /* SightingViewController.m in Sources */,
+				E2D619AE21F84E810004A5D9 /* MetadataForm.m in Sources */,
+				E2D619AD21F84E7A0004A5D9 /* SpeciesAnnotation.m in Sources */,
+				E2D619AC21F84E3F0004A5D9 /* SightingListViewController.m in Sources */,
+				E2D619AB21F84E1E0004A5D9 /* TrackMetadataViewController.m in Sources */,
+				E2D619AA21F84DFB0004A5D9 /* RouteViewController.m in Sources */,
+				E2D619A921F84DAB0004A5D9 /* TrackViewController.m in Sources */,
 				E27B8F311EF4E5FE00B01FAB /* UIImageView+REUIKitAdditions.m in Sources */,
 				E2D90EC52057E22B0016F293 /* Project.m in Sources */,
 				E2FF3E6F2052018700439195 /* ProjectService.m in Sources */,
@@ -4168,7 +4182,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.biocollect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "def8ecb9-4f43-4e1c-818d-0623ff2e9d46";
-				PROVISIONING_PROFILE_SPECIFIER = BioCollectProd062018;
+				PROVISIONING_PROFILE_SPECIFIER = BioCollectProdJan2020;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -4315,7 +4329,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.mobile;
 				PRODUCT_NAME = "Oz Atlas";
 				PROVISIONING_PROFILE = "ae287aa7-a066-42ab-9527-900ff5ce85d1";
-				PROVISIONING_PROFILE_SPECIFIER = "ALA-OzAtlas-Prod-Existing-App";
+				PROVISIONING_PROFILE_SPECIFIER = OZAtlasProd_0CT_2019;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

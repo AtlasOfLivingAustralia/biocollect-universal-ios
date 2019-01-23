@@ -98,18 +98,18 @@
 			<key>view</key>
 			<string>version</string>
 		</dict>
-        <dict>
-            <key>code</key>
-            <string>menu.logout</string>
-            <key>icon</key>
-            <string>icon_logo</string>
-            <key>na</key>
-            <string>na</string>
-            <key>title</key>
-            <string>Logout</string>
-            <key>view</key>
-            <string>logout_view</string>
-        </dict>
+		<dict>
+			<key>code</key>
+			<string>menu.logout</string>
+			<key>icon</key>
+			<string>icon_logo</string>
+			<key>na</key>
+			<string>na</string>
+			<key>title</key>
+			<string>Logout</string>
+			<key>view</key>
+			<string>logout_view</string>
+		</dict>
 	</array>
 	<key>Bio_Theme</key>
 	<string>#F1582B</string>
@@ -132,11 +132,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.4</string>
+	<string>1.5</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>06</string>
+	<string>02</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
