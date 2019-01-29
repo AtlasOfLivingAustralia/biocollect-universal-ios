@@ -60,6 +60,16 @@
 		</dict>
 		<dict>
 			<key>icon</key>
+			<string>icon_location</string>
+			<key>title</key>
+			<string>Explore Species</string>
+			<key>url</key>
+			<string></string>
+			<key>view</key>
+			<string>hub_explore</string>
+		</dict>
+		<dict>
+			<key>icon</key>
 			<string>icon_address</string>
 			<key>title</key>
 			<string>Contact us</string>
@@ -136,7 +146,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>02</string>
+	<string>03</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
