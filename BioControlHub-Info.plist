@@ -108,6 +108,18 @@
 			<key>view</key>
 			<string>version</string>
 		</dict>
+		<dict>
+			<key>code</key>
+			<string>menu.logout</string>
+			<key>icon</key>
+			<string>icon_logo</string>
+			<key>na</key>
+			<string>na</string>
+			<key>title</key>
+			<string>Logout</string>
+			<key>view</key>
+			<string>logout_view</string>
+		</dict>
 	</array>
 	<key>Bio_Project_Activity_ID</key>
 	<string>e61eb018-02a9-4e3b-a4b3-9d6be33d9cbb</string>
@@ -136,11 +148,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1</string>
+	<string>1.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>03</string>
+	<string>01</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>

@@ -84,13 +84,8 @@ static const NSInteger kARRMaxCacheAge = 60 * 60 * 24 * 365 * 2; // 1 day * 365 
     });
     
     [self addSplitViewtoRoot];
-    
-    //[[UITabBar appearance] setTintColor: [UIColor colorWithRed:200.0/255.0 green:77.0/255.0 blue:47.0/255.0 alpha:1]];
-    
-    //[[UIBarButtonItem appearance] setTintColor:[UIColor colorWithRed:200.0/255.0 green:77.0/255.0 blue:47.0/255.0 alpha:1]];
 
     [[MRProgressOverlayView appearance] setTintColor:[UIColor colorWithRed:200.0/255.0 green:77.0/255.0 blue:47.0/255.0 alpha:1]];
-    
     
     NSArray<NSURL *> *urls = [NSFileManager.defaultManager URLsForDirectory:NSDocumentDirectory inDomains: NSUserDomainMask];
     if([urls count] > 0){

@@ -729,6 +729,14 @@
 		E266395E1F52EB9B00F1F1CE /* bk_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = E28AF9B91EC4310A007042C4 /* bk_iPad.png */; };
 		E266395F1F52EB9B00F1F1CE /* Default-568.png in Resources */ = {isa = PBXBuildFile; fileRef = E2DCF1EF1CF6A19C008D438C /* Default-568.png */; };
 		E26639601F52EB9B00F1F1CE /* icon_my_records@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E25D8EFC1EE5813200ED4D0F /* icon_my_records@2x.png */; };
+		E267EA452256DB4A007D6C0B /* SightingForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 87165E36204785680094633E /* SightingForm.m */; };
+		E267EA462256DB4A007D6C0B /* SightingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87165E3A2047ADAA0094633E /* SightingViewController.m */; };
+		E267EA472256DB4A007D6C0B /* MetadataForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 87165E34204586640094633E /* MetadataForm.m */; };
+		E267EA482256DB4A007D6C0B /* SpeciesAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8718FE64205A4507000CB6BF /* SpeciesAnnotation.m */; };
+		E267EA492256DB4A007D6C0B /* SightingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87B09633204FB94300DA1395 /* SightingListViewController.m */; };
+		E267EA4A2256DB4A007D6C0B /* TrackMetadataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87165E232043DACF0094633E /* TrackMetadataViewController.m */; };
+		E267EA4B2256DB4A007D6C0B /* RouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8718FE602057D49C000CB6BF /* RouteViewController.m */; };
+		E267EA4C2256DB4A007D6C0B /* TrackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87165E18203F867B0094633E /* TrackViewController.m */; };
 		E26F18F71F678B760084485A /* biocollect_home_bk.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E26F18F61F678B760084485A /* biocollect_home_bk.jpg */; };
 		E27497202006FA5E00876D5C /* icon_about_square@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E274971F2006FA5E00876D5C /* icon_about_square@2x.png */; };
 		E27497212006FA5E00876D5C /* icon_about_square@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E274971F2006FA5E00876D5C /* icon_about_square@2x.png */; };
@@ -2787,6 +2795,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				da,
 				de,
@@ -3544,6 +3553,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E267EA452256DB4A007D6C0B /* SightingForm.m in Sources */,
+				E267EA462256DB4A007D6C0B /* SightingViewController.m in Sources */,
+				E267EA472256DB4A007D6C0B /* MetadataForm.m in Sources */,
+				E267EA482256DB4A007D6C0B /* SpeciesAnnotation.m in Sources */,
+				E267EA492256DB4A007D6C0B /* SightingListViewController.m in Sources */,
+				E267EA4A2256DB4A007D6C0B /* TrackMetadataViewController.m in Sources */,
+				E267EA4B2256DB4A007D6C0B /* RouteViewController.m in Sources */,
+				E267EA4C2256DB4A007D6C0B /* TrackViewController.m in Sources */,
 				E266386B1F52EB9B00F1F1CE /* UIImageView+REUIKitAdditions.m in Sources */,
 				E2D90EC62057E22B0016F293 /* Project.m in Sources */,
 				E2FF3E702052018700439195 /* ProjectService.m in Sources */,

@@ -1,6 +1,6 @@
 #ifndef GASettingsConstant.h
 #define GASettingsConstant.h
-#define DEFAULT_TIMEOUT 15
+#define DEFAULT_TIMEOUT 20
 
 #define REST_SERVER @"https://fieldcapture.ala.org.au"
 #define ECODATA_SERVER @"https://ecodata.ala.org.au"
