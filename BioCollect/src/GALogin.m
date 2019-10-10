@@ -162,6 +162,7 @@
                            [MRProgressOverlayView dismissOverlayForView:appDelegate.window animated:YES];
                            if(error != nil) {
                                [RKDropdownAlert title:@"Error" message:@"Invalid password, please try again" backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+                                [self logout];
                            } else {
                                [appDelegate displaySigninPage];
                            }
@@ -169,6 +170,7 @@
                    });
             } else {
                  [RKDropdownAlert title:@"Error" message:@"Invalid password, please try again" backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+                    [self logout];
             }
         } else {
             [appDelegate displaySigninPage];
