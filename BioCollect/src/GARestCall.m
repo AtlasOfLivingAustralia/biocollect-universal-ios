@@ -100,7 +100,7 @@
                                                                   options:kNilOptions error:&*e];
         if(*e == nil) {
             NSString *jsonError = [respDict objectForKey:@"error"];
-            if([jsonError length] == 0 ) {
+            if([jsonError length] == 0 && [[respDict objectForKey:@"authKey"] length] > 0) {
                 [GASettings setEmailAddress:username];
                 [GASettings setAuthKey:[respDict objectForKey:@"authKey"]];
                 [GASettings setFirstName:[respDict objectForKey:@"firstName"]];

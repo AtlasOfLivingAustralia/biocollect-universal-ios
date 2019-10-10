@@ -115,42 +115,67 @@
 }
 
 -(void) logout {
-    UIAlertView *alert = nil;
-    NSString *msg = nil;
+    
+    NSString *msg = @"Are you sure you want to logout? \n\n You will not be able to log back in [if] you are out of internet connection";
     if([[GASettings appHubName] isEqualToString:@"trackshub"]) {
         NSInteger size = [[appDelegate trackerService].tracks count];
         if(size > 0) {
             [RKDropdownAlert title:@"Logout Cancelled" message:@"Please upload all pending tracks before logging out" backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
             return;
         }
-        msg = @"Are you sure you want to logout? \n\n You will not be able to log back in [if] you are out of internet connection.";
+        
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Are you sure you want to logout?"
+                                   message:[NSString stringWithFormat:@"\nYou will not be able to log back in [if] you are out of internet connection. \n\n Please enter your password to proceed \n\n%@",
+                                   [GASettings getEmailAddress]]
+                                   delegate:self
+                                   cancelButtonTitle:@"No"
+                                   otherButtonTitles:@"Yes",nil];
+        
+         [alert setAlertViewStyle:UIAlertViewStyleSecureTextInput];
+         [alert show];
         
     } else {
-        msg = @"Are you sure you want to logout? \n\n You will not be able to log back in [if] you are out of internet connection";
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Confirm"
+                                           message:msg
+                                          delegate:self
+                                 cancelButtonTitle:@"No"
+                                 otherButtonTitles:@"Yes",nil];
+        [alert show];
     }
-    
-    alert = [[UIAlertView alloc] initWithTitle:@"Confirm"
-                                       message:msg
-                                      delegate:self
-                             cancelButtonTitle:@"No"
-                             otherButtonTitles:@"Yes",nil];
-    [alert show];
 }
 
-#pragma mark - UIAlert view delegate.
-
+#pragma mark - UIAlert view delegate
 - (void)alertView:(UIAlertView *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if( buttonIndex != 0 ) {
-        [appDelegate displaySigninPage];
+        if([[GASettings appHubName] isEqualToString:@"trackshub"]) {
+            NSString *password = [actionSheet textFieldAtIndex:0].text;
+            if([password length] > 0) {
+                    // Run this in a background
+                   [MRProgressOverlayView showOverlayAddedTo:appDelegate.window title:@"Processing.." mode:MRProgressOverlayViewModeIndeterminateSmall animated:YES];
+                   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                       NSError *error = nil;
+                       [appDelegate.restCall  authenticate:[GASettings getEmailAddress] password: password error:&error];
+                       // Execute under UI thread.
+                       dispatch_async(dispatch_get_main_queue(), ^{
+                           [MRProgressOverlayView dismissOverlayForView:appDelegate.window animated:YES];
+                           if(error != nil) {
+                               [RKDropdownAlert title:@"Error" message:@"Invalid password, please try again" backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+                           } else {
+                               [appDelegate displaySigninPage];
+                           }
+                       });
+                   });
+            } else {
+                 [RKDropdownAlert title:@"Error" message:@"Invalid password, please try again" backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+            }
+        } else {
+            [appDelegate displaySigninPage];
+        }
     }
 }
-
 @end
-
-
-
-
-
 
 
 
