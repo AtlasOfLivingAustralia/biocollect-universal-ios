@@ -115,35 +115,34 @@
 }
 
 -(void) logout {
-    
+    [self logoutWithErrorMsg:@""];
+}
+
+-(void) logoutWithErrorMsg :(NSString *) errorMsg {
     NSString *msg = @"Are you sure you want to logout? \n\n You will not be able to log back in [if] you are out of internet connection";
-    if([[GASettings appHubName] isEqualToString:@"trackshub"]) {
-        NSInteger size = [[appDelegate trackerService].tracks count];
-        if(size > 0) {
-            [RKDropdownAlert title:@"Logout Cancelled" message:@"Please upload all pending tracks before logging out" backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
-            return;
-        }
-        
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Are you sure you want to logout?"
-                                   message:[NSString stringWithFormat:@"\nYou will not be able to log back in [if] you are out of internet connection. \n\n Please enter your password to proceed \n\n%@",
-                                   [GASettings getEmailAddress]]
-                                   delegate:self
-                                   cancelButtonTitle:@"No"
-                                   otherButtonTitles:@"Yes",nil];
-        
-         [alert setAlertViewStyle:UIAlertViewStyleSecureTextInput];
-         [alert show];
-        
-    } else {
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Confirm"
-                                           message:msg
-                                          delegate:self
-                                 cancelButtonTitle:@"No"
-                                 otherButtonTitles:@"Yes",nil];
-        [alert show];
-    }
+       if([[GASettings appHubName] isEqualToString:@"trackshub"]) {
+           NSInteger size = [[appDelegate trackerService].tracks count];
+           if(size > 0) {
+               [RKDropdownAlert title:@"Logout Cancelled" message:@"Please upload all pending tracks before logging out" backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+               return;
+           }
+           UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Are you sure you want to logout?"
+                                      message:[NSString stringWithFormat:@"\nYou will not be able to log back in [if] you are out of internet connection. \n\n Please enter your password to proceed \n\n%@\n\n%@",
+                                      [GASettings getEmailAddress],errorMsg]
+                                      delegate:self
+                                      cancelButtonTitle:@"No"
+                                      otherButtonTitles:@"Yes",nil];
+            [alert setAlertViewStyle:UIAlertViewStyleSecureTextInput];
+            [alert show];
+       } else {
+           
+           UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Confirm"
+                                              message:msg
+                                             delegate:self
+                                    cancelButtonTitle:@"No"
+                                    otherButtonTitles:@"Yes",nil];
+           [alert show];
+       }
 }
 
 #pragma mark - UIAlert view delegate
@@ -161,16 +160,14 @@
                        dispatch_async(dispatch_get_main_queue(), ^{
                            [MRProgressOverlayView dismissOverlayForView:appDelegate.window animated:YES];
                            if(error != nil) {
-                               [RKDropdownAlert title:@"Error" message:@"Invalid password, please try again" backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
-                                [self logout];
+                               [self logoutWithErrorMsg: @"⛔ Invalid password, please try again"];
                            } else {
                                [appDelegate displaySigninPage];
                            }
                        });
                    });
             } else {
-                 [RKDropdownAlert title:@"Error" message:@"Invalid password, please try again" backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
-                    [self logout];
+                [self logoutWithErrorMsg:@"⛔ Invalid password, please try again"];
             }
         } else {
             [appDelegate displaySigninPage];

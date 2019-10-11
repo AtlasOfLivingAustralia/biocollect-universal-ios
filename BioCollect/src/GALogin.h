@@ -19,4 +19,5 @@
 - (IBAction)onClickLogin:(id)sender;
 - (IBAction)onClickRegister:(id)sender;
 - (void) logout;
+- (void) logoutWithErrorMsg:(NSString *) msg;
 @end
