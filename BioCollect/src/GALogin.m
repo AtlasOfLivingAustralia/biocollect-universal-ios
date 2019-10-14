@@ -119,34 +119,41 @@
 }
 
 -(void) logoutWithErrorMsg :(NSString *) errorMsg {
-    NSString *msg = @"Are you sure you want to logout? \n\n You will not be able to log back in [if] you are out of internet connection";
-       if([[GASettings appHubName] isEqualToString:@"trackshub"]) {
+    Locale* locale = appDelegate.locale;
+    
+    if([[appDelegate restCall] notReachable]) {
+        [RKDropdownAlert title:[locale get: @"menu.logout.offline.title"] message:[locale get: @"menu.logout.offline.message"] backgroundColor:[UIColor colorWithRed:243.0/255.0 green:156.0/255.0 blue:18.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+        return;
+    }
+    
+    if([[GASettings appHubName] isEqualToString:@"trackshub"]) {
            NSInteger size = [[appDelegate trackerService].tracks count];
            if(size > 0) {
-               [RKDropdownAlert title:@"Logout Cancelled" message:@"Please upload all pending tracks before logging out" backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+               [RKDropdownAlert title:[locale get: @"menu.logout.pendingTracks.title"] message:[locale get: @"menu.logout.pendingTracks"] backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
                return;
            }
-           UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Are you sure you want to logout?"
-                                      message:[NSString stringWithFormat:@"\nYou will not be able to log back in [if] you are out of internet connection. \n\n Please enter your password to proceed \n\n%@\n\n%@",
+           UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[locale get: @"menu.logout.title"]
+                                      message:[NSString stringWithFormat:[locale get: @"menu.logout.passwordMessage"],
                                       [GASettings getEmailAddress],errorMsg]
                                       delegate:self
                                       cancelButtonTitle:@"No"
                                       otherButtonTitles:@"Yes",nil];
             [alert setAlertViewStyle:UIAlertViewStyleSecureTextInput];
             [alert show];
-       } else {
+     } else {
            
-           UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Confirm"
-                                              message:msg
+           UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"menu.logout.title"
+                                              message:[locale get: @"menu.logout.genericMessage"]
                                              delegate:self
                                     cancelButtonTitle:@"No"
                                     otherButtonTitles:@"Yes",nil];
            [alert show];
-       }
+     }
 }
 
 #pragma mark - UIAlert view delegate
 - (void)alertView:(UIAlertView *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    Locale* locale = appDelegate.locale;
     if( buttonIndex != 0 ) {
         if([[GASettings appHubName] isEqualToString:@"trackshub"]) {
             NSString *password = [actionSheet textFieldAtIndex:0].text;
@@ -160,14 +167,14 @@
                        dispatch_async(dispatch_get_main_queue(), ^{
                            [MRProgressOverlayView dismissOverlayForView:appDelegate.window animated:YES];
                            if(error != nil) {
-                               [self logoutWithErrorMsg: @"⛔ Invalid password, please try again"];
+                               [self logoutWithErrorMsg: [locale get: @"menu.logout.errorMsg"]];
                            } else {
                                [appDelegate displaySigninPage];
                            }
                        });
                    });
             } else {
-                [self logoutWithErrorMsg:@"⛔ Invalid password, please try again"];
+                [self logoutWithErrorMsg:[locale get: @"menu.logout.errorMsg"]];
             }
         } else {
             [appDelegate displaySigninPage];

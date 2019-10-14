@@ -14,6 +14,7 @@
     language = @"en";
     translation = @{
                     @"en" : @{
+                            
                             @"menu.newTrack": @"Create a new track",
                             @"menu.editTracks": @"Upload or edit tracks",
                             @"menu.uploadedTracks": @"My uploaded tracks",
@@ -24,6 +25,15 @@
                             @"menu.settings": @"Settings",
                             @"menu.language": @"Language",
                             @"menu.logout": @"Logout",
+                            @"menu.logout.offline.title": @"Device offline",
+                            @"menu.logout.offline.message": @"Please try later!",
+                            @"menu.logout.title": @"Are you sure you want to logout?",
+                            @"menu.logout.genericMessage": @"Are you sure you want to logout? \n\n You will not be able to log back in [if] you are out of internet connection",
+                            @"menu.logout.passwordMessage": @"\nYou will not be able to log back in [if] you are out of internet connection. \n\n Please enter your password to proceed \n\n%@\n\n%@",
+                            
+                            @"menu.logout.pendingTracks": @"Please upload all pending tracks before logging out",
+                            @"menu.logout.pendingTracks.title": @"Logout Cancelled",
+                            @"menu.logout.errorMsg": @"⛔ Invalid password, please try again",
                             
                             @"trackviewcontroller.title" : @"Track",
                             @"trackmetadataviewcontroller.title" : @"1. Track details",
@@ -129,6 +139,15 @@
                             @"menu.language": @"Language",
                             @"menu.logout": @"Logout",
                             
+                            @"menu.logout.offline.title": @"Device offline",
+                            @"menu.logout.offline.message": @"Please try later!",
+                            @"menu.logout.title": @"Are you sure you want to logout?",
+                            @"menu.logout.genericMessage": @"Are you sure you want to logout? \n\n You will not be able to log back in [if] you are out of internet connection",
+                            @"menu.logout.passwordMessage": @"\nYou will not be able to log back in [if] you are out of internet connection. \n\n Please enter your password to proceed \n\n%@\n\n%@",
+                            @"menu.logout.pendingTracks": @"Please upload all pending tracks before logging out",
+                            @"menu.logout.pendingTracks.title": @"Logout Cancelled",
+                            @"menu.logout.errorMsg": @"⛔ Invalid password, please try again",
+                            
                             @"trackviewcontroller.title" : @"Track",
                             @"trackmetadataviewcontroller.title" : @"1. Track details",
                             @"sighting.title" : @"2. Animal signs",
@@ -231,6 +250,14 @@
                             @"menu.settings": @"Jurrkkulmunjarl",
                             @"menu.language": @"Language",
                             @"menu.logout": @"Pangkarla",
+                            @"menu.logout.offline.title": @"Device offline",
+                            @"menu.logout.offline.message": @"Please try later!",
+                            @"menu.logout.title": @"Are you sure you want to logout?",
+                            @"menu.logout.genericMessage": @"Are you sure you want to logout? \n\n You will not be able to log back in [if] you are out of internet connection",
+                            @"menu.logout.passwordMessage": @"\nYou will not be able to log back in [if] you are out of internet connection. \n\n Please enter your password to proceed \n\n%@\n\n%@",
+                            @"menu.logout.pendingTracks": @"Please upload all pending tracks before logging out",
+                            @"menu.logout.pendingTracks.title": @"Logout Cancelled",
+                            @"menu.logout.errorMsg": @"⛔ Invalid password, please try again",
                             
                             @"trackviewcontroller.title" : @"Track",
                             @"trackmetadataviewcontroller.title" : @"1. Track details",
