@@ -12,11 +12,15 @@
 #import "RecordsTableViewController.h"
 #import "JGActionSheet.h"
 
-@interface HomeTableViewController :  UITableViewController <UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate, UIActionSheetDelegate, JGActionSheetDelegate>
+@interface HomeTableViewController :  UITableViewController <UITableViewDelegate, UISearchControllerDelegate, UISearchBarDelegate, UIActionSheetDelegate, UISearchResultsUpdating, JGActionSheetDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *homeTableView;
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 @property (nonatomic, strong) UIActivityIndicatorView *spinner;
+@property (nonatomic) Boolean enableSearchController;
+@property (strong, nonatomic) UISearchController *searchController;
+@property (strong, nonatomic) HomeTableViewController *parent;
+
 
 //Pagination info.
 @property (nonatomic, strong) NSString * query;

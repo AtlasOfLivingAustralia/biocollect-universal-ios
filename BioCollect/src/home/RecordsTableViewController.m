@@ -28,7 +28,7 @@
 #define DEFAULT_MAX     50
 #define DEFAULT_OFFSET  0
 #define SEARCH_LENGTH   3
-@synthesize  webViewController, records, appDelegate, bioProjectService, totalRecords, offset, loadingFinished, isSearching, query, spinner, myRecords, projectId, pActivties;
+@synthesize  webViewController, records, appDelegate, bioProjectService, totalRecords, offset, loadingFinished, isSearching, query, spinner, myRecords, projectId, pActivties, searchController;
 
 
 - (id)initWithNibNameAndUserActions:(NSString *)nibNameOrNil bundle:(NSBundle *) nibBundleOrNil {
@@ -36,6 +36,7 @@
     self.bioProjectService = self.appDelegate.bioProjectService;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     self.menu = nil;
+    self.enableSearchController = true;
     if (self) {
         self.records = [[NSMutableArray alloc]init];
         self.pActivties = [[NSMutableArray alloc] init];
@@ -66,6 +67,7 @@
     self.bioProjectService = self.appDelegate.bioProjectService;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     self.menu = nil;
+    self.enableSearchController = true;
     if (self) {
         self.records = [[NSMutableArray alloc]init];
         self.pActivties = [[NSMutableArray alloc] init];
@@ -95,6 +97,7 @@
     self.bioProjectService = self.appDelegate.bioProjectService;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     self.menu = nil;
+    self.enableSearchController = true;
     if (self) {
         self.records = [[NSMutableArray alloc]init];
         self.pActivties = [[NSMutableArray alloc] init];
@@ -197,6 +200,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.rowHeight = 60;
+    
+    if (self.enableSearchController) {
+        RecordsTableViewController *recordsTableVC = [[RecordsTableViewController alloc] initWithNibName:@"RecordsTableViewController" bundle:nil];
+        recordsTableVC.enableSearchController = false;
+        recordsTableVC.parent = self;
+        recordsTableVC.tableView.delegate = recordsTableVC;
+        recordsTableVC.tableView.dataSource = recordsTableVC;
+        searchController = [[UISearchController alloc] initWithSearchResultsController: recordsTableVC];
+        searchController.delegate = recordsTableVC;
+        searchController.searchResultsUpdater = recordsTableVC;
+        searchController.searchBar.delegate = recordsTableVC;
+        searchController.hidesNavigationBarDuringPresentation = false;
+        
+        if (@available(iOS 11.0, *) ){
+            // For iOS 11 and later, place the search bar in the navigation bar.
+            self.navigationItem.searchController = searchController;
+
+            // Make the search bar always visible.
+            self.navigationItem.hidesSearchBarWhenScrolling = false;
+        } else {
+            // For iOS 10 and earlier, place the search controller's search bar in the table view's header.
+            self.tableView.tableHeaderView = searchController.searchBar;
+        }
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -328,8 +355,12 @@
             
             recordWebView.title = activity.activityName;
             [recordWebView.webView setScalesPageToFit:YES];
-            [[self navigationController] pushViewController:recordWebView animated:TRUE];
+            UINavigationController *nc = self.navigationController;
+            if (self.parent != nil) {
+                nc = self.parent.navigationController;
+            }
             
+            [nc pushViewController:recordWebView animated:TRUE];
         } else {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                             message:@"Invalid record"
@@ -368,10 +399,10 @@
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
     myLabel.frame = CGRectMake(0, 0, screenWidth, 30);
-    myLabel.backgroundColor = [UIColor colorWithRed:53/255.0 green:54/255.0 blue:49/255.0 alpha:1];
+    myLabel.backgroundColor = [UIColor lightGrayColor];
     myLabel.textAlignment = UITextAlignmentCenter;
     myLabel.text = [self tableView:tableView titleForHeaderInSection:section];
-    myLabel.textColor = [UIColor grayColor];
+    myLabel.textColor = [UIColor blackColor];
     UIView *headerView = [[UIView alloc] init];
     [headerView addSubview:myLabel];
     
@@ -433,11 +464,7 @@
         [self load];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self searchIndicator:FALSE];
-            if(cancelTriggered){
-                [self.tableView reloadData];
-            } else {
-                [self.searchDisplayController.searchResultsTableView reloadData];
-            }
+            [self.tableView reloadData];
         });
     });
 }
@@ -445,56 +472,49 @@
 -(void) searchIndicator: (BOOL) searching {
     if(searching) {
         self.spinner.center = self.view.center;
-        [self.searchDisplayController.searchResultsTableView addSubview : spinner];
+        [self.tableView addSubview : spinner];
         [self.spinner startAnimating];
     } else{
         [self.spinner stopAnimating];
     }
 
-    UITableView *tableView = self.searchDisplayController.searchResultsTableView;
+    UITableView *tableView = self.tableView;
     for( UIView *subview in tableView.subviews ) {
-        if( [subview class] == [UILabel class] ) {
-            UILabel *lbl = (UILabel*)subview; // sv changed to subview.
+        if( [subview class] == [UIView class] ) {
+            UILabel *lbl = (UILabel*) [subview.subviews objectAtIndex:0]; // sv changed to subview.
             lbl.text = searching ? @"Searching..." : @"No Results";
         }
     }
 }
 
-#pragma mark - UISearchDisplayControllerDelegate
-- (void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller {
+#pragma mark - UISearchBarDelegate
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
     //When the user taps the search bar, this means that the controller will begin searching.
     isSearching = YES;
 }
 
-- (void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller {
-    //When the user taps the Cancel Button, or anywhere aside from the view.
+- (void) searchBarTextDidEndEditing:(UISearchBar *)searchBar {
     isSearching = NO;
-    [self searchRecords :@"" cancelTriggered:TRUE];
-    
 }
 
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
-    if(isSearching && [searchString length] >= SEARCH_LENGTH) {
-        [self searchRecords :searchString cancelTriggered:FALSE];
-    }
-    
-    // Return YES to cause the search result table view to be reloaded.
-    return NO;
-}
-
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption {
-    // Return YES to cause the search result table view to be reloaded.
-    return YES;
-}
-
-// Webview Delegate
-- (void)webViewDidFinishLoad:(UIWebView *)webView{
+#pragma mark - WebViewDelegate
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
     NSString *currentUrl = webView.request.URL.absoluteString;
     if([currentUrl hasSuffix: @"#successfully-posted"]) {
         [RKDropdownAlert title:@"Successfully Submitted." message:@"Submitted record will be visible in few seconds!" backgroundColor:[UIColor colorWithRed:241.0/255.0 green:88.0/255.0 blue:43.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
         
         [self.webViewController dismissViewControllerAnimated:false completion:NULL];
         [self resetAndDownloadProjects];
+    }
+}
+
+#pragma mark - UISearchResultUpdating
+
+- (void) updateSearchResultsForSearchController:(UISearchController *)searchController
+{
+    NSString *searchText = searchController.searchBar.text;
+    if (isSearching && [searchText length] >= SEARCH_LENGTH) {
+        [self searchRecords:searchText cancelTriggered:FALSE];
     }
 }
     

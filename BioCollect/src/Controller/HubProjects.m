@@ -16,8 +16,9 @@
 @end
 
 @implementation HubProjects
-@synthesize  tableView, hubProjects, isSearching, searchBar, searchBarController;
+@synthesize  tableView, hubProjects, isSearching, searchBar, searchController;
 
+#pragma mark - init
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *) nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -28,6 +29,7 @@
     UIBarButtonItem *btnDone = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneBtnPressed)];
     self.navigationItem.rightBarButtonItem = btnDone;
     btnDone.enabled=TRUE;
+    _enableSearchController = true;
     
     return self;
 }
@@ -39,10 +41,33 @@
     self.isSearching = NO;
 }
 
+#pragma mark - standard functions
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.tableView.rowHeight = 60;
+    if (_enableSearchController) {
+        HubProjects *hubProjectsVC = [[HubProjects alloc] initWithNibName:@"HubProjects" bundle:nil];
+        hubProjectsVC.enableSearchController = false;
+        hubProjectsVC.tableView.delegate = hubProjectsVC;
+        searchController = [[UISearchController alloc] initWithSearchResultsController: hubProjectsVC];
+        searchController.delegate = hubProjectsVC;
+        searchController.searchResultsUpdater = hubProjectsVC;
+        searchController.searchBar.delegate = self;
+        searchController.hidesNavigationBarDuringPresentation = false;
+        
+        if (@available(iOS 11.0, *) ){
+            // For iOS 11 and later, place the search bar in the navigation bar.
+            self.navigationItem.searchController = searchController;
+
+            // Make the search bar always visible.
+            self.navigationItem.hidesSearchBarWhenScrolling = false;
+        } else {
+            // For iOS 10 and earlier, place the search controller's search bar in the table view's header.
+            tableView.tableHeaderView = searchController.searchBar;
+        }
+    }
+    
     [self load];
     
 }
@@ -109,28 +134,20 @@
         [self.appDelegate.projectService storeSelectedProject:project];
         self.selectedProject = [self.appDelegate.projectService loadSelectedProject];
         if(self.isSearching){
-            [self.searchBarController setActive:false];
+            [self.searchController setActive:false];
         }
         [self.tableView reloadData];
     }
 }
-
-- (void) load {
-    [self.hubProjects removeAllObjects];
-    self.hubProjects = [self.appDelegate.projectService loadProjects];
-    self.selectedProject = [self.appDelegate.projectService loadSelectedProject];
-    [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-}
-
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UILabel *myLabel = [[UILabel alloc] init];
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
     myLabel.frame = CGRectMake(0, 0, screenWidth, 30);
-    myLabel.backgroundColor = [UIColor colorWithRed:53/255.0 green:54/255.0 blue:49/255.0 alpha:1];
+    myLabel.backgroundColor = [UIColor lightGrayColor];
     myLabel.textAlignment = UITextAlignmentCenter;
     myLabel.text = [self tableView:tableView titleForHeaderInSection:section];
-    myLabel.textColor = [UIColor grayColor];
+    myLabel.textColor = [UIColor blackColor];
     UIView *headerView = [[UIView alloc] init];
     [headerView addSubview:myLabel];
     
@@ -140,36 +157,42 @@
     [self.tableView reloadData];
 }
 
-#pragma mark - UISearchDisplayControllerDelegate
-
-- (void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller {
-    //When the user taps the search bar, this means that the controller will begin searching.
-    isSearching = YES;
-}
-
-- (void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller {
-    //When the user taps the Cancel Button, or anywhere aside from the view.
-    isSearching = NO;
-    [self searchProjects :@"" cancelTriggered:TRUE];
-    
-}
-
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
-    if(isSearching) {
-        [self searchProjects:searchString cancelTriggered:FALSE];
+#pragma mark - Navigation controller
+-(void) doneBtnPressed {
+    if(self.selectedProject) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"PROJECT-UPDATED" object:self.selectedProject.name];
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        [RKDropdownAlert title:@"Error" message:@"Please select the organisation" backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
     }
-    return NO;
 }
 
+#pragma mark - UISearchControllerDelegate
+- (void)didDismissSearchController:(UISearchController *)searchController {
+    [self.tableView reloadData];
+}
 
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption
+#pragma mark - UISearchResultUpdating
+- (void) updateSearchResultsForSearchController:(UISearchController *)searchController
 {
-    // Return YES to cause the search result table view to be reloaded.
-    return YES;
+        NSString *searchString = searchController.searchBar.text;
+        [self searchProjects:searchString cancelTriggered:FALSE];
 }
 
+#pragma mark - UISearchBarDelegate
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(nonnull NSString *)searchText {
+    if ([searchText isEqualToString:@""]) {
+        [self.tableView reloadData];
+    }
+}
 
-# pragma Project Results Handler
+#pragma mark - class functions
+- (void) load {
+    [self.hubProjects removeAllObjects];
+    [self.hubProjects addObjectsFromArray:[self.appDelegate.projectService loadProjects]];
+    self.selectedProject = [self.appDelegate.projectService loadSelectedProject];
+    [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+}
 
 - (void) searchProjects :(NSString*) searchString cancelTriggered: (BOOL) cancelTriggered {
     [self searchIndicator:TRUE];
@@ -189,11 +212,7 @@
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             [self searchIndicator:FALSE];
-            if(cancelTriggered) {
-                [self.tableView reloadData];
-            } else {
-                [self.searchDisplayController.searchResultsTableView reloadData];
-            }
+            [self.tableView reloadData];
         });
     });
 }
@@ -201,27 +220,20 @@
 - (void) searchIndicator: (BOOL) searching {
     if(searching) {
         self.spinner.center = self.view.center;
+        [self.tableView addSubview : self.spinner];
         [self.spinner startAnimating];
     } else{
         [self.spinner stopAnimating];
     }
     
-    UITableView *tableView = self.searchDisplayController.searchResultsTableView;
+    UITableView *tableView = self.tableView;
     for( UIView *subview in tableView.subviews ) {
-        if( [subview class] == [UILabel class] ) {
-            UILabel *lbl = (UILabel*)subview;
+        if([subview class] == [UIView class]) {
+            UILabel *lbl = (UILabel*) [subview.subviews firstObject];
             lbl.text = searching ? @"Searching..." : @"No Results";
         }
     }
 }
 
--(void) doneBtnPressed {
-    if(self.selectedProject) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"PROJECT-UPDATED" object:self.selectedProject.name];
-        [self.navigationController popViewControllerAnimated:YES];
-    } else {
-        [RKDropdownAlert title:@"Error" message:@"Please select the organisation" backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
-    }
-}
 @end
 
