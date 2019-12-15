@@ -2775,6 +2775,7 @@
 				TargetAttributes = {
 					E261465C20072F9300B1104E = {
 						DevelopmentTeam = VP6SGJQWPU;
+						ProvisioningStyle = Manual;
 					};
 					E26638691F52EB9B00F1F1CE = {
 						DevelopmentTeam = VP6SGJQWPU;
@@ -4033,9 +4034,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = Tracker;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Sathish Sathyamoorthy (X53HL7Y98N)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sathish Sathyamoorthy (X53HL7Y98N)";
-				CURRENT_PROJECT_VERSION = 04;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 4.8;
 				DEVELOPMENT_TEAM = VP6SGJQWPU;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -4056,7 +4058,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.tracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "639683ce-66e6-44e1-9480-6a844caa5e65";
-				PROVISIONING_PROFILE_SPECIFIER = alaDevProviosnalProfilesWildCard;
+				PROVISIONING_PROFILE_SPECIFIER = alaiOSTracksAppDev2010;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -4069,7 +4071,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Sathish Sathyamoorthy (VP6SGJQWPU)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Sathish Sathyamoorthy (VP6SGJQWPU)";
-				CURRENT_PROJECT_VERSION = 04;
+				CURRENT_PROJECT_VERSION = 4.8;
 				DEVELOPMENT_TEAM = VP6SGJQWPU;
 				ENABLE_NS_ASSERTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
