@@ -222,6 +222,7 @@
         } else {
             // For iOS 10 and earlier, place the search controller's search bar in the table view's header.
             self.tableView.tableHeaderView = searchController.searchBar;
+            self.definesPresentationContext = true;
         }
     }
 }

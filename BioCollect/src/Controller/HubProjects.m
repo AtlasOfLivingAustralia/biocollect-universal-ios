@@ -51,7 +51,7 @@
         hubProjectsVC.enableSearchController = false;
         hubProjectsVC.tableView.delegate = hubProjectsVC;
         searchController = [[UISearchController alloc] initWithSearchResultsController: hubProjectsVC];
-        searchController.delegate = hubProjectsVC;
+        searchController.delegate = self;
         searchController.searchResultsUpdater = hubProjectsVC;
         searchController.searchBar.delegate = self;
         searchController.hidesNavigationBarDuringPresentation = false;
@@ -65,6 +65,7 @@
         } else {
             // For iOS 10 and earlier, place the search controller's search bar in the table view's header.
             tableView.tableHeaderView = searchController.searchBar;
+            self.definesPresentationContext = true;
         }
     }
     
