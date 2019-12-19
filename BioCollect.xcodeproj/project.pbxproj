@@ -4159,6 +4159,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Sathish Sathyamoorthy (X53HL7Y98N)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sathish Sathyamoorthy (X53HL7Y98N)";
+				CURRENT_PROJECT_VERSION = 01;
 				DEVELOPMENT_TEAM = VP6SGJQWPU;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -4173,6 +4174,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/BioCollect/src/Framework",
 				);
+				MARKETING_VERSION = 1.5.1;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.biocollect;
@@ -4191,6 +4193,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Sathish Sathyamoorthy (VP6SGJQWPU)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Sathish Sathyamoorthy (VP6SGJQWPU)";
+				CURRENT_PROJECT_VERSION = 01;
 				DEVELOPMENT_TEAM = VP6SGJQWPU;
 				ENABLE_NS_ASSERTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -4201,6 +4204,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/BioCollect/src/Framework",
 				);
+				MARKETING_VERSION = 1.5.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.biocollect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
