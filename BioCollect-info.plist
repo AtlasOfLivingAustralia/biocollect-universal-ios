@@ -94,7 +94,7 @@
 			<key>title</key>
 			<string>About ALA</string>
 			<key>url</key>
-			<string>https://www.ala.org.au/who-we-are/</string>
+			<string>https://www.ala.org.au/about-ala/</string>
 			<key>view</key>
 			<string>web_external_url</string>
 		</dict>
