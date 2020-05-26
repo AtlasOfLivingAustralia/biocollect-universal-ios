@@ -8,7 +8,7 @@
 #define LISTS_SERVER @"https://lists.ala.org.au"
 
 #define LIST_PROJECT_ACTIVITIES @"/ws/survey/list"
-#define AUTOCOMPLETE_URL @"http://bie.ala.org.au/ws/search.json?sort=scientificName&fq=taxonomicStatus:accepted&q="
+#define AUTOCOMPLETE_URL @"https://bie.ala.org.au/ws/search.json?sort=scientificName&fq=taxonomicStatus:accepted&q="
 #define AUTH_SERVER  @"https://auth.ala.org.au"
 #define AUTH_REGISTER @"/userdetails/registration/createAccount"
 #define AUTH_USERDETAILS @"/userdetails/userDetails/getUserDetails?userName="
@@ -25,7 +25,7 @@
 #define CREATE_SITE @"/site/ajaxUpdate"
 
 // Species Proxy URL:
-#define PROXY_SERVER @"http://ozatlas-proxy.ala.org.au"
+#define PROXY_SERVER @"https://ozatlas-proxy.ala.org.au"
 #define SPECIES_GROUPS @"/proxy/exploreGroups" // ?lat=-37.9659145&lon=145.0715558&radius=532
 #define SPECIES_GROUP @"/proxy/exploreGroup" // ?group=Animals&lat=-37.9659145&lon=145.0715558&radius=7&start=0&pageSize=10&common=true
 #define SPECIES_THUMBNAIL @"/image/thumbnail" // /urn:lsid:biodiversity.org.au:afd.taxon:7d37e5ed-7232-4ae2-a423-6c63c9a118dd

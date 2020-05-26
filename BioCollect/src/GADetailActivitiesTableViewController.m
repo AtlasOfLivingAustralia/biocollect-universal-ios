@@ -553,30 +553,4 @@
     return YES;
 }
 
-#pragma mark - UISearchDisplayControllerDelegate
-
-- (void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller {
-    //When the user taps the search bar, this means that the controller will begin searching.
-    isSearching = YES;
-}
-
-- (void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller {
-    //When the user taps the Cancel Button, or anywhere aside from the view.
-    isSearching = NO;
-}
-
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
-{
-    [self filterActivityListForSearchText:searchString];
-    // Return YES to cause the search result table view to be reloaded.
-    return YES;
-}
-
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption
-{
-    [self filterActivityListForSearchText:[self.searchDisplayController.searchBar text]];
-    // Return YES to cause the search result table view to be reloaded.
-    return YES;
-}
-
 @end
