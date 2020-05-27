@@ -253,7 +253,7 @@
 
 #pragma mark - UISearchBarDelegate
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(nonnull NSString *)searchText {
-//        [self.tableView reloadData];
+    
 }
 
 #pragma mark - class functions

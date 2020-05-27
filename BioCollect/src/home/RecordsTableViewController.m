@@ -174,6 +174,7 @@
                 self.webViewController = [[SVModalWebViewController alloc] initWithURLRequest: request];
                 self.webViewController.title = [[NSString alloc] initWithFormat:@"%@", pa.name];
                 self.webViewController.webViewDelegate = self;
+                self.webViewController.modalPresentationStyle = UIModalPresentationFullScreen;
                 
                 [self presentViewController: webViewController animated:YES completion: nil];
             }
