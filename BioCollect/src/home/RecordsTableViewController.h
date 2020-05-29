@@ -13,7 +13,7 @@
 #import "UIImageView+WebCache.h"
 #import "JGActionSheet.h"
 #import "SVModalWebViewController.h"
-@interface RecordsTableViewController :  UITableViewController <UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate, JGActionSheetDelegate, UIWebViewDelegate>
+@interface RecordsTableViewController :  UITableViewController <UITableViewDelegate, UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate, JGActionSheetDelegate, UIWebViewDelegate>
 - (id)initWithNibNameAndUserActions:(NSString *)nibNameOrNil bundle:(NSBundle *) nibBundleOrNil;
 - (id)initWithNibNameAndUserActionsAndWithoutPlus:(NSString *)nibNameOrNil bundle:(NSBundle *) nibBundleOrNil;
 
@@ -25,6 +25,11 @@
 @property (nonatomic, strong) NSString * projectId;
 @property (nonatomic, strong) UIActivityIndicatorView *spinner;
 @property (nonatomic, strong) SVModalWebViewController *webViewController;
+@property (nonatomic) Boolean enableSearchController;
+@property (strong, nonatomic) UISearchBar *searchBar;
+@property (strong, nonatomic) UISearchController *searchController;
+@property (strong, nonatomic) RecordsTableViewController *parent;
+
 //Pagination info.
 @property (nonatomic, assign) NSInteger totalRecords;
 @property (nonatomic, assign) NSInteger offset;

@@ -2775,15 +2775,19 @@
 				TargetAttributes = {
 					E261465C20072F9300B1104E = {
 						DevelopmentTeam = VP6SGJQWPU;
+						ProvisioningStyle = Automatic;
 					};
 					E26638691F52EB9B00F1F1CE = {
 						DevelopmentTeam = VP6SGJQWPU;
+						ProvisioningStyle = Automatic;
 					};
 					E2AECEE01E73D3010035DF28 = {
 						DevelopmentTeam = VP6SGJQWPU;
+						ProvisioningStyle = Automatic;
 					};
 					E2E3AA8818F4D2940005BB9E = {
 						DevelopmentTeam = VP6SGJQWPU;
+						ProvisioningStyle = Automatic;
 					};
 					E2E3AAA318F4D2940005BB9E = {
 						TestTargetID = E2E3AA8818F4D2940005BB9E;
@@ -4033,9 +4037,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = Tracker;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Sathish Sathyamoorthy (X53HL7Y98N)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sathish Sathyamoorthy (X53HL7Y98N)";
-				CURRENT_PROJECT_VERSION = 04;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VP6SGJQWPU;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -4045,18 +4050,18 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Tracker-info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BioCollect/src/Framework",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.tracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "639683ce-66e6-44e1-9480-6a844caa5e65";
-				PROVISIONING_PROFILE_SPECIFIER = alaDevProviosnalProfilesWildCard;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -4067,25 +4072,26 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = Tracker;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Sathish Sathyamoorthy (VP6SGJQWPU)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Sathish Sathyamoorthy (VP6SGJQWPU)";
-				CURRENT_PROJECT_VERSION = 04;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VP6SGJQWPU;
 				ENABLE_NS_ASSERTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BioCollect/Oz Atlas-Prefix.pch";
 				INFOPLIST_FILE = "Tracker-info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BioCollect/src/Framework",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.tracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "47e96044-6342-4c77-b2c4-bf56d26b3c14";
-				PROVISIONING_PROFILE_SPECIFIER = Oct2010TracksApp;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -4096,9 +4102,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = BioControlHub;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Sathish Sathyamoorthy (X53HL7Y98N)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sathish Sathyamoorthy (X53HL7Y98N)";
-				DEVELOPMENT_TEAM = VP6SGJQWPU;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 02;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BioCollect/Oz Atlas-Prefix.pch";
@@ -4107,17 +4115,18 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "BioControlHub-info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BioCollect/src/Framework",
 				);
+				MARKETING_VERSION = 1.3;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.biocontrolhub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "31f7274f-b936-4641-a16a-e047df295b4d";
-				PROVISIONING_PROFILE_SPECIFIER = BioControlHubProdJun2018;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -4128,23 +4137,26 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = BioControlHub;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Sathish Sathyamoorthy (VP6SGJQWPU)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Sathish Sathyamoorthy (VP6SGJQWPU)";
-				DEVELOPMENT_TEAM = VP6SGJQWPU;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 02;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_NS_ASSERTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BioCollect/Oz Atlas-Prefix.pch";
 				INFOPLIST_FILE = "BioControlHub-info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BioCollect/src/Framework",
 				);
+				MARKETING_VERSION = 1.3;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.biocontrolhub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "31f7274f-b936-4641-a16a-e047df295b4d";
-				PROVISIONING_PROFILE_SPECIFIER = BioControlHubProd_2020Expiry;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -4155,9 +4167,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = BioCollect;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Sathish Sathyamoorthy (X53HL7Y98N)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sathish Sathyamoorthy (X53HL7Y98N)";
-				DEVELOPMENT_TEAM = VP6SGJQWPU;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 02;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BioCollect/Oz Atlas-Prefix.pch";
@@ -4166,17 +4179,18 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "BioCollect-info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BioCollect/src/Framework",
 				);
+				MARKETING_VERSION = 1.6;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.biocollect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ff6d1597-56b3-4cf6-a314-872e7f07d331";
-				PROVISIONING_PROFILE_SPECIFIER = "BioCollect-Dev-Provisional";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -4187,23 +4201,25 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = BioCollect;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Sathish Sathyamoorthy (VP6SGJQWPU)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Sathish Sathyamoorthy (VP6SGJQWPU)";
-				DEVELOPMENT_TEAM = VP6SGJQWPU;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 02;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_NS_ASSERTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BioCollect/Oz Atlas-Prefix.pch";
 				INFOPLIST_FILE = "BioCollect-info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BioCollect/src/Framework",
 				);
+				MARKETING_VERSION = 1.6;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.biocollect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "def8ecb9-4f43-4e1c-818d-0623ff2e9d46";
-				PROVISIONING_PROFILE_SPECIFIER = BioCollectProdJan2020;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -4249,7 +4265,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -4288,7 +4304,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "BB65262A-6196-407F-BE65-E69019234998";
 				SDKROOT = iphoneos;
@@ -4302,8 +4318,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = OzAtlasv1;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Sathish Sathyamoorthy (X53HL7Y98N)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sathish Sathyamoorthy (X53HL7Y98N)";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 02;
 				DEVELOPMENT_TEAM = VP6SGJQWPU;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -4313,17 +4331,18 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "BioCollect/Oz Atlas-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BioCollect/src/Framework",
 				);
+				MARKETING_VERSION = 1.7;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.mobile;
 				PRODUCT_NAME = "Oz Atlas";
-				PROVISIONING_PROFILE = "ae287aa7-a066-42ab-9527-900ff5ce85d1";
-				PROVISIONING_PROFILE_SPECIFIER = "ALA-OzAtlas-Prod-Existing-App";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -4334,23 +4353,26 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = OzAtlasv1;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Sathish Sathyamoorthy (VP6SGJQWPU)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Sathish Sathyamoorthy (VP6SGJQWPU)";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 02;
 				DEVELOPMENT_TEAM = VP6SGJQWPU;
 				ENABLE_NS_ASSERTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BioCollect/Oz Atlas-Prefix.pch";
 				INFOPLIST_FILE = "BioCollect/Oz Atlas-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BioCollect/src/Framework",
 				);
+				MARKETING_VERSION = 1.7;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.mobile;
 				PRODUCT_NAME = "Oz Atlas";
-				PROVISIONING_PROFILE = "ae287aa7-a066-42ab-9527-900ff5ce85d1";
-				PROVISIONING_PROFILE_SPECIFIER = OZAtlasProd_0CT_2019;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

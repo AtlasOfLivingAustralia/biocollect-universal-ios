@@ -47,7 +47,7 @@
 #define FILTER_SECTION_RESET 0
 #define FILTER_SECTION_OK FILTER_SECTION_RESET + 1
 
-@synthesize  bioProjects, appDelegate, bioProjectService, totalProjects, offset, query, loadingFinished, isSearching, spinner,  searchParams, isUserPage;
+@synthesize  bioProjects, appDelegate, bioProjectService, totalProjects, offset, query, loadingFinished, isSearching, spinner,  searchParams, isUserPage, searchController;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *) nibBundleOrNil {
@@ -83,7 +83,7 @@
     self.loadingFinished = TRUE;
     self.query = @"";
     self.searchParams = @"";
-
+    self.enableSearchController = true;
     self.isSearching = NO;
 }
 
@@ -92,6 +92,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.rowHeight = 60;
+    
+    if (self.enableSearchController) {
+        HomeTableViewController *homeTableVC = [[HomeTableViewController alloc] initWithNibName:@"HomeTableViewController" bundle:nil];
+        homeTableVC.enableSearchController = false;
+        homeTableVC.parent = self;
+        homeTableVC.tableView.delegate = homeTableVC;
+        homeTableVC.tableView.dataSource = homeTableVC;
+        searchController = [[UISearchController alloc] initWithSearchResultsController: homeTableVC];
+        searchController.delegate = homeTableVC;
+        searchController.searchResultsUpdater = homeTableVC;
+        searchController.searchBar.delegate = homeTableVC;
+        searchController.hidesNavigationBarDuringPresentation = false;
+        
+        if (@available(iOS 11.0, *) ){
+            // For iOS 11 and later, place the search bar in the navigation bar.
+            self.navigationItem.searchController = searchController;
+
+            // Make the search bar always visible.
+            self.navigationItem.hidesSearchBarWhenScrolling = false;
+        } else {
+            // For iOS 10 and earlier, place the search controller's search bar in the table view's header.
+            self.tableView.tableHeaderView = searchController.searchBar;
+            self.definesPresentationContext = true;
+        }
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -197,8 +222,12 @@
 
             homeWebView.title = homeWebView.project.projectName;
             [homeWebView.webView setScalesPageToFit:YES];
-            [[self navigationController] pushViewController:homeWebView animated:TRUE];
+            UINavigationController *nc = self.navigationController;
+            if (self.parent != nil) {
+                nc = self.parent.navigationController;
+            }
             
+            [nc pushViewController:homeWebView animated:TRUE];
         } else if(project && !project.isExternal) {
             self.recordsTableView.project = project;
             self.recordsTableView.title = project.projectName;
@@ -206,8 +235,12 @@
             self.recordsTableView.offset = 0;
             [self.recordsTableView.records removeAllObjects];
             self.recordsTableView.showUserActions = self.showUserActions;
-            [[self navigationController] pushViewController:self.recordsTableView animated:TRUE];
+            UINavigationController *nc = self.navigationController;
+            if (self.parent != nil) {
+                nc = self.parent.navigationController;
+            }
             
+            [nc pushViewController:self.recordsTableView animated:TRUE];
         } else if(project && project.isExternal && [project.urlWeb isEqual: [NSNull null]]) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Info"
                                                             message:@"Project external web link not available"
@@ -256,10 +289,10 @@
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
     myLabel.frame = CGRectMake(0, 0, screenWidth, 30);
-    myLabel.backgroundColor = [UIColor colorWithRed:53/255.0 green:54/255.0 blue:49/255.0 alpha:1];
+    myLabel.backgroundColor = [UIColor lightGrayColor];
     myLabel.textAlignment = UITextAlignmentCenter;
     myLabel.text = [self tableView:tableView titleForHeaderInSection:section];
-    myLabel.textColor = [UIColor grayColor];
+    myLabel.textColor = [UIColor blackColor];
     UIView *headerView = [[UIView alloc] init];
     [headerView addSubview:myLabel];
     
@@ -270,34 +303,15 @@
     [self.tableView reloadData];
 }
 
-#pragma mark - UISearchDisplayControllerDelegate
+#pragma mark - UISearchBarDelegate
 
-- (void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller {
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
     //When the user taps the search bar, this means that the controller will begin searching.
     isSearching = YES;
 }
 
-- (void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller {
-    //When the user taps the Cancel Button, or anywhere aside from the view.
+- (void) searchBarTextDidEndEditing:(UISearchBar *)searchBar {
     isSearching = NO;
-    [self searchProjects :@"" cancelTriggered:TRUE];
-    
-}
-
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
-    if(isSearching && [searchString length] >= SEARCH_LENGTH) {
-        [self searchProjects :searchString cancelTriggered:FALSE];
-    }
-   
-    // Return YES to cause the search result table view to be reloaded.
-    return NO;
-}
-
-
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption
-{
-    // Return YES to cause the search result table view to be reloaded.
-    return YES;
 }
 
 #pragma mark - Project table view handler
@@ -360,11 +374,7 @@
         [self load];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self searchIndicator:FALSE];
-            if(cancelTriggered) {
-                [self.tableView reloadData];
-            } else {
-                [self.searchDisplayController.searchResultsTableView reloadData];
-            }
+            [self.tableView reloadData];
         });
     });
 }
@@ -373,18 +383,28 @@
     
     if(searching) {
         self.spinner.center = self.view.center;
-        [self.searchDisplayController.searchResultsTableView addSubview : spinner];
+        [self.tableView addSubview : spinner];
         [self.spinner startAnimating];
     } else{
         [self.spinner stopAnimating];
     }
     
-    UITableView *tableView = self.searchDisplayController.searchResultsTableView;
+    UITableView *tableView = self.tableView;
     for( UIView *subview in tableView.subviews ) {
-        if( [subview class] == [UILabel class] ) {
-            UILabel *lbl = (UILabel*)subview;
+        if([subview class] == [UIView class]) {
+            UILabel *lbl = (UILabel*) [subview.subviews firstObject]; // sv changed to subview.
             lbl.text = searching ? @"Searching..." : @"No Results";
         }
+    }
+}
+
+#pragma mark - UISearchResultUpdating
+
+- (void) updateSearchResultsForSearchController:(UISearchController *)searchController
+{
+    NSString *searchString = searchController.searchBar.text;
+    if(isSearching && [searchString length] >= SEARCH_LENGTH) {
+        [self searchProjects :searchString cancelTriggered:FALSE];
     }
 }
 

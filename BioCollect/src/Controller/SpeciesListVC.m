@@ -19,7 +19,7 @@
 @end
 
 @implementation SpeciesListVC
-@synthesize speciesTableView, displayItems, isSearching, searchBarController, selectedSpecies, searchBar, spinner;
+@synthesize speciesTableView, displayItems, isSearching, searchController, selectedSpecies, searchBar, spinner;
 
 #pragma mark - init
 
@@ -46,6 +46,7 @@
     self.appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
     self.isSearching = NO;
     displayItems = [[NSMutableArray alloc] initWithCapacity:0];
+    self.enableSearchController = true;
     return  self;
 }
 
@@ -58,6 +59,31 @@
 #pragma mark - standard functions
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if (self.enableSearchController) {
+        SpeciesListVC *speciesListVC = [[SpeciesListVC alloc] initWithNibName:@"SpeciesListVC" bundle:nil];
+        speciesListVC.enableSearchController = false;
+        speciesListVC.selectedSpecies = self.selectedSpecies;
+        speciesListVC.parentSpeciesListVC = self;
+        speciesListVC.tableView.delegate = speciesListVC;
+        searchController = [[UISearchController alloc] initWithSearchResultsController: speciesListVC];
+        searchController.delegate = speciesListVC;
+        searchController.searchResultsUpdater = speciesListVC;
+        searchController.searchBar.delegate = speciesListVC;
+        searchController.hidesNavigationBarDuringPresentation = false;
+        
+        if (@available(iOS 11.0, *) ) {
+            // For iOS 11 and later, place the search bar in the navigation bar.
+            self.navigationItem.searchController = searchController;
+
+            // Make the search bar always visible.
+            self.navigationItem.hidesSearchBarWhenScrolling = false;
+        } else {
+            // For iOS 10 and earlier, place the search controller's search bar in the table view's header.
+            self.tableView.tableHeaderView = searchController.searchBar;
+            self.definesPresentationContext = true;
+        }
+    }
     
     speciesTableView.rowHeight = 60;
     speciesTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -158,7 +184,7 @@
         self.selectedSpecies = species;
         self.field.value = self.selectedSpecies;
         if(self.isSearching){
-            [self.searchBarController setActive:false];
+            [self.searchController setActive:false];
         }
         
         [self.tableView reloadData];
@@ -166,24 +192,15 @@
     }
 }
 
-/**
- * load first page
- */
-- (void) load {
-    [self.displayItems removeAllObjects];
-    self.displayItems = [self.appDelegate.speciesListService loadSpeciesList];
-    [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-}
-
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UILabel *myLabel = [[UILabel alloc] init];
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
     myLabel.frame = CGRectMake(0, 0, screenWidth, 30);
-    myLabel.backgroundColor = [UIColor colorWithRed:53/255.0 green:54/255.0 blue:49/255.0 alpha:1];
+    myLabel.backgroundColor = [UIColor lightGrayColor];
     myLabel.textAlignment = UITextAlignmentCenter;
     myLabel.text = [self tableView:tableView titleForHeaderInSection:section];
-    myLabel.textColor = [UIColor grayColor];
+    myLabel.textColor = [UIColor blackColor];
     UIView *headerView = [[UIView alloc] init];
     [headerView addSubview:myLabel];
     
@@ -194,32 +211,100 @@
     [self.tableView reloadData];
 }
 
-#pragma mark - UISearchDisplayControllerDelegate
-
-- (void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller {
-    //When the user taps the search bar, this means that the controller will begin searching.
-    isSearching = YES;
+#pragma mark - Navigation controller
+-(void) doneBtnPressed {
+    if(self.selectedSpecies) {
+        if (self.parentSpeciesListVC != nil){
+            [self.parentSpeciesListVC.navigationController popViewControllerAnimated:YES];
+        } else {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"SPECIES_SEARCH_SELECTED" object: self.selectedSpecies];
+    } else {
+        [RKDropdownAlert title:@"Error" message:@"Please select the animal" backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+    }
 }
 
-- (void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller {
-    //When the user taps the Cancel Button, or anywhere aside from the view.
-    isSearching = NO;
-    [self searchSpecies :@"" cancelTriggered:TRUE];
+#pragma mark - UIAlert view delegate.
+- (void)alertView:(UIAlertView *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if( buttonIndex != 0 ) {
+        Species *newAnimal = [[Species alloc] init];
+        NSString *input = [self.animalView textFieldAtIndex: 0].text;
+        if (input == (id)[NSNull null] || [input isEqualToString:@""] || input.length == 0 ) {
+            input = @"No Animal Found";
+        }
+        newAnimal.displayName = input;
+        newAnimal.name = input;
+        newAnimal.lsid = @"";
+
+        self.selectedSpecies = newAnimal;
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"SPECIES_SEARCH_SELECTED" object: self.selectedSpecies];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+#pragma mark - UISearchResultUpdating
+- (void) updateSearchResultsForSearchController:(UISearchController *)searchController
+{
+    NSString *searchString = searchController.searchBar.text;
+    [self searchSpecies:searchString cancelTriggered:FALSE];
+}
+
+#pragma mark - UISearchBarDelegate
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(nonnull NSString *)searchText {
     
 }
 
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
-    if(isSearching) {
-        [self searchSpecies:searchString cancelTriggered:FALSE];
-    }
-    return NO;
+#pragma mark - class functions
+- (void) setField:(FXFormField *)field {
+    _field = field;
+    self.selectedSpecies = field.value;
 }
 
+- (Species *) getSelectedSpecies {
+    SpeciesListVC * vc = self;
+    if ( self.parentSpeciesListVC != nil){
+        vc = self.parentSpeciesListVC;
+    }
+    
+    return vc.selectedSpecies;
+}
 
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption
-{
-    // Return YES to cause the search result table view to be reloaded.
-    return YES;
+- (void) setSelectedSpecies: (Species*) species {
+    _field.value = species;
+    selectedSpecies = species;
+    
+    if ( self.parentSpeciesListVC != nil){
+        self.parentSpeciesListVC.selectedSpecies = species;
+    }
+}
+
+-(void) downloadSpeciesImage {
+    if([[self.appDelegate restCall] notReachable]) {
+        [RKDropdownAlert title:@"Device offline" message:@"Error downloading species images" backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+    } else {
+        for (Species *species in self.displayItems) {
+            NSArray *kvp = species.kvpValues;
+            for(int i = 0; i < [kvp count]; i++) {
+                NSDictionary *item =  kvp[i];
+                if([item[@"key"] isEqualToString: @"Image"]) {
+                    [[SDImageCache sharedImageCache] removeImageForKey:item[@"value"] fromDisk:YES];
+                }
+            }
+        }
+        [self.tableView reloadData];
+        [RKDropdownAlert title:@"Updated animal images" message:@"" backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
+    }
+}
+
+/**
+ * load first page
+ */
+- (void) load {
+    [self.displayItems removeAllObjects];
+    [self.displayItems addObjectsFromArray:[self.appDelegate.speciesListService loadSpeciesList]];
+    [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 }
 
 - (void) searchSpecies :(NSString*) searchString cancelTriggered: (BOOL) cancelTriggered {
@@ -244,7 +329,7 @@
             if(cancelTriggered) {
                 [self.tableView reloadData];
             } else {
-                [self.searchDisplayController.searchResultsTableView reloadData];
+                [self.speciesTableView reloadData];
             }
         });
     });
@@ -253,77 +338,22 @@
 - (void) searchIndicator: (BOOL) searching {
     if(searching) {
         self.spinner.center = self.view.center;
+        [self.tableView addSubview : spinner];
         [self.spinner startAnimating];
     } else{
         [self.spinner stopAnimating];
     }
     
-    UITableView *tableView = self.searchDisplayController.searchResultsTableView;
+    UITableView *tableView = self.tableView;
     for( UIView *subview in tableView.subviews ) {
-        if( [subview class] == [UILabel class] ) {
-            UILabel *lbl = (UILabel*)subview;
+        if([subview class] == [UIView class]) {
+            UILabel *lbl = (UILabel*) [subview.subviews firstObject];
             lbl.text = searching ? @"Searching..." : @"No Results";
         }
-    }
-}
-#pragma mark - Navigation controller
--(void) doneBtnPressed {
-    if(self.selectedSpecies) {
-        [self.navigationController popViewControllerAnimated:YES];
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"SPECIES_SEARCH_SELECTED" object: self.selectedSpecies];
-    } else {
-        [RKDropdownAlert title:@"Error" message:@"Please select the animal" backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
     }
 }
 
 -(void) newAnimal {
     [self.animalView show];
-}
-
-#pragma mark - UIAlert view delegate.
-- (void)alertView:(UIAlertView *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if( buttonIndex != 0 ) {
-        Species *newAnimal = [[Species alloc] init];
-        NSString *input = [self.animalView textFieldAtIndex: 0].text;
-        if (input == (id)[NSNull null] || [input isEqualToString:@""] || input.length == 0 ) {
-            input = @"No Animal Found";
-        }
-        newAnimal.displayName = input;
-        newAnimal.name = input;
-        newAnimal.lsid = @"";
-
-        self.selectedSpecies = newAnimal;
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"SPECIES_SEARCH_SELECTED" object: self.selectedSpecies];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-}
-
-#pragma mark - class functions
-- (void) setField:(FXFormField *)field {
-    _field = field;
-    self.selectedSpecies = field.value;
-}
-
-- (void) setSelectedSpecies: (Species*) species {
-    _field.value = species;
-    selectedSpecies = species;
-}
-
--(void) downloadSpeciesImage {
-    if([[self.appDelegate restCall] notReachable]) {
-        [RKDropdownAlert title:@"Device offline" message:@"Error downloading species images" backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
-    } else {
-        for (Species *species in self.displayItems) {
-            NSArray *kvp = species.kvpValues;
-            for(int i = 0; i < [kvp count]; i++) {
-                NSDictionary *item =  kvp[i];
-                if([item[@"key"] isEqualToString: @"Image"]) {
-                    [[SDImageCache sharedImageCache] removeImageForKey:item[@"value"] fromDisk:YES];
-                }
-            }
-        }
-        [self.tableView reloadData];
-        [RKDropdownAlert title:@"Updated animal images" message:@"" backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
-    }
 }
 @end

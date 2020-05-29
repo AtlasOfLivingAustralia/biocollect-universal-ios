@@ -161,29 +161,6 @@ static const NSInteger kARRMaxCacheAge = 60 * 60 * 24 * 365 * 2; // 1 day * 365 
     myRecordsNC.navigationBar.topItem.title = @"My Records";
     
     
-    //Help
-    ContactVC  *contactVC = nil;
-
-    //About
-    UIViewController *aboutVC = nil;
-    if ( IDIOM == IPAD ){
-        contactVC = [[ContactVC alloc] initWithNibName:@"ContactVC" bundle:nil];
-        aboutVC = [[UIViewController alloc] initWithNibName:@"GAAboutVC" bundle:nil];
-    } else {
-        contactVC = [[ContactVC alloc] initWithNibName:@"ContactiPhoneVC" bundle:nil];
-        aboutVC = [[UIViewController alloc] initWithNibName:@"AboutiPhoneView" bundle:nil];
-    }
-    
-    UINavigationController *contactNC =  [[UINavigationController alloc] initWithRootViewController:contactVC];
-    contactNC.tabBarItem.image = [UIImage imageNamed:@"contact_filled-25"];
-    contactNC.tabBarItem.title = @"Contact";
-    contactNC.navigationBar.topItem.title = @"Contact";
-    
-    UINavigationController *aboutNC =  [[UINavigationController alloc] initWithRootViewController:aboutVC];
-    aboutNC.tabBarItem.title = @"About";
-    aboutNC.tabBarItem.image = [UIImage imageNamed:@"about_filled-25"];
-    aboutNC.navigationBar.topItem.title = @"About";
-    
     //ozHome page
     OzHomeVC *ozHomeVC = [[OzHomeVC alloc] initWithMainImage:[UIImage imageNamed:[GASettings appHomeBkBig]]];
     ozHomeNC = [[UINavigationController alloc] initWithRootViewController: ozHomeVC];

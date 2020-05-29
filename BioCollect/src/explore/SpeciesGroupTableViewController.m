@@ -261,9 +261,10 @@
     self.offset = self.totalResults + 1;
     
     // run reload data on main thread. otherwise, table rendering will be very slow.
-    [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-    
-    [self showOrHideActivityIndicator];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+        [self showOrHideActivityIndicator];
+    });
 }
 
 /**

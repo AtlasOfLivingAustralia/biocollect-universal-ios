@@ -18,7 +18,7 @@
 #import "ProjectActivity.h"
 
 @implementation BioProjectService
-#define BIO_PROJECT_SEARCH @"/ws/project/search?initiator=biocollect&sort=nameSort"
+#define BIO_PROJECT_SEARCH @"/ws/project/search?initiator=biocollect"
 #define BIO_PROJECT_ACTIVITY_LIST @"/projectActivity/list/"
 #define BIO_ACTIVITIES @"/ws/bioactivity/search"
 #define kProjects @"projects"
@@ -33,7 +33,12 @@
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     NSString *userPage = isUserPage ? @"&isUserPage=true" : @"";
     NSString *hubName = [GASettings appHubName];
-    NSString *url = [[NSString alloc] initWithFormat: @"%@%@&offset=%ld&max=%ld&q=%@%@&mobile=true%@&hub=%@&fq=isExternal:F", BIOCOLLECT_SERVER, BIO_PROJECT_SEARCH, (long)offset, (long)max, (NSString*) query, (NSString*) params, userPage,hubName];
+    NSString *sort = @"dateCreatedSort";
+    if ([query length] > 0) {
+        sort = @"_score";
+    }
+    
+    NSString *url = [[NSString alloc] initWithFormat: @"%@%@&offset=%ld&max=%ld&q=%@%@&mobile=true%@&hub=%@&fq=isExternal:F&sort=%@", BIOCOLLECT_SERVER, BIO_PROJECT_SEARCH, (long)offset, (long)max, (NSString*) query, (NSString*) params, userPage,hubName, sort];
     NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [request setURL:[NSURL URLWithString:escapedUrlString]];
     [request setValue:[GASettings getEmailAddress] forHTTPHeaderField:@"userName"];

@@ -142,7 +142,7 @@
             [alert show];
      } else {
            
-           UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"menu.logout.title"
+           UIAlertView *alert = [[UIAlertView alloc] initWithTitle: [locale get: @"menu.logout.title"]
                                               message:[locale get: @"menu.logout.genericMessage"]
                                              delegate:self
                                     cancelButtonTitle:@"No"

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Bio_About_Url</key>
-	<string>https://www.ala.org.au/who-we-are/</string>
+	<string>https://www.ala.org.au/about-ala/</string>
 	<key>Bio_AppType</key>
 	<string>hubview</string>
 	<key>Bio_Contact_Url</key>
