@@ -214,7 +214,7 @@
         searchController.searchBar.delegate = recordsTableVC;
         searchController.hidesNavigationBarDuringPresentation = false;
         
-        if (@available(iOS 11.0, *) ){
+        if (@available(iOS 13.0, *) ){
             // For iOS 11 and later, place the search bar in the navigation bar.
             self.navigationItem.searchController = searchController;
 
