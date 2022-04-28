@@ -15,6 +15,13 @@
 #define kFirstName @"firstName"
 #define kLastName @"lastName"
 #define kUserId @"userId"
+#define kAccessToken @"accessToken"
+#define kIDToken @"idToken"
+#define kExpiresIn @"expiresIn"
+#define kExpiresDateTime @"expiresDateTime"
+#define kAccessDateTime @"accessDateTime"
+#define kTokenType @"tokenType"
+#define kRefreshToken @"refreshToken"
 #define IDIOM    UI_USER_INTERFACE_IDIOM()
 #define IPAD     UIUserInterfaceIdiomPad
 
@@ -43,9 +50,9 @@
     return [[NSUserDefaults standardUserDefaults] objectForKey:kEmailAddress];
 }
 
-+(NSString*) getAuthKey{
-    return [[NSUserDefaults standardUserDefaults] objectForKey:kAuthKey];
-}
+//+(NSString*) getAuthKey{
+//    return [[NSUserDefaults standardUserDefaults] objectForKey:kAuthKey];
+//}
 
 +(NSString*) getSortBy{
     return [[NSUserDefaults standardUserDefaults] objectForKey:kSortBy];
@@ -78,15 +85,122 @@
     return [NSString stringWithFormat:@"%@ %@", firstName, lastName];
 }
 
++(NSString*) getAuthorizationHeader {
+    return  [[NSString alloc] initWithFormat:@"Bearer %@", [self getAccessToken]];
+}
+
++(NSString*) getAccessToken{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kAccessToken];
+}
+
++(NSString*) getRefreshToken {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kRefreshToken];
+}
+
++(long) getExpiresIn{
+    return [[NSUserDefaults standardUserDefaults] doubleForKey:kExpiresIn];
+}
+
++(NSString*) getAccessDateTime{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kAccessDateTime];
+}
+
++(NSString*) getExpiresDateTime{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kExpiresDateTime];
+}
+
++(NSString*) getTokenType{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kTokenType];
+}
+
++(NSString*) getIDToken{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kIDToken];
+}
+
++(NSDictionary*) getUserProfile: (NSString *) accessToken {
+    NSError * e;
+    NSArray *parts = [accessToken componentsSeparatedByString:@"."];
+    NSString *profileEncoded = [[NSString alloc] initWithFormat: @"%@=", parts[1]];
+    NSData *profileData = [[NSData alloc] initWithBase64EncodedString:profileEncoded options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    if (profileData == nil) {
+        profileData = [[NSData alloc] initWithBase64EncodedString:parts[1] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    }
+
+    NSDictionary* profile =  [NSJSONSerialization JSONObjectWithData:profileData
+                                                              options:kNilOptions error:&e];
+    return profile;
+}
+
++(Boolean) isAccessTokenExpired {
+    NSTimeInterval bufferInSeconds = 5.0 * 60.0; // 5 minutes
+
+    NSDate * expires = [self getExpiresDateTime];
+    expires = [[NSDate alloc] initWithTimeInterval:bufferInSeconds sinceDate:expires];
+    NSDate * now = [NSDate date];
+    if ([now compare:expires] == NSOrderedDescending)
+        return TRUE;
+    else
+        return FALSE;
+}
+
++(void) setAccessToken: (NSString *) accessToken{
+    [[NSUserDefaults standardUserDefaults] setObject:accessToken forKey:kAccessToken];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+};
++(void) setRefreshToken: (NSString *) refreshToken{
+    [[NSUserDefaults standardUserDefaults] setObject:refreshToken forKey:kRefreshToken];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+};
++(void) setTokenType: (NSString *) tokenType{
+    [[NSUserDefaults standardUserDefaults] setObject:tokenType forKey:kTokenType];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+
+};
+
++(void) setIDToken: (NSString *) idToken {
+    [[NSUserDefaults standardUserDefaults] setObject:idToken forKey:kIDToken];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+};
+
++(void) setCredentials: (NSDictionary *) credentials{
+    NSString * accessToken = [credentials valueForKey:@"access_token"];
+    [[NSUserDefaults standardUserDefaults] setObject:accessToken forKey:kAccessToken];
+    [[NSUserDefaults standardUserDefaults] setObject:[credentials valueForKey:@"id_token"] forKey:kIDToken];
+    [[NSUserDefaults standardUserDefaults] setObject:[credentials valueForKey:@"token_type"]  forKey:kTokenType];
+    [[NSUserDefaults standardUserDefaults] setObject:[credentials valueForKey:@"refresh_token"]  forKey:kRefreshToken];
+    
+    NSDictionary * profile = [self getUserProfile: accessToken];
+    [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"email"]  forKey:kEmailAddress];
+    [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"firstname"]  forKey:kFirstName];
+    [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"lastname"]  forKey:kLastName];
+    [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"userid"]  forKey:kUserId];
+    long expiresIn = [[credentials valueForKey:@"expires_in"] integerValue];
+    [self setExpiryDate: expiresIn];
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
+};
+
++(void) setExpiryDate:(long) periodInSeconds {
+    NSString *periodInString = [[NSString alloc] initWithFormat:@"%ld", periodInSeconds];
+    
+    NSTimeInterval period = [periodInString doubleValue];
+    NSDate* now = [NSDate date];
+    NSDate* expiry = [[NSDate alloc] initWithTimeInterval:period sinceDate: now];
+    [[NSUserDefaults standardUserDefaults] setObject:now  forKey:kAccessDateTime];
+    [[NSUserDefaults standardUserDefaults] setInteger:periodInSeconds  forKey:kExpiresIn];
+    [[NSUserDefaults standardUserDefaults] setObject:expiry  forKey:kExpiresDateTime];
+};
+
+
 +(void) setEmailAddress : (NSString *) emailAddress{
     [[NSUserDefaults standardUserDefaults] setObject:emailAddress forKey:kEmailAddress];
     [[NSUserDefaults standardUserDefaults]synchronize];
 }
 
-+(void) setAuthKey: (NSString *) authKey{
-    [[NSUserDefaults standardUserDefaults] setObject:authKey forKey:kAuthKey];
-    [[NSUserDefaults standardUserDefaults]synchronize];
-}
+//+(void) setAuthKey: (NSString *) authKey{
+//    [[NSUserDefaults standardUserDefaults] setObject:authKey forKey:kAuthKey];
+//    [[NSUserDefaults standardUserDefaults]synchronize];
+//}
 
 +(void) setSortBy: (NSString *) sortBy{
     [[NSUserDefaults standardUserDefaults] setObject:sortBy forKey:kSortBy];

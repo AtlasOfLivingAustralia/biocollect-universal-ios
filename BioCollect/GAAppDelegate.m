@@ -197,7 +197,7 @@ static const NSInteger kARRMaxCacheAge = 60 * 60 * 24 * 365 * 2; // 1 day * 365 
     
     [self.window makeKeyAndVisible];
 
-    if([GASettings getAuthKey] == 0){
+    if([GASettings getAccessToken] == 0){
         [self displaySigninPage];
         
     } else{

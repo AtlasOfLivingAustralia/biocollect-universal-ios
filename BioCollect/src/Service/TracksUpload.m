@@ -129,8 +129,7 @@
     [request setURL:[NSURL URLWithString:url]];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
     [request setValue:JSON_CONTENT_TYPE_VALUE forHTTPHeaderField:JSON_CONTENT_TYPE_KEY];
-    [request setValue:[GASettings getEmailAddress] forHTTPHeaderField: @"userName"];
-    [request setValue:[GASettings getAuthKey] forHTTPHeaderField: @"authKey"];
+    [request setValue:[self.appDelegate.restCall getAuthorizationHeader] forHTTPHeaderField: @"Authorization"];
     [request setHTTPBody:[self dictionaryToData: activity]];
     [request setHTTPMethod:@"POST"];
     NSError *error;
@@ -165,7 +164,7 @@
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
     [request setValue:JSON_CONTENT_TYPE_VALUE forHTTPHeaderField:JSON_CONTENT_TYPE_KEY];
     [request setValue:[GASettings getEmailAddress] forHTTPHeaderField: @"userName"];
-    [request setValue:[GASettings getAuthKey] forHTTPHeaderField: @"authKey"];
+    [request setValue:[self.appDelegate.restCall getAuthorizationHeader] forHTTPHeaderField: @"Authorization"];
     [request setHTTPBody:[self dictionaryToData: site]];
     [request setHTTPMethod:@"POST"];
     NSError *error;

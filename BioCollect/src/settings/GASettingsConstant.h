@@ -9,9 +9,10 @@
 
 #define LIST_PROJECT_ACTIVITIES @"/ws/survey/list"
 #define AUTOCOMPLETE_URL @"https://bie.ala.org.au/ws/search.json?sort=scientificName&fq=taxonomicStatus:accepted&q="
-#define AUTH_SERVER  @"https://auth.ala.org.au"
+#define AUTH_SERVER  @"https://auth-dev.ala.org.au"
 #define AUTH_REGISTER @"/userdetails/registration/createAccount"
 #define AUTH_USERDETAILS @"/userdetails/userDetails/getUserDetails?userName="
+#define AUTH_TOKEN @"/cas/oidc/token"
 
 #define UNIQUE_SPECIES_ID @"/ws/species/uniqueId"
 #define DOCUMENT_UPLOAD_URL @"/ws/attachment/upload"
@@ -38,5 +39,10 @@
 #define OZATLAS_VIEW @"custom"
 #define BIOCOLLECT_VIEW @"generic"
 #define HUB_VIEW @"hubview"
+
+//open id connect config
+#define CLIENT_ID @"auth-dev-oidc-client-id"
+#define CLIENT_SECRET @"u85789gnghdfb765"
+#define SCOPE @"email openid profile"
 
 #endif

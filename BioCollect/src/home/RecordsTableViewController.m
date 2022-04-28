@@ -192,8 +192,7 @@
     [request setURL:[NSURL URLWithString:url]];
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[GASettings getEmailAddress] forHTTPHeaderField:@"userName"];
-    [request setValue:[GASettings getAuthKey] forHTTPHeaderField:@"authKey"];
+    [request setValue:[self.appDelegate.restCall getAuthorizationHeader] forHTTPHeaderField:@"Authorization"];
     [request setTimeoutInterval: DEFAULT_TIMEOUT];
     return request;
 }
