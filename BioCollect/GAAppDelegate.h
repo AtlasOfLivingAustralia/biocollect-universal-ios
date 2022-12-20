@@ -6,6 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AppAuth/AppAuth.h>
 #import "GAMasterProjectTableViewController.h"
 #import "GARestCall.h"
 #import "GASqlLiteDatabase.h"
@@ -29,6 +30,7 @@
 @property (strong, nonatomic) UITabBarController  *tabBarController;
 @property (strong, nonatomic) UINavigationController *ozHomeNC;
 @property (strong, nonatomic) ALAWKWebView *alaWKWebView;
+@property (strong, nonatomic, nullable) id<OIDExternalUserAgentSession> currentAuthorizationFlow;
 
 
 //All Singleton classes

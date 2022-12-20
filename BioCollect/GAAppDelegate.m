@@ -38,6 +38,7 @@ static const NSInteger kARRMaxCacheAge = 60 * 60 * 24 * 365 * 2; // 1 day * 365 
 @property (nonatomic, retain) GAActivity *updatedActivity;
 
 @property (nonatomic, retain) NSMutableArray *projects;
+@property (nonatomic, strong, nullable) OIDAuthState *authState;
 
 @end
 @implementation GAAppDelegate

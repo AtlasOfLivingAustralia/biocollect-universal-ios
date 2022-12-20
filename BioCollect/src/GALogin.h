@@ -12,8 +12,6 @@
 
 @property (nonatomic, retain) IBOutlet UIButton *loginButton;
 @property (nonatomic, retain) IBOutlet UIButton *registerButton;
-@property (nonatomic, retain) IBOutlet UITextField *usernameTextField;
-@property (nonatomic, retain) IBOutlet UITextField *passwordTextField;
 @property (nonatomic, retain) IBOutlet UIImageView *logoImageView;
 
 - (IBAction)onClickLogin:(id)sender;

@@ -16,7 +16,6 @@
 -(id) init;
 -(void) updateActivity : (GAActivity*) activity :(NSError**) e;
 -(NSString *) uploadSite: (GASite*) site :(NSError**) e;
--(void) authenticate : (NSString *)username password:(NSString *) p error:(NSError **) e;
 -(NSString*) getAuthorizationHeader;
 -(void) getNewAccessToken;
 -(NSMutableArray *) downloadProjects : (NSError **) error;

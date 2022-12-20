@@ -80,40 +80,6 @@
  
 }
 
-// New Auth stuff;
--(void) authenticate : (NSString *)username password:(NSString *) p error:(NSError **) e{
-
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    NSString *url = [[NSString alloc] initWithFormat:@"%@%@",AUTH_SERVER, AUTH_TOKEN ];
-    NSString* escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    [request setURL:[NSURL URLWithString:url]];
-    [request setHTTPMethod:@"POST"];
-    NSString *postBody = [[NSString alloc] initWithFormat:@"client_id=%@&client_secret=%@&grant_type=password&scope=%@&username=%@&password=%@",CLIENT_ID, CLIENT_SECRET, SCOPE, username, p];
-    [request setHTTPBody:[postBody dataUsingEncoding: NSUTF8StringEncoding]];
-    
-    NSURLResponse *response;
-    NSData *reply = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&*e];
-
-    if(*e == nil) {
-        NSDictionary* respDict =  [NSJSONSerialization JSONObjectWithData:reply
-                                                                  options:kNilOptions error:&*e];
-        if(*e == nil) {
-            NSString *jsonError = [respDict objectForKey:@"error"];
-            if([jsonError length] == 0 && [[respDict objectForKey:@"access_token"] length] > 0) {
-                [GASettings setCredentials: respDict];
-                DebugLog(@"[SUCCESS] GARest:authenticate Authentication successful. User=%@",username);
-            }
-            else {
-                NSMutableDictionary* details = [NSMutableDictionary dictionary];
-                [details setValue:@"Invalid username or password." forKey:NSLocalizedDescriptionKey];
-                *e = [NSError errorWithDomain:REST_SERVER code:1001 userInfo:details];
-                DebugLog(@"[ERROR] GARest:authenticate Authentication failed. User=%@",username);
-            }
-        }
-        
-    }
-}
-
 -(NSString*) getAuthorizationHeader {
     if ([GASettings isAccessTokenExpired]) {
         [self getNewAccessToken];
