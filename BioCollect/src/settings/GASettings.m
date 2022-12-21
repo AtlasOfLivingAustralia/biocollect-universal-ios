@@ -42,6 +42,13 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kFirstName];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kLastName];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kUserId];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kAccessToken];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kIDToken];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kExpiresIn];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kExpiresDateTime];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kAccessDateTime];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kTokenType];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kRefreshToken];
     //[[NSUserDefaults standardUserDefaults] removeObjectForKey:kEULA];
     [[NSUserDefaults standardUserDefaults]synchronize];    
 }

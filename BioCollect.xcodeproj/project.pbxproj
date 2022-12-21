@@ -2831,7 +2831,7 @@
 				ORGANIZATIONNAME = "Sathya Moorthy, Sathish (CSIRO IM&T, Clayton)";
 				TargetAttributes = {
 					E261465C20072F9300B1104E = {
-						DevelopmentTeam = VP6SGJQWPU;
+						DevelopmentTeam = KG3QS53Q3N;
 						ProvisioningStyle = Automatic;
 					};
 					E26638691F52EB9B00F1F1CE = {
@@ -4284,7 +4284,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = VP6SGJQWPU;
+				DEVELOPMENT_TEAM = KG3QS53Q3N;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BioCollect/Oz Atlas-Prefix.pch";
@@ -4304,7 +4304,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.tracker;
+				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.tracker.testing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4323,7 +4323,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = VP6SGJQWPU;
+				DEVELOPMENT_TEAM = KG3QS53Q3N;
 				ENABLE_NS_ASSERTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BioCollect/Oz Atlas-Prefix.pch";
@@ -4338,7 +4338,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.tracker;
+				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.tracker.testing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4449,7 +4449,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.biocollect.personal;
+				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.biocollect.testing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4483,7 +4483,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.biocollect.personal;
+				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.biocollect.testing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
