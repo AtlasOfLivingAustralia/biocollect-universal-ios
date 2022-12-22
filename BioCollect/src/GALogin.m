@@ -20,6 +20,9 @@
 
 @implementation GALogin
 
+OIDEndSessionRequest *request;
+OIDExternalUserAgentIOS *agent;
+
 @synthesize loginButton, registerButton, logoImageView, appDelegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -65,7 +68,7 @@
 
     NSString *url = [[NSString alloc] initWithFormat:@"%@%@", AUTH_SERVER, AUTH_DISCOVERY];
     NSURL *issuer = [NSURL URLWithString:url];
-    
+
     // Fetch the OIDC discovery document
     [OIDAuthorizationService discoverServiceConfigurationForIssuer:issuer
                                                         completion:^(OIDServiceConfiguration *_Nullable configuration, NSError *_Nullable error) {
@@ -79,18 +82,18 @@
             [alert show];
             return;
         }
-        
-        
-        
-        // Create the request object
+
+
+
+        // Create the login request object
         OIDAuthorizationRequest *request =
         [[OIDAuthorizationRequest alloc] initWithConfiguration:configuration
                                                       clientId:CLIENT_ID
                                                         scopes:@[OIDScopeOpenID, OIDScopeProfile]
-                                                   redirectURL:[NSURL URLWithString:AUTH_REDIRECT]
+                                                   redirectURL:[NSURL URLWithString:AUTH_REDIRECT_SIGNIN]
                                                   responseType:OIDResponseTypeCode
                                           additionalParameters:nil];
-        
+
         // Make the authorization request
         appDelegate.currentAuthorizationFlow =
         [OIDAuthState authStateByPresentingAuthorizationRequest:request
@@ -100,23 +103,26 @@
                 // Create a dictionary from the token rseponse
                 NSDictionary *credsDict = [[NSDictionary alloc] initWithObjectsAndKeys:authState.lastTokenResponse.accessToken, @"access_token", authState.lastTokenResponse.idToken, @"id_token", authState.lastTokenResponse.tokenType, @"token_type", authState.lastTokenResponse.refreshToken, @"refresh_token", nil];
                 [GASettings setCredentials: credsDict];
-                
+
                 // Dismiss the login modal
                 [appDelegate.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
-                NSString *appType = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_AppType"];
+
                 [UIView transitionWithView:appDelegate.window
                                   duration:0.5
                                    options:UIViewAnimationOptionTransitionFlipFromLeft
                                 animations:^{ appDelegate.window.rootViewController = appDelegate.ozHomeNC; }
                                 completion:nil];
             } else {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Authentication Error"
-                                                                message:[error localizedDescription]
-                                                               delegate:self
-                                                      cancelButtonTitle:@"Dismiss"
-                                                      otherButtonTitles:nil];
-                [alert show];
-                
+                // Only display non-generic authenitcation errors
+                if (error.code != -3) {
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Authentication Error"
+                                                                    message:[error localizedDescription]
+                                                                   delegate:self
+                                                          cancelButtonTitle:@"Dismiss"
+                                                          otherButtonTitles:nil];
+                    [alert show];
+                }
+
                 // Dismiss the ui indicator modal
                 [MRProgressOverlayView dismissOverlayForView:appDelegate.window animated:YES];
             }
@@ -125,7 +131,6 @@
 }
 
 -(void) logout {
-    NSLog(@"Logging out!");
     [self logoutWithErrorMsg:@""];
 }
 
@@ -147,8 +152,48 @@
 
 #pragma mark - UIAlert view delegate
 - (void)alertView:(UIAlertView *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    // [appDelegate displaySigninPage];
     if( buttonIndex != 0 ) {
-        [appDelegate displaySigninPage];
+        // Processing UI indicator on the main thread.
+        [MRProgressOverlayView showOverlayAddedTo:appDelegate.window title:@"Processing.." mode:MRProgressOverlayViewModeIndeterminateSmall animated:YES];
+
+        NSString *url = [[NSString alloc] initWithFormat:@"%@%@", AUTH_SERVER, AUTH_DISCOVERY];
+        NSURL *issuer = [NSURL URLWithString:url];
+
+        // Fetch the OIDC discovery document
+        [OIDAuthorizationService discoverServiceConfigurationForIssuer:issuer
+                                                            completion:^(OIDServiceConfiguration *_Nullable configuration, NSError *_Nullable error) {
+            [MRProgressOverlayView dismissOverlayForView:appDelegate.window animated:YES];
+            if (!configuration) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Authentication Error"
+                                                                message:[error localizedDescription]
+                                                               delegate:self
+                                                      cancelButtonTitle:@"Dismiss"
+                                                      otherButtonTitles:nil];
+                [alert show];
+                return;
+            }
+
+            // Build the end session request
+            NSURL *redirectURL = [NSURL URLWithString:AUTH_REDIRECT_SIGNOUT];
+            NSDictionary *additionalParameters = [[NSDictionary alloc] initWithObjectsAndKeys:redirectURL.absoluteString, @"service", nil];
+            
+            // Create & assign the request and agent
+            request = [[OIDEndSessionRequest alloc] initWithConfiguration:configuration idTokenHint:[GASettings getIDToken] postLogoutRedirectURL:redirectURL
+                additionalParameters:additionalParameters];
+            agent = [[OIDExternalUserAgentIOS alloc] initWithPresentingViewController:appDelegate.ozHomeNC];
+            
+            appDelegate.currentAuthorizationFlow = [OIDAuthorizationService presentEndSessionRequest:request externalUserAgent:agent callback:^(OIDEndSessionResponse * _Nullable endSessionResponse, NSError * _Nullable error) {
+                if (endSessionResponse) {
+                    [appDelegate displaySigninPage];
+                } else if (error) {
+                    [appDelegate displaySigninPage];
+                    NSLog(@"endSession error: %@", [error localizedDescription]);
+                }
+                
+                // [appDelegate displaySigninPage];
+            }];
+        }];
     }
 }
 @end

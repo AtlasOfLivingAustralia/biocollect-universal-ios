@@ -14,7 +14,8 @@
 #define AUTH_REGISTER @"/userdetails/registration/createAccount"
 #define AUTH_USERDETAILS @"/userdetails/userDetails/getUserDetails?userName="
 #define AUTH_TOKEN @"/cas/oidc/token"
-#define AUTH_REDIRECT @"biocollect://auth/signin"
+#define AUTH_REDIRECT_SIGNIN @"biocollect://auth/signin"
+#define AUTH_REDIRECT_SIGNOUT @"biocollect://auth/signout"
 
 #define UNIQUE_SPECIES_ID @"/ws/species/uniqueId"
 #define DOCUMENT_UPLOAD_URL @"/ws/attachment/upload"
