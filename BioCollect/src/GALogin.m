@@ -66,7 +66,7 @@ OIDExternalUserAgentIOS *agent;
     // Processing UI indicator on the main thread.
     [MRProgressOverlayView showOverlayAddedTo:appDelegate.window title:@"Processing.." mode:MRProgressOverlayViewModeIndeterminateSmall animated:YES];
 
-    NSString *url = [[NSString alloc] initWithFormat:@"%@%@", AUTH_SERVER, AUTH_DISCOVERY];
+    NSString *url = [[NSString alloc] initWithFormat:@"https://cognito-idp.%@.amazonaws.com/%@_%@", COGNITO_REGION, COGNITO_REGION, COGNITO_USER_POOL];
     NSURL *issuer = [NSURL URLWithString:url];
 
     // Fetch the OIDC discovery document
@@ -156,8 +156,8 @@ OIDExternalUserAgentIOS *agent;
     if( buttonIndex != 0 ) {
         // Processing UI indicator on the main thread.
         [MRProgressOverlayView showOverlayAddedTo:appDelegate.window title:@"Processing.." mode:MRProgressOverlayViewModeIndeterminateSmall animated:YES];
-
-        NSString *url = [[NSString alloc] initWithFormat:@"%@%@", AUTH_SERVER, AUTH_DISCOVERY];
+        
+        NSString *url = [[NSString alloc] initWithFormat:@"https://cognito-idp.%@.amazonaws.com/%@_%@", COGNITO_REGION, COGNITO_REGION, COGNITO_USER_POOL];
         NSURL *issuer = [NSURL URLWithString:url];
 
         // Fetch the OIDC discovery document
@@ -173,16 +173,22 @@ OIDExternalUserAgentIOS *agent;
                 [alert show];
                 return;
             }
-
-            // Build the end session request
+            
+            
+            // Build the end session request params
             NSURL *redirectURL = [NSURL URLWithString:AUTH_REDIRECT_SIGNOUT];
-            NSDictionary *additionalParameters = [[NSDictionary alloc] initWithObjectsAndKeys:redirectURL.absoluteString, @"service", nil];
+            NSDictionary *additionalParameters = [[NSDictionary alloc] initWithObjectsAndKeys:CLIENT_ID, @"client_id", redirectURL.absoluteString, @"logout_uri", nil];
+            
+            // Create the updated end session request configuration
+            NSString *endSessionURL = [configuration.tokenEndpoint.absoluteString stringByReplacingOccurrencesOfString:@"oauth2/token" withString:@"logout"];
+            OIDServiceConfiguration *updatedConfig = [[OIDServiceConfiguration alloc] initWithAuthorizationEndpoint:configuration.authorizationEndpoint tokenEndpoint:configuration.tokenEndpoint issuer:configuration.issuer registrationEndpoint:configuration.registrationEndpoint endSessionEndpoint:[NSURL URLWithString:endSessionURL]];
             
             // Create & assign the request and agent
-            request = [[OIDEndSessionRequest alloc] initWithConfiguration:configuration idTokenHint:[GASettings getIDToken] postLogoutRedirectURL:redirectURL
+            request = [[OIDEndSessionRequest alloc] initWithConfiguration:updatedConfig idTokenHint:[GASettings getIDToken] postLogoutRedirectURL:redirectURL
                 additionalParameters:additionalParameters];
             agent = [[OIDExternalUserAgentIOS alloc] initWithPresentingViewController:appDelegate.ozHomeNC];
             
+            // Make the endSession request
             appDelegate.currentAuthorizationFlow = [OIDAuthorizationService presentEndSessionRequest:request externalUserAgent:agent callback:^(OIDEndSessionResponse * _Nullable endSessionResponse, NSError * _Nullable error) {
                 if (endSessionResponse) {
                     [appDelegate displaySigninPage];

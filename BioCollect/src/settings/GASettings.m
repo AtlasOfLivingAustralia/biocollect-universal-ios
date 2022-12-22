@@ -127,14 +127,11 @@
 +(NSDictionary*) getUserProfile: (NSString *) accessToken {
     NSError * e;
     NSArray *parts = [accessToken componentsSeparatedByString:@"."];
-    NSString *profileEncoded = [[NSString alloc] initWithFormat: @"%@=", parts[1]];
-    NSData *profileData = [[NSData alloc] initWithBase64EncodedString:profileEncoded options:NSDataBase64DecodingIgnoreUnknownCharacters];
-    if (profileData == nil) {
-        profileData = [[NSData alloc] initWithBase64EncodedString:parts[1] options:NSDataBase64DecodingIgnoreUnknownCharacters];
-    }
-
-    NSDictionary* profile =  [NSJSONSerialization JSONObjectWithData:profileData
+    NSData *decoded = [[NSData alloc] initWithBase64EncodedString:[[NSString alloc] initWithFormat:@"%@==", parts[1]] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    NSString *decodedString = [[NSString alloc] initWithData:decoded encoding:NSUTF8StringEncoding];
+    NSDictionary* profile =  [NSJSONSerialization JSONObjectWithData:decoded
                                                               options:kNilOptions error:&e];
+    
     return profile;
 }
 
@@ -178,9 +175,14 @@
     
     NSDictionary * profile = [self getUserProfile: accessToken];
     [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"email"]  forKey:kEmailAddress];
-    [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"firstname"]  forKey:kFirstName];
-    [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"lastname"]  forKey:kLastName];
     [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"userid"]  forKey:kUserId];
+    if ([profile objectForKey:@"firstname"] && [profile objectForKey:@"lastname"]) {
+        [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"firstname"]  forKey:kFirstName];
+        [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"lastname"]  forKey:kLastName];
+    } else {
+        [[NSUserDefaults standardUserDefaults] setObject:@"there!" forKey:kFirstName];
+        [[NSUserDefaults standardUserDefaults] setObject:@""  forKey:kLastName];
+    }
     long expiresIn = [[credentials valueForKey:@"expires_in"] integerValue];
     [self setExpiryDate: expiresIn];
     
