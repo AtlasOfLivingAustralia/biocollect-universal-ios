@@ -186,8 +186,6 @@ OIDExternalUserAgentIOS *agent;
                                                       cancelButtonTitle:@"Dismiss"
                                                       otherButtonTitles:nil];
             }
-            
-            // [appDelegate displaySigninPage];
         }];
     }
 }

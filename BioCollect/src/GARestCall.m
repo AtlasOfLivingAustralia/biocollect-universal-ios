@@ -89,30 +89,44 @@
 }
 
 -(void) getNewAccessToken {
-    NSError *e = nil;
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    NSString *url = [[NSString alloc] initWithFormat:@"%@%@",AUTH_SERVER, AUTH_TOKEN ];
-    NSString* escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    [request setURL:[NSURL URLWithString:url]];
-    [request setHTTPMethod:@"POST"];
-    NSString *postBody = [[NSString alloc] initWithFormat:@"client_id=%@&client_secret=%@&grant_type=refresh_token&scope=%@&refresh_token=%@",CLIENT_ID, CLIENT_SECRET, SCOPE, [GASettings getRefreshToken]];
-    [request setHTTPBody:[postBody dataUsingEncoding: NSUTF8StringEncoding]];
+//    NSError *e = nil;
+//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+//    NSString *url = [[NSString alloc] initWithFormat:@"%@%@",AUTH_SERVER, AUTH_TOKEN ];
+//    NSString* escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//    [request setURL:[NSURL URLWithString:url]];
+//    [request setHTTPMethod:@"POST"];
+//    NSString *postBody = [[NSString alloc] initWithFormat:@"client_id=%@&client_secret=%@&grant_type=refresh_token&scope=%@&refresh_token=%@",CLIENT_ID, CLIENT_SECRET, SCOPE, [GASettings getRefreshToken]];
+//    [request setHTTPBody:[postBody dataUsingEncoding: NSUTF8StringEncoding]];
+//
+//    NSURLResponse *response;
+//    NSData *reply = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&e];
+//
+//    if(e == nil) {
+//        NSDictionary* respDict =  [NSJSONSerialization JSONObjectWithData:reply
+//                                                                  options:kNilOptions error:&e];
+//        if(e == nil) {
+//            NSString *jsonError = [respDict objectForKey:@"error"];
+//            if([jsonError length] == 0 && [[respDict objectForKey:@"access_token"] length] > 0) {
+//                [GASettings setCredentials: respDict];
+//            }
+//        } else {
+//            NSLog(@"Failed to get access token");
+//        }
+//    }
     
-    NSURLResponse *response;
-    NSData *reply = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&e];
-
-    if(e == nil) {
-        NSDictionary* respDict =  [NSJSONSerialization JSONObjectWithData:reply
-                                                                  options:kNilOptions error:&e];
-        if(e == nil) {
-            NSString *jsonError = [respDict objectForKey:@"error"];
-            if([jsonError length] == 0 && [[respDict objectForKey:@"access_token"] length] > 0) {
-                [GASettings setCredentials: respDict];
-            }
+    OIDTokenRequest *request = [[OIDTokenRequest alloc] initWithConfiguration:[GASettings getOpenIDConfig] grantType:OIDGrantTypeRefreshToken authorizationCode:nil redirectURL:nil clientID:CLIENT_ID clientSecret:nil scope:nil refreshToken:[GASettings getRefreshToken] codeVerifier:nil additionalParameters:nil];
+    
+    [OIDAuthorizationService performTokenRequest:request callback:^(OIDTokenResponse * _Nullable tokenResponse, NSError * _Nullable error) {
+        
+        // If the authentication was successful
+        if (tokenResponse) {
+            // Create a dictionary from the token rseponse
+            NSDictionary *credsDict = [[NSDictionary alloc] initWithObjectsAndKeys:tokenResponse.accessToken, @"access_token", tokenResponse.idToken, @"id_token", tokenResponse.tokenType, @"token_type", tokenResponse.refreshToken, @"refresh_token", nil];
+            [GASettings setCredentials: credsDict];
         } else {
-            NSLog(@"Failed to get access token");
+            NSLog(@"Token refresh error: %@", [error localizedDescription]);
         }
-    }
+    }];
 }
 
 
