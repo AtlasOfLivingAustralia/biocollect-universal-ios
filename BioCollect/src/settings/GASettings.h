@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AppAuth/AppAuth.h>
 
 #define kDataToSyncFalse @"FALSE"
 #define kDataToSyncTrue @"TRUE"
@@ -26,6 +27,7 @@
 +(void) setIDToken: (NSString *) idToken;
 +(void) setCredentials: (NSDictionary *) credentials;
 +(void) setExpiryDate: (long) periodInSeconds;
++(void) setOpenIDConfig: (OIDServiceConfiguration *_Nullable) serviceConfig;
 +(void) resetAllFields;
 //+(NSString*) getAuthKey;
 +(NSString*) getAuthorizationHeader;
@@ -42,6 +44,7 @@
 +(long) getExpiresIn;
 +(NSDate*) getAccessDateTime;
 +(NSDate*) getExpiresDateTime;
++(OIDServiceConfiguration *_Nullable) getOpenIDConfig;
 +(Boolean) isAccessTokenExpired;
 +(NSString*) getTokenType;
 +(NSString*) getIDToken;

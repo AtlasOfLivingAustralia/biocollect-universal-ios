@@ -22,6 +22,7 @@
 #define kAccessDateTime @"accessDateTime"
 #define kTokenType @"tokenType"
 #define kRefreshToken @"refreshToken"
+#define kOpenIDConfig @"OIDCDiscovery"
 #define IDIOM    UI_USER_INTERFACE_IDIOM()
 #define IPAD     UIUserInterfaceIdiomPad
 
@@ -49,6 +50,7 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kAccessDateTime];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kTokenType];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kRefreshToken];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kOpenIDConfig];
     //[[NSUserDefaults standardUserDefaults] removeObjectForKey:kEULA];
     [[NSUserDefaults standardUserDefaults]synchronize];    
 }
@@ -124,11 +126,17 @@
     return [[NSUserDefaults standardUserDefaults] objectForKey:kIDToken];
 }
 
++(OIDServiceConfiguration*) getOpenIDConfig{
+    NSError *e = nil;
+    NSDictionary* discoveryDict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:kOpenIDConfig];
+    OIDServiceDiscovery* discovery = [[OIDServiceDiscovery alloc] initWithDictionary:discoveryDict error:&e];
+    return [[OIDServiceConfiguration alloc] initWithDiscoveryDocument:discovery];
+}
+
 +(NSDictionary*) getUserProfile: (NSString *) accessToken {
     NSError * e;
     NSArray *parts = [accessToken componentsSeparatedByString:@"."];
     NSData *decoded = [[NSData alloc] initWithBase64EncodedString:[[NSString alloc] initWithFormat:@"%@==", parts[1]] options:NSDataBase64DecodingIgnoreUnknownCharacters];
-    NSString *decodedString = [[NSString alloc] initWithData:decoded encoding:NSUTF8StringEncoding];
     NSDictionary* profile =  [NSJSONSerialization JSONObjectWithData:decoded
                                                               options:kNilOptions error:&e];
     
@@ -241,7 +249,18 @@
     [[NSUserDefaults standardUserDefaults]synchronize];
 }
 
-+(NSString*) appVersion{
++(void) setOpenIDConfig:(OIDServiceConfiguration *)serviceConfig{
+    NSMutableDictionary* configDict = [[serviceConfig.discoveryDocument discoveryDictionary] mutableCopy];
+    // [configDict setValue:@"" forKey:@""];
+    // Create the updated end session request configuration
+    NSString *endSessionURL = [serviceConfig.tokenEndpoint.absoluteString stringByReplacingOccurrencesOfString:@"oauth2/token" withString:@"logout"];
+    [configDict setValue:endSessionURL forKey:@"end_session_endpoint"];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:configDict forKey:kOpenIDConfig];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+}
+
++(NSString*) appVersion {
     NSString * ver = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
     NSString * build = [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
     return [[NSString alloc] initWithFormat:@"%@ (%@)",ver,build];

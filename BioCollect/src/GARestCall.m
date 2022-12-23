@@ -113,8 +113,6 @@
             NSLog(@"Failed to get access token");
         }
     }
-    
-    
 }
 
 
