@@ -37,12 +37,6 @@ OIDExternalUserAgentIOS *agent;
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-}
-
-- (void)viewDidLoad
-{
-    [self.logoImageView setImage:[UIImage imageNamed: [GASettings appLoginLogo]]];
-    [super viewDidLoad];
     
     [MRProgressOverlayView showOverlayAddedTo:appDelegate.window title:@"Processing.." mode:MRProgressOverlayViewModeIndeterminateSmall animated:YES];
 
@@ -67,7 +61,12 @@ OIDExternalUserAgentIOS *agent;
         [GASettings setOpenIDConfig:configuration];
         NSLog(@"OpenID Discovery Successful!");
     }];
-    
+}
+
+- (void)viewDidLoad
+{
+    [self.logoImageView setImage:[UIImage imageNamed: [GASettings appLoginLogo]]];
+    [super viewDidLoad];
 }
 
 - (void)didReceiveMemoryWarning

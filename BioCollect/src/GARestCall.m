@@ -114,7 +114,7 @@
 //        }
 //    }
     
-    OIDTokenRequest *request = [[OIDTokenRequest alloc] initWithConfiguration:[GASettings getOpenIDConfig] grantType:OIDGrantTypeRefreshToken authorizationCode:nil redirectURL:nil clientID:CLIENT_ID clientSecret:nil scope:nil refreshToken:[GASettings getRefreshToken] codeVerifier:nil additionalParameters:nil];
+    OIDTokenRequest *request = [[OIDTokenRequest alloc] initWithConfiguration:[GASettings getOpenIDConfig] grantType:OIDGrantTypeRefreshToken authorizationCode:nil redirectURL:nil clientID:CLIENT_ID clientSecret:nil scope:SCOPE refreshToken:[GASettings getRefreshToken] codeVerifier:nil additionalParameters:nil];
     
     [OIDAuthorizationService performTokenRequest:request callback:^(OIDTokenResponse * _Nullable tokenResponse, NSError * _Nullable error) {
         
