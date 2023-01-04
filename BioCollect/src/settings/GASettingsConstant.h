@@ -6,6 +6,7 @@
 #define ECODATA_SERVER @"https://ecodata.ala.org.au"
 #define BIOCOLLECT_SERVER @"https://biocollect-test.ala.org.au"
 #define LISTS_SERVER @"https://lists.ala.org.au"
+#define BIOCACHE_SERVER @"https://biocache.ala.org.au"
 
 #define LIST_PROJECT_ACTIVITIES @"/ws/survey/list"
 #define AUTOCOMPLETE_URL @"https://bie.ala.org.au/ws/search.json?sort=scientificName&fq=taxonomicStatus:accepted&q="
@@ -28,11 +29,10 @@
 #define SIGHTINGS_PROJECT_NAME_FACET @"fq=projectNameFacet:" 
 #define CREATE_SITE @"/site/ajaxUpdate"
 
-// Species Proxy URL:
-#define PROXY_SERVER @"https://ozatlas-proxy.ala.org.au"
-#define SPECIES_GROUPS @"/proxy/exploreGroups" // ?lat=-37.9659145&lon=145.0715558&radius=532
-#define SPECIES_GROUP @"/proxy/exploreGroup" // ?group=Animals&lat=-37.9659145&lon=145.0715558&radius=7&start=0&pageSize=10&common=true
-#define SPECIES_THUMBNAIL @"/image/thumbnail" // /urn:lsid:biodiversity.org.au:afd.taxon:7d37e5ed-7232-4ae2-a423-6c63c9a118dd
+// Species Groups
+#define SPECIES_GROUPS @"/ws/explore/groups" // ?lat=-37.9659145&lon=145.0715558&radius=532
+#define SPECIES_GROUP @"/ws/explore/group/" // /group/Animals?lat=-37.9659145&lon=145.0715558&radius=7&start=0&pageSize=10&common=true
+#define SPECIES_THUMBNAIL @"/species/speciesImage" // /urn:lsid:biodiversity.org.au:afd.taxon:7d37e5ed-7232-4ae2-a423-6c63c9a118dd
 
 // Plist Configuration
 #define APP_TYPE @"Bio_AppType"

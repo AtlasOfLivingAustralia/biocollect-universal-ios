@@ -2835,7 +2835,7 @@
 						ProvisioningStyle = Automatic;
 					};
 					E26638691F52EB9B00F1F1CE = {
-						DevelopmentTeam = VP6SGJQWPU;
+						DevelopmentTeam = KG3QS53Q3N;
 						ProvisioningStyle = Automatic;
 					};
 					E2AECEE01E73D3010035DF28 = {
@@ -4357,7 +4357,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = KG3QS53Q3N;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BioCollect/Oz Atlas-Prefix.pch";
@@ -4377,7 +4377,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.biocontrolhub;
+				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.biocontrolhub.testing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4396,7 +4396,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = KG3QS53Q3N;
 				ENABLE_NS_ASSERTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BioCollect/Oz Atlas-Prefix.pch";
@@ -4411,7 +4411,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.biocontrolhub;
+				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.biocontrolhub.testing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
