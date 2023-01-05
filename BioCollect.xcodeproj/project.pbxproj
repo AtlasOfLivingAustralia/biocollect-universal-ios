@@ -2496,17 +2496,17 @@
 		E2E3AA8018F4D2940005BB9E = {
 			isa = PBXGroup;
 			children = (
-				E2DCF1EB1CF68D8B008D438C /* Default-568h.png */,
-				E2DCF1EF1CF6A19C008D438C /* Default-568.png */,
-				E2DCF1EC1CF68D8B008D438C /* Default-568h@2x.png */,
 				E2E3AA9218F4D2940005BB9E /* BioCollect */,
-				E2E3AAAB18F4D2940005BB9E /* BioCollectTests */,
-				E2E3AA8B18F4D2940005BB9E /* Frameworks */,
-				E2E3AA8A18F4D2940005BB9E /* Products */,
-				E2E1C5202006116200CACBB6 /* BioControlHub-Info.plist */,
 				E2A3C84C200612B100BC90D0 /* BioCollect-info.plist */,
-				E261475C20072F9400B1104E /* Tracker-info.plist */,
+				E2E3AAAB18F4D2940005BB9E /* BioCollectTests */,
+				E2E1C5202006116200CACBB6 /* BioControlHub-Info.plist */,
+				E2DCF1EF1CF6A19C008D438C /* Default-568.png */,
+				E2DCF1EB1CF68D8B008D438C /* Default-568h.png */,
+				E2DCF1EC1CF68D8B008D438C /* Default-568h@2x.png */,
+				E2E3AA8B18F4D2940005BB9E /* Frameworks */,
 				70075000D38E5AEF1B18A408 /* Pods */,
+				E2E3AA8A18F4D2940005BB9E /* Products */,
+				E261475C20072F9400B1104E /* Tracker-info.plist */,
 			);
 			sourceTree = "<group>";
 		};

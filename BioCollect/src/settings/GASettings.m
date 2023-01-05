@@ -188,7 +188,7 @@
         [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"firstname"]  forKey:kFirstName];
         [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"lastname"]  forKey:kLastName];
     } else {
-        [[NSUserDefaults standardUserDefaults] setObject:@"there!" forKey:kFirstName];
+        [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kFirstName];
         [[NSUserDefaults standardUserDefaults] setObject:@""  forKey:kLastName];
     }
     long expiresIn = [[credentials valueForKey:@"expires_in"] integerValue];

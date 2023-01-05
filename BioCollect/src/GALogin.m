@@ -88,14 +88,16 @@ OIDExternalUserAgentIOS *agent;
 
 -(void) authenticate {
     // Retrieve the OpenID configuration
-    OIDServiceConfiguration* configuration = [GASettings getOpenIDConfig];
+    OIDServiceConfiguration *configuration = [GASettings getOpenIDConfig];
+    NSString *bundleId = [[[NSBundle mainBundle] bundleIdentifier] stringByReplacingOccurrencesOfString:@".testing" withString:@""];
+    NSURL *redirectURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", bundleId, @"://signin"]];
     
     // Create the login request object
     OIDAuthorizationRequest *request =
     [[OIDAuthorizationRequest alloc] initWithConfiguration:configuration
                                                   clientId:CLIENT_ID
                                                     scopes:@[OIDScopeOpenID, OIDScopeProfile]
-                                               redirectURL:[NSURL URLWithString:AUTH_REDIRECT_SIGNIN]
+                                               redirectURL:redirectURL
                                               responseType:OIDResponseTypeCode
                                       additionalParameters:nil];
 
@@ -108,6 +110,8 @@ OIDExternalUserAgentIOS *agent;
             // Create a dictionary from the token rseponse
             NSDictionary *credsDict = [[NSDictionary alloc] initWithObjectsAndKeys:authState.lastTokenResponse.accessToken, @"access_token", authState.lastTokenResponse.idToken, @"id_token", authState.lastTokenResponse.tokenType, @"token_type", authState.lastTokenResponse.refreshToken, @"refresh_token", nil];
             [GASettings setCredentials: credsDict];
+            NSLog(@"ACCESS TOKEN: %@", authState.lastTokenResponse.accessToken);
+            NSLog(@"ID TOKEN: %@", authState.lastTokenResponse.idToken);
 
             // Dismiss the login modal
             [appDelegate.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
@@ -160,9 +164,10 @@ OIDExternalUserAgentIOS *agent;
     if( buttonIndex != 0 ) {
         // Retrieve the OpenID discovery document
         OIDServiceConfiguration* configuration = [GASettings getOpenIDConfig];
+        NSString *bundleId = [[[NSBundle mainBundle] bundleIdentifier] stringByReplacingOccurrencesOfString:@".testing" withString:@""];
+        NSURL *redirectURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", bundleId, @"://signout"]];
         
         // Build the end session request params
-        NSURL *redirectURL = [NSURL URLWithString:AUTH_REDIRECT_SIGNOUT];
         NSDictionary *additionalParameters = [[NSDictionary alloc] initWithObjectsAndKeys:CLIENT_ID, @"client_id", redirectURL.absoluteString, @"logout_uri", nil];
         
         // Create & assign the request and agent
