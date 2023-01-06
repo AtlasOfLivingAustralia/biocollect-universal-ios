@@ -197,10 +197,10 @@ static const NSInteger kARRMaxCacheAge = 60 * 60 * 24 * 365 * 2; // 1 day * 365 
     
     [self.window makeKeyAndVisible];
 
-    if([GASettings getAccessToken] == 0){
+    if ([GASettings getAccessToken] == 0){
         [self displaySigninPage];
         
-    } else{
+    } else {
         DebugLog(@"[INFO] GAAppDelegate:addSplitViewtoRoot - loading data from db.");
         [self updateTableModelsAndViews:[self.sqlLite loadProjectsAndActivities]];
     }

@@ -108,10 +108,7 @@ OIDExternalUserAgentIOS *agent;
         // If the authentication was successful
         if (authState) {
             // Create a dictionary from the token rseponse
-            NSLog(@"ACCESS TOKEN: %@", authState.lastTokenResponse.accessToken);
-            NSLog(@"ID TOKEN: %@", authState.lastTokenResponse.idToken);
-            NSDictionary *credsDict = [[NSDictionary alloc] initWithObjectsAndKeys:authState.lastTokenResponse.accessToken, @"access_token", authState.lastTokenResponse.idToken, @"id_token", authState.lastTokenResponse.tokenType, @"token_type", authState.lastTokenResponse.refreshToken, @"refresh_token", nil];
-            [GASettings setCredentials: credsDict];
+            [GASettings setCredentials: authState.lastTokenResponse];
 
             // Dismiss the login modal
             [appDelegate.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
@@ -160,7 +157,6 @@ OIDExternalUserAgentIOS *agent;
 
 #pragma mark - UIAlert view delegate
 - (void)alertView:(UIAlertView *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    // [appDelegate displaySigninPage];
     if( buttonIndex != 0 ) {
         // Retrieve the OpenID discovery document
         OIDServiceConfiguration* configuration = [GASettings getOpenIDConfig];
@@ -181,9 +177,7 @@ OIDExternalUserAgentIOS *agent;
         appDelegate.currentAuthorizationFlow = [OIDAuthorizationService presentEndSessionRequest:request externalUserAgent:agent callback:^(OIDEndSessionResponse * _Nullable endSessionResponse, NSError * _Nullable error) {
             if (endSessionResponse) {
                 [appDelegate displaySigninPage];
-                NSLog(@"End session success!");
             } else if (error && error.code != -3) {
-                [appDelegate displaySigninPage];
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Logout Error"
                                                                 message:[error localizedDescription]
                                                                delegate:self

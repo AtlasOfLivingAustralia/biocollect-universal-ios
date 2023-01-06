@@ -25,7 +25,7 @@
 +(void) setRefreshToken: (NSString *) refreshToken;
 +(void) setTokenType: (NSString *) tokenType;
 +(void) setIDToken: (NSString *) idToken;
-+(void) setCredentials: (NSDictionary *) credentials;
++(void) setCredentials: (OIDTokenResponse *) credentials;
 +(void) setExpiryDate: (long) periodInSeconds;
 +(void) setOpenIDConfig: (OIDServiceConfiguration *_Nullable) serviceConfig;
 +(void) resetAllFields;

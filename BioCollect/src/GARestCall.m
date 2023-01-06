@@ -114,15 +114,27 @@
 //        }
 //    }
     
-    OIDTokenRequest *request = [[OIDTokenRequest alloc] initWithConfiguration:[GASettings getOpenIDConfig] grantType:OIDGrantTypeRefreshToken authorizationCode:nil redirectURL:nil clientID:CLIENT_ID clientSecret:nil scope:SCOPE refreshToken:[GASettings getRefreshToken] codeVerifier:nil additionalParameters:nil];
+    NSString *refreshToken = [GASettings getRefreshToken];
+    OIDTokenRequest *request = [[OIDTokenRequest alloc]
+                                initWithConfiguration:[GASettings getOpenIDConfig]
+                                grantType:OIDGrantTypeRefreshToken
+                                authorizationCode:nil
+                                redirectURL:nil
+                                clientID:CLIENT_ID
+                                clientSecret:nil
+                                scope:SCOPE
+                                refreshToken:refreshToken
+                                codeVerifier:nil
+                                additionalParameters:nil];
+    
+    NSLog(@"ACCESS TOKEN: %@", [GASettings getAccessToken]);
+    NSLog(@"REFRESH TOKEN: %@", refreshToken);
     
     [OIDAuthorizationService performTokenRequest:request callback:^(OIDTokenResponse * _Nullable tokenResponse, NSError * _Nullable error) {
         
         // If the authentication was successful
         if (tokenResponse) {
-            // Create a dictionary from the token rseponse
-            NSDictionary *credsDict = [[NSDictionary alloc] initWithObjectsAndKeys:tokenResponse.accessToken, @"access_token", tokenResponse.idToken, @"id_token", tokenResponse.tokenType, @"token_type", tokenResponse.refreshToken, @"refresh_token", nil];
-            [GASettings setCredentials: credsDict];
+            [GASettings setCredentials: tokenResponse];
         } else {
             NSLog(@"Token refresh error: %@", [error localizedDescription]);
         }

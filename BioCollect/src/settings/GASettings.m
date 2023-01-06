@@ -144,7 +144,7 @@
 }
 
 +(Boolean) isAccessTokenExpired {
-    NSTimeInterval bufferInSeconds = 5.0 * 60.0; // 5 minutes
+    NSTimeInterval bufferInSeconds = 15.0 * 60.0; // 15 minutes
 
     NSDate * expires = [self getExpiresDateTime];
     expires = [[NSDate alloc] initWithTimeInterval:bufferInSeconds sinceDate:expires];
@@ -174,19 +174,20 @@
     [[NSUserDefaults standardUserDefaults]synchronize];
 };
 
-+(void) setCredentials: (NSDictionary *) credentials{
-    NSString * idToken = [credentials valueForKey:@"id_token"];
-    [[NSUserDefaults standardUserDefaults] setObject:[credentials valueForKey:@"access_token"]  forKey:kAccessToken];
-    [[NSUserDefaults standardUserDefaults] setObject:idToken forKey:kIDToken];
-    [[NSUserDefaults standardUserDefaults] setObject:[credentials valueForKey:@"token_type"]  forKey:kTokenType];
-    [[NSUserDefaults standardUserDefaults] setObject:[credentials valueForKey:@"refresh_token"]  forKey:kRefreshToken];
-    
-    NSDictionary * profile = [self getUserProfile: idToken];
++(void) setCredentials: (OIDTokenResponse *) credentials{
+    [[NSUserDefaults standardUserDefaults] setObject:credentials.accessToken  forKey:kAccessToken];
+    [[NSUserDefaults standardUserDefaults] setObject:credentials.idToken forKey:kIDToken];
+    [[NSUserDefaults standardUserDefaults] setObject:credentials.tokenType forKey:kTokenType];
+    if (credentials.refreshToken != nil) {
+        [[NSUserDefaults standardUserDefaults] setObject:credentials.refreshToken  forKey:kRefreshToken];
+    }
+
+    NSDictionary * profile = [self getUserProfile: credentials.idToken];
     [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"email"]  forKey:kEmailAddress];
     [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"custom:userid"]  forKey:kUserId];
     [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"given_name"]  forKey:kFirstName];
     [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"family_name"]  forKey:kLastName];
-    long expiresIn = [[credentials valueForKey:@"exp"] integerValue];
+    long expiresIn = [credentials.accessTokenExpirationDate timeIntervalSince1970];
     [self setExpiryDate: expiresIn];
     
     [[NSUserDefaults standardUserDefaults] synchronize];
