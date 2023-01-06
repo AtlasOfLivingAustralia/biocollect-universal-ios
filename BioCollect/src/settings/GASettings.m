@@ -193,9 +193,9 @@
         [[NSUserDefaults standardUserDefaults] setObject:credentials.refreshToken  forKey:kRefreshToken];
     }
 
-    NSDictionary * profile = [self getUserProfile: USE_COGNITO ? credentials.idToken : credentials.accessToken];
+    NSDictionary * profile = [self getUserProfile: COGNITO_ENABLED ? credentials.idToken : credentials.accessToken];
     [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"email"]  forKey:kEmailAddress];
-    [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:USE_COGNITO ? @"custom:userid" : @"userid"]  forKey:kUserId];
+    [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:COGNITO_ENABLED ? @"custom:userid" : @"userid"]  forKey:kUserId];
     [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"given_name"]  forKey:kFirstName];
     [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"family_name"]  forKey:kLastName];
     long expiresIn = [credentials.accessTokenExpirationDate timeIntervalSince1970];

@@ -43,10 +43,10 @@
 #define HUB_VIEW @"hubview"
 
 // OpenID Connect Configuration
-#define USE_COGNITO false
-
+#define COGNITO_ENABLED false
 #define COGNITO_REGION @"ap-southeast-2"
 #define COGNITO_USER_POOL @"dqIVUS9bF"
+
 #define CLIENT_ID @"5mqnuhdf75ru6fc153hjifdtsn"
 #define SCOPE @"email openid profile ala/attrs ala/roles"
 

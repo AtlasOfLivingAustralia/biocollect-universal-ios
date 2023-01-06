@@ -41,7 +41,7 @@ OIDExternalUserAgentIOS *agent;
     [loginButton setEnabled:false];
     [loginButton setAlpha:0.4];
 
-    NSString *url = USE_COGNITO ?
+    NSString *url = COGNITO_ENABLED ?
     [[NSString alloc] initWithFormat:@"https://cognito-idp.%@.amazonaws.com/%@_%@", COGNITO_REGION, COGNITO_REGION, COGNITO_USER_POOL] :
     [[NSString alloc] initWithFormat:@"%@%@", AUTH_SERVER, @"/cas/oidc"];
     NSLog(@"%@", url);
@@ -180,13 +180,13 @@ OIDExternalUserAgentIOS *agent;
             additionalParameters:additionalParameters];
         agent = [[OIDExternalUserAgentIOS alloc] initWithPresentingViewController:appDelegate.ozHomeNC];
         
-        if (USE_COGNITO) {
+        if (COGNITO_ENABLED) {
             [request setValue:nil forKey:@"state"];
         }
         
         // Make the endSession request
         appDelegate.currentAuthorizationFlow = [OIDAuthorizationService presentEndSessionRequest:request externalUserAgent:agent callback:^(OIDEndSessionResponse * _Nullable endSessionResponse, NSError * _Nullable error) {
-            if (endSessionResponse || !USE_COGNITO) {
+            if (endSessionResponse || !COGNITO_ENABLED) {
                 [appDelegate displaySigninPage];
             } else if (error && error.code != -3) {
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Logout Error"
