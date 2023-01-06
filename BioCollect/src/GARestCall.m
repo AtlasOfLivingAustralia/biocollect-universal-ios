@@ -89,31 +89,6 @@
 }
 
 -(void) getNewAccessToken {
-//    NSError *e = nil;
-//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-//    NSString *url = [[NSString alloc] initWithFormat:@"%@%@",AUTH_SERVER, AUTH_TOKEN ];
-//    NSString* escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//    [request setURL:[NSURL URLWithString:url]];
-//    [request setHTTPMethod:@"POST"];
-//    NSString *postBody = [[NSString alloc] initWithFormat:@"client_id=%@&client_secret=%@&grant_type=refresh_token&scope=%@&refresh_token=%@",CLIENT_ID, CLIENT_SECRET, SCOPE, [GASettings getRefreshToken]];
-//    [request setHTTPBody:[postBody dataUsingEncoding: NSUTF8StringEncoding]];
-//
-//    NSURLResponse *response;
-//    NSData *reply = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&e];
-//
-//    if(e == nil) {
-//        NSDictionary* respDict =  [NSJSONSerialization JSONObjectWithData:reply
-//                                                                  options:kNilOptions error:&e];
-//        if(e == nil) {
-//            NSString *jsonError = [respDict objectForKey:@"error"];
-//            if([jsonError length] == 0 && [[respDict objectForKey:@"access_token"] length] > 0) {
-//                [GASettings setCredentials: respDict];
-//            }
-//        } else {
-//            NSLog(@"Failed to get access token");
-//        }
-//    }
-    
     NSString *refreshToken = [GASettings getRefreshToken];
     OIDTokenRequest *request = [[OIDTokenRequest alloc]
                                 initWithConfiguration:[GASettings getOpenIDConfig]
