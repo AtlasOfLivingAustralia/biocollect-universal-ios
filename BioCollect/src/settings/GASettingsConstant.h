@@ -10,7 +10,6 @@
 
 #define LIST_PROJECT_ACTIVITIES @"/ws/survey/list"
 #define AUTOCOMPLETE_URL @"https://bie.ala.org.au/ws/search.json?sort=scientificName&fq=taxonomicStatus:accepted&q="
-//#define AUTH_SERVER  @"https://auth-test.ala.org.au"
 #define AUTH_SERVER  @"https://auth-test.ala.org.au"
 #define AUTH_REGISTER @"/userdetails/registration/createAccount"
 #define AUTH_USERDETAILS @"/userdetails/userDetails/getUserDetails?userName="
@@ -43,12 +42,12 @@
 #define BIOCOLLECT_VIEW @"generic"
 #define HUB_VIEW @"hubview"
 
-//open id connect config
-// #define CLIENT_ID @"biocollect-mobile-auth-debug"
+// OpenID Connect Configuration
+#define USE_COGNITO false
+
 #define COGNITO_REGION @"ap-southeast-2"
 #define COGNITO_USER_POOL @"dqIVUS9bF"
 #define CLIENT_ID @"5mqnuhdf75ru6fc153hjifdtsn"
-#define CLIENT_SECRET @"u85789gnghdfb765"
 #define SCOPE @"email openid profile ala/attrs ala/roles"
 
 #endif

@@ -6,6 +6,7 @@
 //
 
 #import "GASettings.h"
+#import "GASettingsConstant.h"
 
 #define kEmailAddress @"emailAddress"
 #define kAuthKey @"authKey"
@@ -133,10 +134,20 @@
     return [[OIDServiceConfiguration alloc] initWithDiscoveryDocument:discovery];
 }
 
-+(NSDictionary*) getUserProfile: (NSString *) idToken {
++(NSDictionary*) getUserProfile: (NSString *) token {
     NSError * e;
-    NSArray *parts = [idToken componentsSeparatedByString:@"."];
-    NSData *decoded = [[NSData alloc] initWithBase64EncodedString:[[NSString alloc] initWithFormat:@"%@==", parts[1]] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    NSString *payload = [token componentsSeparatedByString:@"."][1];
+    
+    int len = (int)(4 * ceil((float)[payload length] / 4.0));
+    int pad = len - [payload length];
+    
+    // Add Base64 padding
+    if (pad > 0) {
+        NSString *padding = [[NSString string] stringByPaddingToLength:pad withString:@"=" startingAtIndex:0];
+        payload = [payload stringByAppendingString:padding];
+    }
+    
+    NSData *decoded = [[NSData alloc] initWithBase64EncodedString:payload options:0];
     NSDictionary* profile =  [NSJSONSerialization JSONObjectWithData:decoded
                                                               options:kNilOptions error:&e];
     
@@ -182,9 +193,9 @@
         [[NSUserDefaults standardUserDefaults] setObject:credentials.refreshToken  forKey:kRefreshToken];
     }
 
-    NSDictionary * profile = [self getUserProfile: credentials.idToken];
+    NSDictionary * profile = [self getUserProfile: USE_COGNITO ? credentials.idToken : credentials.accessToken];
     [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"email"]  forKey:kEmailAddress];
-    [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"custom:userid"]  forKey:kUserId];
+    [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:USE_COGNITO ? @"custom:userid" : @"userid"]  forKey:kUserId];
     [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"given_name"]  forKey:kFirstName];
     [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"family_name"]  forKey:kLastName];
     long expiresIn = [credentials.accessTokenExpirationDate timeIntervalSince1970];
@@ -247,10 +258,10 @@
 
 +(void) setOpenIDConfig:(OIDServiceConfiguration *)serviceConfig{
     NSMutableDictionary* configDict = [[serviceConfig.discoveryDocument discoveryDictionary] mutableCopy];
-    // [configDict setValue:@"" forKey:@""];
-    // Create the updated end session request configuration
-    NSString *endSessionURL = [serviceConfig.tokenEndpoint.absoluteString stringByReplacingOccurrencesOfString:@"oauth2/token" withString:@"logout"];
-    [configDict setValue:endSessionURL forKey:@"end_session_endpoint"];
+    if (USE_COGNITO) {
+        NSString *endSessionURL = [serviceConfig.tokenEndpoint.absoluteString stringByReplacingOccurrencesOfString:@"oauth2/token" withString:@"logout"];
+        [configDict setValue:endSessionURL forKey:@"end_session_endpoint"];
+    }
     
     [[NSUserDefaults standardUserDefaults] setObject:configDict forKey:kOpenIDConfig];
     [[NSUserDefaults standardUserDefaults]synchronize];

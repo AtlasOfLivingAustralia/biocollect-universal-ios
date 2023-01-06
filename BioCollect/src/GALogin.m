@@ -38,15 +38,18 @@ OIDExternalUserAgentIOS *agent;
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [MRProgressOverlayView showOverlayAddedTo:appDelegate.window title:@"Processing.." mode:MRProgressOverlayViewModeIndeterminateSmall animated:YES];
+    [loginButton setEnabled:false];
+    [loginButton setAlpha:0.4];
 
-    NSString *url = [[NSString alloc] initWithFormat:@"https://cognito-idp.%@.amazonaws.com/%@_%@", COGNITO_REGION, COGNITO_REGION, COGNITO_USER_POOL];
+    NSString *url = USE_COGNITO ?
+    [[NSString alloc] initWithFormat:@"https://cognito-idp.%@.amazonaws.com/%@_%@", COGNITO_REGION, COGNITO_REGION, COGNITO_USER_POOL] :
+    [[NSString alloc] initWithFormat:@"%@%@", AUTH_SERVER, @"/cas/oidc"];
+    NSLog(@"%@", url);
     NSURL *issuer = [NSURL URLWithString:url];
 
     // Fetch the OIDC discovery document
     [OIDAuthorizationService discoverServiceConfigurationForIssuer:issuer
                                                         completion:^(OIDServiceConfiguration *_Nullable configuration, NSError *_Nullable error) {
-        [MRProgressOverlayView dismissOverlayForView:appDelegate.window animated:YES];
         if (!configuration) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Authentication Error"
                                                             message:[error localizedDescription]
@@ -59,6 +62,8 @@ OIDExternalUserAgentIOS *agent;
         
         
         [GASettings setOpenIDConfig:configuration];
+        [loginButton setEnabled:true];
+        [loginButton setAlpha:1];
         NSLog(@"OpenID Discovery Successful!");
     }];
 }
@@ -90,7 +95,9 @@ OIDExternalUserAgentIOS *agent;
     // Retrieve the OpenID configuration
     OIDServiceConfiguration *configuration = [GASettings getOpenIDConfig];
     NSString *bundleId = [[[NSBundle mainBundle] bundleIdentifier] stringByReplacingOccurrencesOfString:@".testing" withString:@""];
-    NSURL *redirectURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", bundleId, @"://signin"]];
+    NSArray *bundleParts = [bundleId componentsSeparatedByString:@"."];
+    NSURL *redirectURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", [bundleParts lastObject], @"://signin"]];
+    NSLog(@"REDIRECT URL %@", redirectURL.absoluteString);
     
     // Create the login request object
     OIDAuthorizationRequest *request =
@@ -160,8 +167,10 @@ OIDExternalUserAgentIOS *agent;
     if( buttonIndex != 0 ) {
         // Retrieve the OpenID discovery document
         OIDServiceConfiguration* configuration = [GASettings getOpenIDConfig];
+        
         NSString *bundleId = [[[NSBundle mainBundle] bundleIdentifier] stringByReplacingOccurrencesOfString:@".testing" withString:@""];
-        NSURL *redirectURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", bundleId, @"://signout"]];
+        NSArray *bundleParts = [bundleId componentsSeparatedByString:@"."];
+        NSURL *redirectURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", [bundleParts lastObject], @"://signout"]];
         
         // Build the end session request params
         NSDictionary *additionalParameters = [[NSDictionary alloc] initWithObjectsAndKeys:CLIENT_ID, @"client_id", redirectURL.absoluteString, @"logout_uri", nil];
@@ -171,11 +180,13 @@ OIDExternalUserAgentIOS *agent;
             additionalParameters:additionalParameters];
         agent = [[OIDExternalUserAgentIOS alloc] initWithPresentingViewController:appDelegate.ozHomeNC];
         
-        [request setValue:nil forKey:@"state"];
+        if (USE_COGNITO) {
+            [request setValue:nil forKey:@"state"];
+        }
         
         // Make the endSession request
         appDelegate.currentAuthorizationFlow = [OIDAuthorizationService presentEndSessionRequest:request externalUserAgent:agent callback:^(OIDEndSessionResponse * _Nullable endSessionResponse, NSError * _Nullable error) {
-            if (endSessionResponse) {
+            if (endSessionResponse || !USE_COGNITO) {
                 [appDelegate displaySigninPage];
             } else if (error && error.code != -3) {
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Logout Error"
