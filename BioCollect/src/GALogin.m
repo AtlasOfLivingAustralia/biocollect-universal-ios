@@ -108,10 +108,10 @@ OIDExternalUserAgentIOS *agent;
         // If the authentication was successful
         if (authState) {
             // Create a dictionary from the token rseponse
-            NSDictionary *credsDict = [[NSDictionary alloc] initWithObjectsAndKeys:authState.lastTokenResponse.accessToken, @"access_token", authState.lastTokenResponse.idToken, @"id_token", authState.lastTokenResponse.tokenType, @"token_type", authState.lastTokenResponse.refreshToken, @"refresh_token", nil];
-            [GASettings setCredentials: credsDict];
             NSLog(@"ACCESS TOKEN: %@", authState.lastTokenResponse.accessToken);
             NSLog(@"ID TOKEN: %@", authState.lastTokenResponse.idToken);
+            NSDictionary *credsDict = [[NSDictionary alloc] initWithObjectsAndKeys:authState.lastTokenResponse.accessToken, @"access_token", authState.lastTokenResponse.idToken, @"id_token", authState.lastTokenResponse.tokenType, @"token_type", authState.lastTokenResponse.refreshToken, @"refresh_token", nil];
+            [GASettings setCredentials: credsDict];
 
             // Dismiss the login modal
             [appDelegate.window.rootViewController dismissViewControllerAnimated:YES completion:nil];

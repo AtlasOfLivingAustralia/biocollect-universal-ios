@@ -133,9 +133,9 @@
     return [[OIDServiceConfiguration alloc] initWithDiscoveryDocument:discovery];
 }
 
-+(NSDictionary*) getUserProfile: (NSString *) accessToken {
++(NSDictionary*) getUserProfile: (NSString *) idToken {
     NSError * e;
-    NSArray *parts = [accessToken componentsSeparatedByString:@"."];
+    NSArray *parts = [idToken componentsSeparatedByString:@"."];
     NSData *decoded = [[NSData alloc] initWithBase64EncodedString:[[NSString alloc] initWithFormat:@"%@==", parts[1]] options:NSDataBase64DecodingIgnoreUnknownCharacters];
     NSDictionary* profile =  [NSJSONSerialization JSONObjectWithData:decoded
                                                               options:kNilOptions error:&e];
@@ -175,23 +175,18 @@
 };
 
 +(void) setCredentials: (NSDictionary *) credentials{
-    NSString * accessToken = [credentials valueForKey:@"access_token"];
-    [[NSUserDefaults standardUserDefaults] setObject:accessToken forKey:kAccessToken];
-    [[NSUserDefaults standardUserDefaults] setObject:[credentials valueForKey:@"id_token"] forKey:kIDToken];
+    NSString * idToken = [credentials valueForKey:@"id_token"];
+    [[NSUserDefaults standardUserDefaults] setObject:[credentials valueForKey:@"access_token"]  forKey:kAccessToken];
+    [[NSUserDefaults standardUserDefaults] setObject:idToken forKey:kIDToken];
     [[NSUserDefaults standardUserDefaults] setObject:[credentials valueForKey:@"token_type"]  forKey:kTokenType];
     [[NSUserDefaults standardUserDefaults] setObject:[credentials valueForKey:@"refresh_token"]  forKey:kRefreshToken];
     
-    NSDictionary * profile = [self getUserProfile: accessToken];
+    NSDictionary * profile = [self getUserProfile: idToken];
     [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"email"]  forKey:kEmailAddress];
-    [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"userid"]  forKey:kUserId];
-    if ([profile objectForKey:@"firstname"] && [profile objectForKey:@"lastname"]) {
-        [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"firstname"]  forKey:kFirstName];
-        [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"lastname"]  forKey:kLastName];
-    } else {
-        [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kFirstName];
-        [[NSUserDefaults standardUserDefaults] setObject:@""  forKey:kLastName];
-    }
-    long expiresIn = [[credentials valueForKey:@"expires_in"] integerValue];
+    [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"custom:userid"]  forKey:kUserId];
+    [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"given_name"]  forKey:kFirstName];
+    [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"family_name"]  forKey:kLastName];
+    long expiresIn = [[credentials valueForKey:@"exp"] integerValue];
     [self setExpiryDate: expiresIn];
     
     [[NSUserDefaults standardUserDefaults] synchronize];
