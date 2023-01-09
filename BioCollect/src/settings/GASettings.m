@@ -258,7 +258,7 @@
 
 +(void) setOpenIDConfig:(OIDServiceConfiguration *)serviceConfig{
     NSMutableDictionary* configDict = [[serviceConfig.discoveryDocument discoveryDictionary] mutableCopy];
-    if (USE_COGNITO) {
+    if (COGNITO_ENABLED) {
         NSString *endSessionURL = [serviceConfig.tokenEndpoint.absoluteString stringByReplacingOccurrencesOfString:@"oauth2/token" withString:@"logout"];
         [configDict setValue:endSessionURL forKey:@"end_session_endpoint"];
     }

@@ -128,16 +128,12 @@ OIDExternalUserAgentIOS *agent;
         } else {
             // Only display non-generic authenitcation errors
             if (error.code != -3) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Authentication Error"
-                                                                message:[error localizedDescription]
-                                                               delegate:self
-                                                      cancelButtonTitle:@"Dismiss"
-                                                      otherButtonTitles:nil];
-                [alert show];
-            }
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Authentication Error" message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
 
-            // Dismiss the ui indicator modal
-            [MRProgressOverlayView dismissOverlayForView:appDelegate.window animated:YES];
+                UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleCancel handler:nil];
+                [alertController addAction:dismissAction];
+                [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:alertController animated:YES completion:nil];
+            }
         }
     }];
 }
@@ -154,48 +150,70 @@ OIDExternalUserAgentIOS *agent;
         return;
     }
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: [locale get: @"menu.logout.title"]
-                                                    message:[locale get: @"menu.logout.genericMessage"]
-                                                   delegate:self
-                                          cancelButtonTitle:@"No"
-                                          otherButtonTitles:@"Yes",nil];
-    [alert show];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: [locale get: @"menu.logout.title"]
+//                                                    message:[locale get: @"menu.logout.genericMessage"]
+//                                                   delegate:self
+//                                          cancelButtonTitle:@"No"
+//                                          otherButtonTitles:@"Yes",nil];
+//    [alert show];
+    UIAlertController *alertController = [UIAlertController
+      alertControllerWithTitle:[locale get: @"menu.logout.title"]
+      message:[locale get: @"menu.logout.genericMessage"]
+      preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction *noAction = [UIAlertAction
+      actionWithTitle:@"No"
+      style:UIAlertActionStyleCancel
+      handler:nil];
+
+    UIAlertAction *yesAction = [UIAlertAction
+      actionWithTitle:@"Yes"
+      style:UIAlertActionStyleDefault
+      handler:^(UIAlertAction *action) {
+        [self performLogout];
+      }];
+
+    [alertController addAction:noAction];
+    [alertController addAction:yesAction];
+
+    [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:alertController animated:YES completion:nil];
 }
 
-#pragma mark - UIAlert view delegate
-- (void)alertView:(UIAlertView *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if( buttonIndex != 0 ) {
-        // Retrieve the OpenID discovery document
-        OIDServiceConfiguration* configuration = [GASettings getOpenIDConfig];
-        
-        NSString *bundleId = [[[NSBundle mainBundle] bundleIdentifier] stringByReplacingOccurrencesOfString:@".testing" withString:@""];
-        NSArray *bundleParts = [bundleId componentsSeparatedByString:@"."];
-        NSURL *redirectURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", [bundleParts lastObject], @"://signout"]];
-        
-        // Build the end session request params
-        NSDictionary *additionalParameters = [[NSDictionary alloc] initWithObjectsAndKeys:CLIENT_ID, @"client_id", redirectURL.absoluteString, @"logout_uri", nil];
-        
-        // Create & assign the request and agent
-        request = [[OIDEndSessionRequest alloc] initWithConfiguration:configuration idTokenHint:[GASettings getIDToken] postLogoutRedirectURL:redirectURL
-            additionalParameters:additionalParameters];
-        agent = [[OIDExternalUserAgentIOS alloc] initWithPresentingViewController:appDelegate.ozHomeNC];
-        
-        if (COGNITO_ENABLED) {
-            [request setValue:nil forKey:@"state"];
-        }
-        
-        // Make the endSession request
-        appDelegate.currentAuthorizationFlow = [OIDAuthorizationService presentEndSessionRequest:request externalUserAgent:agent callback:^(OIDEndSessionResponse * _Nullable endSessionResponse, NSError * _Nullable error) {
-            if (endSessionResponse || !COGNITO_ENABLED) {
-                [appDelegate displaySigninPage];
-            } else if (error && error.code != -3) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Logout Error"
-                                                                message:[error localizedDescription]
-                                                               delegate:self
-                                                      cancelButtonTitle:@"Dismiss"
-                                                      otherButtonTitles:nil];
-            }
-        }];
+- (void)performLogout {
+    // Retrieve the OpenID discovery document
+    OIDServiceConfiguration* configuration = [GASettings getOpenIDConfig];
+    
+    NSString *bundleId = [[[NSBundle mainBundle] bundleIdentifier] stringByReplacingOccurrencesOfString:@".testing" withString:@""];
+    NSArray *bundleParts = [bundleId componentsSeparatedByString:@"."];
+    NSURL *redirectURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", [bundleParts lastObject], @"://signout"]];
+    
+    // Build the end session request params
+    NSDictionary *additionalParameters = [[NSDictionary alloc] initWithObjectsAndKeys:CLIENT_ID, @"client_id", redirectURL.absoluteString, @"logout_uri", nil];
+    
+    // Create & assign the request and agent
+    request = [[OIDEndSessionRequest alloc] initWithConfiguration:configuration idTokenHint:[GASettings getIDToken] postLogoutRedirectURL:redirectURL
+        additionalParameters:additionalParameters];
+    agent = [[OIDExternalUserAgentIOS alloc] initWithPresentingViewController:appDelegate.ozHomeNC];
+    
+    if (COGNITO_ENABLED) {
+        [request setValue:nil forKey:@"state"];
     }
+    
+    // Make the endSession request
+    appDelegate.currentAuthorizationFlow = [OIDAuthorizationService presentEndSessionRequest:request externalUserAgent:agent callback:^(OIDEndSessionResponse * _Nullable endSessionResponse, NSError * _Nullable error) {
+        if (endSessionResponse || !COGNITO_ENABLED) {
+            [appDelegate displaySigninPage];
+        } else if (error && error.code != -3) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Logout Error"
+                                                                           message:[error localizedDescription]
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+
+            UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"Dismiss"
+                                                                     style:UIAlertActionStyleCancel
+                                                                   handler:nil];
+            [alert addAction:dismissAction];
+            [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:alert animated:YES completion:nil];
+        }
+    }];
 }
 @end
