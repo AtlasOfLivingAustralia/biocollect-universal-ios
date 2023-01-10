@@ -60,7 +60,6 @@ OIDExternalUserAgentIOS *agent;
             return;
         }
         
-        
         [GASettings setOpenIDConfig:configuration];
         [loginButton setEnabled:true];
         [loginButton setAlpha:1];
@@ -115,7 +114,7 @@ OIDExternalUserAgentIOS *agent;
         // If the authentication was successful
         if (authState) {
             // Create a dictionary from the token rseponse
-            [GASettings setCredentials: authState.lastTokenResponse];
+            [GASettings setAuthState:authState];
 
             // Dismiss the login modal
             [appDelegate.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
@@ -150,12 +149,7 @@ OIDExternalUserAgentIOS *agent;
         return;
     }
     
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: [locale get: @"menu.logout.title"]
-//                                                    message:[locale get: @"menu.logout.genericMessage"]
-//                                                   delegate:self
-//                                          cancelButtonTitle:@"No"
-//                                          otherButtonTitles:@"Yes",nil];
-//    [alert show];
+
     UIAlertController *alertController = [UIAlertController
       alertControllerWithTitle:[locale get: @"menu.logout.title"]
       message:[locale get: @"menu.logout.genericMessage"]
@@ -180,8 +174,9 @@ OIDExternalUserAgentIOS *agent;
 }
 
 - (void)performLogout {
-    // Retrieve the OpenID discovery document
-    OIDServiceConfiguration* configuration = [GASettings getOpenIDConfig];
+    // Retrieve the OpenID discovery document & auth state
+    OIDServiceConfiguration *configuration = [GASettings getOpenIDConfig];
+    OIDAuthState *authState = [GASettings getAuthState];
     
     NSString *bundleId = [[[NSBundle mainBundle] bundleIdentifier] stringByReplacingOccurrencesOfString:@".testing" withString:@""];
     NSArray *bundleParts = [bundleId componentsSeparatedByString:@"."];
@@ -191,7 +186,7 @@ OIDExternalUserAgentIOS *agent;
     NSDictionary *additionalParameters = [[NSDictionary alloc] initWithObjectsAndKeys:CLIENT_ID, @"client_id", redirectURL.absoluteString, @"logout_uri", nil];
     
     // Create & assign the request and agent
-    request = [[OIDEndSessionRequest alloc] initWithConfiguration:configuration idTokenHint:[GASettings getIDToken] postLogoutRedirectURL:redirectURL
+    request = [[OIDEndSessionRequest alloc] initWithConfiguration:configuration idTokenHint:authState.lastTokenResponse.idToken postLogoutRedirectURL:redirectURL
         additionalParameters:additionalParameters];
     agent = [[OIDExternalUserAgentIOS alloc] initWithPresentingViewController:appDelegate.ozHomeNC];
     

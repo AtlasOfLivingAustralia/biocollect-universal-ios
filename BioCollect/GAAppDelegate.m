@@ -197,7 +197,9 @@ static const NSInteger kARRMaxCacheAge = 60 * 60 * 24 * 365 * 2; // 1 day * 365 
     
     [self.window makeKeyAndVisible];
 
-    if ([GASettings getAccessToken] == 0){
+    OIDAuthState *authState = [GASettings getAuthState];
+    if (authState == nil || ![authState isAuthorized]){
+        NSLog(@"AUTH STATE %@", authState);
         [self displaySigninPage];
         
     } else {

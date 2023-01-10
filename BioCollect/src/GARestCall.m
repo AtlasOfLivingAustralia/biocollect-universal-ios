@@ -81,41 +81,20 @@
 }
 
 -(NSString*) getAuthorizationHeader {
-    if ([GASettings isAccessTokenExpired]) {
-        [self getNewAccessToken];
-    }
+    OIDAuthState *authState = [GASettings getAuthState];
     
-    return  [[NSString alloc] initWithFormat:@"Bearer %@", [GASettings getAccessToken]];
-}
-
--(void) getNewAccessToken {
-    NSString *refreshToken = [GASettings getRefreshToken];
-    OIDTokenRequest *request = [[OIDTokenRequest alloc]
-                                initWithConfiguration:[GASettings getOpenIDConfig]
-                                grantType:OIDGrantTypeRefreshToken
-                                authorizationCode:nil
-                                redirectURL:nil
-                                clientID:CLIENT_ID
-                                clientSecret:nil
-                                scope:SCOPE
-                                refreshToken:refreshToken
-                                codeVerifier:nil
-                                additionalParameters:nil];
-    
-    NSLog(@"ACCESS TOKEN: %@", [GASettings getAccessToken]);
-    NSLog(@"REFRESH TOKEN: %@", refreshToken);
-    
-    [OIDAuthorizationService performTokenRequest:request callback:^(OIDTokenResponse * _Nullable tokenResponse, NSError * _Nullable error) {
-        
-        // If the authentication was successful
-        if (tokenResponse) {
-            [GASettings setCredentials: tokenResponse];
+    // Token update check
+    [authState performActionWithFreshTokens:^(NSString * _Nullable accessToken, NSString * _Nullable idToken, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"Token refresh error %@", [error localizedDescription]);
         } else {
-            NSLog(@"Token refresh error: %@", [error localizedDescription]);
+            // Update the authentication state
+            [GASettings setAuthState:authState];
         }
     }];
+    
+    return  [[NSString alloc] initWithFormat:@"Bearer %@", authState.lastTokenResponse.accessToken];
 }
-
 
 -(NSMutableArray *) downloadProjects : (NSError **) error{
     

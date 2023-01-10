@@ -9,21 +9,14 @@
 #import "GASettingsConstant.h"
 
 #define kEmailAddress @"emailAddress"
-#define kAuthKey @"authKey"
 #define kSortBy @"sortBy"
 #define kDataToSync @"dataToSync"
 #define kEULA @"EULA"
 #define kFirstName @"firstName"
 #define kLastName @"lastName"
 #define kUserId @"userId"
-#define kAccessToken @"accessToken"
-#define kIDToken @"idToken"
-#define kExpiresIn @"expiresIn"
-#define kExpiresDateTime @"expiresDateTime"
-#define kAccessDateTime @"accessDateTime"
-#define kTokenType @"tokenType"
-#define kRefreshToken @"refreshToken"
 #define kOpenIDConfig @"OIDCDiscovery"
+#define kAuthState @"authState"
 #define IDIOM    UI_USER_INTERFACE_IDIOM()
 #define IPAD     UIUserInterfaceIdiomPad
 
@@ -38,20 +31,13 @@
 
 +(void) resetAllFields{
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kEmailAddress];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kAuthKey];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kSortBy];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kDataToSync];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kFirstName];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kLastName];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kUserId];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kAccessToken];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kIDToken];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kExpiresIn];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kExpiresDateTime];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kAccessDateTime];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kTokenType];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kRefreshToken];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kOpenIDConfig];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kAuthState];
     //[[NSUserDefaults standardUserDefaults] removeObjectForKey:kEULA];
     [[NSUserDefaults standardUserDefaults]synchronize];    
 }
@@ -59,10 +45,6 @@
 +(NSString*) getEmailAddress{
     return [[NSUserDefaults standardUserDefaults] objectForKey:kEmailAddress];
 }
-
-//+(NSString*) getAuthKey{
-//    return [[NSUserDefaults standardUserDefaults] objectForKey:kAuthKey];
-//}
 
 +(NSString*) getSortBy{
     return [[NSUserDefaults standardUserDefaults] objectForKey:kSortBy];
@@ -95,43 +77,35 @@
     return [NSString stringWithFormat:@"%@ %@", firstName, lastName];
 }
 
-+(NSString*) getAuthorizationHeader {
-    return  [[NSString alloc] initWithFormat:@"Bearer %@", [self getAccessToken]];
-}
-
-+(NSString*) getAccessToken{
-    return [[NSUserDefaults standardUserDefaults] objectForKey:kAccessToken];
-}
-
-+(NSString*) getRefreshToken {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:kRefreshToken];
-}
-
-+(long) getExpiresIn{
-    return [[NSUserDefaults standardUserDefaults] doubleForKey:kExpiresIn];
-}
-
-+(NSString*) getAccessDateTime{
-    return [[NSUserDefaults standardUserDefaults] objectForKey:kAccessDateTime];
-}
-
-+(NSString*) getExpiresDateTime{
-    return [[NSUserDefaults standardUserDefaults] objectForKey:kExpiresDateTime];
-}
-
-+(NSString*) getTokenType{
-    return [[NSUserDefaults standardUserDefaults] objectForKey:kTokenType];
-}
-
-+(NSString*) getIDToken{
-    return [[NSUserDefaults standardUserDefaults] objectForKey:kIDToken];
-}
-
 +(OIDServiceConfiguration*) getOpenIDConfig{
     NSError *e = nil;
     NSDictionary* discoveryDict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:kOpenIDConfig];
     OIDServiceDiscovery* discovery = [[OIDServiceDiscovery alloc] initWithDictionary:discoveryDict error:&e];
     return [[OIDServiceConfiguration alloc] initWithDiscoveryDocument:discovery];
+}
+
++(OIDAuthState*) getAuthState {
+    NSData *authStateData = [[NSUserDefaults standardUserDefaults] objectForKey:kAuthState];
+    NSError *error;
+    
+    // Check that the encoded data is not nil
+    if (authStateData) {
+
+        // Decode the encoded `OIDAuthState` object
+        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingFromData:authStateData error:&error];
+        [unarchiver setRequiresSecureCoding:true];
+        OIDAuthState *authState = [[OIDAuthState alloc] initWithCoder:unarchiver];
+
+        if (authState) {
+            return authState;
+        } else {
+            NSLog(@"Failed to decode OIDAuthState: %@", error);
+        }
+    } else {
+        NSLog(@"Encoded OIDAuthState not found in NSUserDefaults");
+    }
+    
+    return nil;
 }
 
 +(NSDictionary*) getUserProfile: (NSString *) token {
@@ -154,77 +128,10 @@
     return profile;
 }
 
-+(Boolean) isAccessTokenExpired {
-    NSTimeInterval bufferInSeconds = 15.0 * 60.0; // 15 minutes
-
-    NSDate * expires = [self getExpiresDateTime];
-    expires = [[NSDate alloc] initWithTimeInterval:bufferInSeconds sinceDate:expires];
-    NSDate * now = [NSDate date];
-    if ([now compare:expires] == NSOrderedDescending)
-        return TRUE;
-    else
-        return FALSE;
-}
-
-+(void) setAccessToken: (NSString *) accessToken{
-    [[NSUserDefaults standardUserDefaults] setObject:accessToken forKey:kAccessToken];
-    [[NSUserDefaults standardUserDefaults]synchronize];
-};
-+(void) setRefreshToken: (NSString *) refreshToken{
-    [[NSUserDefaults standardUserDefaults] setObject:refreshToken forKey:kRefreshToken];
-    [[NSUserDefaults standardUserDefaults]synchronize];
-};
-+(void) setTokenType: (NSString *) tokenType{
-    [[NSUserDefaults standardUserDefaults] setObject:tokenType forKey:kTokenType];
-    [[NSUserDefaults standardUserDefaults]synchronize];
-
-};
-
-+(void) setIDToken: (NSString *) idToken {
-    [[NSUserDefaults standardUserDefaults] setObject:idToken forKey:kIDToken];
-    [[NSUserDefaults standardUserDefaults]synchronize];
-};
-
-+(void) setCredentials: (OIDTokenResponse *) credentials{
-    [[NSUserDefaults standardUserDefaults] setObject:credentials.accessToken  forKey:kAccessToken];
-    [[NSUserDefaults standardUserDefaults] setObject:credentials.idToken forKey:kIDToken];
-    [[NSUserDefaults standardUserDefaults] setObject:credentials.tokenType forKey:kTokenType];
-    if (credentials.refreshToken != nil) {
-        [[NSUserDefaults standardUserDefaults] setObject:credentials.refreshToken  forKey:kRefreshToken];
-    }
-
-    NSDictionary * profile = [self getUserProfile: COGNITO_ENABLED ? credentials.idToken : credentials.accessToken];
-    [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"email"]  forKey:kEmailAddress];
-    [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:COGNITO_ENABLED ? @"custom:userid" : @"userid"]  forKey:kUserId];
-    [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"given_name"]  forKey:kFirstName];
-    [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"family_name"]  forKey:kLastName];
-    long expiresIn = [credentials.accessTokenExpirationDate timeIntervalSince1970];
-    [self setExpiryDate: expiresIn];
-    
-    [[NSUserDefaults standardUserDefaults] synchronize];
-};
-
-+(void) setExpiryDate:(long) periodInSeconds {
-    NSString *periodInString = [[NSString alloc] initWithFormat:@"%ld", periodInSeconds];
-    
-    NSTimeInterval period = [periodInString doubleValue];
-    NSDate* now = [NSDate date];
-    NSDate* expiry = [[NSDate alloc] initWithTimeInterval:period sinceDate: now];
-    [[NSUserDefaults standardUserDefaults] setObject:now  forKey:kAccessDateTime];
-    [[NSUserDefaults standardUserDefaults] setInteger:periodInSeconds  forKey:kExpiresIn];
-    [[NSUserDefaults standardUserDefaults] setObject:expiry  forKey:kExpiresDateTime];
-};
-
-
 +(void) setEmailAddress : (NSString *) emailAddress{
     [[NSUserDefaults standardUserDefaults] setObject:emailAddress forKey:kEmailAddress];
     [[NSUserDefaults standardUserDefaults]synchronize];
 }
-
-//+(void) setAuthKey: (NSString *) authKey{
-//    [[NSUserDefaults standardUserDefaults] setObject:authKey forKey:kAuthKey];
-//    [[NSUserDefaults standardUserDefaults]synchronize];
-//}
 
 +(void) setSortBy: (NSString *) sortBy{
     [[NSUserDefaults standardUserDefaults] setObject:sortBy forKey:kSortBy];
@@ -264,6 +171,22 @@
     }
     
     [[NSUserDefaults standardUserDefaults] setObject:configDict forKey:kOpenIDConfig];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+}
+
++(void) setAuthState:(OIDAuthState *)authState {
+    // Encode the authState data
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initRequiringSecureCoding:true];
+    [authState encodeWithCoder:archiver];
+    [archiver finishEncoding];
+    [[NSUserDefaults standardUserDefaults] setObject:[archiver encodedData] forKey:kAuthState];
+    
+    NSDictionary * profile = [self getUserProfile: COGNITO_ENABLED ? authState.lastTokenResponse.idToken : authState.lastTokenResponse.accessToken];
+    [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"email"]  forKey:kEmailAddress];
+    [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:COGNITO_ENABLED ? @"custom:userid" : @"userid"]  forKey:kUserId];
+    [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"given_name"]  forKey:kFirstName];
+    [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"family_name"]  forKey:kLastName];
+    
     [[NSUserDefaults standardUserDefaults]synchronize];
 }
 
