@@ -199,12 +199,17 @@ static const NSInteger kARRMaxCacheAge = 60 * 60 * 24 * 365 * 2; // 1 day * 365 
 
     OIDAuthState *authState = [GASettings getAuthState];
     if (authState == nil || ![authState isAuthorized]){
-        NSLog(@"AUTH STATE %@", authState);
         [self displaySigninPage];
-        
     } else {
         DebugLog(@"[INFO] GAAppDelegate:addSplitViewtoRoot - loading data from db.");
-        [self updateTableModelsAndViews:[self.sqlLite loadProjectsAndActivities]];
+        [authState performActionWithFreshTokens:^(NSString * _Nullable accessToken, NSString * _Nullable idToken, NSError * _Nullable error) {
+            if (error) {
+                [self displaySigninPage];
+            } else {
+                [GASettings setAuthState:authState];
+                [self updateTableModelsAndViews:[self.sqlLite loadProjectsAndActivities]];
+            }
+        }];
     }
 }
 
