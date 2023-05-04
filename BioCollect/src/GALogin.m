@@ -60,6 +60,7 @@ OIDExternalUserAgentIOS *agent;
             return;
         }
         
+        NSLog(@"%@", [configuration.authorizationEndpoint absoluteString]);
         [GASettings setOpenIDConfig:configuration];
         [loginButton setEnabled:true];
         [loginButton setAlpha:1];
@@ -102,10 +103,12 @@ OIDExternalUserAgentIOS *agent;
     OIDAuthorizationRequest *request =
     [[OIDAuthorizationRequest alloc] initWithConfiguration:configuration
                                                   clientId:CLIENT_ID
-                                                    scopes:@[OIDScopeOpenID, OIDScopeProfile]
+                                                    scopes:nil
                                                redirectURL:redirectURL
                                               responseType:OIDResponseTypeCode
                                       additionalParameters:nil];
+    
+    NSLog(@"%@", [request authorizationRequestURL]);
 
     // Make the authorization request
     appDelegate.currentAuthorizationFlow =
@@ -133,6 +136,7 @@ OIDExternalUserAgentIOS *agent;
                 [alertController addAction:dismissAction];
                 [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:alertController animated:YES completion:nil];
             }
+            NSLog(@"%@", [error localizedDescription]);
         }
     }];
 }
