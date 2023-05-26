@@ -9,7 +9,7 @@
 	<key>Bio_Home_BK_Small</key>
 	<string>biocontrolhub_bk_small</string>
 	<key>Bio_Home_Login_Image_Logo</key>
-	<string>biocontrol_logo.png</string>
+	<false/>
 	<key>Bio_Home_Login_Image_iPad</key>
 	<string>biocontrol_hub_home_login_iPad.jpg</string>
 	<key>Bio_Home_Login_Image_iPhone</key>
@@ -166,6 +166,8 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>

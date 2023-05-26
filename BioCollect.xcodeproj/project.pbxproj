@@ -2831,15 +2831,15 @@
 				ORGANIZATIONNAME = "Sathya Moorthy, Sathish (CSIRO IM&T, Clayton)";
 				TargetAttributes = {
 					E261465C20072F9300B1104E = {
-						DevelopmentTeam = KG3QS53Q3N;
+						DevelopmentTeam = VP6SGJQWPU;
 						ProvisioningStyle = Automatic;
 					};
 					E26638691F52EB9B00F1F1CE = {
-						DevelopmentTeam = KG3QS53Q3N;
+						DevelopmentTeam = VP6SGJQWPU;
 						ProvisioningStyle = Automatic;
 					};
 					E2AECEE01E73D3010035DF28 = {
-						DevelopmentTeam = KG3QS53Q3N;
+						DevelopmentTeam = VP6SGJQWPU;
 						ProvisioningStyle = Automatic;
 					};
 					E2E3AA8818F4D2940005BB9E = {
@@ -4283,8 +4283,8 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = KG3QS53Q3N;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VP6SGJQWPU;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BioCollect/Oz Atlas-Prefix.pch";
@@ -4298,13 +4298,13 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/BioCollect/src/Framework",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.4;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.bilbyblitz.testing;
+				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.tracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4322,8 +4322,8 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = KG3QS53Q3N;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VP6SGJQWPU;
 				ENABLE_NS_ASSERTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BioCollect/Oz Atlas-Prefix.pch";
@@ -4333,12 +4333,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/BioCollect/src/Framework",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.4;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.bilbyblitz.testing;
+				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.tracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4357,7 +4357,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KG3QS53Q3N;
+				DEVELOPMENT_TEAM = VP6SGJQWPU;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BioCollect/Oz Atlas-Prefix.pch";
@@ -4377,7 +4377,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.biocontrolhub.testing;
+				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.biocontrolhub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4396,7 +4396,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KG3QS53Q3N;
+				DEVELOPMENT_TEAM = VP6SGJQWPU;
 				ENABLE_NS_ASSERTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BioCollect/Oz Atlas-Prefix.pch";
@@ -4411,7 +4411,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.biocontrolhub.testing;
+				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.biocontrolhub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4429,7 +4429,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KG3QS53Q3N;
+				DEVELOPMENT_TEAM = VP6SGJQWPU;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BioCollect/Oz Atlas-Prefix.pch";
@@ -4449,7 +4449,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.biocollect.testing;
+				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.biocollect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4467,7 +4467,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KG3QS53Q3N;
+				DEVELOPMENT_TEAM = VP6SGJQWPU;
 				ENABLE_NS_ASSERTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BioCollect/Oz Atlas-Prefix.pch";
@@ -4483,7 +4483,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.biocollect.testing;
+				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.biocollect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4589,7 +4589,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VP6SGJQWPU;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -4604,7 +4604,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/BioCollect/src/Framework",
 				);
-				MARKETING_VERSION = 1.7;
+				MARKETING_VERSION = 1.8;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -4628,7 +4628,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VP6SGJQWPU;
 				ENABLE_NS_ASSERTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -4639,7 +4639,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/BioCollect/src/Framework",
 				);
-				MARKETING_VERSION = 1.7;
+				MARKETING_VERSION = 1.8;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"$(inherited)",

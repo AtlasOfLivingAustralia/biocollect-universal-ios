@@ -1,9 +1,9 @@
 PODS:
-  - AppAuth (1.6.0):
-    - AppAuth/Core (= 1.6.0)
-    - AppAuth/ExternalUserAgent (= 1.6.0)
-  - AppAuth/Core (1.6.0)
-  - AppAuth/ExternalUserAgent (1.6.0):
+  - AppAuth (1.6.2):
+    - AppAuth/Core (= 1.6.2)
+    - AppAuth/ExternalUserAgent (= 1.6.2)
+  - AppAuth/Core (1.6.2)
+  - AppAuth/ExternalUserAgent (1.6.2):
     - AppAuth/Core
 
 DEPENDENCIES:
@@ -14,8 +14,8 @@ SPEC REPOS:
     - AppAuth
 
 SPEC CHECKSUMS:
-  AppAuth: 8fca6b5563a5baef2c04bee27538025e4ceb2add
+  AppAuth: 3bb1d1cd9340bd09f5ed189fb00b1cc28e1e8570
 
 PODFILE CHECKSUM: cb923b3612ca1b277b3262198dd140ab064b6f58
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1
