@@ -180,7 +180,7 @@ static const NSInteger kARRMaxCacheAge = 60 * 60 * 24 * 365 * 2; // 1 day * 365 
         [[UIBarButtonItem appearance] setTintColor: [self colorFromHexString: @"#F1582B"]];
         
     } else if([appType isEqualToString:@"hubview"]) {
-        [[UINavigationBar appearance] setBackgroundColor:[self colorFromHexString: @"#000000"]];
+        [[UINavigationBar appearance] setBackgroundColor:[self colorFromHexString: @"#ffffff"]];
         [[UINavigationBar appearance] setTranslucent:NO];
         [self.window setRootViewController:ozHomeNC];
         [[UITabBar appearance] setTintColor: [self colorFromHexString: [GASettings appTheme]]];
