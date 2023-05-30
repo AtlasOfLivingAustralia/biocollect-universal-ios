@@ -9,7 +9,7 @@
 	<key>Bio_Home_BK_Small</key>
 	<string>biocontrolhub_bk_small</string>
 	<key>Bio_Home_Login_Image_Logo</key>
-	<false/>
+	<string>biocontrol_logo.png</string>
 	<key>Bio_Home_Login_Image_iPad</key>
 	<string>biocontrol_hub_home_login_iPad.jpg</string>
 	<key>Bio_Home_Login_Image_iPhone</key>

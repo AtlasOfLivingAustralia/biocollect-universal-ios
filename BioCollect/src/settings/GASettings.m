@@ -233,7 +233,6 @@
 }
 
 +(NSString*) appLoginLogo {
-    NSString *imageName = nil;
     NSString *value = nil;
     value = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_Home_Login_Image_Logo"];
     
