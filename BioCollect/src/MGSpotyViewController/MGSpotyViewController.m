@@ -58,7 +58,7 @@ static const NSUInteger kMGOverviewMainSubviewTag = 100;
         
         _tableView = [UITableView new];
         
-        _shouldUnblur = YES;
+        _shouldUnblur = NO;
         _flexibleOverviewHeight = YES;
         
         operationQueue_ = [[NSOperationQueue alloc]init];
