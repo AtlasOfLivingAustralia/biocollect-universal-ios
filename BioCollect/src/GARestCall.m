@@ -83,15 +83,32 @@
 -(NSString*) getAuthorizationHeader {
     OIDAuthState *authState = [GASettings getAuthState];
     
-    // Token update check
-    [authState performActionWithFreshTokens:^(NSString * _Nullable accessToken, NSString * _Nullable idToken, NSError * _Nullable error) {
-        if (error) {
-            NSLog(@"Token refresh error %@", [error localizedDescription]);
-        } else {
-            // Update the authentication state
-            [GASettings setAuthState:authState];
-        }
-    }];
+    NSDate* dateNow = [NSDate date];
+    NSDate* dateExpiry = [[authState lastTokenResponse] accessTokenExpirationDate];
+    
+    NSLog(@"%@", dateExpiry);
+    
+    // Check whether the expiry date is in the future
+    if ([dateNow compare:dateExpiry] != NSOrderedAscending) {
+        NSLog(@"Refreshing token!");
+        dispatch_semaphore_t authWait = dispatch_semaphore_create(0);
+        
+        // Token update check
+        [authState performActionWithFreshTokens:^(NSString * _Nullable accessToken, NSString * _Nullable idToken, NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"Token refresh error %@", [error localizedDescription]);
+            } else {
+                // Update the authentication state
+                [GASettings setAuthState:authState];
+                
+                // Signal the semaphore to continue
+                dispatch_semaphore_signal(authWait);
+            }
+        }];
+        
+        dispatch_time_t timeout = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10.0 * NSEC_PER_SEC));
+        dispatch_semaphore_wait(authWait, timeout);
+    }
     
     return  [[NSString alloc] initWithFormat:@"Bearer %@", authState.lastTokenResponse.accessToken];
 }

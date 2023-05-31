@@ -202,14 +202,7 @@ static const NSInteger kARRMaxCacheAge = 60 * 60 * 24 * 365 * 2; // 1 day * 365 
         [self displaySigninPage];
     } else {
         DebugLog(@"[INFO] GAAppDelegate:addSplitViewtoRoot - loading data from db.");
-        [authState performActionWithFreshTokens:^(NSString * _Nullable accessToken, NSString * _Nullable idToken, NSError * _Nullable error) {
-            if (error) {
-                [self displaySigninPage];
-            } else {
-                [GASettings setAuthState:authState];
-                [self updateTableModelsAndViews:[self.sqlLite loadProjectsAndActivities]];
-            }
-        }];
+        [self updateTableModelsAndViews:[self.sqlLite loadProjectsAndActivities]];
     }
 }
 
@@ -234,7 +227,6 @@ static const NSInteger kARRMaxCacheAge = 60 * 60 * 24 * 365 * 2; // 1 day * 365 
     [GASettings resetAllFields];
     [self.homeVC resetProjects];
     [self.recordsVC resetRecords];
-    [GASettings resetAllFields];
     [self.sqlLite deleteAllTables];
     [self.trackerService removeAllTracks];
     [self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
