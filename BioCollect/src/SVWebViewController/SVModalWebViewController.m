@@ -47,6 +47,9 @@
         else
             self.webViewController.navigationItem.rightBarButtonItem = doneButton;
     }
+    
+    [self setModalPresentationStyle:UIModalPresentationFullScreen];
+    
     return self;
 }
 

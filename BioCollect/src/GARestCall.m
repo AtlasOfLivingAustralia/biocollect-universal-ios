@@ -90,7 +90,6 @@
     
     // Check whether the expiry date is in the future
     if ([dateNow compare:dateExpiry] != NSOrderedAscending) {
-        NSLog(@"Refreshing token!");
         dispatch_semaphore_t authWait = dispatch_semaphore_create(0);
         
         // Token update check
@@ -100,10 +99,10 @@
             } else {
                 // Update the authentication state
                 [GASettings setAuthState:authState];
-                
-                // Signal the semaphore to continue
-                dispatch_semaphore_signal(authWait);
             }
+            
+            // Signal the semaphore to continue
+            dispatch_semaphore_signal(authWait);
         }];
         
         dispatch_time_t timeout = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10.0 * NSEC_PER_SEC));
