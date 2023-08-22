@@ -3,8 +3,8 @@
 #define DEFAULT_TIMEOUT 20
 
 #define REST_SERVER @"https://fieldcapture.ala.org.au"
-#define ECODATA_SERVER @"https://ecodata-dev.ala.org.au"
-#define BIOCOLLECT_SERVER @"https://biocollect-dev.ala.org.au"
+#define ECODATA_SERVER @"https://ecodata-test.ala.org.au"
+#define BIOCOLLECT_SERVER @"https://biocollect-test.ala.org.au"
 #define LISTS_SERVER @"https://lists.ala.org.au"
 #define BIOCACHE_SERVER @"https://biocache.ala.org.au"
 
@@ -43,11 +43,12 @@
 #define HUB_VIEW @"hubview"
 
 // OpenID Connect Configuration
-#define COGNITO_ENABLED true
+#define COGNITO_ENABLED false
 #define COGNITO_REGION @"ap-southeast-2"
 #define COGNITO_USER_POOL @"OOXU9GW39"
 
-#define CLIENT_ID @"287c0mma0hqlu2u85qbppk2nvl"
+// #define CLIENT_ID @"3evrluqa40pn11u2f2hqah813r" COGNITO
+#define CLIENT_ID @"5mqnuhdf75ru6fc153hjifdtsn"
 #define SCOPE @"email openid profile ala/attrs ala/roles"
 
 #endif
