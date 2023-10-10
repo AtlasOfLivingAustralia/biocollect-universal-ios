@@ -96,7 +96,14 @@ OIDExternalUserAgentIOS *agent;
     OIDServiceConfiguration *configuration = [GASettings getOpenIDConfig];
     NSString *bundleId = [[[NSBundle mainBundle] bundleIdentifier] stringByReplacingOccurrencesOfString:@".testing" withString:@""];
     NSArray *bundleParts = [bundleId componentsSeparatedByString:@"."];
-    NSURL *redirectURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", [bundleParts lastObject], @"://signin"]];
+    NSString *bundleName = [bundleParts lastObject];
+    
+    // Fix bundleName for bilbyblitz app
+    if ([bundleName isEqualToString:@"tracker"]) {
+        bundleName = @"bilbyblitz";
+    }
+    
+    NSURL *redirectURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", bundleName, @"://signin"]];
     NSLog(@"REDIRECT URL %@", redirectURL.absoluteString);
     
     // Create the login request object
