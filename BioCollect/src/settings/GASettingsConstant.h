@@ -3,14 +3,14 @@
 #define DEFAULT_TIMEOUT 20
 
 #define REST_SERVER @"https://fieldcapture.ala.org.au"
-#define ECODATA_SERVER @"https://ecodata-test.ala.org.au"
-#define BIOCOLLECT_SERVER @"https://biocollect-test.ala.org.au"
+#define ECODATA_SERVER @"https://ecodata.ala.org.au"
+#define BIOCOLLECT_SERVER @"https://biocollect.ala.org.au"
 #define LISTS_SERVER @"https://lists.ala.org.au"
 #define BIOCACHE_SERVER @"https://biocache.ala.org.au"
 
 #define LIST_PROJECT_ACTIVITIES @"/ws/survey/list"
 #define AUTOCOMPLETE_URL @"https://bie.ala.org.au/ws/search.json?sort=scientificName&fq=taxonomicStatus:accepted&q="
-#define AUTH_SERVER  @"https://auth-test.ala.org.au"
+#define AUTH_SERVER  @"https://auth.ala.org.au"
 #define AUTH_REGISTER @"/userdetails/registration/createAccount"
 #define AUTH_USERDETAILS @"/userdetails/userDetails/getUserDetails?userName="
 #define AUTH_TOKEN @"/cas/oidc/token"
@@ -48,7 +48,7 @@
 #define COGNITO_USER_POOL @"OOXU9GW39"
 
 // #define CLIENT_ID @"3evrluqa40pn11u2f2hqah813r" COGNITO
-#define CLIENT_ID @"5mqnuhdf75ru6fc153hjifdtsn"
+#define CLIENT_ID @"oidc-mobile-auth"
 #define SCOPE @"email openid profile ala/attrs ala/roles"
 
 #endif
