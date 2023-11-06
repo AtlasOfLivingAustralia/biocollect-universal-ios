@@ -49,6 +49,6 @@
 
 // #define CLIENT_ID @"3evrluqa40pn11u2f2hqah813r" COGNITO
 #define CLIENT_ID @"oidc-mobile-auth"
-#define SCOPE @"email openid profile ala/attrs ala/roles"
+#define SCOPE @"email openid profile ala roles users/read"
 
 #endif
