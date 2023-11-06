@@ -20,7 +20,10 @@
 
 @implementation GALogin
 
-@synthesize loginButton, usernameTextField, passwordTextField, registerButton, logoImageView, appDelegate;
+OIDEndSessionRequest *request;
+OIDExternalUserAgentIOS *agent;
+
+@synthesize loginButton, registerButton, logoImageView, appDelegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,11 +32,40 @@
     if (self) {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:[GASettings appLoginImage]]]];
     }
- 
+    
     return self;
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    [loginButton setEnabled:false];
+    [loginButton setAlpha:0.4];
+
+    NSString *url = COGNITO_ENABLED ?
+    [[NSString alloc] initWithFormat:@"https://cognito-idp.%@.amazonaws.com/%@_%@", COGNITO_REGION, COGNITO_REGION, COGNITO_USER_POOL] :
+    [[NSString alloc] initWithFormat:@"%@%@", AUTH_SERVER, @"/cas/oidc"];
+    NSLog(@"%@", url);
+    NSURL *issuer = [NSURL URLWithString:url];
+
+    // Fetch the OIDC discovery document
+    [OIDAuthorizationService discoverServiceConfigurationForIssuer:issuer
+                                                        completion:^(OIDServiceConfiguration *_Nullable configuration, NSError *_Nullable error) {
+        if (!configuration) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Authentication Error"
+                                                            message:[error localizedDescription]
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Dismiss"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            return;
+        }
+        
+        NSLog(@"%@", [configuration.authorizationEndpoint absoluteString]);
+        [GASettings setOpenIDConfig:configuration];
+        [loginButton setEnabled:true];
+        [loginButton setAlpha:1];
+        NSLog(@"OpenID Discovery Successful!");
+    }];
 }
 
 - (void)viewDidLoad
@@ -60,58 +92,60 @@
 }
 
 -(void) authenticate {
-    // Processing UI indicator on the main thread.
-    NSString *userName = self.usernameTextField.text;
-    NSString *password = self.passwordTextField.text;
-    [MRProgressOverlayView showOverlayAddedTo:appDelegate.window title:@"Processing.." mode:MRProgressOverlayViewModeIndeterminateSmall animated:YES];
-
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSError *error = nil;
-        [appDelegate.restCall  authenticate:userName password:password error:&error];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            //Dismiss the ui indicator modal
-            [MRProgressOverlayView dismissOverlayForView:appDelegate.window animated:YES];
-            
-            // Invalid user name and password
-            if(error != nil){
-                DebugLog(@"%@",[error localizedDescription]);
-                NSString *message = [error localizedDescription];
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                                message:message
-                                                               delegate:self
-                                                      cancelButtonTitle:@"Dismiss"
-                                                      otherButtonTitles:nil];
-                [alert show];
-            }
-            else{
-                self.passwordTextField.text = @"";
-                self.usernameTextField.text = @"";
-                //Dismiss the login modal
-                [appDelegate.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
-                NSString *appType = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_AppType"];
-                [UIView transitionWithView:appDelegate.window
-                                  duration:0.5
-                                   options:UIViewAnimationOptionTransitionFlipFromLeft
-                                animations:^{ appDelegate.window.rootViewController = appDelegate.ozHomeNC; }
-                                completion:nil];
-            }
-        });
-    });
-}
-
-#pragma mark - Text field delegate handler.
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    if(textField == self.usernameTextField){
-        [textField resignFirstResponder];
-        [self.passwordTextField becomeFirstResponder];
-    }
-    if(textField == self.passwordTextField){
-        [textField resignFirstResponder];
-        [self authenticate];
+    // Retrieve the OpenID configuration
+    OIDServiceConfiguration *configuration = [GASettings getOpenIDConfig];
+    NSString *bundleId = [[[NSBundle mainBundle] bundleIdentifier] stringByReplacingOccurrencesOfString:@".testing" withString:@""];
+    NSArray *bundleParts = [bundleId componentsSeparatedByString:@"."];
+    NSString *bundleName = [bundleParts lastObject];
+    
+    // Fix bundleName for bilbyblitz app
+    if ([bundleName isEqualToString:@"tracker"]) {
+        bundleName = @"bilbyblitz";
     }
     
-    return TRUE;
+    NSURL *redirectURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", bundleName, @"://signin"]];
+    NSLog(@"REDIRECT URL %@", redirectURL.absoluteString);
+    
+    // Create the login request object
+    OIDAuthorizationRequest *request =
+    [[OIDAuthorizationRequest alloc] initWithConfiguration:configuration
+                                                  clientId:CLIENT_ID
+                                                    scopes:nil
+                                               redirectURL:redirectURL
+                                              responseType:OIDResponseTypeCode
+                                      additionalParameters:nil];
+    
+    NSLog(@"%@", [request authorizationRequestURL]);
+
+    // Make the authorization request
+    appDelegate.currentAuthorizationFlow =
+    [OIDAuthState authStateByPresentingAuthorizationRequest:request
+                                   presentingViewController: self callback:^(OIDAuthState *_Nullable authState, NSError *_Nullable error) {
+        // If the authentication was successful
+        if (authState) {
+            // Create a dictionary from the token rseponse
+            [GASettings setAuthState:authState];
+
+            // Dismiss the login modal
+            [appDelegate.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
+
+            [UIView transitionWithView:appDelegate.window
+                              duration:0.5
+                               options:UIViewAnimationOptionTransitionFlipFromLeft
+                            animations:^{ appDelegate.window.rootViewController = appDelegate.ozHomeNC; }
+                            completion:nil];
+        } else {
+            // Only display non-generic authenitcation errors
+            if (error.code != -3) {
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Authentication Error" message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
+
+                UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleCancel handler:nil];
+                [alertController addAction:dismissAction];
+                [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:alertController animated:YES completion:nil];
+            }
+            NSLog(@"%@", [error localizedDescription]);
+        }
+    }];
 }
 
 -(void) logout {
@@ -126,107 +160,66 @@
         return;
     }
     
-    if([[GASettings appHubName] isEqualToString:@"trackshub"]) {
-           NSInteger size = [[appDelegate trackerService].tracks count];
-           if(size > 0) {
-               [RKDropdownAlert title:[locale get: @"menu.logout.pendingTracks.title"] message:[locale get: @"menu.logout.pendingTracks"] backgroundColor:[UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1] textColor: [UIColor whiteColor] time:5];
-               return;
-           }
-           UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[locale get: @"menu.logout.title"]
-                                      message:[NSString stringWithFormat:[locale get: @"menu.logout.passwordMessage"],
-                                      [GASettings getEmailAddress],errorMsg]
-                                      delegate:self
-                                      cancelButtonTitle:@"No"
-                                      otherButtonTitles:@"Yes",nil];
-            [alert setAlertViewStyle:UIAlertViewStyleSecureTextInput];
-            [alert show];
-     } else {
-           
-           UIAlertView *alert = [[UIAlertView alloc] initWithTitle: [locale get: @"menu.logout.title"]
-                                              message:[locale get: @"menu.logout.genericMessage"]
-                                             delegate:self
-                                    cancelButtonTitle:@"No"
-                                    otherButtonTitles:@"Yes",nil];
-           [alert show];
-     }
+
+    UIAlertController *alertController = [UIAlertController
+      alertControllerWithTitle:[locale get: @"menu.logout.title"]
+      message:[locale get: @"menu.logout.genericMessage"]
+      preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction *noAction = [UIAlertAction
+      actionWithTitle:@"No"
+      style:UIAlertActionStyleCancel
+      handler:nil];
+
+    UIAlertAction *yesAction = [UIAlertAction
+      actionWithTitle:@"Yes"
+      style:UIAlertActionStyleDefault
+      handler:^(UIAlertAction *action) {
+        [self performLogout];
+      }];
+
+    [alertController addAction:noAction];
+    [alertController addAction:yesAction];
+
+    [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:alertController animated:YES completion:nil];
 }
 
-#pragma mark - UIAlert view delegate
-- (void)alertView:(UIAlertView *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    Locale* locale = appDelegate.locale;
-    if( buttonIndex != 0 ) {
-        if([[GASettings appHubName] isEqualToString:@"trackshub"]) {
-            NSString *password = [actionSheet textFieldAtIndex:0].text;
-            if([password length] > 0) {
-                    // Run this in a background
-                   [MRProgressOverlayView showOverlayAddedTo:appDelegate.window title:@"Processing.." mode:MRProgressOverlayViewModeIndeterminateSmall animated:YES];
-                   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                       NSError *error = nil;
-                       [appDelegate.restCall  authenticate:[GASettings getEmailAddress] password: password error:&error];
-                       // Execute under UI thread.
-                       dispatch_async(dispatch_get_main_queue(), ^{
-                           [MRProgressOverlayView dismissOverlayForView:appDelegate.window animated:YES];
-                           if(error != nil) {
-                               [self logoutWithErrorMsg: [locale get: @"menu.logout.errorMsg"]];
-                           } else {
-                               [appDelegate displaySigninPage];
-                           }
-                       });
-                   });
-            } else {
-                [self logoutWithErrorMsg:[locale get: @"menu.logout.errorMsg"]];
-            }
-        } else {
-            [appDelegate displaySigninPage];
-        }
+- (void)performLogout {
+    // Retrieve the OpenID discovery document & auth state
+    OIDServiceConfiguration *configuration = [GASettings getOpenIDConfig];
+    OIDAuthState *authState = [GASettings getAuthState];
+    
+    NSString *bundleId = [[[NSBundle mainBundle] bundleIdentifier] stringByReplacingOccurrencesOfString:@".testing" withString:@""];
+    NSArray *bundleParts = [bundleId componentsSeparatedByString:@"."];
+    NSURL *redirectURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", [bundleParts lastObject], @"://signout"]];
+    
+    // Build the end session request params
+    NSDictionary *additionalParameters = [[NSDictionary alloc] initWithObjectsAndKeys:CLIENT_ID, @"client_id", redirectURL.absoluteString, @"logout_uri", nil];
+    
+    // Create & assign the request and agent
+    request = [[OIDEndSessionRequest alloc] initWithConfiguration:configuration idTokenHint:authState.lastTokenResponse.idToken postLogoutRedirectURL:redirectURL
+        additionalParameters:additionalParameters];
+    agent = [[OIDExternalUserAgentIOS alloc] initWithPresentingViewController:appDelegate.ozHomeNC];
+    
+    if (COGNITO_ENABLED) {
+        [request setValue:nil forKey:@"state"];
     }
+    
+    // Make the endSession request
+    appDelegate.currentAuthorizationFlow = [OIDAuthorizationService presentEndSessionRequest:request externalUserAgent:agent callback:^(OIDEndSessionResponse * _Nullable endSessionResponse, NSError * _Nullable error) {
+        if (endSessionResponse || !COGNITO_ENABLED) {
+            [appDelegate displaySigninPage];
+        } else if (error && error.code != -3) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Logout Error"
+                                                                           message:[error localizedDescription]
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+
+            UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"Dismiss"
+                                                                     style:UIAlertActionStyleCancel
+                                                                   handler:nil];
+            [alert addAction:dismissAction];
+            [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:alert animated:YES completion:nil];
+        }
+    }];
 }
 @end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

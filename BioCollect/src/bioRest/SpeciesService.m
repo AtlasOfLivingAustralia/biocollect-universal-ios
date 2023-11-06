@@ -26,9 +26,9 @@
     pageSize = pageSize ?: 10;
     
     if(groupName != nil && [groupName length] > 0 ) {
-        url = [[NSString alloc] initWithFormat:@"%@%@?group=%@&lat=%f&lon=%f&radius=%d&start=%d&pageSize=%d&common=true", PROXY_SERVER, SPECIES_GROUP, groupName, lat, lng, radius, offset, pageSize];
+        url = [[NSString alloc] initWithFormat:@"%@%@%@?lat=%f&lon=%f&radius=%d&start=%d&pageSize=%d&common=true", BIOCACHE_SERVER, SPECIES_GROUP, groupName, lat, lng, radius, offset, pageSize];
     } else {
-        url = [[NSString alloc] initWithFormat:@"%@%@?lat=%f&lon=%f&radius=%d", PROXY_SERVER, SPECIES_GROUPS, lat, lng, radius];
+        url = [[NSString alloc] initWithFormat:@"%@%@?lat=%f&lon=%f&radius=%d", BIOCACHE_SERVER, SPECIES_GROUPS, lat, lng, radius];
     }
     
     [request setURL:[NSURL URLWithString:url]];

@@ -93,7 +93,7 @@
     cell.textLabel.text = labelText;
     cell.detailTextLabel.text = detailLabelText;
     
-    thumbnail = [[NSString alloc] initWithFormat:@"%@%@/%@", PROXY_SERVER, SPECIES_THUMBNAIL, species[@"guid"]];
+    thumbnail = [[NSString alloc] initWithFormat:@"%@%@?id=%@", BIOCOLLECT_SERVER, SPECIES_THUMBNAIL, species[@"guid"]];
     if(![thumbnail isEqualToString:@""]){
         [cell.imageView sd_setImageWithURL:[NSURL URLWithString: thumbnail] placeholderImage:[UIImage imageNamed:@"noImage85.jpg"] options:SDWebImageRefreshCached];
     } else {

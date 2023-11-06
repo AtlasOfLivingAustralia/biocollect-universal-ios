@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -14,9 +11,7 @@
             <connections>
                 <outlet property="loginButton" destination="NHI-xz-TYg" id="Ybs-hJ-wzj"/>
                 <outlet property="logoImageView" destination="7Zl-Cf-HZ3" id="mt5-yg-mAz"/>
-                <outlet property="passwordTextField" destination="fNj-KQ-8ms" id="q0p-HL-CuC"/>
                 <outlet property="registerButton" destination="SeR-qP-PGa" id="TfV-Cq-fKT"/>
-                <outlet property="usernameTextField" destination="8Mr-es-5Kr" id="jfL-bE-BFQ"/>
                 <outlet property="view" destination="iN0-l3-epB" id="rdg-uf-u6s"/>
             </connections>
         </placeholder>
@@ -25,8 +20,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="hlV-Gb-9q7">
-                    <rect key="frame" x="16" y="60" width="343" height="276"/>
+                <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" alignment="center" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="hlV-Gb-9q7">
+                    <rect key="frame" x="16" y="40" width="343" height="284"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="iZp-4d-3ke">
                             <rect key="frame" x="0.0" y="0.0" width="343" height="115"/>
@@ -40,65 +35,29 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="IyF-Hi-twi">
-                            <rect key="frame" x="0.0" y="127" width="343" height="149"/>
+                            <rect key="frame" x="0.0" y="215" width="343" height="69"/>
                             <subviews>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="228" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Mr-es-5Kr">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NHI-xz-TYg">
                                     <rect key="frame" x="0.0" y="0.0" width="343" height="35"/>
-                                    <color key="backgroundColor" red="0.98958333333333337" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.94630175828933716" green="0.34607410430908203" blue="0.169730544090271" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="35" id="4lU-i8-BvR"/>
+                                        <constraint firstAttribute="height" constant="35" id="93R-9i-pEp"/>
                                     </constraints>
-                                    <color key="textColor" red="0.94509803920000002" green="0.34901960780000002" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                    <state key="normal" title="Login">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                     <connections>
-                                        <outlet property="delegate" destination="-1" id="XIp-st-dbz"/>
+                                        <action selector="onClickLogin:" destination="-1" eventType="touchUpInside" id="8jJ-N0-cWo"/>
                                     </connections>
-                                </textField>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fNj-KQ-8ms">
-                                    <rect key="frame" x="0.0" y="40" width="343" height="35"/>
-                                    <color key="backgroundColor" red="0.98958333330000003" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="35" id="l3Y-XR-HMw"/>
-                                    </constraints>
-                                    <color key="textColor" red="0.94509803920000002" green="0.34901960780000002" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="go" secureTextEntry="YES"/>
-                                    <connections>
-                                        <outlet property="delegate" destination="-1" id="68A-Kc-Inx"/>
-                                    </connections>
-                                </textField>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Xvu-ej-yPe">
-                                    <rect key="frame" x="0.0" y="80" width="343" height="35"/>
-                                    <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="IdA-ZH-7NL">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="35"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NHI-xz-TYg">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="35"/>
-                                                    <color key="backgroundColor" red="0.94630175828933716" green="0.34607410430908203" blue="0.169730544090271" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="35" id="93R-9i-pEp"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                    <state key="normal" title="Submit">
-                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="5"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                    <connections>
-                                                        <action selector="onClickLogin:" destination="-1" eventType="touchUpInside" id="8jJ-N0-cWo"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                        </stackView>
-                                    </subviews>
-                                </stackView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SeR-qP-PGa">
-                                    <rect key="frame" x="0.0" y="120" width="343" height="29"/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SeR-qP-PGa">
+                                    <rect key="frame" x="0.0" y="40" width="343" height="29"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <state key="normal" title="Not registered?">
                                         <color key="titleColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>

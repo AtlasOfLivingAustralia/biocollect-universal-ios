@@ -41,7 +41,7 @@
     self.urlId = @"1493";
     self.restRequestCounter = 0;
     self.restResponseCounter = 0;
-    appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
     return self;
 }
 
@@ -56,8 +56,7 @@
     [request setHTTPMethod:@"POST"];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
     [request setValue:JSON_CONTENT_TYPE_VALUE forHTTPHeaderField:JSON_CONTENT_TYPE_KEY];
-    [request setValue:[GASettings getEmailAddress] forHTTPHeaderField:@"userName"];
-    [request setValue:[GASettings getAuthKey] forHTTPHeaderField:@"authKey"];
+    [request setValue:[self.appDelegate.restCall getAuthorizationHeader] forHTTPHeaderField:@"Authorization"];
     [request setHTTPBody:[activity.activityJSON dataUsingEncoding:NSUTF8StringEncoding]];
     
     NSURLResponse *response;
@@ -81,42 +80,36 @@
  
 }
 
-// New Auth stuff;
--(void) authenticate : (NSString *)username password:(NSString *) p error:(NSError **) e{
-
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    NSString *url = [[NSString alloc] initWithFormat:@"%@/user/getKey",ECODATA_SERVER];
-    NSString* escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    [request setURL:[NSURL URLWithString:escapedUrlString]];
-    [request setHTTPMethod:@"GET"];
-    [request addValue:username forHTTPHeaderField:@"userName"];
-    [request addValue:p forHTTPHeaderField:@"password"];
+-(NSString*) getAuthorizationHeader {
+    OIDAuthState *authState = [GASettings getAuthState];
     
-    NSURLResponse *response;
-    NSData *GETReply = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&*e];
-
-    if(*e == nil) {
-        NSDictionary* respDict =  [NSJSONSerialization JSONObjectWithData:GETReply
-                                                                  options:kNilOptions error:&*e];
-        if(*e == nil) {
-            NSString *jsonError = [respDict objectForKey:@"error"];
-            if([jsonError length] == 0 && [[respDict objectForKey:@"authKey"] length] > 0) {
-                [GASettings setEmailAddress:username];
-                [GASettings setAuthKey:[respDict objectForKey:@"authKey"]];
-                [GASettings setFirstName:[respDict objectForKey:@"firstName"]];
-                [GASettings setLastName:[respDict objectForKey:@"lastName"]];
-                [GASettings setUserId:[respDict objectForKey:@"userId"]];
-                DebugLog(@"[SUCCESS] GARest:authenticate Authentication successful. User=%@",username);
-            }
-            else {
-                NSMutableDictionary* details = [NSMutableDictionary dictionary];
-                [details setValue:@"Invalid username or password." forKey:NSLocalizedDescriptionKey];
-                *e = [NSError errorWithDomain:REST_SERVER code:1001 userInfo:details];
-                DebugLog(@"[ERROR] GARest:authenticate Authentication failed. User=%@",username);
-            }
-        }
+    NSDate* dateNow = [NSDate date];
+    NSDate* dateExpiry = [[authState lastTokenResponse] accessTokenExpirationDate];
+    
+    NSLog(@"%@", dateExpiry);
+    
+    // Check whether the expiry date is in the future
+    if ([dateNow compare:dateExpiry] != NSOrderedAscending) {
+        dispatch_semaphore_t authWait = dispatch_semaphore_create(0);
         
+        // Token update check
+        [authState performActionWithFreshTokens:^(NSString * _Nullable accessToken, NSString * _Nullable idToken, NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"Token refresh error %@", [error localizedDescription]);
+            } else {
+                // Update the authentication state
+                [GASettings setAuthState:authState];
+            }
+            
+            // Signal the semaphore to continue
+            dispatch_semaphore_signal(authWait);
+        }];
+        
+        dispatch_time_t timeout = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10.0 * NSEC_PER_SEC));
+        dispatch_semaphore_wait(authWait, timeout);
     }
+    
+    return  [[NSString alloc] initWithFormat:@"Bearer %@", authState.lastTokenResponse.accessToken];
 }
 
 -(NSMutableArray *) downloadProjects : (NSError **) error{
@@ -126,8 +119,7 @@
     //Green ARMY filter
     NSString *url = [[NSString alloc] initWithFormat: @"%@/mobile/userProjects?program=Green Army",REST_SERVER];
     NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    [request setValue:[GASettings getEmailAddress] forHTTPHeaderField:@"userName"];
-    [request setValue:[GASettings getAuthKey] forHTTPHeaderField:@"authKey"];
+    [request setValue:[self.appDelegate.restCall getAuthorizationHeader] forHTTPHeaderField:@"Authorization"];
     [request setURL:[NSURL URLWithString:escapedUrlString]];
     DebugLog(@"ReSt projects url %@",escapedUrlString);
     [request setHTTPMethod:@"GET"];
@@ -151,8 +143,7 @@
             //Request activities for a project
             NSMutableURLRequest *request1 = [[NSMutableURLRequest alloc] init];
             NSString *url1 = [[NSString alloc]initWithFormat:@"%@/mobile/projectDetails/%@",REST_SERVER,project.projectId];
-            [request1 setValue:[GASettings getEmailAddress] forHTTPHeaderField:@"userName"];
-            [request1 setValue:[GASettings getAuthKey] forHTTPHeaderField:@"authKey"];
+            [request1 setValue:[self.appDelegate.restCall getAuthorizationHeader] forHTTPHeaderField:@"Authorization"];
             [request1 setURL:[NSURL URLWithString:url1]];
             [request1 setHTTPMethod:@"GET"];
             NSURLResponse *response1;
@@ -323,8 +314,7 @@
         [request setHTTPMethod:@"POST"];
         [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
         [request setValue:JSON_CONTENT_TYPE_VALUE forHTTPHeaderField:JSON_CONTENT_TYPE_KEY];
-        [request setValue:[GASettings getEmailAddress] forHTTPHeaderField:@"userName"];
-        [request setValue:[GASettings getAuthKey] forHTTPHeaderField:@"authKey"];
+        [request setValue:[self.appDelegate.restCall getAuthorizationHeader] forHTTPHeaderField:@"Authorization"];
         [request setHTTPBody:[postStr dataUsingEncoding:NSUTF8StringEncoding]];
        
         NSURLResponse *response;
@@ -411,8 +401,7 @@
             [request setURL:[NSURL URLWithString:url]];
             [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
             [request setValue:JSON_CONTENT_TYPE_VALUE forHTTPHeaderField:JSON_CONTENT_TYPE_KEY];
-            [request setValue:[GASettings getEmailAddress] forHTTPHeaderField: @"userName"];
-            [request setValue:[GASettings getAuthKey] forHTTPHeaderField: @"authKey"];
+            [request setValue:[self.appDelegate.restCall getAuthorizationHeader] forHTTPHeaderField: @"Authorization"];
             [request setHTTPBody:[record toJSONData]];
             [request setHTTPMethod:@"POST"];
             NSLog(@"%@", data);
@@ -505,8 +494,7 @@
         NSString *boundary = @"ydiasdaTXWa";
         NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
         [request addValue:contentType forHTTPHeaderField:@"Content-Type"];
-        [request setValue:[GASettings getEmailAddress] forHTTPHeaderField: @"userName"];
-        [request setValue:[GASettings getAuthKey] forHTTPHeaderField: @"authKey"];
+        [request setValue:[self.appDelegate.restCall getAuthorizationHeader] forHTTPHeaderField: @"Authorization"];
         
         // create body of request
         NSMutableData *body = [NSMutableData data];
@@ -590,8 +578,7 @@
     [request setURL:[NSURL URLWithString:url]];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
     [request setValue:JSON_CONTENT_TYPE_VALUE forHTTPHeaderField:JSON_CONTENT_TYPE_KEY];
-    [request setValue:[GASettings getEmailAddress] forHTTPHeaderField: @"userName"];
-    [request setValue:[GASettings getAuthKey] forHTTPHeaderField: @"authKey"];
+    [request setValue:[self.appDelegate.restCall getAuthorizationHeader] forHTTPHeaderField: @"Authorization"];
     [request setHTTPBody:[recordForm toSiteJSONData]];
     [request setHTTPMethod:@"POST"];
     NSLog(@"%@", siteJson);

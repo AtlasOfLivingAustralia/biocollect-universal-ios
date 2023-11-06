@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35831D02342564DE2B50C283 /* Pods_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FFCE08646E4E364CC25E24D /* Pods_Tracker.framework */; };
+		612B6C608F9BDD388AAA13A4 /* Pods_Bio_Control_Hub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE416AAA06B787D72CF95282 /* Pods_Bio_Control_Hub.framework */; };
 		8709D1C81DB9926700E49C7E /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8709D1C61DB9926700E49C7E /* MapViewController.m */; };
 		8709D1C91DB9926700E49C7E /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8709D1C71DB9926700E49C7E /* MapViewController.xib */; };
 		8709E9B21DB5A0FF00D04585 /* SpeciesSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8709E9AE1DB5A0FF00D04585 /* SpeciesSearchTableViewController.m */; };
@@ -65,6 +67,8 @@
 		87B09635204FBD4700DA1395 /* SightingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87B09633204FB94300DA1395 /* SightingListViewController.m */; };
 		87B700121DC2E5520066C236 /* SyncTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87B700101DC2E5520066C236 /* SyncTableViewController.m */; };
 		87B700131DC2E5520066C236 /* SyncTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87B700111DC2E5520066C236 /* SyncTableViewController.xib */; };
+		8CAA7F6672A4B74A9323144D /* Pods_Oz_Atlas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC387E29DADE58624488D41 /* Pods_Oz_Atlas.framework */; };
+		A6907D010BAB659F9E6B6A4A /* Pods_Oz_AtlasTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BC2AD722B7A8163906F0C63 /* Pods_Oz_AtlasTests.framework */; };
 		B83825F61A0C666B00690383 /* MRBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = B83825DA1A0C666B00690383 /* MRBlurView.m */; };
 		B83825F71A0C666B00690383 /* UIImage+MRImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = B83825DC1A0C666B00690383 /* UIImage+MRImageEffects.m */; };
 		B83825F81A0C666B00690383 /* MRActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = B83825DF1A0C666B00690383 /* MRActivityIndicatorView.m */; };
@@ -104,6 +108,7 @@
 		B8BFD2C61919C3AC0063DA78 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8BFD2C51919C3AC0063DA78 /* QuartzCore.framework */; };
 		B8BFD2C81919C3BC0063DA78 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8BFD2C71919C3BC0063DA78 /* Accelerate.framework */; };
 		B8D551DE18F952DF00EDD006 /* GARestCall.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D551DD18F952DF00EDD006 /* GARestCall.m */; };
+		CF9FA725167AF23C4C7F6FFB /* Pods_BioCollect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6091283338DD8AECD6406E3F /* Pods_BioCollect.framework */; };
 		E20189891C8922DD0031435D /* BioProjectService.m in Sources */ = {isa = PBXBuildFile; fileRef = E20189881C8922DD0031435D /* BioProjectService.m */; };
 		E201898A1C8922DD0031435D /* BioProjectService.m in Sources */ = {isa = PBXBuildFile; fileRef = E20189881C8922DD0031435D /* BioProjectService.m */; };
 		E20189931C895EEC0031435D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E20189921C895EEC0031435D /* ImageIO.framework */; };
@@ -1153,6 +1158,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		12582AC3219157A8E7DFC320 /* Pods-Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tracker.debug.xcconfig"; path = "Target Support Files/Pods-Tracker/Pods-Tracker.debug.xcconfig"; sourceTree = "<group>"; };
+		3112926A2431FB7FFEF31557 /* Pods-Oz AtlasTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Oz AtlasTests.debug.xcconfig"; path = "Target Support Files/Pods-Oz AtlasTests/Pods-Oz AtlasTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3AF72572BAB62FCB63A9064C /* Pods-Oz AtlasTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Oz AtlasTests.release.xcconfig"; path = "Target Support Files/Pods-Oz AtlasTests/Pods-Oz AtlasTests.release.xcconfig"; sourceTree = "<group>"; };
+		3BC2AD722B7A8163906F0C63 /* Pods_Oz_AtlasTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Oz_AtlasTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E4B87CD07E808B006CC2417 /* Pods-Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tracker.release.xcconfig"; path = "Target Support Files/Pods-Tracker/Pods-Tracker.release.xcconfig"; sourceTree = "<group>"; };
+		4FC387E29DADE58624488D41 /* Pods_Oz_Atlas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Oz_Atlas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6091283338DD8AECD6406E3F /* Pods_BioCollect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BioCollect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6EC7A4421ACCBB737E814FD7 /* Pods-Bio Control Hub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bio Control Hub.release.xcconfig"; path = "Target Support Files/Pods-Bio Control Hub/Pods-Bio Control Hub.release.xcconfig"; sourceTree = "<group>"; };
+		7FFCE08646E4E364CC25E24D /* Pods_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8709D1C51DB9926700E49C7E /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = src/record/MapViewController.h; sourceTree = "<group>"; };
 		8709D1C61DB9926700E49C7E /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = src/record/MapViewController.m; sourceTree = "<group>"; };
 		8709D1C71DB9926700E49C7E /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MapViewController.xib; path = src/record/MapViewController.xib; sourceTree = "<group>"; };
@@ -1199,6 +1213,8 @@
 		87B7000F1DC2E5520066C236 /* SyncTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SyncTableViewController.h; path = src/Sync/SyncTableViewController.h; sourceTree = "<group>"; };
 		87B700101DC2E5520066C236 /* SyncTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SyncTableViewController.m; path = src/Sync/SyncTableViewController.m; sourceTree = "<group>"; };
 		87B700111DC2E5520066C236 /* SyncTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SyncTableViewController.xib; path = src/Sync/SyncTableViewController.xib; sourceTree = "<group>"; };
+		88CC7E0487EE0217F08D5313 /* Pods-Bio Control Hub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bio Control Hub.debug.xcconfig"; path = "Target Support Files/Pods-Bio Control Hub/Pods-Bio Control Hub.debug.xcconfig"; sourceTree = "<group>"; };
+		AD2B4F28ABCC2B66A90DABF5 /* Pods-Oz Atlas.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Oz Atlas.release.xcconfig"; path = "Target Support Files/Pods-Oz Atlas/Pods-Oz Atlas.release.xcconfig"; sourceTree = "<group>"; };
 		B83825D91A0C666B00690383 /* MRBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRBlurView.h; sourceTree = "<group>"; };
 		B83825DA1A0C666B00690383 /* MRBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRBlurView.m; sourceTree = "<group>"; };
 		B83825DB1A0C666B00690383 /* UIImage+MRImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MRImageEffects.h"; sourceTree = "<group>"; };
@@ -1611,6 +1627,10 @@
 		E2F674BD1F18FD5D0040C704 /* ALA-logo-inline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ALA-logo-inline.png"; path = "src/images/ALA-logo-inline.png"; sourceTree = "<group>"; };
 		E2FF3E6C2052016B00439195 /* ProjectService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ProjectService.h; path = src/Service/ProjectService.h; sourceTree = "<group>"; };
 		E2FF3E6D2052018700439195 /* ProjectService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ProjectService.m; path = src/Service/ProjectService.m; sourceTree = "<group>"; };
+		E8CDEA1C02DBABE52EA247A9 /* Pods-BioCollect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BioCollect.debug.xcconfig"; path = "Target Support Files/Pods-BioCollect/Pods-BioCollect.debug.xcconfig"; sourceTree = "<group>"; };
+		EB11A9BC0BAF276B99501F74 /* Pods-Oz Atlas.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Oz Atlas.debug.xcconfig"; path = "Target Support Files/Pods-Oz Atlas/Pods-Oz Atlas.debug.xcconfig"; sourceTree = "<group>"; };
+		EE416AAA06B787D72CF95282 /* Pods_Bio_Control_Hub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bio_Control_Hub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE49370CE29D63BAF6CE03FA /* Pods-BioCollect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BioCollect.release.xcconfig"; path = "Target Support Files/Pods-BioCollect/Pods-BioCollect.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1629,6 +1649,7 @@
 				E26146D620072F9300B1104E /* CoreGraphics.framework in Frameworks */,
 				E26146D720072F9300B1104E /* UIKit.framework in Frameworks */,
 				E26146D820072F9300B1104E /* Foundation.framework in Frameworks */,
+				35831D02342564DE2B50C283 /* Pods_Tracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1647,6 +1668,7 @@
 				E26638E21F52EB9B00F1F1CE /* CoreGraphics.framework in Frameworks */,
 				E26638E31F52EB9B00F1F1CE /* UIKit.framework in Frameworks */,
 				E26638E41F52EB9B00F1F1CE /* Foundation.framework in Frameworks */,
+				612B6C608F9BDD388AAA13A4 /* Pods_Bio_Control_Hub.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1665,6 +1687,7 @@
 				E2AECF3F1E73D3010035DF28 /* CoreGraphics.framework in Frameworks */,
 				E2AECF401E73D3010035DF28 /* UIKit.framework in Frameworks */,
 				E2AECF411E73D3010035DF28 /* Foundation.framework in Frameworks */,
+				CF9FA725167AF23C4C7F6FFB /* Pods_BioCollect.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1683,6 +1706,7 @@
 				E2E3AA8F18F4D2940005BB9E /* CoreGraphics.framework in Frameworks */,
 				E2E3AA9118F4D2940005BB9E /* UIKit.framework in Frameworks */,
 				E2E3AA8D18F4D2940005BB9E /* Foundation.framework in Frameworks */,
+				8CAA7F6672A4B74A9323144D /* Pods_Oz_Atlas.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1693,12 +1717,30 @@
 				E2E3AAA618F4D2940005BB9E /* XCTest.framework in Frameworks */,
 				E2E3AAA818F4D2940005BB9E /* UIKit.framework in Frameworks */,
 				E2E3AAA718F4D2940005BB9E /* Foundation.framework in Frameworks */,
+				A6907D010BAB659F9E6B6A4A /* Pods_Oz_AtlasTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		70075000D38E5AEF1B18A408 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				88CC7E0487EE0217F08D5313 /* Pods-Bio Control Hub.debug.xcconfig */,
+				6EC7A4421ACCBB737E814FD7 /* Pods-Bio Control Hub.release.xcconfig */,
+				E8CDEA1C02DBABE52EA247A9 /* Pods-BioCollect.debug.xcconfig */,
+				EE49370CE29D63BAF6CE03FA /* Pods-BioCollect.release.xcconfig */,
+				EB11A9BC0BAF276B99501F74 /* Pods-Oz Atlas.debug.xcconfig */,
+				AD2B4F28ABCC2B66A90DABF5 /* Pods-Oz Atlas.release.xcconfig */,
+				3112926A2431FB7FFEF31557 /* Pods-Oz AtlasTests.debug.xcconfig */,
+				3AF72572BAB62FCB63A9064C /* Pods-Oz AtlasTests.release.xcconfig */,
+				12582AC3219157A8E7DFC320 /* Pods-Tracker.debug.xcconfig */,
+				3E4B87CD07E808B006CC2417 /* Pods-Tracker.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		87B700091DC2E46C0066C236 /* Drafts */ = {
 			isa = PBXGroup;
 			children = (
@@ -2454,15 +2496,16 @@
 		E2E3AA8018F4D2940005BB9E = {
 			isa = PBXGroup;
 			children = (
-				E2DCF1EB1CF68D8B008D438C /* Default-568h.png */,
-				E2DCF1EF1CF6A19C008D438C /* Default-568.png */,
-				E2DCF1EC1CF68D8B008D438C /* Default-568h@2x.png */,
 				E2E3AA9218F4D2940005BB9E /* BioCollect */,
-				E2E3AAAB18F4D2940005BB9E /* BioCollectTests */,
-				E2E3AA8B18F4D2940005BB9E /* Frameworks */,
-				E2E3AA8A18F4D2940005BB9E /* Products */,
-				E2E1C5202006116200CACBB6 /* BioControlHub-Info.plist */,
 				E2A3C84C200612B100BC90D0 /* BioCollect-info.plist */,
+				E2E3AAAB18F4D2940005BB9E /* BioCollectTests */,
+				E2E1C5202006116200CACBB6 /* BioControlHub-Info.plist */,
+				E2DCF1EF1CF6A19C008D438C /* Default-568.png */,
+				E2DCF1EB1CF68D8B008D438C /* Default-568h.png */,
+				E2DCF1EC1CF68D8B008D438C /* Default-568h@2x.png */,
+				E2E3AA8B18F4D2940005BB9E /* Frameworks */,
+				70075000D38E5AEF1B18A408 /* Pods */,
+				E2E3AA8A18F4D2940005BB9E /* Products */,
 				E261475C20072F9400B1104E /* Tracker-info.plist */,
 			);
 			sourceTree = "<group>";
@@ -2495,6 +2538,11 @@
 				E2E3AA8E18F4D2940005BB9E /* CoreGraphics.framework */,
 				E2E3AA9018F4D2940005BB9E /* UIKit.framework */,
 				E2E3AAA518F4D2940005BB9E /* XCTest.framework */,
+				EE416AAA06B787D72CF95282 /* Pods_Bio_Control_Hub.framework */,
+				6091283338DD8AECD6406E3F /* Pods_BioCollect.framework */,
+				4FC387E29DADE58624488D41 /* Pods_Oz_Atlas.framework */,
+				3BC2AD722B7A8163906F0C63 /* Pods_Oz_AtlasTests.framework */,
+				7FFCE08646E4E364CC25E24D /* Pods_Tracker.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2681,9 +2729,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E261475820072F9300B1104E /* Build configuration list for PBXNativeTarget "Tracker" */;
 			buildPhases = (
+				097C6F0EF28ED0D60FBE1EB2 /* [CP] Check Pods Manifest.lock */,
 				E261465D20072F9300B1104E /* Sources */,
 				E26146CD20072F9300B1104E /* Frameworks */,
 				E26146D920072F9300B1104E /* Resources */,
+				710F3EEB03722273E40B436F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2698,9 +2748,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E26639611F52EB9B00F1F1CE /* Build configuration list for PBXNativeTarget "Bio Control Hub" */;
 			buildPhases = (
+				D2CA550A98EE2DF50B1A77BB /* [CP] Check Pods Manifest.lock */,
 				E266386A1F52EB9B00F1F1CE /* Sources */,
 				E26638D91F52EB9B00F1F1CE /* Frameworks */,
 				E26638E51F52EB9B00F1F1CE /* Resources */,
+				720E63C71D1913F0E4DD98FF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2715,9 +2767,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E2AECFA51E73D3010035DF28 /* Build configuration list for PBXNativeTarget "BioCollect" */;
 			buildPhases = (
+				451BFFC5129B6759931338A7 /* [CP] Check Pods Manifest.lock */,
 				E2AECEE11E73D3010035DF28 /* Sources */,
 				E2AECF361E73D3010035DF28 /* Frameworks */,
 				E2AECF421E73D3010035DF28 /* Resources */,
+				33FBFE38FA26D9850267C986 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2732,9 +2786,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E2E3AAB518F4D2940005BB9E /* Build configuration list for PBXNativeTarget "Oz Atlas" */;
 			buildPhases = (
+				D2FC4733A41E8A4C254F3218 /* [CP] Check Pods Manifest.lock */,
 				E2E3AA8518F4D2940005BB9E /* Sources */,
 				E2E3AA8618F4D2940005BB9E /* Frameworks */,
 				E2E3AA8718F4D2940005BB9E /* Resources */,
+				0FC4C5A873B651CE24FEBA74 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2749,6 +2805,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E2E3AAB818F4D2940005BB9E /* Build configuration list for PBXNativeTarget "Oz AtlasTests" */;
 			buildPhases = (
+				387F63C2CF0287471714E98B /* [CP] Check Pods Manifest.lock */,
 				E2E3AAA018F4D2940005BB9E /* Sources */,
 				E2E3AAA118F4D2940005BB9E /* Frameworks */,
 				E2E3AAA218F4D2940005BB9E /* Resources */,
@@ -3411,6 +3468,191 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		097C6F0EF28ED0D60FBE1EB2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Tracker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0FC4C5A873B651CE24FEBA74 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Oz Atlas/Pods-Oz Atlas-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Oz Atlas/Pods-Oz Atlas-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		33FBFE38FA26D9850267C986 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BioCollect/Pods-BioCollect-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BioCollect/Pods-BioCollect-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		387F63C2CF0287471714E98B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Oz AtlasTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		451BFFC5129B6759931338A7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BioCollect-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		710F3EEB03722273E40B436F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tracker/Pods-Tracker-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tracker/Pods-Tracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		720E63C71D1913F0E4DD98FF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bio Control Hub/Pods-Bio Control Hub-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bio Control Hub/Pods-Bio Control Hub-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D2CA550A98EE2DF50B1A77BB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Bio Control Hub-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D2FC4733A41E8A4C254F3218 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Oz Atlas-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E261465D20072F9300B1104E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -4034,13 +4276,14 @@
 /* Begin XCBuildConfiguration section */
 		E261475920072F9300B1104E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12582AC3219157A8E7DFC320 /* Pods-Tracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = Tracker;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VP6SGJQWPU;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -4055,9 +4298,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/BioCollect/src/Framework",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.5;
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.tracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -4069,13 +4315,14 @@
 		};
 		E261475A20072F9300B1104E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E4B87CD07E808B006CC2417 /* Pods-Tracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = Tracker;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VP6SGJQWPU;
 				ENABLE_NS_ASSERTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -4086,8 +4333,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/BioCollect/src/Framework",
 				);
-				MARKETING_VERSION = 1.3;
-				OTHER_LDFLAGS = "-ObjC";
+				MARKETING_VERSION = 1.5;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.tracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -4099,14 +4349,15 @@
 		};
 		E26639621F52EB9B00F1F1CE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 88CC7E0487EE0217F08D5313 /* Pods-Bio Control Hub.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = BioControlHub;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VP6SGJQWPU;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BioCollect/Oz Atlas-Prefix.pch";
@@ -4120,9 +4371,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/BioCollect/src/Framework",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.5;
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.biocontrolhub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -4134,14 +4388,15 @@
 		};
 		E26639631F52EB9B00F1F1CE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6EC7A4421ACCBB737E814FD7 /* Pods-Bio Control Hub.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = BioControlHub;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VP6SGJQWPU;
 				ENABLE_NS_ASSERTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BioCollect/Oz Atlas-Prefix.pch";
@@ -4151,8 +4406,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/BioCollect/src/Framework",
 				);
-				MARKETING_VERSION = 1.3;
-				OTHER_LDFLAGS = "-ObjC";
+				MARKETING_VERSION = 1.5;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.biocontrolhub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -4164,13 +4422,14 @@
 		};
 		E2AECFA61E73D3010035DF28 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E8CDEA1C02DBABE52EA247A9 /* Pods-BioCollect.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = BioCollect;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VP6SGJQWPU;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BioCollect/Oz Atlas-Prefix.pch";
@@ -4184,9 +4443,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/BioCollect/src/Framework",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.8;
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.biocollect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -4198,13 +4460,14 @@
 		};
 		E2AECFA71E73D3010035DF28 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE49370CE29D63BAF6CE03FA /* Pods-BioCollect.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = BioCollect;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VP6SGJQWPU;
 				ENABLE_NS_ASSERTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BioCollect/Oz Atlas-Prefix.pch";
@@ -4214,8 +4477,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/BioCollect/src/Framework",
 				);
-				MARKETING_VERSION = 1.6;
-				OTHER_LDFLAGS = "-ObjC";
+				MARKETING_VERSION = 1.8;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.biocollect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -4315,13 +4582,14 @@
 		};
 		E2E3AAB618F4D2940005BB9E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB11A9BC0BAF276B99501F74 /* Pods-Oz Atlas.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = OzAtlasv1;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VP6SGJQWPU;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -4336,9 +4604,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/BioCollect/src/Framework",
 				);
-				MARKETING_VERSION = 1.7;
+				MARKETING_VERSION = 1.8;
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.mobile;
 				PRODUCT_NAME = "Oz Atlas";
 				PROVISIONING_PROFILE = "";
@@ -4350,13 +4621,14 @@
 		};
 		E2E3AAB718F4D2940005BB9E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD2B4F28ABCC2B66A90DABF5 /* Pods-Oz Atlas.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = OzAtlasv1;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VP6SGJQWPU;
 				ENABLE_NS_ASSERTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -4367,8 +4639,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/BioCollect/src/Framework",
 				);
-				MARKETING_VERSION = 1.7;
-				OTHER_LDFLAGS = "-ObjC";
+				MARKETING_VERSION = 1.8;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = au.org.ala.mobile;
 				PRODUCT_NAME = "Oz Atlas";
 				PROVISIONING_PROFILE = "";
@@ -4380,6 +4655,7 @@
 		};
 		E2E3AAB918F4D2940005BB9E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3112926A2431FB7FFEF31557 /* Pods-Oz AtlasTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BioCollect.app/BioCollect";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -4403,6 +4679,7 @@
 		};
 		E2E3AABA18F4D2940005BB9E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3AF72572BAB62FCB63A9064C /* Pods-Oz AtlasTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BioCollect.app/BioCollect";
 				FRAMEWORK_SEARCH_PATHS = (

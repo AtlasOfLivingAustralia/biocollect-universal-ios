@@ -180,7 +180,7 @@ static const NSInteger kARRMaxCacheAge = 60 * 60 * 24 * 365 * 2; // 1 day * 365 
         [[UIBarButtonItem appearance] setTintColor: [self colorFromHexString: @"#F1582B"]];
         
     } else if([appType isEqualToString:@"hubview"]) {
-        [[UINavigationBar appearance] setBackgroundColor:[self colorFromHexString: @"#000000"]];
+        [[UINavigationBar appearance] setBackgroundColor:[self colorFromHexString: @"#ffffff"]];
         [[UINavigationBar appearance] setTranslucent:NO];
         [self.window setRootViewController:ozHomeNC];
         [[UITabBar appearance] setTintColor: [self colorFromHexString: [GASettings appTheme]]];
@@ -197,10 +197,10 @@ static const NSInteger kARRMaxCacheAge = 60 * 60 * 24 * 365 * 2; // 1 day * 365 
     
     [self.window makeKeyAndVisible];
 
-    if([GASettings getAuthKey] == 0){
+    OIDAuthState *authState = [GASettings getAuthState];
+    if (authState == nil || ![authState isAuthorized]){
         [self displaySigninPage];
-        
-    } else{
+    } else {
         DebugLog(@"[INFO] GAAppDelegate:addSplitViewtoRoot - loading data from db.");
         [self updateTableModelsAndViews:[self.sqlLite loadProjectsAndActivities]];
     }
@@ -227,7 +227,6 @@ static const NSInteger kARRMaxCacheAge = 60 * 60 * 24 * 365 * 2; // 1 day * 365 
     [GASettings resetAllFields];
     [self.homeVC resetProjects];
     [self.recordsVC resetRecords];
-    [GASettings resetAllFields];
     [self.sqlLite deleteAllTables];
     [self.trackerService removeAllTracks];
     [self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];

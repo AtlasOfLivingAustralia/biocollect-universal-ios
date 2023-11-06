@@ -6,15 +6,17 @@
 //
 
 #import "GASettings.h"
+#import "GASettingsConstant.h"
 
 #define kEmailAddress @"emailAddress"
-#define kAuthKey @"authKey"
 #define kSortBy @"sortBy"
 #define kDataToSync @"dataToSync"
 #define kEULA @"EULA"
 #define kFirstName @"firstName"
 #define kLastName @"lastName"
 #define kUserId @"userId"
+#define kOpenIDConfig @"OIDCDiscovery"
+#define kAuthState @"authState"
 #define IDIOM    UI_USER_INTERFACE_IDIOM()
 #define IPAD     UIUserInterfaceIdiomPad
 
@@ -29,22 +31,19 @@
 
 +(void) resetAllFields{
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kEmailAddress];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kAuthKey];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kSortBy];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kDataToSync];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kFirstName];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kLastName];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kUserId];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kOpenIDConfig];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kAuthState];
     //[[NSUserDefaults standardUserDefaults] removeObjectForKey:kEULA];
     [[NSUserDefaults standardUserDefaults]synchronize];    
 }
 
 +(NSString*) getEmailAddress{
     return [[NSUserDefaults standardUserDefaults] objectForKey:kEmailAddress];
-}
-
-+(NSString*) getAuthKey{
-    return [[NSUserDefaults standardUserDefaults] objectForKey:kAuthKey];
 }
 
 +(NSString*) getSortBy{
@@ -78,13 +77,59 @@
     return [NSString stringWithFormat:@"%@ %@", firstName, lastName];
 }
 
-+(void) setEmailAddress : (NSString *) emailAddress{
-    [[NSUserDefaults standardUserDefaults] setObject:emailAddress forKey:kEmailAddress];
-    [[NSUserDefaults standardUserDefaults]synchronize];
++(OIDServiceConfiguration*) getOpenIDConfig{
+    NSError *e = nil;
+    NSDictionary* discoveryDict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:kOpenIDConfig];
+    OIDServiceDiscovery* discovery = [[OIDServiceDiscovery alloc] initWithDictionary:discoveryDict error:&e];
+    return [[OIDServiceConfiguration alloc] initWithDiscoveryDocument:discovery];
 }
 
-+(void) setAuthKey: (NSString *) authKey{
-    [[NSUserDefaults standardUserDefaults] setObject:authKey forKey:kAuthKey];
++(OIDAuthState*) getAuthState {
+    NSData *authStateData = [[NSUserDefaults standardUserDefaults] objectForKey:kAuthState];
+    NSError *error;
+    
+    // Check that the encoded data is not nil
+    if (authStateData) {
+
+        // Decode the encoded `OIDAuthState` object
+        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingFromData:authStateData error:&error];
+        [unarchiver setRequiresSecureCoding:true];
+        OIDAuthState *authState = [[OIDAuthState alloc] initWithCoder:unarchiver];
+
+        if (authState) {
+            return authState;
+        } else {
+            NSLog(@"Failed to decode OIDAuthState: %@", error);
+        }
+    } else {
+        NSLog(@"Encoded OIDAuthState not found in NSUserDefaults");
+    }
+    
+    return nil;
+}
+
++(NSDictionary*) getUserProfile: (NSString *) token {
+    NSError * e;
+    NSString *payload = [token componentsSeparatedByString:@"."][1];
+    
+    int len = (int)(4 * ceil((float)[payload length] / 4.0));
+    int pad = len - [payload length];
+    
+    // Add Base64 padding
+    if (pad > 0) {
+        NSString *padding = [[NSString string] stringByPaddingToLength:pad withString:@"=" startingAtIndex:0];
+        payload = [payload stringByAppendingString:padding];
+    }
+    
+    NSData *decoded = [[NSData alloc] initWithBase64EncodedString:payload options:0];
+    NSDictionary* profile =  [NSJSONSerialization JSONObjectWithData:decoded
+                                                              options:kNilOptions error:&e];
+    
+    return profile;
+}
+
++(void) setEmailAddress : (NSString *) emailAddress{
+    [[NSUserDefaults standardUserDefaults] setObject:emailAddress forKey:kEmailAddress];
     [[NSUserDefaults standardUserDefaults]synchronize];
 }
 
@@ -118,7 +163,34 @@
     [[NSUserDefaults standardUserDefaults]synchronize];
 }
 
-+(NSString*) appVersion{
++(void) setOpenIDConfig:(OIDServiceConfiguration *)serviceConfig{
+    NSMutableDictionary* configDict = [[serviceConfig.discoveryDocument discoveryDictionary] mutableCopy];
+    if (COGNITO_ENABLED) {
+        NSString *endSessionURL = [serviceConfig.tokenEndpoint.absoluteString stringByReplacingOccurrencesOfString:@"oauth2/token" withString:@"logout"];
+        [configDict setValue:endSessionURL forKey:@"end_session_endpoint"];
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:configDict forKey:kOpenIDConfig];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+}
+
++(void) setAuthState:(OIDAuthState *)authState {
+    // Encode the authState data
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initRequiringSecureCoding:true];
+    [authState encodeWithCoder:archiver];
+    [archiver finishEncoding];
+    [[NSUserDefaults standardUserDefaults] setObject:[archiver encodedData] forKey:kAuthState];
+    
+    NSDictionary * profile = [self getUserProfile: COGNITO_ENABLED ? authState.lastTokenResponse.idToken : authState.lastTokenResponse.accessToken];
+    [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"email"]  forKey:kEmailAddress];
+    [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:COGNITO_ENABLED ? @"custom:userid" : @"userid"]  forKey:kUserId];
+    [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"given_name"]  forKey:kFirstName];
+    [[NSUserDefaults standardUserDefaults] setObject:[profile valueForKey:@"family_name"]  forKey:kLastName];
+    
+    [[NSUserDefaults standardUserDefaults]synchronize];
+}
+
++(NSString*) appVersion {
     NSString * ver = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
     NSString * build = [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
     return [[NSString alloc] initWithFormat:@"%@ (%@)",ver,build];
@@ -161,7 +233,6 @@
 }
 
 +(NSString*) appLoginLogo {
-    NSString *imageName = nil;
     NSString *value = nil;
     value = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"Bio_Home_Login_Image_Logo"];
     

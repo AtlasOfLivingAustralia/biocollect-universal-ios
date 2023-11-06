@@ -16,6 +16,12 @@
 #import "GASettings.h"
 #import "ProjectActivitiesJSON.h"
 #import "ProjectActivity.h"
+#import "GAAppDelegate.h"
+
+@interface BioProjectService ()
+@property (strong, nonatomic) GAAppDelegate *appDelegate;
+@end
+
 
 @implementation BioProjectService
 #define BIO_PROJECT_SEARCH @"/ws/project/search?initiator=biocollect"
@@ -28,6 +34,11 @@
  Get BioCollect projects - run as async task.
  Example: http://biocollect-test.ala.org.au/ws/project/search?initiator=biocollect&max=10&offset=0&q=test
 */
+- init {
+    self.appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
+    return self;
+}
+
 - (NSInteger) getBioProjects : (NSMutableArray*) projects offset: (NSInteger) offset max: (NSInteger) max query: (NSString*) query params: (NSString*) params isUserPage: (BOOL) isUserPage error:(NSError**) error {
 
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
@@ -41,8 +52,7 @@
     NSString *url = [[NSString alloc] initWithFormat: @"%@%@&offset=%ld&max=%ld&q=%@%@&mobile=true%@&hub=%@&fq=isExternal:F&sort=%@", BIOCOLLECT_SERVER, BIO_PROJECT_SEARCH, (long)offset, (long)max, (NSString*) query, (NSString*) params, userPage,hubName, sort];
     NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [request setURL:[NSURL URLWithString:escapedUrlString]];
-    [request setValue:[GASettings getEmailAddress] forHTTPHeaderField:@"userName"];
-    [request setValue:[GASettings getAuthKey] forHTTPHeaderField:@"authKey"];
+    [request setValue:[self.appDelegate.restCall getAuthorizationHeader] forHTTPHeaderField:@"Authorization"];
     [request setHTTPMethod:@"GET"];
   
     NSURLResponse *response;
@@ -82,7 +92,6 @@
 // http://biocollect-test.ala.org.au/bioActivity/searchProjectActivities?view=allrecords&searchTerm=test
 
 - (NSInteger) getActivities : (NSMutableArray*) records offset: (NSInteger) offset max: (NSInteger) max projectId: (NSString*) projectId query: (NSString*) query myRecords: (BOOL) myRecords error:(NSError**) error {
-    
     //Request projects.
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     NSString *url = nil;
@@ -100,8 +109,7 @@
     NSString *escapedUrlString =[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [request setURL:[NSURL URLWithString:escapedUrlString]];
     [request setHTTPMethod:@"GET"];
-    [request setValue:[GASettings getEmailAddress] forHTTPHeaderField:@"userName"];
-    [request setValue:[GASettings getAuthKey] forHTTPHeaderField:@"authKey"];
+    [request setValue:[self.appDelegate.restCall getAuthorizationHeader] forHTTPHeaderField:@"Authorization"];
 
     NSURLResponse *response;
     DebugLog(@"[INFO] BioProjectService:getActivities - Biocollect activities search url %@",escapedUrlString);

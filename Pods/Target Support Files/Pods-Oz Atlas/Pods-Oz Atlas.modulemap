@@ -1,0 +1,6 @@
+framework module Pods_Oz_Atlas {
+  umbrella header "Pods-Oz Atlas-umbrella.h"
+
+  export *
+  module * { export * }
+}

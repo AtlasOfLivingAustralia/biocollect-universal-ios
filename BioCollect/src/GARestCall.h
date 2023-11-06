@@ -16,7 +16,7 @@
 -(id) init;
 -(void) updateActivity : (GAActivity*) activity :(NSError**) e;
 -(NSString *) uploadSite: (GASite*) site :(NSError**) e;
--(void) authenticate : (NSString *)username password:(NSString *) p error:(NSError **) e;
+-(NSString*) getAuthorizationHeader;
 -(NSMutableArray *) downloadProjects : (NSError **) error;
 -(NSMutableArray *) autoCompleteSpecies : (NSString *) searchText numberOfItemsPerPage: (int) pageSize fromSerialNumber: (int) offset addSearchText:(BOOL)addUnmatchedTaxon viewController: (SpeciesSearchTableViewController *) vc;
 -(NSMutableDictionary * )createRecord: RecordForm;

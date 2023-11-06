@@ -11,11 +11,16 @@
 #import "GAAppDelegate.h"
 #import "GASettings.h"
 #import "GASettingsConstant.h"
+@interface RecordWebView ()
+    @property (nonatomic, strong) GAAppDelegate *appDelegate;
+@end
+
 
 @implementation RecordWebView
 @synthesize activity,activityIndicator;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self.appDelegate = (GAAppDelegate *)[[UIApplication sharedApplication] delegate];
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
     }
@@ -35,8 +40,7 @@
     [request setURL:[NSURL URLWithString:url]];
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[GASettings getEmailAddress] forHTTPHeaderField:@"userName"];
-    [request setValue:[GASettings getAuthKey] forHTTPHeaderField:@"authKey"];
+    [request setValue:[self.appDelegate.restCall getAuthorizationHeader] forHTTPHeaderField:@"Authorization"];
     [request setTimeoutInterval: DEFAULT_TIMEOUT];
     return request;
 }
