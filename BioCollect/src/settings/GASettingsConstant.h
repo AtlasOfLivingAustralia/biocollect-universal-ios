@@ -13,7 +13,6 @@
 #define AUTH_SERVER  @"https://auth.ala.org.au"
 #define AUTH_REGISTER @"/userdetails/registration/createAccount"
 #define AUTH_USERDETAILS @"/userdetails/userDetails/getUserDetails?userName="
-#define AUTH_TOKEN @"/cas/oidc/token"
 #define AUTH_REDIRECT_SIGNIN @"biocollect://auth/signin"
 #define AUTH_REDIRECT_SIGNOUT @"biocollect://auth/signout"
 
@@ -43,12 +42,12 @@
 #define HUB_VIEW @"hubview"
 
 // OpenID Connect Configuration
-#define COGNITO_ENABLED false
+#define COGNITO_ENABLED true
 #define COGNITO_REGION @"ap-southeast-2"
-#define COGNITO_USER_POOL @"OOXU9GW39"
+#define COGNITO_USER_POOL @"Auyv55MYO"
 
-// #define CLIENT_ID @"3evrluqa40pn11u2f2hqah813r" COGNITO
-#define CLIENT_ID @"oidc-mobile-auth"
+#define CLIENT_ID @"o3hhn8ekr69osipdn53gdr5g0" // COGNITO
+// #define CLIENT_ID @"oidc-mobile-auth"
 #define SCOPE @"email openid profile ala roles users/read"
 
 #endif
