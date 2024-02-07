@@ -82,34 +82,39 @@
 
 -(NSString*) getAuthorizationHeader {
     OIDAuthState *authState = [GASettings getAuthState];
+    __block NSString *accessToken = authState.lastTokenResponse.accessToken;
     
     NSDate* dateNow = [NSDate date];
     NSDate* dateExpiry = [[authState lastTokenResponse] accessTokenExpirationDate];
     
-    NSLog(@"%@", dateExpiry);
+    NSLog(@"Token Expiry %@", dateExpiry);
     
     // Check whether the expiry date is in the future
     if ([dateNow compare:dateExpiry] != NSOrderedAscending) {
-        dispatch_semaphore_t authWait = dispatch_semaphore_create(0);
+        __block bool gotToken = NO;
         
         // Token update check
-        [authState performActionWithFreshTokens:^(NSString * _Nullable accessToken, NSString * _Nullable idToken, NSError * _Nullable error) {
+        [authState performActionWithFreshTokens:^(NSString * _Nullable newAccessToken, NSString * _Nullable idToken, NSError * _Nullable error) {
             if (error) {
                 NSLog(@"Token refresh error %@", [error localizedDescription]);
             } else {
                 // Update the authentication state
                 [GASettings setAuthState:authState];
+                
+                NSLog(@"Token Refreshed! %@", newAccessToken);
+                accessToken = newAccessToken;
             }
             
-            // Signal the semaphore to continue
-            dispatch_semaphore_signal(authWait);
+            gotToken = YES;
         }];
         
-        dispatch_time_t timeout = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10.0 * NSEC_PER_SEC));
-        dispatch_semaphore_wait(authWait, timeout);
+        // Wait for the token response
+        while (!gotToken) {
+            [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
+        }
     }
     
-    return  [[NSString alloc] initWithFormat:@"Bearer %@", authState.lastTokenResponse.accessToken];
+    return  [[NSString alloc] initWithFormat:@"Bearer %@", accessToken];
 }
 
 -(NSMutableArray *) downloadProjects : (NSError **) error{
